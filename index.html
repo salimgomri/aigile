@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIgile Manifesto - The Evolution of Agile for the AI Era</title>
+    <meta name="description" content="Transform from 'Are you agile?' to 'Are you AIgile?' - The essential evolution of the 2001 Agile Manifesto for teams working in the AI era.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .aigile-text {
+            background: linear-gradient(135deg, #0066cc, #00a0b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            font-size: 1.2em;
+            text-shadow: 0 0 15px rgba(0, 102, 204, 0.4);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Theme System */
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #00a0b0;
+            --dark-bg: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+            --light-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --card-bg: white;
+            --border-radius: 15px;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="apple"] {
+            --primary-color: #FF6B35;
+            --secondary-color: #A855F7;
+            --dark-bg: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+            --light-bg: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --border-radius: 20px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle button {
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Language Toggle - Dynamic */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 4px;
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Parallax System - Simplified */
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+            z-index: 1;
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Parallax backgrounds for each theme */
+        .parallax-hero {
+            background: radial-gradient(ellipse at center, rgba(0, 102, 204, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="2" fill="rgba(0,102,204,0.2)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23dots)"/></svg>');
+        }
+
+        .parallax-values {
+            background: radial-gradient(ellipse at center, rgba(0, 160, 176, 0.2) 0%, rgba(15, 20, 25, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(0,102,204,0.1)" stroke-width="1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>');
+        }
+
+        .parallax-principles {
+            background: radial-gradient(ellipse at center, rgba(0, 102, 204, 0.1) 0%, rgba(248, 250, 252, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="hexagon" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse"><polygon points="30,5 50,20 50,40 30,55 10,40 10,20" fill="none" stroke="rgba(0,102,204,0.05)" stroke-width="1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23hexagon)"/></svg>');
+        }
+
+        [data-theme="apple"] .parallax-hero {
+            background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.3) 0%, rgba(0, 0, 0, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="apple-dots" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><circle cx="40" cy="40" r="3" fill="rgba(255,107,53,0.2)"/><circle cx="20" cy="20" r="1.5" fill="rgba(168,85,247,0.15)"/><circle cx="60" cy="20" r="1.5" fill="rgba(168,85,247,0.15)"/></pattern></defs><rect width="1000" height="1000" fill="url(%23apple-dots)"/></svg>');
+        }
+
+        [data-theme="apple"] .parallax-values {
+            background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="apple-grid" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse"><circle cx="60" cy="60" r="30" fill="none" stroke="rgba(255,107,53,0.08)" stroke-width="2"/></pattern></defs><rect width="1000" height="1000" fill="url(%23apple-grid)"/></svg>');
+        }
+
+        [data-theme="apple"] .parallax-principles {
+            background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.1) 0%, rgba(249, 250, 251, 0.95) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="apple-wave" x="0" y="0" width="200" height="40" patternUnits="userSpaceOnUse"><path d="M0,20 Q50,10 100,20 T200,20" fill="none" stroke="rgba(168,85,247,0.06)" stroke-width="2"/></pattern></defs><rect width="1000" height="1000" fill="url(%23apple-wave)"/></svg>');
+        }
+
+        [data-theme="apple"] .value-item, 
+        [data-theme="apple"] .principle-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left-color: var(--primary-color);
+        }
+
+        [data-theme="apple"] .value-id,
+        [data-theme="apple"] .principle-id {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        [data-theme="apple"] .value-icon,
+        [data-theme="apple"] .principle-icon {
+            color: var(--primary-color);
+        }
+
+        [data-theme="apple"] .value-item:hover .value-id,
+        [data-theme="apple"] .principle-item:hover .principle-id {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        [data-theme="apple"] .value-item:hover .value-icon,
+        [data-theme="apple"] .principle-item:hover .principle-icon {
+            color: var(--secondary-color);
+        }
+
+        [data-theme="apple"] .cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        [data-theme="apple"] .aigile-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero Section - Apple Style */
+        .hero {
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .hero-main-title {
+            font-size: clamp(4rem, 12vw, 12rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            letter-spacing: -0.01em;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-author {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 500;
+            margin-bottom: 4rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        [data-theme="apple"] .hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Values Section */
+        .values {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3748 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="apple"] .values {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+        }
+
+        .values > .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .values-wrapper {
+            position: relative;
+            padding-left: 120px;
+        }
+
+        .section-label {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: center;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .section-label.dark {
+            color: rgba(0, 0, 0, 0.08);
+        }
+
+        .values h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .values-intro {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .value-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-left: 6px solid #0066cc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: grid;
+            grid-template-columns: 80px 80px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            color: #2d3748;
+        }
+
+        .value-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .value-item:hover .value-id {
+            background: linear-gradient(135deg, #0066cc, #00a0b0);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .value-item:hover .value-icon, .principle-item:hover .principle-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: #00a0b0;
+        }
+
+        .value-id {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #0066cc;
+            text-align: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #0066cc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-icon, .principle-icon {
+            color: #0066cc;
+            transition: all 0.3s ease;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .principle-icon {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .value-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .value-emphasis {
+            font-weight: bold;
+            color: #1a202c;
+        }
+
+        .value-over {
+            color: #666;
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+
+        /* Principles Section */
+        .principles {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principles::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.3;
+        }
+
+        .principles-wrapper {
+            position: relative;
+            padding-left: 120px;
+        }
+
+        .principles h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #1a202c;
+        }
+
+        .principles-intro {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            color: #4a5568;
+            font-weight: 500;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .principle-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #0066cc;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: grid;
+            grid-template-columns: 60px 60px 1fr;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .principle-item:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .principle-item:hover .principle-id {
+            background: linear-gradient(135deg, #0066cc, #00a0b0);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .principle-item:hover .principle-icon {
+            transform: scale(1.15) rotate(3deg);
+            color: #00a0b0;
+        }
+
+        .principle-id {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #0066cc;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #0066cc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .principle-icon {
+            font-size: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .principle-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #0066cc 0%, #00a0b0 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #0066cc;
+        }
+
+        .btn-primary:hover {
+            background: #f7fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0066cc;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;            
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+        }
+
+        .about-role {
+            font-size: 1.3rem;
+            color: #0066cc;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        [data-theme="apple"] .about-role {
+            color: var(--primary-color);
+        }
+
+        .about-founding {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .about-bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+
+        .about-credentials {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-credentials:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-credentials h4 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        [data-theme="apple"] .about-credentials h4 {
+            color: var(--primary-color);
+        }
+
+        .credentials-list {
+            list-style: none;
+        }
+
+        .credentials-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .credentials-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00a0b0;
+            font-weight: bold;
+        }
+
+        [data-theme="apple"] .credentials-list li::before {
+            color: var(--secondary-color);
+        }
+
+        .about-contact {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-contact:hover {
+            transform: translateY(-5px) rotate(-1deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-contact h4 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        [data-theme="apple"] .about-contact h4 {
+            color: var(--primary-color);
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        [data-theme="apple"] .contact-item a {
+            color: var(--primary-color);
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .linkedin-icon {
+            color: #0077b5;
+        }
+
+        .email-icon {
+            color: #ea4335;
+        }
+
+        .website-icon {
+            color: #00a0b0;
+        }
+
+        [data-theme="apple"] .website-icon {
+            color: var(--secondary-color);
+        }
+
+        .articles-icon {
+            color: #0077b5;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 3rem 0 1rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #00a0b0;
+        }
+
+        [data-theme="apple"] .footer-section h4 {
+            color: var(--secondary-color);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #00a0b0;
+        }
+
+        [data-theme="apple"] .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-main-title {
+                font-size: clamp(3rem, 10vw, 8rem);
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+
+            .hero-author {
+                font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-image {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .value-item {
+                grid-template-columns: 60px 60px 1fr;
+                gap: 1rem;
+                padding: 2rem;
+            }
+
+            .value-id {
+                font-size: 1.5rem;
+                width: 50px;
+                height: 50px;
+            }
+
+            .value-icon {
+                font-size: 2rem;
+            }
+
+            .values-wrapper,
+            .principles-wrapper {
+                padding-left: 20px;
+            }
+
+            .section-label {
+                display: none;
+            }
+
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .principle-item {
+                grid-template-columns: 50px 50px 1fr;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .principle-id {
+                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .principle-icon {
+                font-size: 1.5rem;
+            }
+
+            .principle-text {
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0066cc, #00a0b0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button onclick="setTheme('default')" class="theme-btn active" data-theme="default">Sarah</button>
+        <button onclick="setTheme('apple')" class="theme-btn" data-theme="apple">Maya</button>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle" id="languageToggle">
+        <!-- Languages will be dynamically loaded -->
+    </div>
+
+    <!-- Hero Section - Apple Style -->
+    <section class="hero parallax-container">
+        <div class="parallax-bg parallax-hero"></div>
+        <div class="container parallax-content">
+            <div class="hero-content">
+                <h1 class="hero-main-title">
+                    <span class="aigile-text">AIgile</span><br>
+                    Manifesto
+                </h1>
+                <p class="hero-author">by Salim Gomri</p>
+                <p class="hero-subtitle">The Evolution of Agile for the AI Era</p>
+            </div>
+        </div>
+    </section>    
+
+    <!-- Values Section -->
+    <section class="values parallax-container" id="values">
+        <div class="parallax-bg parallax-values"></div>
+        <div class="container parallax-content">
+            <div class="values-wrapper">
+                <div class="section-label" data-translate="section-values">VALUES</div>
+                <h2 data-translate="values-title">The 4 <span class="aigile-text">AIgile</span> Values</h2>
+                <div class="values-intro" data-translate="values-intro">
+                    That is, while there is value in the items on the right, we value the items on the left more.
+                </div>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-id">1</div>
+                        <div class="value-icon"><i class="fas fa-users"></i></div>
+                        <div>
+                            <div class="value-text">
+                                <div class="value-emphasis" data-translate="value-1-bold">Individuals and their interactions (with or without AI)</div>
+                                <div class="value-over" data-translate="value-1-over">over</div>
+                                <div data-translate="value-1-regular">processes, even automated ones, and AI tools</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-id">2</div>
+                        <div class="value-icon"><i class="fas fa-cogs"></i></div>
+                        <div>
+                            <div class="value-text">
+                                <div class="value-emphasis" data-translate="value-2-bold">Working software co-created</div>
+                                <div class="value-over" data-translate="value-2-over">over</div>
+                                <div data-translate="value-2-regular">comprehensive documentation, even AI-generated</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-id">3</div>
+                        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                        <div>
+                            <div class="value-text">
+                                <div class="value-emphasis" data-translate="value-3-bold">Customer collaboration, AI-augmented or not</div>
+                                <div class="value-over" data-translate="value-3-over">over</div>
+                                <div data-translate="value-3-regular">contract negotiation, even automated ones</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="value-item">
+                        <div class="value-id">4</div>
+                        <div class="value-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div>
+                            <div class="value-text">
+                                <div class="value-emphasis" data-translate="value-4-bold">Responding to change</div>
+                                <div class="value-over" data-translate="value-4-over">over</div>
+                                <div data-translate="value-4-regular">following a plan, even one predicted by AI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem; font-size: 1.2rem; font-style: italic; color: rgba(255, 255, 255, 0.8);">
+                    <span data-translate="values-note">These values don't reject AI—they place it where it belongs: a tool in service of humans, not a replacement.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="principles" id="principles">
+        <div class="container">
+            <h2 data-translate="principles-title">The 10 <span class="aigile-text">AIgile</span> Principles</h2>
+            <div class="principles-intro" data-translate="principles-intro">
+                Following these principles will help your team become truly AIgile:
+            </div>
+            <div class="principles-grid">
+                <div class="principle-item">
+                    <div class="principle-id">1</div>
+                    <div class="principle-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="principle-text" data-translate="principle-1-text">Take an AI-augmented economic view</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">2</div>
+                    <div class="principle-icon"><i class="fas fa-brain"></i></div>
+                    <div class="principle-text" data-translate="principle-2-text">Apply AI-assisted systems thinking</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">3</div>
+                    <div class="principle-icon"><i class="fas fa-random"></i></div>
+                    <div class="principle-text" data-translate="principle-3-text">Embrace variability with AI-enabled options</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">4</div>
+                    <div class="principle-icon"><i class="fas fa-repeat"></i></div>
+                    <div class="principle-text" data-translate="principle-4-text">Build incrementally with AI-enhanced feedback loops</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">5</div>
+                    <div class="principle-icon"><i class="fas fa-flag-checkered"></i></div>
+                    <div class="principle-text" data-translate="principle-5-text">Base milestones on systems suggested by AI, validated by humans</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">6</div>
+                    <div class="principle-icon"><i class="fas fa-eye"></i></div>
+                    <div class="principle-text" data-translate="principle-6-text">Visualize and limit WIP with AI insights</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">7</div>
+                    <div class="principle-icon"><i class="fas fa-clock"></i></div>
+                    <div class="principle-text" data-translate="principle-7-text">Apply cadence and sync using AI</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">8</div>
+                    <div class="principle-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="principle-text" data-translate="principle-8-text">Unlock intrinsic motivation, amplified by AI</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">9</div>
+                    <div class="principle-icon"><i class="fas fa-sitemap"></i></div>
+                    <div class="principle-text" data-translate="principle-9-text">Decentralize decisions, enriched by AI data</div>
+                </div>
+                
+                <div class="principle-item">
+                    <div class="principle-id">10</div>
+                    <div class="principle-icon"><i class="fas fa-bullseye"></i></div>
+                    <div class="principle-text" data-translate="principle-10-text">Organize around value with augmented teams</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 data-translate="cta-title">Ready to Transform Your Team?</h2>
+            <p data-translate="cta-subtitle" style="font-size: 1.2rem; margin-bottom: 2rem;">
+                From "Are you agile?" to "Are you <span class="aigile-text">AIgile</span>?"
+            </p>
+            <div class="cta-buttons">
+                <a href="./aigileManifesto.pdf" class="btn btn-secondary" onclick="downloadPoster()" data-translate="cta-download">Download Poster (EN)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://gomri.coach/wp-content/uploads/2025/04/salim-gomri-identite-2.png" alt="Salim Gomri" loading="lazy">
+                </div>
+                <div class="about-info">
+                    <h2 data-translate="about-name">About Salim Gomri</h2>
+                    <div class="about-role" data-translate="about-role">Professional Certified Coach & Agile Coach</div>
+                    <div class="about-founding" data-translate="about-founding">Founder of <span class="aigile-text">AIgile</span> Manifesto - April 2025</div>
+                    
+                    <div class="about-bio" data-translate="about-bio">
+                        With <strong>20+ years</strong> of experience coaching digital transformation, Salim brings a revolutionary insight to the industry: "The companies who thrive aren't the most 'agile' or the most 'AI-savvy' - they're <span class="aigile-text">AIgile</span>." His work bridges the gap between traditional agile methodologies and the AI-enhanced reality of modern development teams.
+                    </div>
+
+                    <div class="about-credentials">
+                        <h4 data-translate="about-credentials-title">Professional Certifications & Expertise</h4>
+                        <ul class="credentials-list">
+                            <li data-translate="about-cred-1">Certified Scrum Master (<a href="https://www.scrum.org/certificates/1051968" target="_blank" style="color: #0066cc;">PSM</a>)</li>
+                            <li data-translate="about-cred-2">SAFe 6 Certified Professional</li>
+                            <li data-translate="about-cred-3">Creator of SCRUMWare Article</li>
+                            <li data-translate="about-cred-4">AI Theater Concept Pioneer</li>
+                            <li data-translate="about-cred-5">Digital Transformation Specialist</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-contact">
+                        <h4 data-translate="about-contact-title">Connect with Salim</h4>
+                        <div class="contact-links">
+                            <div class="contact-item">
+                                <i class="fab fa-linkedin linkedin-icon"></i>
+                                <a href="https://www.linkedin.com/in/salimgomri/" target="_blank" data-translate="linkedin-profile">LinkedIn Profile</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-newspaper articles-icon"></i>
+                                <a href="https://www.linkedin.com/in/salimgomri/recent-activity/articles/" target="_blank" data-translate="weekly-articles">Weekly <span class="aigile-text">AIgile</span> Articles</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope email-icon"></i>
+                                <a href="mailto:Salim.gomri@gmail.com" data-translate="email-contact">Salim.gomri@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-globe website-icon"></i>
+                                <a href="https://gomri.coach" target="_blank" data-translate="website-link">gomri.coach</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><span class="aigile-text">AIgile</span> Manifesto</h4>
+                    <p data-translate="footer-manifesto-desc">The essential evolution of the 2001 Agile Manifesto for teams working in the AI era.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer-quick-links">Quick Links</h4>
+                    <p><a href="#values" data-translate="footer-values-link">The 4 Values</a></p>
+                    <p><a href="#about" data-translate="footer-about-link">About Salim</a></p>
+                    <p><a href="https://gomri.coach" target="_blank" data-translate="footer-coaching-link">Coaching Services</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer-stay-updated">Stay Updated</h4>
+                    <p><a href="https://www.linkedin.com/in/salimgomri/recent-activity/articles/" target="_blank" data-translate="footer-weekly-articles">Weekly <span class="aigile-text">AIgile</span> Articles</a></p>
+                    <p><a href="https://www.linkedin.com/in/salimgomri/" target="_blank" data-translate="footer-follow-linkedin">Follow on LinkedIn</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-translate="footer-copyright">&copy; 2025 Salim Gomri. <span class="aigile-text">AIgile</span> Manifesto. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let translations = {};
+        let currentLanguage = 'en';
+        let currentTheme = 'default';
+        let availableLanguages = [];
+
+        // Load translations and setup language buttons
+        async function loadTranslations() {
+            try {
+                const response = await fetch('./lang.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                translations = await response.json();
+                
+                // Get available languages from JSON
+                availableLanguages = Object.keys(translations);
+                
+                // Setup language toggle buttons
+                setupLanguageButtons();
+                
+                console.log('Translations loaded successfully for languages:', availableLanguages);
+            } catch (error) {
+                console.error('Error loading translations:', error);
+                // Fallback translations if file can't be loaded
+                availableLanguages = ['en', 'fr'];
+                setupLanguageButtons();
+                translations = {
+                    en: {
+                        "timeline-old": "Agile Manifesto",
+                        "timeline-new": "AIgile Reality",
+                        "hero-title": "Are You AIgile?",
+                        "hero-subtitle": "The Evolution of Agile for the AI Era",
+                        "hero-tagline": "\"We're forcing pre-AI thinking onto post-AI realities\"",
+                        "values-title": "The 4 AIgile Values",
+                        "values-intro": "That is, while there is value in the items on the right, we value the items on the left more.",
+                        "cta-title": "Ready to Transform Your Team?",
+                        "cta-subtitle": "From \"Are you agile?\" to \"Are you AIgile?\"",
+                        "about-name": "About Salim Gomri",
+                        "poster-note": "*Poster available in English only"
+                    },
+                    fr: {
+                        "timeline-old": "Manifeste Agile",
+                        "timeline-new": "Réalité AIgile",
+                        "hero-title": "Êtes-vous AIgile ?",
+                        "hero-subtitle": "L'Évolution d'Agile vers l'Ère de l'IA",
+                        "hero-tagline": "\"Nous forçons une pensée pré-IA sur des réalités post-IA\"",
+                        "values-title": "Les 4 Valeurs AIgile",
+                        "values-intro": "C'est-à-dire que, bien qu'il y ait de la valeur dans les éléments de droite, nous valorisons davantage les éléments de gauche.",
+                        "cta-title": "Prêt à Transformer Votre Équipe ?",
+                        "cta-subtitle": "De \"Êtes-vous agile ?\" à \"Êtes-vous AIgile ?\"",
+                        "about-name": "À Propos de Salim Gomri",
+                        "poster-note": "*Affiche disponible en anglais seulement"
+                    }
+                };
+            }
+        }
+
+        function setupLanguageButtons() {
+            const languageToggle = document.getElementById('languageToggle');
+            languageToggle.innerHTML = '';
+            
+            availableLanguages.forEach(lang => {
+                const button = document.createElement('button');
+                button.onclick = () => setLanguage(lang);
+                button.className = `lang-btn ${lang === currentLanguage ? 'active' : ''}`;
+                button.setAttribute('data-lang', lang);
+                button.textContent = lang.toUpperCase();
+                languageToggle.appendChild(button);
+            });
+        }
+
+        function setTheme(theme) {
+            currentTheme = theme;
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Update active theme button
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === theme);
+            });
+            
+            // Store theme preference
+            localStorage.setItem('preferred-theme', theme);
+        }
+
+        function setLanguage(lang) {
+            if (!availableLanguages.includes(lang)) {
+                console.warn(`Language ${lang} not available`);
+                return;
+            }
+            
+            currentLanguage = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update content
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.dataset.translate;
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update document language
+            document.documentElement.lang = lang;
+            
+            // Store language preference
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        function showFullManifesto() {
+            alert(currentLanguage === 'en' ? 
+                'Full manifesto coming soon! This would expand to show all 10 AIgile principles and detailed explanations.' :
+                'Manifeste complet bientôt disponible ! Ceci développerait les 10 principes AIgile et leurs explications détaillées.');
+        }
+
+        function downloadPoster() {
+            alert(currentLanguage === 'en' ? 
+                'Good Choice ! Feel free to contact me for any support... ' :
+                'Super Choix... Contactez moi pour tout support !');
+        }
+
+        // Parallax effect - Simplified
+        function initParallax() {
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+                
+                parallaxElements.forEach((element) => {
+                    const rate = scrolled * 0.3;
+                    element.style.transform = `translate3d(0, ${rate}px, 0)`;
+                });
+            }
+            
+            // Throttled scroll event for better performance
+            let ticking = false;
+            function handleScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                    setTimeout(() => { ticking = false; }, 16);
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            updateParallax(); // Initial call
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load translations first
+            await loadTranslations();
+            
+            // Check for stored preferences
+            const storedLanguage = localStorage.getItem('preferred-language') || 'en';
+            const storedTheme = localStorage.getItem('preferred-theme') || 'default';
+            
+            // Set initial theme and language
+            setTheme(storedTheme);
+            setLanguage(storedLanguage);
+            
+            // Initialize parallax
+            initParallax();
+            
+            // Hide loading screen
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1500);
+
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.value-item, .principle-item, .about-content').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Handle language URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        if (langParam && availableLanguages.includes(langParam)) {
+            setLanguage(langParam);
+        }
+    </script>
+</body>
+</html>
