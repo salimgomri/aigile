@@ -15,7 +15,7 @@ export default function RetroPage() {
             Generate custom AI-powered retrospectives that address your team's real challenges
           </p>
           <p className="text-xl mb-12 text-white/80">
-            Answer 8 quick questions and get a personalized retro format tailored to your team's dysfunctions
+            Answer 8 quick questions and get a personalized retro format with curated activities
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -48,14 +48,14 @@ export default function RetroPage() {
               <Users className="w-12 h-12 mb-4 mx-auto text-green-300" />
               <h3 className="text-xl font-bold mb-2">Tailored Activities</h3>
               <p className="text-white/80">
-                Retromat activities mapped to your specific challenges
+                146 curated activities mapped to your specific challenges
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl">
               <Zap className="w-12 h-12 mb-4 mx-auto text-yellow-300" />
               <h3 className="text-xl font-bold mb-2">5-Phase Format</h3>
               <p className="text-white/80">
-                Complete retro structure following Retromat methodology
+                Complete retro structure: Set Stage, Gather Data, Generate Insights, Decide, Close
               </p>
             </div>
           </div>

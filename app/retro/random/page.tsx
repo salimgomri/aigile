@@ -71,8 +71,8 @@ export default function RandomRetroPage() {
             
             <p className="text-xl text-white/80 mb-8">
               {language === 'fr' 
-                ? 'Obtenez une rétrospective aléatoire avec 5 activités Retromat'
-                : 'Get a random retrospective with 5 Retromat activities'}
+                ? 'Obtenez une rétrospective aléatoire avec 5 activités curées'
+                : 'Get a random retrospective with 5 curated activities'}
             </p>
 
             <div className="bg-white/20 rounded-xl p-6 mb-8">
@@ -83,7 +83,7 @@ export default function RandomRetroPage() {
                 <li>• {language === 'fr' ? 'Un format aléatoire parmi 6 types' : 'A random format from 6 types'}</li>
                 <li>• {language === 'fr' ? 'Une durée aléatoire (30-90 min)' : 'A random duration (30-90 min)'}</li>
                 <li>• {language === 'fr' ? '5 activités des 146 disponibles' : '5 activities from 146 available'}</li>
-                <li>• {language === 'fr' ? 'Toutes les phases Retromat couvertes' : 'All Retromat phases covered'}</li>
+                <li>• {language === 'fr' ? 'Toutes les 5 phases couvertes' : 'All 5 phases covered'}</li>
               </ul>
             </div>
 

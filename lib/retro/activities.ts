@@ -18,9 +18,8 @@ export interface RetroActivity {
 }
 
 /**
- * 146 Retromat activities mapped to team dysfunction patterns
- * Source: retromat.org API
- * Scraped: 2026-01-08T18:10:36.588Z
+ * 146 curated retrospective activities mapped to team dysfunction patterns
+ * Organized by problem type and retro phase
  */
 export const RETRO_ACTIVITIES: Record<string, RetroActivity[]> = {
   // silent-team (47 activities)
