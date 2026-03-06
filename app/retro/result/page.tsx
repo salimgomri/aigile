@@ -7,6 +7,7 @@ import { QuestionId, getDurationFromAnswers } from '@/lib/retro/questionnaire'
 import { detectPatterns, getProblemKeyFromPattern } from '@/lib/retro/pattern-detection'
 import { PATTERNS } from '@/lib/retro/patterns'
 import { getActivitiesForProblem, RetroActivity } from '@/lib/retro/activities'
+import { getActivitiesByDuration } from '@/lib/retro/duration-optimizer'
 import { AlertCircle, ArrowLeft, Clock, Users, TrendingUp, Shuffle } from 'lucide-react'
 import Header from '@/components/header'
 
@@ -40,7 +41,10 @@ function ResultContent() {
 
       // Get problem key and activities
       const problemKey = getProblemKeyFromPattern(result.primary.code)
-      const selectedActivities = getActivitiesForProblem(problemKey, retroDuration, 'medium', 7)
+      const allActivities = getActivitiesForProblem(problemKey, retroDuration, 'medium', 7)
+      
+      // Adapt activities based on duration (3 phases for 30min, 5 for others)
+      const selectedActivities = getActivitiesByDuration(allActivities, retroDuration)
       setActivities(selectedActivities)
 
       setLoading(false)
@@ -91,8 +95,8 @@ function ResultContent() {
           )}
         </div>
 
-        {/* Pattern Detection Results */}
-        <div className="max-w-5xl mx-auto mb-12">
+        {/* Pattern Detection Results - Only for questionnaire mode */}
+        {!isRandom && (
           <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
             <div className="flex items-start gap-4 mb-6">
               <AlertCircle className="w-12 h-12 text-orange-500 flex-shrink-0" />
@@ -179,15 +183,69 @@ function ResultContent() {
             </div>
           </div>
         </div>
+        )}
+
+        {/* Random Retro Header - Only for random mode */}
+        {isRandom && (
+          <div className="max-w-5xl mx-auto mb-12">
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center">
+              <Shuffle className="w-16 h-16 text-primary mx-auto mb-4" />
+              <h1 className="text-4xl font-black mb-2 text-gray-900">
+                {language === 'fr' ? 'Votre Rétrospective Aléatoire' : 'Your Random Retrospective'}
+              </h1>
+              <p className="text-xl text-gray-600 mb-4">
+                {language === 'fr' 
+                  ? `Format généré pour une rétro de ${duration} minutes`
+                  : `Format generated for a ${duration}-minute retro`}
+              </p>
+              <div className="flex items-center justify-center gap-6 text-gray-600">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-5 h-5" />
+                  <span>{duration} min</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Users className="w-5 h-5" />
+                  <span>5-10 {language === 'fr' ? 'personnes' : 'people'}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Retro Activities */}
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-black mb-8 text-white text-center">
+          <h2 className="text-4xl font-black mb-4 text-white text-center">
             {language === 'fr' ? 'Votre Rétrospective Personnalisée' : 'Your Personalized Retrospective'}
           </h2>
+          
+          {duration === 30 && (
+            <div className="bg-blue-500/20 border border-blue-400 rounded-xl p-4 mb-8 text-white text-center">
+              <p className="font-semibold">
+                {language === 'fr' 
+                  ? '⚡ Format 30 min : 3 phases essentielles pour un impact rapide'
+                  : '⚡ 30-min format: 3 core phases for quick impact'}
+              </p>
+              <p className="text-sm text-white/80 mt-1">
+                {language === 'fr'
+                  ? 'Set Stage → Gather Data → Decide What To Do (Skip insights profonds)'
+                  : 'Set Stage → Gather Data → Decide What To Do (Skip deep insights)'}
+              </p>
+            </div>
+          )}
 
           <div className="space-y-6">
-            {activities.map((activity, index) => (
+            {activities.map((activity, index) => {
+              const phaseNames: Record<string, {en: string, fr: string}> = {
+                'set-stage': { en: 'Set the Stage', fr: 'Créer le Contexte' },
+                'gather-data': { en: 'Gather Data', fr: 'Collecter les Données' },
+                'generate-insights': { en: 'Generate Insights', fr: 'Générer des Insights' },
+                'decide-what-to-do': { en: 'Decide What to Do', fr: 'Décider Quoi Faire' },
+                'close': { en: 'Close the Retro', fr: 'Clore la Rétro' }
+              }
+              
+              const phaseName = phaseNames[activity.phase]
+              
+              return (
               <div
                 key={activity.id}
                 className="bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 hover:scale-105"
@@ -195,8 +253,8 @@ function ResultContent() {
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <div className="text-sm text-gray-500 uppercase tracking-wide mb-2">
-                      {language === 'fr' ? 'Phase' : 'Phase'} {index + 1}/5:{' '}
-                      {activity.phase.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                      {language === 'fr' ? 'Phase' : 'Phase'} {index + 1}/{activities.length}:{' '}
+                      {language === 'fr' ? phaseName.fr : phaseName.en}
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900">
                       {language === 'fr' ? activity.nameFr : activity.name}
@@ -220,7 +278,8 @@ function ResultContent() {
                   </p>
                 </div>
               </div>
-            ))}
+            )
+          })}
           </div>
 
           <div className="mt-12 bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-white text-center">
