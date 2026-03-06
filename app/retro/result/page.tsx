@@ -8,7 +8,8 @@ import { detectPatterns, getProblemKeyFromPattern } from '@/lib/retro/pattern-de
 import { PATTERNS } from '@/lib/retro/patterns'
 import { getActivitiesForProblem, RetroActivity } from '@/lib/retro/activities'
 import { getActivitiesByDuration } from '@/lib/retro/duration-optimizer'
-import { AlertCircle, ArrowLeft, Clock, Users, TrendingUp, Shuffle } from 'lucide-react'
+import { getTeamSizeRecommendations, getTimeAllocationTips } from '@/lib/retro/team-size-optimizer'
+import { AlertCircle, ArrowLeft, Clock, Users, TrendingUp, Shuffle, AlertTriangle } from 'lucide-react'
 import Header from '@/components/header'
 
 function ResultContent() {
@@ -18,6 +19,7 @@ function ResultContent() {
   const [activities, setActivities] = useState<RetroActivity[]>([])
   const [detection, setDetection] = useState<any>(null)
   const [duration, setDuration] = useState(60)
+  const [teamSize, setTeamSize] = useState(7)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -64,6 +66,8 @@ function ResultContent() {
 
   const primaryPattern = PATTERNS[detection.primary.code]
   const totalDuration = activities.reduce((sum, a) => sum + a.duration, 0)
+  const teamRecommendations = getTeamSizeRecommendations(teamSize)
+  const teamTips = getTimeAllocationTips(teamSize, duration)
 
   const isRandom = searchParams?.get('random') === 'true'
 
@@ -205,9 +209,47 @@ function ResultContent() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5" />
-                  <span>5-10 {language === 'fr' ? 'personnes' : 'people'}</span>
+                  <span>{teamSize === 5 ? '3-5' : teamSize === 7 ? '6-8' : teamSize === 10 ? '9-12' : '12+'} {language === 'fr' ? 'personnes' : 'people'}</span>
                 </div>
               </div>
+              
+              {/* Team Size Recommendations */}
+              {teamRecommendations.warning && (
+                <div className="mt-6 bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                  <div className="flex items-start gap-3">
+                    <AlertTriangle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-orange-900 mb-1">
+                        {language === 'fr' ? 'Recommandation' : 'Recommendation'}
+                      </p>
+                      <p className="text-orange-800 text-sm">{teamRecommendations.warning}</p>
+                      <p className="text-orange-700 text-xs mt-2">
+                        <strong>{language === 'fr' ? 'Technique' : 'Technique'}:</strong> {teamRecommendations.technique}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Team Size Tips */}
+        {teamSize > 8 && (
+          <div className="max-w-5xl mx-auto mb-8">
+            <div className="bg-blue-50 rounded-xl p-6">
+              <h3 className="flex items-center gap-2 font-bold text-lg text-blue-900 mb-3">
+                <Users className="w-6 h-6" />
+                {language === 'fr' ? 'Conseils pour grande équipe' : 'Large Team Tips'}
+              </h3>
+              <ul className="space-y-2 text-blue-800 text-sm">
+                {teamTips.map((tip, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="flex-shrink-0 mt-1">•</span>
+                    <span>{tip}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         )}
