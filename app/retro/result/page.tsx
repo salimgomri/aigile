@@ -287,6 +287,49 @@ function ResultContent() {
               
               const phaseName = phaseNames[activity.phase]
               
+              // Determine activity type from name (simplified heuristic)
+              const activityName = activity.name.toLowerCase()
+              let activityType: 'individual' | 'pairs' | 'group' | 'full-team' = 'full-team'
+              
+              if (activityName.includes('silent') || activityName.includes('write') || activityName.includes('anonymous')) {
+                activityType = 'individual'
+              } else if (activityName.includes('pair') || activityName.includes('1-2-4')) {
+                activityType = 'pairs'
+              } else if (activityName.includes('group') || activityName.includes('breakout')) {
+                activityType = 'group'
+              }
+              
+              // Calculate speaking time per person
+              const baseTimes = {
+                'individual': 30,
+                'pairs': 60,
+                'group': 90,
+                'full-team': 45
+              }
+              
+              let speakingTimePerPerson = baseTimes[activityType]
+              if (teamSize > 8) {
+                speakingTimePerPerson *= 0.8 // -20% efficiency
+              }
+              
+              // Format speaking time
+              const speakingTimeFormatted = speakingTimePerPerson >= 60 
+                ? `${Math.round(speakingTimePerPerson / 60)} min ${speakingTimePerPerson % 60}s`
+                : `${Math.round(speakingTimePerPerson)}s`
+              
+              // Get facilitation technique
+              const techniques = {
+                'individual': language === 'fr' ? 'Réflexion silencieuse + partage' : 'Silent reflection + share',
+                'pairs': language === 'fr' ? 'Travail en binôme' : 'Pair work',
+                'group': language === 'fr' ? 'Groupes de 4-6 personnes' : 'Groups of 4-6 people',
+                'full-team': language === 'fr' ? 'Tour de table complet' : 'Full team round'
+              }
+              
+              const technique = techniques[activityType]
+              
+              // Breakout recommendation
+              const needsBreakouts = teamSize > 8 && (activityType === 'group' || activityType === 'full-team')
+              
               return (
               <div
                 key={activity.id}
@@ -302,14 +345,70 @@ function ResultContent() {
                       {language === 'fr' ? activity.nameFr : activity.name}
                     </h3>
                   </div>
-                  <div className="bg-blue-100 text-primary px-4 py-2 rounded-full font-bold text-sm whitespace-nowrap">
-                    {activity.duration} min
+                  <div className="text-right">
+                    <div className="bg-blue-100 text-primary px-4 py-2 rounded-full font-bold text-sm mb-2">
+                      {activity.duration} min
+                    </div>
+                    <div className="text-xs text-gray-600">
+                      ~{speakingTimeFormatted}/{language === 'fr' ? 'pers.' : 'person'}
+                    </div>
                   </div>
                 </div>
 
                 <p className="text-gray-600 mb-4 text-lg">
                   {language === 'fr' ? activity.summaryFr : activity.summary}
                 </p>
+
+                {/* Facilitation Info */}
+                <div className="mb-4 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-medium">
+                    <Users className="w-3 h-3" />
+                    {technique}
+                  </span>
+                  {needsBreakouts && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-xs font-medium">
+                      <AlertTriangle className="w-3 h-3" />
+                      {language === 'fr' ? 'Breakouts recommandés' : 'Breakouts recommended'}
+                    </span>
+                  )}
+                  {teamSize > 12 && activityType === 'full-team' && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium">
+                      <AlertTriangle className="w-3 h-3" />
+                      {language === 'fr' ? 'Technique "spokes" obligatoire' : 'Spokes technique required'}
+                    </span>
+                  )}
+                </div>
+
+                {/* Time breakdown for large teams */}
+                {teamSize > 8 && (
+                  <div className="mb-4 bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-sm text-blue-900 font-semibold mb-1">
+                      {language === 'fr' ? '⏱️ Répartition du temps :' : '⏱️ Time breakdown:'}
+                    </p>
+                    <ul className="text-xs text-blue-800 space-y-1">
+                      {activityType === 'individual' && (
+                        <>
+                          <li>• {language === 'fr' ? 'Réflexion silencieuse' : 'Silent reflection'}: {Math.round(activity.duration * 0.3)} min</li>
+                          <li>• {language === 'fr' ? 'Partage en breakouts' : 'Share in breakouts'}: {Math.round(activity.duration * 0.5)} min</li>
+                          <li>• {language === 'fr' ? 'Synthèse (spokes)' : 'Synthesis (spokes)'}: {Math.round(activity.duration * 0.2)} min</li>
+                        </>
+                      )}
+                      {activityType === 'pairs' && (
+                        <>
+                          <li>• {language === 'fr' ? 'Discussion en paires' : 'Pair discussions'}: {Math.round(activity.duration * 0.6)} min</li>
+                          <li>• {language === 'fr' ? 'Partage des paires' : 'Pairs sharing'}: {Math.round(activity.duration * 0.4)} min</li>
+                        </>
+                      )}
+                      {(activityType === 'group' || activityType === 'full-team') && (
+                        <>
+                          <li>• {language === 'fr' ? 'Breakouts (groupes de 4-6)' : 'Breakouts (groups of 4-6)'}: {Math.round(activity.duration * 0.6)} min</li>
+                          <li>• {language === 'fr' ? 'Spokes (1/groupe partage)' : 'Spokes (1/group shares)'}: {Math.round(activity.duration * 0.3)} min</li>
+                          <li>• {language === 'fr' ? 'Dot voting/décision' : 'Dot voting/decision'}: {Math.round(activity.duration * 0.1)} min</li>
+                        </>
+                      )}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h4 className="font-semibold mb-2 text-gray-900">
