@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/components/language-provider'
-import { Shuffle, ArrowLeft } from 'lucide-react'
+import { Shuffle, ArrowLeft, Clock } from 'lucide-react'
 
 export default function RandomRetroPage() {
   const router = useRouter()
   const { language } = useLanguage()
   const [generating, setGenerating] = useState(false)
+  const [selectedDuration, setSelectedDuration] = useState<number>(60)
 
   // Problem keys for random selection
   const problems = [
@@ -20,16 +21,20 @@ export default function RandomRetroPage() {
     'tensions'
   ]
 
-  const durations = [30, 45, 60, 90]
+  const durations = [
+    { value: 30, label: '30 min', labelFr: '30 min' },
+    { value: 45, label: '45 min', labelFr: '45 min' },
+    { value: 60, label: '60 min', labelFr: '60 min' },
+    { value: 90, label: '90 min', labelFr: '90 min' }
+  ]
 
   const generateRandomRetro = () => {
     setGenerating(true)
 
     // Simulate generation animation
     setTimeout(() => {
-      // Pick random problem and duration
+      // Pick random problem with selected duration
       const randomProblem = problems[Math.floor(Math.random() * problems.length)]
-      const randomDuration = durations[Math.floor(Math.random() * durations.length)]
       
       // Create mock answers that will lead to this problem
       const mockAnswers = {
@@ -40,7 +45,7 @@ export default function RandomRetroPage() {
         Q5: 'Q5A1',
         Q6: 'Q6A1',
         Q7: 'Q7A1',
-        Q8: randomDuration === 30 ? 'Q8A1' : randomDuration === 45 ? 'Q8A2' : randomDuration === 60 ? 'Q8A3' : 'Q8A4'
+        Q8: selectedDuration === 30 ? 'Q8A1' : selectedDuration === 45 ? 'Q8A2' : selectedDuration === 60 ? 'Q8A3' : 'Q8A4'
       }
 
       const answersJson = JSON.stringify(mockAnswers)
@@ -75,13 +80,39 @@ export default function RandomRetroPage() {
                 : 'Get a random retrospective with 5 curated activities'}
             </p>
 
+            {/* Duration Selector */}
+            <div className="bg-white/20 rounded-xl p-6 mb-6">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Clock className="w-6 h-6 text-white" />
+                <h3 className="text-lg font-semibold text-white">
+                  {language === 'fr' ? 'Durée de la rétrospective' : 'Retrospective Duration'}
+                </h3>
+              </div>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {durations.map((duration) => (
+                  <button
+                    key={duration.value}
+                    onClick={() => setSelectedDuration(duration.value)}
+                    className={`px-6 py-4 rounded-xl font-bold text-lg transition-all duration-200 ${
+                      selectedDuration === duration.value
+                        ? 'bg-white text-primary scale-105 shadow-xl'
+                        : 'bg-white/20 text-white hover:bg-white/30'
+                    }`}
+                  >
+                    {language === 'fr' ? duration.labelFr : duration.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="bg-white/20 rounded-xl p-6 mb-8">
               <h3 className="text-lg font-semibold text-white mb-3">
                 {language === 'fr' ? 'Ce que vous obtiendrez :' : 'What you\'ll get:'}
               </h3>
               <ul className="text-white/90 space-y-2 text-left max-w-md mx-auto">
                 <li>• {language === 'fr' ? 'Un format aléatoire parmi 6 types' : 'A random format from 6 types'}</li>
-                <li>• {language === 'fr' ? 'Une durée aléatoire (30-90 min)' : 'A random duration (30-90 min)'}</li>
+                <li>• {language === 'fr' ? `Durée optimisée pour ${selectedDuration} minutes` : `Optimized for ${selectedDuration} minutes`}</li>
                 <li>• {language === 'fr' ? '5 activités des 146 disponibles' : '5 activities from 146 available'}</li>
                 <li>• {language === 'fr' ? 'Toutes les 5 phases couvertes' : 'All 5 phases covered'}</li>
               </ul>
