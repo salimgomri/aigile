@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/components/language-provider'
 import { QUESTIONNAIRE, QuestionId } from '@/lib/retro/questionnaire'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import Header from '@/components/header'
 
 export default function QuestionnairePage() {
   const router = useRouter()
@@ -45,6 +46,7 @@ export default function QuestionnairePage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800">
+      <Header />
       <div className="container mx-auto px-4 py-12">
         {/* Progress bar */}
         <div className="max-w-3xl mx-auto mb-8">

@@ -7,7 +7,8 @@ import { QuestionId, getDurationFromAnswers } from '@/lib/retro/questionnaire'
 import { detectPatterns, getProblemKeyFromPattern } from '@/lib/retro/pattern-detection'
 import { PATTERNS } from '@/lib/retro/patterns'
 import { getActivitiesForProblem, RetroActivity } from '@/lib/retro/activities'
-import { AlertCircle, ArrowLeft, Clock, Users, TrendingUp } from 'lucide-react'
+import { AlertCircle, ArrowLeft, Clock, Users, TrendingUp, Shuffle } from 'lucide-react'
+import Header from '@/components/header'
 
 function ResultContent() {
   const router = useRouter()
@@ -60,17 +61,35 @@ function ResultContent() {
   const primaryPattern = PATTERNS[detection.primary.code]
   const totalDuration = activities.reduce((sum, a) => sum + a.duration, 0)
 
+  const isRandom = searchParams?.get('random') === 'true'
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800">
+      <Header />
       <div className="container mx-auto px-4 py-12">
         {/* Back button */}
-        <button
-          onClick={() => router.push('/retro/questionnaire')}
-          className="text-white/80 hover:text-white flex items-center gap-2 mb-8"
-        >
-          <ArrowLeft className="w-5 h-5" />
-          {language === 'fr' ? 'Modifier mes réponses' : 'Modify my answers'}
-        </button>
+        <div className="flex items-center justify-between mb-8">
+          <button
+            onClick={() => router.push(isRandom ? '/retro' : '/retro/questionnaire')}
+            className="text-white/80 hover:text-white flex items-center gap-2"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            {isRandom 
+              ? (language === 'fr' ? 'Retour' : 'Back')
+              : (language === 'fr' ? 'Modifier mes réponses' : 'Modify my answers')
+            }
+          </button>
+          
+          {isRandom && (
+            <button
+              onClick={() => router.push('/retro/random')}
+              className="text-white/80 hover:text-white flex items-center gap-2"
+            >
+              <Shuffle className="w-5 h-5" />
+              {language === 'fr' ? 'Nouvelle rétro aléatoire' : 'New random retro'}
+            </button>
+          )}
+        </div>
 
         {/* Pattern Detection Results */}
         <div className="max-w-5xl mx-auto mb-12">
@@ -217,12 +236,22 @@ function ResultContent() {
             </p>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-center flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => router.push('/retro/questionnaire')}
               className="px-8 py-4 bg-white text-primary rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-xl"
             >
-              {language === 'fr' ? 'Générer une nouvelle rétro' : 'Generate a new retro'}
+              {language === 'fr' ? 'Nouveau questionnaire' : 'New questionnaire'}
+            </button>
+            
+            <button
+              onClick={() => router.push('/retro/random')}
+              className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
+            >
+              <span className="flex items-center gap-2 justify-center">
+                <Shuffle className="w-5 h-5" />
+                {language === 'fr' ? 'Rétro aléatoire' : 'Random retro'}
+              </span>
             </button>
           </div>
         </div>

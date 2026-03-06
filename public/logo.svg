@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2240;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3a5f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#138eec;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0ba4a0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9973a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8b558;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="300" height="300" rx="24" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid texture -->
+  <g opacity="0.04">
+    <line x1="0" y1="60" x2="300" y2="60" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="120" x2="300" y2="120" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="180" x2="300" y2="180" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="240" x2="300" y2="240" stroke="white" stroke-width="0.5"/>
+    <line x1="60" y1="0" x2="60" y2="300" stroke="white" stroke-width="0.5"/>
+    <line x1="120" y1="0" x2="120" y2="300" stroke="white" stroke-width="0.5"/>
+    <line x1="180" y1="0" x2="180" y2="300" stroke="white" stroke-width="0.5"/>
+    <line x1="240" y1="0" x2="240" y2="300" stroke="white" stroke-width="0.5"/>
+  </g>
+
+  <!-- Decorative arc top-right -->
+  <circle cx="260" cy="40" r="80" fill="none" stroke="url(#accentGrad)" stroke-width="1" opacity="0.2"/>
+  <circle cx="260" cy="40" r="55" fill="none" stroke="#c9973a" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Gold top accent bar -->
+  <rect x="30" y="30" width="50" height="4" rx="2" fill="url(#goldGrad)"/>
+
+  <!-- Main logo text: AI in blue, gile in white -->
+  <text x="30" y="140" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="72" letter-spacing="-2">
+    <tspan fill="url(#accentGrad)" filter="url(#glow)">AI</tspan><tspan fill="white">gile</tspan>
+  </text>
+
+  <!-- Separator line with gradient -->
+  <rect x="30" y="155" width="240" height="2" rx="1" fill="url(#accentGrad)" opacity="0.6"/>
+
+  <!-- Tagline -->
+  <text x="30" y="183" font-family="Georgia, serif" font-size="13" fill="#c9973a" font-style="italic" letter-spacing="0.5">Scrum Augmenté · IA · Terrain</text>
+
+  <!-- Metrics row -->
+  <g transform="translate(30, 205)">
+    <!-- Vélocité pill -->
+    <rect x="0" y="0" width="68" height="22" rx="11" fill="rgba(19,142,236,0.15)" stroke="#138eec" stroke-width="0.8"/>
+    <text x="34" y="15" font-family="'Courier New', monospace" font-size="9" fill="#138eec" text-anchor="middle" font-weight="bold">VÉLOCITÉ</text>
+
+    <!-- DORA pill -->
+    <rect x="76" y="0" width="52" height="22" rx="11" fill="rgba(11,164,160,0.15)" stroke="#0ba4a0" stroke-width="0.8"/>
+    <text x="102" y="15" font-family="'Courier New', monospace" font-size="9" fill="#0ba4a0" text-anchor="middle" font-weight="bold">DORA</text>
+
+    <!-- HI pill -->
+    <rect x="136" y="0" width="38" height="22" rx="11" fill="rgba(201,151,58,0.15)" stroke="#c9973a" stroke-width="0.8"/>
+    <text x="155" y="15" font-family="'Courier New', monospace" font-size="9" fill="#c9973a" text-anchor="middle" font-weight="bold">HI</text>
+
+    <!-- OKR pill -->
+    <rect x="182" y="0" width="42" height="22" rx="11" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+    <text x="203" y="15" font-family="'Courier New', monospace" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-weight="bold">OKR</text>
+  </g>
+
+  <!-- Bottom: by Salim Gomri -->
+  <text x="30" y="262" font-family="Georgia, serif" font-size="10" fill="rgba(255,255,255,0.35)" letter-spacing="1">by Salim Gomri · aigile.lu</text>
+
+  <!-- Bottom gold bar -->
+  <rect x="30" y="272" width="240" height="2" rx="1" fill="url(#goldGrad)" opacity="0.4"/>
+
+  <!-- RAG dots bottom-right -->
+  <circle cx="248" cy="262" r="5" fill="#10b981" opacity="0.8"/>
+  <circle cx="262" cy="262" r="5" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="276" cy="262" r="5" fill="#ef4444" opacity="0.8"/>
+</svg>
