@@ -1,0 +1,147 @@
+ID,Name,Phase,Explanation(min),Questions(min),Work(min),RestitutionPerPerson(s),SetupComplexity,ScalingFactor,HasCoachNote
+retromat-1,"ESVP",set-stage,3,2,1-2,0,complex,high,Yes
+retromat-2,"Weather Report",set-stage,1.5,0.5,1,20,simple,high,No
+retromat-3,"Check In - Quick Question",set-stage,3,2,0.5-2,15,complex,high,Yes
+retromat-6,"Like to like",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-7,"Mad Sad Glad",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-15,"Appreciations",close,1.5,0.5,1-3,45,simple,high,Yes
+retromat-18,"Check In - Amazon Review",set-stage,1,0.5,5-10,45,simple,high,Yes
+retromat-22,"Temperature Reading",set-stage,1.5,0.5,1,20,simple,high,No
+retromat-27,"Retrospective Cookies",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-28,"Take a Walk",gather-data,3,2,5-8,60,complex,high,Yes
+retromat-31,"Check In - Draw the Iteration",set-stage,3,2,0.5-2,15,complex,high,Yes
+retromat-32,"Emoticon Project Gauge",set-stage,1.5,0.5,1-2,30,simple,high,No
+retromat-33,"Proud & Sorry",gather-data,2,1,5-10,45,medium,medium,No
+retromat-34,"Shower of Appreciation",close,3,2,1-3,45,complex,high,Yes
+retromat-36,"Appreciative Goal",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-42,"Postcards",set-stage,1.5,0.5,5-10,45,simple,high,No
+retromat-43,"Take a Stand - Opening",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-46,"Why Retrospectives?",set-stage,3,2,12-18,90,medium,low,Yes
+retromat-57,"Say it with Flowers",close,1.5,0.5,1-3,30,simple,high,No
+retromat-59,"Happiness Histogram",set-stage,1.5,0.5,1,20,simple,high,Yes
+retromat-65,"Appreciative Inquiry",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-70,"3 for 1 - Opening",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-75,"Writing the Unspeakable",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-76,"Round of Admiration",set-stage,1.5,0.5,1-2,30,simple,high,No
+retromat-81,"Outcome Expectations",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-82,"Three Words",set-stage,1.5,0.5,1-2,10,simple,high,No
+retromat-85,"Greetings from the Iteration",set-stage,3,2,5-10,45,complex,high,Yes
+retromat-90,"Agile Values Cheer Up",set-stage,3,2,5-10,45,complex,high,Yes
+retromat-97,"#tweetmysprint",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-101,"Endless Blessings",close,3,2,1-3,30,complex,high,Yes
+retromat-102,"You and Me",close,1.5,0.5,5-10,45,simple,high,No
+retromat-106,"Who said it?",set-stage,3,2,5-10,45,complex,high,Yes
+retromat-107,"Unlikely Superheros",set-stage,1.5,0.5,1-2,30,simple,high,No
+retromat-110,"Movie Critic",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-111,"Feedback Sandwich",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-112,"Appreciation Postcards",close,3,2,5-10,45,complex,high,Yes
+retromat-114,"Give me a face",set-stage,1.5,0.5,5-10,45,simple,high,No
+retromat-120,"My Team is Awesome",close,3,2,5-10,45,complex,high,Yes
+retromat-122,"Positive and True",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-126,"I like, I wish",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-129,"String Theory",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-130,"Spot the Elephant",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-136,"Surprise!",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-140,"What kind of X?",set-stage,3,2,5-10,45,complex,high,Yes
+retromat-143,"How’s your battery?",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-144,"Elevenie",close,3,2,5-10,45,complex,high,Yes
+retromat-145,"Braver",generate-insights,3,2,5-10,45,complex,low,Yes
+retromat-4,"Timeline",gather-data,3,2,10-15,45,complex,medium,Yes
+retromat-11,"Circle of Questions",decide-what-to-do,3,2,8-12,60,complex,medium,Yes
+retromat-26,"Speed Dating",generate-insights,3,2,8-12,60,complex,medium,Yes
+retromat-30,"Dialogue Sheets",gather-data,2,1,5-8,60,medium,medium,No
+retromat-41,"Park Bench",generate-insights,3,2,10-15,75,complex,low,Yes
+retromat-47,"Empty the Mailbox",gather-data,2,1,5-10,45,medium,medium,No
+retromat-51,"Lean Coffee",generate-insights,3,2,15-25,0,medium,low,Yes
+retromat-52,"Constellation - Opening",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-58,"Undercover Boss",generate-insights,2.5,1.5,10-15,75,medium,low,No
+retromat-62,"Expectations",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-86,"Lines of Communication",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-93,"Tell a Story with Shaping Words",gather-data,3,2,5-10,45,complex,high,Yes
+retromat-94,"BYOSM - Build your own Scrum Master",generate-insights,3,2,5-10,45,complex,low,Yes
+retromat-95,"If I were you",generate-insights,3,2,5-10,45,complex,low,Yes
+retromat-108,"Know your neighbour - Opening",set-stage,3,2,1-2,30,complex,high,Yes
+retromat-119,"Hit the Headlines",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-133,"Tell me something I don’t know",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-137,"Dare, Care, Share",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-142,"Watermelon",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-146,"Roles and Responsibilities",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-5,"Analyze Stories",gather-data,2,1,5-8,60,medium,medium,No
+retromat-8,"5 Whys",generate-insights,3,2,12-18,90,medium,low,Yes
+retromat-10,"Brainstorming / Filtering",generate-insights,3,2,8-15,45,complex,low,Yes
+retromat-19,"Sailboat / Speedboat",gather-data,3,2,10-15,45,complex,medium,Yes
+retromat-25,"Cause-Effect-Diagram",generate-insights,3,2,12-18,90,complex,low,Yes
+retromat-35,"Agile Self-Assessment",gather-data,2,1,5-8,60,medium,medium,No
+retromat-50,"Wish granted",generate-insights,3,2,10-15,75,complex,low,Yes
+retromat-54,"Story Oscars",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-56,"Invite a Customer",gather-data,2,1,5-8,60,medium,medium,No
+retromat-64,"Quartering - Identify boring stories",gather-data,3,2,8-12,45,complex,medium,Yes
+retromat-66,"Brainwriting",generate-insights,3,2,8-15,45,complex,low,Yes
+retromat-68,"Company Map",generate-insights,2.5,1.5,10-15,75,medium,high,Yes
+retromat-69,"The Worst We Could Do",generate-insights,2.5,1.5,5-10,45,medium,high,Yes
+retromat-74,"Pessimize",generate-insights,3,2,5-10,45,complex,low,Yes
+retromat-79,"Value Stream Mapping",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-87,"Meeting Satisfaction Histogram",gather-data,2.5,2,10-15,75,medium,medium,Yes
+retromat-91,"Poster Session",generate-insights,3,2,10-15,75,complex,low,Yes
+retromat-96,"Problem Solving Tree",decide-what-to-do,3,2,5-10,45,complex,medium,Yes
+retromat-98,"Laundry Day",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-105,"Election Manifesto",generate-insights,3,2,10-15,75,complex,low,Yes
+retromat-113,"Set Course",generate-insights,2.5,1.5,10-15,75,medium,low,No
+retromat-115,"Force Field Analysis",generate-insights,3,2,5-10,45,complex,low,Yes
+retromat-116,"Genie in a Bottle",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-118,"Snow Mountain",generate-insights,3,2,10-15,75,complex,low,Yes
+retromat-123,"Find your Focus Principle",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-127,"Delay Display",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-131,"Sacred Cow",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-135,"Avoid Waste",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-139,"Room Service",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-9,"Learning Matrix",gather-data,2.5,1,8-12,45,simple,medium,Yes
+retromat-14,"Feedback Door - Numbers (ROTI)",close,1.5,0.5,5-10,45,simple,high,No
+retromat-16,"Helped, Hindered, Hypothesis",close,1.5,0.5,5-10,45,simple,high,No
+retromat-17,"SaMoLo (More of, Same of, Less of)",close,1.5,0.5,5-10,45,simple,high,No
+retromat-23,"Feedback Door - Smilies",close,1.5,0.5,1-3,30,simple,high,No
+retromat-40,"Plus & Delta",close,1.5,0.5,5-10,45,simple,high,Yes
+retromat-44,"Take a Stand - Closing",close,3,2,1-3,30,complex,high,Yes
+retromat-45,"Pleased & Surprised",close,1.5,0.5,1-3,30,simple,high,No
+retromat-53,"Constellation - Closing",close,3,2,1-3,30,complex,high,Yes
+retromat-55,"Original 4",generate-insights,2.5,1.5,10-15,75,medium,low,No
+retromat-60,"AHA!",close,3,2,1-3,30,complex,high,Yes
+retromat-67,"Take Aways",close,1.5,0.5,5-10,45,simple,high,No
+retromat-71,"3 for 1 - Closing: Was everyone heard?",close,3,2,1-3,30,complex,high,Yes
+retromat-78,"4 Ls - Loved, Learned, Lacked, Longed for",gather-data,2,1,8-15,45,medium,medium,No
+retromat-80,"Repeat & Avoid",gather-data,2,1,5-10,45,medium,medium,No
+retromat-83,"Retro Dart",close,1.5,0.5,5-10,45,simple,high,No
+retromat-89,"Retro Wedding",gather-data,3,2,5-10,45,complex,medium,Yes
+retromat-109,"Know your neighbour - Closing",close,1.5,0.5,1-3,30,simple,high,No
+retromat-121,"The Good, the Bad and the Ugly",gather-data,2,1,5-10,45,medium,medium,No
+retromat-128,"Learning Wish List",gather-data,2,1,5-10,45,medium,medium,No
+retromat-132,"Time Capsule",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-134,"Know Your Meme",close,1.5,0.5,1-3,30,simple,high,No
+retromat-138,"Debriefing Cube",close,3,2,1-3,30,complex,high,Yes
+retromat-141,"Back to the Future",gather-data,3,2,5-8,60,complex,medium,Yes
+retromat-12,"Dot Voting - Start, Stop, Continue",decide-what-to-do,3,2,10-15,45,complex,high,Yes
+retromat-13,"SMART Goals",decide-what-to-do,2.5,2,10-15,75,medium,medium,Yes
+retromat-20,"Perfection Game",generate-insights,2.5,1.5,10-15,75,medium,low,No
+retromat-21,"Merge",decide-what-to-do,2,1,8-12,60,medium,medium,Yes
+retromat-24,"Open Items List",decide-what-to-do,2,1,5-10,45,medium,medium,No
+retromat-29,"Circles & Soup / Circle of Influence",decide-what-to-do,3,2,8-12,60,complex,medium,Yes
+retromat-37,"Remember the Future",generate-insights,3,2,5-10,45,complex,low,Yes
+retromat-38,"Dot Voting - Keep, Drop, Add",decide-what-to-do,3,2,5-10,45,complex,high,Yes
+retromat-39,"Dot Voting - Worked well, Do differently",decide-what-to-do,3,2,5-10,45,complex,high,Yes
+retromat-48,"Take a Stand - Line Dance",decide-what-to-do,2,1,8-12,60,medium,high,Yes
+retromat-49,"Dot Voting - Starfish",decide-what-to-do,3,1.5,10-15,45,medium,high,Yes
+retromat-61,"Chaos Cocktail Party",decide-what-to-do,3,2,5-10,45,complex,medium,Yes
+retromat-63,"Low Hanging Fruit",decide-what-to-do,3,2,5-10,45,complex,medium,Yes
+retromat-72,"Divide the Dollar",decide-what-to-do,2,1,8-12,60,medium,medium,No
+retromat-73,"Pitch",decide-what-to-do,3,2,5-10,45,complex,medium,Yes
+retromat-77,"Follow Through",close,1.5,0.5,5-10,45,simple,high,No
+retromat-84,"Last Retro's Actions Table",set-stage,2.5,2,10-15,75,medium,high,Yes
+retromat-88,"Impediments Cup",decide-what-to-do,3,2,5-10,45,complex,high,Yes
+retromat-92,"Motivational Poster",close,1.5,0.5,5-10,45,simple,high,No
+retromat-99,"Planning Poker Voting",decide-what-to-do,3,2,5-10,45,complex,high,Yes
+retromat-100,"Landscape Diagram",decide-what-to-do,3,2,8-12,60,complex,medium,Yes
+retromat-103,"Systemic Consensus",decide-what-to-do,3,2,8-12,60,complex,medium,Yes
+retromat-104,"Note to Self",close,1.5,0.5,5-10,45,simple,high,No
+retromat-117,"Maximize Follow Through",decide-what-to-do,3,2,5-10,45,complex,medium,Yes
+retromat-124,"Outside In",decide-what-to-do,3,2,8-12,60,complex,medium,Yes
+retromat-125,"Three by Three",decide-what-to-do,3,2,8-15,45,complex,medium,Yes

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/components/language-provider'
 import { QUESTIONNAIRE, QuestionId } from '@/lib/retro/questionnaire'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import Header from '@/components/header'
 
 export default function QuestionnairePage() {
@@ -18,20 +18,20 @@ export default function QuestionnairePage() {
   const selectedAnswer = answers[question.id]
 
   const handleAnswer = (answerId: string) => {
-    setAnswers({ ...answers, [question.id]: answerId })
-  }
-
-  const handleNext = () => {
-    if (!selectedAnswer) return
-
-    if (isLast) {
-      // Save answers and navigate to results
-      const answersJson = JSON.stringify(answers)
-      const encoded = Buffer.from(answersJson).toString('base64')
-      router.push(`/retro/result?data=${encoded}`)
-    } else {
-      setCurrentQuestion(currentQuestion + 1)
-    }
+    const newAnswers = { ...answers, [question.id]: answerId }
+    setAnswers(newAnswers)
+    
+    // Auto-advance after a short delay for visual feedback
+    setTimeout(() => {
+      if (isLast) {
+        // Save answers and navigate to results
+        const answersJson = JSON.stringify(newAnswers)
+        const encoded = Buffer.from(answersJson).toString('base64')
+        router.push(`/retro/result?data=${encoded}`)
+      } else {
+        setCurrentQuestion(currentQuestion + 1)
+      }
+    }, 400) // 400ms delay for smooth transition
   }
 
   const handleBack = () => {
@@ -106,20 +106,9 @@ export default function QuestionnairePage() {
               {language === 'fr' ? 'Retour' : 'Back'}
             </button>
 
-            <button
-              onClick={handleNext}
-              disabled={!selectedAnswer}
-              className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
-                selectedAnswer
-                  ? 'bg-primary text-white hover:bg-blue-700 hover:scale-105 shadow-lg'
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              }`}
-            >
-              {isLast
-                ? language === 'fr' ? 'Voir les résultats' : 'See Results'
-                : language === 'fr' ? 'Suivant' : 'Next'}
-              <ArrowRight className="w-5 h-5" />
-            </button>
+            <div className="text-gray-400 text-sm flex items-center gap-2">
+              {language === 'fr' ? 'Sélectionnez une réponse pour continuer' : 'Select an answer to continue'}
+            </div>
           </div>
         </div>
       </div>

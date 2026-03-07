@@ -5,18 +5,17 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { useLanguage } from '@/components/language-provider'
 import { QuestionId, getDurationFromAnswers } from '@/lib/retro/questionnaire'
 import { detectPatterns, getProblemKeyFromPattern } from '@/lib/retro/pattern-detection'
-import { PATTERNS } from '@/lib/retro/patterns'
-import { getActivitiesForProblem, RetroActivity } from '@/lib/retro/activities'
-import { getActivitiesByDuration } from '@/lib/retro/duration-optimizer'
-import { getTeamSizeRecommendations, getTimeAllocationTips } from '@/lib/retro/team-size-optimizer'
-import { AlertCircle, ArrowLeft, Clock, Users, TrendingUp, Shuffle, AlertTriangle } from 'lucide-react'
+import { PATTERNS, PatternCode } from '@/lib/retro/patterns'
+import { generateRetroPlan, getTimeAllocationTips as getTerrainTips, getFacilitationTechnique, ActivitySelection } from '@/lib/retro/activity-selector'
+import { getTeamSizeRecommendations } from '@/lib/retro/team-size-optimizer'
+import { AlertCircle, ArrowLeft, Clock, Users, Shuffle, AlertTriangle, Target } from 'lucide-react'
 import Header from '@/components/header'
 
 function ResultContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { language } = useLanguage()
-  const [activities, setActivities] = useState<RetroActivity[]>([])
+  const [retroPlan, setRetroPlan] = useState<any>(null)
   const [detection, setDetection] = useState<any>(null)
   const [duration, setDuration] = useState(60)
   const [teamSize, setTeamSize] = useState(7)
@@ -24,6 +23,8 @@ function ResultContent() {
 
   useEffect(() => {
     const data = searchParams?.get('data')
+    const randomTeamSize = searchParams?.get('teamSize')
+    
     if (!data) {
       router.push('/retro')
       return
@@ -41,33 +42,38 @@ function ResultContent() {
       const retroDuration = getDurationFromAnswers(answers)
       setDuration(retroDuration)
 
-      // Get problem key and activities
+      // Get team size (from URL param or default)
+      const finalTeamSize = randomTeamSize ? parseInt(randomTeamSize) : 7
+      setTeamSize(finalTeamSize)
+
+      // Get problem key
       const problemKey = getProblemKeyFromPattern(result.primary.code)
-      const allActivities = getActivitiesForProblem(problemKey, retroDuration, 'medium', 7)
       
-      // Adapt activities based on duration (3 phases for 30min, 5 for others)
-      const selectedActivities = getActivitiesByDuration(allActivities, retroDuration)
-      setActivities(selectedActivities)
+      // ⚡ NEW TERRAIN LOGIC: Generate plan based on duration + team size
+      const plan = generateRetroPlan(retroDuration, finalTeamSize, problemKey, language)
+      setRetroPlan(plan)
 
       setLoading(false)
     } catch (error) {
       console.error('Error parsing data:', error)
       router.push('/retro')
     }
-  }, [searchParams, router])
+  }, [searchParams, router, language])
 
-  if (loading || !detection) {
+  if (loading || !detection || !retroPlan) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading your personalized retro...</div>
+        <div className="text-white text-2xl">
+          {language === 'fr' ? 'Génération de votre rétro personnalisée...' : 'Generating your personalized retro...'}
+        </div>
       </div>
     )
   }
 
-  const primaryPattern = PATTERNS[detection.primary.code]
-  const totalDuration = activities.reduce((sum, a) => sum + a.duration, 0)
+  const primaryPattern = PATTERNS[detection.primary.code as PatternCode]
   const teamRecommendations = getTeamSizeRecommendations(teamSize)
-  const teamTips = getTimeAllocationTips(teamSize, duration)
+  const terrainTips = getTerrainTips(duration, teamSize, language)
+  const facilitation = getFacilitationTechnique(teamSize, language)
 
   const isRandom = searchParams?.get('random') === 'true'
 
@@ -78,14 +84,11 @@ function ResultContent() {
         {/* Back button */}
         <div className="flex items-center justify-between mb-8">
           <button
-            onClick={() => router.push(isRandom ? '/retro' : '/retro/questionnaire')}
+            onClick={() => router.push('/retro')}
             className="text-white/80 hover:text-white flex items-center gap-2"
           >
             <ArrowLeft className="w-5 h-5" />
-            {isRandom 
-              ? (language === 'fr' ? 'Retour' : 'Back')
-              : (language === 'fr' ? 'Modifier mes réponses' : 'Modify my answers')
-            }
+            {language === 'fr' ? 'Retour' : 'Back'}
           </button>
           
           {isRandom && (
@@ -101,92 +104,78 @@ function ResultContent() {
 
         {/* Pattern Detection Results - Only for questionnaire mode */}
         {!isRandom && (
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-            <div className="flex items-start gap-4 mb-6">
-              <AlertCircle className="w-12 h-12 text-orange-500 flex-shrink-0" />
-              <div>
-                <h1 className="text-4xl font-black mb-2 text-gray-900">
-                  {language === 'fr' ? 'Pattern Principal Détecté' : 'Primary Pattern Detected'}
-                </h1>
-                <p className="text-xl text-gray-600">
-                  {language === 'fr' ? primaryPattern.nameFr : primaryPattern.name}
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-lg mb-6">
-              <h3 className="font-bold text-lg mb-2 text-gray-900">
-                {language === 'fr' ? 'Description' : 'Description'}
-              </h3>
-              <p className="text-gray-700">
-                {language === 'fr' ? primaryPattern.descriptionFr : primaryPattern.description}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-red-50 p-6 rounded-lg">
-                <h3 className="font-bold text-lg mb-3 text-red-900">
-                  {language === 'fr' ? 'Symptômes' : 'Symptoms'}
-                </h3>
-                <ul className="space-y-2">
-                  {(language === 'fr' ? primaryPattern.symptomsFr : primaryPattern.symptoms).map((symptom, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-700">
-                      <span className="text-red-500 font-bold mt-1">•</span>
-                      <span>{symptom}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h3 className="font-bold text-lg mb-3 text-blue-900">
-                  {language === 'fr' ? 'Causes Racines' : 'Root Causes'}
-                </h3>
-                <ul className="space-y-2">
-                  {(language === 'fr' ? primaryPattern.rootCausesFr : primaryPattern.rootCauses).map((cause, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-700">
-                      <span className="text-blue-500 font-bold mt-1">•</span>
-                      <span>{cause}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {detection.secondary.length > 0 && (
-              <div className="mt-6">
-                <h3 className="font-bold text-lg mb-3 text-gray-900">
-                  {language === 'fr' ? 'Patterns Secondaires' : 'Secondary Patterns'}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {detection.secondary.map((pattern: any) => (
-                    <div
-                      key={pattern.code}
-                      className="bg-gray-100 px-4 py-2 rounded-full text-gray-700 font-medium"
-                    >
-                      {language === 'fr' ? pattern.nameFr : pattern.name}
-                    </div>
-                  ))}
+          <div className="max-w-5xl mx-auto mb-12">
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+              <div className="flex items-start gap-4 mb-6">
+                <AlertCircle className="w-12 h-12 text-orange-500 flex-shrink-0" />
+                <div>
+                  <h1 className="text-4xl font-black mb-2 text-gray-900">
+                    {language === 'fr' ? 'Pattern Principal Détecté' : 'Primary Pattern Detected'}
+                  </h1>
+                  <p className="text-xl text-gray-600">
+                    {language === 'fr' ? primaryPattern.nameFr : primaryPattern.name}
+                  </p>
                 </div>
               </div>
-            )}
 
-            <div className="mt-8 flex items-center gap-6 text-gray-600">
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5" />
-                <span>{duration} min</span>
+              <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-lg mb-6">
+                <h3 className="font-bold text-lg mb-2 text-gray-900">
+                  {language === 'fr' ? 'Description' : 'Description'}
+                </h3>
+                <p className="text-gray-700">
+                  {language === 'fr' ? primaryPattern.descriptionFr : primaryPattern.description}
+                </p>
               </div>
-              <div className="flex items-center gap-2">
-                <Users className="w-5 h-5" />
-                <span>5-10 {language === 'fr' ? 'personnes' : 'people'}</span>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-red-50 p-6 rounded-lg">
+                  <h3 className="font-bold text-lg mb-3 text-red-900">
+                    {language === 'fr' ? 'Symptômes' : 'Symptoms'}
+                  </h3>
+                  <ul className="space-y-2">
+                    {(language === 'fr' ? primaryPattern.symptomsFr : primaryPattern.symptoms).map((symptom, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-700">
+                        <span className="text-red-500 font-bold mt-1">•</span>
+                        <span>{symptom}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-blue-50 p-6 rounded-lg">
+                  <h3 className="font-bold text-lg mb-3 text-blue-900">
+                    {language === 'fr' ? 'Causes Racines' : 'Root Causes'}
+                  </h3>
+                  <ul className="space-y-2">
+                    {(language === 'fr' ? primaryPattern.rootCausesFr : primaryPattern.rootCauses).map((cause, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-700">
+                        <span className="text-blue-500 font-bold mt-1">•</span>
+                        <span>{cause}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5" />
-                <span>{language === 'fr' ? 'Confiance moyenne' : 'Medium trust'}</span>
-              </div>
+
+              {detection.secondary.length > 0 && (
+                <div className="mt-6">
+                  <h3 className="font-bold text-lg mb-3 text-gray-900">
+                    {language === 'fr' ? 'Patterns Secondaires' : 'Secondary Patterns'}
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {detection.secondary.map((pattern: any) => (
+                      <div
+                        key={pattern.code}
+                        className="bg-gray-100 px-4 py-2 rounded-full text-gray-700 font-medium"
+                      >
+                        {language === 'fr' ? pattern.nameFr : pattern.name}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        </div>
         )}
 
         {/* Random Retro Header - Only for random mode */}
@@ -234,18 +223,18 @@ function ResultContent() {
           </div>
         )}
 
-        {/* Team Size Tips */}
-        {teamSize > 8 && (
+        {/* Terrain Tips - Decision Criteria */}
+        {terrainTips.length > 0 && (
           <div className="max-w-5xl mx-auto mb-8">
-            <div className="bg-blue-50 rounded-xl p-6">
-              <h3 className="flex items-center gap-2 font-bold text-lg text-blue-900 mb-3">
-                <Users className="w-6 h-6" />
-                {language === 'fr' ? 'Conseils pour grande équipe' : 'Large Team Tips'}
+            <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/50 rounded-xl p-6">
+              <h3 className="flex items-center gap-2 font-bold text-lg text-white mb-4">
+                <Target className="w-6 h-6" />
+                {language === 'fr' ? 'Logique Terrain (30 ans coaching)' : 'Field Logic (30 years coaching)'}
               </h3>
-              <ul className="space-y-2 text-blue-800 text-sm">
-                {teamTips.map((tip, index) => (
+              <ul className="space-y-2 text-white/90 text-sm">
+                {terrainTips.map((tip, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <span className="flex-shrink-0 mt-1">•</span>
+                    <span className="flex-shrink-0 mt-1">→</span>
                     <span>{tip}</span>
                   </li>
                 ))}
@@ -254,185 +243,213 @@ function ResultContent() {
           </div>
         )}
 
-        {/* Retro Activities */}
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-black mb-4 text-white text-center">
-            {language === 'fr' ? 'Votre Rétrospective Personnalisée' : 'Your Personalized Retrospective'}
+        {/* Retro Plan - Table Format */}
+        <div className="max-w-6xl mx-auto mb-8">
+          <h2 className="text-4xl font-black mb-6 text-white text-center">
+            {language === 'fr' 
+              ? `Plan Rétro ${duration}min / ${teamSize} personnes`
+              : `Retro Plan ${duration}min / ${teamSize} people`}
           </h2>
-          
-          {duration === 30 && (
-            <div className="bg-blue-500/20 border border-blue-400 rounded-xl p-4 mb-8 text-white text-center">
-              <p className="font-semibold">
-                {language === 'fr' 
-                  ? '⚡ Format 30 min : 3 phases essentielles pour un impact rapide'
-                  : '⚡ 30-min format: 3 core phases for quick impact'}
-              </p>
-              <p className="text-sm text-white/80 mt-1">
-                {language === 'fr'
-                  ? 'Set Stage → Gather Data → Decide What To Do (Skip insights profonds)'
-                  : 'Set Stage → Gather Data → Decide What To Do (Skip deep insights)'}
-              </p>
-            </div>
-          )}
 
-          <div className="space-y-6">
-            {activities.map((activity, index) => {
-              const phaseNames: Record<string, {en: string, fr: string}> = {
-                'set-stage': { en: 'Set the Stage', fr: 'Créer le Contexte' },
-                'gather-data': { en: 'Gather Data', fr: 'Collecter les Données' },
-                'generate-insights': { en: 'Generate Insights', fr: 'Générer des Insights' },
-                'decide-what-to-do': { en: 'Decide What to Do', fr: 'Décider Quoi Faire' },
-                'close': { en: 'Close the Retro', fr: 'Clore la Rétro' }
-              }
-              
-              const phaseName = phaseNames[activity.phase]
-              
-              // Determine activity type from name (simplified heuristic)
-              const activityName = activity.name.toLowerCase()
-              let activityType: 'individual' | 'pairs' | 'group' | 'full-team' = 'full-team'
-              
-              if (activityName.includes('silent') || activityName.includes('write') || activityName.includes('anonymous')) {
-                activityType = 'individual'
-              } else if (activityName.includes('pair') || activityName.includes('1-2-4')) {
-                activityType = 'pairs'
-              } else if (activityName.includes('group') || activityName.includes('breakout')) {
-                activityType = 'group'
-              }
-              
-              // Calculate speaking time per person
-              const baseTimes = {
-                'individual': 30,
-                'pairs': 60,
-                'group': 90,
-                'full-team': 45
-              }
-              
-              let speakingTimePerPerson = baseTimes[activityType]
-              if (teamSize > 8) {
-                speakingTimePerPerson *= 0.8 // -20% efficiency
-              }
-              
-              // Format speaking time
-              const speakingTimeFormatted = speakingTimePerPerson >= 60 
-                ? `${Math.round(speakingTimePerPerson / 60)} min ${speakingTimePerPerson % 60}s`
-                : `${Math.round(speakingTimePerPerson)}s`
-              
-              // Get facilitation technique
-              const techniques = {
-                'individual': language === 'fr' ? 'Réflexion silencieuse + partage' : 'Silent reflection + share',
-                'pairs': language === 'fr' ? 'Travail en binôme' : 'Pair work',
-                'group': language === 'fr' ? 'Groupes de 4-6 personnes' : 'Groups of 4-6 people',
-                'full-team': language === 'fr' ? 'Tour de table complet' : 'Full team round'
-              }
-              
-              const technique = techniques[activityType]
-              
-              // Breakout recommendation
-              const needsBreakouts = teamSize > 8 && (activityType === 'group' || activityType === 'full-team')
-              
-              return (
-              <div
-                key={activity.id}
-                className="bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 hover:scale-105"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <div className="text-sm text-gray-500 uppercase tracking-wide mb-2">
-                      {language === 'fr' ? 'Phase' : 'Phase'} {index + 1}/{activities.length}:{' '}
-                      {language === 'fr' ? phaseName.fr : phaseName.en}
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      {language === 'fr' ? activity.nameFr : activity.name}
-                    </h3>
-                  </div>
-                  <div className="text-right">
-                    <div className="bg-blue-100 text-primary px-4 py-2 rounded-full font-bold text-sm mb-2">
-                      {activity.duration} min
-                    </div>
-                    <div className="text-xs text-gray-600">
-                      ~{speakingTimeFormatted}/{language === 'fr' ? 'pers.' : 'person'}
-                    </div>
-                  </div>
+          <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b-2 border-gray-300">
+                  <th className="pb-3 px-2 font-bold text-gray-900">
+                    {language === 'fr' ? 'Phase' : 'Phase'}
+                  </th>
+                  <th className="pb-3 px-2 font-bold text-gray-900">
+                    {language === 'fr' ? 'Activité' : 'Activity'}
+                  </th>
+                  <th className="pb-3 px-2 font-bold text-gray-900 text-center">
+                    {language === 'fr' ? 'Temps' : 'Time'}
+                  </th>
+                  <th className="pb-3 px-2 font-bold text-gray-900 text-center">
+                    {language === 'fr' ? 'Temps/pers' : 'Time/person'}
+                  </th>
+                  <th className="pb-3 px-2 font-bold text-gray-900">
+                    {language === 'fr' ? 'Pourquoi choisi' : 'Why chosen'}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {retroPlan.activities.map((selection: ActivitySelection, index: number) => {
+                  const phaseNameMap: Record<string, { en: string; fr: string }> = {
+                    'Set the stage': { en: 'Set the Stage', fr: 'Créer le Contexte' },
+                    'Gather data': { en: 'Gather Data', fr: 'Collecter' },
+                    'Generate insights': { en: 'Generate Insights', fr: 'Analyser' },
+                    'Decide what to do': { en: 'Decide', fr: 'Décider' },
+                    'Close the retro': { en: 'Close', fr: 'Clore' }
+                  }
+                  
+                  const phaseName = phaseNameMap[selection.phase]
+                  const timePerPersonFormatted = 
+                    selection.timePerPerson >= 60
+                      ? `${Math.floor(selection.timePerPerson / 60)}min${selection.timePerPerson % 60 > 0 ? ` ${selection.timePerPerson % 60}s` : ''}`
+                      : `${selection.timePerPerson}s`
+
+                  return (
+                    <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
+                      <td className="py-4 px-2">
+                        <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">
+                          {language === 'fr' ? phaseName.fr : phaseName.en}
+                        </span>
+                      </td>
+                      <td className="py-4 px-2 font-medium text-gray-900">
+                        {language === 'fr' ? selection.activity.nameFr : selection.activity.name}
+                      </td>
+                      <td className="py-4 px-2 text-gray-700 text-center font-semibold">
+                        {selection.allocatedTime} min
+                      </td>
+                      <td className="py-4 px-2 text-gray-600 text-center">
+                        ~{timePerPersonFormatted}/pers
+                      </td>
+                      <td className="py-4 px-2 text-sm text-gray-600">
+                        {selection.reasoning}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+
+            <div className="mt-6 pt-6 border-t-2 border-gray-300">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div>
+                  <p className="text-xl font-bold text-gray-900">
+                    {language === 'fr' ? 'TOTAL' : 'TOTAL'}: {retroPlan.totalTime} min ✓
+                  </p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    {language === 'fr' ? 'Technique' : 'Technique'}: <strong>{facilitation}</strong>
+                  </p>
                 </div>
-
-                <p className="text-gray-600 mb-4 text-lg">
-                  {language === 'fr' ? activity.summaryFr : activity.summary}
-                </p>
-
-                {/* Facilitation Info */}
-                <div className="mb-4 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-medium">
-                    <Users className="w-3 h-3" />
-                    {technique}
-                  </span>
-                  {needsBreakouts && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-xs font-medium">
-                      <AlertTriangle className="w-3 h-3" />
-                      {language === 'fr' ? 'Breakouts recommandés' : 'Breakouts recommended'}
-                    </span>
-                  )}
-                  {teamSize > 12 && activityType === 'full-team' && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium">
-                      <AlertTriangle className="w-3 h-3" />
-                      {language === 'fr' ? 'Technique "spokes" obligatoire' : 'Spokes technique required'}
-                    </span>
-                  )}
-                </div>
-
-                {/* Time breakdown for large teams */}
-                {teamSize > 8 && (
-                  <div className="mb-4 bg-blue-50 border border-blue-200 rounded-lg p-3">
-                    <p className="text-sm text-blue-900 font-semibold mb-1">
-                      {language === 'fr' ? '⏱️ Répartition du temps :' : '⏱️ Time breakdown:'}
-                    </p>
-                    <ul className="text-xs text-blue-800 space-y-1">
-                      {activityType === 'individual' && (
-                        <>
-                          <li>• {language === 'fr' ? 'Réflexion silencieuse' : 'Silent reflection'}: {Math.round(activity.duration * 0.3)} min</li>
-                          <li>• {language === 'fr' ? 'Partage en breakouts' : 'Share in breakouts'}: {Math.round(activity.duration * 0.5)} min</li>
-                          <li>• {language === 'fr' ? 'Synthèse (spokes)' : 'Synthesis (spokes)'}: {Math.round(activity.duration * 0.2)} min</li>
-                        </>
-                      )}
-                      {activityType === 'pairs' && (
-                        <>
-                          <li>• {language === 'fr' ? 'Discussion en paires' : 'Pair discussions'}: {Math.round(activity.duration * 0.6)} min</li>
-                          <li>• {language === 'fr' ? 'Partage des paires' : 'Pairs sharing'}: {Math.round(activity.duration * 0.4)} min</li>
-                        </>
-                      )}
-                      {(activityType === 'group' || activityType === 'full-team') && (
-                        <>
-                          <li>• {language === 'fr' ? 'Breakouts (groupes de 4-6)' : 'Breakouts (groups of 4-6)'}: {Math.round(activity.duration * 0.6)} min</li>
-                          <li>• {language === 'fr' ? 'Spokes (1/groupe partage)' : 'Spokes (1/group shares)'}: {Math.round(activity.duration * 0.3)} min</li>
-                          <li>• {language === 'fr' ? 'Dot voting/décision' : 'Dot voting/decision'}: {Math.round(activity.duration * 0.1)} min</li>
-                        </>
-                      )}
-                    </ul>
-                  </div>
-                )}
-
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-gray-900">
-                    {language === 'fr' ? 'Comment faire :' : 'How to do it:'}
-                  </h4>
-                  <p className="text-gray-700 leading-relaxed">
-                    {language === 'fr' ? activity.descriptionFr : activity.description}
+                <div className="text-right">
+                  <p className="text-sm font-semibold text-green-700">
+                    {language === 'fr' 
+                      ? `Actions garanties : ${retroPlan.guaranteedActions}`
+                      : `Guaranteed actions: ${retroPlan.guaranteedActions}`}
                   </p>
                 </div>
               </div>
-            )
-          })}
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Activities Breakdown */}
+        <div className="max-w-5xl mx-auto">
+          <h3 className="text-3xl font-bold mb-6 text-white text-center">
+            {language === 'fr' ? 'Détails des Activités' : 'Activity Details'}
+          </h3>
+          
+          <div className="space-y-6">
+            {retroPlan.activities.map((selection: ActivitySelection, index: number) => {
+              const phaseNameMap: Record<string, { en: string; fr: string }> = {
+                'Set the stage': { en: 'Set the Stage', fr: 'Créer le Contexte' },
+                'Gather data': { en: 'Gather Data', fr: 'Collecter les Données' },
+                'Generate insights': { en: 'Generate Insights', fr: 'Générer des Insights' },
+                'Decide what to do': { en: 'Decide What to Do', fr: 'Décider Quoi Faire' },
+                'Close the retro': { en: 'Close the Retro', fr: 'Clore la Rétro' }
+              }
+              
+              const phaseName = phaseNameMap[selection.phase]
+              const activity = selection.activity
+
+              return (
+                <div key={index} className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-3">
+                        {language === 'fr' ? phaseName.fr : phaseName.en} • Phase {index + 1}/{retroPlan.activities.length}
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {language === 'fr' ? activity.nameFr : activity.name}
+                      </h3>
+                    </div>
+                    <div className="text-right">
+                      <div className="flex items-center gap-2 text-primary font-bold text-lg">
+                        <Clock className="w-5 h-5" />
+                        {selection.allocatedTime} min
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="text-gray-600 italic">
+                      {language === 'fr' ? activity.summaryFr : activity.summary}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                      {facilitation}
+                    </span>
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                      ~{Math.floor(selection.timePerPerson / 60) > 0 ? `${Math.floor(selection.timePerPerson / 60)}min ` : ''}{selection.timePerPerson % 60}s/pers
+                    </span>
+                    {activity.trustLevel && (
+                      <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
+                        {language === 'fr' ? 'Confiance' : 'Trust'}: {activity.trustLevel}/4
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Team Size Warnings */}
+                  {teamSize > 12 && (
+                    <div className="bg-orange-50 border-l-4 border-orange-500 p-4 mb-4">
+                      <p className="text-orange-800 text-sm font-semibold">
+                        ⚠️ {language === 'fr' 
+                          ? 'Équipe très grande : Utilisez 2+ facilitateurs + async/vote'
+                          : 'Very large team: Use 2+ facilitators + async/vote'}
+                      </p>
+                    </div>
+                  )}
+                  {teamSize > 8 && teamSize <= 12 && (
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                      <p className="text-blue-800 text-sm">
+                        💡 {language === 'fr'
+                          ? 'Breakouts recommandés (groupes de 4-6 personnes)'
+                          : 'Breakouts recommended (groups of 4-6 people)'}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Time Breakdown for Large Teams */}
+                  {teamSize > 8 && (
+                    <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                      <h4 className="font-semibold text-gray-900 mb-2">
+                        {language === 'fr' ? 'Répartition du temps' : 'Time Breakdown'}
+                      </h4>
+                      <ul className="text-sm text-gray-700 space-y-1">
+                        <li>• {language === 'fr' ? 'Breakouts (groupes de 4-6)' : 'Breakouts (groups of 4-6)'}: {Math.round(selection.allocatedTime * 0.6)} min</li>
+                        <li>• {language === 'fr' ? 'Spokes (1/groupe partage)' : 'Spokes (1/group shares)'}: {Math.round(selection.allocatedTime * 0.3)} min</li>
+                        <li>• {language === 'fr' ? 'Dot voting/décision' : 'Dot voting/decision'}: {Math.round(selection.allocatedTime * 0.1)} min</li>
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <h4 className="font-semibold mb-2 text-gray-900">
+                      {language === 'fr' ? 'Comment faire :' : 'How to do it:'}
+                    </h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      {language === 'fr' ? activity.descriptionFr : activity.description}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
           <div className="mt-12 bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-white text-center">
             <p className="text-xl mb-4">
               {language === 'fr'
-                ? `Durée totale estimée : ${totalDuration} minutes`
-                : `Total estimated duration: ${totalDuration} minutes`}
+                ? `Durée totale : ${retroPlan.totalTime} min (optimisé pour ${teamSize} personnes)`
+                : `Total duration: ${retroPlan.totalTime} min (optimized for ${teamSize} people)`}
             </p>
             <p className="text-white/80">
               {language === 'fr'
-                ? 'Ajustez les durées selon les besoins de votre équipe'
-                : 'Adjust durations based on your team\'s needs'}
+                ? '✅ Plan généré avec logique terrain (30 ans coaching Agile)'
+                : '✅ Plan generated with field logic (30 years Agile coaching)'}
             </p>
           </div>
 

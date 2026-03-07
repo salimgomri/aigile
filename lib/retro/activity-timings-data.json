@@ -1,0 +1,2145 @@
+{
+  "retromat-1": {
+    "activityId": "retromat-1",
+    "activityName": "ESVP",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 0,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Format anonyme ou silencieux."
+  },
+  "retromat-2": {
+    "activityId": "retromat-2",
+    "activityName": "Weather Report",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": 1,
+    "restitutionPerPerson": 20,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-3": {
+    "activityId": "retromat-3",
+    "activityName": "Check In - Quick Question",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      0.5,
+      2
+    ],
+    "restitutionPerPerson": 15,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Format rapide de vote ou check-in."
+  },
+  "retromat-6": {
+    "activityId": "retromat-6",
+    "activityName": "Like to like",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-7": {
+    "activityId": "retromat-7",
+    "activityName": "Mad Sad Glad",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-15": {
+    "activityId": "retromat-15",
+    "activityName": "Appreciations",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high",
+    "coachNote": "Nécessite niveau de confiance élevé."
+  },
+  "retromat-18": {
+    "activityId": "retromat-18",
+    "activityName": "Check In - Amazon Review",
+    "phase": "set-stage",
+    "explanation": 1,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high",
+    "coachNote": "Format rapide de vote ou check-in."
+  },
+  "retromat-22": {
+    "activityId": "retromat-22",
+    "activityName": "Temperature Reading",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": 1,
+    "restitutionPerPerson": 20,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-27": {
+    "activityId": "retromat-27",
+    "activityName": "Retrospective Cookies",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-28": {
+    "activityId": "retromat-28",
+    "activityName": "Take a Walk",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-31": {
+    "activityId": "retromat-31",
+    "activityName": "Check In - Draw the Iteration",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      0.5,
+      2
+    ],
+    "restitutionPerPerson": 15,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Format rapide de vote ou check-in."
+  },
+  "retromat-32": {
+    "activityId": "retromat-32",
+    "activityName": "Emoticon Project Gauge",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-33": {
+    "activityId": "retromat-33",
+    "activityName": "Proud & Sorry",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-34": {
+    "activityId": "retromat-34",
+    "activityName": "Shower of Appreciation",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Nécessite niveau de confiance élevé."
+  },
+  "retromat-36": {
+    "activityId": "retromat-36",
+    "activityName": "Appreciative Goal",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-42": {
+    "activityId": "retromat-42",
+    "activityName": "Postcards",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-43": {
+    "activityId": "retromat-43",
+    "activityName": "Take a Stand - Opening",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-46": {
+    "activityId": "retromat-46",
+    "activityName": "Why Retrospectives?",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      12,
+      18
+    ],
+    "restitutionPerPerson": 90,
+    "setupComplexity": "medium",
+    "scalingFactor": "low",
+    "coachNote": "Analyse profonde. Mieux en petits groupes ou breakouts."
+  },
+  "retromat-57": {
+    "activityId": "retromat-57",
+    "activityName": "Say it with Flowers",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-59": {
+    "activityId": "retromat-59",
+    "activityName": "Happiness Histogram",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": 1,
+    "restitutionPerPerson": 20,
+    "setupComplexity": "simple",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-65": {
+    "activityId": "retromat-65",
+    "activityName": "Appreciative Inquiry",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-70": {
+    "activityId": "retromat-70",
+    "activityName": "3 for 1 - Opening",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-75": {
+    "activityId": "retromat-75",
+    "activityName": "Writing the Unspeakable",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-76": {
+    "activityId": "retromat-76",
+    "activityName": "Round of Admiration",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-81": {
+    "activityId": "retromat-81",
+    "activityName": "Outcome Expectations",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-82": {
+    "activityId": "retromat-82",
+    "activityName": "Three Words",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 10,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-85": {
+    "activityId": "retromat-85",
+    "activityName": "Greetings from the Iteration",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-90": {
+    "activityId": "retromat-90",
+    "activityName": "Agile Values Cheer Up",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-97": {
+    "activityId": "retromat-97",
+    "activityName": "#tweetmysprint",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-101": {
+    "activityId": "retromat-101",
+    "activityName": "Endless Blessings",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-102": {
+    "activityId": "retromat-102",
+    "activityName": "You and Me",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-106": {
+    "activityId": "retromat-106",
+    "activityName": "Who said it?",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-107": {
+    "activityId": "retromat-107",
+    "activityName": "Unlikely Superheros",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-110": {
+    "activityId": "retromat-110",
+    "activityName": "Movie Critic",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-111": {
+    "activityId": "retromat-111",
+    "activityName": "Feedback Sandwich",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-112": {
+    "activityId": "retromat-112",
+    "activityName": "Appreciation Postcards",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Nécessite niveau de confiance élevé."
+  },
+  "retromat-114": {
+    "activityId": "retromat-114",
+    "activityName": "Give me a face",
+    "phase": "set-stage",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-120": {
+    "activityId": "retromat-120",
+    "activityName": "My Team is Awesome",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-122": {
+    "activityId": "retromat-122",
+    "activityName": "Positive and True",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-126": {
+    "activityId": "retromat-126",
+    "activityName": "I like, I wish",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-129": {
+    "activityId": "retromat-129",
+    "activityName": "String Theory",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-130": {
+    "activityId": "retromat-130",
+    "activityName": "Spot the Elephant",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-136": {
+    "activityId": "retromat-136",
+    "activityName": "Surprise!",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-140": {
+    "activityId": "retromat-140",
+    "activityName": "What kind of X?",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-143": {
+    "activityId": "retromat-143",
+    "activityName": "How’s your battery?",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-144": {
+    "activityId": "retromat-144",
+    "activityName": "Elevenie",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-145": {
+    "activityId": "retromat-145",
+    "activityName": "Braver",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-4": {
+    "activityId": "retromat-4",
+    "activityName": "Timeline",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité collaborative de reconstruction temporelle."
+  },
+  "retromat-11": {
+    "activityId": "retromat-11",
+    "activityName": "Circle of Questions",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-26": {
+    "activityId": "retromat-26",
+    "activityName": "Speed Dating",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Travail en binômes puis restitution."
+  },
+  "retromat-30": {
+    "activityId": "retromat-30",
+    "activityName": "Dialogue Sheets",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-41": {
+    "activityId": "retromat-41",
+    "activityName": "Park Bench",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-47": {
+    "activityId": "retromat-47",
+    "activityName": "Empty the Mailbox",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-51": {
+    "activityId": "retromat-51",
+    "activityName": "Lean Coffee",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      15,
+      25
+    ],
+    "restitutionPerPerson": 0,
+    "setupComplexity": "medium",
+    "scalingFactor": "low",
+    "coachNote": "Format flexible et démocratique. Temps variable."
+  },
+  "retromat-52": {
+    "activityId": "retromat-52",
+    "activityName": "Constellation - Opening",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-58": {
+    "activityId": "retromat-58",
+    "activityName": "Undercover Boss",
+    "phase": "generate-insights",
+    "explanation": 2.5,
+    "questions": 1.5,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "low"
+  },
+  "retromat-62": {
+    "activityId": "retromat-62",
+    "activityName": "Expectations",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-86": {
+    "activityId": "retromat-86",
+    "activityName": "Lines of Communication",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-93": {
+    "activityId": "retromat-93",
+    "activityName": "Tell a Story with Shaping Words",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-94": {
+    "activityId": "retromat-94",
+    "activityName": "BYOSM - Build your own Scrum Master",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-95": {
+    "activityId": "retromat-95",
+    "activityName": "If I were you",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-108": {
+    "activityId": "retromat-108",
+    "activityName": "Know your neighbour - Opening",
+    "phase": "set-stage",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      2
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-119": {
+    "activityId": "retromat-119",
+    "activityName": "Hit the Headlines",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-133": {
+    "activityId": "retromat-133",
+    "activityName": "Tell me something I don’t know",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-137": {
+    "activityId": "retromat-137",
+    "activityName": "Dare, Care, Share",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-142": {
+    "activityId": "retromat-142",
+    "activityName": "Watermelon",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-146": {
+    "activityId": "retromat-146",
+    "activityName": "Roles and Responsibilities",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-5": {
+    "activityId": "retromat-5",
+    "activityName": "Analyze Stories",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-8": {
+    "activityId": "retromat-8",
+    "activityName": "5 Whys",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      12,
+      18
+    ],
+    "restitutionPerPerson": 90,
+    "setupComplexity": "medium",
+    "scalingFactor": "low",
+    "coachNote": "Analyse profonde. Mieux en petits groupes ou breakouts."
+  },
+  "retromat-10": {
+    "activityId": "retromat-10",
+    "activityName": "Brainstorming / Filtering",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-19": {
+    "activityId": "retromat-19",
+    "activityName": "Sailboat / Speedboat",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Métaphore visuelle. Nécessite explication claire."
+  },
+  "retromat-25": {
+    "activityId": "retromat-25",
+    "activityName": "Cause-Effect-Diagram",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      12,
+      18
+    ],
+    "restitutionPerPerson": 90,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Analyse profonde. Mieux en petits groupes ou breakouts."
+  },
+  "retromat-35": {
+    "activityId": "retromat-35",
+    "activityName": "Agile Self-Assessment",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-50": {
+    "activityId": "retromat-50",
+    "activityName": "Wish granted",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-54": {
+    "activityId": "retromat-54",
+    "activityName": "Story Oscars",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-56": {
+    "activityId": "retromat-56",
+    "activityName": "Invite a Customer",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-64": {
+    "activityId": "retromat-64",
+    "activityName": "Quartering - Identify boring stories",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Format structuré en catégories."
+  },
+  "retromat-66": {
+    "activityId": "retromat-66",
+    "activityName": "Brainwriting",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-68": {
+    "activityId": "retromat-68",
+    "activityName": "Company Map",
+    "phase": "generate-insights",
+    "explanation": 2.5,
+    "questions": 1.5,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-69": {
+    "activityId": "retromat-69",
+    "activityName": "The Worst We Could Do",
+    "phase": "generate-insights",
+    "explanation": 2.5,
+    "questions": 1.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-74": {
+    "activityId": "retromat-74",
+    "activityName": "Pessimize",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-79": {
+    "activityId": "retromat-79",
+    "activityName": "Value Stream Mapping",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-87": {
+    "activityId": "retromat-87",
+    "activityName": "Meeting Satisfaction Histogram",
+    "phase": "gather-data",
+    "explanation": 2.5,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium",
+    "coachNote": "Focus sur actions concrètes et mesurables."
+  },
+  "retromat-91": {
+    "activityId": "retromat-91",
+    "activityName": "Poster Session",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-96": {
+    "activityId": "retromat-96",
+    "activityName": "Problem Solving Tree",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-98": {
+    "activityId": "retromat-98",
+    "activityName": "Laundry Day",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-105": {
+    "activityId": "retromat-105",
+    "activityName": "Election Manifesto",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-113": {
+    "activityId": "retromat-113",
+    "activityName": "Set Course",
+    "phase": "generate-insights",
+    "explanation": 2.5,
+    "questions": 1.5,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "low"
+  },
+  "retromat-115": {
+    "activityId": "retromat-115",
+    "activityName": "Force Field Analysis",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-116": {
+    "activityId": "retromat-116",
+    "activityName": "Genie in a Bottle",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-118": {
+    "activityId": "retromat-118",
+    "activityName": "Snow Mountain",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Métaphore visuelle. Nécessite explication claire."
+  },
+  "retromat-123": {
+    "activityId": "retromat-123",
+    "activityName": "Find your Focus Principle",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-127": {
+    "activityId": "retromat-127",
+    "activityName": "Delay Display",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-131": {
+    "activityId": "retromat-131",
+    "activityName": "Sacred Cow",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-135": {
+    "activityId": "retromat-135",
+    "activityName": "Avoid Waste",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-139": {
+    "activityId": "retromat-139",
+    "activityName": "Room Service",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-9": {
+    "activityId": "retromat-9",
+    "activityName": "Learning Matrix",
+    "phase": "gather-data",
+    "explanation": 2.5,
+    "questions": 1,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "medium",
+    "coachNote": "Format structuré en catégories."
+  },
+  "retromat-14": {
+    "activityId": "retromat-14",
+    "activityName": "Feedback Door - Numbers (ROTI)",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-16": {
+    "activityId": "retromat-16",
+    "activityName": "Helped, Hindered, Hypothesis",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-17": {
+    "activityId": "retromat-17",
+    "activityName": "SaMoLo (More of, Same of, Less of)",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-23": {
+    "activityId": "retromat-23",
+    "activityName": "Feedback Door - Smilies",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-40": {
+    "activityId": "retromat-40",
+    "activityName": "Plus & Delta",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-44": {
+    "activityId": "retromat-44",
+    "activityName": "Take a Stand - Closing",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-45": {
+    "activityId": "retromat-45",
+    "activityName": "Pleased & Surprised",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-53": {
+    "activityId": "retromat-53",
+    "activityName": "Constellation - Closing",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-55": {
+    "activityId": "retromat-55",
+    "activityName": "Original 4",
+    "phase": "generate-insights",
+    "explanation": 2.5,
+    "questions": 1.5,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "low"
+  },
+  "retromat-60": {
+    "activityId": "retromat-60",
+    "activityName": "AHA!",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-67": {
+    "activityId": "retromat-67",
+    "activityName": "Take Aways",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-71": {
+    "activityId": "retromat-71",
+    "activityName": "3 for 1 - Closing: Was everyone heard?",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-78": {
+    "activityId": "retromat-78",
+    "activityName": "4 Ls - Loved, Learned, Lacked, Longed for",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      8,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-80": {
+    "activityId": "retromat-80",
+    "activityName": "Repeat & Avoid",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-83": {
+    "activityId": "retromat-83",
+    "activityName": "Retro Dart",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-89": {
+    "activityId": "retromat-89",
+    "activityName": "Retro Wedding",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-109": {
+    "activityId": "retromat-109",
+    "activityName": "Know your neighbour - Closing",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-121": {
+    "activityId": "retromat-121",
+    "activityName": "The Good, the Bad and the Ugly",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-128": {
+    "activityId": "retromat-128",
+    "activityName": "Learning Wish List",
+    "phase": "gather-data",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-132": {
+    "activityId": "retromat-132",
+    "activityName": "Time Capsule",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-134": {
+    "activityId": "retromat-134",
+    "activityName": "Know Your Meme",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-138": {
+    "activityId": "retromat-138",
+    "activityName": "Debriefing Cube",
+    "phase": "close",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      1,
+      3
+    ],
+    "restitutionPerPerson": 30,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-141": {
+    "activityId": "retromat-141",
+    "activityName": "Back to the Future",
+    "phase": "gather-data",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      8
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-12": {
+    "activityId": "retromat-12",
+    "activityName": "Dot Voting - Start, Stop, Continue",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Métaphore visuelle. Nécessite explication claire."
+  },
+  "retromat-13": {
+    "activityId": "retromat-13",
+    "activityName": "SMART Goals",
+    "phase": "decide-what-to-do",
+    "explanation": 2.5,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium",
+    "coachNote": "Focus sur actions concrètes et mesurables."
+  },
+  "retromat-20": {
+    "activityId": "retromat-20",
+    "activityName": "Perfection Game",
+    "phase": "generate-insights",
+    "explanation": 2.5,
+    "questions": 1.5,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "low"
+  },
+  "retromat-21": {
+    "activityId": "retromat-21",
+    "activityName": "Merge",
+    "phase": "decide-what-to-do",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium",
+    "coachNote": "Travail en binômes puis restitution."
+  },
+  "retromat-24": {
+    "activityId": "retromat-24",
+    "activityName": "Open Items List",
+    "phase": "decide-what-to-do",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-29": {
+    "activityId": "retromat-29",
+    "activityName": "Circles & Soup / Circle of Influence",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Travail en binômes puis restitution."
+  },
+  "retromat-37": {
+    "activityId": "retromat-37",
+    "activityName": "Remember the Future",
+    "phase": "generate-insights",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "low",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-38": {
+    "activityId": "retromat-38",
+    "activityName": "Dot Voting - Keep, Drop, Add",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Format rapide de vote ou check-in."
+  },
+  "retromat-39": {
+    "activityId": "retromat-39",
+    "activityName": "Dot Voting - Worked well, Do differently",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Format rapide de vote ou check-in."
+  },
+  "retromat-48": {
+    "activityId": "retromat-48",
+    "activityName": "Take a Stand - Line Dance",
+    "phase": "decide-what-to-do",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "medium",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-49": {
+    "activityId": "retromat-49",
+    "activityName": "Dot Voting - Starfish",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 1.5,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "medium",
+    "scalingFactor": "high",
+    "coachNote": "Métaphore visuelle. Nécessite explication claire."
+  },
+  "retromat-61": {
+    "activityId": "retromat-61",
+    "activityName": "Chaos Cocktail Party",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-63": {
+    "activityId": "retromat-63",
+    "activityName": "Low Hanging Fruit",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-72": {
+    "activityId": "retromat-72",
+    "activityName": "Divide the Dollar",
+    "phase": "decide-what-to-do",
+    "explanation": 2,
+    "questions": 1,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "medium",
+    "scalingFactor": "medium"
+  },
+  "retromat-73": {
+    "activityId": "retromat-73",
+    "activityName": "Pitch",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-77": {
+    "activityId": "retromat-77",
+    "activityName": "Follow Through",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-84": {
+    "activityId": "retromat-84",
+    "activityName": "Last Retro's Actions Table",
+    "phase": "set-stage",
+    "explanation": 2.5,
+    "questions": 2,
+    "work": [
+      10,
+      15
+    ],
+    "restitutionPerPerson": 75,
+    "setupComplexity": "medium",
+    "scalingFactor": "high",
+    "coachNote": "Focus sur actions concrètes et mesurables."
+  },
+  "retromat-88": {
+    "activityId": "retromat-88",
+    "activityName": "Impediments Cup",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-92": {
+    "activityId": "retromat-92",
+    "activityName": "Motivational Poster",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-99": {
+    "activityId": "retromat-99",
+    "activityName": "Planning Poker Voting",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "high",
+    "coachNote": "Activité physique. Nécessite espace suffisant."
+  },
+  "retromat-100": {
+    "activityId": "retromat-100",
+    "activityName": "Landscape Diagram",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-103": {
+    "activityId": "retromat-103",
+    "activityName": "Systemic Consensus",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-104": {
+    "activityId": "retromat-104",
+    "activityName": "Note to Self",
+    "phase": "close",
+    "explanation": 1.5,
+    "questions": 0.5,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "simple",
+    "scalingFactor": "high"
+  },
+  "retromat-117": {
+    "activityId": "retromat-117",
+    "activityName": "Maximize Follow Through",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      5,
+      10
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-124": {
+    "activityId": "retromat-124",
+    "activityName": "Outside In",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      12
+    ],
+    "restitutionPerPerson": 60,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  },
+  "retromat-125": {
+    "activityId": "retromat-125",
+    "activityName": "Three by Three",
+    "phase": "decide-what-to-do",
+    "explanation": 3,
+    "questions": 2,
+    "work": [
+      8,
+      15
+    ],
+    "restitutionPerPerson": 45,
+    "setupComplexity": "complex",
+    "scalingFactor": "medium",
+    "coachNote": "Activité en plusieurs étapes. Bien expliquer la séquence."
+  }
+}
