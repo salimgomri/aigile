@@ -61,7 +61,81 @@ export const translations = {
     "nav-values": "Values",
     "nav-principles": "Principles",
     "nav-tools": "Tools",
-    "nav-about": "About"
+    "nav-about": "About",
+    "nav-manifesto": "Manifesto",
+    "nav-book": "Book",
+    "nav-cards": "Cards",
+    "nav-signin": "Sign In",
+    "nav-signup": "Sign Up",
+    
+    // New Landing Page - Hero
+    "landing-hero-title": "Agile Augmented by AI",
+    "landing-hero-subtitle": "The professional ecosystem for Agile Teams in the AI era",
+    "landing-hero-tagline": "Scrum Augmented. Smart Retrospectives. Team Intelligence.",
+    "landing-hero-cta-primary": "Start Your Journey",
+    "landing-hero-cta-secondary": "Explore Tools",
+    
+    // Book Section
+    "book-badge": "In Progress",
+    "book-title": "The S.A.L.I.M System",
+    "book-subtitle": "Transform Your Team with Augmented Agile",
+    "book-description": "The first comprehensive guide to implementing AI-augmented Agile in your organization. 30 years of field experience distilled into an actionable system.",
+    "book-benefit-1": "Proven frameworks for AI integration",
+    "book-benefit-2": "Real-world case studies",
+    "book-benefit-3": "Step-by-step implementation guide",
+    "book-cta": "Pre-order Now",
+    "book-price": "Coming Spring 2026",
+    
+    // Tools Suite
+    "tools-title": "AIgile Retro Suite",
+    "tools-subtitle": "Professional tools for high-performing teams",
+    "tools-retro-title": "AI Retro Tool",
+    "tools-retro-desc": "Generate personalized retrospectives based on team patterns. 146 activities, terrain logic.",
+    "tools-nikoni": "Niko-Niko",
+    "tools-dora": "DORA Metrics",
+    "tools-okr": "OKR Check-in",
+    "tools-dashboard": "Team Dashboard",
+    "tools-charts": "Cross-functional Charts",
+    "tools-skills": "Skills Matrix",
+    "tools-cta": "Start for Free",
+    "tools-start-journey": "Start Your Scrum Journey",
+    
+    // Manifesto Section
+    "manifesto-title": "The AIgile Manifesto",
+    "manifesto-subtitle": "The evolution of the 2001 Agile Manifesto for the AI era",
+    "manifesto-desc": "4 values, 10 principles, one revolution: placing humans at the center of AI-augmented collaboration.",
+    "manifesto-cta-view": "Read the Manifesto",
+    "manifesto-cta-download": "Download PDF",
+    
+    // Cards Section
+    "cards-title": "Retro Pattern Cards",
+    "cards-subtitle": "The ultimate facilitation tool",
+    "cards-description": "146 retrospective activities, organized by team dysfunction patterns. The essential companion for Scrum Masters and Agile Coaches.",
+    "cards-feature-1": "146 curated activities",
+    "cards-feature-2": "9 dysfunction patterns",
+    "cards-feature-3": "Facilitation tips included",
+    "cards-feature-4": "Premium quality print",
+    "cards-cta": "Order Now",
+    "cards-price": "$49",
+    
+    // Newsletter
+    "newsletter-title": "Stay AIgile",
+    "newsletter-subtitle": "Weekly insights on Agile, AI, and team intelligence",
+    "newsletter-placeholder": "your@email.com",
+    "newsletter-cta": "Subscribe",
+    "newsletter-privacy": "No spam. Unsubscribe anytime.",
+    
+    // Contact
+    "contact-title": "Get in Touch",
+    "contact-subtitle": "Questions? Coaching inquiry? Let's talk.",
+    "contact-name": "Name",
+    "contact-email": "Email",
+    "contact-message": "Message",
+    "contact-cta": "Send Message",
+    
+    // Floating Button
+    "coaching-float": "Book Coaching Session",
+    "coaching-float-short": "Coaching"
   },
   fr: {
     "hero-subtitle": "L'Évolution d'Agile vers l'Ère de l'IA",
@@ -125,7 +199,81 @@ export const translations = {
     "nav-values": "Valeurs",
     "nav-principles": "Principes",
     "nav-tools": "Outils",
-    "nav-about": "À propos"
+    "nav-about": "À propos",
+    "nav-manifesto": "Manifeste",
+    "nav-book": "Livre",
+    "nav-cards": "Cartes",
+    "nav-signin": "Se connecter",
+    "nav-signup": "S'inscrire",
+    
+    // New Landing Page - Hero
+    "landing-hero-title": "L'Agile Augmenté par l'IA",
+    "landing-hero-subtitle": "L'écosystème professionnel pour les équipes Agile de l'ère IA",
+    "landing-hero-tagline": "Scrum Augmenté. Rétrospectives Intelligentes. Intelligence d'Équipe.",
+    "landing-hero-cta-primary": "Démarrer le Parcours",
+    "landing-hero-cta-secondary": "Explorer les Outils",
+    
+    // Book Section
+    "book-badge": "En Cours d'Écriture",
+    "book-title": "Le Système S.A.L.I.M",
+    "book-subtitle": "Transformez Votre Équipe avec l'Agile Augmenté",
+    "book-description": "Le premier guide complet pour implémenter l'Agile augmenté par l'IA dans votre organisation. 30 ans d'expérience terrain distillés en un système actionnable.",
+    "book-benefit-1": "Frameworks éprouvés pour l'intégration IA",
+    "book-benefit-2": "Cas d'usage réels",
+    "book-benefit-3": "Guide d'implémentation étape par étape",
+    "book-cta": "Pré-commander",
+    "book-price": "Printemps 2026",
+    
+    // Tools Suite
+    "tools-title": "Suite AIgile Retro",
+    "tools-subtitle": "Outils professionnels pour équipes performantes",
+    "tools-retro-title": "Outil Rétro IA",
+    "tools-retro-desc": "Générez des rétrospectives personnalisées basées sur les patterns d'équipe. 146 activités, logique terrain.",
+    "tools-nikoni": "Niko-Niko",
+    "tools-dora": "Métriques DORA",
+    "tools-okr": "Check-in OKR",
+    "tools-dashboard": "Tableau de Bord",
+    "tools-charts": "Charts Transversaux",
+    "tools-skills": "Matrice de Compétences",
+    "tools-cta": "Commencer Gratuitement",
+    "tools-start-journey": "Démarrer Votre Parcours Scrum",
+    
+    // Manifesto Section
+    "manifesto-title": "Le Manifeste AIgile",
+    "manifesto-subtitle": "L'évolution du Manifeste Agile de 2001 pour l'ère de l'IA",
+    "manifesto-desc": "4 valeurs, 10 principes, une révolution : placer l'humain au centre de la collaboration augmentée par l'IA.",
+    "manifesto-cta-view": "Lire le Manifeste",
+    "manifesto-cta-download": "Télécharger PDF",
+    
+    // Cards Section
+    "cards-title": "Cartes de Patterns Rétro",
+    "cards-subtitle": "L'outil ultime de facilitation",
+    "cards-description": "146 activités de rétrospective, organisées par patterns de dysfonctionnement d'équipe. Le compagnon essentiel pour Scrum Masters et Coachs Agile.",
+    "cards-feature-1": "146 activités sélectionnées",
+    "cards-feature-2": "9 patterns de dysfonctionnement",
+    "cards-feature-3": "Conseils de facilitation inclus",
+    "cards-feature-4": "Impression qualité premium",
+    "cards-cta": "Commander",
+    "cards-price": "49€",
+    
+    // Newsletter
+    "newsletter-title": "Restez AIgile",
+    "newsletter-subtitle": "Insights hebdomadaires sur Agile, IA et intelligence d'équipe",
+    "newsletter-placeholder": "votre@email.com",
+    "newsletter-cta": "S'abonner",
+    "newsletter-privacy": "Pas de spam. Désabonnement à tout moment.",
+    
+    // Contact
+    "contact-title": "Contactez-nous",
+    "contact-subtitle": "Questions ? Demande de coaching ? Parlons-en.",
+    "contact-name": "Nom",
+    "contact-email": "Email",
+    "contact-message": "Message",
+    "contact-cta": "Envoyer",
+    
+    // Floating Button
+    "coaching-float": "Réserver une Session de Coaching",
+    "coaching-float-short": "Coaching"
   }
 } as const
 
