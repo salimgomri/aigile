@@ -106,111 +106,512 @@ Répond à un cas réel : Salim lui-même interviendra chez des clients avec ce 
 
 ## Livrables Attendus
 
-1. **Configuration better-auth** (`lib/auth.ts` ou `app/api/auth/[...all]/route.ts`)
+### 1. Configuration better-auth (`lib/auth.ts` ou `app/api/auth/[...all]/route.ts`)
    - Config Google OAuth
    - Config email/password avec vérification
    - Session management
-   - Adapter Supabase pour better-auth
+   - **IMPORTANT:** Générer les tables better-auth d'abord (`npx better-auth generate`)
 
-2. **Schema Supabase (PostgreSQL)**
-   
-   Créer les tables suivantes via Supabase SQL Editor ou migrations :
-   
-   ```sql
-   -- Enable UUID extension
-   CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+### 2. Schema Supabase (PostgreSQL)
 
-   -- Users table (extends Supabase auth.users)
-   CREATE TABLE public.users (
-     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-     email TEXT UNIQUE NOT NULL,
-     email_verified TIMESTAMPTZ,
-     name TEXT,
-     image TEXT,
-     hashed_password TEXT,
-     created_at TIMESTAMPTZ DEFAULT NOW(),
-     updated_at TIMESTAMPTZ DEFAULT NOW()
-   );
+**⚠️ ORDRE CRITIQUE:**
+1. Laisser better-auth générer ses tables (`user`, `session`, `account`, `verification`)
+2. Créer les tables métier qui référencent `user` créé par better-auth
+3. Créer les policies RLS adaptées au système de session better-auth
 
-   -- Organizations table
-   CREATE TABLE public.organizations (
-     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-     name TEXT NOT NULL,
-     slug TEXT UNIQUE NOT NULL,
-     created_at TIMESTAMPTZ DEFAULT NOW()
-   );
+#### 2.1 Tables Better-Auth (auto-générées)
 
-   -- Teams table
-   CREATE TABLE public.teams (
-     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-     name TEXT NOT NULL,
-     organization_id UUID NOT NULL REFERENCES public.organizations(id) ON DELETE CASCADE,
-     created_at TIMESTAMPTZ DEFAULT NOW()
-   );
+```bash
+# NE PAS créer manuellement — laisser better-auth les générer
+npx better-auth generate
+```
 
-   -- Role enum
-   CREATE TYPE public.role AS ENUM (
-     'manager',
-     'scrum_master',
-     'product_owner',
-     'agile_coach',
-     'dev_team',
-     'guest'
-   );
+Better-auth créera automatiquement :
+- `user` (pas `users` !) avec `id`, `email`, `emailVerified`, `name`, `image`
+- `session` pour la gestion des sessions
+- `account` pour les providers OAuth (Google)
+- `verification` pour les tokens email
 
-   -- Team members table
-   CREATE TABLE public.team_members (
-     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-     user_id UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
-     team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
-     role public.role DEFAULT 'dev_team',
-     created_at TIMESTAMPTZ DEFAULT NOW(),
-     UNIQUE(user_id, team_id)
-   );
+#### 2.2 Tables Métier Supabase
 
-   -- Invitations table
-   CREATE TABLE public.invitations (
-     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-     email TEXT NOT NULL,
-     team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
-     role public.role NOT NULL,
-     token TEXT UNIQUE NOT NULL,
-     expires_at TIMESTAMPTZ NOT NULL,
-     used_at TIMESTAMPTZ,
-     created_at TIMESTAMPTZ DEFAULT NOW()
-   );
+```sql
+-- Enable UUID extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-   -- Indexes for performance
-   CREATE INDEX idx_team_members_user_id ON public.team_members(user_id);
-   CREATE INDEX idx_team_members_team_id ON public.team_members(team_id);
-   CREATE INDEX idx_invitations_token ON public.invitations(token);
-   CREATE INDEX idx_invitations_email ON public.invitations(email);
+-- ==========================================
+-- ORGANIZATIONS & TEAMS
+-- ==========================================
 
-   -- RLS (Row Level Security) policies
-   ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
-   ALTER TABLE public.organizations ENABLE ROW LEVEL SECURITY;
-   ALTER TABLE public.teams ENABLE ROW LEVEL SECURITY;
-   ALTER TABLE public.team_members ENABLE ROW LEVEL SECURITY;
-   ALTER TABLE public.invitations ENABLE ROW LEVEL SECURITY;
+-- Organizations table
+CREATE TABLE public.organizations (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-   -- Users can read their own data
-   CREATE POLICY "Users can view own data"
-     ON public.users FOR SELECT
-     USING (auth.uid() = id);
+-- Organization members (lien direct user ↔ org)
+CREATE TABLE public.organization_members (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id TEXT NOT NULL REFERENCES public.user(id) ON DELETE CASCADE,
+  organization_id UUID NOT NULL REFERENCES public.organizations(id) ON DELETE CASCADE,
+  role TEXT NOT NULL DEFAULT 'member',
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(user_id, organization_id)
+);
 
-   -- Team members can view their team
-   CREATE POLICY "Team members can view their teams"
-     ON public.teams FOR SELECT
-     USING (
-       EXISTS (
-         SELECT 1 FROM public.team_members
-         WHERE team_members.team_id = teams.id
-         AND team_members.user_id = auth.uid()
-       )
-     );
+-- Teams table
+CREATE TABLE public.teams (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  organization_id UUID NOT NULL REFERENCES public.organizations(id) ON DELETE CASCADE,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-   -- Similar policies for other tables...
-   ```
+-- Role enum
+CREATE TYPE public.team_role AS ENUM (
+  'manager',
+  'scrum_master',
+  'product_owner',
+  'agile_coach',
+  'dev_team',
+  'guest'
+);
+
+-- Team members table
+CREATE TABLE public.team_members (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id TEXT NOT NULL REFERENCES public.user(id) ON DELETE CASCADE,
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  role public.team_role DEFAULT 'dev_team',
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(user_id, team_id)
+);
+
+-- Invitations table
+CREATE TABLE public.invitations (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email TEXT NOT NULL,
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  role public.team_role NOT NULL,
+  token TEXT UNIQUE NOT NULL,
+  invited_by TEXT NOT NULL REFERENCES public.user(id),
+  expires_at TIMESTAMPTZ NOT NULL,
+  used_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ==========================================
+-- SPRINTS & METRICS
+-- ==========================================
+
+-- Sprints table
+CREATE TABLE public.sprints (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  number INT NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  goal TEXT,
+  committed_points INT,
+  completed_points INT,
+  status TEXT DEFAULT 'planning', -- planning, active, completed
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(team_id, number)
+);
+
+-- Daily moods (Niko-Niko)
+CREATE TABLE public.daily_moods (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  member_id UUID NOT NULL REFERENCES public.team_members(id) ON DELETE CASCADE,
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  sprint_id UUID REFERENCES public.sprints(id) ON DELETE SET NULL,
+  date DATE NOT NULL,
+  mood INT NOT NULL CHECK (mood IN (1, 2, 3)), -- 1=bad, 2=ok, 3=good
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(member_id, date)
+);
+
+-- DORA entries
+CREATE TABLE public.dora_entries (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  sprint_id UUID REFERENCES public.sprints(id) ON DELETE SET NULL,
+  deployment_frequency NUMERIC,
+  lead_time_hours NUMERIC,
+  change_failure_rate NUMERIC,
+  recovery_time_hours NUMERIC,
+  recorded_at TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- OKR check-ins
+CREATE TABLE public.okr_checkins (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  sprint_id UUID REFERENCES public.sprints(id) ON DELETE SET NULL,
+  objective TEXT NOT NULL,
+  key_results JSONB NOT NULL, -- [{ kr: "...", progress: 0-100 }]
+  confidence INT CHECK (confidence BETWEEN 1 AND 10),
+  blockers TEXT,
+  checked_at TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Skill assessments (Skill Matrix)
+CREATE TABLE public.skill_assessments (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  member_id UUID NOT NULL REFERENCES public.team_members(id) ON DELETE CASCADE,
+  sprint_id UUID REFERENCES public.sprints(id) ON DELETE SET NULL,
+  skill_name TEXT NOT NULL,
+  score INT NOT NULL CHECK (score BETWEEN 0 AND 4), -- 0=none, 4=expert
+  assessed_at TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Team dashboard (6 cadrans)
+CREATE TABLE public.team_dashboard (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  team_id UUID NOT NULL REFERENCES public.teams(id) ON DELETE CASCADE,
+  sprint_id UUID REFERENCES public.sprints(id) ON DELETE SET NULL,
+  on_time_score NUMERIC CHECK (on_time_score BETWEEN 0 AND 100),
+  on_budget_score NUMERIC CHECK (on_budget_score BETWEEN 0 AND 100),
+  on_scope_score NUMERIC CHECK (on_scope_score BETWEEN 0 AND 100),
+  quality_score NUMERIC CHECK (quality_score BETWEEN 0 AND 100),
+  maturity_score NUMERIC CHECK (maturity_score BETWEEN 0 AND 100),
+  wellbeing_score NUMERIC CHECK (wellbeing_score BETWEEN 0 AND 100),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(team_id, sprint_id)
+);
+
+-- ==========================================
+-- CREDITS & PAYMENTS
+-- ==========================================
+
+-- User credits (IA generations)
+CREATE TABLE public.user_credits (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id TEXT UNIQUE NOT NULL REFERENCES public.user(id) ON DELETE CASCADE,
+  balance INT DEFAULT 5,
+  last_reset TIMESTAMPTZ DEFAULT NOW(),
+  plan TEXT DEFAULT 'free', -- free, pro, enterprise
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Day passes (Stripe)
+CREATE TABLE public.day_passes (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id TEXT NOT NULL REFERENCES public.user(id) ON DELETE CASCADE,
+  purchased_at TIMESTAMPTZ DEFAULT NOW(),
+  expires_at TIMESTAMPTZ NOT NULL,
+  stripe_payment_id TEXT UNIQUE,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ==========================================
+-- CONTENT
+-- ==========================================
+
+-- Prompt library (P1-P25)
+CREATE TABLE public.prompt_library (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  code TEXT UNIQUE NOT NULL, -- P1, P2, ..., P25
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  tier TEXT DEFAULT 'free', -- free, pro, enterprise
+  category TEXT, -- retro, okr, dora, skill_matrix, etc.
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Glossary (tooltips livre)
+CREATE TABLE public.glossary (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  term TEXT UNIQUE NOT NULL,
+  definition TEXT NOT NULL,
+  chapter_ref TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ==========================================
+-- INDEXES
+-- ==========================================
+
+-- Organization & Teams
+CREATE INDEX idx_organization_members_user ON public.organization_members(user_id);
+CREATE INDEX idx_organization_members_org ON public.organization_members(organization_id);
+CREATE INDEX idx_team_members_user_id ON public.team_members(user_id);
+CREATE INDEX idx_team_members_team_id ON public.team_members(team_id);
+CREATE INDEX idx_invitations_token ON public.invitations(token);
+CREATE INDEX idx_invitations_email ON public.invitations(email);
+
+-- Sprints & Metrics
+CREATE INDEX idx_sprints_team ON public.sprints(team_id);
+CREATE INDEX idx_sprints_team_status ON public.sprints(team_id, status);
+CREATE INDEX idx_daily_moods_team_date ON public.daily_moods(team_id, date);
+CREATE INDEX idx_daily_moods_member_date ON public.daily_moods(member_id, date);
+CREATE INDEX idx_dora_entries_team_sprint ON public.dora_entries(team_id, sprint_id);
+CREATE INDEX idx_okr_checkins_team_sprint ON public.okr_checkins(team_id, sprint_id);
+CREATE INDEX idx_skill_assessments_team_sprint ON public.skill_assessments(team_id, sprint_id);
+CREATE INDEX idx_skill_assessments_member ON public.skill_assessments(member_id);
+CREATE INDEX idx_team_dashboard_team_sprint ON public.team_dashboard(team_id, sprint_id);
+
+-- Credits & Payments
+CREATE INDEX idx_user_credits_user ON public.user_credits(user_id);
+CREATE INDEX idx_day_passes_user_expires ON public.day_passes(user_id, expires_at);
+
+-- Content
+CREATE INDEX idx_prompt_library_code ON public.prompt_library(code);
+CREATE INDEX idx_prompt_library_tier ON public.prompt_library(tier);
+CREATE INDEX idx_glossary_term ON public.glossary(term);
+
+-- ==========================================
+-- TRIGGERS (updated_at auto-update)
+-- ==========================================
+
+CREATE OR REPLACE FUNCTION update_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Apply trigger to all tables with updated_at
+CREATE TRIGGER update_organizations_updated_at BEFORE UPDATE ON public.organizations FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_organization_members_updated_at BEFORE UPDATE ON public.organization_members FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_teams_updated_at BEFORE UPDATE ON public.teams FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_team_members_updated_at BEFORE UPDATE ON public.team_members FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_invitations_updated_at BEFORE UPDATE ON public.invitations FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_sprints_updated_at BEFORE UPDATE ON public.sprints FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_dora_entries_updated_at BEFORE UPDATE ON public.dora_entries FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_okr_checkins_updated_at BEFORE UPDATE ON public.okr_checkins FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_skill_assessments_updated_at BEFORE UPDATE ON public.skill_assessments FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_team_dashboard_updated_at BEFORE UPDATE ON public.team_dashboard FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_user_credits_updated_at BEFORE UPDATE ON public.user_credits FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_prompt_library_updated_at BEFORE UPDATE ON public.prompt_library FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER update_glossary_updated_at BEFORE UPDATE ON public.glossary FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+
+-- ==========================================
+-- RLS (Row Level Security)
+-- ==========================================
+
+ALTER TABLE public.organizations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.organization_members ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.teams ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.team_members ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.invitations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.sprints ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.daily_moods ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.dora_entries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.okr_checkins ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.skill_assessments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.team_dashboard ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.user_credits ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.day_passes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.prompt_library ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.glossary ENABLE ROW LEVEL SECURITY;
+
+-- ⚠️ IMPORTANT: Ces policies utilisent un helper get_current_user_id()
+-- à créer en fonction de l'intégration better-auth / Supabase
+-- (pas auth.uid() qui ne fonctionnera pas avec better-auth)
+
+-- Helper function (À ADAPTER selon l'intégration better-auth)
+CREATE OR REPLACE FUNCTION get_current_user_id()
+RETURNS TEXT AS $$
+BEGIN
+  -- TODO: Récupérer le user_id depuis le token better-auth
+  -- Peut nécessiter de parser le JWT ou d'utiliser current_setting()
+  RETURN current_setting('app.current_user_id', true);
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- ==========================================
+-- RLS POLICIES - TEAMS & MEMBERS
+-- ==========================================
+
+-- Teams: SELECT
+CREATE POLICY "select_own_teams" ON public.teams
+  FOR SELECT USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = teams.id
+      AND team_members.user_id = get_current_user_id()
+    )
+  );
+
+-- Teams: INSERT (Manager org only)
+CREATE POLICY "insert_teams_org_manager" ON public.teams
+  FOR INSERT WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM public.organization_members
+      WHERE organization_members.organization_id = teams.organization_id
+      AND organization_members.user_id = get_current_user_id()
+      AND organization_members.role = 'manager'
+    )
+  );
+
+-- Teams: UPDATE (Manager team only)
+CREATE POLICY "update_teams_manager" ON public.teams
+  FOR UPDATE USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = teams.id
+      AND team_members.user_id = get_current_user_id()
+      AND team_members.role = 'manager'
+    )
+  );
+
+-- Teams: DELETE (Manager team only)
+CREATE POLICY "delete_teams_manager" ON public.teams
+  FOR DELETE USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = teams.id
+      AND team_members.user_id = get_current_user_id()
+      AND team_members.role = 'manager'
+    )
+  );
+
+-- ==========================================
+-- RLS POLICIES - SPRINTS
+-- ==========================================
+
+-- Sprints: SELECT (team members)
+CREATE POLICY "select_sprints_team_members" ON public.sprints
+  FOR SELECT USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = sprints.team_id
+      AND team_members.user_id = get_current_user_id()
+    )
+  );
+
+-- Sprints: INSERT (Manager, SM)
+CREATE POLICY "insert_sprints_manager_sm" ON public.sprints
+  FOR INSERT WITH CHECK (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = sprints.team_id
+      AND team_members.user_id = get_current_user_id()
+      AND team_members.role IN ('manager', 'scrum_master')
+    )
+  );
+
+-- Sprints: UPDATE (Manager, SM)
+CREATE POLICY "update_sprints_manager_sm" ON public.sprints
+  FOR UPDATE USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = sprints.team_id
+      AND team_members.user_id = get_current_user_id()
+      AND team_members.role IN ('manager', 'scrum_master')
+    )
+  );
+
+-- Sprints: DELETE (Manager only)
+CREATE POLICY "delete_sprints_manager" ON public.sprints
+  FOR DELETE USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = sprints.team_id
+      AND team_members.user_id = get_current_user_id()
+      AND team_members.role = 'manager'
+    )
+  );
+
+-- ==========================================
+-- RLS POLICIES - DAILY MOODS (Niko-Niko)
+-- ==========================================
+
+-- Daily moods: SELECT (team members)
+CREATE POLICY "select_moods_team_members" ON public.daily_moods
+  FOR SELECT USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = daily_moods.team_id
+      AND team_members.user_id = get_current_user_id()
+    )
+  );
+
+-- Daily moods: INSERT (own data only for dev_team, all for manager/SM)
+CREATE POLICY "insert_moods_own_or_manager" ON public.daily_moods
+  FOR INSERT WITH CHECK (
+    (
+      -- Own data
+      member_id IN (
+        SELECT id FROM public.team_members
+        WHERE user_id = get_current_user_id()
+      )
+    ) OR (
+      -- Manager/SM can insert for others
+      EXISTS (
+        SELECT 1 FROM public.team_members
+        WHERE team_members.team_id = daily_moods.team_id
+        AND team_members.user_id = get_current_user_id()
+        AND team_members.role IN ('manager', 'scrum_master')
+      )
+    )
+  );
+
+-- Daily moods: UPDATE (own data only for dev_team, all for manager/SM)
+CREATE POLICY "update_moods_own_or_manager" ON public.daily_moods
+  FOR UPDATE USING (
+    (
+      member_id IN (
+        SELECT id FROM public.team_members
+        WHERE user_id = get_current_user_id()
+      )
+    ) OR (
+      EXISTS (
+        SELECT 1 FROM public.team_members
+        WHERE team_members.team_id = daily_moods.team_id
+        AND team_members.user_id = get_current_user_id()
+        AND team_members.role IN ('manager', 'scrum_master')
+      )
+    )
+  );
+
+-- Daily moods: DELETE (Manager only)
+CREATE POLICY "delete_moods_manager" ON public.daily_moods
+  FOR DELETE USING (
+    EXISTS (
+      SELECT 1 FROM public.team_members
+      WHERE team_members.team_id = daily_moods.team_id
+      AND team_members.user_id = get_current_user_id()
+      AND team_members.role = 'manager'
+    )
+  );
+
+-- ==========================================
+-- RLS POLICIES - CONTENT (Public read)
+-- ==========================================
+
+-- Prompt library: SELECT (authenticated users)
+CREATE POLICY "select_prompts_authenticated" ON public.prompt_library
+  FOR SELECT USING (get_current_user_id() IS NOT NULL);
+
+-- Glossary: SELECT (authenticated users)
+CREATE POLICY "select_glossary_authenticated" ON public.glossary
+  FOR SELECT USING (get_current_user_id() IS NOT NULL);
+
+-- NOTE: Les policies pour dora_entries, okr_checkins, skill_assessments, 
+-- team_dashboard, user_credits, day_passes suivent le même pattern
+-- (SELECT = team members, INSERT/UPDATE = role-specific, DELETE = manager)
+```
 
 3. **Matrice de permissions** (`lib/permissions.ts`)
    ```ts
@@ -312,13 +713,59 @@ Répond à un cas réel : Salim lui-même interviendra chez des clients avec ce 
 
 ## Ordre d'Implémentation
 
-1. **Setup Supabase** (tables + RLS policies + indexes)
-2. **Setup better-auth** + Supabase adapter + Google OAuth + Email/Password
-3. **Matrice permissions** (`lib/permissions.ts`)
-4. **Middleware** de protection
-5. **Pages auth** (login, register, accept-invite)
-6. **Système d'invitations** (envoi email Resend)
-7. **Tests** des flux complets
+1. **Setup Supabase** (créer le projet + obtenir les credentials)
+2. **Setup better-auth** (installer + générer les tables auth)
+   ```bash
+   npm install better-auth
+   npx better-auth generate  # Crée user, session, account, verification
+   ```
+3. **Créer les tables métier Supabase** (SQL migrations complètes ci-dessus)
+4. **Adapter `get_current_user_id()`** pour l'intégration better-auth/Supabase
+5. **Matrice permissions** (`lib/permissions.ts`)
+6. **Middleware** de protection
+7. **Pages auth** (login, register, accept-invite)
+8. **Système d'invitations** (envoi email Resend)
+9. **Tests** des flux complets + vérification RLS policies
+
+---
+
+## Notes Importantes - Résolution Conflit better-auth / Supabase
+
+**Problème:** better-auth gère ses propres tables (`user`, `session`, `account`, `verification`). Les policies RLS Supabase natives utilisent `auth.uid()` qui ne fonctionnera **pas** avec better-auth car il ne passe pas par le JWT Supabase natif.
+
+**Solution:**
+
+1. **Laisser better-auth générer ses tables d'abord** (`npx better-auth generate`)
+2. **Ne PAS créer de table `public.users` manuellement** — better-auth crée `public.user`
+3. **Créer un helper `get_current_user_id()`** qui extrait le `user_id` depuis le token better-auth :
+   ```sql
+   CREATE OR REPLACE FUNCTION get_current_user_id()
+   RETURNS TEXT AS $$
+   BEGIN
+     -- Option 1: Via current_setting() si better-auth set le user_id
+     RETURN current_setting('app.current_user_id', true);
+     
+     -- Option 2: Parser le JWT better-auth (à adapter selon leur format)
+     -- Documentation: https://better-auth.com/docs/integrations/supabase
+   END;
+   $$ LANGUAGE plpgsql SECURITY DEFINER;
+   ```
+4. **Toutes les policies RLS** doivent utiliser `get_current_user_id()` au lieu de `auth.uid()`
+5. **Dans le middleware Next.js**, après authentification better-auth, set le `user_id` via :
+   ```ts
+   // middleware.ts ou lib/auth.ts
+   import { createClient } from '@supabase/supabase-js'
+   
+   const supabase = createClient(url, key)
+   await supabase.rpc('set_config', {
+     parameter: 'app.current_user_id',
+     value: session.userId
+   })
+   ```
+
+**Références:**
+- Documentation better-auth Supabase: https://better-auth.com/docs/integrations/supabase
+- Alternative: Utiliser Supabase Auth natif au lieu de better-auth (mais perd les features better-auth)
 
 ---
 
