@@ -3,38 +3,69 @@
 @tailwind utilities;
 
 @layer base {
+  /* 
+   * LUXURY DARK THEME - Premium Palette
+   * Inspiration: Apple Card, Luxury watches, Premium cognac
+   * Colors: Rose Gold, Copper, Deep Black
+   * Vibe: Luxurious, warm, exclusive, sophisticated
+   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 186 100% 34.5%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    /* Light mode (subtle warmth) */
+    --background: 40 20% 98%;
+    --foreground: 30 10% 10%;
+    --card: 40 15% 100%;
+    --card-foreground: 30 10% 10%;
+    --popover: 40 15% 100%;
+    --popover-foreground: 30 10% 10%;
+    --primary: 30 45% 64%;        /* Rose Gold #D4A574 */
+    --primary-foreground: 30 10% 10%;
+    --secondary: 25 55% 46%;      /* Copper #B87333 */
+    --secondary-foreground: 40 20% 98%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 30 10% 40%;
+    --accent: 40 60% 88%;         /* Light Gold #F4E4C1 */
+    --accent-foreground: 30 10% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 20% 98%;
+    --border: 30 20% 90%;
+    --input: 30 20% 90%;
+    --ring: 30 45% 64%;
+    --radius: 0.75rem;
   }
 
+  .dark {
+    /* Dark mode - LUXURY BLACK with warm undertones */
+    --background: 30 8% 7%;       /* Deep warm black #121010 */
+    --foreground: 40 15% 96%;     /* Off-white warm #F5F5F0 */
+    --card: 30 10% 10%;           /* Card warm black */
+    --card-foreground: 40 15% 96%;
+    --popover: 30 10% 8%;
+    --popover-foreground: 40 15% 96%;
+    --primary: 30 45% 64%;        /* Rose Gold #D4A574 */
+    --primary-foreground: 30 10% 10%;
+    --secondary: 25 55% 46%;      /* Copper #B87333 */
+    --secondary-foreground: 40 20% 98%;
+    --muted: 30 10% 15%;
+    --muted-foreground: 40 15% 65%;
+    --accent: 40 50% 78%;         /* Accent gold */
+    --accent-foreground: 30 10% 10%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 40 15% 96%;
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 30 45% 64%;
+  }
+
+  /* Legacy theme support (now same as dark) */
   [data-theme="apple"] {
-    --primary: 12 100% 60%;
-    --secondary: 271 81% 62%;
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --primary: 30 45% 64%;
+    --secondary: 25 55% 46%;
+    --background: 30 8% 7%;
+    --foreground: 40 15% 96%;
+    --card: 30 10% 10%;
+    --card-foreground: 40 15% 96%;
+    --muted: 30 10% 15%;
+    --muted-foreground: 40 15% 65%;
   }
 
   * {
@@ -46,8 +77,12 @@
   }
 }
 
+/* 
+ * LUXURY GRADIENT TEXT
+ * Rose Gold → Copper → Warm Gold
+ */
 .aigile-text {
-  background: linear-gradient(135deg, #0066cc, #00a0b0);
+  background: linear-gradient(135deg, #D4A574, #B87333, #F4E4C1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -55,8 +90,16 @@
   letter-spacing: 0.5px;
 }
 
+/* Enhanced luxury gradient for dark mode */
+.dark .aigile-text {
+  background: linear-gradient(135deg, #F4D7A7, #D4A574, #B87333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 [data-theme="apple"] .aigile-text {
-  background: linear-gradient(135deg, #FF6B35, #A855F7);
+  background: linear-gradient(135deg, #F4D7A7, #D4A574, #B87333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -75,4 +118,91 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 1s ease-out;
+}
+
+/* 
+ * LUXURY ENHANCEMENTS
+ * Premium effects for the Luxury Dark theme
+ */
+
+/* Warm glow effect for buttons and cards */
+.luxury-glow {
+  box-shadow: 0 0 40px rgba(212, 165, 116, 0.15),
+              0 0 80px rgba(184, 115, 51, 0.1);
+}
+
+.luxury-glow:hover {
+  box-shadow: 0 0 60px rgba(212, 165, 116, 0.25),
+              0 0 100px rgba(184, 115, 51, 0.15);
+}
+
+/* Premium gradient backgrounds */
+.luxury-gradient-primary {
+  background: linear-gradient(135deg, #D4A574 0%, #B87333 50%, #F4E4C1 100%);
+}
+
+.luxury-gradient-subtle {
+  background: linear-gradient(135deg, 
+    rgba(212, 165, 116, 0.1) 0%, 
+    rgba(184, 115, 51, 0.05) 50%, 
+    rgba(244, 228, 193, 0.08) 100%
+  );
+}
+
+/* Warm shimmer effect */
+@keyframes luxury-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.luxury-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 165, 116, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: luxury-shimmer 3s infinite;
+}
+
+/* Premium border glow */
+.luxury-border {
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  box-shadow: inset 0 0 20px rgba(212, 165, 116, 0.05);
+}
+
+.luxury-border:hover {
+  border-color: rgba(212, 165, 116, 0.5);
+  box-shadow: inset 0 0 30px rgba(212, 165, 116, 0.1),
+              0 0 20px rgba(212, 165, 116, 0.2);
+}
+
+/* Warm dark backgrounds */
+.luxury-bg-dark {
+  background: linear-gradient(180deg, #0A0908 0%, #161412 100%);
+}
+
+.luxury-bg-card {
+  background: linear-gradient(135deg, 
+    rgba(18, 16, 16, 0.95) 0%, 
+    rgba(26, 22, 20, 0.95) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 165, 116, 0.1);
+}
+
+/* Text with warm glow */
+.luxury-text-glow {
+  text-shadow: 0 0 20px rgba(212, 165, 116, 0.3),
+               0 0 40px rgba(184, 115, 51, 0.2);
+}
+
+/* Premium glass effect */
+.luxury-glass {
+  background: rgba(18, 16, 16, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(212, 165, 116, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(212, 165, 116, 0.1);
 }
