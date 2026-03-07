@@ -4,68 +4,66 @@
 
 @layer base {
   /* 
-   * LUXURY DARK THEME - Premium Palette
-   * Inspiration: Apple Card, Luxury watches, Premium cognac
-   * Colors: Rose Gold, Copper, Deep Black
-   * Vibe: Luxurious, warm, exclusive, sophisticated
+   * CLEAN MODERN THEME - Simple & Effective
+   * No more brown! Clean blacks, whites, and purple/blue accent
    */
   :root {
-    /* Light mode (subtle warmth) */
-    --background: 40 20% 98%;
-    --foreground: 30 10% 10%;
-    --card: 40 15% 100%;
-    --card-foreground: 30 10% 10%;
-    --popover: 40 15% 100%;
-    --popover-foreground: 30 10% 10%;
-    --primary: 30 45% 64%;        /* Rose Gold #D4A574 */
-    --primary-foreground: 30 10% 10%;
-    --secondary: 25 55% 46%;      /* Copper #B87333 */
-    --secondary-foreground: 40 20% 98%;
-    --muted: 40 20% 94%;
-    --muted-foreground: 30 10% 40%;
-    --accent: 40 60% 88%;         /* Light Gold #F4E4C1 */
-    --accent-foreground: 30 10% 10%;
+    /* Light mode - Clean and modern */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 262 83% 58%;        /* Purple #8B5CF6 - Modern accent */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 221 83% 53%;      /* Blue #3B82F6 - Secondary */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 40 20% 98%;
-    --border: 30 20% 90%;
-    --input: 30 20% 90%;
-    --ring: 30 45% 64%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 262 83% 58%;
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Dark mode - LUXURY BLACK with warm undertones */
-    --background: 30 8% 7%;       /* Deep warm black #121010 */
-    --foreground: 40 15% 96%;     /* Off-white warm #F5F5F0 */
-    --card: 30 10% 10%;           /* Card warm black */
-    --card-foreground: 40 15% 96%;
-    --popover: 30 10% 8%;
-    --popover-foreground: 40 15% 96%;
-    --primary: 30 45% 64%;        /* Rose Gold #D4A574 */
-    --primary-foreground: 30 10% 10%;
-    --secondary: 25 55% 46%;      /* Copper #B87333 */
-    --secondary-foreground: 40 20% 98%;
-    --muted: 30 10% 15%;
-    --muted-foreground: 40 15% 65%;
-    --accent: 40 50% 78%;         /* Accent gold */
-    --accent-foreground: 30 10% 10%;
+    /* Dark mode - Clean black with purple accent */
+    --background: 0 0% 7%;         /* Clean deep black #121212 */
+    --foreground: 0 0% 95%;        /* Clean white #F5F5F5 */
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 262 83% 58%;        /* Purple #8B5CF6 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 221 83% 53%;      /* Blue #3B82F6 */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 55%;
-    --destructive-foreground: 40 15% 96%;
-    --border: 30 15% 20%;
-    --input: 30 15% 20%;
-    --ring: 30 45% 64%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 262 83% 58%;
   }
 
-  /* Legacy theme support (now same as dark) */
+  /* Legacy theme support */
   [data-theme="apple"] {
-    --primary: 30 45% 64%;
-    --secondary: 25 55% 46%;
-    --background: 30 8% 7%;
-    --foreground: 40 15% 96%;
-    --card: 30 10% 10%;
-    --card-foreground: 40 15% 96%;
-    --muted: 30 10% 15%;
-    --muted-foreground: 40 15% 65%;
+    --primary: 262 83% 58%;
+    --secondary: 221 83% 53%;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
   }
 
   * {
@@ -78,11 +76,11 @@
 }
 
 /* 
- * LUXURY GRADIENT TEXT
- * Rose Gold → Copper → Warm Gold
+ * CLEAN GRADIENT TEXT
+ * Purple → Blue - Modern & Clean
  */
 .aigile-text {
-  background: linear-gradient(135deg, #D4A574, #B87333, #F4E4C1);
+  background: linear-gradient(135deg, #8B5CF6, #3B82F6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -90,16 +88,15 @@
   letter-spacing: 0.5px;
 }
 
-/* Enhanced luxury gradient for dark mode */
 .dark .aigile-text {
-  background: linear-gradient(135deg, #F4D7A7, #D4A574, #B87333);
+  background: linear-gradient(135deg, #A78BFA, #60A5FA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 [data-theme="apple"] .aigile-text {
-  background: linear-gradient(135deg, #F4D7A7, #D4A574, #B87333);
+  background: linear-gradient(135deg, #A78BFA, #60A5FA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -121,403 +118,23 @@
 }
 
 /* 
- * LUXURY ENHANCEMENTS
- * Premium effects for the Luxury Dark theme
+ * CLEAN & SUBTLE EFFECTS ONLY
+ * No overwhelming animations - just professional
  */
 
-/* Warm glow effect for buttons and cards */
-.luxury-glow {
-  box-shadow: 0 0 40px rgba(212, 165, 116, 0.15),
-              0 0 80px rgba(184, 115, 51, 0.1);
+/* Simple hover lift */
+.clean-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.luxury-glow:hover {
-  box-shadow: 0 0 60px rgba(212, 165, 116, 0.25),
-              0 0 100px rgba(184, 115, 51, 0.15);
+.clean-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
 }
 
-/* Premium gradient backgrounds */
-.luxury-gradient-primary {
-  background: linear-gradient(135deg, #D4A574 0%, #B87333 50%, #F4E4C1 100%);
-}
-
-.luxury-gradient-subtle {
-  background: linear-gradient(135deg, 
-    rgba(212, 165, 116, 0.1) 0%, 
-    rgba(184, 115, 51, 0.05) 50%, 
-    rgba(244, 228, 193, 0.08) 100%
-  );
-}
-
-/* Warm shimmer effect */
-@keyframes luxury-shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.luxury-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212, 165, 116, 0.3) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: luxury-shimmer 3s infinite;
-}
-
-/* Premium border glow */
-.luxury-border {
-  border: 1px solid rgba(212, 165, 116, 0.3);
-  box-shadow: inset 0 0 20px rgba(212, 165, 116, 0.05);
-}
-
-.luxury-border:hover {
-  border-color: rgba(212, 165, 116, 0.5);
-  box-shadow: inset 0 0 30px rgba(212, 165, 116, 0.1),
-              0 0 20px rgba(212, 165, 116, 0.2);
-}
-
-/* Warm dark backgrounds */
-.luxury-bg-dark {
-  background: linear-gradient(180deg, #0A0908 0%, #161412 100%);
-}
-
-.luxury-bg-card {
-  background: linear-gradient(135deg, 
-    rgba(18, 16, 16, 0.95) 0%, 
-    rgba(26, 22, 20, 0.95) 100%
-  );
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 165, 116, 0.1);
-}
-
-/* Text with warm glow */
-.luxury-text-glow {
-  text-shadow: 0 0 20px rgba(212, 165, 116, 0.3),
-               0 0 40px rgba(184, 115, 51, 0.2);
-}
-
-/* Premium glass effect */
-.luxury-glass {
-  background: rgba(18, 16, 16, 0.7);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(212, 165, 116, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(212, 165, 116, 0.1);
-}
-
-/* 
- * ════════════════════════════════════════════════════════════════
- * WOW EFFECT PREMIUM BACKGROUNDS - Tendances 2026
- * ════════════════════════════════════════════════════════════════
- */
-
-/* Animated Mesh Gradient - Hero Section */
-@keyframes mesh-animation {
-  0%, 100% {
-    background-position: 0% 50%, 100% 50%, 50% 0%, 50% 100%;
-  }
-  25% {
-    background-position: 25% 75%, 75% 25%, 75% 25%, 25% 75%;
-  }
-  50% {
-    background-position: 100% 50%, 0% 50%, 50% 100%, 50% 0%;
-  }
-  75% {
-    background-position: 75% 25%, 25% 75%, 25% 75%, 75% 25%;
-  }
-}
-
-.luxury-mesh-hero {
-  position: relative;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(184, 115, 51, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(244, 228, 193, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 60% 20%, rgba(212, 165, 116, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, #0A0908 0%, #161412 50%, #0A0908 100%);
-  background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100%;
-  animation: mesh-animation 20s ease-in-out infinite;
-}
-
-/* Floating orbs effect */
-.luxury-orbs {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-@keyframes float-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  25% { transform: translate(30px, -30px) scale(1.1); opacity: 0.8; }
-  50% { transform: translate(-20px, 30px) scale(0.9); opacity: 0.6; }
-  75% { transform: translate(40px, 20px) scale(1.05); opacity: 0.7; }
-}
-
-@keyframes float-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-  33% { transform: translate(-40px, 40px) scale(1.2); opacity: 0.7; }
-  66% { transform: translate(30px, -20px) scale(0.85); opacity: 0.5; }
-}
-
-@keyframes float-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-  20% { transform: translate(20px, 30px) scale(0.9); opacity: 0.6; }
-  40% { transform: translate(-30px, -20px) scale(1.15); opacity: 0.5; }
-  60% { transform: translate(40px, -40px) scale(0.95); opacity: 0.7; }
-  80% { transform: translate(-20px, 20px) scale(1.1); opacity: 0.4; }
-}
-
-.luxury-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.6;
-  mix-blend-mode: screen;
-}
-
-.luxury-orb-1 {
-  top: 10%;
-  left: 15%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(212, 165, 116, 0.3) 0%, transparent 70%);
-  animation: float-1 25s ease-in-out infinite;
-}
-
-.luxury-orb-2 {
-  top: 50%;
-  right: 10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(184, 115, 51, 0.25) 0%, transparent 70%);
-  animation: float-2 20s ease-in-out infinite;
-}
-
-.luxury-orb-3 {
-  bottom: 10%;
-  left: 40%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(244, 228, 193, 0.2) 0%, transparent 70%);
-  animation: float-3 30s ease-in-out infinite;
-}
-
-/* Premium Gradient Mesh - Sections */
-.luxury-mesh-section {
-  position: relative;
-  background: 
-    radial-gradient(ellipse at top left, rgba(212, 165, 116, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(184, 115, 51, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, transparent 0%, rgba(18, 16, 16, 0.4) 100%);
-}
-
-/* Glassmorphism Cards - Advanced */
-.luxury-glass-card {
-  background: linear-gradient(
-    135deg,
-    rgba(212, 165, 116, 0.05) 0%,
-    rgba(18, 16, 16, 0.8) 50%,
-    rgba(184, 115, 51, 0.05) 100%
-  );
-  backdrop-filter: blur(30px) saturate(150%);
-  border: 1px solid rgba(212, 165, 116, 0.2);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(212, 165, 116, 0.15),
-    inset 0 -1px 0 rgba(184, 115, 51, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.luxury-glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212, 165, 116, 0.1) 50%,
-    transparent 100%
-  );
-  transition: left 0.8s ease;
-}
-
-.luxury-glass-card:hover::before {
-  left: 100%;
-}
-
-/* Depth Layers Effect */
-.luxury-depth-layer {
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-.luxury-depth-layer::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(
-    135deg,
-    rgba(212, 165, 116, 0.1) 0%,
-    rgba(184, 115, 51, 0.05) 100%
-  );
-  border-radius: inherit;
-  transform: translateZ(-10px);
-  filter: blur(20px);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.luxury-depth-layer:hover::before {
-  opacity: 1;
-}
-
-/* Premium Text Effects */
-.luxury-text-premium {
-  background: linear-gradient(
-    135deg,
-    #F4D7A7 0%,
-    #D4A574 25%,
-    #B87333 50%,
-    #D4A574 75%,
-    #F4E4C1 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: luxury-text-flow 3s linear infinite;
-}
-
-@keyframes luxury-text-flow {
-  to { background-position: 200% center; }
-}
-
-/* Parallax Background Layers */
-.luxury-parallax-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.luxury-parallax-layer {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
-}
-
-/* 3D Card Tilt Effect */
-.luxury-card-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease;
-}
-
-.luxury-card-3d:hover {
-  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(20px);
-}
-
-/* Noise Texture Overlay */
-.luxury-noise {
-  position: relative;
-}
-
-.luxury-noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-  pointer-events: none;
-  mix-blend-mode: overlay;
-}
-
-/* Animated Gradient Border */
-@keyframes rotate-gradient {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.luxury-animated-border {
-  position: relative;
-  background: transparent;
-  overflow: hidden;
-}
-
-.luxury-animated-border::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(212, 165, 116, 0.5) 90deg,
-    transparent 180deg,
-    rgba(184, 115, 51, 0.5) 270deg,
-    transparent 360deg
-  );
-  border-radius: inherit;
-  animation: rotate-gradient 3s linear infinite;
-  z-index: -1;
-}
-
-.luxury-animated-border::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  border-radius: inherit;
-  z-index: -1;
-}
-
-/* Spotlight Effect */
-.luxury-spotlight {
-  position: relative;
-  overflow: hidden;
-}
-
-.luxury-spotlight::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(212, 165, 116, 0.15) 0%,
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.luxury-spotlight:hover::before {
-  opacity: 1;
-  animation: spotlight-move 2s ease-in-out infinite;
-}
-
-@keyframes spotlight-move {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(20%, 20%); }
-}
-
-/* Premium Hover Lift */
-.luxury-hover-lift {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.4s ease;
-}
-
-.luxury-hover-lift:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 60px rgba(212, 165, 116, 0.2),
-    0 10px 30px rgba(184, 115, 51, 0.15);
+/* Clean glass effect */
+.clean-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
