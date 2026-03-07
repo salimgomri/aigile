@@ -1,9 +1,9 @@
 /*
  * Landing Page Hero Section
- * - Apple-style premium design
- * - Clear value proposition
- * - Strong CTAs
- * - Smooth animations (to be added in animation layer)
+ * - WOW Effect Premium with animated mesh gradients
+ * - Floating orbs with 3D depth
+ * - Glassmorphism cards
+ * - Premium animations
  */
 
 'use client'
@@ -18,62 +18,100 @@ export default function LandingHero() {
   const t = translations[language]
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
-      {/* Background gradient orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" />
+    <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden luxury-mesh-hero">
+      {/* Animated Floating Orbs - WOW Effect */}
+      <div className="luxury-orbs">
+        <div className="luxury-orb luxury-orb-1" />
+        <div className="luxury-orb luxury-orb-2" />
+        <div className="luxury-orb luxury-orb-3" />
+      </div>
+
+      {/* Noise texture overlay for premium feel */}
+      <div className="absolute inset-0 luxury-noise opacity-40" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/50 dark:bg-black/50 backdrop-blur-lg rounded-full border border-gray-200 dark:border-gray-800 mb-8">
-          <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+        {/* Badge with glassmorphism */}
+        <div className="inline-flex items-center space-x-2 px-5 py-2.5 luxury-glass-card rounded-full mb-8 luxury-hover-lift">
+          <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+          <span className="text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {t['hero-author']}
           </span>
         </div>
 
-        {/* Main Title */}
+        {/* Main Title with premium gradient animation */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-          <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+          <span className="luxury-text-premium block">
             {t['landing-hero-title']}
           </span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-4 max-w-3xl mx-auto font-light">
+        {/* Subtitle with subtle glow */}
+        <p className="text-xl sm:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto font-light luxury-text-glow">
           {t['landing-hero-subtitle']}
         </p>
 
         {/* Tagline */}
-        <p className="text-lg text-gray-500 dark:text-gray-500 mb-12 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
           {t['landing-hero-tagline']}
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        {/* CTAs with premium effects */}
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
           <Link
             href="/retro"
-            className="group px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white text-lg font-semibold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+            className="group relative px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white text-lg font-semibold rounded-full overflow-hidden luxury-hover-lift luxury-animated-border"
           >
-            <span>{t['landing-hero-cta-primary']}</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            {/* Shimmer effect on hover */}
+            <div className="absolute inset-0 luxury-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative flex items-center space-x-2">
+              <span>{t['landing-hero-cta-primary']}</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </span>
           </Link>
 
           <Link
             href="#tools"
-            className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-lg font-semibold rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary hover:shadow-xl hover:scale-105 transition-all duration-300"
+            className="px-8 py-4 luxury-glass-card text-gray-200 text-lg font-semibold rounded-full border-2 border-primary/30 hover:border-primary/60 luxury-hover-lift luxury-spotlight transition-all duration-300"
           >
             {t['landing-hero-cta-secondary']}
           </Link>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Premium stats cards with glassmorphism */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {[
+            { number: '146', label: language === 'fr' ? 'Activités' : 'Activities', icon: '🎯' },
+            { number: '1000+', label: language === 'fr' ? 'Agilistes' : 'Agilists', icon: '👥' },
+            { number: '30 ans', label: language === 'fr' ? 'Expérience' : 'Experience', icon: '🏆' },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="luxury-glass-card luxury-hover-lift luxury-card-3d p-6 rounded-2xl group"
+            >
+              <div className="text-4xl mb-2">{stat.icon}</div>
+              <div className="text-3xl font-bold luxury-text-premium mb-1">
+                {stat.number}
+              </div>
+              <div className="text-sm text-gray-400 uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Scroll indicator with animation */}
         <div className="mt-20">
-          <div className="w-6 h-10 border-2 border-gray-300 dark:border-gray-700 rounded-full mx-auto flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-primary rounded-full animate-bounce" />
+          <div className="w-6 h-10 border-2 border-primary/50 rounded-full mx-auto flex items-start justify-center p-2 luxury-glow">
+            <div className="w-1.5 h-3 bg-gradient-to-b from-primary to-secondary rounded-full animate-bounce" />
           </div>
+          <p className="text-xs text-gray-500 mt-3 uppercase tracking-widest">
+            {language === 'fr' ? 'Découvrir' : 'Discover'}
+          </p>
         </div>
       </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   )
 }

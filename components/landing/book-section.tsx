@@ -23,53 +23,56 @@ export default function BookSection() {
   ]
 
   return (
-    <section id="book" className="relative py-24 bg-white dark:bg-black overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+    <section id="book" className="relative py-24 overflow-hidden luxury-mesh-section">
+      {/* Background with subtle animation */}
+      <div className="absolute inset-0 luxury-noise opacity-30" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Book Mockup */}
           <div className="relative order-2 lg:order-1">
-            {/* 3D Book Mockup Placeholder */}
-            <div className="relative group">
-              {/* Shadow/Glow effect */}
+            {/* 3D Book Mockup with premium effects */}
+            <div className="relative group luxury-card-3d">
+              {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-500" />
               
-              {/* Book Image Placeholder */}
-              <div className="relative aspect-[3/4] max-w-md mx-auto bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-2xl shadow-2xl overflow-hidden transform group-hover:scale-105 group-hover:rotate-2 transition-all duration-500">
+              {/* Book Image with glass effect */}
+              <div className="relative aspect-[3/4] max-w-md mx-auto luxury-glass-card rounded-3xl shadow-2xl overflow-hidden luxury-hover-lift luxury-spotlight">
                 {/* Book Cover Design */}
-                <div className="absolute inset-0 flex items-center justify-center p-8">
+                <div className="absolute inset-0 flex items-center justify-center p-8 luxury-depth-layer">
                   <div className="text-center space-y-6">
                     {/* Title on cover */}
                     <div className="space-y-2">
-                      <h3 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white">
+                      <h3 className="text-3xl sm:text-4xl font-bold text-white">
                         Le Système
                       </h3>
-                      <h3 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                      <h3 className="text-5xl sm:text-6xl font-bold luxury-text-premium">
                         S.A.L.I.M
                       </h3>
                     </div>
                     
                     {/* Subtitle */}
-                    <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xs mx-auto">
+                    <p className="text-sm text-gray-300 max-w-xs mx-auto leading-relaxed">
                       {t['book-subtitle']}
                     </p>
                     
                     {/* Author */}
-                    <p className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                    <p className="text-lg font-semibold text-gray-200">
                       Salim Gomri
                     </p>
 
-                    {/* Icon */}
+                    {/* Icon with glow */}
                     <div className="pt-4">
-                      <BookOpen className="w-12 h-12 text-primary mx-auto" />
+                      <BookOpen className="w-12 h-12 text-primary mx-auto luxury-glow" />
                     </div>
                   </div>
                 </div>
 
-                {/* "In Progress" ribbon */}
-                <div className="absolute top-8 -right-12 bg-gradient-to-r from-primary to-secondary text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-lg">
+                {/* Animated gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* "In Progress" ribbon with animation */}
+                <div className="absolute top-8 -right-12 bg-gradient-to-r from-primary to-secondary text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl luxury-shimmer">
                   {t['book-badge']}
                 </div>
               </div>
