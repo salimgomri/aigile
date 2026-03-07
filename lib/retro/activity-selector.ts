@@ -70,15 +70,42 @@ export function getFacilitationTechnique(teamSize: number, language: 'en' | 'fr'
 }
 
 /**
+ * Check if activity is universal (works for all patterns)
+ */
+function isUniversalActivity(activityId: string): boolean {
+  const universalIds = [
+    // Set the Stage
+    'retromat-1', 'retromat-2', 'retromat-3', 'retromat-22', 'retromat-32', 'retromat-42', 'retromat-57',
+    // Gather Data
+    'retromat-7', 'retromat-23', 'retromat-27', 'retromat-33', 'retromat-19', 'retromat-8', 'retromat-25', 'retromat-9',
+    // Generate Insights
+    'retromat-14', 'retromat-17', 'retromat-28', 'retromat-64', 'retromat-86',
+    // Decide
+    'retromat-16', 'retromat-26', 'retromat-31', 'retromat-38', 'retromat-48', 'retromat-63', 'retromat-72', 
+    'retromat-88', 'retromat-99', 'retromat-100', 'retromat-117', 'retromat-124',
+    // Close
+    'retromat-11', 'retromat-12', 'retromat-15', 'retromat-18', 'retromat-20', 'retromat-22', 'retromat-34', 'retromat-101'
+  ]
+  return universalIds.includes(activityId)
+}
+
+/**
  * Score activities based on duration and team size
+ * IMPORTANT: Pattern-specific activities get priority over universal ones
  */
 function scoreActivity(
   activity: RetroActivity,
   duration: number,
   teamSize: number,
-  phase: RetroPhase
+  phase: RetroPhase,
+  isPatternSpecific: boolean = true
 ): number {
   let score = 50 // base score
+  
+  // PRIORITY BOOST: Pattern-specific activities get +30 points
+  if (isPatternSpecific && !isUniversalActivity(activity.id)) {
+    score += 30
+  }
 
   // Duration-based scoring
   if (duration === 30) {
@@ -363,19 +390,12 @@ export function generateRetroPlan(
       // Get detailed timing data if available
       const timingData = ACTIVITY_TIMINGS_DATA[activity.id]
       
+      // Always use allocation as base time (respects duration constraint)
       let allocatedTime = allocation[phase]
       let actualTimePerPerson = timePerPerson
       
-      // Use detailed timing if available
+      // Use timing data only for restitution per person
       if (timingData) {
-        const optimalWorkTime = getOptimalWorkTime(timingData, teamSize)
-        const calculatedTime = calculateTotalTime(timingData, teamSize, optimalWorkTime)
-        
-        // Use calculated time if reasonable, otherwise use allocation
-        if (calculatedTime <= allocation[phase] * 1.3) {
-          allocatedTime = calculatedTime
-        }
-        
         actualTimePerPerson = timingData.restitutionPerPerson
       }
       
@@ -390,6 +410,9 @@ export function generateRetroPlan(
       })
       
       usedIds.push(activity.id)
+    } else {
+      // Log when no activity found for debugging
+      console.warn(`⚠️ No activity found for phase: ${phase}, problemKey: ${problemKey}, available activities: ${allActivities.length}`)
     }
   }
 

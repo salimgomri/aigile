@@ -2940,6 +2940,70 @@ Maintenant vient la tournure intéressante : Expliquez que s'ils veulent que quo
 }
 
 /**
+ * Universal activities that work for ALL patterns
+ * Based on 30 years field experience - these activities are pattern-agnostic
+ */
+const UNIVERSAL_ACTIVITIES_IDS = [
+  // ===== SET THE STAGE - Universal (create psychological safety) =====
+  'retromat-1',   // ESVP - Always useful to measure engagement
+  'retromat-2',   // Weather Report - Universal mood check
+  'retromat-3',   // Check In - Quick Question - Always breaks ice
+  'retromat-22',  // Temperature Reading - Universal team temperature
+  'retromat-32',  // Emoticon Project Gauge - Simple mood check
+  'retromat-42',  // Postcards - Creative ice breaker
+  'retromat-57',  // Say it with Flowers - Positive opening
+  
+  // ===== GATHER DATA - Universal (collect facts and feelings) =====
+  'retromat-7',   // Mad Sad Glad - Emotions are universal
+  'retromat-23',  // Timeline - Always useful to reconstruct events
+  'retromat-27',  // Plus & Delta - Simple and universal
+  'retromat-33',  // Proud & Sorry - Universal reflection
+  'retromat-19',  // Helped, Hindered, Hypothesis - Universal 3H
+  'retromat-8',   // Locate Strengths - Always positive
+  'retromat-25',  // Learning Matrix - 4 quadrants work for all
+  'retromat-9',   // Appreciations - Universal gratitude
+  
+  // ===== GENERATE INSIGHTS - Partially universal (some analysis methods work for all) =====
+  'retromat-14',  // 5 Whys - Root cause analysis is universal
+  'retromat-17',  // Circle of Questions - Universal inquiry
+  'retromat-28',  // Analyze Stories - Universal retrospection
+  'retromat-64',  // Patterns & Shifts - Universal pattern detection
+  'retromat-86',  // Systemic Constellations - Universal system view
+  
+  // ===== DECIDE WHAT TO DO - Universal (action selection) =====
+  'retromat-16',  // Dot Voting - Universal prioritization
+  'retromat-26',  // Perfection Game - Universal improvement
+  'retromat-31',  // Keep, Drop, Add - Universal decision framework
+  'retromat-38',  // Circles & Soup - Universal sphere of influence
+  'retromat-48',  // Take a Stand - Universal positioning
+  'retromat-63',  // Do It, Start, Stop - Universal action framework
+  'retromat-72',  // SMART Goals - Universal goal setting
+  'retromat-88',  // Plus & Delta Actions - Universal
+  'retromat-99',  // Impact Effort Matrix - Universal prioritization
+  'retromat-100', // Priority Poker - Universal voting
+  'retromat-117', // Lean Coffee Decision - Universal democratic
+  'retromat-124', // Commitment - Universal accountability
+  
+  // ===== CLOSE THE RETRO - Universal (wrap up positively) =====
+  'retromat-11',  // Return on Time Invested - Universal feedback
+  'retromat-12',  // Feedback Door - Numbers - Universal metric
+  'retromat-15',  // Appreciations - Universal gratitude
+  'retromat-18',  // Offer Appreciations - Universal positive close
+  'retromat-20',  // One Word - Universal quick close
+  'retromat-22',  // Happiness Histogram - Universal satisfaction
+  'retromat-34',  // Shower of Appreciation - Universal positive
+  'retromat-101', // Endless Blessings - Universal gratitude
+]
+
+/**
+ * Get universal activities from the dataset
+ */
+function getUniversalActivities(): RetroActivity[] {
+  const allActivities = Object.values(RETRO_ACTIVITIES).flat()
+  return allActivities.filter(a => UNIVERSAL_ACTIVITIES_IDS.includes(a.id))
+}
+
+/**
  * Get activities for a specific problem and filters
  */
 export function getActivitiesForProblem(
@@ -2950,27 +3014,16 @@ export function getActivitiesForProblem(
 ): RetroActivity[] {
   const activities = RETRO_ACTIVITIES[problemKey] || RETRO_ACTIVITIES['repetitive-complaints']
   
-  // Filter by trust level
-  let filtered = activities.filter(a => {
-    if (!a.trustLevel) return true
-    if (trustLevel === 'low') return a.trustLevel === 'low'
-    if (trustLevel === 'medium') return a.trustLevel === 'low' || a.trustLevel === 'medium'
-    return true
-  })
-
-  // Ensure we have at least one activity per phase
-  const phases: RetroPhase[] = ['set-stage', 'gather-data', 'generate-insights', 'decide-what-to-do', 'close']
-  const selected: RetroActivity[] = []
+  // Add universal activities (Decide and Close phases work for all patterns)
+  const universalActivities = getUniversalActivities()
   
-  phases.forEach(phase => {
-    const phaseActivities = filtered.filter(a => a.phase === phase)
-    if (phaseActivities.length > 0) {
-      // Pick first activity for this phase (could be randomized later)
-      selected.push(phaseActivities[0])
-    }
-  })
-
-  return selected
+  // Merge pattern-specific activities with universal ones (remove duplicates by id)
+  const allActivities = [...activities, ...universalActivities]
+  const uniqueActivities = allActivities.filter((activity, index, self) =>
+    index === self.findIndex((a) => a.id === activity.id)
+  )
+  
+  return uniqueActivities
 }
 
 /**

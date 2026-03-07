@@ -448,8 +448,8 @@ function ResultContent() {
             </p>
             <p className="text-white/80">
               {language === 'fr'
-                ? '✅ Plan généré avec logique terrain (30 ans coaching Agile)'
-                : '✅ Plan generated with field logic (30 years Agile coaching)'}
+                ? '✅ Plan généré avec ma logique terrain'
+                : '✅ Plan generated with my field logic'}
             </p>
           </div>
 
