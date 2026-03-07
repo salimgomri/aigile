@@ -119,18 +119,66 @@ Répond à un cas réel : Salim lui-même interviendra chez des clients avec ce 
 2. Créer les tables métier qui référencent `user` créé par better-auth
 3. Créer les policies RLS adaptées au système de session better-auth
 
-#### 2.1 Tables Better-Auth (auto-générées)
+#### 2.1 Tables Better-Auth (ÉTAPE OBLIGATOIRE D'ABORD)
 
-```bash
-# NE PAS créer manuellement — laisser better-auth les générer
-npx better-auth generate
+**⚠️ CRITIQUE: Créer ces tables AVANT les tables métier**
+
+Better-auth nécessite ces tables. Les créer manuellement pour éviter les conflits de typage :
+
+```sql
+-- ==========================================
+-- BETTER-AUTH TABLES (créer en PREMIER)
+-- ==========================================
+
+-- User table (better-auth schema)
+CREATE TABLE public.user (
+  id TEXT PRIMARY KEY, -- better-auth utilise TEXT, pas UUID
+  email TEXT UNIQUE NOT NULL,
+  emailVerified BOOLEAN DEFAULT false,
+  name TEXT,
+  image TEXT,
+  createdAt TIMESTAMPTZ DEFAULT NOW(),
+  updatedAt TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Session table (better-auth)
+CREATE TABLE public.session (
+  id TEXT PRIMARY KEY,
+  userId TEXT NOT NULL REFERENCES public.user(id) ON DELETE CASCADE,
+  expiresAt TIMESTAMPTZ NOT NULL,
+  ipAddress TEXT,
+  userAgent TEXT,
+  createdAt TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Account table (better-auth - pour OAuth)
+CREATE TABLE public.account (
+  id TEXT PRIMARY KEY,
+  userId TEXT NOT NULL REFERENCES public.user(id) ON DELETE CASCADE,
+  accountId TEXT NOT NULL,
+  providerId TEXT NOT NULL,
+  accessToken TEXT,
+  refreshToken TEXT,
+  expiresAt TIMESTAMPTZ,
+  createdAt TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Verification table (better-auth - pour email verification)
+CREATE TABLE public.verification (
+  id TEXT PRIMARY KEY,
+  identifier TEXT NOT NULL,
+  value TEXT NOT NULL,
+  expiresAt TIMESTAMPTZ NOT NULL,
+  createdAt TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Indexes better-auth
+CREATE INDEX idx_session_userId ON public.session(userId);
+CREATE INDEX idx_account_userId ON public.account(userId);
+CREATE INDEX idx_verification_identifier ON public.verification(identifier);
 ```
 
-Better-auth créera automatiquement :
-- `user` (pas `users` !) avec `id`, `email`, `emailVerified`, `name`, `image`
-- `session` pour la gestion des sessions
-- `account` pour les providers OAuth (Google)
-- `verification` pour les tokens email
+**Note:** Ces tables correspondent au schema better-auth. Si vous utilisez `npx better-auth generate`, vérifiez que le schema généré correspond exactement (notamment le type de `id` : TEXT vs UUID).
 
 #### 2.2 Tables Métier Supabase
 
@@ -713,19 +761,44 @@ CREATE POLICY "select_glossary_authenticated" ON public.glossary
 
 ## Ordre d'Implémentation
 
+**⚠️ ORDRE CRITIQUE - SUIVRE STRICTEMENT :**
+
 1. **Setup Supabase** (créer le projet + obtenir les credentials)
-2. **Setup better-auth** (installer + générer les tables auth)
+
+2. **Créer les tables better-auth EN PREMIER** (section 2.1 du schema SQL)
+   ```sql
+   -- Exécuter d'abord dans Supabase SQL Editor :
+   CREATE TABLE public.user (...);
+   CREATE TABLE public.session (...);
+   CREATE TABLE public.account (...);
+   CREATE TABLE public.verification (...);
+   ```
+   
+3. **Créer les tables métier Supabase** (section 2.2 du schema SQL)
+   ```sql
+   -- Maintenant que public.user existe, les REFERENCES fonctionnent :
+   CREATE TABLE public.organizations (...);
+   CREATE TABLE public.teams (...);
+   -- etc.
+   ```
+
+4. **Configurer better-auth** dans le code Next.js
    ```bash
    npm install better-auth
-   npx better-auth generate  # Crée user, session, account, verification
    ```
-3. **Créer les tables métier Supabase** (SQL migrations complètes ci-dessus)
-4. **Adapter `get_current_user_id()`** pour l'intégration better-auth/Supabase
-5. **Matrice permissions** (`lib/permissions.ts`)
-6. **Middleware** de protection
-7. **Pages auth** (login, register, accept-invite)
-8. **Système d'invitations** (envoi email Resend)
-9. **Tests** des flux complets + vérification RLS policies
+   Créer `lib/auth.ts` avec la config better-auth pointant vers Supabase
+
+5. **Adapter `get_current_user_id()`** pour l'intégration better-auth/Supabase
+
+6. **Matrice permissions** (`lib/permissions.ts`)
+
+7. **Middleware** de protection
+
+8. **Pages auth** (login, register, accept-invite)
+
+9. **Système d'invitations** (envoi email Resend)
+
+10. **Tests** des flux complets + vérification RLS policies
 
 ---
 
