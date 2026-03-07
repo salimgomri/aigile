@@ -4,66 +4,66 @@
 
 @layer base {
   /* 
-   * CLEAN MODERN THEME - Simple & Effective
-   * No more brown! Clean blacks, whites, and purple/blue accent
+   * NOIR PUR - Minimaliste Absolu
+   * No colors, just black & white
    */
   :root {
-    /* Light mode - Clean and modern */
+    /* Light mode - White & Black */
     --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --foreground: 0 0% 0%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 0 0% 0%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 262 83% 58%;        /* Purple #8B5CF6 - Modern accent */
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;            /* Pure Black */
     --primary-foreground: 0 0% 100%;
-    --secondary: 221 83% 53%;      /* Blue #3B82F6 - Secondary */
+    --secondary: 0 0% 20%;         /* Dark Gray */
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 262 83% 58%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 0%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 262 83% 58%;
+    --ring: 0 0% 0%;
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Dark mode - Clean black with purple accent */
-    --background: 0 0% 7%;         /* Clean deep black #121212 */
-    --foreground: 0 0% 95%;        /* Clean white #F5F5F5 */
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 262 83% 58%;        /* Purple #8B5CF6 */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 221 83% 53%;      /* Blue #3B82F6 */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 262 83% 58%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 72% 55%;
-    --destructive-foreground: 0 0% 95%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 262 83% 58%;
+    /* Dark mode - Pure Black & White */
+    --background: 0 0% 0%;         /* Pure Black #000000 */
+    --foreground: 0 0% 100%;       /* Pure White #FFFFFF */
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;          /* Pure White */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 80%;         /* Light Gray */
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
   }
 
   /* Legacy theme support */
   [data-theme="apple"] {
-    --primary: 262 83% 58%;
-    --secondary: 221 83% 53%;
-    --background: 0 0% 7%;
-    --foreground: 0 0% 95%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --primary: 0 0% 100%;
+    --secondary: 0 0% 80%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
   }
 
   * {
@@ -76,30 +76,21 @@
 }
 
 /* 
- * CLEAN GRADIENT TEXT
- * Purple → Blue - Modern & Clean
+ * NOIR PUR - No colors
+ * Just white on black
  */
 .aigile-text {
-  background: linear-gradient(135deg, #8B5CF6, #3B82F6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #FFFFFF;
   font-weight: 900;
   letter-spacing: 0.5px;
 }
 
 .dark .aigile-text {
-  background: linear-gradient(135deg, #A78BFA, #60A5FA);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #FFFFFF;
 }
 
 [data-theme="apple"] .aigile-text {
-  background: linear-gradient(135deg, #A78BFA, #60A5FA);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #FFFFFF;
 }
 
 @keyframes fadeInUp {
@@ -122,17 +113,17 @@
  * No overwhelming animations - just professional
  */
 
-/* Simple hover lift */
+/* Simple hover lift - B&W only */
 .clean-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .clean-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Clean glass effect */
+/* Clean glass effect - B&W */
 .clean-glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
