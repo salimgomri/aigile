@@ -4,66 +4,31 @@
 
 @layer base {
   /* 
-   * NOIR + ONCE DE CHALEUR
-   * Black & White base + Warm orange accent
+   * AIGILE BRAND COLORS - Fixed Dark Theme
+   * Gold #c9973a, Blue #138eec, Navy #0f2240, Dark #07111f
    */
   :root {
-    /* Light mode */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 5%;
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 5%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5%;
-    --primary: 24 100% 50%;        /* Warm Orange #FF7700 */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 24 100% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 85%;
-    --input: 0 0% 90%;
-    --ring: 24 100% 50%;
-    --radius: 0.75rem;
-  }
-
-  .dark {
-    /* Dark mode - Black + Warm Orange accent */
-    --background: 0 0% 4%;         /* Deep Black #0A0A0A */
-    --foreground: 0 0% 98%;        /* Near White #FAFAFA */
-    --card: 0 0% 8%;
+    /* Fixed Dark Theme (No Light Mode Toggle) */
+    --background: 216 47% 9%;      /* AIgile Dark #07111f */
+    --foreground: 0 0% 98%;        /* Near White */
+    --card: 218 40% 12%;           /* Slightly lighter than bg */
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 6%;
+    --popover: 218 40% 12%;
     --popover-foreground: 0 0% 98%;
-    --primary: 24 100% 55%;        /* Warm Orange #FF8C1A */
-    --primary-foreground: 0 0% 5%;
-    --secondary: 0 0% 90%;
-    --secondary-foreground: 0 0% 5%;
-    --muted: 0 0% 12%;
+    --primary: 42 54% 51%;         /* AIgile Gold #c9973a */
+    --primary-foreground: 216 47% 9%;
+    --secondary: 207 87% 50%;      /* AIgile Blue #138eec */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 218 30% 18%;
     --muted-foreground: 0 0% 65%;
-    --accent: 24 100% 55%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 42 54% 51%;
+    --accent-foreground: 216 47% 9%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 24 100% 55%;
-  }
-
-  /* Legacy theme support */
-  [data-theme="apple"] {
-    --primary: 24 100% 55%;
-    --secondary: 0 0% 90%;
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 98%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 65%;
+    --border: 218 30% 20%;
+    --input: 218 30% 18%;
+    --ring: 42 54% 51%;
+    --radius: 0.75rem;
   }
 
   * {
@@ -76,25 +41,9 @@
 }
 
 /* 
- * NOIR + ACCENT ORANGE CHAUD
- * White text with warm orange accent
+ * AIGILE-SPECIFIC UTILITIES
+ * Inline styles only, no magic classes
  */
-.aigile-text {
-  color: #FFFFFF;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 30px rgba(255, 140, 26, 0.3);
-}
-
-.dark .aigile-text {
-  color: #FFFFFF;
-  text-shadow: 0 0 30px rgba(255, 140, 26, 0.3);
-}
-
-[data-theme="apple"] .aigile-text {
-  color: #FFFFFF;
-  text-shadow: 0 0 30px rgba(255, 140, 26, 0.3);
-}
 
 @keyframes fadeInUp {
   from {
@@ -109,26 +58,4 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 1s ease-out;
-}
-
-/* 
- * CLEAN & SUBTLE EFFECTS ONLY
- * No overwhelming animations - just professional
- */
-
-/* Simple hover lift - Warm shadow */
-.clean-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.clean-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(255, 119, 0, 0.3);
-}
-
-/* Clean glass effect */
-.clean-glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }

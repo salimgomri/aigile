@@ -10,6 +10,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // AIgile Brand Colors
+        'aigile-gold': '#c9973a',
+        'aigile-blue': '#138eec',
+        'aigile-navy': '#0f2240',
+        'aigile-dark': '#07111f',
+        
+        // Shadcn-compatible tokens
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
