@@ -25,15 +25,15 @@ export default function ToolsSuiteSection() {
       featured: true,
       href: '/retro'
     },
-    { icon: Smile, title: t['tools-nikoni'], description: 'Track daily team mood', featured: false },
-    { icon: BarChart3, title: t['tools-dora'], description: 'Elite performance insights', featured: false },
-    { icon: Target, title: t['tools-okr'], description: 'Quarterly alignment check', featured: false },
-    { icon: Layout, title: t['tools-dashboard'], description: 'Real-time team health', featured: false },
-    { icon: Users, title: t['tools-skills'], description: 'Competency mapping', featured: false },
+    { icon: Smile, title: t['tools-nikoni'], description: language === 'fr' ? 'Humeur quotidienne (bientôt)' : 'Daily mood (coming soon)', featured: false, href: '/niko-niko' },
+    { icon: BarChart3, title: t['tools-dora'], description: language === 'fr' ? 'Performance élite (bientôt)' : 'Elite performance (coming soon)', featured: false, href: '/dora' },
+    { icon: Target, title: t['tools-okr'], description: language === 'fr' ? 'Alignement OKR (bientôt)' : 'OKR alignment (coming soon)', featured: false, href: '/okr' },
+    { icon: Layout, title: t['tools-dashboard'], description: language === 'fr' ? 'Santé d\'équipe (bientôt)' : 'Team health (coming soon)', featured: false, href: '/dashboard' },
+    { icon: Users, title: t['tools-skills'], description: language === 'fr' ? 'Cartographie compétences (bientôt)' : 'Skills mapping (coming soon)', featured: false, href: '/skill-matrix' },
   ]
 
   return (
-    <section id="tools" className="relative py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
+    <section id="tools" className="relative py-24 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
@@ -81,10 +81,10 @@ export default function ToolsSuiteSection() {
                 </Link>
                 
                 <Link
-                  href="/start-scrum"
+                  href="/parcours"
                   className="px-6 py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary hover:shadow-xl hover:scale-105 transition-all duration-300 text-center"
                 >
-                  {t['tools-start-journey']}
+                  {language === 'fr' ? 'Découvrir le Parcours' : 'Discover Journey'}
                 </Link>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function ToolsSuiteSection() {
               </div>
               {/* Floating badge */}
               <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full shadow-xl font-bold">
-                146 {language === 'fr' ? 'Activités' : 'Activities'}
+                {language === 'fr' ? 'Logique Terrain' : 'Field Logic'}
               </div>
             </div>
           </div>
@@ -137,21 +137,7 @@ export default function ToolsSuiteSection() {
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            {language === 'fr' 
-              ? 'Toute la suite AIgile Retro, gratuite pour les équipes.' 
-              : 'The complete AIgile Retro suite, free for teams.'}
-          </p>
-          <Link
-            href="/retro"
-            className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white text-lg font-semibold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            <span>{t['tools-cta']}</span>
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
+        {/* Bottom CTA - Removed duplicate "Start for Free" */}
       </div>
     </section>
   )

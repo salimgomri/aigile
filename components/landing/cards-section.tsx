@@ -23,7 +23,7 @@ export default function CardsSection() {
   ]
 
   return (
-    <section id="cards" className="relative py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
+    <section id="cards" className="relative py-24 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Visual */}
@@ -82,7 +82,7 @@ export default function CardsSection() {
 
               {/* Badge */}
               <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full shadow-xl font-bold z-10">
-                146 {language === 'fr' ? 'Cartes' : 'Cards'}
+                11 {language === 'fr' ? 'Cartes' : 'Cards'}
               </div>
             </div>
           </div>

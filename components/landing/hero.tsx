@@ -45,50 +45,50 @@ export default function LandingHero() {
             {t['landing-hero-tagline']}
           </p>
 
-          {/* CTAs - LIVRE en premier ! */}
+          {/* CTA - Single primary action: Retro Tool */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            {/* CTA 1: LIVRE (Priority!) - Warm orange */}
-            <a
-              href="#book"
-              className="group px-8 py-4 bg-primary hover:bg-primary/90 text-black text-lg font-bold rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300 flex items-center space-x-2"
-            >
-              <BookOpen className="w-5 h-5" />
-              <span>{language === 'fr' ? 'Découvrir le Livre' : 'Discover the Book'}</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
-
-            {/* CTA 2: Retro Tool */}
+            {/* CTA Primary: Retro Tool - Orange */}
             <Link
               href="/retro"
-              className="px-8 py-4 bg-transparent border-2 border-white/80 text-white text-lg font-semibold rounded-full hover:bg-white hover:text-black hover:scale-105 transition-all duration-300"
+              className="group px-10 py-5 bg-primary hover:bg-primary/90 text-black text-xl font-bold rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300 flex items-center space-x-3"
             >
-              {t['tools-cta']}
+              <span>{t['tools-cta']}</span>
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
+
+            {/* CTA Secondary: Book - Subtle */}
+            <a
+              href="#book"
+              className="px-6 py-3 bg-transparent border border-white/40 text-white text-base font-medium rounded-full hover:border-white/80 hover:bg-white/5 transition-all duration-300 flex items-center space-x-2"
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>{language === 'fr' ? 'Le Livre' : 'The Book'}</span>
+            </a>
           </div>
 
-          {/* Stats - Better contrast with orange accent */}
+          {/* Stats - Accurate, verifiable numbers */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div className="p-6 bg-card border border-border rounded-2xl hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
               <Target className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="text-3xl font-bold text-foreground mb-1">146</div>
+              <div className="text-3xl font-bold text-foreground mb-1">9</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider">
-                {language === 'fr' ? 'Activités' : 'Activities'}
+                {language === 'fr' ? 'Patterns Détectés' : 'Patterns Detected'}
               </div>
             </div>
 
             <div className="p-6 bg-card border border-border rounded-2xl hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
               <Users className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="text-3xl font-bold text-foreground mb-1">1000+</div>
+              <div className="text-3xl font-bold text-foreground mb-1">8</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider">
-                {language === 'fr' ? 'Agilistes' : 'Agilists'}
+                {language === 'fr' ? 'Questions Diagnostiques' : 'Diagnostic Questions'}
               </div>
             </div>
 
             <div className="p-6 bg-card border border-border rounded-2xl hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
               <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="text-3xl font-bold text-foreground mb-1">30</div>
+              <div className="text-3xl font-bold text-foreground mb-1">21</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider">
-                {language === 'fr' ? 'Ans d\'Expérience' : 'Years Experience'}
+                {language === 'fr' ? 'Ans Scrum Master' : 'Years Scrum Master'}
               </div>
             </div>
           </div>

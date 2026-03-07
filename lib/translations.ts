@@ -70,8 +70,8 @@ export const translations = {
     
     // New Landing Page - Hero
     "landing-hero-title": "Agile Augmented by AI",
-    "landing-hero-subtitle": "The professional ecosystem for Agile Teams in the AI era",
-    "landing-hero-tagline": "Scrum Augmented. Smart Retrospectives. Team Intelligence.",
+    "landing-hero-subtitle": "Diagnose team dysfunctions, generate personalized retros, unlock psychological safety",
+    "landing-hero-tagline": "The only retro tool that starts with WHY your team struggles, not just WHAT to do.",
     "landing-hero-cta-primary": "Start Your Journey",
     "landing-hero-cta-secondary": "Explore Tools",
     
@@ -79,7 +79,7 @@ export const translations = {
     "book-badge": "In Progress",
     "book-title": "The S.A.L.I.M System",
     "book-subtitle": "Transform Your Team with Augmented Agile",
-    "book-description": "The first comprehensive guide to implementing AI-augmented Agile in your organization. 30 years of field experience distilled into an actionable system.",
+    "book-description": "The first comprehensive guide to implementing AI-augmented Agile in your organization. 21 years of field experience distilled into an actionable system.",
     "book-benefit-1": "Proven frameworks for AI integration",
     "book-benefit-2": "Real-world case studies",
     "book-benefit-3": "Step-by-step implementation guide",
@@ -90,7 +90,7 @@ export const translations = {
     "tools-title": "AIgile Retro Suite",
     "tools-subtitle": "Professional tools for high-performing teams",
     "tools-retro-title": "AI Retro Tool",
-    "tools-retro-desc": "Generate personalized retrospectives based on team patterns. 146 activities, terrain logic.",
+    "tools-retro-desc": "Diagnose 9 team dysfunctions, get matched activities from 146 Retromat activities, terrain-based timing logic.",
     "tools-nikoni": "Niko-Niko",
     "tools-dora": "DORA Metrics",
     "tools-okr": "OKR Check-in",
@@ -110,13 +110,13 @@ export const translations = {
     // Cards Section
     "cards-title": "Retro Pattern Cards",
     "cards-subtitle": "The ultimate facilitation tool",
-    "cards-description": "146 retrospective activities, organized by team dysfunction patterns. The essential companion for Scrum Masters and Agile Coaches.",
-    "cards-feature-1": "146 curated activities",
+    "cards-description": "11 physical pattern cards (9 dysfunctions + P10 + memo) to diagnose team issues in seconds. The essential companion for Scrum Masters and Agile Coaches.",
+    "cards-feature-1": "11 pattern cards",
     "cards-feature-2": "9 dysfunction patterns",
     "cards-feature-3": "Facilitation tips included",
     "cards-feature-4": "Premium quality print",
     "cards-cta": "Order Now",
-    "cards-price": "$49",
+    "cards-price": "49€",
     
     // Newsletter
     "newsletter-title": "Stay AIgile",
@@ -208,8 +208,8 @@ export const translations = {
     
     // New Landing Page - Hero
     "landing-hero-title": "L'Agile Augmenté par l'IA",
-    "landing-hero-subtitle": "L'écosystème professionnel pour les équipes Agile de l'ère IA",
-    "landing-hero-tagline": "Scrum Augmenté. Rétrospectives Intelligentes. Intelligence d'Équipe.",
+    "landing-hero-subtitle": "Diagnostiquez les dysfonctions, générez des rétros personnalisées, débloquez la sécurité psychologique",
+    "landing-hero-tagline": "Le seul outil rétro qui commence par POURQUOI votre équipe bloque, pas juste QUOI faire.",
     "landing-hero-cta-primary": "Démarrer le Parcours",
     "landing-hero-cta-secondary": "Explorer les Outils",
     
@@ -228,7 +228,7 @@ export const translations = {
     "tools-title": "Suite AIgile Retro",
     "tools-subtitle": "Outils professionnels pour équipes performantes",
     "tools-retro-title": "Outil Rétro IA",
-    "tools-retro-desc": "Générez des rétrospectives personnalisées basées sur les patterns d'équipe. 146 activités, logique terrain.",
+    "tools-retro-desc": "Diagnostiquez 9 dysfonctions d'équipe, obtenez des activités parmi 146 activités Retromat, logique de timing terrain.",
     "tools-nikoni": "Niko-Niko",
     "tools-dora": "Métriques DORA",
     "tools-okr": "Check-in OKR",

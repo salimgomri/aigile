@@ -40,6 +40,7 @@ export default function PremiumNavbar() {
   const navLinks = [
     { href: '/', label: t['nav-home'] },
     { href: '/manifesto', label: t['nav-manifesto'] },
+    { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
     { href: '#tools', label: t['nav-tools'] },
     { href: '#book', label: t['nav-book'] },
     { href: '#cards', label: t['nav-cards'] },

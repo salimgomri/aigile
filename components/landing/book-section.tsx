@@ -23,30 +23,30 @@ export default function BookSection() {
   ]
 
   return (
-    <section id="book" className="relative py-24 overflow-hidden luxury-mesh-section">
-      {/* Background with subtle animation */}
-      <div className="absolute inset-0 luxury-noise opacity-30" />
+    <section id="book" className="relative py-24 overflow-hidden bg-white dark:bg-black">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(255,119,0,0.1),transparent_70%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Book Mockup */}
           <div className="relative order-2 lg:order-1">
-            {/* 3D Book Mockup with premium effects */}
-            <div className="relative group luxury-card-3d">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-20 blur-3xl group-hover:opacity-30 transition-opacity duration-500" />
+            {/* 3D Book Mockup - simplified effects */}
+            <div className="relative group">
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500" />
               
-              {/* Book Image with glass effect */}
-              <div className="relative aspect-[3/4] max-w-md mx-auto luxury-glass-card rounded-3xl shadow-2xl overflow-hidden luxury-hover-lift luxury-spotlight">
+              {/* Book Image */}
+              <div className="relative aspect-[3/4] max-w-md mx-auto bg-card border border-border rounded-3xl shadow-2xl overflow-hidden hover:scale-105 hover:shadow-primary/20 transition-all duration-500">
                 {/* Book Cover Design */}
-                <div className="absolute inset-0 flex items-center justify-center p-8 luxury-depth-layer">
+                <div className="absolute inset-0 flex items-center justify-center p-8 bg-gradient-to-br from-gray-800 to-black">
                   <div className="text-center space-y-6">
                     {/* Title on cover */}
                     <div className="space-y-2">
                       <h3 className="text-3xl sm:text-4xl font-bold text-white">
                         Le Système
                       </h3>
-                      <h3 className="text-5xl sm:text-6xl font-bold luxury-text-premium">
+                      <h3 className="text-5xl sm:text-6xl font-bold text-primary">
                         S.A.L.I.M
                       </h3>
                     </div>
@@ -61,18 +61,15 @@ export default function BookSection() {
                       Salim Gomri
                     </p>
 
-                    {/* Icon with glow */}
+                    {/* Icon */}
                     <div className="pt-4">
-                      <BookOpen className="w-12 h-12 text-primary mx-auto luxury-glow" />
+                      <BookOpen className="w-12 h-12 text-primary mx-auto" />
                     </div>
                   </div>
                 </div>
 
-                {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* "In Progress" ribbon with animation */}
-                <div className="absolute top-8 -right-12 bg-gradient-to-r from-primary to-secondary text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl luxury-shimmer">
+                {/* "In Progress" ribbon */}
+                <div className="absolute top-8 -right-12 bg-gradient-to-r from-primary to-secondary text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl">
                   {t['book-badge']}
                 </div>
               </div>
@@ -91,16 +88,16 @@ export default function BookSection() {
 
             {/* Title */}
             <div className="space-y-4">
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-4xl sm:text-5xl font-bold text-foreground">
                 {t['book-title']}
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400">
+              <p className="text-xl text-muted-foreground">
                 {t['book-subtitle']}
               </p>
             </div>
 
             {/* Description */}
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               {t['book-description']}
             </p>
 
@@ -109,7 +106,7 @@ export default function BookSection() {
               {benefits.map((benefit, index) => (
                 <li key={index} className="flex items-start space-x-3">
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700 dark:text-gray-300 text-lg">
+                  <span className="text-foreground/90 text-lg">
                     {benefit}
                   </span>
                 </li>
@@ -121,7 +118,7 @@ export default function BookSection() {
               <button className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 w-full sm:w-auto">
                 {t['book-cta']}
               </button>
-              <p className="text-sm text-gray-500 dark:text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 {t['book-price']}
               </p>
             </div>
