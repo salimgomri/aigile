@@ -30,8 +30,8 @@ export default function LandingHero() {
             </span>
           </div>
 
-          {/* Title - Pure white */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
+          {/* Title - White with warm glow */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white aigile-text">
             {t['landing-hero-title']}
           </h1>
 
@@ -47,10 +47,10 @@ export default function LandingHero() {
 
           {/* CTAs - LIVRE en premier ! */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            {/* CTA 1: LIVRE (Priority!) */}
+            {/* CTA 1: LIVRE (Priority!) - Warm orange */}
             <a
               href="#book"
-              className="group px-8 py-4 bg-white text-black text-lg font-semibold rounded-full hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2"
+              className="group px-8 py-4 bg-primary hover:bg-primary/90 text-black text-lg font-bold rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-300 flex items-center space-x-2"
             >
               <BookOpen className="w-5 h-5" />
               <span>{language === 'fr' ? 'Découvrir le Livre' : 'Discover the Book'}</span>
@@ -60,45 +60,45 @@ export default function LandingHero() {
             {/* CTA 2: Retro Tool */}
             <Link
               href="/retro"
-              className="px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-semibold rounded-full hover:bg-white hover:text-black transition-all duration-300"
+              className="px-8 py-4 bg-transparent border-2 border-white/80 text-white text-lg font-semibold rounded-full hover:bg-white hover:text-black hover:scale-105 transition-all duration-300"
             >
               {t['tools-cta']}
             </Link>
           </div>
 
-          {/* Stats - Clean cards B&W */}
+          {/* Stats - Better contrast with orange accent */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-              <Target className="w-8 h-8 text-white mx-auto mb-3" />
-              <div className="text-3xl font-bold text-white mb-1">146</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wider">
+            <div className="p-6 bg-card border border-border rounded-2xl hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+              <Target className="w-8 h-8 text-primary mx-auto mb-3" />
+              <div className="text-3xl font-bold text-foreground mb-1">146</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">
                 {language === 'fr' ? 'Activités' : 'Activities'}
               </div>
             </div>
 
-            <div className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-              <Users className="w-8 h-8 text-white mx-auto mb-3" />
-              <div className="text-3xl font-bold text-white mb-1">1000+</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wider">
+            <div className="p-6 bg-card border border-border rounded-2xl hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+              <Users className="w-8 h-8 text-primary mx-auto mb-3" />
+              <div className="text-3xl font-bold text-foreground mb-1">1000+</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">
                 {language === 'fr' ? 'Agilistes' : 'Agilists'}
               </div>
             </div>
 
-            <div className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-              <Sparkles className="w-8 h-8 text-white mx-auto mb-3" />
-              <div className="text-3xl font-bold text-white mb-1">30</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wider">
+            <div className="p-6 bg-card border border-border rounded-2xl hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+              <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
+              <div className="text-3xl font-bold text-foreground mb-1">30</div>
+              <div className="text-sm text-muted-foreground uppercase tracking-wider">
                 {language === 'fr' ? 'Ans d\'Expérience' : 'Years Experience'}
               </div>
             </div>
           </div>
 
-          {/* Scroll indicator - B&W */}
+          {/* Scroll indicator - Orange accent */}
           <div className="mt-20">
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full mx-auto flex items-start justify-center p-2">
-              <div className="w-1.5 h-3 bg-white rounded-full animate-bounce" />
+            <div className="w-6 h-10 border-2 border-muted-foreground rounded-full mx-auto flex items-start justify-center p-2">
+              <div className="w-1.5 h-3 bg-primary rounded-full animate-bounce" />
             </div>
-            <p className="text-xs text-gray-500 mt-3 uppercase tracking-widest">
+            <p className="text-xs text-muted-foreground mt-3 uppercase tracking-widest">
               {language === 'fr' ? 'Découvrir' : 'Discover'}
             </p>
           </div>
