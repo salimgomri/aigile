@@ -19,13 +19,15 @@ import { useLanguage } from './language-provider'
 import { useTheme } from './theme-provider'
 import { translations } from '@/lib/translations'
 import Link from 'next/link'
-import { Menu, X, ChevronDown, Globe, User } from 'lucide-react'
+import { Menu, X, ChevronDown, Globe, User, LogOut } from 'lucide-react'
+import { useSession, signOut } from '@/lib/auth-client'
 
 export default function PremiumNavbar() {
   const { language, setLanguage } = useLanguage()
   const { theme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { data: session, isPending } = useSession()
   const t = translations[language]
 
   // Detect scroll for glassmorphism effect
@@ -113,17 +115,41 @@ export default function PremiumNavbar() {
 
               {/* Authentication Buttons (Desktop) */}
               <div className="hidden lg:flex items-center space-x-3">
-                {/* 
-                  TODO: Integrate authentication provider
-                  Options: Firebase Auth, Supabase Auth, Auth0, NextAuth.js
-                  Current: Placeholder buttons ready for integration
-                */}
-                <button className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors duration-200">
-                  {t['nav-signin']}
-                </button>
-                <button className="px-5 py-2 bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200">
-                  {t['nav-signup']}
-                </button>
+                {isPending ? (
+                  <div className="w-8 h-8 rounded-full bg-muted animate-pulse" />
+                ) : session ? (
+                  <div className="flex items-center space-x-3">
+                    <Link
+                      href="/dashboard"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-foreground hover:bg-muted transition-colors duration-200"
+                    >
+                      <User className="w-4 h-4" />
+                      <span>{session.user.email}</span>
+                    </Link>
+                    <button
+                      onClick={() => signOut()}
+                      className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+                      aria-label="Sign out"
+                    >
+                      <LogOut className="w-4 h-4" />
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="px-4 py-2 text-sm font-medium text-foreground hover:text-aigile-gold transition-colors duration-200"
+                    >
+                      {t['nav-signin']}
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="px-5 py-2 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white text-sm font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
+                    >
+                      {t['nav-signup']}
+                    </Link>
+                  </>
+                )}
               </div>
 
               {/* Mobile Menu Button */}
@@ -185,12 +211,47 @@ export default function PremiumNavbar() {
 
               {/* Mobile Auth Buttons */}
               <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-800">
-                <button className="w-full px-4 py-3 text-center text-base font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                  {t['nav-signin']}
-                </button>
-                <button className="w-full px-4 py-3 bg-gradient-to-r from-primary to-secondary text-white text-base font-semibold rounded-lg hover:shadow-lg transition-all duration-200">
-                  {t['nav-signup']}
-                </button>
+                {isPending ? (
+                  <div className="w-full h-12 rounded-lg bg-muted animate-pulse" />
+                ) : session ? (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full px-4 py-3 flex items-center justify-center space-x-2 text-center text-base font-medium text-foreground bg-muted rounded-lg hover:bg-muted/80 transition-colors duration-200"
+                    >
+                      <User className="w-4 h-4" />
+                      <span>{session.user.email}</span>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        signOut()
+                        setMobileMenuOpen(false)
+                      }}
+                      className="w-full px-4 py-3 flex items-center justify-center space-x-2 text-center text-base font-medium text-destructive bg-destructive/10 rounded-lg hover:bg-destructive/20 transition-colors duration-200"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>{language === 'fr' ? 'Déconnexion' : 'Sign out'}</span>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full px-4 py-3 text-center text-base font-medium text-foreground bg-muted rounded-lg hover:bg-muted/80 transition-colors duration-200"
+                    >
+                      {t['nav-signin']}
+                    </Link>
+                    <Link
+                      href="/register"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full px-4 py-3 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white text-base font-semibold rounded-lg hover:shadow-lg transition-all duration-200"
+                    >
+                      {t['nav-signup']}
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
