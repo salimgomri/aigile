@@ -121,7 +121,7 @@ export default function NewsletterContactSection() {
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
-                      className="w-10 h-10 rounded-full bg-gradient-to-br from-aigile-gold to-aigile-blue border-2 border-background"
+                      className="w-10 h-10 rounded-full bg-aigile-gold border-2 border-background"
                     />
                   ))}
                 </div>

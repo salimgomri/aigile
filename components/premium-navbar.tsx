@@ -90,23 +90,23 @@ export default function PremiumNavbar() {
             {/* Right Section: Language, Auth, Mobile Menu */}
             <div className="flex items-center space-x-4">
               {/* Language Switcher */}
-              <div className="hidden md:flex items-center space-x-2 bg-aigile-navy/40 border border-white/10 rounded-full p-1">
+              <div className="hidden md:flex items-center space-x-2 bg-aigile-navy/60 border border-aigile-gold/30 rounded-full p-1">
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                     language === 'en'
                       ? 'bg-aigile-gold text-black shadow-sm'
-                      : 'text-muted-foreground hover:text-white'
+                      : 'text-white/90 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   EN
                 </button>
                 <button
                   onClick={() => setLanguage('fr')}
-                  className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                     language === 'fr'
                       ? 'bg-aigile-gold text-black shadow-sm'
-                      : 'text-muted-foreground hover:text-white'
+                      : 'text-white/90 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   FR
@@ -138,13 +138,13 @@ export default function PremiumNavbar() {
                   <>
                     <Link
                       href="/login"
-                      className="px-4 py-2 text-sm font-medium text-white/90 hover:text-aigile-gold transition-colors duration-200"
+                      className="px-4 py-2 text-sm font-semibold text-white hover:text-aigile-gold transition-colors duration-200"
                     >
                       {t['nav-signin']}
                     </Link>
                     <Link
                       href="/register"
-                      className="px-5 py-2 bg-aigile-gold hover:bg-book-orange text-black text-sm font-semibold rounded-full hover:shadow-lg transition-all duration-200"
+                      className="px-5 py-2 bg-aigile-gold hover:bg-book-orange text-black text-sm font-bold rounded-full hover:shadow-lg transition-all duration-200"
                     >
                       {t['nav-signup']}
                     </Link>
