@@ -58,6 +58,10 @@ echo "🔐 Permissions (root pour PM2, nginx proxy ne lit pas les fichiers)..."
 ssh "${REMOTE_HOST}" "chown -R root:root ${REMOTE_PATH} && chmod -R 755 ${REMOTE_PATH}"
 
 echo ""
+echo "🔧 Vérification des variables d'environnement (BETTER_AUTH_URL, NEXT_PUBLIC_APP_URL)..."
+ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (test -f deploy/ensure-env.sh && bash deploy/ensure-env.sh .env.local 2>/dev/null; test -f .env && bash deploy/ensure-env.sh .env 2>/dev/null) || true"
+
+echo ""
 echo "🔄 Redémarrage PM2..."
 ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (pm2 restart aigile 2>/dev/null || pm2 start npm --name aigile -- start 2>/dev/null || echo '⚠️ pm2 non configuré - lancez: cd ${REMOTE_PATH} && npm start')"
 

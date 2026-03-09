@@ -17,8 +17,17 @@ import { ensureUserCredits } from './credits/manager'
 const databaseUrl = getDatabaseUrl()
 const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3010'
 
+// Production: trustedOrigins requis pour OAuth (sign-in Google)
+const trustedOrigins = [
+  'https://aigile.lu',
+  'https://www.aigile.lu',
+  'http://localhost:3010',
+  'http://127.0.0.1:3010',
+]
+
 export const auth = betterAuth({
   baseURL,
+  trustedOrigins,
   database: new Pool({
     connectionString: databaseUrl,
     max: 10,
