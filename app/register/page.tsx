@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { signUp, requestPasswordReset } from '@/lib/auth-client'
@@ -22,7 +22,7 @@ const ROLES = [
   { value: 'other', labelFr: 'Autre', labelEn: 'Other' },
 ]
 
-export default function RegisterPage() {
+function RegisterContent() {
   const searchParams = useSearchParams()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -248,5 +248,13 @@ export default function RegisterPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">Chargement...</div>}>
+      <RegisterContent />
+    </Suspense>
   )
 }

@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
     const result = await consumeCredits(session.user.id, action, { teamId, sprintId })
 
-    if (result.ok && action === 'retro_ai_plan' && patternCode && VALID_PATTERN_CODES.includes(patternCode)) {
+    if (result.success && action === 'retro_ai_plan' && patternCode && VALID_PATTERN_CODES.includes(patternCode)) {
       const pattern = PATTERNS[patternCode as PatternCode]
       return NextResponse.json({
         ...result,

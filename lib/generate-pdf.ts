@@ -32,12 +32,15 @@ const PHASE_NAMES: Record<string, { en: string; fr: string }> = {
   'Close the retro': { en: 'Close the Retro', fr: 'Clore la Rétro' }
 }
 
+/** Pattern minimal pour le PDF (name, description) */
+type PatternForPDF = Pick<Pattern, 'name' | 'nameFr' | 'description' | 'descriptionFr'>
+
 /**
  * Build PDF template from RetroPlan + pattern (for questionnaire mode)
  */
 export function buildRetroPDFTemplate(
   retroPlan: RetroPlan,
-  primaryPattern: Pattern | null,
+  primaryPattern: PatternForPDF | null,
   lang: 'en' | 'fr'
 ): PDFTemplate {
   const problem = primaryPattern
@@ -148,8 +151,9 @@ function generateRetroPDFDoc(
     green: [34, 197, 94] as [number, number, number]
   }
 
-  const addFooter = () => {
-    const pageNum = doc.internal.getCurrentPageInfo().pageNumber
+  const getPageCount = () => (doc as { internal: { getNumberOfPages?: () => number; pages?: unknown[] } }).internal.getNumberOfPages?.() ?? (doc as { internal: { pages: unknown[] } }).internal.pages?.length ?? 1
+  const addFooter = (pageNum?: number) => {
+    const p = pageNum ?? getPageCount()
     const footerY = pageHeight - 10
     
     doc.setFontSize(7)
@@ -173,7 +177,7 @@ function generateRetroPDFDoc(
     
     doc.text(footerText, pageWidth / 2, footerY - 6, { align: 'center' })
     doc.text(
-      `${content.footer} • ${content.page} ${pageNum}`,
+      `${content.footer} • ${content.page} ${p}`,
       pageWidth / 2,
       footerY,
       { align: 'center' }
@@ -392,10 +396,10 @@ function generateRetroPDFDoc(
     })
   }
 
-  const pageCount = doc.internal.getNumberOfPages()
+  const pageCount = getPageCount()
   for (let i = 1; i <= pageCount; i++) {
     doc.setPage(i)
-    addFooter()
+    addFooter(i)
   }
 
   return doc
@@ -406,7 +410,7 @@ function generateRetroPDFDoc(
  */
 export async function downloadRetroPDF(
   retroPlan: RetroPlan,
-  primaryPattern: Pattern | null,
+  primaryPattern: PatternForPDF | null,
   lang: 'en' | 'fr',
   teamSize: number
 ): Promise<void> {

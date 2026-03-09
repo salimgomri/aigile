@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useCredits } from '@/lib/credits/CreditContext'
+import CreditsDrawer from './CreditsDrawer'
 
 export default function CreditsBadge() {
   const { status, loading } = useCredits()
