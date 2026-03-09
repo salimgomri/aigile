@@ -1,10 +1,26 @@
 # Prompt : Configurer Google OAuth pour AIgile
 
-**Objectif** : Obtenir `GOOGLE_CLIENT_ID` et `GOOGLE_CLIENT_SECRET` pour activer la connexion "Continuer avec Google" sur aigile.lu.
+**Objectif** : Obtenir `GOOGLE_CLIENT_ID` et `GOOGLE_CLIENT_SECRET` (pas `placeholder`) pour activer la connexion "Continuer avec Google" sur aigile.lu.
 
 ---
 
-## Instructions à suivre
+## Prompt rapide (copier-coller)
+
+```
+Crée les credentials Google OAuth pour aigile.lu :
+1. Va sur console.cloud.google.com → Créer un projet "AIgile Auth"
+2. APIs & Services → OAuth consent screen → Externe → Nom "AIgile", email salim.gomri@gmail.com
+3. Credentials → Create credentials → OAuth client ID → Web application
+4. Authorized JavaScript origins : http://localhost:3010 et https://aigile.lu
+5. Authorized redirect URIs : http://localhost:3010/api/auth/callback/google et https://aigile.lu/api/auth/callback/google
+6. Récupère Client ID et Client Secret
+7. Mets-les dans .env.local (GOOGLE_CLIENT_ID et GOOGLE_CLIENT_SECRET) - jamais placeholder
+8. Pour la prod : copie aussi sur le serveur /var/www/aigile/.env.local puis pm2 restart aigile
+```
+
+---
+
+## Instructions détaillées
 
 1. Va sur **https://console.cloud.google.com**
 2. Connecte-toi avec ton compte Google
@@ -52,15 +68,33 @@
     - **Client Secret** : `GOCSPX-xxxxxxxxxxxxxxxxxxxxxxxx`
 24. Copie ces deux valeurs
 
-### Ajouter dans .env.local
+### Ajouter dans .env.local (local)
 
 25. Ouvre `/Volumes/T9/aigile/.env.local`
-26. Remplace les lignes :
+26. Remplace les lignes (ne jamais laisser `placeholder`) :
+    ```
+    GOOGLE_CLIENT_ID=xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com
+    GOOGLE_CLIENT_SECRET=GOCSPX-xxxxxxxxxxxxxxxxxxxxxxxx
+    ```
+27. Redémarre le serveur : `npm run dev -- --port 3010`
+
+### Ajouter sur le serveur (production aigile.lu)
+
+28. **IMPORTANT** : Le serveur doit avoir les mêmes credentials. Le deploy n'envoie pas `.env.local`.
+29. Sur le serveur, édite `/var/www/aigile/.env.local` :
+    ```bash
+    ssh root@144.91.91.88
+    cd /var/www/aigile
+    nano .env.local   # ou vim, etc.
+    ```
+30. Ajoute ou remplace (avec tes vraies valeurs, pas placeholder) :
     ```
     GOOGLE_CLIENT_ID=ta_vraie_valeur_client_id
     GOOGLE_CLIENT_SECRET=ta_vraie_valeur_client_secret
+    BETTER_AUTH_URL=https://aigile.lu
+    NEXT_PUBLIC_APP_URL=https://aigile.lu
     ```
-27. Redémarre le serveur : `npm run dev -- --port 3010`
+31. Redémarre PM2 : `pm2 restart aigile`
 
 ---
 
@@ -88,3 +122,4 @@
 - **"redirect_uri_mismatch"** : Vérifie que l'URL de redirection est exactement celle configurée (pas de slash final, bon port)
 - **"access_denied"** : Vérifie que ton email est dans les "Utilisateurs de test" (mode Externe en développement)
 - **"invalid_client"** : Vérifie que Client ID et Client Secret sont corrects dans `.env.local`
+- **500 sur /api/auth/sign-in/social** : Le serveur a probablement `GOOGLE_CLIENT_ID=placeholder`. Copie les vraies valeurs depuis ton `.env.local` local vers le serveur.
