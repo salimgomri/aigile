@@ -138,7 +138,7 @@ export default function PremiumNavbar() {
                   <>
                     <Link
                       href="/login"
-                      className="px-4 py-2 text-sm font-medium text-foreground hover:text-aigile-gold transition-colors duration-200"
+                      className="px-4 py-2 text-sm font-medium text-white/90 hover:text-aigile-gold transition-colors duration-200"
                     >
                       {t['nav-signin']}
                     </Link>

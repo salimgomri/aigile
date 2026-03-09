@@ -116,7 +116,7 @@ export const translations = {
     "cards-feature-3": "Facilitation tips included",
     "cards-feature-4": "Premium quality print",
     "cards-cta": "Order Now",
-    "cards-price": "49€",
+    "cards-price": "À venir",
     
     // Newsletter
     "newsletter-title": "Stay AIgile",
@@ -254,7 +254,7 @@ export const translations = {
     "cards-feature-3": "Conseils de facilitation inclus",
     "cards-feature-4": "Impression qualité premium",
     "cards-cta": "Commander",
-    "cards-price": "49€",
+    "cards-price": "À venir",
     
     // Newsletter
     "newsletter-title": "Restez AIgile",

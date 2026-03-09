@@ -59,6 +59,9 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      animation: {
+        'bounce-slow': 'bounce 3s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

@@ -33,22 +33,25 @@ export default function BookSection() {
           {/* Left: Real Book Cover */}
           <div className="relative order-2 lg:order-1">
             <div className="relative group">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-book-orange to-aigile-gold opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500" />
+              {/* Glow effect animated */}
+              <div className="absolute inset-0 bg-gradient-to-br from-book-orange to-aigile-gold opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500 animate-pulse" />
               
-              {/* Book Cover Image */}
-              <div className="relative aspect-[3/4] max-w-md mx-auto">
+              {/* Book Cover Image with zoom effect */}
+              <div className="relative aspect-[3/4] max-w-md mx-auto overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-book-orange/30 transition-all duration-500">
                 <Image
                   src="/images/book-cover.jpg"
                   alt="Le Système S.A.L.I.M - Salim Gomri"
                   fill
-                  className="object-cover rounded-2xl shadow-2xl hover:shadow-book-orange/20 transition-shadow duration-500"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   priority
                 />
+                
+                {/* Overlay gradient on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-book-orange/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* "In Progress" ribbon with book-orange accent */}
-              <div className="absolute top-8 -right-12 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl">
+              <div className="absolute top-8 -right-12 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl animate-pulse">
                 {t['book-badge']}
               </div>
             </div>

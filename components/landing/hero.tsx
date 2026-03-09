@@ -174,18 +174,26 @@ export default function LandingHero() {
           {/* RIGHT COLUMN: Book Cover */}
           <div className="relative lg:order-2">
             <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-aigile-gold to-aigile-blue opacity-20 blur-3xl" />
+              {/* Glow effect animated */}
+              <div className="absolute inset-0 bg-gradient-to-br from-aigile-gold to-aigile-blue opacity-20 blur-3xl animate-pulse" />
               
-              {/* Book Cover Image */}
-              <div className="relative aspect-[3/4] -rotate-2 hover:rotate-0 transition-all duration-500 shadow-2xl rounded-lg overflow-hidden">
+              {/* Book Cover Image with micro-animations */}
+              <div className="relative aspect-[3/4] -rotate-2 hover:rotate-0 hover:scale-110 transition-all duration-700 ease-out shadow-2xl hover:shadow-aigile-gold/40 rounded-lg overflow-hidden group">
                 <Image
                   src="/images/book-cover.jpg"
                   alt="Le Système S.A.L.I.M - Salim Gomri"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
+                
+                {/* Overlay effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-aigile-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+
+              {/* Floating badge with animation */}
+              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow">
+                {language === 'fr' ? 'En cours d\'écriture' : 'In Progress'}
               </div>
             </div>
           </div>

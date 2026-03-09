@@ -127,27 +127,27 @@ export default function CardsSection() {
               ))}
             </ul>
 
-            {/* Price & CTA - scale-105 for primary action */}
+            {/* Price & CTA - Coming soon */}
             <div className="pt-4">
-              <div className="flex items-baseline space-x-3 mb-6">
-                <span className="text-4xl font-bold text-foreground">
+              <div className="inline-flex items-center space-x-2 px-6 py-3 mb-6 bg-book-orange/10 backdrop-blur-sm rounded-full border border-book-orange/30">
+                <Sparkles className="w-5 h-5 text-book-orange" />
+                <span className="text-2xl font-bold text-book-orange">
                   {t['cards-price']}
-                </span>
-                <span className="text-lg text-muted-foreground">
-                  + {language === 'fr' ? 'frais de port' : 'shipping'}
                 </span>
               </div>
 
-              <button className="group px-8 py-4 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 w-full sm:w-auto">
-                <ShoppingCart className="w-5 h-5" />
-                <span>{t['cards-cta']}</span>
-              </button>
-
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground mb-6">
                 {language === 'fr' 
-                  ? 'Livraison mondiale • Impression premium • Garantie satisfaction' 
-                  : 'Worldwide shipping • Premium print • Satisfaction guaranteed'}
+                  ? 'Les cartes physiques seront bientôt disponibles en pré-commande. Inscrivez-vous à la newsletter pour être notifié du lancement.' 
+                  : 'Physical cards will be available for pre-order soon. Sign up for the newsletter to be notified of the launch.'}
               </p>
+
+              <Link
+                href="#newsletter"
+                className="inline-flex items-center px-8 py-4 bg-muted hover:bg-muted/80 text-foreground text-lg font-semibold rounded-full border-2 border-border hover:border-book-orange transition-all duration-300"
+              >
+                <span>{language === 'fr' ? 'M\'inscrire à la newsletter' : 'Join newsletter'}</span>
+              </Link>
             </div>
           </div>
         </div>
