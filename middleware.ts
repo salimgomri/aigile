@@ -4,8 +4,7 @@ import type { NextRequest } from 'next/server'
 /**
  * Middleware runs ONLY on protected routes (positive matcher).
  * /api/* is never matched → no redirect on get-session, sign-in, etc.
- * Uses direct cookie access (aigile.session_token) — getSessionCookie can return null
- * in Edge even when the user is logged in. See: better-auth#2170
+ * Uses direct cookie access (aigile.session_token ou __Secure-aigile.session_token en prod).
  *
  * Lancement: /niko-niko et /dora redirigés vers /dashboard (outils en "Bientôt")
  */
@@ -23,7 +22,16 @@ const PROTECTED_ROUTES = [
 const COMING_SOON_REDIRECT = ['/niko-niko', '/dora']
 const ADMIN_COOKIE_NAME = 'aigile.admin'
 
-const SESSION_COOKIE_NAME = 'aigile.session_token'
+// En prod (useSecureCookies), Better Auth préfixe avec __Secure-
+const SESSION_COOKIE_NAMES = ['aigile.session_token', '__Secure-aigile.session_token'] as const
+
+function getSessionCookie(request: NextRequest): string | undefined {
+  for (const name of SESSION_COOKIE_NAMES) {
+    const value = request.cookies.get(name)?.value
+    if (value) return value
+  }
+  return undefined
+}
 
 function isProtectedRoute(pathname: string): boolean {
   return PROTECTED_ROUTES.some(route => pathname === route || pathname.startsWith(route + '/'))
@@ -42,9 +50,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  const sessionCookie = request.cookies.get(SESSION_COOKIE_NAME)
+  const sessionToken = getSessionCookie(request)
 
-  if (!sessionCookie?.value) {
+  if (!sessionToken) {
     const loginUrl = new URL('/login', request.url)
     loginUrl.searchParams.set('redirect', pathname)
     return NextResponse.redirect(loginUrl)
