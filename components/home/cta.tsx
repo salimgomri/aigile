@@ -10,7 +10,7 @@ export default function CTA() {
     <section className="py-16 bg-gradient-to-r from-[#c9973a] to-[#E8961E] text-black text-center">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-4">{t('cta-title')}</h2>
-        <p className="text-2xl mb-8 opacity-90" dangerouslySetInnerHTML={{ __html: t('cta-subtitle') }} />
+        <p className="text-2xl mb-8 text-black" dangerouslySetInnerHTML={{ __html: t('cta-subtitle') }} />
         <div className="flex gap-4 justify-center flex-wrap">
           <a
             href="/aigileManifesto.pdf"

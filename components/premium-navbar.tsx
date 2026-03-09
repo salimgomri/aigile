@@ -34,6 +34,7 @@ export default function PremiumNavbar() {
   const t = translations[language]
 
   const isLanding = pathname === '/'
+  const isManifesto = pathname === '/manifesto'
 
   const toolsLinks = [
     { href: '/retro', label: t['tools-retro-title'], match: (p: string) => p.startsWith('/retro') },
@@ -72,7 +73,9 @@ export default function PremiumNavbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || !isLanding
-            ? 'bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-lg'
+            ? isManifesto
+              ? 'bg-white backdrop-blur-xl shadow-lg border-b border-gray-200'
+              : 'bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-lg'
             : 'bg-transparent'
         }`}
       >
@@ -87,7 +90,7 @@ export default function PremiumNavbar() {
                 {/* Subtle glow effect on hover */}
                 <div className="absolute inset-0 rounded-xl bg-aigile-gold opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300" />
               </div>
-              <span className="text-2xl font-bold text-aigile-gold hidden sm:inline">
+              <span className={`text-2xl font-bold hidden sm:inline ${isManifesto ? 'text-aigile-navy' : 'text-aigile-gold'}`}>
                 AIgile
               </span>
             </Link>
@@ -102,8 +105,10 @@ export default function PremiumNavbar() {
                     href={link.href}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActive
-                        ? 'bg-aigile-gold/20 text-aigile-gold dark:text-aigile-gold font-semibold'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800'
+                        ? 'bg-aigile-gold/20 text-aigile-gold font-semibold'
+                        : isManifesto
+                          ? 'text-gray-800 hover:text-aigile-gold hover:bg-gray-100'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800'
                     }`}
                   >
                     {link.label}
@@ -115,13 +120,15 @@ export default function PremiumNavbar() {
             {/* Right Section: Language, Auth, Mobile Menu */}
             <div className="flex items-center space-x-4">
               {/* Language Switcher */}
-              <div className="hidden md:flex items-center space-x-2 bg-aigile-navy/60 border border-aigile-gold/30 rounded-full p-1">
+              <div className={`hidden md:flex items-center space-x-2 rounded-full p-1 ${isManifesto ? 'bg-gray-100 border border-gray-200' : 'bg-aigile-navy/60 border border-aigile-gold/30'}`}>
                 <button
                   onClick={() => setLanguage('en')}
                   className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                     language === 'en'
                       ? 'bg-aigile-gold text-black shadow-sm'
-                      : 'text-white/90 hover:text-white hover:bg-white/5'
+                      : isManifesto
+                        ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+                        : 'text-white/90 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   EN
@@ -131,7 +138,9 @@ export default function PremiumNavbar() {
                   className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                     language === 'fr'
                       ? 'bg-aigile-gold text-black shadow-sm'
-                      : 'text-white/90 hover:text-white hover:bg-white/5'
+                      : isManifesto
+                        ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+                        : 'text-white/90 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   FR
@@ -164,8 +173,8 @@ export default function PremiumNavbar() {
                     <Link
                       href="/login"
                       className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 ${
-                        scrolled
-                          ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                        isManifesto || scrolled
+                          ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
                           : 'text-gray-300 hover:text-white hover:bg-white/10'
                       }`}
                     >
@@ -195,7 +204,7 @@ export default function PremiumNavbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 shadow-lg">
+          <div className={`lg:hidden border-t shadow-lg ${isManifesto ? 'bg-white border-gray-200' : 'bg-white dark:bg-black border-gray-200 dark:border-gray-800'}`}>
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => {
                 const isActive = 'isActive' in link && link.isActive
@@ -207,7 +216,9 @@ export default function PremiumNavbar() {
                     className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                       isActive
                         ? 'bg-aigile-gold/20 text-aigile-gold font-semibold'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary'
+                        : isManifesto
+                          ? 'text-gray-800 hover:bg-gray-100 hover:text-aigile-gold'
+                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary'
                     }`}
                   >
                     {link.label}
@@ -216,7 +227,7 @@ export default function PremiumNavbar() {
               })}
 
               {/* Mobile Language Switcher */}
-              <div className="flex items-center justify-center space-x-2 pt-4 border-t border-gray-200 dark:border-gray-800">
+              <div className={`flex items-center justify-center space-x-2 pt-4 border-t ${isManifesto ? 'border-gray-200' : 'border-gray-200 dark:border-gray-800'}`}>
                 <button
                   onClick={() => {
                     setLanguage('en')
@@ -225,7 +236,7 @@ export default function PremiumNavbar() {
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     language === 'en'
                       ? 'bg-aigile-gold text-black'
-                      : 'bg-transparent text-muted-foreground border border-white/10'
+                      : isManifesto ? 'bg-transparent text-gray-600 border border-gray-300' : 'bg-transparent text-muted-foreground border border-white/10'
                   }`}
                 >
                   English
@@ -238,7 +249,7 @@ export default function PremiumNavbar() {
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     language === 'fr'
                       ? 'bg-aigile-gold text-black'
-                      : 'bg-transparent text-muted-foreground border border-white/10'
+                      : isManifesto ? 'bg-transparent text-gray-600 border border-gray-300' : 'bg-transparent text-muted-foreground border border-white/10'
                   }`}
                 >
                   Français

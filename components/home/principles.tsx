@@ -20,7 +20,7 @@ export default function Principles() {
         <h2 className="text-5xl font-bold text-center mb-8 text-gray-900">
           {t('principles-title')}
         </h2>
-        <p className="text-xl text-center mb-12 text-gray-700 font-medium max-w-3xl mx-auto">
+        <p className="text-xl text-center mb-12 text-gray-800 font-medium max-w-3xl mx-auto">
           {t('principles-intro')}
         </p>
 
@@ -30,13 +30,13 @@ export default function Principles() {
             return (
               <div
                 key={num}
-                className="group bg-white p-6 rounded-2xl border-l-6 border-primary shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl grid grid-cols-[60px_60px_1fr] gap-4 items-center"
+                className="group bg-white p-6 rounded-2xl border-l-6 border-aigile-gold shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl grid grid-cols-[60px_60px_1fr] gap-4 items-center"
               >
-                <div className="w-14 h-14 rounded-full border-4 border-primary flex items-center justify-center text-primary text-2xl font-black group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white transition-all duration-300">
+                <div className="w-14 h-14 rounded-full border-4 border-aigile-gold flex items-center justify-center text-aigile-gold text-2xl font-black group-hover:bg-gradient-to-br group-hover:from-aigile-gold group-hover:to-aigile-blue group-hover:text-white transition-all duration-300">
                   {num}
                 </div>
-                <Icon className="w-10 h-10 text-primary group-hover:text-secondary transition-all duration-300 group-hover:scale-110" />
-                <p className="text-lg font-medium text-gray-800">
+                <Icon className="w-10 h-10 text-aigile-gold group-hover:text-aigile-blue transition-all duration-300 group-hover:scale-110" />
+                <p className="text-lg font-medium text-gray-900">
                   {t(`principle-${num}` as any)}
                 </p>
               </div>

@@ -27,7 +27,7 @@ export default function Values() {
         <h2 className="text-5xl font-bold text-center mb-8 text-white">
           {t('values-title')}
         </h2>
-        <p className="text-xl text-center mb-12 text-white/90 font-medium">
+        <p className="text-xl text-center mb-12 text-white font-medium">
           {t('values-intro')}
         </p>
 
@@ -37,23 +37,23 @@ export default function Values() {
             return (
               <div
                 key={index}
-                className="group bg-white/95 p-8 rounded-3xl border-l-8 border-primary transition-all duration-300 hover:scale-105 hover:shadow-2xl grid grid-cols-[80px_80px_1fr] gap-6 items-center"
+                className="group bg-white p-8 rounded-3xl border-l-8 border-aigile-gold shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl grid grid-cols-[80px_80px_1fr] gap-6 items-center"
               >
-                <div className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center text-primary text-3xl font-black group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white transition-all duration-300">
+                <div className="w-16 h-16 rounded-full border-4 border-aigile-gold flex items-center justify-center text-aigile-gold text-3xl font-black group-hover:bg-gradient-to-br group-hover:from-aigile-gold group-hover:to-aigile-blue group-hover:text-white transition-all duration-300">
                   {index + 1}
                 </div>
-                <Icon className="w-12 h-12 text-primary group-hover:text-secondary transition-all duration-300 group-hover:scale-110" />
+                <Icon className="w-12 h-12 text-aigile-gold group-hover:text-aigile-blue transition-all duration-300 group-hover:scale-110" />
                 <div className="text-lg leading-relaxed">
                   <div className="font-bold text-gray-900">{t(value.bold as any)}</div>
-                  <div className="italic text-gray-600 my-1">{t(value.over as any)}</div>
-                  <div className="text-gray-700">{t(value.regular as any)}</div>
+                  <div className="italic text-gray-700 my-1">{t(value.over as any)}</div>
+                  <div className="text-gray-800">{t(value.regular as any)}</div>
                 </div>
               </div>
             )
           })}
         </div>
 
-        <div className="mt-12 text-center text-xl italic text-white/80 max-w-3xl mx-auto">
+        <div className="mt-12 text-center text-xl italic text-white max-w-3xl mx-auto">
           {t('values-note')}
         </div>
       </div>

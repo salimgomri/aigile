@@ -21,10 +21,10 @@ export default function Hero() {
           <br />
           <span className="text-white">Manifesto</span>
         </h1>
-        <p className="text-2xl md:text-4xl text-white/80 mb-8 font-light">
+        <p className="text-2xl md:text-4xl text-white mb-8 font-light">
           {t('hero-author')}
         </p>
-        <p className="text-3xl md:text-5xl text-white/90 font-light">
+        <p className="text-3xl md:text-5xl text-white font-light">
           {t('hero-subtitle')}
         </p>
       </div>
