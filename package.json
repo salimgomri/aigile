@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "deploy": "./deploy_aigile.sh",
     "db:setup": "npx tsx scripts/setup-auth-db.ts",
     "db:find-region": "npx tsx scripts/find-db-region.ts",
     "test": "vitest run",
