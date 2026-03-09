@@ -50,7 +50,7 @@ export default function ManifestoSection() {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <Link
                 href="/manifesto"
-                className="group px-6 py-3 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="group px-6 py-3 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <span>{t['manifesto-cta-view']}</span>
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
@@ -119,7 +119,7 @@ export default function ManifestoSection() {
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white px-6 py-3 rounded-full shadow-xl font-bold text-sm whitespace-nowrap">
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-aigile-gold text-black px-6 py-3 rounded-full shadow-xl font-bold text-sm whitespace-nowrap">
               4 {language === 'fr' ? 'Valeurs' : 'Values'} • 10 {language === 'fr' ? 'Principes' : 'Principles'}
             </div>
           </div>

@@ -77,7 +77,7 @@ export default function ToolsSuiteSection() {
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <Link
                   href="/retro"
-                  className="group px-6 py-3 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="group px-6 py-3 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   <span>{t['tools-cta']}</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -85,7 +85,7 @@ export default function ToolsSuiteSection() {
                 
                 <Link
                   href="/parcours"
-                  className="px-6 py-3 bg-card/50 backdrop-blur-sm text-foreground font-semibold rounded-full border-2 border-border hover:border-aigile-gold hover:shadow-lg transition-all duration-300 text-center"
+                  className="px-6 py-3 bg-transparent text-white font-semibold rounded-full border-2 border-white/60 hover:border-aigile-gold hover:bg-aigile-gold/10 hover:shadow-lg transition-all duration-300 text-center"
                 >
                   {language === 'fr' ? 'Découvrir le Parcours' : 'Discover Journey'}
                 </Link>
@@ -103,7 +103,7 @@ export default function ToolsSuiteSection() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-aigile-gold/10 via-transparent to-aigile-blue/10" />
               </div>
               {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white px-6 py-3 rounded-full shadow-xl font-bold">
+              <div className="absolute -top-4 -right-4 bg-aigile-gold text-black px-6 py-3 rounded-full shadow-xl font-bold">
                 {language === 'fr' ? 'Logique Terrain' : 'Field Logic'}
               </div>
             </div>

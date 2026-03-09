@@ -94,7 +94,7 @@ export default function NewsletterContactSection() {
               <button
                 type="submit"
                 disabled={newsletterSubmitted}
-                className="w-full px-6 py-4 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {newsletterSubmitted ? (
                   <>
@@ -200,7 +200,7 @@ export default function NewsletterContactSection() {
               <button
                 type="submit"
                 disabled={contactSubmitted}
-                className="w-full px-6 py-4 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-4 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {contactSubmitted ? (
                   <>

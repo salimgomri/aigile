@@ -85,7 +85,7 @@ export default function CardsSection() {
               </div>
 
               {/* Badge */}
-              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white px-6 py-3 rounded-full shadow-xl font-bold z-10">
+              <div className="absolute -top-4 -right-4 bg-aigile-gold text-black px-6 py-3 rounded-full shadow-xl font-bold z-10">
                 11 {language === 'fr' ? 'Cartes' : 'Cards'}
               </div>
             </div>
