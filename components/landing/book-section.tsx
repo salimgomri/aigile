@@ -1,7 +1,7 @@
 /*
  * Book Section - Le Système S.A.L.I.M
- * - Priority commercial feature
- * - 3D book mockup (placeholder)
+ * - Real book cover image
+ * - Orange accent from book cover
  * - Clear benefits and CTA
  * - Premium Apple-style design
  */
@@ -10,7 +10,8 @@
 
 import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
-import { BookOpen, CheckCircle, Sparkles } from 'lucide-react'
+import { CheckCircle, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 export default function BookSection() {
   const { language } = useLanguage()
@@ -29,60 +30,37 @@ export default function BookSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: Book Mockup */}
+          {/* Left: Real Book Cover */}
           <div className="relative order-2 lg:order-1">
-            {/* 3D Book Mockup - NO scale hover */}
             <div className="relative group">
-              {/* Subtle glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-aigile-gold to-aigile-blue opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500" />
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-book-orange to-aigile-gold opacity-10 blur-3xl group-hover:opacity-20 transition-opacity duration-500" />
               
-              {/* Book Image */}
-              <div className="relative aspect-[3/4] max-w-md mx-auto bg-card/50 backdrop-blur-sm border border-border rounded-3xl shadow-2xl overflow-hidden hover:shadow-aigile-gold/20 transition-shadow duration-500">
-                {/* Book Cover Design */}
-                <div className="absolute inset-0 flex items-center justify-center p-8 bg-gradient-to-br from-aigile-navy to-black">
-                  <div className="text-center space-y-6">
-                    {/* Title on cover */}
-                    <div className="space-y-2">
-                      <h3 className="text-3xl sm:text-4xl font-bold text-white">
-                        Le Système
-                      </h3>
-                      <h3 className="text-5xl sm:text-6xl font-bold text-aigile-gold">
-                        S.A.L.I.M
-                      </h3>
-                    </div>
-                    
-                    {/* Subtitle */}
-                    <p className="text-sm text-gray-300 max-w-xs mx-auto leading-relaxed">
-                      {t['book-subtitle']}
-                    </p>
-                    
-                    {/* Author */}
-                    <p className="text-lg font-semibold text-gray-200">
-                      Salim Gomri
-                    </p>
+              {/* Book Cover Image */}
+              <div className="relative aspect-[3/4] max-w-md mx-auto">
+                <Image
+                  src="/images/book-cover.jpg"
+                  alt="Le Système S.A.L.I.M - Salim Gomri"
+                  fill
+                  className="object-cover rounded-2xl shadow-2xl hover:shadow-book-orange/20 transition-shadow duration-500"
+                  priority
+                />
+              </div>
 
-                    {/* Icon */}
-                    <div className="pt-4">
-                      <BookOpen className="w-12 h-12 text-aigile-gold mx-auto" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* "In Progress" ribbon */}
-                <div className="absolute top-8 -right-12 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl">
-                  {t['book-badge']}
-                </div>
+              {/* "In Progress" ribbon with book-orange accent */}
+              <div className="absolute top-8 -right-12 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl">
+                {t['book-badge']}
               </div>
             </div>
           </div>
 
           {/* Right: Content */}
           <div className="order-1 lg:order-2 space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-aigile-gold/10 backdrop-blur-sm rounded-full border border-aigile-gold/20">
-              <Sparkles className="w-4 h-4 text-aigile-gold" />
-              <span className="text-sm font-semibold text-aigile-gold uppercase tracking-wider">
-                {language === 'fr' ? 'Priorité Commerciale' : 'Priority Release'}
+            {/* Badge with book-orange accent */}
+            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-book-orange/10 backdrop-blur-sm rounded-full border border-book-orange/30">
+              <Sparkles className="w-4 h-4 text-book-orange" />
+              <span className="text-sm font-semibold text-book-orange uppercase tracking-wider">
+                {language === 'fr' ? 'Sortie Prioritaire' : 'Priority Release'}
               </span>
             </div>
 
@@ -115,7 +93,7 @@ export default function BookSection() {
 
             {/* CTA - scale-105 for primary action only */}
             <div className="pt-4 space-y-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 w-full sm:w-auto">
+              <button className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 w-full sm:w-auto">
                 {t['book-cta']}
               </button>
               <p className="text-sm text-muted-foreground">

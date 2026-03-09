@@ -2,14 +2,19 @@ import { betterAuth } from 'better-auth'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+const supabaseDbPassword = process.env.SUPABASE_DB_PASSWORD!
 
-if (!supabaseUrl || !supabaseServiceKey) {
+if (!supabaseUrl || !supabaseServiceKey || !supabaseDbPassword) {
   throw new Error('Missing Supabase environment variables')
 }
 
 // Extract Supabase Project Ref from URL (e.g., "kobtkicnitovssyuxcno" from "https://kobtkicnitovssyuxcno.supabase.co")
 const projectRef = supabaseUrl.replace('https://', '').split('.')[0]
-const supabaseDbUrl = `postgresql://postgres.${projectRef}:${process.env.SUPABASE_DB_PASSWORD}@aws-0-eu-central-1.pooler.supabase.com:6543/postgres`
+
+// Supabase Direct Connection (port 5432) - better-auth needs direct connection, not pooler
+const supabaseDbUrl = `postgresql://postgres.${projectRef}:${supabaseDbPassword}@aws-0-eu-central-1.pooler.supabase.com:5432/postgres`
+
+console.log('[AUTH] Connecting to Supabase Postgres:', projectRef)
 
 export const auth = betterAuth({
   database: {

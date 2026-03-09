@@ -1,6 +1,7 @@
 /*
  * Landing Page Hero - S.A.L.I.M System
- * Visually decoded acronym with clean, professional design
+ * 2-column layout: Left (content) + Right (book cover)
+ * Decoded acronym in 2 horizontal lines (exact match with book cover)
  * Accurate stats, clear CTAs, bilingual support
  */
 
@@ -9,16 +10,20 @@
 import { useLanguage } from '../language-provider'
 import { ArrowRight, BookOpen } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const heroContent = {
   fr: {
     badge: "✦ Par Salim Gomri · Scrum Master & Coach Agile · 21 ans terrain",
     system: "Le système",
-    acronym: "S.A.L.I.M",
-    lines: [
-      { letter: "S", rest: "crum Augmenté" },
-      { letter: "A", rest: "ugmenté par l'IA" },
+    acronym: "S·A·L·I·M",
+    // 2 horizontal lines like on the book cover
+    line1: [
+      { letter: "S", rest: "crum" },
+      { letter: "A", rest: "ugmenté" },
       { letter: "L", rest: "ivré" },
+    ],
+    line2: [
       { letter: "I", rest: "ncrémental &" },
       { letter: "M", rest: "esurable" },
     ],
@@ -37,11 +42,13 @@ const heroContent = {
   en: {
     badge: "✦ By Salim Gomri · Scrum Master & Agile Coach · 21 years in the field",
     system: "The System",
-    acronym: "S.A.L.I.M",
-    lines: [
-      { letter: "S", rest: "crum Augmented" },
-      { letter: "A", rest: "ugmented by AI" },
+    acronym: "S·A·L·I·M",
+    line1: [
+      { letter: "S", rest: "crum" },
+      { letter: "A", rest: "ugmented" },
       { letter: "L", rest: "ead" },
+    ],
+    line2: [
       { letter: "I", rest: "ncrease &" },
       { letter: "M", rest: "easure" },
     ],
@@ -69,95 +76,129 @@ export default function LandingHero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(201,151,58,0.08),transparent_50%),radial-gradient(circle_at_70%_70%,rgba(19,142,236,0.06),transparent_50%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Authority Badge - Unicode star, no SVG */}
-          <div className="inline-flex items-center px-6 py-2 mb-8 rounded-full bg-aigile-gold/10 border border-aigile-gold/30">
-            <span className="text-sm font-medium text-aigile-gold">
-              {content.badge}
-            </span>
-          </div>
-
-          {/* System Label */}
-          <p className="text-base text-muted-foreground mb-4 uppercase tracking-widest">
-            {content.system}
-          </p>
-
-          {/* S.A.L.I.M Acronym - Large & Bold */}
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-8 text-aigile-gold tracking-wider">
-            {content.acronym}
-          </h1>
-
-          {/* Decoded Lines - Visual Reading */}
-          <div className="mb-10 space-y-2 text-lg sm:text-xl lg:text-2xl">
-            {content.lines.map((line, idx) => (
-              <div key={idx} className="flex items-center justify-center space-x-2">
-                <span className="font-bold text-aigile-gold">{line.letter}</span>
-                <span className="text-white/90">· {line.rest}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Tagline - Main promise */}
-          <p className="text-xl sm:text-2xl text-white mb-6 max-w-3xl mx-auto leading-relaxed">
-            {content.tagline}
-          </p>
-
-          {/* Sub-tagline + AIgile positioning */}
-          <p className="text-base text-muted-foreground mb-2">
-            {content.subTagline}
-          </p>
-          <p className="text-base text-muted-foreground mb-12">
-            {content.aigileLabel}{' '}
-            <Link href="/manifesto" className="text-aigile-blue font-bold hover:underline">
-              AIgile
-            </Link>
-          </p>
-
-          {/* CTAs - Primary + Secondary */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            {/* Primary CTA: Retro Tool (ONLY hover:scale-105) */}
-            <Link
-              href="/retro"
-              className="group px-10 py-5 bg-aigile-gold hover:bg-aigile-gold/90 text-aigile-navy text-xl font-bold rounded-full shadow-lg shadow-aigile-gold/30 hover:shadow-xl hover:shadow-aigile-gold/40 hover:scale-105 transition-all duration-300 flex items-center space-x-3"
-            >
-              <span>{content.ctaPrimary}</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-
-            {/* Secondary CTA: Book Section */}
-            <a
-              href="#book"
-              className="px-6 py-3 bg-transparent border border-white/40 text-white text-base font-medium rounded-full hover:border-aigile-gold hover:bg-aigile-gold/5 transition-colors duration-300 flex items-center space-x-2"
-            >
-              <BookOpen className="w-4 h-4" />
-              <span>{content.ctaSecondary}</span>
-            </a>
-          </div>
-
-          {/* Stats - Accurate & Verifiable */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {content.stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-card/50 backdrop-blur-sm border border-border rounded-2xl hover:border-aigile-gold hover:shadow-lg hover:shadow-aigile-gold/20 transition-all duration-300"
-              >
-                <div className="text-4xl font-bold text-aigile-gold mb-2">{stat.value}</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="mt-20">
-            <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full mx-auto flex items-start justify-center p-2">
-              <div className="w-1.5 h-3 bg-aigile-gold rounded-full animate-bounce" />
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* LEFT COLUMN: Content */}
+          <div className="space-y-8">
+            {/* Authority Badge */}
+            <div className="inline-flex items-center px-6 py-2 rounded-full bg-aigile-gold/10 border border-aigile-gold/30">
+              <span className="text-sm font-medium text-aigile-gold">
+                {content.badge}
+              </span>
             </div>
-            <p className="text-xs text-muted-foreground mt-3 uppercase tracking-widest">
-              {content.scrollLabel}
+
+            {/* System Label */}
+            <p className="text-base text-muted-foreground uppercase tracking-widest">
+              {content.system}
             </p>
+
+            {/* S·A·L·I·M Acronym with dots */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-aigile-gold tracking-wide">
+              {content.acronym}
+            </h1>
+
+            {/* Decoded - 2 horizontal lines like book cover */}
+            <div className="space-y-3 text-xl sm:text-2xl lg:text-3xl">
+              {/* Line 1: Scrum Augmenté Livré */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                {content.line1.map((word, idx) => (
+                  <span key={idx} className="inline-flex items-baseline">
+                    <span className="font-bold text-aigile-gold">{word.letter}</span>
+                    <span className="text-white/90">{word.rest}</span>
+                  </span>
+                ))}
+              </div>
+
+              {/* Line 2: Incrémental & Mesurable */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                {content.line2.map((word, idx) => (
+                  <span key={idx} className="inline-flex items-baseline">
+                    <span className="font-bold text-aigile-gold">{word.letter}</span>
+                    <span className="text-white/90">{word.rest}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Tagline */}
+            <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
+              {content.tagline}
+            </p>
+
+            {/* Sub-tagline + AIgile */}
+            <div className="space-y-1">
+              <p className="text-sm text-muted-foreground">
+                {content.subTagline}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {content.aigileLabel}{' '}
+                <Link href="/manifesto" className="text-aigile-blue font-bold hover:underline">
+                  AIgile
+                </Link>
+              </p>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
+              {/* Primary CTA */}
+              <Link
+                href="/retro"
+                className="group px-8 py-4 bg-aigile-gold hover:bg-aigile-gold/90 text-aigile-navy text-lg font-bold rounded-full shadow-lg shadow-aigile-gold/30 hover:shadow-xl hover:shadow-aigile-gold/40 hover:scale-105 transition-all duration-300 flex items-center space-x-3"
+              >
+                <span>{content.ctaPrimary}</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+
+              {/* Secondary CTA */}
+              <a
+                href="#book"
+                className="px-6 py-3 bg-transparent border border-white/40 text-white text-base font-medium rounded-full hover:border-aigile-gold hover:bg-aigile-gold/5 transition-colors duration-300 flex items-center space-x-2"
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>{content.ctaSecondary}</span>
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 pt-8">
+              {content.stats.map((stat, idx) => (
+                <div key={idx}>
+                  <div className="text-3xl font-bold text-aigile-gold mb-1">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* RIGHT COLUMN: Book Cover */}
+          <div className="relative lg:order-2">
+            <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-aigile-gold to-aigile-blue opacity-20 blur-3xl" />
+              
+              {/* Book Cover Image */}
+              <div className="relative aspect-[3/4] -rotate-2 hover:rotate-0 transition-all duration-500 shadow-2xl rounded-lg overflow-hidden">
+                <Image
+                  src="/images/book-cover.jpg"
+                  alt="Le Système S.A.L.I.M - Salim Gomri"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator - centered below */}
+        <div className="mt-20 text-center">
+          <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full mx-auto flex items-start justify-center p-2">
+            <div className="w-1.5 h-3 bg-aigile-gold rounded-full animate-bounce" />
+          </div>
+          <p className="text-xs text-muted-foreground mt-3 uppercase tracking-widest">
+            {content.scrollLabel}
+          </p>
         </div>
       </div>
     </section>

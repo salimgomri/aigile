@@ -16,6 +16,9 @@ const config: Config = {
         'aigile-navy': '#0f2240',
         'aigile-dark': '#07111f',
         
+        // Book accent color (from cover)
+        'book-orange': '#E8961E',
+        
         // Shadcn-compatible tokens
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
