@@ -38,10 +38,10 @@ export default function FloatingCoachingButton() {
         aria-label={t['coaching-float']}
       >
         {/* Glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary opacity-75 blur-xl group-hover:opacity-100 transition-opacity duration-300" />
-        
+        <div className="absolute inset-0 rounded-full bg-aigile-gold opacity-75 blur-xl group-hover:opacity-100 transition-opacity duration-300 animate-ping" />
+
         {/* Button content */}
-        <div className="relative flex items-center space-x-3 px-6 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-full shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300">
+        <div className="relative flex items-center space-x-3 px-6 py-4 bg-aigile-gold hover:bg-book-orange text-black rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300">
           <Calendar className="w-5 h-5" />
           <span className="hidden md:inline font-semibold text-sm whitespace-nowrap">
             {t['coaching-float']}

@@ -63,13 +63,13 @@ export default function PremiumNavbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3 group">
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                  <span className="text-white font-bold text-xl">A</span>
+                <div className="w-10 h-10 rounded-xl bg-aigile-gold flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <span className="text-black font-bold text-xl">A</span>
                 </div>
                 {/* Subtle glow effect on hover */}
-                <div className="absolute inset-0 rounded-xl bg-primary opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300" />
+                <div className="absolute inset-0 rounded-xl bg-aigile-gold opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hidden sm:inline">
+              <span className="text-2xl font-bold text-aigile-gold hidden sm:inline">
                 AIgile
               </span>
             </Link>
@@ -90,13 +90,13 @@ export default function PremiumNavbar() {
             {/* Right Section: Language, Auth, Mobile Menu */}
             <div className="flex items-center space-x-4">
               {/* Language Switcher */}
-              <div className="hidden md:flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 rounded-full p-1">
+              <div className="hidden md:flex items-center space-x-2 bg-aigile-navy/40 border border-white/10 rounded-full p-1">
                 <button
                   onClick={() => setLanguage('en')}
                   className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
                     language === 'en'
-                      ? 'bg-white dark:bg-gray-700 text-primary shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                      ? 'bg-aigile-gold text-black shadow-sm'
+                      : 'text-muted-foreground hover:text-white'
                   }`}
                 >
                   EN
@@ -105,8 +105,8 @@ export default function PremiumNavbar() {
                   onClick={() => setLanguage('fr')}
                   className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
                     language === 'fr'
-                      ? 'bg-white dark:bg-gray-700 text-primary shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                      ? 'bg-aigile-gold text-black shadow-sm'
+                      : 'text-muted-foreground hover:text-white'
                   }`}
                 >
                   FR
@@ -144,7 +144,7 @@ export default function PremiumNavbar() {
                     </Link>
                     <Link
                       href="/register"
-                      className="px-5 py-2 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white text-sm font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
+                      className="px-5 py-2 bg-aigile-gold hover:bg-book-orange text-black text-sm font-semibold rounded-full hover:shadow-lg transition-all duration-200"
                     >
                       {t['nav-signup']}
                     </Link>
@@ -188,8 +188,8 @@ export default function PremiumNavbar() {
                   }}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     language === 'en'
-                      ? 'bg-primary text-white'
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                      ? 'bg-aigile-gold text-black'
+                      : 'bg-transparent text-muted-foreground border border-white/10'
                   }`}
                 >
                   English
@@ -201,8 +201,8 @@ export default function PremiumNavbar() {
                   }}
                   className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     language === 'fr'
-                      ? 'bg-primary text-white'
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                      ? 'bg-aigile-gold text-black'
+                      : 'bg-transparent text-muted-foreground border border-white/10'
                   }`}
                 >
                   Français
@@ -246,7 +246,7 @@ export default function PremiumNavbar() {
                     <Link
                       href="/register"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="w-full px-4 py-3 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white text-base font-semibold rounded-lg hover:shadow-lg transition-all duration-200"
+                      className="w-full px-4 py-3 bg-aigile-gold hover:bg-book-orange text-black text-base font-semibold rounded-lg hover:shadow-lg transition-all duration-200"
                     >
                       {t['nav-signup']}
                     </Link>

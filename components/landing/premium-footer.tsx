@@ -42,8 +42,8 @@ export default function PremiumFooter() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-2xl">A</span>
+              <div className="w-12 h-12 rounded-xl bg-aigile-gold flex items-center justify-center shadow-lg">
+                <span className="text-black font-bold text-2xl">A</span>
               </div>
             </Link>
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
