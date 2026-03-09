@@ -60,5 +60,5 @@ export function canWriteOwnData(
   const permissions = PERMISSIONS[resource]
   if (!permissions || !('write_own_only' in permissions)) return false
   
-  return permissions.write_own_only?.includes(userRole) || false
+  return (permissions.write_own_only as readonly TeamRole[])?.includes(userRole) || false
 }

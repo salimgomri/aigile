@@ -6,10 +6,22 @@ import Link from 'next/link'
 import { signUp } from '@/lib/auth-client'
 import { Mail, Lock, AlertCircle, User as UserIcon } from 'lucide-react'
 
+const ROLES = [
+  { value: 'manager', labelFr: 'Manager', labelEn: 'Manager' },
+  { value: 'scrum_master', labelFr: 'Scrum Master', labelEn: 'Scrum Master' },
+  { value: 'product_owner', labelFr: 'Product Owner', labelEn: 'Product Owner' },
+  { value: 'agile_coach', labelFr: 'Coach Agile', labelEn: 'Agile Coach' },
+  { value: 'dev_team', labelFr: 'Équipe Dev', labelEn: 'Dev Team' },
+  { value: 'guest', labelFr: 'Invité', labelEn: 'Guest' },
+  { value: 'other', labelFr: 'Autre', labelEn: 'Other' },
+]
+
 export default function RegisterPage() {
   const router = useRouter()
-  const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
+  const [role, setRole] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
@@ -21,7 +33,6 @@ export default function RegisterPage() {
     setError('')
     setLoading(true)
 
-    // Validation
     if (password !== confirmPassword) {
       setError('Les mots de passe ne correspondent pas')
       setLoading(false)
@@ -34,19 +45,28 @@ export default function RegisterPage() {
       return
     }
 
+    if (!role) {
+      setError('Veuillez sélectionner un rôle')
+      setLoading(false)
+      return
+    }
+
     try {
       const result = await signUp.email({
         email,
         password,
-        name,
+        name: `${firstName} ${lastName}`.trim(),
+        callbackURL: '/welcome',
+        // @ts-expect-error - additionalFields passed to server
+        firstName,
+        lastName,
+        role: role === 'other' ? 'guest' : role,
       })
 
       if (result.error) {
-        setError(result.error.message || 'Registration failed')
+        setError(result.error.message || 'Inscription échouée')
       } else {
         setSuccess(true)
-        // Redirect to dashboard after 2s
-        setTimeout(() => router.push('/dashboard'), 2000)
       }
     } catch (err) {
       setError('Une erreur est survenue. Veuillez réessayer.')
@@ -59,18 +79,24 @@ export default function RegisterPage() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center space-y-6">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-aigile-gold to-aigile-blue mx-auto flex items-center justify-center shadow-lg">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-20 h-20 rounded-full bg-aigile-gold mx-auto flex items-center justify-center shadow-lg">
+            <svg className="w-10 h-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-foreground">Compte créé !</h2>
+          <h2 className="text-3xl font-bold text-foreground">Bienvenue sur AIgile !</h2>
           <p className="text-muted-foreground">
-            Vérifiez votre email pour activer votre compte.
+            Merci de valider votre email. Nous vous avons envoyé un lien de confirmation à <strong className="text-foreground">{email}</strong>.
           </p>
           <p className="text-sm text-muted-foreground">
-            Redirection vers le dashboard...
+            Cliquez sur le lien dans l&apos;email pour activer votre compte. Vous serez alors connecté automatiquement.
           </p>
+          <Link
+            href="/login"
+            className="inline-block px-6 py-3 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-xl transition-colors"
+          >
+            Retour à la connexion
+          </Link>
         </div>
       </div>
     )
@@ -79,22 +105,20 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="max-w-md w-full space-y-8">
-        {/* Logo / Brand */}
         <div className="text-center">
           <Link href="/" className="inline-block">
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-aigile-gold to-aigile-blue mx-auto flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-2xl">A</span>
+            <div className="w-16 h-16 rounded-xl bg-aigile-gold mx-auto flex items-center justify-center shadow-lg">
+              <span className="text-black font-bold text-2xl">A</span>
             </div>
           </Link>
           <h2 className="mt-6 text-3xl font-bold text-foreground">
             Créer un compte AIgile
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Accédez à tous les outils Agile augmentés
+            Prénom, nom, email, rôle et mot de passe requis
           </p>
         </div>
 
-        {/* Error Message */}
         {error && (
           <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 flex items-start space-x-3">
             <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
@@ -102,30 +126,48 @@ export default function RegisterPage() {
           </div>
         )}
 
-        {/* Register Form */}
         <div className="bg-card border border-border rounded-2xl p-8 space-y-6">
           <form onSubmit={handleRegister} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                Nom complet
-              </label>
-              <div className="relative">
-                <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-aigile-gold focus:border-transparent text-foreground"
-                  placeholder="Salim Gomri"
-                />
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
+                  Prénom *
+                </label>
+                <div className="relative">
+                  <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <input
+                    id="firstName"
+                    type="text"
+                    required
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-aigile-gold focus:border-transparent text-foreground"
+                    placeholder="Salim"
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
+                  Nom *
+                </label>
+                <div className="relative">
+                  <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <input
+                    id="lastName"
+                    type="text"
+                    required
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-aigile-gold focus:border-transparent text-foreground"
+                    placeholder="Gomri"
+                  />
+                </div>
               </div>
             </div>
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                Email
+                Email *
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -142,8 +184,28 @@ export default function RegisterPage() {
             </div>
 
             <div>
+              <label htmlFor="role" className="block text-sm font-medium text-foreground mb-2">
+                Rôle *
+              </label>
+              <select
+                id="role"
+                required
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-aigile-gold focus:border-transparent text-foreground"
+              >
+                <option value="">Sélectionnez votre rôle</option>
+                {ROLES.map((r) => (
+                  <option key={r.value} value={r.value}>
+                    {r.labelFr}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
               <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
-                Mot de passe
+                Mot de passe * (obligatoire pour continuer)
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -164,7 +226,7 @@ export default function RegisterPage() {
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-2">
-                Confirmer le mot de passe
+                Confirmer le mot de passe *
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -183,17 +245,16 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-6 py-3 bg-gradient-to-r from-aigile-gold to-aigile-blue text-white font-semibold rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-6 py-3 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-xl hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Création du compte...' : 'Créer mon compte'}
             </button>
           </form>
 
-          {/* Terms */}
           <p className="text-xs text-center text-muted-foreground">
             En créant un compte, vous acceptez nos{' '}
             <Link href="/terms" className="text-aigile-gold hover:underline">
-              Conditions d'utilisation
+              Conditions d&apos;utilisation
             </Link>{' '}
             et notre{' '}
             <Link href="/privacy" className="text-aigile-gold hover:underline">
@@ -202,7 +263,6 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        {/* Login link */}
         <p className="text-center text-sm text-muted-foreground">
           Vous avez déjà un compte ?{' '}
           <Link href="/login" className="font-medium text-aigile-gold hover:text-aigile-gold/80 transition-colors">
@@ -210,10 +270,9 @@ export default function RegisterPage() {
           </Link>
         </p>
 
-        {/* Back to home */}
         <p className="text-center">
           <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            ← Retour à l'accueil
+            ← Retour à l&apos;accueil
           </Link>
         </p>
       </div>
