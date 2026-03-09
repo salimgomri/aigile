@@ -23,13 +23,14 @@ export default function ToolsSuiteSection() {
       title: t['tools-retro-title'], 
       description: t['tools-retro-desc'],
       featured: true,
-      href: '/retro'
+      href: '/retro',
+      available: true,
     },
-    { icon: Smile, title: t['tools-nikoni'], description: language === 'fr' ? 'Humeur quotidienne (bientôt)' : 'Daily mood (coming soon)', featured: false, href: '/niko-niko' },
-    { icon: BarChart3, title: t['tools-dora'], description: language === 'fr' ? 'Performance élite (bientôt)' : 'Elite performance (coming soon)', featured: false, href: '/dora' },
-    { icon: Target, title: t['tools-okr'], description: language === 'fr' ? 'Alignement OKR (bientôt)' : 'OKR alignment (coming soon)', featured: false, href: '/okr' },
-    { icon: Layout, title: t['tools-dashboard'], description: language === 'fr' ? 'Santé d\'équipe (bientôt)' : 'Team health (coming soon)', featured: false, href: '/dashboard' },
-    { icon: Users, title: t['tools-skills'], description: language === 'fr' ? 'Cartographie compétences (bientôt)' : 'Skills mapping (coming soon)', featured: false, href: '/skill-matrix' },
+    { icon: Smile, title: t['tools-nikoni'], description: language === 'fr' ? 'Humeur quotidienne & Happiness Index' : 'Daily mood & Happiness Index', featured: false, href: '#', available: false },
+    { icon: BarChart3, title: t['tools-dora'], description: language === 'fr' ? 'Performance élite & métriques DORA' : 'Elite performance & DORA metrics', featured: false, href: '#', available: false },
+    { icon: Target, title: t['tools-okr'], description: language === 'fr' ? 'Alignement OKR' : 'OKR alignment', featured: false, href: '#', available: false },
+    { icon: Layout, title: t['tools-dashboard'], description: language === 'fr' ? 'Santé d\'équipe & outils' : 'Team health & tools', featured: false, href: '#', available: false },
+    { icon: Users, title: t['tools-skills'], description: language === 'fr' ? 'Cartographie compétences' : 'Skills mapping', featured: false, href: '#', available: false },
   ]
 
   return (
@@ -110,29 +111,29 @@ export default function ToolsSuiteSection() {
           </div>
         </div>
 
-        {/* Other Tools Grid - NO scale hover */}
+        {/* Other Tools Grid - Bientôt pour le lancement */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {tools.slice(1).map((tool, index) => {
             const Icon = tool.icon
             return (
               <div
                 key={index}
-                className="group p-6 bg-card/30 backdrop-blur-sm rounded-2xl border border-border hover:border-aigile-blue hover:shadow-lg hover:shadow-aigile-blue/10 transition-all duration-300"
+                className="group p-6 bg-card/20 backdrop-blur-sm rounded-2xl border border-border opacity-60 cursor-not-allowed"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-gradient-to-br from-aigile-gold/10 to-aigile-blue/10 rounded-xl">
-                    <Icon className="w-6 h-6 text-aigile-blue" />
+                  <div className="p-3 bg-muted/50 rounded-xl">
+                    <Icon className="w-6 h-6 text-muted-foreground" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-foreground mb-2">
+                    <h4 className="font-bold text-muted-foreground mb-2">
                       {tool.title}
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground/80">
                       {tool.description}
                     </p>
-                    <div className="mt-3 text-sm font-semibold text-aigile-blue group-hover:underline">
-                      {language === 'fr' ? 'Bientôt disponible' : 'Coming soon'} →
-                    </div>
+                    <span className="inline-block mt-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                      {language === 'fr' ? 'Bientôt' : 'Coming soon'}
+                    </span>
                   </div>
                 </div>
               </div>

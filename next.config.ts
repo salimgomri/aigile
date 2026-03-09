@@ -7,7 +7,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath: '',
-  trailingSlash: true,
+  // trailingSlash: true causes 500 errors with better-auth (get-session, sign-in/social)
+  trailingSlash: false,
 }
 
 export default nextConfig

@@ -19,12 +19,16 @@ export default function PremiumFooter() {
 
   const footerLinks = {
     product: [
-      { href: '/retro', label: t['tools-retro-title'] },
-      { href: '/start-scrum', label: t['tools-start-journey'] },
-      { href: '#tools', label: t['nav-tools'] },
+      { href: '/retro', label: t['tools-retro-title'], available: true },
+      { href: '#', label: `${t['tools-nikoni']} (${language === 'fr' ? 'bientôt' : 'soon'})`, available: false },
+      { href: '#', label: `${t['tools-dora']} (${language === 'fr' ? 'bientôt' : 'soon'})`, available: false },
+      { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey', available: true },
+      { href: '/start-scrum', label: t['tools-start-journey'], available: true },
+      { href: '#tools', label: t['nav-tools'], available: true },
     ],
     resources: [
       { href: '/manifesto', label: t['nav-manifesto'] },
+      { href: '/prompts', label: 'Prompts' },
       { href: '#book', label: t['nav-book'] },
       { href: '#cards', label: t['nav-cards'] },
     ],
@@ -61,12 +65,18 @@ export default function PremiumFooter() {
             <ul className="space-y-3">
               {footerLinks.product.map((link, index) => (
                 <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200 text-sm"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.available ? (
+                    <Link
+                      href={link.href}
+                      className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200 text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <span className="text-gray-400 dark:text-gray-500 text-sm cursor-not-allowed">
+                      {link.label}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>

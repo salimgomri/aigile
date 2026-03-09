@@ -1,25 +1,42 @@
+/**
+ * Better Auth configuration for AIgile
+ * Uses PostgreSQL (Supabase) - Pool recommended for connection stability
+ */
+import dns from 'node:dns'
+dns.setDefaultResultOrder('ipv4first')
+
 import { betterAuth } from 'better-auth'
+import { createAuthMiddleware } from 'better-auth/api'
+import { Pool } from 'pg'
+import { getDatabaseUrl } from './db'
 import { sendVerificationEmail as sendVerificationEmailFn } from './email'
 import { sendPasswordResetEmail } from './email'
+import { nextCookies } from 'better-auth/next-js'
+import { ensureUserCredits } from './credits/manager'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
-const supabaseDbPassword = process.env.SUPABASE_DB_PASSWORD!
-
-if (!supabaseUrl || !supabaseServiceKey || !supabaseDbPassword) {
-  throw new Error('Missing Supabase environment variables')
-}
-
-// Extract Supabase Project Ref from URL
-const projectRef = supabaseUrl.replace('https://', '').split('.')[0]
-const supabaseDbUrl = `postgresql://postgres.${projectRef}:${supabaseDbPassword}@aws-0-eu-central-1.pooler.supabase.com:5432/postgres`
-
-const appUrl = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3010'
+const databaseUrl = getDatabaseUrl()
+const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3010'
 
 export const auth = betterAuth({
-  database: {
-    provider: 'postgres',
-    url: supabaseDbUrl,
+  baseURL,
+  database: new Pool({
+    connectionString: databaseUrl,
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 10000,
+  }),
+
+  plugins: [nextCookies()],
+
+  hooks: {
+    after: createAuthMiddleware(async (ctx) => {
+      if (ctx.path.startsWith('/sign-up') || ctx.path.startsWith('/sign-in')) {
+        const newSession = ctx.context.newSession
+        if (newSession?.user?.id) {
+          await ensureUserCredits(newSession.user.id)
+        }
+      }
+    }),
   },
 
   user: {
@@ -32,9 +49,10 @@ export const auth = betterAuth({
 
   emailAndPassword: {
     enabled: true,
-    requireEmailVerification: true,
+    requireEmailVerification: false,
     sendResetPassword: async ({ user, url }) => {
-      void sendPasswordResetEmail({ to: user.email, url })
+      const name = (user as { firstName?: string; name?: string }).firstName || user.name?.split(' ')[0]
+      void sendPasswordResetEmail({ to: user.email, url, userName: name })
     },
   },
 

@@ -18,8 +18,7 @@ export default function FloatingCoachingButton() {
   const t = translations[language]
   const [isOpen, setIsOpen] = useState(false)
 
-  // Calendly URL (to be configured)
-  const calendlyUrl = 'https://calendly.com/salim-gomri' // TODO: Replace with actual Calendly URL
+  const calendlyUrl = 'https://calendly.com/salimdulux/30min'
 
   const openCalendly = () => {
     // Option 1: Open in new tab

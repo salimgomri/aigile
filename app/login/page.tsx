@@ -1,14 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { signIn } from '@/lib/auth-client'
 import { Mail, Lock, AlertCircle } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get('redirect') || '/onboarding'
   const [email, setEmail] = useState('')
+  const passwordSetSuccess = searchParams.get('passwordSet') === '1'
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -27,7 +30,7 @@ export default function LoginPage() {
       if (result.error) {
         setError(result.error.message || 'Login failed')
       } else {
-        router.push('/dashboard')
+        router.push(redirectTo)
       }
     } catch (err) {
       setError('An error occurred. Please try again.')
@@ -40,7 +43,7 @@ export default function LoginPage() {
     try {
       await signIn.social({
         provider: 'google',
-        callbackURL: '/onboarding/role',
+        callbackURL: redirectTo,
       })
     } catch (err) {
       setError('Connexion Google échouée')
@@ -53,8 +56,8 @@ export default function LoginPage() {
         {/* Logo / Brand */}
         <div className="text-center">
           <Link href="/" className="inline-block">
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-aigile-gold to-aigile-blue mx-auto flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-2xl">A</span>
+            <div className="w-16 h-16 rounded-xl bg-aigile-gold mx-auto flex items-center justify-center shadow-lg">
+              <span className="text-black font-bold text-2xl">A</span>
             </div>
           </Link>
           <h2 className="mt-6 text-3xl font-bold text-foreground">
@@ -64,6 +67,15 @@ export default function LoginPage() {
             Accédez à vos outils Agile augmentés
           </p>
         </div>
+
+        {/* Success Message (after setting password) */}
+        {passwordSetSuccess && (
+          <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 flex items-start space-x-3">
+            <p className="text-sm text-green-600 dark:text-green-400">
+              Mot de passe défini avec succès. Connectez-vous avec votre nouveau mot de passe.
+            </p>
+          </div>
+        )}
 
         {/* Error Message */}
         {error && (
@@ -78,7 +90,7 @@ export default function LoginPage() {
           {/* Google Login */}
           <button
             onClick={handleGoogleLogin}
-            className="w-full px-6 py-3 bg-white border-2 border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-colors duration-200 flex items-center justify-center space-x-3"
+            className="w-full px-6 py-3 bg-white border-2 border-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-3"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>

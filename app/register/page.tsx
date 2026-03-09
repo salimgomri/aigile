@@ -1,10 +1,16 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { signUp } from '@/lib/auth-client'
-import { Mail, Lock, AlertCircle, User as UserIcon } from 'lucide-react'
+import { signUp, requestPasswordReset } from '@/lib/auth-client'
+import { Mail, AlertCircle, User as UserIcon } from 'lucide-react'
+
+function generateTempPassword(): string {
+  const array = new Uint8Array(32)
+  crypto.getRandomValues(array)
+  return Array.from(array, (b) => b.toString(16).padStart(2, '0')).join('')
+}
 
 const ROLES = [
   { value: 'manager', labelFr: 'Manager', labelEn: 'Manager' },
@@ -17,13 +23,15 @@ const ROLES = [
 ]
 
 export default function RegisterPage() {
-  const router = useRouter()
+  const searchParams = useSearchParams()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
+  useEffect(() => {
+    const e = searchParams.get('email')
+    if (e) setEmail(decodeURIComponent(e))
+  }, [searchParams])
   const [role, setRole] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -33,18 +41,6 @@ export default function RegisterPage() {
     setError('')
     setLoading(true)
 
-    if (password !== confirmPassword) {
-      setError('Les mots de passe ne correspondent pas')
-      setLoading(false)
-      return
-    }
-
-    if (password.length < 8) {
-      setError('Le mot de passe doit contenir au moins 8 caractères')
-      setLoading(false)
-      return
-    }
-
     if (!role) {
       setError('Veuillez sélectionner un rôle')
       setLoading(false)
@@ -52,9 +48,10 @@ export default function RegisterPage() {
     }
 
     try {
+      const tempPassword = generateTempPassword()
       const result = await signUp.email({
         email,
-        password,
+        password: tempPassword,
         name: `${firstName} ${lastName}`.trim(),
         callbackURL: '/welcome',
         // @ts-expect-error - additionalFields passed to server
@@ -64,7 +61,20 @@ export default function RegisterPage() {
       })
 
       if (result.error) {
-        setError(result.error.message || 'Inscription échouée')
+        const msg = result.error.message || (result.error as { cause?: string })?.cause || 'Inscription échouée'
+        setError(msg)
+        console.error('[REGISTER]', result.error)
+        setLoading(false)
+        return
+      }
+
+      const resetResult = await requestPasswordReset({
+        email,
+        redirectTo: '/set-password',
+      })
+
+      if (resetResult.error) {
+        setError(resetResult.error.message || 'Envoi de l\'email échoué')
       } else {
         setSuccess(true)
       }
@@ -84,12 +94,12 @@ export default function RegisterPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-foreground">Bienvenue sur AIgile !</h2>
+          <h2 className="text-3xl font-bold text-foreground">Vérifiez votre email</h2>
           <p className="text-muted-foreground">
-            Merci de valider votre email. Nous vous avons envoyé un lien de confirmation à <strong className="text-foreground">{email}</strong>.
+            Nous avons envoyé un lien à <strong className="text-foreground">{email}</strong> pour définir votre mot de passe.
           </p>
           <p className="text-sm text-muted-foreground">
-            Cliquez sur le lien dans l&apos;email pour activer votre compte. Vous serez alors connecté automatiquement.
+            Cliquez sur le lien dans l&apos;email pour définir votre mot de passe et activer votre compte.
           </p>
           <Link
             href="/login"
@@ -115,7 +125,7 @@ export default function RegisterPage() {
             Créer un compte AIgile
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Prénom, nom, email, rôle et mot de passe requis
+            Prénom, nom, email et rôle. Le mot de passe sera défini via le lien envoyé par email.
           </p>
         </div>
 
@@ -201,45 +211,6 @@ export default function RegisterPage() {
                   </option>
                 ))}
               </select>
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
-                Mot de passe * (obligatoire pour continuer)
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-aigile-gold focus:border-transparent text-foreground"
-                  placeholder="••••••••"
-                />
-              </div>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Au moins 8 caractères
-              </p>
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-2">
-                Confirmer le mot de passe *
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <input
-                  id="confirmPassword"
-                  type="password"
-                  required
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-aigile-gold focus:border-transparent text-foreground"
-                  placeholder="••••••••"
-                />
-              </div>
             </div>
 
             <button

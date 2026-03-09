@@ -67,6 +67,7 @@ export const translations = {
     "nav-cards": "Cards",
     "nav-signin": "Sign In",
     "nav-signup": "Sign Up",
+    "nav-signout": "Sign out",
     
     // New Landing Page - Hero
     "landing-hero-title": "Agile Augmented by AI",
@@ -135,7 +136,15 @@ export const translations = {
     
     // Floating Button
     "coaching-float": "Book Coaching Session",
-    "coaching-float-short": "Coaching"
+    "coaching-float-short": "Coaching",
+    "feedback-float": "Feedback",
+    "feedback-title": "Send feedback",
+    "feedback-placeholder": "Your message, bug report, suggestion...",
+    "feedback-name-placeholder": "Your name",
+    "feedback-name-label": "Name (required when not signed in)",
+    "feedback-send": "Send",
+    "feedback-sent": "Thank you!",
+    "feedback-error": "Failed to send"
   },
   fr: {
     "hero-subtitle": "L'Évolution d'Agile vers l'Ère de l'IA",
@@ -205,6 +214,7 @@ export const translations = {
     "nav-cards": "Cartes",
     "nav-signin": "Se connecter",
     "nav-signup": "S'inscrire",
+    "nav-signout": "Déconnexion",
     
     // New Landing Page - Hero
     "landing-hero-title": "L'Agile Augmenté par l'IA",
@@ -273,7 +283,15 @@ export const translations = {
     
     // Floating Button
     "coaching-float": "Réserver une Session de Coaching",
-    "coaching-float-short": "Coaching"
+    "coaching-float-short": "Coaching",
+    "feedback-float": "Feedback",
+    "feedback-title": "Envoyer un message",
+    "feedback-placeholder": "Votre message, bug, suggestion...",
+    "feedback-name-placeholder": "Votre nom",
+    "feedback-name-label": "Nom (requis si non connecté)",
+    "feedback-send": "Envoyer",
+    "feedback-sent": "Merci !",
+    "feedback-error": "Échec de l'envoi"
   }
 } as const
 

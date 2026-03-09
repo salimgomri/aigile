@@ -12,6 +12,7 @@ import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
 import { CheckCircle, Sparkles } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function BookSection() {
   const { language } = useLanguage()
@@ -96,9 +97,17 @@ export default function BookSection() {
 
             {/* CTA - scale-105 for primary action only */}
             <div className="pt-4 space-y-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 w-full sm:w-auto">
-                {t['book-cta']}
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                  {t['book-cta']}
+                </button>
+                <Link
+                  href="/parcours"
+                  className="px-8 py-4 border-2 border-aigile-gold/50 text-foreground font-semibold rounded-full hover:border-aigile-gold hover:bg-aigile-gold/10 transition-all duration-300 text-center"
+                >
+                  {language === 'fr' ? 'Découvrir mon parcours' : 'Discover my journey'}
+                </Link>
+              </div>
               <p className="text-sm text-muted-foreground">
                 {t['book-price']}
               </p>

@@ -15,20 +15,47 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { useLanguage } from './language-provider'
 import { useTheme } from './theme-provider'
 import { translations } from '@/lib/translations'
 import Link from 'next/link'
 import { Menu, X, ChevronDown, Globe, User, LogOut } from 'lucide-react'
 import { useSession, signOut } from '@/lib/auth-client'
+import CreditsCountBadge from '@/components/credits/CreditsCountBadge'
 
 export default function PremiumNavbar() {
+  const pathname = usePathname()
   const { language, setLanguage } = useLanguage()
   const { theme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { data: session, isPending } = useSession()
   const t = translations[language]
+
+  const isLanding = pathname === '/'
+
+  const toolsLinks = [
+    { href: '/retro', label: t['tools-retro-title'], match: (p: string) => p.startsWith('/retro') },
+    { href: '/start-scrum', label: t['tools-start-journey'], match: (p: string) => p.startsWith('/start-scrum') || p.startsWith('/parcours') },
+  ]
+
+  const navLinks = isLanding
+    ? [
+        { href: '/', label: t['nav-home'] },
+        { href: '/manifesto', label: t['nav-manifesto'] },
+        { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
+        { href: '/prompts', label: 'Prompts' },
+        { href: '#tools', label: t['nav-tools'] },
+        { href: '#book', label: t['nav-book'] },
+        { href: '#cards', label: t['nav-cards'] },
+      ]
+    : [
+        { href: '/', label: t['nav-home'], isActive: false },
+        ...toolsLinks.map((tool) => ({ href: tool.href, label: tool.label, isActive: tool.match(pathname || '') })),
+      ]
+
+  const userDisplayName = session?.user?.name || session?.user?.email?.split('@')[0] || session?.user?.email || ''
 
   // Detect scroll for glassmorphism effect
   useEffect(() => {
@@ -39,21 +66,12 @@ export default function PremiumNavbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = [
-    { href: '/', label: t['nav-home'] },
-    { href: '/manifesto', label: t['nav-manifesto'] },
-    { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
-    { href: '#tools', label: t['nav-tools'] },
-    { href: '#book', label: t['nav-book'] },
-    { href: '#cards', label: t['nav-cards'] },
-  ]
-
   return (
     <>
       {/* Main Navbar */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
+          scrolled || !isLanding
             ? 'bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-lg'
             : 'bg-transparent'
         }`}
@@ -76,15 +94,22 @@ export default function PremiumNavbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = 'isActive' in link && link.isActive
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      isActive
+                        ? 'bg-aigile-gold/20 text-aigile-gold dark:text-aigile-gold font-semibold'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
             </div>
 
             {/* Right Section: Language, Auth, Mobile Menu */}
@@ -118,27 +143,31 @@ export default function PremiumNavbar() {
                 {isPending ? (
                   <div className="w-8 h-8 rounded-full bg-muted animate-pulse" />
                 ) : session ? (
-                  <div className="flex items-center space-x-3">
-                    <Link
-                      href="/dashboard"
-                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-foreground hover:bg-muted transition-colors duration-200"
-                    >
-                      <User className="w-4 h-4" />
-                      <span>{session.user.email}</span>
-                    </Link>
+                  <div className="flex items-center gap-3">
+                    <div className="flex flex-col items-start gap-1">
+                      <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-foreground bg-muted/50">
+                        <User className="w-4 h-4" />
+                        <span className="max-w-[120px] truncate" title={session.user.email}>{userDisplayName}</span>
+                      </span>
+                      <CreditsCountBadge />
+                    </div>
                     <button
                       onClick={() => signOut()}
-                      className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
-                      aria-label="Sign out"
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
                     >
                       <LogOut className="w-4 h-4" />
+                      <span>{t['nav-signout']}</span>
                     </button>
                   </div>
                 ) : (
                   <>
                     <Link
                       href="/login"
-                      className="px-4 py-2 text-sm font-semibold text-white hover:text-aigile-gold transition-colors duration-200"
+                      className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 ${
+                        scrolled
+                          ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
                     >
                       {t['nav-signin']}
                     </Link>
@@ -168,16 +197,23 @@ export default function PremiumNavbar() {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 shadow-lg">
             <div className="px-4 py-6 space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary transition-all duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = 'isActive' in link && link.isActive
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
+                      isActive
+                        ? 'bg-aigile-gold/20 text-aigile-gold font-semibold'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
 
               {/* Mobile Language Switcher */}
               <div className="flex items-center justify-center space-x-2 pt-4 border-t border-gray-200 dark:border-gray-800">
@@ -215,14 +251,13 @@ export default function PremiumNavbar() {
                   <div className="w-full h-12 rounded-lg bg-muted animate-pulse" />
                 ) : session ? (
                   <>
-                    <Link
-                      href="/dashboard"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="w-full px-4 py-3 flex items-center justify-center space-x-2 text-center text-base font-medium text-foreground bg-muted rounded-lg hover:bg-muted/80 transition-colors duration-200"
-                    >
-                      <User className="w-4 h-4" />
-                      <span>{session.user.email}</span>
-                    </Link>
+                    <div className="w-full px-4 py-3 flex flex-col items-center justify-center gap-1.5 text-center text-base font-medium text-foreground bg-muted/50 rounded-lg">
+                      <div className="flex items-center gap-2">
+                        <User className="w-4 h-4" />
+                        <span className="truncate">{userDisplayName}</span>
+                      </div>
+                      <CreditsCountBadge />
+                    </div>
                     <button
                       onClick={() => {
                         signOut()
@@ -231,7 +266,7 @@ export default function PremiumNavbar() {
                       className="w-full px-4 py-3 flex items-center justify-center space-x-2 text-center text-base font-medium text-destructive bg-destructive/10 rounded-lg hover:bg-destructive/20 transition-colors duration-200"
                     >
                       <LogOut className="w-4 h-4" />
-                      <span>{language === 'fr' ? 'Déconnexion' : 'Sign out'}</span>
+                      <span>{t['nav-signout']}</span>
                     </button>
                   </>
                 ) : (
@@ -239,7 +274,7 @@ export default function PremiumNavbar() {
                     <Link
                       href="/login"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="w-full px-4 py-3 text-center text-base font-medium text-foreground bg-muted rounded-lg hover:bg-muted/80 transition-colors duration-200"
+                      className="w-full px-4 py-3 text-center text-base font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                     >
                       {t['nav-signin']}
                     </Link>
