@@ -10,6 +10,7 @@
 import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
 import { Package, CheckCircle, Sparkles, ShoppingCart } from 'lucide-react'
+import Link from 'next/link'
 
 export default function CardsSection() {
   const { language } = useLanguage()
