@@ -3,19 +3,19 @@ import Values from '@/components/home/values'
 import Principles from '@/components/home/principles'
 import CTA from '@/components/home/cta'
 import About from '@/components/home/about'
-import Footer from '@/components/home/footer'
-import Header from '@/components/header'
+import PremiumNavbar from '@/components/premium-navbar'
+import PremiumFooter from '@/components/landing/premium-footer'
 
 export default function ManifestoPage() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <main className="min-h-screen bg-white dark:bg-black">
+      <PremiumNavbar />
       <Hero />
       <Values />
       <Principles />
       <CTA />
       <About />
-      <Footer />
+      <PremiumFooter />
     </main>
   )
 }
