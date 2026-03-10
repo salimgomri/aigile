@@ -39,7 +39,10 @@ export const auth = betterAuth({
 
   hooks: {
     after: createAuthMiddleware(async (ctx) => {
-      if (ctx.path.startsWith('/sign-up') || ctx.path.startsWith('/sign-in')) {
+      const isSignUp = ctx.path.startsWith('/sign-up')
+      const isSignIn = ctx.path.startsWith('/sign-in')
+      const isOAuthCallback = ctx.path.startsWith('/callback/')
+      if (isSignUp || isSignIn || isOAuthCallback) {
         const newSession = ctx.context.newSession
         if (newSession?.user?.id) {
           await ensureUserCredits(newSession.user.id)

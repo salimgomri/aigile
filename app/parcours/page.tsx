@@ -249,13 +249,13 @@ export default function ParcoursPage() {
             {language === 'fr' ? 'Prêt à passer à l\'action ?' : 'Ready to take action?'}
           </h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/register"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-aigile-gold hover:bg-book-orange text-black font-bold rounded-full hover:shadow-xl transition-all"
+            <span
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-muted/60 text-muted-foreground rounded-full font-semibold cursor-not-allowed border border-border"
+              aria-disabled="true"
             >
-              {language === 'fr' ? 'Commencer gratuitement' : 'Start Free'}
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+              {language === 'fr' ? 'Très bientôt…' : 'Coming soon…'}
+              <Sparkles className="w-5 h-5 opacity-70" />
+            </span>
             <Link
               href="/#book"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-aigile-gold/50 rounded-full font-semibold hover:border-aigile-gold hover:bg-aigile-gold/10 transition-all"
