@@ -164,7 +164,7 @@ export async function sendBuyerConfirmationEmail(params: BuyerConfirmationParams
         </td></tr>
         <tr><td style="padding:24px 40px;text-align:center;font-size:11px;color:#94a3b8;">
           AIgile — <a href="${baseUrl}" style="color:#94a3b8;">aigile.lu</a><br>
-          <a href="mailto:salim@aigile.lu" style="color:#94a3b8;">salim@aigile.lu</a>
+          <a href="mailto:edition.malis@gmail.com" style="color:#94a3b8;">edition.malis@gmail.com</a>
         </td></tr>
       </table>
     </td></tr>

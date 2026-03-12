@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useSession } from '@/lib/auth-client'
 import { X, Loader2, Lock, Book } from 'lucide-react'
 import { z } from 'zod'
 import type { Product } from '@/lib/payments/catalog'
@@ -60,6 +61,7 @@ export default function CheckoutSheet({
   defaultEmail = '',
   defaultName = '',
 }: CheckoutSheetProps) {
+  const { data: session } = useSession()
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -80,10 +82,13 @@ export default function CheckoutSheet({
   const [couponLoading, setCouponLoading] = useState(false)
   const [discount, setDiscount] = useState<{ label: string; amount: number } | null>(null)
 
+  // Pré-remplir avec session si connecté (priorité aux props)
   useEffect(() => {
-    setName(defaultName)
-    setEmail(defaultEmail)
-  }, [defaultName, defaultEmail])
+    const n = defaultName || session?.user?.name || session?.user?.email?.split('@')[0] || ''
+    const e = defaultEmail || session?.user?.email || ''
+    setName(n)
+    setEmail(e)
+  }, [defaultName, defaultEmail, session?.user?.name, session?.user?.email])
 
   useEffect(() => {
     if (typeof navigator !== 'undefined' && navigator.language) {
@@ -217,11 +222,11 @@ export default function CheckoutSheet({
       {open && (
         <>
           <div
-            className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
-          <div className="fixed inset-y-0 right-0 z-[61] w-full max-w-lg bg-card border-l border-border shadow-2xl overflow-y-auto flex flex-col">
+          <div className="fixed inset-y-0 right-0 z-[9999] w-full max-w-lg bg-card border-l border-border shadow-2xl overflow-y-auto flex flex-col">
             <div className="flex justify-between items-center p-6 border-b border-border">
               <h2 className="text-xl font-bold text-foreground">{product.title}</h2>
               <button

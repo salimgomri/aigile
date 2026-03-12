@@ -3,6 +3,8 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { getProduct, getCurrentBookProduct } from '@/lib/payments/catalog'
+import { getBaseUrlFromRequest } from '@/lib/utils/base-url'
+
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
 /** @deprecated Préférer productId du catalogue. Rétrocompat: pack_credits → credits_10 */
@@ -109,10 +111,11 @@ export async function POST(request: Request) {
       if (data.length > 0) promotionCodeId = data[0].id
     }
 
-    // URL de la requête = source fiable (aigile.lu en prod, localhost en dev)
-    const baseUrl = new URL(request.url).origin
+    // X-Forwarded-Proto/Host (nginx) ou request.url
+    const baseUrl = getBaseUrlFromRequest(request)
     const successUrl = `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
     const cancelUrl = resolvedProduct.type === 'book_physical' ? `${baseUrl}/#book` : `${baseUrl}/retro?checkout=cancelled`
+    console.log('[CHECKOUT] create-session', { productId: resolvedProduct.id, baseUrl, successUrl })
 
     const metadata: Record<string, string> = {
       product_id: resolvedProduct.id,
@@ -148,6 +151,7 @@ export async function POST(request: Request) {
           metadata: { product_id: resolvedProduct.id, user_id: session?.user?.id ?? '' },
         },
       })
+      console.log('[CHECKOUT] session subscription créée', { sessionId: checkoutSession.id })
       return NextResponse.json({ url: checkoutSession.url })
     }
 
@@ -173,6 +177,7 @@ export async function POST(request: Request) {
       ...(promotionCodeId && { discounts: [{ promotion_code: promotionCodeId }] }),
     })
 
+    console.log('[CHECKOUT] session créée', { sessionId: checkoutSession.id, url: checkoutSession.url?.slice(0, 50) })
     return NextResponse.json({ url: checkoutSession.url })
   } catch (err) {
     console.error('[API] checkout create-session error:', err)

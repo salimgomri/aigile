@@ -21,6 +21,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'session_id requis' }, { status: 400 })
   }
 
+  console.log('[CHECKOUT] session GET — page /merci charge les détails', { sessionId })
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId)
 
@@ -48,6 +49,7 @@ export async function GET(request: Request) {
           }
         : null
 
+    console.log('[CHECKOUT] session OK', { sessionId, productType, productTitle })
     return NextResponse.json({
       productType,
       productId: resolvedId ?? productId,
@@ -57,7 +59,7 @@ export async function GET(request: Request) {
       amountTotal: session.amount_total ?? 0,
     })
   } catch (err) {
-    console.error('[API] checkout session retrieve error:', err)
+    console.error('[CHECKOUT] session retrieve error', { sessionId, err })
     return NextResponse.json({ error: 'Session introuvable' }, { status: 404 })
   }
 }

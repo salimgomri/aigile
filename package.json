@@ -10,6 +10,7 @@
     "deploy": "./deploy_aigile.sh",
     "db:setup": "npx tsx scripts/setup-auth-db.ts",
     "db:find-region": "npx tsx scripts/find-db-region.ts",
+    "simulate:book-order": "npx tsx scripts/simulate-book-order.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },

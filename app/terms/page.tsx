@@ -76,7 +76,7 @@ export default function TermsPage() {
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">7. Contact</h2>
               <p>
                 Pour toute question concernant ces conditions :{' '}
-                <a href="mailto:salim.gomri@gmail.com" className="text-aigile-gold hover:underline">
+                <a href="mailto:edition.malis@gmail.com" className="text-aigile-gold hover:underline">
                   salim.gomri@gmail.com
                 </a>
               </p>

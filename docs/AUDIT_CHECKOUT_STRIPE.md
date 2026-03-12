@@ -68,6 +68,17 @@
 
 ---
 
+## 🔧 Dépannage — Orders vides en BDD
+
+Si le checkout réussit (redirection /merci) mais rien dans `orders` :
+
+1. **Webhook Stripe** : Dashboard Stripe → Developers → Webhooks → vérifier que l’URL est `https://aigile.lu/api/webhooks/stripe` et que `checkout.session.completed` est activé.
+2. **Secret webhook** : `STRIPE_WEBHOOK_SECRET` sur le serveur doit correspondre au **signing secret** du webhook **live** (pas test).
+3. **Policy INSERT** : Exécuter la migration `016_orders_service_insert_policy.sql` dans Supabase Dashboard → SQL Editor.
+4. **Logs** : En cas d’erreur, le webhook log `[WEBHOOK] orders insert failed:` dans les logs PM2.
+
+---
+
 ## 🔒 Stripe — Bonnes pratiques
 
 - ✅ Vérification de la signature webhook

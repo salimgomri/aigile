@@ -43,7 +43,7 @@ export default function NewsletterContactSection() {
     // Create mailto link
     const subject = encodeURIComponent(`[AIgile Contact] Message from ${contactForm.name}`)
     const body = encodeURIComponent(`Name: ${contactForm.name}\nEmail: ${contactForm.email}\n\nMessage:\n${contactForm.message}`)
-    window.location.href = `mailto:salim.gomri@gmail.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:edition.malis@gmail.com?subject=${subject}&body=${body}`
     
     setContactSubmitted(true)
     setTimeout(() => {
@@ -238,10 +238,10 @@ export default function NewsletterContactSection() {
             <div className="pt-4 flex items-center justify-center space-x-2 text-sm text-muted-foreground">
               <Mail className="w-4 h-4" />
               <a 
-                href="mailto:salim.gomri@gmail.com"
+                href="mailto:edition.malis@gmail.com"
                 className="hover:text-aigile-gold transition-colors duration-200"
               >
-                salim.gomri@gmail.com
+                edition.malis@gmail.com
               </a>
             </div>
           </div>

@@ -53,7 +53,7 @@ export default function About() {
                   <FileText className="w-5 h-5 text-[#0a66c2]" />
                   <span>{t('weekly-articles')}</span>
                 </a>
-                <a href="mailto:Salim.gomri@gmail.com" className="flex items-center gap-3 text-gray-800 hover:text-aigile-blue transition-colors">
+                <a href="mailto:edition.malis@gmail.com" className="flex items-center gap-3 text-gray-800 hover:text-aigile-blue transition-colors">
                   <Mail className="w-5 h-5 text-[#b91c1c]" />
                   <span>{t('email-contact')}</span>
                 </a>

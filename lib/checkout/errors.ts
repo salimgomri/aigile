@@ -11,7 +11,7 @@ export const ERROR_MESSAGES: Record<string, string> = {
   coupon_maxed: 'Ce code promo a atteint son nombre maximum d\'utilisations',
   product_unavailable: 'Ce produit n\'est plus disponible',
   shipping_required: 'Une adresse de livraison est requise pour le livre physique',
-  default: 'Une erreur inattendue s\'est produite — contacte salim@aigile.lu',
+  default: 'Une erreur inattendue s\'est produite — contacte edition.malis@gmail.com',
 }
 
 export function getCheckoutErrorMessage(code?: string): string {

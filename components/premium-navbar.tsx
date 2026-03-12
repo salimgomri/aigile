@@ -22,6 +22,7 @@ import { translations } from '@/lib/translations'
 import Link from 'next/link'
 import { Menu, X, ChevronDown, Globe, User, LogOut } from 'lucide-react'
 import { useSession, signOut } from '@/lib/auth-client'
+import { useCredits } from '@/lib/credits/CreditContext'
 import CreditsCountBadge from '@/components/credits/CreditsCountBadge'
 
 export default function PremiumNavbar() {
@@ -31,6 +32,7 @@ export default function PremiumNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { data: session, isPending } = useSession()
+  const { status } = useCredits()
   const t = translations[language]
 
   const isLanding = pathname === '/'
@@ -57,7 +59,11 @@ export default function PremiumNavbar() {
         ...toolsLinks.map((tool) => ({ href: tool.href, label: tool.label, isActive: tool.match(pathname || '') })),
       ]
 
-  const userDisplayName = session?.user?.name || session?.user?.email?.split('@')[0] || session?.user?.email || ''
+  // Admin: ne jamais afficher l'email (ni nom dérivé)
+  const userDisplayName = status?.isAdmin
+    ? 'Admin'
+    : (session?.user?.name || session?.user?.email?.split('@')[0] || session?.user?.email || '')
+  const userTitle = status?.isAdmin ? undefined : session?.user?.email
 
   // Detect scroll for glassmorphism effect
   useEffect(() => {
@@ -157,7 +163,7 @@ export default function PremiumNavbar() {
                     <div className="flex flex-col items-start gap-1">
                       <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-foreground bg-muted/50">
                         <User className="w-4 h-4" />
-                        <span className="max-w-[120px] truncate" title={session.user.email}>{userDisplayName}</span>
+                        <span className="max-w-[120px] truncate" title={userTitle}>{userDisplayName}</span>
                       </span>
                       <CreditsCountBadge />
                     </div>

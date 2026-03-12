@@ -8,7 +8,7 @@ import { useLanguage } from '@/components/language-provider'
 import { useCredits } from '@/lib/credits/CreditContext'
 import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
-import { Brain, ArrowRight, Layout, Smile, BarChart3 } from 'lucide-react'
+import { Brain, ArrowRight, Layout, Smile, BarChart3, Package } from 'lucide-react'
 
 export default function DashboardPage() {
   const { data: session, isPending } = useSession()
@@ -38,7 +38,7 @@ export default function DashboardPage() {
     return null
   }
 
-  const userName = session.user.name || session.user.email?.split('@')[0] || session.user.email
+  const userName = isAdmin ? 'Admin' : (session.user.name || session.user.email?.split('@')[0] || session.user.email)
 
   return (
     <main className="min-h-screen bg-background">
@@ -117,6 +117,27 @@ export default function DashboardPage() {
             </div>
           )}
 
+          {isAdmin ? (
+            <Link
+              href="/admin/orders"
+              className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
+            >
+              <div className="w-14 h-14 rounded-xl bg-aigile-gold/20 flex items-center justify-center group-hover:bg-aigile-gold/30 transition-colors">
+                <Package className="w-7 h-7 text-aigile-gold" />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl font-semibold text-foreground">
+                  {language === 'fr' ? 'Commandes' : 'Orders'}
+                </h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {language === 'fr'
+                    ? 'Gérer les commandes livre'
+                    : 'Manage book orders'}
+                </p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
+            </Link>
+          ) : null}
           {isAdmin ? (
             <Link
               href="/dora"

@@ -1,16 +1,22 @@
+/**
+ * URL de base — forcée à https://aigile.lu en production
+ * pour éviter les redirections localhost derrière nginx
+ */
+export const PROD_BASE_URL = 'https://aigile.lu'
+
 export function getBaseUrl(): string {
-  // Côté serveur : lire l'URL de la requête entrante
-  // C'est la seule source fiable — fonctionne en local ET en production
-  // sans aucune variable d'environnement à configurer
-  if (typeof window === 'undefined') {
-    // Server-side : utiliser NEXT_PUBLIC_URL si défini, sinon localhost
-    const explicit = process.env.NEXT_PUBLIC_URL
-    if (explicit) return explicit
-    const port = process.env.PORT ?? '3010'
-    return `http://localhost:${port}`
+  if (typeof window !== 'undefined') {
+    return window.location.origin
   }
-  // Côté client : utiliser window.location.origin
-  // Retourne automatiquement http://localhost:3010 en local
-  // et https://aigile.lu en production
-  return window.location.origin
+  if (process.env.NODE_ENV === 'production') {
+    return PROD_BASE_URL
+  }
+  const port = process.env.PORT ?? '3010'
+  return `http://localhost:${port}`
+}
+
+/** Base URL depuis une Request — en prod toujours aigile.lu */
+export function getBaseUrlFromRequest(_request: Request): string {
+  if (process.env.NODE_ENV === 'production') return PROD_BASE_URL
+  return getBaseUrl()
 }

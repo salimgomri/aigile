@@ -15,7 +15,7 @@ import { nextCookies } from 'better-auth/next-js'
 import { ensureUserCredits } from './credits/manager'
 
 const databaseUrl = getDatabaseUrl()
-const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3010'
+const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || (process.env.NODE_ENV === 'production' ? 'https://aigile.lu' : 'http://localhost:3010')
 
 // Production: trustedOrigins requis pour OAuth (sign-in Google)
 const trustedOrigins = [
