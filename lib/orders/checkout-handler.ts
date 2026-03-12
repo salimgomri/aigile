@@ -18,12 +18,13 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
   const userId = (metadata.user_id ?? metadata.userId) as string | undefined
   const buyerName = (metadata.buyer_name ?? '') as string
   const inPersonPickup = metadata.in_person_pickup === 'true'
+  const quantity = Math.max(1, parseInt(String(metadata.quantity ?? '1'), 10) || 1)
 
   const resolvedId = productId === 'pack_credits' ? 'credits_10' : productId
   const product: Product | null = resolvedId
     ? (getProduct(resolvedId) ?? (CATALOG[resolvedId] as Product | undefined) ?? null)
     : null
-  const productTitle = product?.title ?? 'Commande'
+  const productTitle = product?.title ?? (productId === 'buy_coffee' ? 'Buy a coffee' : 'Commande')
 
   const amountTotal = session.amount_total ?? 0
   const amountShipping = session.total_details?.amount_shipping ?? (inPersonPickup ? 0 : 500)
@@ -44,6 +45,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
     product_id: resolvedId ?? productId ?? 'unknown',
     product_type: productType ?? product?.type ?? 'unknown',
     product_title: productTitle,
+    quantity,
     buyer_email: buyerEmail,
     buyer_name: buyerName,
     user_id: userId || null,
@@ -131,6 +133,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
       buyerEmail,
       productId: resolvedId ?? productId,
       productTitle,
+      quantity,
       amountTotal,
       amountShipping,
       amountDiscount,
@@ -157,6 +160,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
     buyerName: buyerName || buyerEmail.split('@')[0],
     productTitle,
     productType: productType ?? product?.type ?? 'unknown',
+    quantity,
     amountTotal,
     amountSubtotal,
     amountDiscount,

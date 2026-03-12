@@ -17,6 +17,8 @@ function getSubject(productType: string, productTitle: string): string {
   switch (productType) {
     case 'book_physical':
       return `✓ Ta commande est confirmée — ${productTitle}`
+    case 'buy_coffee':
+      return '☕ Merci pour ton café !'
     case 'day_pass':
       return '⚡ Ton Day Pass AIgile est actif — 24h illimitées'
     case 'subscription_monthly':
@@ -29,11 +31,12 @@ function getSubject(productType: string, productTitle: string): string {
   }
 }
 
-function getMessageByType(productType: string, productTitle: string, amountTotal: number): string {
+function getMessageByType(productType: string, productTitle: string, amountTotal: number, quantity = 1): string {
   const total = formatPrice(amountTotal)
+  const qtyLabel = quantity > 1 ? `${quantity} exemplaires de ` : ''
   switch (productType) {
     case 'book_physical':
-      return `Ta commande de <strong>${productTitle}</strong> est confirmée pour un montant de ${total}.`
+      return `Ta commande de <strong>${qtyLabel}${productTitle}</strong> est confirmée pour un montant de ${total}.`
     case 'day_pass':
       return `Ton Day Pass AIgile est actif ! Tu as accès illimité à tous les outils pendant 24h. Montant : ${total}.`
     case 'subscription_monthly':
@@ -41,8 +44,10 @@ function getMessageByType(productType: string, productTitle: string, amountTotal
       return `Bienvenue dans AIgile Pro ! Tu as maintenant accès à tous les outils et crédits illimités. Montant : ${total}.`
     case 'credits_pack':
       return `Tes crédits AIgile ont été ajoutés à ton compte. Montant : ${total}.`
+    case 'buy_coffee':
+      return `Merci pour ton café ! Ta contribution de ${total} soutient le projet AIgile.`
     default:
-      return `Ta commande de <strong>${productTitle}</strong> est confirmée pour un montant de ${total}.`
+      return `Ta commande de <strong>${qtyLabel}${productTitle}</strong> est confirmée pour un montant de ${total}.`
   }
 }
 
@@ -51,6 +56,7 @@ export type BuyerConfirmationParams = {
   buyerName: string
   productTitle: string
   productType: string
+  quantity?: number
   amountTotal: number
   amountSubtotal?: number
   amountDiscount?: number
@@ -81,6 +87,7 @@ export async function sendBuyerConfirmationEmail(params: BuyerConfirmationParams
     buyerName,
     productTitle,
     productType,
+    quantity = 1,
     amountTotal,
     amountSubtotal,
     amountDiscount = 0,
@@ -91,7 +98,7 @@ export async function sendBuyerConfirmationEmail(params: BuyerConfirmationParams
   const displayAmount = amountDiscount > 0 ? (amountSubtotal ?? amountTotal + amountDiscount) : amountTotal
 
   const subject = getSubject(productType, productTitle)
-  const message = getMessageByType(productType, productTitle, amountTotal)
+  const message = getMessageByType(productType, productTitle, amountTotal, quantity)
 
   const isBook = productType === 'book_physical'
   const isDigital = ['day_pass', 'credits_pack', 'subscription_monthly', 'subscription_annual'].includes(productType)

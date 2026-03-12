@@ -1,6 +1,5 @@
 import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
-import FloatingCoachingButton from '@/components/floating-coaching-button'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
@@ -26,7 +25,6 @@ export default function StartScrumPage() {
       </div>
 
       <PremiumFooter />
-      <FloatingCoachingButton />
     </main>
   )
 }

@@ -140,6 +140,7 @@ export const translations = {
     // Floating Button
     "coaching-float": "Book Coaching Session",
     "coaching-float-short": "Coaching",
+    "coffee-float": "Buy a coffee",
     "feedback-float": "Feedback",
     "feedback-title": "Send feedback",
     "feedback-placeholder": "Your message, bug report, suggestion...",
@@ -290,6 +291,7 @@ export const translations = {
     // Floating Button
     "coaching-float": "Réserver une Session de Coaching",
     "coaching-float-short": "Coaching",
+    "coffee-float": "Offrir un café",
     "feedback-float": "Feedback",
     "feedback-title": "Envoyer un message",
     "feedback-placeholder": "Votre message, bug, suggestion...",

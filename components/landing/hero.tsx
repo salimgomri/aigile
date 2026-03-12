@@ -7,6 +7,7 @@
 
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useLanguage } from '../language-provider'
 import { ArrowRight, BookOpen } from 'lucide-react'
 import Link from 'next/link'
@@ -69,6 +70,20 @@ const heroContent = {
 export default function LandingHero() {
   const { language } = useLanguage()
   const content = heroContent[language]
+  const [bookBadge, setBookBadge] = useState<string | null>(null)
+
+  useEffect(() => {
+    fetch('/api/book/pricing')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (d?.isPreorder) {
+          setBookBadge(language === 'fr' ? 'Précommander' : 'Pre-order')
+        } else if (d?.product) {
+          setBookBadge(language === 'fr' ? 'Acheter' : 'Buy')
+        }
+      })
+      .catch(() => {})
+  }, [language])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-aigile-dark">
@@ -191,9 +206,9 @@ export default function LandingHero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-aigile-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Floating badge with animation */}
+              {/* Floating badge: Précommander / Acheter selon période */}
               <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow">
-                {language === 'fr' ? 'En cours d\'écriture' : 'In Progress'}
+                {bookBadge ?? (language === 'fr' ? 'Précommander' : 'Pre-order')}
               </div>
             </div>
           </div>

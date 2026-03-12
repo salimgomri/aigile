@@ -69,9 +69,11 @@ export default function BookSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-book-orange/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* "In Progress" ribbon with book-orange accent */}
+              {/* Badge Précommander / Acheter selon période */}
               <div className="absolute top-8 -right-12 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl animate-pulse">
-                {t['book-badge']}
+                {pricing?.isPreorder
+                  ? (language === 'fr' ? 'Précommander' : 'Pre-order')
+                  : (language === 'fr' ? 'Acheter' : 'Buy')}
               </div>
             </div>
           </div>

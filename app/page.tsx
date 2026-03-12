@@ -57,7 +57,6 @@ import ManifestoSection from '@/components/landing/manifesto-section'
 import CardsSection from '@/components/landing/cards-section'
 import NewsletterContactSection from '@/components/landing/newsletter-contact'
 import PremiumFooter from '@/components/landing/premium-footer'
-import FloatingCoachingButton from '@/components/floating-coaching-button'
 
 export default function Home() {
   return (
@@ -152,17 +151,7 @@ export default function Home() {
       */}
       <PremiumFooter />
 
-      {/* 
-        FLOATING COACHING BUTTON
-        - Always visible (fixed position)
-        - Bottom-right corner
-        - Gradient background with glow
-        - Pulse animation
-        - Opens Calendly for booking
-        - Responsive: Full text (desktop) / Icon (mobile)
-        - Z-index: Above all content
-      */}
-      <FloatingCoachingButton />
+      {/* FloatingBottomBar (Feedback, Buy a coffee, Calendly) — dans layout.tsx */}
     </main>
   )
 }

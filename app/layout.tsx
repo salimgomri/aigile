@@ -4,7 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
 import { CreditProvider } from '@/lib/credits/CreditContext'
-import FloatingFeedbackButton from '@/components/floating-feedback-button'
+import FloatingBottomBar from '@/components/floating-bottom-bar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +30,7 @@ export default function RootLayout({
           <LanguageProvider>
             <CreditProvider>
               {children}
-              <FloatingFeedbackButton />
+              <FloatingBottomBar />
             </CreditProvider>
           </LanguageProvider>
         </ThemeProvider>

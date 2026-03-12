@@ -25,6 +25,8 @@ type BodyInput = {
   product?: string
   buyerName?: string
   buyerEmail?: string
+  quantity?: number
+  customAmount?: number // centimes, pour buy_coffee
   shipping?: ShippingInput
   couponCode?: string
   inPersonPickup?: boolean
@@ -43,6 +45,8 @@ export async function POST(request: Request) {
       product,
       buyerName,
       buyerEmail,
+      quantity: qty = 1,
+      customAmount,
       shipping,
       couponCode,
       inPersonPickup = false,
@@ -65,9 +69,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Produit invalide ou non configuré' }, { status: 400 })
     }
 
-    // 2. Produits numériques/pro : session requise
+    // buy_coffee : montant libre requis (min 1€, max 999€)
+    if (resolvedId === 'buy_coffee') {
+      const amountCentimes = Math.round(customAmount ?? 0)
+      if (amountCentimes < 100) {
+        return NextResponse.json({ error: 'Montant minimum 1,00 €' }, { status: 400 })
+      }
+      if (amountCentimes > 99900) {
+        return NextResponse.json({ error: 'Montant maximum 999,00 €' }, { status: 400 })
+      }
+    }
+
+    // 2. Produits numériques/pro : session requise (book_physical et buy_coffee = pas de session requise)
     const requiresAuth =
       resolvedProduct.type !== 'book_physical' &&
+      resolvedProduct.type !== 'buy_coffee' &&
       ['credits_pack', 'day_pass', 'subscription_monthly', 'subscription_annual'].includes(
         resolvedProduct.type
       )
@@ -114,9 +130,22 @@ export async function POST(request: Request) {
     // X-Forwarded-Proto/Host (nginx) ou request.url
     const baseUrl = getBaseUrlFromRequest(request)
     const successUrl = `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
-    const cancelUrl = resolvedProduct.type === 'book_physical' ? `${baseUrl}/#book` : `${baseUrl}/retro?checkout=cancelled`
+    const cancelUrl =
+      resolvedProduct.type === 'book_physical'
+        ? `${baseUrl}/#book`
+        : resolvedProduct.type === 'buy_coffee'
+          ? `${baseUrl}/#contact`
+          : `${baseUrl}/retro?checkout=cancelled`
     console.log('[CHECKOUT] create-session', { productId: resolvedProduct.id, baseUrl, successUrl })
 
+    const quantity =
+      resolvedProduct.type === 'book_physical'
+        ? Math.max(1, Math.min(99, Math.floor(qty) || 1))
+        : 1
+    const coffeeAmount =
+      resolvedId === 'buy_coffee'
+        ? Math.max(100, Math.min(99900, Math.round(customAmount ?? 0)))
+        : 0
     const metadata: Record<string, string> = {
       product_id: resolvedProduct.id,
       product_type: resolvedProduct.type,
@@ -124,6 +153,7 @@ export async function POST(request: Request) {
       user_id: session?.user?.id ?? '',
       coupon_code: couponCode ?? '',
       in_person_pickup: String(inPersonPickup),
+      quantity: String(quantity),
     }
     if (resolvedProduct.requiresShipping && !inPersonPickup && shipping) {
       metadata.shipping_name = shipping.name
@@ -156,9 +186,24 @@ export async function POST(request: Request) {
     }
 
     // Mode payment
-    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [
-      { price: resolvedProduct.stripePriceId, quantity: 1 },
-    ]
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = []
+
+    if (resolvedId === 'buy_coffee') {
+      lineItems.push({
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: resolvedProduct.title,
+            description: resolvedProduct.description,
+            images: [],
+          },
+          unit_amount: coffeeAmount,
+        },
+        quantity: 1,
+      })
+    } else {
+      lineItems.push({ price: resolvedProduct.stripePriceId, quantity })
+    }
     if (shippingAmount > 0) {
       lineItems.push({
         price_data: {
@@ -175,6 +220,8 @@ export async function POST(request: Request) {
       mode: 'payment',
       line_items: lineItems,
       ...(promotionCodeId && { discounts: [{ promotion_code: promotionCodeId }] }),
+      // Pas de code promo pour buy_coffee
+      ...(resolvedId === 'buy_coffee' && { allow_promotion_codes: false }),
     })
 
     console.log('[CHECKOUT] session créée', { sessionId: checkoutSession.id, url: checkoutSession.url?.slice(0, 50) })

@@ -9,6 +9,7 @@ export type ProductType =
   | 'subscription_monthly'
   | 'subscription_annual'
   | 'day_pass'
+  | 'buy_coffee'
 
 export type FulfillmentType = 'automatic' | 'manual_kdp' | 'stripe_subscription'
 
@@ -111,6 +112,22 @@ export const CATALOG: Record<string, Product> = {
     fulfillmentType: 'automatic',
   },
 
+  // ─── BUY A COFFEE (montant libre) ─────────────────────────
+  buy_coffee: {
+    id: 'buy_coffee',
+    stripePriceId: '', // Utilise price_data avec customAmount
+    type: 'buy_coffee',
+    title: 'Buy a coffee',
+    description: 'Soutiens le projet AIgile — montant libre',
+    amount: 0,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: false,
+    shippingFee: 0,
+    freeShippingInPerson: false,
+    fulfillmentType: 'automatic',
+  },
+
   // ─── PACK CRÉDITS ────────────────────────────────────────
   credits_10: {
     id: 'credits_10',
@@ -148,6 +165,8 @@ function getStripePriceId(productId: string): string {
 export function getProduct(productId: string): Product | null {
   const p = CATALOG[productId]
   if (!p) return null
+  // buy_coffee n'a pas de stripePriceId — on utilise price_data
+  if (productId === 'buy_coffee') return { ...p }
   const priceId = getStripePriceId(productId)
   if (!priceId) return null
   return { ...p, stripePriceId: priceId }

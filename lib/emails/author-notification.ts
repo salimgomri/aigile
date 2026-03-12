@@ -22,6 +22,7 @@ export type AuthorNotificationParams = {
   buyerEmail: string
   productId: string
   productTitle: string
+  quantity?: number
   amountTotal: number
   amountShipping: number
   amountDiscount: number
@@ -48,6 +49,8 @@ export async function sendAuthorNotificationEmail(params: AuthorNotificationPara
     buyerName,
     buyerEmail,
     productId,
+    productTitle,
+    quantity = 1,
     amountTotal,
     amountShipping,
     amountDiscount,
@@ -57,11 +60,12 @@ export async function sendAuthorNotificationEmail(params: AuthorNotificationPara
   } = params
 
   const orderType = productId === 'book_preorder' ? 'Précommande' : 'Vente'
+  const qtyLabel = quantity > 1 ? `${quantity}× ` : ''
   const countryCode = shippingAddress?.country ?? 'LU'
   const countryName = getCountryName(countryCode)
   const montantEur = formatPrice(amountTotal).replace(' €', '')
 
-  const subject = `📦 ${orderType} — ${buyerName} — ${montantEur}€ — ${countryName}`
+  const subject = `📦 ${orderType} — ${qtyLabel}${buyerName} — ${montantEur}€ — ${countryName}`
 
   let livraisonBlock: string
   if (inPersonPickup) {
@@ -86,6 +90,7 @@ LIVRAISON
 ${livraisonFormatted}
 
 PAIEMENT
+  Produit     : ${quantity > 1 ? `${quantity}× ` : ''}${productTitle}
   Total payé  : ${formatPrice(amountTotal)}
   Dont livr.  : ${formatPrice(amountShipping)}
   Réduction   : ${formatPrice(amountDiscount)}

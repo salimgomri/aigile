@@ -11,7 +11,7 @@
 import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
 import Link from 'next/link'
-import { Linkedin, Twitter, Youtube, Github } from 'lucide-react'
+import { Linkedin, Twitter } from 'lucide-react'
 
 export default function PremiumFooter() {
   const { language } = useLanguage()

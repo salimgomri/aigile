@@ -81,6 +81,7 @@ export default function CheckoutSheet({
   const [couponError, setCouponError] = useState('')
   const [couponLoading, setCouponLoading] = useState(false)
   const [discount, setDiscount] = useState<{ label: string; amount: number } | null>(null)
+  const [quantity, setQuantity] = useState(1)
 
   // Pré-remplir avec session si connecté (priorité aux props)
   useEffect(() => {
@@ -102,7 +103,8 @@ export default function CheckoutSheet({
   const requiresShipping = product?.requiresShipping ?? false
   const showAddress = requiresShipping && !inPersonPickup
   const shippingFee = inPersonPickup ? 0 : (product?.shippingFee ?? 0)
-  const subtotal = product?.amount ?? 0
+  const qty = product?.type === 'book_physical' ? Math.max(1, Math.min(99, quantity)) : 1
+  const subtotal = (product?.amount ?? 0) * qty
   const total = Math.max(0, subtotal - (discount?.amount ?? 0) + shippingFee)
 
   const handleApplyCoupon = useCallback(async () => {
@@ -166,6 +168,7 @@ export default function CheckoutSheet({
           productId: product.id,
           buyerEmail: email,
           buyerName: name,
+          quantity: product.type === 'book_physical' ? qty : undefined,
           inPersonPickup: requiresShipping ? inPersonPickup : undefined,
           couponCode: couponApplied ?? undefined,
           ...(requiresShipping &&
@@ -201,6 +204,7 @@ export default function CheckoutSheet({
     inPersonPickup,
     couponApplied,
     showAddress,
+    qty,
   ])
 
   if (!product) return null
@@ -254,14 +258,34 @@ export default function CheckoutSheet({
                   <div className="flex-1 min-w-0">
                     <p className="font-semibold text-foreground">{product.title}</p>
                     <p className="text-sm text-muted-foreground">{product.description}</p>
-                    <p className="text-lg font-bold text-aigile-gold mt-1">
-                      {formatPrice(product.amount)}
-                      {product.isRecurring && (
-                        <span className="text-sm font-normal text-muted-foreground">
-                          {product.type.includes('annual') ? '/an' : '/mois'}
-                        </span>
+                    <div className="flex items-center gap-3 mt-2">
+                      {product.type === 'book_physical' && (
+                        <div className="flex items-center gap-2">
+                          <label className="text-sm text-muted-foreground">Quantité</label>
+                          <input
+                            type="number"
+                            min={1}
+                            max={99}
+                            value={quantity}
+                            onChange={(e) => setQuantity(Math.max(1, Math.min(99, parseInt(e.target.value, 10) || 1)))}
+                            className="w-16 px-3 py-1.5 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-aigile-gold"
+                          />
+                        </div>
                       )}
-                    </p>
+                      <p className="text-lg font-bold text-aigile-gold">
+                        {formatPrice(product.amount)}
+                        {qty > 1 && (
+                          <span className="text-sm font-normal text-muted-foreground">
+                            {' '}× {qty} = {formatPrice(subtotal)}
+                          </span>
+                        )}
+                        {product.isRecurring && (
+                          <span className="text-sm font-normal text-muted-foreground">
+                            {product.type.includes('annual') ? '/an' : '/mois'}
+                          </span>
+                        )}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
