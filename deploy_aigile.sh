@@ -58,8 +58,10 @@ echo "🔐 Permissions (root pour PM2, nginx proxy ne lit pas les fichiers)..."
 ssh "${REMOTE_HOST}" "chown -R root:root ${REMOTE_PATH} && chmod -R 755 ${REMOTE_PATH}"
 
 echo ""
-echo "🔧 Vérification des variables d'environnement (BETTER_AUTH_URL, NEXT_PUBLIC_APP_URL)..."
+echo "🔧 Vérification des variables d'environnement (BETTER_AUTH_URL, NEXT_PUBLIC_APP_URL, Stripe)..."
 ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (test -f deploy/ensure-env.sh && bash deploy/ensure-env.sh .env.local 2>/dev/null; test -f .env && bash deploy/ensure-env.sh .env 2>/dev/null) || true"
+# Vérifier les vars requises pour le bouton livre (sinon /api/book/pricing → 404)
+ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (grep -q '^STRIPE_PRICE_ID_PREORDER=' .env.local 2>/dev/null || grep -q '^STRIPE_PRICE_ID_PREORDER=' .env 2>/dev/null) && (grep -q '^STRIPE_PRICE_ID_SALE=' .env.local 2>/dev/null || grep -q '^STRIPE_PRICE_ID_SALE=' .env 2>/dev/null) && (grep -q '^PREORDER_END_DATE=' .env.local 2>/dev/null || grep -q '^PREORDER_END_DATE=' .env 2>/dev/null) || echo '⚠️  Bouton livre: ajoutez STRIPE_PRICE_ID_PREORDER, STRIPE_PRICE_ID_SALE, PREORDER_END_DATE dans .env.local sur le serveur'"
 
 echo ""
 echo "🔄 Redémarrage PM2..."

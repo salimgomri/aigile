@@ -3,8 +3,6 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { getProduct, getCurrentBookProduct } from '@/lib/payments/catalog'
-import { getBaseUrl } from '@/lib/utils/base-url'
-
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
 /** @deprecated Préférer productId du catalogue. Rétrocompat: pack_credits → credits_10 */
@@ -111,7 +109,8 @@ export async function POST(request: Request) {
       if (data.length > 0) promotionCodeId = data[0].id
     }
 
-    const baseUrl = getBaseUrl()
+    // URL de la requête = source fiable (aigile.lu en prod, localhost en dev)
+    const baseUrl = new URL(request.url).origin
     const successUrl = `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
     const cancelUrl = resolvedProduct.type === 'book_physical' ? `${baseUrl}/#book` : `${baseUrl}/retro?checkout=cancelled`
 

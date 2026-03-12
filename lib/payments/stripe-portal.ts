@@ -7,8 +7,14 @@ import { getBaseUrl } from '@/lib/utils/base-url'
 
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
-export async function createStripePortalUrl(userId: string, returnPath = '/settings/team'): Promise<string> {
+export async function createStripePortalUrl(
+  userId: string,
+  returnPath = '/settings/team',
+  baseUrl?: string
+): Promise<string> {
   if (!stripe) throw new Error('Stripe non configuré')
+
+  const base = baseUrl ?? getBaseUrl()
 
   const { data: credits } = await supabaseAdmin
     .from('user_credits')
@@ -28,11 +34,10 @@ export async function createStripePortalUrl(userId: string, returnPath = '/setti
     throw new Error('Aucun client Stripe pour cet utilisateur')
   }
 
-  const baseUrl = getBaseUrl()
   const session = await stripe.billingPortal.sessions.create({
     customer: customerId,
-    return_url: `${baseUrl}${returnPath}`,
+    return_url: `${base}${returnPath}`,
   })
 
-  return session.url ?? `${baseUrl}${returnPath}`
+  return session.url ?? `${base}${returnPath}`
 }

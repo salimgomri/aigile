@@ -8,8 +8,6 @@ import {
 } from '@/lib/email'
 import Stripe from 'stripe'
 import { getProduct, CATALOG, type Product } from '@/lib/payments/catalog'
-import { getBaseUrl } from '@/lib/utils/base-url'
-
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
 /**
@@ -200,7 +198,7 @@ async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
     .eq('user_id', userId)
 }
 
-async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
+async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, baseUrl: string) {
   const sub = invoice.parent?.subscription_details?.subscription ?? (invoice as { subscription?: string }).subscription
   const subscriptionId = typeof sub === 'string' ? sub : sub?.id ?? null
   if (!subscriptionId || !stripe) return
@@ -216,8 +214,6 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
   const customerId = typeof invoice.customer === 'string' ? invoice.customer : invoice.customer?.id
   const customerEmail = invoice.customer_email
   if (!customerId || !customerEmail) return
-
-  const baseUrl = getBaseUrl()
   const portalSession = await stripe.billingPortal.sessions.create({
     customer: customerId,
     return_url: `${baseUrl}/dashboard`,

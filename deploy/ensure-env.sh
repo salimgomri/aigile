@@ -25,3 +25,11 @@ if ! grep -q "NEXT_PUBLIC_APP_URL=$APP_URL" "$ENV_FILE" 2>/dev/null; then
     echo "NEXT_PUBLIC_APP_URL=$APP_URL" >> "$ENV_FILE"
   fi
 fi
+# Mettre à jour NEXT_PUBLIC_URL (getBaseUrl)
+if ! grep -q "NEXT_PUBLIC_URL=$APP_URL" "$ENV_FILE" 2>/dev/null; then
+  if grep -q "NEXT_PUBLIC_URL=" "$ENV_FILE"; then
+    sed -i.bak "s|NEXT_PUBLIC_URL=.*|NEXT_PUBLIC_URL=$APP_URL|" "$ENV_FILE"
+  else
+    echo "NEXT_PUBLIC_URL=$APP_URL" >> "$ENV_FILE"
+  fi
+fi

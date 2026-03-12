@@ -10,10 +10,11 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Non connecté' }, { status: 401 })
     }
 
-    const { searchParams } = new URL(request.url)
-    const returnPath = searchParams.get('return') || '/settings/team'
+    const urlObj = new URL(request.url)
+    const returnPath = urlObj.searchParams.get('return') || '/settings/team'
+    const baseUrl = urlObj.origin
 
-    const url = await createStripePortalUrl(session.user.id, returnPath)
+    const url = await createStripePortalUrl(session.user.id, returnPath, baseUrl)
     return NextResponse.json({ url })
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Erreur'
