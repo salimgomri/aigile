@@ -3,13 +3,12 @@
  * Le moteur lit la config et adapte formulaire, champs requis et flux post-paiement.
  */
 
+// Vars obligatoires pour le livre + Pro (DAY_PASS et CREDITS_10 optionnels)
 const REQUIRED_ENV_VARS = [
   'STRIPE_PRICE_ID_PREORDER',
   'STRIPE_PRICE_ID_SALE',
   'STRIPE_PRICE_ID_PRO_MONTHLY',
   'STRIPE_PRICE_ID_PRO_ANNUAL',
-  'STRIPE_PRICE_ID_DAY_PASS',
-  'STRIPE_PRICE_ID_CREDITS_10',
   'PREORDER_END_DATE',
 ] as const
 
