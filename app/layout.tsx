@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
 import { CreditProvider } from '@/lib/credits/CreditContext'
 import FloatingBottomBar from '@/components/floating-bottom-bar'
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-WMG8QLND8X'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <ThemeProvider>
           <LanguageProvider>
             <CreditProvider>
