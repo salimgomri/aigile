@@ -187,22 +187,7 @@ export async function resetMonthlyCredits(userId: string) {
     .eq('plan', 'free')
 }
 
-export async function ensureUserCredits(userId: string) {
-  const { data } = await supabaseAdmin.from('user_credits').select('id').eq('user_id', userId).single()
-  if (data) return
-
-  const nextMonth = new Date()
-  nextMonth.setMonth(nextMonth.getMonth() + 1)
-  nextMonth.setDate(1)
-  nextMonth.setHours(0, 0, 0, 0)
-
-  await supabaseAdmin.from('user_credits').insert({
-    user_id: userId,
-    plan: 'free',
-    credits_remaining: 10,
-    monthly_reset_at: nextMonth.toISOString(),
-  })
-}
+export { ensureUserCredits } from '@/lib/payments/ensure-credits'
 
 /** Ajoute des crédits (ex: achat pack) - pour plan free uniquement */
 export async function addCredits(userId: string, amount: number): Promise<void> {

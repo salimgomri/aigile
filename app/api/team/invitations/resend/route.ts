@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { supabaseAdmin } from '@/lib/supabase'
 import { sendInvitationEmail } from '@/lib/email'
+import { getBaseUrl } from '@/lib/utils/base-url'
 
 const ROLE_LABELS: Record<string, string> = {
   manager: 'Manager',
@@ -70,7 +71,7 @@ export async function POST(request: Request) {
       })
       .eq('id', inv.id)
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3010'
+    const baseUrl = getBaseUrl()
     const url = `${baseUrl}/invite/${newToken}`
     void sendInvitationEmail({
       to: inv.email,

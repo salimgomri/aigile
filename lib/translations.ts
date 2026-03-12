@@ -65,6 +65,7 @@ export const translations = {
     "nav-manifesto": "Manifesto",
     "nav-book": "Book",
     "nav-cards": "Cards",
+    "nav-pricing": "Pricing",
     "nav-signin": "Sign In",
     "nav-signup": "Sign Up",
     "nav-signout": "Sign out",
@@ -125,6 +126,8 @@ export const translations = {
     "newsletter-placeholder": "your@email.com",
     "newsletter-cta": "Subscribe",
     "newsletter-privacy": "No spam. Unsubscribe anytime.",
+    "newsletter-or": "or",
+    "newsletter-linkedin": "Subscribe on LinkedIn",
     
     // Contact
     "contact-title": "Get in Touch",
@@ -212,6 +215,7 @@ export const translations = {
     "nav-manifesto": "Manifeste",
     "nav-book": "Livre",
     "nav-cards": "Cartes",
+    "nav-pricing": "Tarifs",
     "nav-signin": "Se connecter",
     "nav-signup": "S'inscrire",
     "nav-signout": "Déconnexion",
@@ -272,6 +276,8 @@ export const translations = {
     "newsletter-placeholder": "votre@email.com",
     "newsletter-cta": "S'abonner",
     "newsletter-privacy": "Pas de spam. Désabonnement à tout moment.",
+    "newsletter-or": "ou",
+    "newsletter-linkedin": "S'abonner à la newsletter LinkedIn",
     
     // Contact
     "contact-title": "Contactez-nous",

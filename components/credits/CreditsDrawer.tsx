@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useCredits } from '@/lib/credits/CreditContext'
 import { CREDIT_ACTIONS } from '@/lib/credits/actions'
 import { X, Zap } from 'lucide-react'
+import Link from 'next/link'
 import UpgradeModal from './UpgradeModal'
 
 export default function CreditsDrawer(props: { open: boolean; onClose: () => void }) {
@@ -77,6 +78,9 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                       Day Pass — 9,99€
                     </button>
                   </div>
+                  <Link href="/#pricing" onClick={onClose} className="block text-center text-xs text-[#c9973a] hover:underline mt-3">
+                    Voir la page tarifs complète →
+                  </Link>
                 </div>
               </>
             )}
@@ -94,6 +98,9 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                   <button onClick={() => setShowUpgrade(true)} className="w-full py-2.5 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full">
                     Passer Pro
                   </button>
+                  <Link href="/#pricing" onClick={onClose} className="block text-center text-xs text-[#c9973a] hover:underline mt-3">
+                    Voir la page tarifs complète →
+                  </Link>
                 </div>
               </>
             )}
@@ -103,7 +110,18 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                   <p className="text-sm text-[#c9973a] font-medium">✦ Plan Pro</p>
                   <p className="text-white/80 text-sm">Crédits illimités</p>
                 </div>
-                <button className="w-full py-2.5 border border-white/20 text-white rounded-full text-sm hover:bg-white/10">
+                <button
+                  onClick={async () => {
+                    try {
+                      const res = await fetch('/api/stripe/portal?return=' + encodeURIComponent('/dashboard'))
+                      const { url } = await res.json()
+                      if (url) window.location.href = url
+                    } catch {
+                      // ignore
+                    }
+                  }}
+                  className="w-full py-2.5 border border-white/20 text-white rounded-full text-sm hover:bg-white/10"
+                >
                   Gérer mon abonnement
                 </button>
               </>

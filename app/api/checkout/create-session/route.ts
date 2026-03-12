@@ -2,16 +2,32 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
+import { getProduct, getCurrentBookProduct } from '@/lib/payments/catalog'
+import { getBaseUrl } from '@/lib/utils/base-url'
 
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
+/** @deprecated Préférer productId du catalogue. Rétrocompat: pack_credits → credits_10 */
 export type CheckoutProduct = 'day_pass' | 'pro_monthly' | 'pro_annual' | 'pack_credits'
 
-const PRICE_IDS: Record<CheckoutProduct, string | undefined> = {
-  day_pass: process.env.STRIPE_DAY_PASS_PRICE_ID,
-  pro_monthly: process.env.STRIPE_PRO_MONTHLY_PRICE_ID,
-  pro_annual: process.env.STRIPE_PRO_ANNUAL_PRICE_ID,
-  pack_credits: process.env.STRIPE_PACK_CREDITS_PRICE_ID,
+type ShippingInput = {
+  name: string
+  address1: string
+  address2?: string
+  city: string
+  postal: string
+  country: string
+  phone?: string
+}
+
+type BodyInput = {
+  productId?: string
+  product?: string
+  buyerName?: string
+  buyerEmail?: string
+  shipping?: ShippingInput
+  couponCode?: string
+  inPersonPickup?: boolean
 }
 
 export async function POST(request: Request) {
@@ -21,32 +37,142 @@ export async function POST(request: Request) {
     }
 
     const session = await auth.api.getSession({ headers: await headers() })
-    if (!session?.user) {
-      return NextResponse.json({ error: 'Non connecté' }, { status: 401 })
+    const body = (await request.json()) as BodyInput
+    const {
+      productId,
+      product,
+      buyerName,
+      buyerEmail,
+      shipping,
+      couponCode,
+      inPersonPickup = false,
+    } = body
+
+    const id = productId ?? product
+    const resolvedId = id === 'pack_credits' ? 'credits_10' : id
+
+    if (!resolvedId) {
+      return NextResponse.json({ error: 'productId requis' }, { status: 400 })
     }
 
-    const body = await request.json()
-    const { product } = body as { product: CheckoutProduct }
+    // 1. Charger le produit (livre = dynamique selon date)
+    const resolvedProduct =
+      resolvedId === 'book_preorder' || resolvedId === 'book_sale'
+        ? getCurrentBookProduct()
+        : getProduct(resolvedId)
 
-    const priceId = PRICE_IDS[product]
-    if (!product || !priceId) {
-      return NextResponse.json({ error: 'Produit invalide' }, { status: 400 })
+    if (!resolvedProduct) {
+      return NextResponse.json({ error: 'Produit invalide ou non configuré' }, { status: 400 })
     }
 
-    const isSubscription = ['pro_monthly', 'pro_annual'].includes(product)
-    const successUrl = `${process.env.NEXT_PUBLIC_APP_URL || request.headers.get('origin') || 'https://aigile.lu'}/retro?checkout=success`
-    const cancelUrl = `${process.env.NEXT_PUBLIC_APP_URL || request.headers.get('origin') || 'https://aigile.lu'}/retro?checkout=cancelled`
+    // 2. Produits numériques/pro : session requise
+    const requiresAuth =
+      resolvedProduct.type !== 'book_physical' &&
+      ['credits_pack', 'day_pass', 'subscription_monthly', 'subscription_annual'].includes(
+        resolvedProduct.type
+      )
+    if (requiresAuth && !session?.user) {
+      return NextResponse.json({ error: 'Connectez-vous pour procéder au paiement' }, { status: 401 })
+    }
 
-    const sessionParams: Stripe.Checkout.SessionCreateParams = {
-      mode: isSubscription ? 'subscription' : 'payment',
-      customer_email: session.user.email ?? undefined,
+    const userName = buyerName ?? session?.user?.name ?? ''
+    const userEmail = buyerEmail ?? session?.user?.email ?? ''
+    if (!userEmail) {
+      return NextResponse.json({ error: 'Email requis' }, { status: 400 })
+    }
+
+    // 3. Validation adresse si livraison requise et pas en main propre
+    if (resolvedProduct.requiresShipping && !inPersonPickup) {
+      const requiredFields = ['address1', 'city', 'postal', 'country'] as const
+      const missing = requiredFields.filter((f) => !shipping?.[f]?.trim())
+
+      if (missing.length > 0) {
+        return NextResponse.json(
+          {
+            error: 'Adresse de livraison incomplète',
+            missing,
+          },
+          { status: 400 }
+        )
+      }
+    }
+
+    // 4. Frais de livraison
+    const shippingAmount =
+      resolvedProduct.requiresShipping && !inPersonPickup ? resolvedProduct.shippingFee : 0
+
+    // 5. Code promo (uniquement si livraison)
+    let promotionCodeId: string | undefined
+    if (couponCode?.trim() && resolvedProduct.requiresShipping) {
+      const { data } = await stripe.promotionCodes.list({
+        code: couponCode.trim(),
+        active: true,
+      })
+      if (data.length > 0) promotionCodeId = data[0].id
+    }
+
+    const baseUrl = getBaseUrl()
+    const successUrl = `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
+    const cancelUrl = resolvedProduct.type === 'book_physical' ? `${baseUrl}/#book` : `${baseUrl}/retro?checkout=cancelled`
+
+    const metadata: Record<string, string> = {
+      product_id: resolvedProduct.id,
+      product_type: resolvedProduct.type,
+      buyer_name: userName,
+      user_id: session?.user?.id ?? '',
+      coupon_code: couponCode ?? '',
+      in_person_pickup: String(inPersonPickup),
+    }
+    if (resolvedProduct.requiresShipping && !inPersonPickup && shipping) {
+      metadata.shipping_name = shipping.name
+      metadata.shipping_address1 = shipping.address1
+      metadata.shipping_address2 = shipping.address2 ?? ''
+      metadata.shipping_city = shipping.city
+      metadata.shipping_postal = shipping.postal
+      metadata.shipping_country = shipping.country
+      metadata.shipping_phone = shipping.phone ?? ''
+    }
+
+    const baseConfig: Stripe.Checkout.SessionCreateParams = {
+      customer_email: userEmail,
       success_url: successUrl,
       cancel_url: cancelUrl,
-      metadata: { userId: session.user.id, product },
-      line_items: [{ price: priceId, quantity: 1 }],
+      metadata,
     }
 
-    const checkoutSession = await stripe.checkout.sessions.create(sessionParams)
+    if (resolvedProduct.isRecurring) {
+      const checkoutSession = await stripe.checkout.sessions.create({
+        ...baseConfig,
+        mode: 'subscription',
+        line_items: [{ price: resolvedProduct.stripePriceId, quantity: 1 }],
+        subscription_data: {
+          metadata: { product_id: resolvedProduct.id, user_id: session?.user?.id ?? '' },
+        },
+      })
+      return NextResponse.json({ url: checkoutSession.url })
+    }
+
+    // Mode payment
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [
+      { price: resolvedProduct.stripePriceId, quantity: 1 },
+    ]
+    if (shippingAmount > 0) {
+      lineItems.push({
+        price_data: {
+          currency: 'eur',
+          product_data: { name: 'Livraison mondiale' },
+          unit_amount: shippingAmount,
+        },
+        quantity: 1,
+      })
+    }
+
+    const checkoutSession = await stripe.checkout.sessions.create({
+      ...baseConfig,
+      mode: 'payment',
+      line_items: lineItems,
+      ...(promotionCodeId && { discounts: [{ promotion_code: promotionCodeId }] }),
+    })
 
     return NextResponse.json({ url: checkoutSession.url })
   } catch (err) {

@@ -9,7 +9,7 @@ import { useSession } from '@/lib/auth-client'
 import { useLanguage } from '@/components/language-provider'
 import AppNavbar from '@/components/layout/AppNavbar'
 import PremiumFooter from '@/components/landing/premium-footer'
-import UpgradeModal from '@/components/UpgradeModal'
+import UpgradeModal from '@/components/credits/UpgradeModal'
 import {
   computeRag,
   formToChartPoint,
@@ -504,7 +504,7 @@ export default function DoraPage() {
         </div>
       </div>
       <PremiumFooter />
-      <UpgradeModal isOpen={upgradeModalOpen} onClose={() => setUpgradeModalOpen(false)} toolName="DORA Pro" />
+      <UpgradeModal open={upgradeModalOpen} onClose={() => setUpgradeModalOpen(false)} />
     </main>
   )
 }

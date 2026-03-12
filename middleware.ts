@@ -17,6 +17,7 @@ const PROTECTED_ROUTES = [
   '/settings',
   '/start-scrum',
   '/welcome',
+  '/admin',
 ]
 
 const COMING_SOON_REDIRECT = ['/niko-niko', '/dora']
@@ -71,5 +72,6 @@ export const config = {
     '/settings/:path*',
     '/start-scrum/:path*',
     '/welcome/:path*',
+    '/admin/:path*',
   ],
 }

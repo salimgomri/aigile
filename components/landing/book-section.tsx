@@ -3,20 +3,38 @@
  * - Real book cover image
  * - Orange accent from book cover
  * - Clear benefits and CTA
- * - Premium Apple-style design
+ * - Prix dynamique depuis /api/book/pricing
  */
 
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
 import { CheckCircle, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import CheckoutSheet from '@/components/checkout/CheckoutSheet'
+import type { Product } from '@/lib/payments/catalog'
+
+type PricingData = {
+  product: Product
+  priceFormatted: string
+  isPreorder: boolean
+  daysLeft: number
+}
 
 export default function BookSection() {
   const { language } = useLanguage()
   const t = translations[language]
+  const [pricing, setPricing] = useState<PricingData | null>(null)
+
+  useEffect(() => {
+    fetch('/api/book/pricing')
+      .then((r) => r.ok ? r.json() : null)
+      .then((d) => d && setPricing(d))
+      .catch(() => {})
+  }, [])
 
   const benefits = [
     t['book-benefit-1'],
@@ -98,9 +116,20 @@ export default function BookSection() {
             {/* CTA - scale-105 for primary action only */}
             <div className="pt-4 space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                  {t['book-cta']}
-                </button>
+                {pricing?.product ? (
+                  <CheckoutSheet
+                    product={pricing.product}
+                    trigger={
+                      <button className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        {t['book-cta']} — {pricing.priceFormatted}
+                      </button>
+                    }
+                  />
+                ) : (
+                  <button disabled className="px-8 py-4 bg-muted text-muted-foreground text-lg font-bold rounded-full cursor-not-allowed">
+                    {t['book-cta']}
+                  </button>
+                )}
                 <Link
                   href="/parcours"
                   className="px-8 py-4 border-2 border-aigile-gold/50 text-foreground font-semibold rounded-full hover:border-aigile-gold hover:bg-aigile-gold/10 transition-all duration-300 text-center"
@@ -109,7 +138,25 @@ export default function BookSection() {
                 </Link>
               </div>
               <p className="text-sm text-muted-foreground">
-                {t['book-price']}
+                {pricing ? (
+                  <>
+                    {pricing.isPreorder && pricing.daysLeft > 0 && (
+                      <span className="text-book-orange font-medium">
+                        {language === 'fr' ? `Il reste ${pricing.daysLeft} jours` : `${pricing.daysLeft} days left`} —{' '}
+                      </span>
+                    )}
+                    {pricing.isPreorder && pricing.daysLeft > 0 && (
+                      <span className="line-through text-muted-foreground/70">40,00 €</span>
+                    )}
+                    {pricing.isPreorder && pricing.daysLeft > 0 && ' → '}
+                    {pricing.priceFormatted}
+                    {!pricing.isPreorder && pricing.daysLeft === 0 && (
+                      <span> {language === 'fr' ? '(prix de vente)' : '(sale price)'}</span>
+                    )}
+                  </>
+                ) : (
+                  t['book-price']
+                )}
               </p>
             </div>
           </div>

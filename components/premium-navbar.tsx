@@ -47,6 +47,7 @@ export default function PremiumNavbar() {
         { href: '/manifesto', label: t['nav-manifesto'] },
         { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
         { href: '/prompts', label: 'Prompts' },
+        { href: '/#pricing', label: t['nav-pricing'] },
         { href: '#tools', label: t['nav-tools'] },
         { href: '#book', label: t['nav-book'] },
         { href: '#cards', label: t['nav-cards'] },

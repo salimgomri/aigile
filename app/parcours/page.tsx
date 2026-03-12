@@ -6,7 +6,7 @@ import { useSession } from '@/lib/auth-client'
 import { useLanguage } from '@/components/language-provider'
 import LandingNavbar from '@/components/layout/LandingNavbar'
 import PremiumFooter from '@/components/landing/premium-footer'
-import UpgradeModal from '@/components/UpgradeModal'
+import UpgradeModal from '@/components/credits/UpgradeModal'
 import { Sprout, Wrench, BarChart3, Sparkles, Lock, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
@@ -135,12 +135,10 @@ export default function ParcoursPage() {
   const { language } = useLanguage()
   const [selectedProfile, setSelectedProfile] = useState<ProfileId | null>(null)
   const [upgradeModalOpen, setUpgradeModalOpen] = useState(false)
-  const [upgradeToolName, setUpgradeToolName] = useState('')
 
   const profile = selectedProfile ? PROFILES.find((p) => p.id === selectedProfile) : null
 
-  const handleProToolClick = (toolName: string) => {
-    setUpgradeToolName(toolName)
+  const handleProToolClick = () => {
     setUpgradeModalOpen(true)
   }
 
@@ -233,7 +231,7 @@ export default function ParcoursPage() {
                       <ToolButton
                         tool={step.tool}
                         isLoggedIn={!!session}
-                        onProClick={() => handleProToolClick(step.tool.name)}
+                        onProClick={handleProToolClick}
                       />
                     </div>
                   </div>
@@ -267,9 +265,8 @@ export default function ParcoursPage() {
       </div>
       <PremiumFooter />
       <UpgradeModal
-        isOpen={upgradeModalOpen}
+        open={upgradeModalOpen}
         onClose={() => setUpgradeModalOpen(false)}
-        toolName={upgradeToolName}
       />
     </main>
   )

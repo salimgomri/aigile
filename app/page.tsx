@@ -51,6 +51,7 @@
 import PremiumNavbar from '@/components/premium-navbar'
 import LandingHero from '@/components/landing/hero'
 import BookSection from '@/components/landing/book-section'
+import PricingSection from '@/components/landing/PricingSection'
 import ToolsSuiteSection from '@/components/landing/tools-suite'
 import ManifestoSection from '@/components/landing/manifesto-section'
 import CardsSection from '@/components/landing/cards-section'
@@ -91,6 +92,14 @@ export default function Home() {
         - Price: Coming Spring 2026
       */}
       <BookSection />
+
+      {/* 
+        SECTION 2b: PRICING
+        - Tarifs Day Pass | Pro | Free
+        - Toggle mensuel/annuel
+        - CTA vers CheckoutSheet ou /register
+      */}
+      <PricingSection />
 
       {/* 
         SECTION 3: TOOLS SUITE

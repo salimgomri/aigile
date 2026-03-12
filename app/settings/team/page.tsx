@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useSession } from '@/lib/auth-client'
 import AppNavbar from '@/components/layout/AppNavbar'
 import { Copy, Plus, X, Users, Ghost, Mail, Merge, ChevronDown } from 'lucide-react'
+import UpgradeModal from '@/components/credits/UpgradeModal'
 
 const ROLES = [
   { value: 'manager', label: 'Manager' },
@@ -36,6 +37,7 @@ export default function SettingsTeamPage() {
   const [mergeGhostId, setMergeGhostId] = useState<string | null>(null)
   const [mergeSearch, setMergeSearch] = useState('')
   const [mergeResults, setMergeResults] = useState<Array<{ id: string; name: string; email: string }>>([])
+  const [upgradeModalOpen, setUpgradeModalOpen] = useState(false)
 
   useEffect(() => {
     if (!isPending && !session) router.replace('/login')
@@ -257,7 +259,10 @@ export default function SettingsTeamPage() {
             <div className="mt-3 p-4 bg-amber-500/10 border border-amber-500/20 rounded-lg">
               <p className="font-medium text-amber-700 dark:text-amber-400">Quota Free atteint (3/3 membres réels)</p>
               <p className="text-sm text-muted-foreground mt-1">Passez Pro pour inviter plus de membres.</p>
-              <button className="mt-3 px-4 py-2 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm">
+              <button
+                onClick={() => setUpgradeModalOpen(true)}
+                className="mt-3 px-4 py-2 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm"
+              >
                 Passer Pro — 19,99€/mois
               </button>
             </div>
@@ -319,6 +324,8 @@ export default function SettingsTeamPage() {
             </div>
           )}
         </section>
+
+        <UpgradeModal open={upgradeModalOpen} onClose={() => setUpgradeModalOpen(false)} />
 
         {mergeGhostId && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">

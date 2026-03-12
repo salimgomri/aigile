@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import { supabaseAdmin } from '@/lib/supabase'
 import { canInviteRealMember } from '@/lib/team-limits'
 import { sendInvitationEmail } from '@/lib/email'
+import { getBaseUrl } from '@/lib/utils/base-url'
 
 const VALID_ROLES = ['manager', 'scrum_master', 'product_owner', 'agile_coach', 'dev_team', 'guest']
 const ROLE_LABELS: Record<string, string> = {
@@ -64,7 +65,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Droits insuffisants' }, { status: 403 })
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3010'
+    const baseUrl = getBaseUrl()
 
     for (const m of realMembers) {
       const email = (m.email || '').trim().toLowerCase()

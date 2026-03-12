@@ -3,6 +3,7 @@
  * Template transactionnel AIgile — vérification email, mot de passe
  */
 import { Resend } from 'resend'
+import { getBaseUrl } from '@/lib/utils/base-url'
 
 const apiKey = process.env.RESEND_API_KEY
 const resend = apiKey ? new Resend(apiKey) : null
@@ -55,6 +56,7 @@ function getEmailTemplate(params: {
   lang?: Locale
 }) {
   const { greeting, body, ctaUrl, ctaLabel, footerNote } = params
+  const baseUrl = getBaseUrl()
   const antiSpam = params.lang === 'en'
     ? 'If you did not initiate this action, please ignore this email.'
     : 'Si vous n\'êtes pas à l\'origine de cette action, ignorez cet email.'
@@ -122,7 +124,7 @@ function getEmailTemplate(params: {
               <p style="margin:0;font-size:11px;color:#cbd5e1;">
                 <strong style="color:#c9973a;">AIgile</strong>
                 — Scrum Augmenté par l'IA ·
-                <a href="https://aigile.lu" style="color:#94a3b8;text-decoration:none;">aigile.lu</a>
+                <a href="${baseUrl}" style="color:#94a3b8;text-decoration:none;">aigile.lu</a>
               </p>
             </td>
           </tr>
@@ -325,3 +327,7 @@ export async function sendInvitationEmail(params: {
 
   if (error) console.error('[EMAIL] Invitation send failed:', error)
 }
+
+export { sendAuthorNotificationEmail } from '@/lib/emails/author-notification'
+export { sendBuyerConfirmationEmail } from '@/lib/emails/buyer-confirmation'
+export { sendPaymentFailedEmail } from '@/lib/emails/payment-failed'

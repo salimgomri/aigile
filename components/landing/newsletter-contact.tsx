@@ -11,7 +11,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
-import { Mail, Send, User, MessageSquare, CheckCircle } from 'lucide-react'
+import { Mail, Send, User, MessageSquare, CheckCircle, Linkedin } from 'lucide-react'
 
 export default function NewsletterContactSection() {
   const { language } = useLanguage()
@@ -112,6 +112,24 @@ export default function NewsletterContactSection() {
               <p className="text-sm text-muted-foreground text-center">
                 {t['newsletter-privacy']}
               </p>
+
+              {/* LinkedIn Newsletter — alternative claire, hiérarchie secondaire */}
+              <div className="flex items-center gap-3 pt-2">
+                <span className="flex-1 h-px bg-border" aria-hidden />
+                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  {t['newsletter-or']}
+                </span>
+                <span className="flex-1 h-px bg-border" aria-hidden />
+              </div>
+              <a
+                href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7435301314290528256"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full border border-border bg-card/30 hover:bg-card/60 hover:border-aigile-blue/40 text-muted-foreground hover:text-[#0a66c2] transition-all duration-200 group"
+              >
+                <Linkedin className="w-5 h-5 text-[#0a66c2] group-hover:scale-110 transition-transform" />
+                <span className="font-medium">{t['newsletter-linkedin']}</span>
+              </a>
             </form>
 
             {/* Social Proof */}
