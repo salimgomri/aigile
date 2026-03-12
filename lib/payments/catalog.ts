@@ -3,26 +3,6 @@
  * Le moteur lit la config et adapte formulaire, champs requis et flux post-paiement.
  */
 
-// Vars obligatoires pour le livre + Pro (DAY_PASS et CREDITS_10 optionnels)
-const REQUIRED_ENV_VARS = [
-  'STRIPE_PRICE_ID_PREORDER',
-  'STRIPE_PRICE_ID_SALE',
-  'STRIPE_PRICE_ID_PRO_MONTHLY',
-  'STRIPE_PRICE_ID_PRO_ANNUAL',
-  'PREORDER_END_DATE',
-] as const
-
-function validateEnv() {
-  if (typeof window !== 'undefined') return // skip in browser
-  if (typeof process === 'undefined' || !process.env) return
-  const missing = REQUIRED_ENV_VARS.filter((key) => !process.env[key]?.trim())
-  if (missing.length > 0) {
-    throw new Error(`Missing required env vars: ${missing.join(', ')}`)
-  }
-}
-
-validateEnv()
-
 export type ProductType =
   | 'book_physical'
   | 'credits_pack'
