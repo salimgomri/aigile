@@ -117,9 +117,9 @@ export async function POST(request: Request) {
     const shippingAmount =
       resolvedProduct.requiresShipping && !inPersonPickup ? resolvedProduct.shippingFee : 0
 
-    // 5. Code promo (uniquement si livraison)
+    // 5. Code promo (livre, Day Pass, Pro — pas buy_coffee)
     let promotionCodeId: string | undefined
-    if (couponCode?.trim() && resolvedProduct.requiresShipping) {
+    if (couponCode?.trim() && resolvedId !== 'buy_coffee') {
       const { data } = await stripe.promotionCodes.list({
         code: couponCode.trim(),
         active: true,
@@ -180,6 +180,7 @@ export async function POST(request: Request) {
         subscription_data: {
           metadata: { product_id: resolvedProduct.id, user_id: session?.user?.id ?? '' },
         },
+        ...(promotionCodeId && { discounts: [{ promotion_code: promotionCodeId }] }),
       })
       console.log('[CHECKOUT] session subscription créée', { sessionId: checkoutSession.id })
       return NextResponse.json({ url: checkoutSession.url })

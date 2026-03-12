@@ -102,6 +102,7 @@ export default function CheckoutSheet({
 
   const requiresShipping = product?.requiresShipping ?? false
   const showAddress = requiresShipping && !inPersonPickup
+  const showCoupon = product?.type !== 'buy_coffee'
   const shippingFee = inPersonPickup ? 0 : (product?.shippingFee ?? 0)
   const qty = product?.type === 'book_physical' ? Math.max(1, Math.min(99, quantity)) : 1
   const subtotal = (product?.amount ?? 0) * qty
@@ -436,8 +437,8 @@ export default function CheckoutSheet({
                 </div>
               </div>
 
-              {/* CODE PROMO — uniquement si livraison */}
-              {requiresShipping && (
+              {/* CODE PROMO — livre, Day Pass, Pro (pas buy_coffee) */}
+              {showCoupon && (
                 <div>
                   <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                     Code promo

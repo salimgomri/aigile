@@ -4,6 +4,7 @@
 import Stripe from 'stripe'
 import { supabaseAdmin } from '@/lib/supabase'
 import { getBaseUrl } from '@/lib/utils/base-url'
+import { isAdminUserId } from '@/lib/admin'
 
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
@@ -29,6 +30,10 @@ export async function createStripePortalUrl(
     if (customerId) {
       await supabaseAdmin.from('user_credits').update({ stripe_customer_id: customerId }).eq('user_id', userId)
     }
+  }
+  // Admin sans customer Stripe : utilise un customer "demo" pour prévisualiser le portail Pro
+  if (!customerId && (await isAdminUserId(userId))) {
+    customerId = process.env.STRIPE_ADMIN_PORTAL_CUSTOMER_ID || null
   }
   if (!customerId) {
     throw new Error('Aucun client Stripe pour cet utilisateur')

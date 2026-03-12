@@ -21,6 +21,7 @@ async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
 
   if (!userId) return
 
+  const customerId = typeof subscription.customer === 'string' ? subscription.customer : subscription.customer?.id ?? null
   const plan = productId === 'pro_annual' ? 'pro_annual' : 'pro_monthly'
   await ensureUserCredits(userId)
   await supabaseAdmin
@@ -28,6 +29,7 @@ async function handleSubscriptionCreated(subscription: Stripe.Subscription) {
     .update({
       plan,
       stripe_subscription_id: subscription.id,
+      ...(customerId && { stripe_customer_id: customerId }),
     })
     .eq('user_id', userId)
 }

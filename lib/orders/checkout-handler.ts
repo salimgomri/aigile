@@ -84,7 +84,16 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
   if (product?.fulfillmentType === 'automatic' && userId) {
     if (product.type === 'day_pass') {
       await ensureUserCredits(userId)
-      const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
+      const { data: current } = await supabaseAdmin
+        .from('user_credits')
+        .select('day_pass_expires_at')
+        .eq('user_id', userId)
+        .single()
+      const now = Date.now()
+      const oneDayMs = 24 * 60 * 60 * 1000
+      const currentExpiry = current?.day_pass_expires_at ? new Date(current.day_pass_expires_at).getTime() : 0
+      const expiresAt =
+        currentExpiry > now ? new Date(currentExpiry + oneDayMs) : new Date(now + oneDayMs)
       await supabaseAdmin
         .from('user_credits')
         .update({
@@ -116,7 +125,16 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
     }
     else if (productId === 'day_pass') {
       await ensureUserCredits(userId)
-      const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000)
+      const { data: current } = await supabaseAdmin
+        .from('user_credits')
+        .select('day_pass_expires_at')
+        .eq('user_id', userId)
+        .single()
+      const now = Date.now()
+      const oneDayMs = 24 * 60 * 60 * 1000
+      const currentExpiry = current?.day_pass_expires_at ? new Date(current.day_pass_expires_at).getTime() : 0
+      const expiresAt =
+        currentExpiry > now ? new Date(currentExpiry + oneDayMs) : new Date(now + oneDayMs)
       await supabaseAdmin
         .from('user_credits')
         .update({

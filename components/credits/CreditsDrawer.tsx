@@ -113,9 +113,15 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                 <button
                   onClick={async () => {
                     try {
-                      const res = await fetch('/api/stripe/portal?return=' + encodeURIComponent('/dashboard'))
-                      const { url } = await res.json()
-                      if (url) window.location.href = url
+                      const res = await fetch('/api/stripe/portal?return=' + encodeURIComponent('/dashboard'), {
+                        credentials: 'include',
+                      })
+                      const data = await res.json()
+                      if (data?.url) {
+                        window.location.href = data.url
+                      } else {
+                        alert(data?.error || 'Impossible d\'ouvrir le portail.')
+                      }
                     } catch {
                       // ignore
                     }
