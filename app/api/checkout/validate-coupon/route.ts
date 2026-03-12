@@ -10,8 +10,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ valid: false, reason: 'Service indisponible' }, { status: 503 })
     }
 
-    const body = await request.json()
-    const { code, productId } = body as { code?: string; productId?: string }
+    let body: { code?: string; productId?: string }
+    try {
+      body = await request.json()
+    } catch {
+      return NextResponse.json({ valid: false, reason: 'Requête invalide' }, { status: 400 })
+    }
+    const { code, productId } = body ?? {}
 
     if (!code || typeof code !== 'string') {
       return NextResponse.json({ valid: false, reason: 'Code manquant' }, { status: 400 })
@@ -31,6 +36,7 @@ export async function POST(request: Request) {
       code: code.toUpperCase().trim(),
       active: true,
       limit: 1,
+      expand: ['data.promotion.coupon'],
     })
 
     if (promoCodes.data.length === 0) {
@@ -41,10 +47,14 @@ export async function POST(request: Request) {
     const promotion = promoCode.promotion
     const couponId =
       typeof promotion.coupon === 'string' ? promotion.coupon : promotion.coupon?.id
-    const coupon =
-      typeof promotion.coupon === 'object' && promotion.coupon
-        ? promotion.coupon
-        : await stripe.coupons.retrieve(couponId!)
+    let coupon: Stripe.Coupon
+    if (typeof promotion.coupon === 'object' && promotion.coupon) {
+      coupon = promotion.coupon as Stripe.Coupon
+    } else if (couponId) {
+      coupon = await stripe.coupons.retrieve(couponId)
+    } else {
+      return NextResponse.json({ valid: false, reason: 'Code invalide ou expiré' })
+    }
 
     if (coupon.redeem_by && coupon.redeem_by < Math.floor(Date.now() / 1000)) {
       return NextResponse.json({ valid: false, reason: 'Code expiré' })
