@@ -49,6 +49,8 @@ export async function GET(request: Request) {
           }
         : null
 
+    const buyerEmail = (session.customer_email ?? (session.customer_details as { email?: string } | null)?.email) as string | undefined
+
     console.log('[CHECKOUT] session OK', { sessionId, productType, productTitle })
     return NextResponse.json({
       productType,
@@ -57,6 +59,7 @@ export async function GET(request: Request) {
       inPersonPickup,
       shipping,
       amountTotal: session.amount_total ?? 0,
+      buyerEmail: buyerEmail || null,
     })
   } catch (err) {
     console.error('[CHECKOUT] session retrieve error', { sessionId, err })

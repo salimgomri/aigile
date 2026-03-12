@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useSession } from '@/lib/auth-client'
 import { X, Loader2, Lock, Coffee } from 'lucide-react'
 
@@ -13,7 +14,7 @@ function formatPrice(centimes: number): string {
 }
 
 export type BuyCoffeeSheetProps = {
-  trigger: React.ReactNode
+  trigger: React.ReactNode | ((onOpen: () => void) => React.ReactNode)
 }
 
 export default function BuyCoffeeSheet({ trigger }: BuyCoffeeSheetProps) {
@@ -72,24 +73,35 @@ export default function BuyCoffeeSheet({ trigger }: BuyCoffeeSheetProps) {
     }
   }
 
+  const handleOpen = () => setOpen(true)
+  const triggerNode = typeof trigger === 'function' ? trigger(handleOpen) : trigger
+
   return (
     <>
-      <div onClick={() => setOpen(true)} className="cursor-pointer">
-        {trigger}
+      <div
+        onClick={typeof trigger !== 'function' ? handleOpen : undefined}
+        className="cursor-pointer"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && handleOpen()}
+      >
+        {triggerNode}
       </div>
-      {open && (
-        <>
-          <div
-            className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-            aria-hidden="true"
-          />
-          <div className="fixed inset-y-0 right-0 z-[9999] w-full max-w-md bg-card border-l border-border shadow-2xl overflow-y-auto flex flex-col">
+      {open &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <>
+            <div
+              className="fixed inset-0 z-[99998] bg-black/60 backdrop-blur-sm"
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+            />
+            <div
+              className="fixed z-[99999] bg-card border-l border-border shadow-2xl overflow-y-auto flex flex-col"
+              style={{ top: 0, right: 0, bottom: 0, width: 'min(100vw, 32rem)' }}
+            >
             <div className="flex justify-between items-center p-6 border-b border-border">
-              <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
-                <Coffee className="w-6 h-6 text-aigile-gold" />
-                Buy a coffee
-              </h2>
+              <h2 className="text-xl font-bold text-foreground">Buy a coffee</h2>
               <button
                 onClick={() => setOpen(false)}
                 className="p-2 text-muted-foreground hover:text-foreground rounded-lg"
@@ -99,14 +111,32 @@ export default function BuyCoffeeSheet({ trigger }: BuyCoffeeSheetProps) {
             </div>
 
             <div className="flex-1 p-6 space-y-6">
-              <p className="text-muted-foreground">
-                Soutiens le projet AIgile avec un montant libre. Chaque contribution compte !
-              </p>
-
+              {/* RÉCAPITULATIF */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                  Récapitulatif
+                </h3>
+                <div className="flex gap-4 p-4 rounded-xl bg-muted/30 border border-border">
+                  <div className="w-14 h-14 rounded-lg bg-aigile-gold/20 flex items-center justify-center flex-shrink-0">
+                    <Coffee className="w-7 h-7 text-aigile-gold" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-foreground">Buy a coffee</p>
+                    <p className="text-sm text-muted-foreground">
+                      Soutiens le projet AIgile avec un montant libre. Chaque contribution compte !
+                    </p>
+                    <p className="text-lg font-bold text-aigile-gold mt-2">
+                      {formatPrice(effectiveAmount)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* MONTANT */}
+              <div>
+                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                   Montant
-                </label>
+                </h3>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {PRESETS.map((c) => (
                     <button
@@ -119,7 +149,7 @@ export default function BuyCoffeeSheet({ trigger }: BuyCoffeeSheetProps) {
                       className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                         !customAmount && amount === c
                           ? 'bg-aigile-gold text-black'
-                          : 'bg-muted hover:bg-muted/80 text-foreground'
+                          : 'bg-background border border-border text-foreground hover:bg-muted/50'
                       }`}
                     >
                       {formatPrice(c)}
@@ -139,34 +169,41 @@ export default function BuyCoffeeSheet({ trigger }: BuyCoffeeSheetProps) {
                 </div>
               </div>
 
+              {/* TES INFORMATIONS */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">
-                  Prénom et Nom
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-aigile-gold"
-                  placeholder="Jean Dupont"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-aigile-gold"
-                  placeholder="jean@example.com"
-                />
+                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                  Tes informations
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">
+                      Prénom et Nom
+                    </label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-aigile-gold"
+                      placeholder="Jean Dupont"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-1">Email *</label>
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-aigile-gold"
+                      placeholder="jean@example.com"
+                    />
+                  </div>
+                </div>
               </div>
 
-              <div className="border-t border-border pt-4">
-                <div className="flex justify-between text-lg font-bold">
+              {/* TOTAL */}
+              <div className="border-t border-border pt-4 space-y-2">
+                <div className="flex justify-between text-lg font-bold pt-2">
                   <span className="text-foreground">Total</span>
                   <span className="text-aigile-gold">{formatPrice(effectiveAmount)}</span>
                 </div>
@@ -198,8 +235,9 @@ export default function BuyCoffeeSheet({ trigger }: BuyCoffeeSheetProps) {
               </p>
             </div>
           </div>
-        </>
-      )}
+          </>,
+          document.body
+        )}
     </>
   )
 }

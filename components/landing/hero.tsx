@@ -12,6 +12,8 @@ import { useLanguage } from '../language-provider'
 import { ArrowRight, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import CheckoutSheet from '@/components/checkout/CheckoutSheet'
+import type { Product } from '@/lib/payments/catalog'
 
 const heroContent = {
   fr: {
@@ -71,6 +73,7 @@ export default function LandingHero() {
   const { language } = useLanguage()
   const content = heroContent[language]
   const [bookBadge, setBookBadge] = useState<string | null>(null)
+  const [bookProduct, setBookProduct] = useState<Product | null>(null)
 
   useEffect(() => {
     fetch('/api/book/pricing')
@@ -81,6 +84,7 @@ export default function LandingHero() {
         } else if (d?.product) {
           setBookBadge(language === 'fr' ? 'Acheter' : 'Buy')
         }
+        if (d?.product) setBookProduct(d.product)
       })
       .catch(() => {})
   }, [language])
@@ -206,10 +210,21 @@ export default function LandingHero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-aigile-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Floating badge: Précommander / Acheter selon période */}
-              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow">
-                {bookBadge ?? (language === 'fr' ? 'Précommander' : 'Pre-order')}
-              </div>
+              {/* Bouton d'achat: Précommander / Acheter selon période */}
+              {bookProduct ? (
+                <CheckoutSheet
+                  product={bookProduct}
+                  trigger={
+                    <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow cursor-pointer hover:scale-105 hover:shadow-aigile-gold/40 transition-all duration-300">
+                      {bookBadge ?? (language === 'fr' ? 'Précommander' : 'Pre-order')}
+                    </div>
+                  }
+                />
+              ) : (
+                <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow">
+                  {bookBadge ?? (language === 'fr' ? 'Précommander' : 'Pre-order')}
+                </div>
+              )}
             </div>
           </div>
         </div>

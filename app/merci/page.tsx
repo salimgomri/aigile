@@ -3,13 +3,15 @@
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { CheckCircle, Zap, Sparkles, Package } from 'lucide-react'
+import { CheckCircle, Zap, Sparkles, Package, LogIn } from 'lucide-react'
+import { useSession } from '@/lib/auth-client'
 
 type SessionData = {
   productType: string
   productId: string
   productTitle: string
   inPersonPickup: boolean
+  buyerEmail?: string | null
   shipping: {
     name: string
     address1: string
@@ -26,6 +28,7 @@ type SessionData = {
 function MerciContent() {
   const searchParams = useSearchParams()
   const sessionId = searchParams.get('session_id')
+  const { data: authSession } = useSession()
   const [data, setData] = useState<SessionData | null>(null)
   const [loading, setLoading] = useState(!!sessionId)
   const [error, setError] = useState(false)
@@ -139,6 +142,23 @@ function MerciContent() {
                 Lancer une rétro IA
               </Link>
             </div>
+            {!authSession?.user && (
+              <div className="p-4 rounded-xl bg-muted/30 border border-border mb-8">
+                <p className="text-sm font-medium text-foreground mb-2">
+                  Tu as déjà un compte AIgile ?
+                </p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Connecte-toi pour accéder à ton espace et suivre ta commande.
+                </p>
+                <Link
+                  href={`/sign-in${sessionId ? `?callbackUrl=${encodeURIComponent(`/merci?session_id=${sessionId}`)}` : ''}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-aigile-gold/50 rounded-full text-aigile-gold font-medium hover:bg-aigile-gold/10 transition-colors"
+                >
+                  <LogIn className="w-4 h-4" />
+                  Se connecter
+                </Link>
+              </div>
+            )}
           </>
         )}
 
@@ -199,7 +219,7 @@ function MerciContent() {
           </>
         )}
 
-        {/* Fallback */}
+        {/* Fallback (buy_coffee, etc.) */}
         {!isBook && !isDayPass && !isSubscription && !isCredits && (
           <>
             <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6 animate-checkmark">
@@ -215,6 +235,23 @@ function MerciContent() {
             >
               Accéder au dashboard
             </Link>
+            {!authSession?.user && (
+              <div className="p-4 rounded-xl bg-muted/30 border border-border mt-8">
+                <p className="text-sm font-medium text-foreground mb-2">
+                  Tu as déjà un compte AIgile ?
+                </p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Connecte-toi pour accéder à ton espace.
+                </p>
+                <Link
+                  href={`/sign-in${sessionId ? `?callbackUrl=${encodeURIComponent(`/merci?session_id=${sessionId}`)}` : ''}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-aigile-gold/50 rounded-full text-aigile-gold font-medium hover:bg-aigile-gold/10 transition-colors"
+                >
+                  <LogIn className="w-4 h-4" />
+                  Se connecter
+                </Link>
+              </div>
+            )}
           </>
         )}
 

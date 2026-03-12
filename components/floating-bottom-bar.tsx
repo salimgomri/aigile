@@ -83,18 +83,19 @@ export default function FloatingBottomBar() {
 
         {/* Buy a coffee */}
         <BuyCoffeeSheet
-          trigger={
-            <span
-              className={`${btnClass} bg-aigile-gold/10 hover:bg-aigile-gold/20 border border-aigile-gold/50 text-aigile-gold cursor-pointer`}
-              role="button"
+          trigger={(onOpen) => (
+            <button
+              type="button"
+              onClick={onOpen}
+              className={`${btnClass} bg-aigile-gold/10 hover:bg-aigile-gold/20 border border-aigile-gold/50 text-aigile-gold`}
               aria-label={t['coffee-float']}
             >
               <Coffee className={iconClass} />
               <span className="hidden md:inline font-medium text-sm whitespace-nowrap">
                 {t['coffee-float']}
               </span>
-            </span>
-          }
+            </button>
+          )}
         />
 
         {/* Calendly */}
