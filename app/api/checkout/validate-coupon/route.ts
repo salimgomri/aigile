@@ -36,7 +36,6 @@ export async function POST(request: Request) {
       code: code.toUpperCase().trim(),
       active: true,
       limit: 1,
-      expand: ['data.promotion.coupon'],
     })
 
     if (promoCodes.data.length === 0) {
@@ -88,6 +87,7 @@ export async function POST(request: Request) {
     })
   } catch (err) {
     console.error('[API] validate-coupon error:', err)
-    return NextResponse.json({ valid: false, reason: 'Erreur de vérification' }, { status: 500 })
+    // 200 + valid: false pour éviter "Failed to load resource" côté client
+    return NextResponse.json({ valid: false, reason: 'Code invalide ou expiré' })
   }
 }
