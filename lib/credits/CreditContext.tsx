@@ -26,7 +26,13 @@ const CreditContext = createContext<CreditContextType>({
   refresh: async () => {},
 })
 
-export function CreditProvider({ children }: { children: React.ReactNode }) {
+const emptyRefresh = async () => {}
+
+/**
+ * CreditProviderWithSession - uses useSession (client-only to avoid SSR redirect loops).
+ * Only mounted after hydration so get-session fetch uses window.location.origin.
+ */
+function CreditProviderWithSession({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession()
   const [status, setStatus] = useState<CreditStatus | null>(null)
   const [loading, setLoading] = useState(true)
@@ -69,6 +75,25 @@ export function CreditProvider({ children }: { children: React.ReactNode }) {
       {children}
     </CreditContext.Provider>
   )
+}
+
+/**
+ * CreditProvider - defers useSession until client mount to avoid ERR_TOO_MANY_REDIRECTS
+ * when BETTER_AUTH_URL / baseURL mismatch causes get-session to redirect in a loop.
+ */
+export function CreditProvider({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) {
+    return (
+      <CreditContext.Provider value={{ status: null, loading: true, refresh: emptyRefresh }}>
+        {children}
+      </CreditContext.Provider>
+    )
+  }
+
+  return <CreditProviderWithSession>{children}</CreditProviderWithSession>
 }
 
 export const useCredits = () => useContext(CreditContext)

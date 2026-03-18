@@ -75,5 +75,12 @@ if [ -f "${PROJECT_ROOT}/deploy/nginx-aigile.conf" ]; then
 fi
 
 echo ""
+echo "📊 Test post-deploy SEO..."
+curl -sI https://aigile.lu/sitemap.xml | head -3 || true
+curl -sI https://aigile.lu/tools | head -3 || true
+curl -sI https://aigile.lu/robots.txt | head -3 || true
+
+echo ""
 echo -e "${GREEN}✅ Déploiement terminé!${NC}"
 echo "🌐 Site: https://aigile.lu"
+echo "📊 Vérifie GA4 realtime + GSC dans 24h"

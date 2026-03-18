@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useLanguage } from '@/components/language-provider'
 import Link from 'next/link'
 import { signUp, requestPasswordReset } from '@/lib/auth-client'
 import { Mail, AlertCircle, User as UserIcon } from 'lucide-react'
@@ -24,6 +25,8 @@ const ROLES = [
 
 function RegisterContent() {
   const searchParams = useSearchParams()
+  const { language } = useLanguage()
+  const fromRetro = searchParams.get('from') === 'retro_pattern'
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -53,7 +56,7 @@ function RegisterContent() {
         email,
         password: tempPassword,
         name: `${firstName} ${lastName}`.trim(),
-        callbackURL: '/welcome',
+        callbackURL: fromRetro ? '/welcome?from=retro_pattern' : '/welcome',
         // @ts-expect-error - additionalFields passed to server
         firstName,
         lastName,
@@ -94,12 +97,26 @@ function RegisterContent() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-foreground">Vérifiez votre email</h2>
+          <h2 className="text-3xl font-bold text-foreground">
+            {language === 'fr' ? 'Vérifiez votre email' : 'Check your email'}
+          </h2>
           <p className="text-muted-foreground">
-            Nous avons envoyé un lien à <strong className="text-foreground">{email}</strong> pour définir votre mot de passe.
+            {language === 'fr'
+              ? `Nous avons envoyé un lien à ` : `We sent a link to `}
+            <strong className="text-foreground">{email}</strong>
+            {language === 'fr' ? ' pour définir votre mot de passe.' : ' to set your password.'}
           </p>
+          {fromRetro && (
+            <p className="text-sm text-aigile-gold font-medium bg-aigile-gold/10 rounded-xl p-4 border border-aigile-gold/20">
+              {language === 'fr'
+                ? '✨ Une fois connecté, tu reviendras automatiquement sur ton diagnostic personnalisé.'
+                : '✨ Once logged in, you\'ll return to your personalized diagnosis.'}
+            </p>
+          )}
           <p className="text-sm text-muted-foreground">
-            Cliquez sur le lien dans l&apos;email pour définir votre mot de passe et activer votre compte.
+            {language === 'fr'
+              ? "Cliquez sur le lien dans l'email pour définir votre mot de passe et activer votre compte."
+              : 'Click the link in the email to set your password and activate your account.'}
           </p>
           <Link
             href="/login"
@@ -122,10 +139,18 @@ function RegisterContent() {
             </div>
           </Link>
           <h2 className="mt-6 text-3xl font-bold text-foreground">
-            Créer un compte AIgile
+            {fromRetro
+              ? (language === 'fr' ? 'Inscrivez-vous pour ton diagnostic' : 'Sign up for your diagnosis')
+              : (language === 'fr' ? 'Créer un compte AIgile' : 'Create an AIgile account')}
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Prénom, nom, email et rôle. Le mot de passe sera défini via le lien envoyé par email.
+            {fromRetro
+              ? (language === 'fr'
+                  ? '30 secondes — ton diagnostic personnalisé t\'attend.'
+                  : '30 seconds — your personalized diagnosis is waiting.')
+              : (language === 'fr'
+                  ? 'Prénom, nom, email et rôle. Le mot de passe sera défini via le lien envoyé par email.'
+                  : 'First name, last name, email and role. Password will be set via the email link.')}
           </p>
         </div>
 

@@ -7,13 +7,14 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
 import { useLanguage } from '../language-provider'
+import { trackEvent } from '@/lib/gtag'
 import { ArrowRight, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import CheckoutSheet from '@/components/checkout/CheckoutSheet'
-import type { Product } from '@/lib/payments/catalog'
+import { getBookCtaLabel } from '@/lib/book-config'
+import { useBookProduct } from '@/lib/book-product-context'
 
 const heroContent = {
   fr: {
@@ -72,22 +73,8 @@ const heroContent = {
 export default function LandingHero() {
   const { language } = useLanguage()
   const content = heroContent[language]
-  const [bookBadge, setBookBadge] = useState<string | null>(null)
-  const [bookProduct, setBookProduct] = useState<Product | null>(null)
-
-  useEffect(() => {
-    fetch('/api/book/pricing')
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d) => {
-        if (d?.isPreorder) {
-          setBookBadge(language === 'fr' ? 'Précommander' : 'Pre-order')
-        } else if (d?.product) {
-          setBookBadge(language === 'fr' ? 'Acheter' : 'Buy')
-        }
-        if (d?.product) setBookProduct(d.product)
-      })
-      .catch(() => {})
-  }, [language])
+  const { product: bookProduct } = useBookProduct()
+  const bookBadge = bookProduct ? getBookCtaLabel(language) : null
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-aigile-dark">
@@ -161,6 +148,7 @@ export default function LandingHero() {
               {/* Primary CTA */}
               <Link
                 href="/retro"
+                onClick={() => trackEvent('try_free_click', { value: 9.99, currency: 'EUR' })}
                 className="group px-8 py-4 bg-aigile-gold hover:bg-aigile-gold/90 text-aigile-navy text-lg font-bold rounded-full shadow-lg shadow-aigile-gold/30 hover:shadow-xl hover:shadow-aigile-gold/40 hover:scale-105 transition-all duration-300 flex items-center space-x-3"
               >
                 <span>{content.ctaPrimary}</span>
@@ -170,6 +158,7 @@ export default function LandingHero() {
               {/* Secondary CTA */}
               <a
                 href="#book"
+                onClick={() => trackEvent('cta_book_discover')}
                 className="px-6 py-3 bg-transparent border border-white/40 text-white text-base font-medium rounded-full hover:border-aigile-gold hover:bg-aigile-gold/5 transition-colors duration-300 flex items-center space-x-2"
               >
                 <BookOpen className="w-4 h-4" />
@@ -210,19 +199,22 @@ export default function LandingHero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-aigile-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Bouton d'achat: Précommander / Acheter selon période */}
+              {/* Bouton d'achat: Précommander / Commander selon lib/book-config.ts */}
               {bookProduct ? (
                 <CheckoutSheet
                   product={bookProduct}
                   trigger={
-                    <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow cursor-pointer hover:scale-105 hover:shadow-aigile-gold/40 transition-all duration-300">
-                      {bookBadge ?? (language === 'fr' ? 'Précommander' : 'Pre-order')}
+                    <div
+                      onClick={() => trackEvent('preorder_book', { product: 's-a-l-i-m', value: 35 })}
+                      className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow cursor-pointer hover:scale-105 hover:shadow-aigile-gold/40 transition-all duration-300"
+                    >
+                      {bookBadge ?? getBookCtaLabel(language)}
                     </div>
                   }
                 />
               ) : (
                 <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-6 py-3 rounded-full shadow-2xl font-bold animate-bounce-slow">
-                  {bookBadge ?? (language === 'fr' ? 'Précommander' : 'Pre-order')}
+                  {bookBadge ?? getBookCtaLabel(language)}
                 </div>
               )}
             </div>

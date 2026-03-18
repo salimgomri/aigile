@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { useSession } from '@/lib/auth-client'
 import { X, Loader2, Lock, Book } from 'lucide-react'
 import { z } from 'zod'
@@ -224,14 +225,16 @@ export default function CheckoutSheet({
   return (
     <>
       {Trigger}
-      {open && (
-        <>
-          <div
-            className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-            aria-hidden="true"
-          />
-          <div className="fixed inset-y-0 right-0 z-[9999] w-full max-w-lg bg-card border-l border-border shadow-2xl overflow-y-auto flex flex-col">
+      {open &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <>
+            <div
+              className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="fixed inset-y-0 right-0 z-[9999] w-full max-w-lg bg-card border-l border-border shadow-2xl overflow-y-auto flex flex-col">
             <div className="flex justify-between items-center p-6 border-b border-border">
               <h2 className="text-xl font-bold text-foreground">{product.title}</h2>
               <button
@@ -526,8 +529,9 @@ export default function CheckoutSheet({
               </p>
             </div>
           </div>
-        </>
-      )}
+        </>,
+          document.body
+        )}
     </>
   )
 }

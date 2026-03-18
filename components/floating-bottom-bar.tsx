@@ -3,10 +3,14 @@
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useLanguage } from './language-provider'
+import { trackEvent } from '@/lib/gtag'
 import { useSession } from '@/lib/auth-client'
 import { translations } from '@/lib/translations'
-import { MessageSquare, Calendar, Coffee, X, Send } from 'lucide-react'
+import { getBookCtaLabel } from '@/lib/book-config'
+import { useBookProduct } from '@/lib/book-product-context'
+import { MessageSquare, Calendar, Coffee, BookOpen, X, Send } from 'lucide-react'
 import BuyCoffeeSheet from '@/components/checkout/BuyCoffeeSheet'
+import CheckoutSheet from '@/components/checkout/CheckoutSheet'
 
 const CALENDLY_URL = 'https://calendly.com/salimdulux/30min'
 
@@ -58,6 +62,8 @@ export default function FloatingBottomBar() {
     setTimeout(() => setStatus('idle'), 300)
   }
 
+  const { product: bookProduct } = useBookProduct()
+
   const btnClass =
     'flex items-center gap-2 px-4 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105'
   const iconClass = 'w-5 h-5 flex-shrink-0'
@@ -97,6 +103,39 @@ export default function FloatingBottomBar() {
             </button>
           )}
         />
+
+        {/* Le livre S.A.L.I.M — ouvre CheckoutSheet à droite (même fenêtre que Précommander du hero) */}
+        {bookProduct ? (
+          <CheckoutSheet
+            product={bookProduct}
+            trigger={
+              <button
+                type="button"
+                onClick={() => trackEvent('cta_book_float', { from: pathname })}
+                className={`${btnClass} bg-book-orange/20 hover:bg-book-orange/30 border border-book-orange/50 text-book-orange`}
+                aria-label={t['nav-book']}
+              >
+                <BookOpen className={iconClass} />
+                <span className="hidden md:inline font-medium text-sm whitespace-nowrap">
+                  {getBookCtaLabel(language)}
+                </span>
+              </button>
+            }
+          />
+        ) : (
+          <button
+            type="button"
+            disabled
+            className={`${btnClass} bg-book-orange/10 border border-book-orange/30 text-book-orange/70 cursor-not-allowed`}
+            aria-label={t['nav-book']}
+            title={language === 'fr' ? 'Chargement...' : 'Loading...'}
+          >
+            <BookOpen className={`${iconClass} animate-pulse`} />
+            <span className="hidden md:inline font-medium text-sm whitespace-nowrap">
+              {getBookCtaLabel(language)}
+            </span>
+          </button>
+        )}
 
         {/* Calendly */}
         <a

@@ -9,6 +9,7 @@
 'use client'
 
 import { useLanguage } from '../language-provider'
+import { trackEvent } from '@/lib/gtag'
 import { translations } from '@/lib/translations'
 import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
@@ -35,13 +36,13 @@ export default function ToolsSuiteSection() {
 
   return (
     <section id="tools" className="relative py-24 bg-background">
-      {/* Subtle separator */}
+      {/* Subtle separator (landing style) */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_50%,rgba(19,142,236,0.1),transparent_60%)]" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16 space-y-4">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-aigile-blue/10 backdrop-blur-sm rounded-full border border-aigile-blue/20 mb-4">
+        {/* Header — micro-animation fade-in */}
+        <div className="text-center mb-16 space-y-4 animate-fade-in-up">
+          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-aigile-blue/10 backdrop-blur-sm rounded-full border border-aigile-blue/20 mb-4 hover:border-aigile-blue/40 transition-colors duration-300">
             <Sparkles className="w-4 h-4 text-aigile-blue" />
             <span className="text-sm font-semibold text-aigile-blue uppercase tracking-wider">
               {language === 'fr' ? 'Suite Professionnelle' : 'Professional Suite'}
@@ -56,8 +57,8 @@ export default function ToolsSuiteSection() {
           </p>
         </div>
 
-        {/* Featured Tool - AI Retro */}
-        <div className="mb-12 bg-gradient-to-br from-aigile-gold/5 to-aigile-blue/5 backdrop-blur-sm rounded-3xl p-8 sm:p-12 border border-aigile-gold/20">
+        {/* Featured Tool - AI Retro — micro-animation + hover */}
+        <div className="mb-12 bg-gradient-to-br from-aigile-gold/5 to-aigile-blue/5 backdrop-blur-sm rounded-3xl p-8 sm:p-12 border border-aigile-gold/20 hover:border-aigile-gold/30 transition-all duration-500 animate-fade-in-up opacity-0" style={{ animationFillMode: 'forwards', animationDelay: '0.15s' }}>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center space-x-2 px-3 py-1 bg-aigile-gold/10 rounded-full border border-aigile-gold/20">
@@ -78,6 +79,7 @@ export default function ToolsSuiteSection() {
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <Link
                   href="/retro"
+                  onClick={() => trackEvent('try_free_click', { source: 'tools_suite', value: 9.99, currency: 'EUR' })}
                   className="group px-6 py-3 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   <span>{t['tools-cta']}</span>
@@ -86,42 +88,44 @@ export default function ToolsSuiteSection() {
                 
                 <Link
                   href="/parcours"
-                  className="px-6 py-3 bg-transparent text-white font-semibold rounded-full border-2 border-white/60 hover:border-aigile-gold hover:bg-aigile-gold/10 hover:shadow-lg transition-all duration-300 text-center"
+                  className="group/parcours px-6 py-3 bg-transparent text-foreground font-semibold rounded-full border-2 border-border hover:border-aigile-gold hover:bg-aigile-gold/10 hover:shadow-lg transition-all duration-300 text-center flex items-center justify-center gap-2"
                 >
                   {language === 'fr' ? 'Découvrir le Parcours' : 'Discover Journey'}
+                  <span className="group-hover/parcours:translate-x-0.5 transition-transform duration-300">→</span>
                 </Link>
               </div>
             </div>
 
-            {/* Mockup/Visual */}
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-card/50 to-muted/30 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-border">
+            {/* Mockup/Visual — Apple-style hover */}
+            <div className="relative group/mockup">
+              <div className="aspect-square bg-gradient-to-br from-card/50 to-muted/30 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-border group-hover/mockup:shadow-aigile-gold/20 group-hover/mockup:scale-[1.02] transition-all duration-500">
                 {/* Placeholder for AI Retro Tool screenshot/mockup */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Brain className="w-32 h-32 text-aigile-gold/20" />
+                  <Brain className="w-32 h-32 text-aigile-gold/20 group-hover/mockup:scale-110 transition-transform duration-700" />
                 </div>
                 {/* Overlay pattern */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-aigile-gold/10 via-transparent to-aigile-blue/10" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-aigile-gold/10 via-transparent to-aigile-blue/10 opacity-0 group-hover/mockup:opacity-100 transition-opacity duration-500" />
               </div>
-              {/* Floating badge */}
-              <div className="absolute -top-4 -right-4 bg-aigile-gold text-black px-6 py-3 rounded-full shadow-xl font-bold">
+              {/* Floating badge — subtle pulse */}
+              <div className="absolute -top-4 -right-4 bg-aigile-gold text-black px-6 py-3 rounded-full shadow-xl font-bold animate-pulse-slow">
                 {language === 'fr' ? 'Logique Terrain' : 'Field Logic'}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Other Tools Grid - Bientôt pour le lancement */}
+        {/* Other Tools Grid — staggered fade-in */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {tools.slice(1).map((tool, index) => {
             const Icon = tool.icon
             return (
               <div
                 key={index}
-                className="group p-6 bg-card/20 backdrop-blur-sm rounded-2xl border border-border opacity-60 cursor-not-allowed"
+                className="group p-6 bg-card/20 backdrop-blur-sm rounded-2xl border border-border opacity-60 cursor-not-allowed animate-fade-in-up hover:border-border/80 transition-colors duration-300"
+                style={{ animationFillMode: 'forwards', animationDelay: `${0.2 + index * 0.05}s` }}
               >
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-muted/50 rounded-xl">
+                  <div className="p-3 bg-muted/50 rounded-xl group-hover:bg-muted/70 transition-colors duration-300">
                     <Icon className="w-6 h-6 text-muted-foreground" />
                   </div>
                   <div className="flex-1">

@@ -48,8 +48,20 @@
  * =============================================================================
  */
 
+import type { Metadata } from 'next'
 import PremiumNavbar from '@/components/premium-navbar'
 import LandingHero from '@/components/landing/hero'
+
+export const metadata: Metadata = {
+  title: 'AIgile | Outils AI Agile Coaching France Belgique Luxembourg',
+  description:
+    'Retro AI gratuit + méthode S.A.L.I.M | Coaching agile Luxembourg/France/Belgique - 21 ans expertise Salim Gomri',
+  openGraph: {
+    title: 'AIgile | Coaching Agile AI Luxembourg France',
+    description: 'Outils Retro AI, Niko-Niko, DORA Metrics pour Scrum Masters FR/Lux/BE',
+  },
+  alternates: { canonical: 'https://aigile.lu/' },
+}
 import BookSection from '@/components/landing/book-section'
 import PricingSection from '@/components/landing/PricingSection'
 import ToolsSuiteSection from '@/components/landing/tools-suite'

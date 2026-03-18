@@ -10,29 +10,25 @@
 
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../language-provider'
+import { trackEvent } from '@/lib/gtag'
 import { translations } from '@/lib/translations'
 import { CheckCircle, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import CheckoutSheet from '@/components/checkout/CheckoutSheet'
-import type { Product } from '@/lib/payments/catalog'
-
-type PricingData = {
-  product: Product
-  priceFormatted: string
-  isPreorder: boolean
-  daysLeft: number
-}
+import { getBookCtaLabel } from '@/lib/book-config'
+import { useBookProduct } from '@/lib/book-product-context'
 
 export default function BookSection() {
   const { language } = useLanguage()
   const t = translations[language]
-  const [pricing, setPricing] = useState<PricingData | null>(null)
+  const { product: bookProduct } = useBookProduct()
+  const [pricingMeta, setPricingMeta] = useState<{ priceFormatted: string; isPreorder: boolean; daysLeft: number } | null>(null)
 
   useEffect(() => {
     fetch('/api/book/pricing')
       .then((r) => r.ok ? r.json() : null)
-      .then((d) => d && setPricing(d))
+      .then((d) => d && setPricingMeta({ priceFormatted: d.priceFormatted, isPreorder: d.isPreorder, daysLeft: d.daysLeft }))
       .catch(() => {})
   }, [])
 
@@ -69,11 +65,9 @@ export default function BookSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-book-orange/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Badge Précommander / Acheter selon période */}
+              {/* Badge Précommander / Commander selon lib/book-config.ts */}
               <div className="absolute top-8 -right-12 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl animate-pulse">
-                {pricing?.isPreorder
-                  ? (language === 'fr' ? 'Précommander' : 'Pre-order')
-                  : (language === 'fr' ? 'Acheter' : 'Buy')}
+                {getBookCtaLabel(language)}
               </div>
             </div>
           </div>
@@ -118,18 +112,21 @@ export default function BookSection() {
             {/* CTA - scale-105 for primary action only */}
             <div className="pt-4 space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
-                {pricing?.product ? (
+                {bookProduct ? (
                   <CheckoutSheet
-                    product={pricing.product}
+                    product={bookProduct}
                     trigger={
-                      <button className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                        {t['book-cta']} — {pricing.priceFormatted}
+                      <button
+                        onClick={() => trackEvent('preorder_book', { product: 's-a-l-i-m', value: 35 })}
+                        className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                      >
+                        {getBookCtaLabel(language)} — {pricingMeta?.priceFormatted ?? '35,00 €'}
                       </button>
                     }
                   />
                 ) : (
                   <button disabled className="px-8 py-4 bg-muted text-muted-foreground text-lg font-bold rounded-full cursor-not-allowed">
-                    {t['book-cta']}
+                    {getBookCtaLabel(language)}
                   </button>
                 )}
                 <Link
@@ -140,19 +137,19 @@ export default function BookSection() {
                 </Link>
               </div>
               <p className="text-sm text-muted-foreground">
-                {pricing ? (
+                {pricingMeta ? (
                   <>
-                    {pricing.isPreorder && pricing.daysLeft > 0 && (
+                    {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && (
                       <span className="text-book-orange font-medium">
-                        {language === 'fr' ? `Il reste ${pricing.daysLeft} jours` : `${pricing.daysLeft} days left`} —{' '}
+                        {language === 'fr' ? `Il reste ${pricingMeta.daysLeft} jours` : `${pricingMeta.daysLeft} days left`} —{' '}
                       </span>
                     )}
-                    {pricing.isPreorder && pricing.daysLeft > 0 && (
+                    {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && (
                       <span className="line-through text-muted-foreground/70">40,00 €</span>
                     )}
-                    {pricing.isPreorder && pricing.daysLeft > 0 && ' → '}
-                    {pricing.priceFormatted}
-                    {!pricing.isPreorder && pricing.daysLeft === 0 && (
+                    {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && ' → '}
+                    {pricingMeta.priceFormatted}
+                    {!pricingMeta.isPreorder && pricingMeta.daysLeft === 0 && (
                       <span> {language === 'fr' ? '(prix de vente)' : '(sale price)'}</span>
                     )}
                   </>

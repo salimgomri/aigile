@@ -57,7 +57,11 @@ function SetPasswordForm() {
       }
 
       setSuccess(true)
-      setTimeout(() => router.push('/login?passwordSet=1'), 1500)
+      const hasRetroPending = typeof window !== 'undefined' && !!sessionStorage.getItem('retro_pending_unlock')
+      setTimeout(
+        () => router.push(hasRetroPending ? '/login?redirect=/retro/result-redirect' : '/login?passwordSet=1'),
+        1500
+      )
     } catch (err) {
       setError('Une erreur est survenue. Veuillez réessayer.')
     } finally {

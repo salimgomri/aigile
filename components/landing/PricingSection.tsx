@@ -8,6 +8,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { trackEvent } from '@/lib/gtag'
 import { useCredits } from '@/lib/credits/CreditContext'
 import { useSession } from '@/lib/auth-client'
 import { useLanguage } from '@/components/language-provider'
@@ -212,7 +213,10 @@ export default function PricingSection() {
               <CheckoutSheet
                 product={dayPassProduct}
                 trigger={
-                  <button className="w-full py-3 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                  <button
+                    onClick={() => trackEvent('day_pass_click', { value: 9.99, currency: 'EUR' })}
+                    className="w-full py-3 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 transition-all flex items-center justify-center gap-2"
+                  >
                     {t.try} →
                   </button>
                 }
@@ -294,7 +298,10 @@ export default function PricingSection() {
               <CheckoutSheet
                 product={proProduct}
                 trigger={
-                  <button className="w-full py-4 rounded-full bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold transition-all flex items-center justify-center gap-2">
+                  <button
+                    onClick={() => trackEvent('pro_subscription', { plan: 'pro', value: 199, currency: 'EUR' })}
+                    className="w-full py-4 rounded-full bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold transition-all flex items-center justify-center gap-2"
+                  >
                     {t.startPro} →
                   </button>
                 }
@@ -344,6 +351,7 @@ export default function PricingSection() {
             ) : (
               <Link
                 href="/register"
+                onClick={() => trackEvent('start_free_click')}
                 className="w-full py-3 rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
               >
                 {t.startFree}
