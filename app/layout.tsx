@@ -14,24 +14,28 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'ProfessionalService',
   name: 'AIgile',
   url: 'https://aigile.lu',
   address: { '@type': 'PostalAddress', addressCountry: 'LU' },
   description:
-    'Coaching agile AI Luxembourg France Belgique | Outils Retro AI + méthode S.A.L.I.M',
+    "Coaching agile pour PME et dirigeants. Formation d'équipes, audit Agile, coaching sur mesure. Outils Retro AI, méthode S.A.L.I.M.",
+  serviceType: ['Agile Coaching', 'Team Training', 'Agile Audit', 'Scrum Master'],
   founder: {
     '@type': 'Person',
     name: 'Salim Gomri',
-    jobTitle: 'Agile Coach 21 ans expérience',
+    jobTitle: 'Agile Coach · 21 ans expérience',
   },
   areaServed: ['LU', 'FR', 'BE'],
 }
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aigile.lu'),
-  title: 'AIgile Manifesto - The Evolution of Agile for the AI Era',
-  description: 'Transform from "Are you agile?" to "Are you AIgile?" - The essential evolution of the 2001 Agile Manifesto for teams working in the AI era.',
+  title: {
+    default: 'AIgile | Coaching Agile PME & Outils Retro AI',
+    template: '%s | AIgile',
+  },
+  description: 'Coaching agile pour PME et dirigeants · Formation équipes · Retro AI gratuit · Méthode S.A.L.I.M · Luxembourg France Belgique',
   icons: {
     icon: '/icon.svg',
     shortcut: '/icon.svg',

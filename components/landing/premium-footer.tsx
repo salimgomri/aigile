@@ -10,12 +10,21 @@
 
 import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
+import { getBookCtaLabel } from '@/lib/book-config'
+import { useBookProduct } from '@/lib/book-product-context'
+import { trackEvent } from '@/lib/gtag'
 import Link from 'next/link'
-import { Linkedin, Twitter } from 'lucide-react'
+import { Linkedin, Twitter, MessageSquare, Coffee, BookOpen, Calendar } from 'lucide-react'
+import FeedbackButtonWithModal from '@/components/feedback/FeedbackButtonWithModal'
+import BuyCoffeeSheet from '@/components/checkout/BuyCoffeeSheet'
+import CheckoutSheet from '@/components/checkout/CheckoutSheet'
+
+const CALENDLY_URL = 'https://calendly.com/salimdulux/30min'
 
 export default function PremiumFooter() {
   const { language } = useLanguage()
   const t = translations[language]
+  const { product: bookProduct } = useBookProduct()
 
   const footerLinks = {
     product: [
@@ -33,6 +42,7 @@ export default function PremiumFooter() {
       { href: '#cards', label: t['nav-cards'] },
     ],
     company: [
+      { href: '#entreprises', label: language === 'fr' ? 'Entreprises' : 'Business' },
       { href: '#contact', label: language === 'fr' ? 'Contact' : 'Contact' },
       { href: 'https://gomri.coach', label: 'gomri.coach', external: true },
       { href: 'https://www.linkedin.com/in/salimgomri/', label: 'LinkedIn', external: true },
@@ -42,6 +52,55 @@ export default function PremiumFooter() {
   return (
     <footer className="relative bg-gradient-to-b from-white to-gray-100 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* 4 CTA toujours visibles — Feedback, Buy a coffee, Livre, Coaching */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 pb-8 border-b border-gray-200">
+          <FeedbackButtonWithModal variant="button" />
+          <BuyCoffeeSheet
+            trigger={(onOpen) => (
+              <button
+                type="button"
+                onClick={onOpen}
+                className="flex items-center gap-2 px-4 py-3 rounded-full border border-aigile-gold/50 text-aigile-gold hover:bg-aigile-gold/10 transition-all"
+                aria-label={t['coffee-float']}
+              >
+                <Coffee className="w-5 h-5" />
+                <span className="font-medium text-sm">{t['coffee-float']}</span>
+              </button>
+            )}
+          />
+          {bookProduct ? (
+            <CheckoutSheet
+              product={bookProduct}
+              trigger={
+                <button
+                  type="button"
+                  onClick={() => trackEvent('cta_book_footer', {})}
+                  className="flex items-center gap-2 px-4 py-3 rounded-full border border-book-orange/50 text-book-orange hover:bg-book-orange/10 transition-all"
+                  aria-label={t['nav-book']}
+                >
+                  <BookOpen className="w-5 h-5" />
+                  <span className="font-medium text-sm">{getBookCtaLabel(language)}</span>
+                </button>
+              }
+            />
+          ) : (
+            <span className="flex items-center gap-2 px-4 py-3 rounded-full border border-book-orange/30 text-book-orange/70 text-sm">
+              <BookOpen className="w-5 h-5 animate-pulse" />
+              {getBookCtaLabel(language)}
+            </span>
+          )}
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-3 rounded-full bg-aigile-gold hover:bg-book-orange text-black font-semibold transition-all"
+            aria-label={t['coaching-float']}
+          >
+            <Calendar className="w-5 h-5" />
+            <span className="text-sm">{t['coaching-float-short']}</span>
+          </a>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">

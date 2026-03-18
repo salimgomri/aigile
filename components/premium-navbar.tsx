@@ -50,6 +50,7 @@ export default function PremiumNavbar() {
         { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
         { href: '/prompts', label: 'Prompts' },
         { href: '/#pricing', label: t['nav-pricing'] },
+        { href: '#entreprises', label: language === 'fr' ? 'Entreprises' : 'Business' },
         { href: '#tools', label: t['nav-tools'] },
         { href: '#book', label: t['nav-book'] },
         { href: '#cards', label: t['nav-cards'] },

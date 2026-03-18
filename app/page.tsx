@@ -53,17 +53,21 @@ import PremiumNavbar from '@/components/premium-navbar'
 import LandingHero from '@/components/landing/hero'
 
 export const metadata: Metadata = {
-  title: 'AIgile | Outils AI Agile Coaching France Belgique Luxembourg',
+  title: 'AIgile | Coaching Agile PME & Outils Retro AI Luxembourg France Belgique',
   description:
-    'Retro AI gratuit + méthode S.A.L.I.M | Coaching agile Luxembourg/France/Belgique - 21 ans expertise Salim Gomri',
+    "Coaching agile pour PME et dirigeants · Formation d'équipes · Retro AI gratuit · Méthode S.A.L.I.M · 21 ans expertise Salim Gomri",
+  keywords: ['coaching agile', 'PME', 'formation équipes', 'retro AI', 'Scrum', 'Luxembourg', 'France', 'Belgique'],
   openGraph: {
-    title: 'AIgile | Coaching Agile AI Luxembourg France',
-    description: 'Outils Retro AI, Niko-Niko, DORA Metrics pour Scrum Masters FR/Lux/BE',
+    title: 'AIgile | Coaching Agile PME & Outils Retro AI',
+    description: 'Accompagnement PME, formation équipes, audit Agile, coaching sur mesure · Retro AI, Niko-Niko, DORA · FR/Lux/BE',
+    type: 'website',
+    url: 'https://aigile.lu',
   },
   alternates: { canonical: 'https://aigile.lu/' },
 }
 import BookSection from '@/components/landing/book-section'
 import PricingSection from '@/components/landing/PricingSection'
+import EntreprisesSection from '@/components/landing/entreprises-section'
 import ToolsSuiteSection from '@/components/landing/tools-suite'
 import ManifestoSection from '@/components/landing/manifesto-section'
 import CardsSection from '@/components/landing/cards-section'
@@ -111,6 +115,14 @@ export default function Home() {
         - CTA vers CheckoutSheet ou /register
       */}
       <PricingSection />
+
+      {/* 
+        SECTION 2c: POUR LES ENTREPRISES
+        - PME, dirigeants, experts internes
+        - Formation, audit, coaching
+        - CTA Calendly
+      */}
+      <EntreprisesSection />
 
       {/* 
         SECTION 3: TOOLS SUITE
