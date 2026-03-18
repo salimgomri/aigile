@@ -10,7 +10,7 @@ import FloatingBottomBar from '@/components/floating-bottom-bar'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-WMG8QLND8X'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',

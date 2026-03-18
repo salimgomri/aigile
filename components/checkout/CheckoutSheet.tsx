@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { useSession } from '@/lib/auth-client'
-import { X, Loader2, Lock, Book } from 'lucide-react'
+import Link from 'next/link'
+import { X, Loader2, Lock, Book, LogIn, UserPlus } from 'lucide-react'
 import { z } from 'zod'
 import type { Product } from '@/lib/payments/catalog'
 import { COUNTRIES } from '@/lib/countries'
@@ -49,11 +50,17 @@ function buildCheckoutSchema(product: Product) {
     })
 }
 
+const AUTH_REQUIRED_TYPES = ['subscription_monthly', 'subscription_annual', 'day_pass', 'credits_pack'] as const
+function productRequiresAuth(product: Product): boolean {
+  return AUTH_REQUIRED_TYPES.includes(product.type as (typeof AUTH_REQUIRED_TYPES)[number])
+}
+
 export type CheckoutSheetProps = {
   product: Product | null
   trigger: React.ReactNode
   defaultEmail?: string
   defaultName?: string
+  defaultOpen?: boolean
 }
 
 export default function CheckoutSheet({
@@ -61,9 +68,10 @@ export default function CheckoutSheet({
   trigger,
   defaultEmail = '',
   defaultName = '',
+  defaultOpen = false,
 }: CheckoutSheetProps) {
   const { data: session } = useSession()
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(defaultOpen)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
@@ -84,6 +92,11 @@ export default function CheckoutSheet({
   const [discount, setDiscount] = useState<{ label: string; amount: number } | null>(null)
   const [quantity, setQuantity] = useState(1)
 
+  // Ouvrir automatiquement si defaultOpen (ex: retour après login)
+  useEffect(() => {
+    if (defaultOpen && product) setOpen(true)
+  }, [defaultOpen, product?.id])
+
   // Pré-remplir avec session si connecté (priorité aux props)
   useEffect(() => {
     const n = defaultName || session?.user?.name || session?.user?.email?.split('@')[0] || ''
@@ -103,6 +116,10 @@ export default function CheckoutSheet({
 
   const requiresShipping = product?.requiresShipping ?? false
   const showAddress = requiresShipping && !inPersonPickup
+  const requiresAuth = product ? productRequiresAuth(product) : false
+  const showAuthCTA = requiresAuth && !session?.user
+  // Toujours rediriger vers /pricing pour les produits auth (Day Pass, Pro) — page dédiée avec auto-open
+  const authRedirectBase = '/pricing'
   const showCoupon = product?.type !== 'buy_coffee'
   const shippingFee = inPersonPickup ? 0 : (product?.shippingFee ?? 0)
   const qty = product?.type === 'book_physical' ? Math.max(1, Math.min(99, quantity)) : 1
@@ -294,11 +311,34 @@ export default function CheckoutSheet({
                 </div>
               </div>
 
-              {/* TES INFORMATIONS */}
+              {/* TES INFORMATIONS — ou S'inscrire/Se connecter si produit nécessite auth */}
               <div>
                 <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                  Tes informations
+                  {showAuthCTA ? 'Compte requis' : 'Tes informations'}
                 </h3>
+                {showAuthCTA ? (
+                  <div className="space-y-3 p-4 rounded-xl bg-muted/30 border border-border">
+                    <p className="text-sm text-muted-foreground">
+                      Connecte-toi ou crée un compte pour procéder au paiement.
+                    </p>
+                    <div className="flex gap-3">
+                      <Link
+                        href={`/register?redirect=${encodeURIComponent(`${authRedirectBase}?open=${product.id}`)}`}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg border-2 border-aigile-gold/50 text-aigile-gold font-semibold hover:bg-aigile-gold/10 transition-colors"
+                      >
+                        <UserPlus className="w-4 h-4" />
+                        S&apos;inscrire
+                      </Link>
+                      <Link
+                        href={`/login?redirect=${encodeURIComponent(`${authRedirectBase}?open=${product.id}`)}`}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-aigile-gold/20 text-aigile-gold font-semibold hover:bg-aigile-gold/30 transition-colors border border-aigile-gold/50"
+                      >
+                        <LogIn className="w-4 h-4" />
+                        Se connecter
+                      </Link>
+                    </div>
+                  </div>
+                ) : (
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-1">
@@ -438,6 +478,7 @@ export default function CheckoutSheet({
                     </div>
                   )}
                 </div>
+                )}
               </div>
 
               {/* CODE PROMO — livre, Day Pass, Pro (pas buy_coffee) */}
@@ -509,20 +550,31 @@ export default function CheckoutSheet({
                 </div>
               )}
 
-              <button
-                onClick={handleSubmit}
-                disabled={loading}
-                className="w-full py-4 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full transition-all disabled:opacity-70 flex items-center justify-center gap-2"
-              >
-                {loading ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : (
-                  <>
-                    Procéder au paiement
-                    <span className="text-lg">→</span>
-                  </>
-                )}
-              </button>
+              {showAuthCTA ? (
+                <Link
+                  href={`/login?redirect=${encodeURIComponent(`${authRedirectBase}?open=${product.id}`)}`}
+                  className="w-full py-4 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full transition-all flex items-center justify-center gap-2"
+                >
+                  <LogIn className="w-5 h-5" />
+                  Se connecter et payer
+                  <span className="text-lg">→</span>
+                </Link>
+              ) : (
+                <button
+                  onClick={handleSubmit}
+                  disabled={loading}
+                  className="w-full py-4 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full transition-all disabled:opacity-70 flex items-center justify-center gap-2"
+                >
+                  {loading ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <>
+                      Procéder au paiement
+                      <span className="text-lg">→</span>
+                    </>
+                  )}
+                </button>
+              )}
               <p className="text-center text-xs text-muted-foreground flex items-center justify-center gap-1">
                 <Lock className="w-3 h-3" />
                 Paiement sécurisé Stripe

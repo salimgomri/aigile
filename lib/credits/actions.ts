@@ -21,3 +21,18 @@ export const CREDIT_ACTIONS = {
 } as const
 
 export type CreditAction = keyof typeof CREDIT_ACTIONS
+
+/** Actions d'ajout de crédits (bonus, achat pack) — pour l'historique + / - */
+export const CREDIT_ADDITIONS = {
+  book_bonus: { label: 'Bonus livre S.A.L.I.M', amount: 10 },
+  credits_pack: { label: 'Pack crédits', amount: 10 }, // peut varier selon le pack
+} as const
+
+export type CreditAddition = keyof typeof CREDIT_ADDITIONS
+
+/** Extrait le tool_slug du path (ex: /retro → retro, /skill-matrix → skill-matrix) */
+export function getToolSlugForAction(action: CreditAction): string | null {
+  const config = CREDIT_ACTIONS[action]
+  if (!config?.tool) return null
+  return config.tool.replace(/^\//, '') // /retro → retro
+}

@@ -13,6 +13,7 @@ import { sendVerificationEmail as sendVerificationEmailFn } from './email'
 import { sendPasswordResetEmail } from './email'
 import { nextCookies } from 'better-auth/next-js'
 import { ensureUserCredits } from './credits/manager'
+import { grantBookBonusIfEligible } from './payments/ensure-credits'
 
 const databaseUrl = getDatabaseUrl()
 const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || (process.env.NODE_ENV === 'production' ? 'https://aigile.lu' : 'http://localhost:3010')
@@ -46,6 +47,10 @@ export const auth = betterAuth({
         const newSession = ctx.context.newSession
         if (newSession?.user?.id) {
           await ensureUserCredits(newSession.user.id)
+          // Bonus 10 crédits si acheteur livre (guest) qui s'inscrit
+          if (newSession.user.email) {
+            await grantBookBonusIfEligible(newSession.user.id, newSession.user.email)
+          }
         }
       }
     }),

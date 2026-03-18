@@ -1,0 +1,24 @@
+---
+description: Vues et données pour achats, stats, analytics - à réutiliser
+alwaysApply: true
+---
+
+# Données projet - Achats & Stats
+
+## Achats (orders)
+
+Table `orders` : livre, crédits, Pro, Day Pass. Vues :
+
+- **v_user_purchases** : achats agrégés par acheteur (books, credits_packs, pro_monthly, pro_annual, day_passes, total_centimes, first/last_order_at)
+
+```sql
+SELECT * FROM v_user_purchases WHERE buyer_email = '...';
+```
+
+## Usage outils (credit_transactions)
+
+- **v_tool_usage_with_user** : qui a utilisé quoi, quand (user_email, user_name, tool_slug, action_slug, credits_cost, created_at)
+- **v_tool_usage_by_user** : agrégé par user + outil
+- **v_tool_usage_global** : stats admin
+
+Quand tu ajoutes une feature qui génère des données utilisateur (achat, usage outil), vérifier que le tracking existe et que les vues couvrent les besoins stats.

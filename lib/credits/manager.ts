@@ -3,7 +3,7 @@
  */
 import { supabaseAdmin } from '@/lib/supabase'
 import { isAdminUserId } from '@/lib/admin'
-import { CREDIT_ACTIONS, PDF_ACTIONS, type CreditAction } from './actions'
+import { CREDIT_ACTIONS, PDF_ACTIONS, getToolSlugForAction, type CreditAction } from './actions'
 
 export type CreditStatus = {
   plan: 'free' | 'day_pass' | 'pro_monthly' | 'pro_annual'
@@ -117,9 +117,11 @@ export async function consumeCredits(
       user_id: userId,
       action,
       cost: 0,
+      delta: 0,
       plan_at_time: 'pro_monthly',
       team_id: context?.teamId ?? null,
       sprint_id: context?.sprintId ?? null,
+      tool_slug: getToolSlugForAction(action),
     })
     return { success: true, creditsRemaining: null }
   }
@@ -159,9 +161,11 @@ export async function consumeCredits(
     user_id: userId,
     action,
     cost: effectiveCost,
+    delta: -effectiveCost,
     plan_at_time: credits.plan,
     team_id: context?.teamId ?? null,
     sprint_id: context?.sprintId ?? null,
+    tool_slug: getToolSlugForAction(action),
   })
 
   const updated = await getCreditStatus(userId)

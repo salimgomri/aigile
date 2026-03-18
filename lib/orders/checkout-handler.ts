@@ -3,6 +3,7 @@
  */
 import { supabaseAdmin } from '@/lib/supabase'
 import { ensureUserCredits } from '@/lib/payments/ensure-credits'
+import { logCreditAddition } from '@/lib/credits/log-addition'
 import {
   sendAuthorNotificationEmail,
   sendBuyerConfirmationEmail,
@@ -79,6 +80,18 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
   }
   console.log('[CHECKOUT] order inséré en BDD', { sessionId: session.id, productId: orderData.product_id })
 
+  // ── Bonus 10 crédits pour acheteurs du livre S.A.L.I.M (si connecté) ───
+  if (product?.type === 'book_physical' && userId) {
+    await ensureUserCredits(userId)
+    await supabaseAdmin.rpc('increment_credits', { p_user_id: userId, p_amount: 10 })
+    await logCreditAddition(userId, 'book_bonus', 10)
+    await supabaseAdmin
+      .from('orders')
+      .update({ book_bonus_granted_at: new Date().toISOString() })
+      .eq('stripe_session_id', session.id)
+    console.log('[CHECKOUT] bonus 10 crédits livre attribué', { userId })
+  }
+
   // ── Fulfillment selon le type ─────────────────────────────
 
   if (product?.fulfillmentType === 'automatic' && userId) {
@@ -110,6 +123,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
         p_user_id: userId,
         p_amount: creditsToAdd,
       })
+      await logCreditAddition(userId, 'credits_pack', creditsToAdd)
     }
     await supabaseAdmin
       .from('orders')
@@ -122,6 +136,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
     if (productId === 'pack_credits') {
       await ensureUserCredits(userId)
       await supabaseAdmin.rpc('increment_credits', { p_user_id: userId, p_amount: 10 })
+      await logCreditAddition(userId, 'credits_pack', 10)
     }
     else if (productId === 'day_pass') {
       await ensureUserCredits(userId)

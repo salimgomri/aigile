@@ -1,0 +1,40 @@
+---
+description: Tracking usage des outils et crédits - obligatoire pour toute nouvelle feature payante
+alwaysApply: true
+---
+
+# Tool Usage & Crédits - À appliquer systématiquement
+
+Quand tu développes une **nouvelle feature** ou un **nouvel outil** qui consomme des crédits :
+
+## 1. Déclarer l'action dans CREDIT_ACTIONS
+
+Fichier : `lib/credits/actions.ts`
+
+```ts
+export const CREDIT_ACTIONS = {
+  // ... existants
+  nouveau_action: { cost: N, label: 'Label FR', tool: '/chemin-outil' },
+}
+```
+
+- `tool` = path de la page (ex: `/retro`, `/dora`, `/skill-matrix`)
+- Le `tool_slug` est auto-rempli à l'insert (retro, dora, skill-matrix...)
+
+## 2. Utiliser consumeCredits
+
+Toute action payante doit passer par `consumeCredits(userId, 'action_slug', { teamId?, sprintId? })` via l'API `/api/credits/consume`.
+
+Ne jamais bypasser : le tracking (credit_transactions + tool_slug) est fait automatiquement dans consumeCredits.
+
+## 3. Backfill migration (si données existantes)
+
+Si tu ajoutes une action et qu'il y a des lignes credit_transactions sans tool_slug, ajouter le mapping dans `supabase/migrations/020_tool_usage_tracking.sql` (bloc UPDATE ... CASE WHEN action IN (...) THEN 'slug').
+
+## 4. Vues disponibles pour stats
+
+- `v_tool_usage_with_user` : qui a utilisé quoi, quand (user_email, user_name, tool_slug, action_slug, created_at)
+- `v_tool_usage_by_user` : agrégé par user + outil
+- `v_tool_usage_global` : stats admin par outil/action
+
+Doc détaillée : `docs/ARCHITECTURE_TOOL_USAGE.md`

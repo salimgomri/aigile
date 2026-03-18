@@ -10,7 +10,7 @@ import UpgradeModal from './UpgradeModal'
 export default function CreditsDrawer(props: { open: boolean; onClose: () => void }) {
   const { open, onClose } = props
   const { status } = useCredits()
-  const [transactions, setTransactions] = useState<Array<{ action: string; label: string; created_at: string }>>([])
+  const [transactions, setTransactions] = useState<Array<{ id?: string; action: string; label: string; delta?: number; created_at: string }>>([])
   const [showUpgrade, setShowUpgrade] = useState(false)
 
   useEffect(() => {
@@ -137,9 +137,16 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                 <p className="text-sm font-medium text-white mb-2">HISTORIQUE</p>
                 <div className="space-y-2">
                   {transactions.map((t) => (
-                    <div key={t.action + t.created_at} className="flex justify-between items-center py-2 px-3 rounded-lg bg-white/5 text-sm">
+                    <div key={t.id ?? `${t.action}-${t.created_at}`} className="flex justify-between items-center py-2 px-3 rounded-lg bg-white/5 text-sm">
                       <span className="text-white/90">{t.label}</span>
-                      <span className="text-white/50">{formatDate(t.created_at)}</span>
+                      <span className="flex items-center gap-2">
+                        {t.delta != null && t.delta !== 0 && (
+                          <span className={t.delta > 0 ? 'text-green-400 font-medium' : 'text-white/60'}>
+                            {t.delta > 0 ? '+' : ''}{t.delta}
+                          </span>
+                        )}
+                        <span className="text-white/50">{formatDate(t.created_at)}</span>
+                      </span>
                     </div>
                   ))}
                 </div>

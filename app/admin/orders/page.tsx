@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Package, Zap, Sparkles, Target, Search } from 'lucide-react'
+import { Package, Zap, Sparkles, Target, Search, BarChart3 } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
@@ -9,6 +9,14 @@ import { COUNTRIES } from '@/lib/countries'
 
 function formatPrice(centimes: number): string {
   return (centimes / 100).toFixed(2).replace('.', ',') + ' €'
+}
+
+const TOOL_LABELS: Record<string, string> = {
+  retro: 'Rétro',
+  dora: 'DORA',
+  okr: 'OKR',
+  'skill-matrix': 'Skill Matrix',
+  dashboard: 'Dashboard',
 }
 
 function getTypeIcon(type: string) {
@@ -80,9 +88,32 @@ type Stats = {
   activePro: number
 }
 
+type MacroStats = {
+  toolUsage: Array<{ tool_slug: string; total_uses: number; total_credits_spent: number; unique_users: number }>
+  purchases: {
+    totalBuyers: number
+    totalOrders: number
+    totalBooks: number
+    totalCreditsPacks: number
+    totalProMonthly: number
+    totalProAnnual: number
+    totalDayPasses: number
+    totalRevenueCentimes: number
+  }
+  recentUsage: Array<{
+    user_email: string
+    user_name: string
+    tool_slug: string
+    action_slug: string
+    credits_cost: number
+    created_at: string
+  }>
+}
+
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState<Order[]>([])
   const [stats, setStats] = useState<Stats | null>(null)
+  const [macroStats, setMacroStats] = useState<MacroStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
   const [shipModal, setShipModal] = useState<Order | null>(null)
@@ -118,6 +149,13 @@ export default function AdminOrdersPage() {
     fetchOrders()
   }, [filterType, filterStatus, filterCountry, filterPeriod, filterSearch])
 
+  useEffect(() => {
+    fetch('/api/admin/stats')
+      .then((r) => r.json())
+      .then((d) => !d.error && setMacroStats(d))
+      .catch(() => {})
+  }, [])
+
   const handleShip = async () => {
     if (!shipModal) return
     setShipLoading(true)
@@ -146,6 +184,82 @@ export default function AdminOrdersPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-2xl font-bold text-foreground mb-8">Dashboard Commandes</h1>
+
+      {/* Vue macro */}
+      {macroStats && (
+        <div className="mb-8 p-6 rounded-xl border border-border bg-card">
+          <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+            <BarChart3 className="w-5 h-5 text-aigile-gold" />
+            Vue macro
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
+            <div className="p-3 rounded-lg bg-muted/30">
+              <p className="text-xl font-bold text-foreground">{formatPrice(macroStats.purchases.totalRevenueCentimes)}</p>
+              <p className="text-xs text-muted-foreground">Revenus totaux</p>
+            </div>
+            <div className="p-3 rounded-lg bg-muted/30">
+              <p className="text-xl font-bold text-foreground">{macroStats.purchases.totalBuyers}</p>
+              <p className="text-xs text-muted-foreground">Acheteurs uniques</p>
+            </div>
+            <div className="p-3 rounded-lg bg-muted/30">
+              <p className="text-xl font-bold text-foreground">{macroStats.purchases.totalBooks}</p>
+              <p className="text-xs text-muted-foreground">Livres vendus</p>
+            </div>
+            <div className="p-3 rounded-lg bg-muted/30">
+              <p className="text-xl font-bold text-foreground">{macroStats.purchases.totalProAnnual + macroStats.purchases.totalProMonthly}</p>
+              <p className="text-xs text-muted-foreground">Abos Pro</p>
+            </div>
+            <div className="p-3 rounded-lg bg-muted/30">
+              <p className="text-xl font-bold text-foreground">
+                {macroStats.toolUsage.reduce((s, t) => s + t.total_uses, 0)}
+              </p>
+              <p className="text-xs text-muted-foreground">Usages outils</p>
+            </div>
+            <div className="p-3 rounded-lg bg-muted/30">
+              <p className="text-xl font-bold text-foreground">
+                {macroStats.toolUsage.reduce((s, t) => s + t.total_credits_spent, 0)}
+              </p>
+              <p className="text-xs text-muted-foreground">Crédits consommés</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <p className="text-sm font-medium text-muted-foreground mb-2">Usage par outil</p>
+              <div className="space-y-2">
+                {macroStats.toolUsage.map((t) => (
+                  <div key={t.tool_slug} className="flex justify-between items-center text-sm">
+                    <span>{TOOL_LABELS[t.tool_slug] ?? t.tool_slug}</span>
+                    <span className="text-foreground font-medium">
+                      {t.total_uses} uses · {t.unique_users} users · {t.total_credits_spent} cr.
+                    </span>
+                  </div>
+                ))}
+                {macroStats.toolUsage.length === 0 && (
+                  <p className="text-sm text-muted-foreground">Aucun usage enregistré</p>
+                )}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-muted-foreground mb-2">Activité récente</p>
+              <div className="space-y-1.5 max-h-40 overflow-y-auto">
+                {macroStats.recentUsage.slice(0, 8).map((u, i) => (
+                  <div key={i} className="flex justify-between items-center text-xs">
+                    <span className="truncate max-w-[140px]" title={u.user_email}>
+                      {u.user_name || u.user_email?.split('@')[0] || '—'}
+                    </span>
+                    <span className="text-muted-foreground shrink-0 ml-2">
+                      {TOOL_LABELS[u.tool_slug] ?? u.tool_slug} · {format(new Date(u.created_at), 'd MMM HH:mm', { locale: fr })}
+                    </span>
+                  </div>
+                ))}
+                {macroStats.recentUsage.length === 0 && (
+                  <p className="text-sm text-muted-foreground">Aucune activité</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Filtres */}
       <div className="flex flex-wrap gap-4 mb-8">

@@ -7,7 +7,8 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { trackEvent } from '@/lib/gtag'
 import { useCredits } from '@/lib/credits/CreditContext'
 import { useSession } from '@/lib/auth-client'
@@ -47,10 +48,12 @@ const FREE_FEATURES_NEG = ['IA bloquée']
 
 const FACILITATOR_ROLES = ['scrum_master', 'agile_coach', 'manager', 'product_owner']
 
-export default function PricingSection() {
+function PricingSectionContent() {
   const { language } = useLanguage()
   const { status } = useCredits()
   const { data: session } = useSession()
+  const searchParams = useSearchParams()
+  const openProductId = searchParams.get('open')
   const userRole = (session?.user as { role?: string } | undefined)?.role ?? 'guest'
   const isFacilitator = FACILITATOR_ROLES.includes(userRole)
   const [isAnnual, setIsAnnual] = useState(true)
@@ -116,10 +119,20 @@ export default function PricingSection() {
   }
 
   const proProduct = effectiveIsAnnual ? proAnnualProduct : proMonthlyProduct
+  const hasPendingCheckout = !!openProductId && isLoggedIn
 
   return (
     <section id="pricing" className="relative py-24 bg-[#0f2240]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {hasPendingCheckout && (
+          <div className="mb-8 p-4 rounded-xl bg-aigile-gold/20 border border-aigile-gold/50 text-center">
+            <p className="text-white font-semibold">
+              {language === 'fr'
+                ? '✨ Parfait ! Achete ton forfait maintenant pour débloquer tous les outils.'
+                : '✨ Perfect! Buy your plan now to unlock all tools.'}
+            </p>
+          </div>
+        )}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">{t.title}</h2>
           <p className="text-lg text-white/80">{t.subtitle}</p>
@@ -194,6 +207,7 @@ export default function PricingSection() {
                 {dayPassProduct && (
                   <CheckoutSheet
                     product={dayPassProduct}
+                    defaultOpen={openProductId === 'day_pass'}
                     trigger={
                       <button className="w-full py-3 rounded-full bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold transition-all">
                         {t.dayPassRenew}
@@ -212,6 +226,7 @@ export default function PricingSection() {
             ) : dayPassProduct ? (
               <CheckoutSheet
                 product={dayPassProduct}
+                defaultOpen={openProductId === 'day_pass'}
                 trigger={
                   <button
                     onClick={() => trackEvent('day_pass_click', { value: 9.99, currency: 'EUR' })}
@@ -297,6 +312,7 @@ export default function PricingSection() {
             ) : proProduct ? (
               <CheckoutSheet
                 product={proProduct}
+                defaultOpen={openProductId === proProduct.id}
                 trigger={
                   <button
                     onClick={() => trackEvent('pro_subscription', { plan: 'pro', value: 199, currency: 'EUR' })}
@@ -366,5 +382,13 @@ export default function PricingSection() {
         </p>
       </div>
     </section>
+  )
+}
+
+export default function PricingSection() {
+  return (
+    <Suspense fallback={null}>
+      <PricingSectionContent />
+    </Suspense>
   )
 }

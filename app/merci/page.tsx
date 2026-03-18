@@ -143,20 +143,28 @@ function MerciContent() {
               </Link>
             </div>
             {!authSession?.user && (
-              <div className="p-4 rounded-xl bg-muted/30 border border-border mb-8">
-                <p className="text-sm font-medium text-foreground mb-2">
-                  Tu as déjà un compte AIgile ?
+              <div className="p-4 rounded-xl bg-aigile-gold/10 border border-aigile-gold/30 mb-8">
+                <p className="text-sm font-semibold text-foreground mb-2">
+                  Inscris-toi et reçois 10 crédits en plus !
                 </p>
                 <p className="text-sm text-muted-foreground mb-3">
-                  Connecte-toi pour accéder à ton espace et suivre ta commande.
+                  Crée un compte AIgile pour accéder aux outils rétro IA et profiter de 10 crédits bonus offerts aux acheteurs du livre.
                 </p>
                 <Link
-                  href={`/sign-in${sessionId ? `?callbackUrl=${encodeURIComponent(`/merci?session_id=${sessionId}`)}` : ''}`}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-aigile-gold/50 rounded-full text-aigile-gold font-medium hover:bg-aigile-gold/10 transition-colors"
+                  href={`/register${sessionId ? `?redirect=${encodeURIComponent(`/merci?session_id=${sessionId}`)}` : ''}`}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full transition-colors"
                 >
-                  <LogIn className="w-4 h-4" />
-                  Se connecter
+                  S&apos;inscrire — 10 crédits offerts
                 </Link>
+                <p className="text-xs text-muted-foreground mt-3">
+                  Déjà un compte ?{' '}
+                  <Link
+                    href={`/login${sessionId ? `?redirect=${encodeURIComponent(`/merci?session_id=${sessionId}`)}` : ''}`}
+                    className="text-aigile-gold hover:underline"
+                  >
+                    Se connecter
+                  </Link>
+                </p>
               </div>
             )}
           </>
@@ -244,7 +252,7 @@ function MerciContent() {
                   Connecte-toi pour accéder à ton espace.
                 </p>
                 <Link
-                  href={`/sign-in${sessionId ? `?callbackUrl=${encodeURIComponent(`/merci?session_id=${sessionId}`)}` : ''}`}
+                  href={`/login${sessionId ? `?redirect=${encodeURIComponent(`/merci?session_id=${sessionId}`)}` : ''}`}
                   className="inline-flex items-center justify-center gap-2 px-6 py-2.5 border border-aigile-gold/50 rounded-full text-aigile-gold font-medium hover:bg-aigile-gold/10 transition-colors"
                 >
                   <LogIn className="w-4 h-4" />
