@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-REMOTE_HOST=${REMOTE_HOST:-root@144.91.91.88}
-REMOTE_PATH=${REMOTE_PATH:-/var/www/aigile}
+REMOTE_HOST=${REMOTE_HOST:-root@204.168.181.120}
+REMOTE_PATH=${REMOTE_PATH:-/var/www/aigile.lu}
 WEB_USER=${WEB_USER:-www-data}
 # Si exécuté depuis T9, utiliser ce chemin, sinon le chemin local
 if [ -d "/Volumes/T9/aigile" ]; then
@@ -24,6 +24,8 @@ echo "📦 Build Next.js..."
 cd "${PROJECT_ROOT}"
 npm run build
 echo ""
+
+ssh "${REMOTE_HOST}" "mkdir -p ${REMOTE_PATH}"
 
 rsync -avz --delete \
   --exclude='node_modules' \
@@ -71,14 +73,20 @@ ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (pm2 restart aigile 2>/dev/null || pm
 if [ -f "${PROJECT_ROOT}/deploy/nginx-aigile.conf" ]; then
   echo ""
   echo "🌐 Mise à jour de la config nginx (proxy vers Node)..."
-  ssh "${REMOTE_HOST}" "cp ${REMOTE_PATH}/deploy/nginx-aigile.conf /etc/nginx/sites-available/aigile.lu && nginx -t && systemctl reload nginx" || echo "⚠️ nginx reload échoué - vérifiez manuellement"
+  if ssh "${REMOTE_HOST}" "test -f /etc/letsencrypt/live/aigile.lu/fullchain.pem" 2>/dev/null; then
+    ssh "${REMOTE_HOST}" "cp ${REMOTE_PATH}/deploy/nginx-aigile.conf /etc/nginx/sites-available/aigile.lu && nginx -t && systemctl reload nginx" || echo "⚠️ nginx reload échoué - vérifiez manuellement"
+  else
+    scp "${PROJECT_ROOT}/deploy/nginx-aigile.pressl.conf" "${REMOTE_HOST}:/etc/nginx/sites-available/aigile.lu"
+    ssh "${REMOTE_HOST}" "nginx -t && systemctl reload nginx" || echo "⚠️ nginx reload échoué"
+    echo "ℹ️  Pas encore de certificat TLS : après DNS + certbot, relancez deploy pour appliquer deploy/nginx-aigile.conf"
+  fi
 fi
 
 echo ""
 echo "📊 Test post-deploy SEO..."
-curl -sI https://aigile.lu/sitemap.xml | head -3 || true
-curl -sI https://aigile.lu/tools | head -3 || true
-curl -sI https://aigile.lu/robots.txt | head -3 || true
+curl -sI --max-time 15 https://aigile.lu/sitemap.xml | head -3 || true
+curl -sI --max-time 15 https://aigile.lu/tools | head -3 || true
+curl -sI --max-time 15 https://aigile.lu/robots.txt | head -3 || true
 
 echo ""
 echo -e "${GREEN}✅ Déploiement terminé!${NC}"
