@@ -1,0 +1,21 @@
+# VPS Hetzner — production (mutualisé aigile.lu + autres sites)
+# Console : Cloud → Servers
+
+Nom affiché     : systeme-salim
+ID serveur      : 124787562
+Type            : CX23 (2 vCPU, 4 Go RAM, 40 Go SSD)
+Lieu            : hel1 (Helsinki), réseau eu-central
+
+IPv4            : 204.168.181.120
+IPv6 (préfixe)  : 2a01:4f9:c014:86e5::/64
+                  (Floating IP : optionnelle dans la console si besoin)
+
+SSH             : ssh root@204.168.181.120
+
+Déploiement aigile (défauts dans deploy_aigile.sh) :
+  REMOTE_HOST=root@204.168.181.120
+  REMOTE_PATH=/var/www/aigile.lu
+  npm run deploy
+
+DNS A             : aigile.lu → 204.168.181.120
+DNS AAAA (opt.)   : utiliser l’IPv6 du host affiché dans Hetzner si tu actives IPv6 pour le domaine

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+# Infos serveur : deploy/server-info.txt (Hetzner systeme-salim, CX23, hel1)
 
 REMOTE_HOST=${REMOTE_HOST:-root@204.168.181.120}
 REMOTE_PATH=${REMOTE_PATH:-/var/www/aigile.lu}
