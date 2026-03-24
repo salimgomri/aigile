@@ -1,5 +1,5 @@
 <?php
-// /var/www/aigile/cms/index.php
+// /var/www/aigile.lu/cms/index.php (ou chemin déployé)
 // API simple pour gérer les articles Markdown
 
 header('Content-Type: application/json');
@@ -8,7 +8,7 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 // Configuration - CHANGEZ CETTE CLÉ !
-define('ARTICLES_DIR', '/var/www/aigile/articles/');
+define('ARTICLES_DIR', '/var/www/aigile.lu/articles/');
 define('API_KEY', 'AIgile-2025-' . md5('salim.gomri@gmail.com' . date('Y-m-d')));
 
 // Fonction d'authentification simple

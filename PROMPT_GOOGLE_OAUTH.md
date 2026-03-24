@@ -15,7 +15,7 @@ Crée les credentials Google OAuth pour aigile.lu :
 5. Authorized redirect URIs : http://localhost:3010/api/auth/callback/google et https://aigile.lu/api/auth/callback/google
 6. Récupère Client ID et Client Secret
 7. Mets-les dans .env.local (GOOGLE_CLIENT_ID et GOOGLE_CLIENT_SECRET) - jamais placeholder
-8. Pour la prod : copie aussi sur le serveur /var/www/aigile/.env.local puis pm2 restart aigile
+8. Pour la prod : copie aussi sur le serveur /var/www/aigile.lu/.env.local puis pm2 restart aigile
 ```
 
 ---
@@ -81,10 +81,10 @@ Crée les credentials Google OAuth pour aigile.lu :
 ### Ajouter sur le serveur (production aigile.lu)
 
 28. **IMPORTANT** : Le serveur doit avoir les mêmes credentials. Le deploy n'envoie pas `.env.local`.
-29. Sur le serveur, édite `/var/www/aigile/.env.local` :
+29. Sur le serveur, édite `/var/www/aigile.lu/.env.local` (IP : `deploy/server-info.txt`) :
     ```bash
-    ssh root@144.91.91.88
-    cd /var/www/aigile
+    ssh root@204.168.181.120
+    cd /var/www/aigile.lu
     nano .env.local   # ou vim, etc.
     ```
 30. Ajoute ou remplace (avec tes vraies valeurs, pas placeholder) :

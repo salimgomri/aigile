@@ -1,12 +1,13 @@
 #!/bin/bash
-# Copie TOUTES les vars de .env.local local vers le serveur OVH.
+# Copie TOUTES les vars de .env.local local vers le serveur de prod (Hetzner).
 # Puis applique ensure-env pour forcer les URLs prod (aigile.lu).
+# IP / chemin par défaut : deploy/server-info.txt
 # Usage: cd /Volumes/T9/aigile && bash deploy/sync-env.sh
 
 set -euo pipefail
 
-REMOTE_HOST=${REMOTE_HOST:-root@144.91.91.88}
-REMOTE_PATH=${REMOTE_PATH:-/var/www/aigile}
+REMOTE_HOST=${REMOTE_HOST:-root@204.168.181.120}
+REMOTE_PATH=${REMOTE_PATH:-/var/www/aigile.lu}
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_ROOT"
 

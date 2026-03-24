@@ -1,12 +1,13 @@
 #!/bin/bash
-# Copie les vars Stripe (clés + price IDs) de .env.local local vers le serveur OVH.
+# Copie les vars Stripe (clés + price IDs) de .env.local local vers le serveur de prod.
 # Nécessaire car le deploy exclut .env.local — le serveur doit avoir les clés live.
+# IP / chemin : deploy/server-info.txt
 # Usage: cd /Volumes/T9/aigile && bash deploy/sync-stripe-env.sh
 
 set -euo pipefail
 
-REMOTE_HOST=${REMOTE_HOST:-root@144.91.91.88}
-REMOTE_PATH=${REMOTE_PATH:-/var/www/aigile}
+REMOTE_HOST=${REMOTE_HOST:-root@204.168.181.120}
+REMOTE_PATH=${REMOTE_PATH:-/var/www/aigile.lu}
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
