@@ -19,3 +19,8 @@ Déploiement aigile (défauts dans deploy_aigile.sh) :
 
 DNS A             : aigile.lu → 204.168.181.120
 DNS AAAA (opt.)   : utiliser l’IPv6 du host affiché dans Hetzner si tu actives IPv6 pour le domaine
+
+gomri.coach (HTML + API PHP, dépôt newcv) :
+  REMOTE_PATH=/var/www/gomri.coach
+  Déploiement : depuis /Volumes/T9/newcv → bash deploy_gomri_coach.sh
+  DNS A       : gomri.coach / www → 204.168.181.120
