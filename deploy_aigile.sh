@@ -67,8 +67,13 @@ ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (test -f deploy/ensure-env.sh && bash
 ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (grep -q '^STRIPE_PRICE_ID_PREORDER=' .env.local 2>/dev/null || grep -q '^STRIPE_PRICE_ID_PREORDER=' .env 2>/dev/null) && (grep -q '^STRIPE_PRICE_ID_SALE=' .env.local 2>/dev/null || grep -q '^STRIPE_PRICE_ID_SALE=' .env 2>/dev/null) && (grep -q '^PREORDER_END_DATE=' .env.local 2>/dev/null || grep -q '^PREORDER_END_DATE=' .env 2>/dev/null) || echo '⚠️  Bouton livre: ajoutez STRIPE_PRICE_ID_PREORDER, STRIPE_PRICE_ID_SALE, PREORDER_END_DATE dans .env.local sur le serveur'"
 
 echo ""
-echo "🔄 Redémarrage PM2..."
-ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && (pm2 restart aigile 2>/dev/null || pm2 start npm --name aigile -- start 2>/dev/null || echo '⚠️ pm2 non configuré - lancez: cd ${REMOTE_PATH} && npm start')"
+echo "🔄 Redémarrage PM2 (ecosystem + .env.local)..."
+ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && if test -f deploy/ecosystem.config.cjs; then
+  if pm2 describe aigile >/dev/null 2>&1; then pm2 reload deploy/ecosystem.config.cjs --update-env; else pm2 start deploy/ecosystem.config.cjs; fi
+  pm2 save
+else
+  pm2 restart aigile --update-env 2>/dev/null || pm2 start npm --name aigile -- start
+fi"
 
 # Mettre à jour nginx pour proxy vers Node (au lieu de servir static/out)
 if [ -f "${PROJECT_ROOT}/deploy/nginx-aigile.conf" ]; then
