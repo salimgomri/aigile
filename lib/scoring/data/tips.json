@@ -1,0 +1,172 @@
+{
+  "D0Q1": {
+    "red": "Configurer SAST dans le pipeline CI dès le prochain sprint (SonarQube Community, Semgrep ou équivalent). Pas de déploiement en prod sans ce gate.",
+    "orange": "Étendre SAST aux branches feature et ajouter DAST sur l'environnement staging.",
+    "green": "Documenter la stratégie sécurité pour les autres équipes."
+  },
+  "D0Q2": {
+    "red": "Intégrer un scan de dépendances dans le pipeline (Dependabot, Snyk). Une dépendance vulnérable non détectée est une surface d'attaque invisible.",
+    "orange": "Automatiser les alertes et configurer un seuil bloquant sur les vulnérabilités critiques.",
+    "green": "Définir une politique de mise à jour des dépendances (fréquence, responsable, critères d'urgence)."
+  },
+  "D0Q3": {
+    "red": "⚠ CRITIQUE : rotation immédiate des credentials exposés. Mettre en place git-secrets ou pre-commit hooks sur tous les repos. Auditer l'historique git.",
+    "orange": "Vérifier que les hooks sont en place sur toutes les branches. Scanner les anciens commits.",
+    "green": "Étendre le scan au CI/CD pour bloquer tout commit contenant des patterns de secrets."
+  },
+  "D1Q1": {
+    "red": "Organiser un atelier pour définir une DoD minimale : tests passés, revue de code, critères d'acceptation validés. La rendre visible dans l'outil.",
+    "orange": "Harmoniser la DoD au niveau ART. Ajouter un checkpoint DoD de 5 min avant chaque démo en Sprint Review.",
+    "green": "Relier la DoD à des quality gates outillés (tous les tests verts + SonarQube avant Done)."
+  },
+  "D1Q2": {
+    "red": "Introduire une politique 'Done ou pas commencé'. Une story non Done entre dans le sprint suivant comme une nouvelle story.",
+    "orange": "Ajouter des checklists DoD (3-5 items) dans l'outil. Peer reviews sur quelques items Done au hasard.",
+    "green": "Suivre un indicateur de 'DoD escape'. Viser une baisse continue."
+  },
+  "D1Q3": {
+    "red": "Réduire la taille des engagements. Distinguer Must Have et Nice to Have avant le sprint.",
+    "orange": "Utiliser des indicateurs de prédictibilité (committed vs achieved). Revoir en rétro.",
+    "green": "Expérimenter des engagements plus ambitieux en suivant le taux de réalisation sur 5 sprints."
+  },
+  "D1Q4": {
+    "red": "Planifier une démonstration de fin d'incrément avec les parties prenantes métier. Désigner un responsable de la validation finale.",
+    "orange": "Standardiser un format de validation (checklist, ticket Business sign-off) pour chaque livraison.",
+    "green": "Impliquer le métier plus tôt : Sprint Reviews intermédiaires, feature flags pour tests en pré-prod."
+  },
+  "D2Q1": {
+    "red": "Installer un outil de static analysis. Quality gate minimal : zéro bug critique, dette < 10%. L'afficher à chaque Sprint Review.",
+    "orange": "Étendre le quality gate aux branches feature. Ajouter couverture minimale et violations critiques bloquantes.",
+    "green": "Suivre les tendances (complexité, dette) sur 6 sprints. Former l'équipe à interpréter les rapports."
+  },
+  "D2Q2": {
+    "red": "Créer un backlog de dette technique visible. Réserver 15-20% de la capacité du sprint à sa réduction.",
+    "orange": "Prioriser la dette par risque business. Associer à des métriques outillées.",
+    "green": "Lier la gestion de dette à la roadmap produit. Mettre en place des tech reviews régulières."
+  },
+  "D2Q3": {
+    "red": "Définir des standards de base et les documenter. Rendre la revue de code obligatoire avant merge.",
+    "orange": "Introduire des checklists de revue par type de changement. Créer des ADR pour les décisions structurantes.",
+    "green": "Documenter des golden paths. Organiser des revues inter-équipes."
+  },
+  "D2Q4": {
+    "red": "Mettre en place des post-mortems systématiques. Focaliser le sprint suivant sur la correction durable.",
+    "orange": "Alertes et dashboards de monitoring simples. Déploiements progressifs pour limiter l'impact.",
+    "green": "Suivre des objectifs SLO/SLA. Expérimenter des releases plus fréquentes avec un bas niveau d'incidents."
+  },
+  "D3Q1": {
+    "red": "Clarifier avec le PO les objectifs métier principaux. Lier chaque item majeur à au moins un objectif.",
+    "orange": "Utiliser les PI Objectives avec business value points. Les afficher sur les boards d'équipe.",
+    "green": "Introduire des KPI produit alignés sur les objectifs. Les suivre à chaque PI."
+  },
+  "D3Q2": {
+    "red": "Distinguer valeur métier, risque et effort dans les discussions de priorisation. Utiliser une matrice valeur/effort.",
+    "orange": "Intégrer le Cost of Delay dans le PI Planning. Documenter les raisons de priorisation.",
+    "green": "Revues périodiques de la stratégie de priorisation avec les sponsors."
+  },
+  "D3Q3": {
+    "red": "Organiser une démo régulière, même courte. Utiliser un langage orienté métier, pas de jargon technique.",
+    "orange": "Standardiser le format des reviews (problème → solution → impact). Diffuser un compte-rendu court après chaque démo.",
+    "green": "Co-construire les roadmaps avec les parties prenantes. Mesurer leur satisfaction sur la clarté des livrables."
+  },
+  "D4Q1": {
+    "red": "Scripter les étapes de déploiement répétitives. Introduire une pipeline CI simple. DORA : les équipes élite déploient à la demande.",
+    "orange": "Étendre la pipeline : build, tests, packaging, déploiement staging. Réduire les interventions manuelles.",
+    "green": "Mesurer et afficher les 4 métriques DORA (Deploy Frequency, Lead Time, MTTR, CFR) à chaque Sprint Review."
+  },
+  "D4Q2": {
+    "red": "Mettre en place un rollback minimal. Le tester en staging maintenant, pas le jour d'un incident.",
+    "orange": "Standardiser les feature toggles pour les fonctionnalités à risque. Documenter la procédure de rollback.",
+    "green": "Déploiements progressifs (canary). Monitorer les métriques pendant le rollout avant d'élargir."
+  },
+  "D4Q3": {
+    "red": "Réduire la taille des lots de changements. Planifier des créneaux de déploiement identifiés.",
+    "orange": "Suivre le taux de succès des déploiements et les causes d'échec. Smoke tests post-déploiement.",
+    "green": "Augmenter progressivement la fréquence tout en maintenant le taux de succès. Viser le on-demand."
+  },
+  "D4Q4": {
+    "red": "Documenter les différences majeures entre environnements. Utiliser l'infrastructure as code.",
+    "orange": "Smoke tests identiques sur tous les environnements. Synchroniser les jeux de données.",
+    "green": "Surveiller les dérives entre environnements. Industrialiser la création d'environnements éphémères."
+  },
+  "D5Q1": {
+    "red": "Commencer par les tests unitaires sur les parties critiques du domaine métier. Sans tests, chaque livraison a une date d'expiration inconnue.",
+    "orange": "Étendre à l'intégration et à quelques scénarios E2E. Documenter une stratégie de test (pyramide).",
+    "green": "Surveiller la qualité des tests (flaky tests). Revues pour améliorer lisibilité et robustesse."
+  },
+  "D5Q2": {
+    "red": "Créer une première suite de smoke tests exécutée à chaque build. La rendre bloquante en cas d'échec.",
+    "orange": "Couvrir les principaux scénarios métier critiques. Optimiser les temps d'exécution (parallélisation).",
+    "green": "Test impact analysis pour n'exécuter que les tests pertinents."
+  },
+  "D5Q3": {
+    "red": "Couverture non mesurée = risque inconnu. Configurer le rapport de couverture dans le pipeline CI. La première mesure sera décevante — c'est normal, c'est un baseline.",
+    "orange": "Cibler l'augmentation sur les parties les plus risquées. Intégrer la couverture dans le quality gate.",
+    "green": "Se concentrer sur la pertinence des tests, pas le chiffre brut. Nettoyer les tests obsolètes."
+  },
+  "D5Q4": {
+    "red": "Organiser une session de tests exploratoires avec 2-3 utilisateurs représentatifs, même courte.",
+    "orange": "Standardiser une phase UAT avant chaque release majeure. Intégrer les feedbacks dans le backlog.",
+    "green": "Former des power users pour participer régulièrement. Expérimenter des betas contrôlées via feature flags."
+  },
+  "D5Q5": {
+    "red": "Tester un outil IA pour générer quelques cas de test sur des stories existantes.",
+    "orange": "Intégrer l'IA dans les revues de tests (détection de trous de couverture).",
+    "green": "Coupler l'IA avec les métriques de couverture pour cibler les zones à risque."
+  },
+  "D6Q1": {
+    "red": "Identifier les artefacts essentiels à documenter (API, schémas, intégrations). Mettre à jour a minima à chaque livraison.",
+    "orange": "Standardiser des templates de doc. Lier la mise à jour à la Definition of Done.",
+    "green": "Automatiser la documentation (OpenAPI, diagrammes). Revues périodiques pour supprimer l'obsolète."
+  },
+  "D6Q2": {
+    "red": "Créer un runbook minimal : opérations de base (start/stop, checks, logs). Le partager avec l'équipe d'exploitation.",
+    "orange": "Ajouter les procédures de gestion d'incident et d'escalade.",
+    "green": "Maintenir les runbooks via des revues conjointes Dev-Ops. Automatiser certaines étapes."
+  },
+  "D6Q3": {
+    "red": "Fournir des release notes simples en langage métier : ce qui change et pourquoi c'est utile.",
+    "orange": "Ajouter des captures d'écran ou mini-tutos si pertinent. Informer les utilisateurs proactivement.",
+    "green": "Segmenter la communication par type d'utilisateur. Mesurer l'usage des supports."
+  },
+  "D7Q1": {
+    "red": "Définir un critère d'adoption dès le Sprint Planning : 'Dans 2 semaines, X utilisateurs ont fait Y action.' Sans mesure, impossible de savoir si la livraison a créé de la valeur.",
+    "orange": "Suivre les KPIs dans un dashboard partagé. Relier à des OKR ou PI Objectives.",
+    "green": "Expérimenter des cohortes et analyses d'usage plus fines. Ajuster la roadmap selon les signaux d'adoption."
+  },
+  "D7Q2": {
+    "red": "Mettre en place un canal simple de feedback (formulaire, mailbox dédiée). Définir 2-3 questions clés.",
+    "orange": "Cartographier les feedbacks et les relier au backlog. Prioriser 1-2 améliorations par PI.",
+    "green": "Intégrer des mécanismes in-app de feedback. Utiliser les feedbacks comme input systématique."
+  },
+  "D7Q3": {
+    "red": "Consacrer un moment en rétro pour revoir les feedbacks. Transformer au moins 1 feedback en action concrète.",
+    "orange": "Relier les améliorations livrées aux feedbacks initiaux (traçabilité).",
+    "green": "Intégrer des patterns de continuous discovery. Cycle discovery-delivery continu."
+  },
+  "D7Q4": {
+    "red": "Mesurer la satisfaction à chaud après des changements importants. Identifier les principaux irritants.",
+    "orange": "Segmenter la satisfaction par type d'utilisateur. Prioriser les irritants les plus fréquents.",
+    "green": "Viser l'enthousiasme (wow factors) en plus de l'absence d'irritants. Partager les retours positifs."
+  },
+  "D8Q1": {
+    "red": "Identifier 1-2 cas d'usage simples pour introduire l'IA. Définir des règles de base (revue obligatoire des outputs).",
+    "orange": "Intégrer l'IA dans la revue de code (suggestions de refactoring). Partager les prompts efficaces.",
+    "green": "Mesurer l'impact de l'IA (temps de dev, bugs évités). Formaliser une charte d'usage IA d'équipe."
+  },
+  "D8Q2": {
+    "red": "Tester un outil IA pour générer quelques cas de test. Utiliser l'IA pour proposer des jeux de données réalistes.",
+    "orange": "Intégrer l'IA dans les revues de tests (détection de trous de couverture).",
+    "green": "Coupler l'IA avec les métriques de couverture. Expérimenter AI-driven testing."
+  },
+  "D8Q3": {
+    "red": "Définir des moments précis où l'IA doit être utilisée. Donner des exemples de prompts.",
+    "orange": "Intégrer des checklists incluant 'usage IA' dans les process. Partager les REX.",
+    "green": "Documenter une IA playbook d'équipe. Former d'autres équipes si l'impact est démontré."
+  },
+  "D8Q4": {
+    "red": "Clarifier les attentes : sur quels problèmes l'IA doit aider. Lancer une expérimentation courte avec des métriques simples.",
+    "orange": "Affiner les métriques (bugs par release, temps de cycle, couverture). Ajuster les usages.",
+    "green": "Consolider les bénéfices dans les KPIs de l'équipe. Communiquer les résultats au niveau programme."
+  }
+}

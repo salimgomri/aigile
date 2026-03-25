@@ -2,8 +2,13 @@
  * P10 - Logique métier crédits centralisée
  */
 import { supabaseAdmin } from '@/lib/supabase'
-import { isAdminUserId } from '@/lib/admin'
+import { getEmailForUserId, isAdminUserId } from '@/lib/admin'
 import { CREDIT_ACTIONS, PDF_ACTIONS, getToolSlugForAction, type CreditAction } from './actions'
+import {
+  hasActiveToolCreditPromoForAction,
+  listActiveToolCreditPromos,
+  type ToolCreditPromoInfo,
+} from './tool-promo'
 
 export type CreditStatus = {
   plan: 'free' | 'day_pass' | 'pro_monthly' | 'pro_annual'
@@ -14,6 +19,8 @@ export type CreditStatus = {
   dayPassExpiresAt: string | null
   dayPassTimeRemaining: string | null
   isAdmin?: boolean
+  /** Promos illimités par outil (fenêtre + early adopter) */
+  toolCreditPromos?: ToolCreditPromoInfo[]
 }
 
 export async function getCreditStatus(userId: string): Promise<CreditStatus | null> {
@@ -66,6 +73,9 @@ export async function getCreditStatus(userId: string): Promise<CreditStatus | nu
     dayPassTimeRemaining = `${h}h ${m}min`
   }
 
+  const email = await getEmailForUserId(userId)
+  const toolCreditPromos = email ? await listActiveToolCreditPromos(email) : []
+
   return {
     plan: data.plan,
     isUnlimited,
@@ -75,6 +85,7 @@ export async function getCreditStatus(userId: string): Promise<CreditStatus | nu
     dayPassExpiresAt: data.day_pass_expires_at ?? null,
     dayPassTimeRemaining,
     isAdmin: false,
+    toolCreditPromos: toolCreditPromos.length ? toolCreditPromos : undefined,
   }
 }
 
@@ -99,6 +110,8 @@ export async function canPerformAction(
   const status = await getCreditStatus(userId)
   if (!status) return { allowed: false, reason: 'no_credits' }
   if (status.isUnlimited) return { allowed: true }
+  const email = await getEmailForUserId(userId)
+  if (email && (await hasActiveToolCreditPromoForAction(email, action))) return { allowed: true }
   if (status.creditsRemaining === null) return { allowed: true }
   const cost = await getEffectiveCost(userId, action)
   if (status.creditsRemaining < cost) {
@@ -113,6 +126,21 @@ export async function consumeCredits(
   context?: { teamId?: string; sprintId?: string }
 ): Promise<{ success: boolean; creditsRemaining: number | null }> {
   if (await isAdminUserId(userId)) {
+    await supabaseAdmin.from('credit_transactions').insert({
+      user_id: userId,
+      action,
+      cost: 0,
+      delta: 0,
+      plan_at_time: 'pro_monthly',
+      team_id: context?.teamId ?? null,
+      sprint_id: context?.sprintId ?? null,
+      tool_slug: getToolSlugForAction(action),
+    })
+    return { success: true, creditsRemaining: null }
+  }
+
+  const promoEmail = await getEmailForUserId(userId)
+  if (promoEmail && (await hasActiveToolCreditPromoForAction(promoEmail, action))) {
     await supabaseAdmin.from('credit_transactions').insert({
       user_id: userId,
       action,

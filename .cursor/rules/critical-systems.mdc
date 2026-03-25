@@ -1,0 +1,30 @@
+---
+description: Périmètres sensibles — users, paiement, crédits, feature flags ; confirmation obligatoire avant modification
+alwaysApply: true
+---
+
+# Systèmes sensibles — ne pas modifier sans validation explicite
+
+Ces zones **fonctionnent** : toute évolution y touche peut casser la prod ou la facturation.
+
+## Avant d’éditer du code ou des migrations, **demander confirmation à l’utilisateur** si le changement concerne :
+
+### Utilisateurs & auth
+- Better Auth, table `"user"`, sessions, `auth.uid()` / RLS liés aux users, flux login/register/onboarding, `ADMIN_EMAILS`.
+
+### Paiement & monétisation
+- Stripe (checkout, subscriptions, webhooks, portal), `orders`, coupons, prix produits, tout ce qui débite ou crédite de l’argent réel.
+
+### Crédits
+- `user_credits`, `credit_transactions`, `consumeCredits`, `CREDIT_ACTIONS`, RPC / fonctions SQL de débit, migrations touchant aux crédits, tracking d’usage par outil (`tool_slug`), vues stats d’usage.
+
+### Dashboard admin & vues SQL (achats + usage)
+- `v_user_purchases`, `v_tool_usage_*`, `v_tool_usage_macro`, `/api/admin/stats`. Ne pas casser les agrégats ; tout **nouvel outil** doit suivre la checklist dans **`project-data-stats`** (paiements, crédits, `tool_slug`, extension des vues si nouveau type d’achat).
+
+### Feature flags & accès outils
+- `feature_flags` (dont `invite_only`, `launch_at`), `tool_invites`, `tool_credit_promo_grants`, routes `/api/admin/feature-flags`, `/api/admin/tool-invites`, `/api/admin/credit-promos`, pages admin associées, logique `canAccessTool` / `shouldShowComingSoon` et équivalents pour **tous** les outils.
+
+## Comportement attendu de l’agent
+- **Ne pas** refactoriser, « simplifier » ou « aligner » ces zones sur une initiative propre.
+- Si la demande utilisateur est ambiguë ou pourrait impacter l’un de ces périmètres : **poser la question** avant d’implémenter.
+- Préférer des changements **minimaux** et **localisés** quand l’utilisateur a validé.

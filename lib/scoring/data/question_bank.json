@@ -1,0 +1,341 @@
+{
+  "version": "2.0",
+  "cadrage": [
+    {
+      "id": "C2",
+      "question_fr": "Sur quel périmètre veux-tu évaluer la qualité de la livraison ?",
+      "options": {
+        "a": "Une seule équipe",
+        "b": "Plusieurs équipes / tribe",
+        "c": "Programme multi-équipes / ART"
+      }
+    },
+    {
+      "id": "C4",
+      "question_fr": "Quel est ton rôle principal par rapport à cette livraison ?",
+      "options": {
+        "a": "Non-technique / métier (PO, manager)",
+        "b": "Intermédiaire / Agile (SM, tech lead)",
+        "c": "Expert / praticien SAFe certifié"
+      }
+    },
+    {
+      "id": "C5",
+      "question_fr": "Quel niveau de détail souhaites-tu ?",
+      "options": { "a": "Court (~15 questions)", "b": "Moyen (~25 questions)", "c": "Long (~40 questions)" }
+    },
+    {
+      "id": "C7",
+      "question_fr": "L'équipe utilise-t-elle des outils IA de façon structurée ?",
+      "options": { "a": "Oui", "b": "Non", "c": "Partiellement / incertain" }
+    }
+  ],
+  "questions": [
+    {
+      "id": "D0Q1",
+      "dimension": "d0",
+      "question_fr": "SAST/DAST automatisé dans le pipeline CI/CD ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D0Q2",
+      "dimension": "d0",
+      "question_fr": "Scan de dépendances vulnérables à chaque build ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D0Q3",
+      "dimension": "d0",
+      "question_fr": "Zéro secret/credential dans le code ou l'historique git ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D1Q1",
+      "dimension": "d1",
+      "question_fr": "DoD avec critères d'acceptation métier pour chaque story ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D1Q2",
+      "dimension": "d1",
+      "question_fr": "Les items Done respectent-ils réellement la DoD ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D1Q3",
+      "dimension": "d1",
+      "question_fr": "Taux de réalisation des engagements initiaux du sprint",
+      "scale_id": "REALIZATION_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.0, "intermediate": 1.0, "expert": 1.0 }
+    },
+    {
+      "id": "D1Q4",
+      "dimension": "d1",
+      "question_fr": "Un représentant métier a validé la complétude fonctionnelle ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D2Q1",
+      "dimension": "d2",
+      "question_fr": "Outil de static analysis avec quality gate bloquant ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D2Q2",
+      "dimension": "d2",
+      "question_fr": "La dette technique est-elle mesurée et suivie ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [{ "type": "answer_based", "question_id": "D2Q1", "in_values": ["yes"] }],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D2Q3",
+      "dimension": "d2",
+      "question_fr": "Standards architecture et coding guidelines respectés ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D2Q4",
+      "dimension": "d2",
+      "question_fr": "Incidents critiques post-release maîtrisés (faibles ou en baisse) ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.0, "intermediate": 1.0, "expert": 1.0 }
+    },
+    {
+      "id": "D3Q1",
+      "dimension": "d3",
+      "question_fr": "Contribution claire à des OKR ou PI Objectives actifs ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D3Q2",
+      "dimension": "d3",
+      "question_fr": "Éléments livrés priorisés principalement par valeur métier ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D3Q3",
+      "dimension": "d3",
+      "question_fr": "Les stakeholders comprennent ce qui a été livré et l'impact attendu ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D4Q1",
+      "dimension": "d4",
+      "question_fr": "Déploiement automatisé (CI/CD) plutôt que manuel ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D4Q2",
+      "dimension": "d4",
+      "question_fr": "Rollback ou feature toggle éprouvé et testé ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D4Q3",
+      "dimension": "d4",
+      "question_fr": "Fréquence et fiabilité des déploiements satisfaisantes ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.0, "intermediate": 1.0, "expert": 1.0 }
+    },
+    {
+      "id": "D4Q4",
+      "dimension": "d4",
+      "question_fr": "Homogénéité des environnements dev/test/stage/prod ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D5Q1",
+      "dimension": "d5",
+      "question_fr": "Tests automatisés présents couvrant cette livraison ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D5Q2",
+      "dimension": "d5",
+      "question_fr": "Non-régression dans le pipeline CI/CD à chaque changement ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [{ "type": "answer_based", "question_id": "D5Q1", "in_values": ["yes"] }],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D5Q3",
+      "dimension": "d5",
+      "question_fr": "Niveau de couverture de tests automatisés sur les composants impactés",
+      "scale_id": "COVERAGE_5",
+      "detail_level": ["medium", "long"],
+      "conditions": [{ "type": "answer_based", "question_id": "D5Q1", "in_values": ["yes"] }],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D5Q4",
+      "dimension": "d5",
+      "question_fr": "Tests exploratoires ou UAT avec des utilisateurs représentatifs ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D5Q5",
+      "dimension": "d5",
+      "question_fr": "Outils IA utilisés pour générer ou améliorer les tests ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D6Q1",
+      "dimension": "d6",
+      "question_fr": "Documentation technique mise à jour pour cette livraison ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.8, "intermediate": 1.0, "expert": 1.2 }
+    },
+    {
+      "id": "D6Q2",
+      "dimension": "d6",
+      "question_fr": "Runbooks ou procédures d'exploitation existants ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D6Q3",
+      "dimension": "d6",
+      "question_fr": "Documentation utilisateur / release notes claires ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D7Q1",
+      "dimension": "d7",
+      "question_fr": "Adoption réelle mesurée (utilisateurs actifs, taux d'usage) ?",
+      "scale_id": "YES_NO",
+      "detail_level": ["short", "medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D7Q2",
+      "dimension": "d7",
+      "question_fr": "Mécanisme structuré de collecte de feedback utilisateur ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D7Q3",
+      "dimension": "d7",
+      "question_fr": "Le feedback alimente réellement les prochains incréments ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.0, "intermediate": 1.0, "expert": 1.0 }
+    },
+    {
+      "id": "D7Q4",
+      "dimension": "d7",
+      "question_fr": "Niveau de satisfaction perçue des utilisateurs ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["medium", "long"],
+      "conditions": [],
+      "weight_per_role": { "non-tech": 1.5, "intermediate": 1.0, "expert": 0.8 }
+    },
+    {
+      "id": "D8Q1",
+      "dimension": "d8",
+      "question_fr": "Usage IA pour rédaction ou revue de code ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D8Q2",
+      "dimension": "d8",
+      "question_fr": "Usage IA pour générer ou améliorer les tests ?",
+      "scale_id": "FREQ_3",
+      "detail_level": ["medium", "long"],
+      "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D8Q3",
+      "dimension": "d8",
+      "question_fr": "IA intégrée dans le workflow standard plutôt qu'ad hoc ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["long"],
+      "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
+      "weight_per_role": { "non-tech": 0.5, "intermediate": 1.0, "expert": 1.5 }
+    },
+    {
+      "id": "D8Q4",
+      "dimension": "d8",
+      "question_fr": "Impact positif clair de l'IA sur la qualité ?",
+      "scale_id": "MATURITY_4",
+      "detail_level": ["medium", "long"],
+      "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
+      "weight_per_role": { "non-tech": 1.0, "intermediate": 1.0, "expert": 1.0 }
+    }
+  ]
+}

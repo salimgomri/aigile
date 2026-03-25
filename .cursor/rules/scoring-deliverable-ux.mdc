@@ -1,0 +1,20 @@
+---
+description: Scoring livraison — parcours type Retro AI, anonyme jusqu’à la fin, crédits après révélation
+alwaysApply: true
+---
+
+# Scoring Deliverable — intention UX / produit (réf. Retro AI)
+
+À appliquer quand on développera l’outil `/scoring` (pas encore implémenté côté IHM).
+
+## Expérience
+- **Look & feel** : proche de **Retro AI** (questionnaire, rythme, ton **AIgile touch**).
+- **Parcours sans compte** : laisser **dérouler tout le questionnaire** même si l’utilisateur n’est pas connecté.
+- **Fin de parcours (non connecté)** : afficher un **graphique placeholder flouté** + message du type **« Connectez-vous pour voir le résultat »** (pas de vrai score ni débit avant auth).
+
+## Après connexion
+- **Persister** les réponses / contexte déjà saisis pour analyse et calcul réel.
+- **Débit crédits** : aligner sur la règle métier (réf. P1 : typiquement **2 crédits par session** scoring — si « 2 par RAG » doit être interprété autrement, **valider avec le product owner** avant d’implémenter).
+
+## Ne pas faire sans validation
+- Ne pas casser le flux **paiement / crédits / users** existants ; voir `critical-systems.mdc`.

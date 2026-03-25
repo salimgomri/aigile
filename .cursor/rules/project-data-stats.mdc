@@ -1,24 +1,46 @@
 ---
-description: Vues et données pour achats, stats, analytics - à réutiliser
+description: Achats, stats, dashboard admin — vues SQL et checklist à chaque nouvel outil
 alwaysApply: true
 ---
 
-# Données projet - Achats & Stats
+# Données projet — Achats, usage, dashboard admin
 
-## Achats (orders)
+Le dashboard admin (`/api/admin/stats`) s’appuie sur les **vues** ci-dessous. À chaque **nouvel outil** ou **nouveau flux payant**, vérifier que la chaîne complète est branchée pour que les stats (qui a fait quoi, crédits dépensés, achats) restent justes.
 
-Table `orders` : livre, crédits, Pro, Day Pass. Vues :
+## Achats — ce que l’utilisateur a payé
 
-- **v_user_purchases** : achats agrégés par acheteur (books, credits_packs, pro_monthly, pro_annual, day_passes, total_centimes, first/last_order_at)
+- Table **`orders`** (livre, packs crédits, Pro, Day Pass, etc.)
+- Vue **`v_user_purchases`** : agrégats par acheteur (`books`, `credits_packs`, `pro_monthly`, `pro_annual`, `day_passes`, `total_centimes`, dates)
 
 ```sql
 SELECT * FROM v_user_purchases WHERE buyer_email = '...';
 ```
 
-## Usage outils (credit_transactions)
+**Nouveau type de produit / ligne `orders` :** étendre la vue (nouveaux `COUNT(*) FILTER` / colonnes) si tu veux le voir dans le dashboard ; sinon l’agrégat « global » sera incomplet pour ce type.
 
-- **v_tool_usage_with_user** : qui a utilisé quoi, quand (user_email, user_name, tool_slug, action_slug, credits_cost, created_at)
-- **v_tool_usage_by_user** : agrégé par user + outil
-- **v_tool_usage_global** : stats admin
+## Usage outils — crédits dépensés & journal d’actions
 
-Quand tu ajoutes une feature qui génère des données utilisateur (achat, usage outil), vérifier que le tracking existe et que les vues couvrent les besoins stats.
+Source : **`credit_transactions`** avec **`tool_slug`** renseigné (obligatoire pour les vues).
+
+- **`v_tool_usage_with_user`** : qui, quel outil, quelle action, coût, quand (+ email / nom)
+- **`v_tool_usage_by_user`** : agrégé user + outil
+- **`v_tool_usage_global`** : par outil + action
+- **`v_tool_usage_macro`** : une ligne par outil (totaux — utilisé par l’admin stats)
+
+Les vues sont **génériques** (pas besoin de les recréer par outil) **si** chaque consommation passe par le flux qui remplit `tool_slug` :
+
+1. **`CREDIT_ACTIONS`** + **`consumeCredits`** (recommandé) → `tool_slug` via `getToolSlugForAction` dans le code.
+2. Sinon (RPC SQL, insert manuel) : inclure **`tool_slug`** aligné sur le path outil (`retro`, `skill-matrix`, `scoring`, etc.).
+3. **Lignes historiques** sans `tool_slug` : migration optionnelle `UPDATE credit_transactions SET tool_slug = CASE WHEN action IN (...) THEN '...'` (comme en `020_tool_usage_tracking.sql`).
+
+## Checklist — **nouvel outil** (ou nouvelle action payante)
+
+1. **Crédits** : entrée dans `CREDIT_ACTIONS`, appels via `consumeCredits` ; ou RPC qui débite et écrit `credit_transactions` avec `tool_slug`.
+2. **Backfill** : si besoin, migration `UPDATE … CASE` pour les anciennes lignes sans `tool_slug`.
+3. **Achats** : si nouveau produit Stripe / type `orders`, mettre à jour **`v_user_purchases`** (et le code qui agrège dans `/api/admin/stats` si nouvelles colonnes).
+4. **Admin** : recharger `/api/admin/stats` — `v_tool_usage_macro` et `v_tool_usage_with_user` doivent montrer le nouvel outil dès qu’il y a des transactions avec `tool_slug`.
+5. **UI admin** : si une page stats liste les outils **en dur**, ajouter le slug / le libellé.
+
+## Doc code
+
+- `docs/ARCHITECTURE_TOOL_USAGE.md` (si présent) — alignement `action` → `tool_slug`.

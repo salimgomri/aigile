@@ -6,6 +6,8 @@ import { handleCheckoutCompleted } from '@/lib/orders/checkout-handler'
 import Stripe from 'stripe'
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
+// Crédits fongibles — valables pour Rétro IA (1 crédit) et Scoring livraison (2 crédits)
+
 /**
  * Événements Stripe à configurer dans le Dashboard :
  * - checkout.session.completed

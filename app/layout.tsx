@@ -2,11 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
-import { LanguageProvider } from '@/components/language-provider'
-import { CreditProvider } from '@/lib/credits/CreditContext'
-import { BookProductProvider } from '@/lib/book-product-context'
-import FloatingBottomBar from '@/components/floating-bottom-bar'
+import { AppProviders } from '@/components/app-providers'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-WMG8QLND8X'
 
@@ -64,19 +60,10 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_ID}');
+            gtag('config', ${JSON.stringify(GA_ID)});
           `}
         </Script>
-        <ThemeProvider>
-          <LanguageProvider>
-            <CreditProvider>
-              <BookProductProvider>
-                {children}
-                <FloatingBottomBar />
-              </BookProductProvider>
-            </CreditProvider>
-          </LanguageProvider>
-        </ThemeProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   )

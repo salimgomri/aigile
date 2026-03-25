@@ -20,3 +20,10 @@ export async function isAdminUserId(userId: string): Promise<boolean> {
   const { data } = await supabaseAdmin.from('user').select('email').eq('id', userId).single()
   return isAdminEmail(data?.email)
 }
+
+export async function getEmailForUserId(userId: string): Promise<string | null> {
+  const { data } = await supabaseAdmin.from('user').select('email').eq('id', userId).single()
+  const e = data?.email
+  if (!e || typeof e !== 'string') return null
+  return e.trim().toLowerCase()
+}

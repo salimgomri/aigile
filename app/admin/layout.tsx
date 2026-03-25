@@ -27,6 +27,18 @@ export default async function AdminLayout({
             >
               Commandes
             </Link>
+            <Link
+              href="/admin/feature-flags"
+              className="text-sm font-medium text-aigile-gold hover:text-book-orange"
+            >
+              Feature flags
+            </Link>
+            <Link
+              href="/admin/access"
+              className="text-sm font-medium text-aigile-gold hover:text-book-orange"
+            >
+              Accès / promos
+            </Link>
             <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
               ← Dashboard
             </Link>

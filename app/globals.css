@@ -29,6 +29,18 @@
     --input: 218 30% 18%;
     --ring: 42 54% 51%;
     --radius: 0.75rem;
+
+    /* Landing hero carousel — additive only */
+    --aigile-black: #0a0a0f;
+    --aigile-dark: #111118;
+    --aigile-card: #16161f;
+    --aigile-border: rgba(255, 255, 255, 0.08);
+    --aigile-white: #f0ede6;
+    --aigile-muted: rgba(240, 237, 230, 0.45);
+    --aigile-hero-gold: #c9973a;
+    --aigile-hero-orange: #e8961e;
+    --aigile-hero-gold-dim: rgba(201, 151, 58, 0.14);
+    --aigile-hero-gold-glow: rgba(201, 151, 58, 0.28);
   }
 
   * {
@@ -98,4 +110,161 @@
   color: #e8b84f;
   font-weight: 900;
   text-shadow: 0 0 20px rgba(232, 184, 79, 0.5);
+}
+
+/* Landing hero carousel */
+@keyframes landing-hero-pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.5;
+  }
+}
+
+.landing-hero-pulse-dot {
+  animation: landing-hero-pulse-dot 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero-pulse-dot {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes landing-hero-stagger {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.landing-hero-stagger {
+  animation: landing-hero-stagger 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes landing-hero-visual-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.landing-hero-visual-in {
+  animation: landing-hero-visual-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero-stagger,
+  .landing-hero-visual-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero droite — respiration (grossit / rétrécit) + léger flottement */
+@keyframes landing-hero-book-alive {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.97);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.06);
+  }
+}
+
+.landing-hero-book-alive {
+  animation: landing-hero-book-alive 3.4s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Mocks Retro / Scoring — même principe (sans translate, plus subtil) */
+@keyframes landing-hero-visual-breathe {
+  0%,
+  100% {
+    transform: scale(0.98);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.landing-hero-visual-breathe {
+  animation: landing-hero-visual-breathe 3.2s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes landing-hero-book-aura-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+.landing-hero-book-aura-pulse {
+  animation: landing-hero-book-aura-pulse 4.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero-book-alive,
+  .landing-hero-visual-breathe,
+  .landing-hero-book-aura-pulse {
+    animation: none;
+    transform: none;
+  }
+}
+
+@keyframes landing-hero-cta-tap {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.015);
+  }
+}
+
+.landing-hero-cta-micro {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+.landing-hero-cta-micro:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px rgba(201, 151, 58, 0.28);
+}
+
+.landing-hero-cta-micro:active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero-cta-micro:hover,
+  .landing-hero-cta-micro:active {
+    transform: none;
+    box-shadow: none;
+  }
 }

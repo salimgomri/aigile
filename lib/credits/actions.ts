@@ -18,6 +18,7 @@ export const CREDIT_ACTIONS = {
   dora_pdf: { cost: 1, label: 'Export PDF DORA', tool: '/dora' },
   okr_pdf: { cost: 1, label: 'Export PDF OKR', tool: '/okr' },
   retro_pdf: { cost: 1, label: 'Export PDF Rétro', tool: '/retro' },
+  scoring_deliverable: { cost: 2, label: 'Scoring livraison', tool: '/scoring' },
 } as const
 
 export type CreditAction = keyof typeof CREDIT_ACTIONS

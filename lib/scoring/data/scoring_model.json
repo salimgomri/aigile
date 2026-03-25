@@ -1,0 +1,50 @@
+{
+  "version": "2.0",
+  "scales": {
+    "YES_NO": { "yes": 100, "no": 0 },
+    "FREQ_3": { "never": 0, "partial": 50, "always": 100 },
+    "MATURITY_4": { "none": 0, "basic": 33, "good": 67, "excellent": 100 },
+    "COVERAGE_5": { "unmeasured": 0, "under40": 20, "40to60": 50, "60to80": 75, "over80": 100 },
+    "REALIZATION_3": { "under50": 0, "50to80": 50, "over80": 100 }
+  },
+  "dimensions": {
+    "d0": { "label_fr": "Sécurité & Conformité", "type": "critical", "default_weight": 10 },
+    "d1": { "label_fr": "Complétude Fonctionnelle", "type": "critical", "default_weight": 15 },
+    "d2": { "label_fr": "Qualité Technique", "type": "critical", "default_weight": 15 },
+    "d3": { "label_fr": "Alignement Métier", "type": "standard", "default_weight": 8 },
+    "d4": { "label_fr": "Déploiement & Release", "type": "critical", "default_weight": 15 },
+    "d5": { "label_fr": "Tests & Non-régression", "type": "critical", "default_weight": 20 },
+    "d6": { "label_fr": "Documentation", "type": "standard", "default_weight": 5 },
+    "d7": { "label_fr": "Adoption & Feedback", "type": "standard", "default_weight": 10 },
+    "d8": { "label_fr": "Maturité IA", "type": "optional", "default_weight": 2 }
+  },
+  "rag_thresholds": {
+    "critical": { "green_min": 80, "orange_min": 50 },
+    "standard": { "green_min": 75, "orange_min": 50 },
+    "optional": { "green_min": 75, "orange_min": 50 },
+    "global": { "green_min": 75, "orange_min": 50 }
+  },
+  "blocking_rule": {
+    "cap_score": 74,
+    "min_criticals_to_trigger": 1,
+    "status_label": "capped_orange",
+    "critical_dimensions": ["d0", "d1", "d2", "d4", "d5"]
+  },
+  "contextual_adjustments": [
+    {
+      "id": "A1_scope_art",
+      "when": { "C2": "c" },
+      "actions": [
+        { "dimension": "d3", "delta": 4 },
+        { "dimension": "d4", "delta": 2 },
+        { "dimension": "d1", "delta": -3 },
+        { "dimension": "d6", "delta": -3 }
+      ]
+    },
+    {
+      "id": "A2_exclude_ia",
+      "when": { "C7": "b" },
+      "actions": [{ "dimension": "d8", "exclude": true }]
+    }
+  ]
+}

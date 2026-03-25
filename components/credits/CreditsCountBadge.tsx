@@ -2,6 +2,14 @@
 
 import { useCredits } from '@/lib/credits/CreditContext'
 
+function CostHint() {
+  return (
+    <span className="text-[10px] text-muted-foreground/90 text-right leading-tight max-w-[240px]">
+      Rétro IA : 1 crédit · Scoring livraison : 2 crédits
+    </span>
+  )
+}
+
 /** Badge compact affichant le nombre de crédits, vert → rouge selon le reste */
 export default function CreditsCountBadge() {
   const { status, loading } = useCredits()
@@ -11,9 +19,12 @@ export default function CreditsCountBadge() {
   // Pro illimité
   if (status.isUnlimited && status.plan !== 'day_pass') {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400">
-        ⚡ Pro
-      </span>
+      <div className="flex flex-col items-end gap-0.5">
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400">
+          ⚡ Pro
+        </span>
+        <CostHint />
+      </div>
     )
   }
 
@@ -26,13 +37,16 @@ export default function CreditsCountBadge() {
     const isUrgent = hoursLeft < 2
 
     return (
-      <span
-        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold ${
-          isUrgent ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'
-        }`}
-      >
-        ⚡ {status.dayPassTimeRemaining}
-      </span>
+      <div className="flex flex-col items-end gap-0.5">
+        <span
+          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold ${
+            isUrgent ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'
+          }`}
+        >
+          ⚡ {status.dayPassTimeRemaining}
+        </span>
+        <CostHint />
+      </div>
     )
   }
 
@@ -57,8 +71,11 @@ export default function CreditsCountBadge() {
   }
 
   return (
-    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold ${colorClass}`}>
-      ⚡ {remaining} / {maxCredits}
-    </span>
+    <div className="flex flex-col items-end gap-0.5">
+      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold ${colorClass}`}>
+        ⚡ {remaining} / {maxCredits}
+      </span>
+      <CostHint />
+    </div>
   )
 }
