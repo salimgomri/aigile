@@ -78,6 +78,15 @@ function parseRecommendationLines(body: string): { code: string; text: string }[
   return out
 }
 
+/** Anciens rapports : `_—_` ou italiques markdown bruts dans l’accordéon */
+function formatPlainReportLine(line: string): string {
+  const t = line.trim()
+  if (t === '_—_' || t === '_—' || t === '_–_') return '—'
+  const onlyItalic = t.match(/^_([^_]+)_$/)
+  if (onlyItalic) return onlyItalic[1]
+  return t
+}
+
 function globalScoreColor(rag: RAGStatus): string {
   if (rag === 'green') return 'text-green-400'
   if (rag === 'red') return 'text-red-400'
@@ -572,44 +581,54 @@ export function ScoringReport({
           <div className="space-y-8">
             {actionTips.red.length > 0 && (
               <div>
-                <h3 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-red-400">
+                <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-red-400">
                   <span className="inline-block h-2 w-2 rounded-full bg-red-500" aria-hidden />
                   Priorité rouge
                 </h3>
-                <ul className="space-y-4">
+                <div
+                  className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+                  role="list"
+                  aria-label="Conseils priorité rouge"
+                >
                   {actionTips.red.map((row, i) => (
-                    <li
+                    <article
                       key={`${row.qid}-${i}`}
-                      className="rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm leading-relaxed text-white/90"
+                      role="listitem"
+                      className="flex min-h-0 flex-col rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm leading-relaxed text-white/90 shadow-lg shadow-black/20"
                     >
-                      <p className="mb-0.5 text-xs font-semibold text-red-300">
+                      <p className="mb-2 text-xs font-semibold text-red-300">
                         {row.dimLabel} · {row.qid}
                       </p>
-                      <p>{row.text}</p>
-                    </li>
+                      <p className="min-w-0 flex-1">{row.text}</p>
+                    </article>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
             {actionTips.orange.length > 0 && (
               <div>
-                <h3 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-orange-300">
+                <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-orange-300">
                   <span className="inline-block h-2 w-2 rounded-full bg-orange-500" aria-hidden />
                   Priorité orange
                 </h3>
-                <ul className="space-y-4">
+                <div
+                  className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+                  role="list"
+                  aria-label="Conseils priorité orange"
+                >
                   {actionTips.orange.map((row, i) => (
-                    <li
+                    <article
                       key={`${row.qid}-${i}`}
-                      className="rounded-2xl border border-orange-500/25 bg-orange-500/10 p-4 text-sm leading-relaxed text-white/90"
+                      role="listitem"
+                      className="flex min-h-0 flex-col rounded-2xl border border-orange-500/25 bg-orange-500/10 p-4 text-sm leading-relaxed text-white/90 shadow-lg shadow-black/20"
                     >
-                      <p className="mb-0.5 text-xs font-semibold text-orange-200/90">
+                      <p className="mb-2 text-xs font-semibold text-orange-200/90">
                         {row.dimLabel} · {row.qid}
                       </p>
-                      <p>{row.text}</p>
-                    </li>
+                      <p className="min-w-0 flex-1">{row.text}</p>
+                    </article>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
           </div>
@@ -690,13 +709,13 @@ export function ScoringReport({
                         ))}
                       </ul>
                     ) : (
-                      <div className="max-w-none pt-3 text-sm leading-relaxed text-white/80">
-                        {sec.body.split('\n').map((line, i) => (
-                          <p key={i} className="mb-2 last:mb-0">
-                            {line || '\u00A0'}
-                          </p>
-                        ))}
-                      </div>
+                        <div className="max-w-none pt-3 text-sm leading-relaxed text-white/80">
+                          {sec.body.split('\n').map((line, i) => (
+                            <p key={i} className="mb-2 last:mb-0">
+                              {formatPlainReportLine(line) || '\u00A0'}
+                            </p>
+                          ))}
+                        </div>
                     )}
                   </div>
                 </div>

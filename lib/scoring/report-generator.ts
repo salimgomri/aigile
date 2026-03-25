@@ -1,8 +1,18 @@
 import 'server-only'
 
 import type { DimensionId } from '@/types/scoring'
-import type { ScoreResult, ScoringSession } from '@/types/scoring'
+import type { RAGStatus, ScoreResult, ScoringSession } from '@/types/scoring'
 import type { ScoringModel, TipsMap } from '@/lib/scoring/schema'
+
+/** Libellé RAG lisible dans le markdown (évite « red » brut + ** non rendus dans l’UI accordéon) */
+function ragLabelFr(rag: RAGStatus): string {
+  if (rag === 'green') return 'vert'
+  if (rag === 'red') return 'rouge'
+  if (rag === 'orange') return 'orange'
+  if (rag === 'capped_orange') return 'orange (plafonné)'
+  if (rag === 'na') return 'non applicable'
+  return String(rag)
+}
 
 function tipKeysForDimension(dimId: DimensionId, tips: TipsMap): string[] {
   const p = `D${dimId.slice(1)}`
@@ -58,7 +68,9 @@ export function generateMarkdownReport(
   )
   lines.push(`## Forces`)
   if (strengths.length === 0) {
-    lines.push(`_—_`)
+    lines.push(
+      `Aucune dimension au seuil vert global pour cette session (seuil : ≥ ${greenMinGlobal}). Ce n’est pas une erreur d’affichage.`
+    )
   } else {
     for (const ds of strengths) {
       lines.push(`- ${model.dimensions[ds.id].label_fr} (${ds.score?.toFixed(1)})`)
@@ -69,7 +81,7 @@ export function generateMarkdownReport(
   lines.push(`## Recommandations 🔴→🟠`)
   const redDims = dimension_scores.filter((ds) => ds.rag === 'red' && !ds.excluded)
   if (redDims.length === 0) {
-    lines.push(`_—_`)
+    lines.push(`Aucune dimension en « rouge » : pas de recommandations prioritaires dans cette catégorie.`)
   } else {
     for (const ds of redDims) {
       for (const qid of tipKeysForDimension(ds.id, tips)) {
@@ -83,7 +95,7 @@ export function generateMarkdownReport(
   lines.push(`## Recommandations 🟠→🟢`)
   const orangeDims = dimension_scores.filter((ds) => ds.rag === 'orange' && !ds.excluded)
   if (orangeDims.length === 0) {
-    lines.push(`_—_`)
+    lines.push(`Aucune dimension en « orange » : pas de recommandations dans cette catégorie.`)
   } else {
     for (const ds of orangeDims) {
       for (const qid of tipKeysForDimension(ds.id, tips)) {
@@ -97,9 +109,17 @@ export function generateMarkdownReport(
   const d8 = dimension_scores.find((d) => d.id === 'd8')
   lines.push(`## Maturité IA`)
   if (!d8 || d8.excluded || d8.score === null) {
-    lines.push(`_Dimension non évaluée ou exclue._`)
+    lines.push(`_Dimension non évaluée ou exclue (ex. cadrage « IA hors périmètre »)._`)
   } else {
-    lines.push(`Score **${d8.score.toFixed(1)}** — ${d8.rag}`)
+    const t = model.rag_thresholds.optional
+    lines.push(
+      `Score ${d8.score.toFixed(1)} / 100 — synthèse ${ragLabelFr(d8.rag)} (seuils dimension optionnelle : vert ≥ ${t.green_min}, orange ≥ ${t.orange_min}).`
+    )
+    if (d8.score === 0) {
+      lines.push(
+        `_Un score à 0 signifie que les réponses sur cette dimension sont au niveau le plus bas de l’échelle (ex. « aucune » maturité IA) — ce n’est pas un bug de calcul._`
+      )
+    }
   }
 
   if (session.team_name || session.sprint_number) {
