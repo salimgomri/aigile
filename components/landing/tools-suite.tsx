@@ -8,30 +8,132 @@
 
 'use client'
 
+import { useEffect, useState } from 'react'
 import { useLanguage } from '../language-provider'
 import { trackEvent } from '@/lib/gtag'
 import { translations } from '@/lib/translations'
-import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles } from 'lucide-react'
+import type { PublicFeatureFlag } from '@/lib/feature-flags'
+import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package } from 'lucide-react'
 import Link from 'next/link'
+
+type ToolItem = {
+  key: string
+  icon: typeof Brain
+  title: string
+  description: string
+  featured: boolean
+  href: string
+  available: boolean
+}
 
 export default function ToolsSuiteSection() {
   const { language } = useLanguage()
   const t = translations[language]
+  const [flags, setFlags] = useState<Record<string, PublicFeatureFlag>>({})
 
-  const tools = [
-    { 
-      icon: Brain, 
-      title: t['tools-retro-title'], 
+  useEffect(() => {
+    fetch('/api/feature-flags')
+      .then((r) => r.json())
+      .then((d: { flags?: Record<string, PublicFeatureFlag> }) => {
+        if (d.flags) setFlags(d.flags)
+      })
+      .catch(() => {})
+  }, [])
+
+  const sm = flags.skill_matrix
+  const skillTitle =
+    sm && (language === 'fr' ? sm.label_fr : sm.label_en)
+      ? language === 'fr'
+        ? sm.label_fr
+        : sm.label_en
+      : t['tools-skills']
+  const skillDesc = sm
+    ? (language === 'fr'
+        ? sm.teaser_fr || sm.label_fr
+        : sm.teaser_en || sm.label_en) ||
+      (language === 'fr' ? 'Cartographie compétences' : 'Skills mapping')
+    : language === 'fr'
+      ? 'Cartographie compétences'
+      : 'Skills mapping'
+
+  const sd = flags.scoring_deliverable
+  const scoringTitle =
+    sd && (language === 'fr' ? sd.label_fr : sd.label_en)
+      ? language === 'fr'
+        ? sd.label_fr
+        : sd.label_en
+      : t['tools-scoring-title']
+  const scoringDesc = sd
+    ? (language === 'fr'
+        ? sd.teaser_fr || sd.label_fr
+        : sd.teaser_en || sd.label_en) ||
+      t['tools-scoring-desc']
+    : t['tools-scoring-desc']
+
+  const tools: ToolItem[] = [
+    {
+      key: 'retro',
+      icon: Brain,
+      title: t['tools-retro-title'],
       description: t['tools-retro-desc'],
       featured: true,
       href: '/retro',
       available: true,
     },
-    { icon: Smile, title: t['tools-nikoni'], description: language === 'fr' ? 'Humeur quotidienne & Happiness Index' : 'Daily mood & Happiness Index', featured: false, href: '#', available: false },
-    { icon: BarChart3, title: t['tools-dora'], description: language === 'fr' ? 'Performance élite & métriques DORA' : 'Elite performance & DORA metrics', featured: false, href: '#', available: false },
-    { icon: Target, title: t['tools-okr'], description: language === 'fr' ? 'Alignement OKR' : 'OKR alignment', featured: false, href: '#', available: false },
-    { icon: Layout, title: t['tools-dashboard'], description: language === 'fr' ? 'Santé d\'équipe & outils' : 'Team health & tools', featured: false, href: '#', available: false },
-    { icon: Users, title: t['tools-skills'], description: language === 'fr' ? 'Cartographie compétences' : 'Skills mapping', featured: false, href: '#', available: false },
+    {
+      key: 'scoring_deliverable',
+      icon: Package,
+      title: scoringTitle,
+      description: scoringDesc,
+      featured: false,
+      href: '/scoring-deliverable',
+      available: !!sd?.is_live,
+    },
+    {
+      key: 'niko',
+      icon: Smile,
+      title: t['tools-nikoni'],
+      description: language === 'fr' ? 'Humeur quotidienne & Happiness Index' : 'Daily mood & Happiness Index',
+      featured: false,
+      href: '#',
+      available: false,
+    },
+    {
+      key: 'dora',
+      icon: BarChart3,
+      title: t['tools-dora'],
+      description: language === 'fr' ? 'Performance élite & métriques DORA' : 'Elite performance & DORA metrics',
+      featured: false,
+      href: '#',
+      available: false,
+    },
+    {
+      key: 'okr',
+      icon: Target,
+      title: t['tools-okr'],
+      description: language === 'fr' ? 'Alignement OKR' : 'OKR alignment',
+      featured: false,
+      href: '#',
+      available: false,
+    },
+    {
+      key: 'dashboard',
+      icon: Layout,
+      title: t['tools-dashboard'],
+      description: language === 'fr' ? "Santé d'équipe & outils" : 'Team health & tools',
+      featured: false,
+      href: '#',
+      available: false,
+    },
+    {
+      key: 'skill_matrix',
+      icon: Users,
+      title: skillTitle,
+      description: skillDesc,
+      featured: false,
+      href: '/skill-matrix',
+      available: !!sm?.is_live,
+    },
   ]
 
   return (
@@ -118,28 +220,83 @@ export default function ToolsSuiteSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {tools.slice(1).map((tool, index) => {
             const Icon = tool.icon
-            return (
-              <div
-                key={index}
-                className="group p-6 bg-card/20 backdrop-blur-sm rounded-2xl border border-border opacity-60 cursor-not-allowed animate-fade-in-up hover:border-border/80 transition-colors duration-300"
-                style={{ animationFillMode: 'forwards', animationDelay: `${0.2 + index * 0.05}s` }}
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-muted/50 rounded-xl group-hover:bg-muted/70 transition-colors duration-300">
-                    <Icon className="w-6 h-6 text-muted-foreground" />
+            const isInteractiveTool =
+              tool.key === 'skill_matrix' || tool.key === 'scoring_deliverable'
+            const interactive = isInteractiveTool && tool.href !== '#'
+            const live = tool.available
+            const isScoring = tool.key === 'scoring_deliverable'
+            const scoringCardLive =
+              'group relative overflow-hidden p-6 rounded-2xl cursor-pointer animate-fade-in-up transition-all duration-300 border border-[#c9973a]/45 bg-gradient-to-br from-[#c9973a]/[0.2] via-[#07111f] to-[#0a0a0f] shadow-[0_16px_48px_-12px_rgba(201,151,58,0.45)] ring-1 ring-[#e8961e]/30 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_95%_65%_at_100%_0%,rgba(232,150,30,0.25),transparent_58%)] hover:border-[#e8961e]/60 hover:shadow-[0_22px_60px_-8px_rgba(201,151,58,0.55)]'
+            const scoringCardPreview =
+              'group relative overflow-hidden p-6 rounded-2xl cursor-pointer animate-fade-in-up transition-all duration-300 border border-[#c9973a]/40 bg-gradient-to-br from-[#c9973a]/12 via-aigile-blue/5 to-[#0a0a0f] shadow-[0_12px_40px_-10px_rgba(201,151,58,0.35)] ring-1 ring-[#c9973a]/20 before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_80%_20%,rgba(232,150,30,0.12),transparent_50%)] hover:border-[#c9973a]/55'
+
+            const cardClass =
+              interactive && isScoring
+                ? live
+                  ? scoringCardLive
+                  : scoringCardPreview
+                : interactive
+                  ? live
+                    ? 'group p-6 bg-card/40 backdrop-blur-sm rounded-2xl border border-aigile-gold/25 hover:border-aigile-gold/50 hover:shadow-lg cursor-pointer animate-fade-in-up transition-all duration-300'
+                    : 'group p-6 bg-gradient-to-br from-aigile-gold/5 to-aigile-blue/5 backdrop-blur-sm rounded-2xl border border-aigile-gold/30 hover:border-aigile-gold/50 cursor-pointer animate-fade-in-up transition-all duration-300'
+                  : 'group p-6 bg-card/20 backdrop-blur-sm rounded-2xl border border-border opacity-60 cursor-not-allowed animate-fade-in-up hover:border-border/80 transition-colors duration-300'
+
+            const inner = (
+              <>
+                <div className={`flex items-start space-x-4 ${isScoring ? 'relative z-10' : ''}`}>
+                  <div
+                    className={`p-3 rounded-xl transition-colors duration-300 ${
+                      interactive ? 'bg-aigile-gold/10 group-hover:bg-aigile-gold/20' : 'bg-muted/50 group-hover:bg-muted/70'
+                    }`}
+                  >
+                    <Icon className={`w-6 h-6 ${interactive ? 'text-aigile-gold' : 'text-muted-foreground'}`} />
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-muted-foreground mb-2">
+                  <div className="flex-1 text-left">
+                    <h4 className={`font-bold mb-2 ${interactive ? 'text-foreground' : 'text-muted-foreground'}`}>
                       {tool.title}
                     </h4>
-                    <p className="text-sm text-muted-foreground/80">
+                    <p className={`text-sm ${interactive ? 'text-muted-foreground' : 'text-muted-foreground/80'}`}>
                       {tool.description}
                     </p>
-                    <span className="inline-block mt-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                      {language === 'fr' ? 'Bientôt' : 'Coming soon'}
+                    <span
+                      className={`inline-block mt-3 text-xs font-semibold uppercase tracking-wider ${
+                        interactive
+                          ? live
+                            ? 'text-aigile-gold'
+                            : 'text-aigile-gold'
+                          : 'text-muted-foreground'
+                      }`}
+                    >
+                      {interactive
+                        ? live
+                          ? language === 'fr'
+                            ? 'Disponible'
+                            : 'Available'
+                          : language === 'fr'
+                            ? 'Bientôt · Aperçu'
+                            : 'Coming soon · Preview'
+                        : language === 'fr'
+                          ? 'Bientôt'
+                          : 'Coming soon'}
                     </span>
                   </div>
                 </div>
+              </>
+            )
+
+            return (
+              <div
+                key={tool.key}
+                className={cardClass}
+                style={{ animationFillMode: 'forwards', animationDelay: `${0.2 + index * 0.05}s` }}
+              >
+                {interactive ? (
+                  <Link href={tool.href} className="block h-full" onClick={() => trackEvent('tools_suite_click', { tool: tool.key })}>
+                    {inner}
+                  </Link>
+                ) : (
+                  inner
+                )}
               </div>
             )
           })}
