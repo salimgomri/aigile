@@ -33,3 +33,11 @@ if ! grep -q "NEXT_PUBLIC_URL=$APP_URL" "$ENV_FILE" 2>/dev/null; then
     echo "NEXT_PUBLIC_URL=$APP_URL" >> "$ENV_FILE"
   fi
 fi
+
+# Rappel : emails (Resend) — ne pas afficher les secrets
+if ! grep -qE '^RESEND_API_KEY=.+' "$ENV_FILE" 2>/dev/null; then
+  echo "⚠️  RESEND_API_KEY manquant ou vide dans $ENV_FILE — pas d’emails (commandes, /admin/access, feedback)."
+fi
+if ! grep -qE '^RESEND_FROM_EMAIL=.+' "$ENV_FILE" 2>/dev/null; then
+  echo "ℹ️  RESEND_FROM_EMAIL optionnel ; défaut Resend onboarding si absent."
+fi

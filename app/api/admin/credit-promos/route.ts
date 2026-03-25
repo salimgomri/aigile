@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { isAdminEmail } from '@/lib/admin'
 import { supabaseAdmin } from '@/lib/supabase'
+import { sendToolCreditPromoEmail } from '@/lib/email'
 
 function normEmail(email: string) {
   return email.trim().toLowerCase()
@@ -60,16 +61,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'expires_at invalide' }, { status: 400 })
   }
 
-  const { data: flag } = await supabaseAdmin.from('feature_flags').select('slug').eq('slug', toolSlug).maybeSingle()
+  const { data: flag } = await supabaseAdmin
+    .from('feature_flags')
+    .select('slug, label_fr, tool_path')
+    .eq('slug', toolSlug)
+    .maybeSingle()
   if (!flag) {
     return NextResponse.json({ error: 'Outil inconnu (pas de feature flag pour ce slug)' }, { status: 400 })
   }
 
+  const normalized = normEmail(email)
   const { data, error } = await supabaseAdmin
     .from('tool_credit_promo_grants')
     .upsert(
       {
-        email: normEmail(email),
+        email: normalized,
         tool_slug: toolSlug,
         expires_at: exp.toISOString(),
         early_adopter: body.early_adopter !== false,
@@ -84,6 +90,14 @@ export async function POST(request: Request) {
     console.error('[admin/credit-promos POST]', error)
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  void sendToolCreditPromoEmail({
+    to: normalized,
+    toolLabelFr: flag.label_fr || toolSlug,
+    toolPath: flag.tool_path || '/',
+    expiresAtISO: exp.toISOString(),
+    earlyAdopter: body.early_adopter !== false,
+  })
 
   return NextResponse.json({ promo: data })
 }

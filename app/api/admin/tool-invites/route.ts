@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { isAdminEmail } from '@/lib/admin'
 import { supabaseAdmin } from '@/lib/supabase'
+import { sendToolAccessInviteEmail } from '@/lib/email'
 
 function normEmail(email: string) {
   return email.trim().toLowerCase()
@@ -56,14 +57,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'email invalide' }, { status: 400 })
   }
 
-  const { data: flag } = await supabaseAdmin.from('feature_flags').select('slug').eq('slug', toolSlug).maybeSingle()
+  const { data: flag } = await supabaseAdmin
+    .from('feature_flags')
+    .select('slug, label_fr, tool_path')
+    .eq('slug', toolSlug)
+    .maybeSingle()
   if (!flag) {
     return NextResponse.json({ error: 'Outil inconnu (pas de feature flag)' }, { status: 400 })
   }
 
+  const normalized = normEmail(email)
   const { data, error } = await supabaseAdmin
     .from('tool_invites')
-    .insert({ tool_slug: toolSlug, email: normEmail(email) })
+    .insert({ tool_slug: toolSlug, email: normalized })
     .select('*')
     .single()
 
@@ -74,6 +80,12 @@ export async function POST(request: Request) {
     console.error('[admin/tool-invites POST]', error)
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  void sendToolAccessInviteEmail({
+    to: normalized,
+    toolLabelFr: flag.label_fr || toolSlug,
+    toolPath: flag.tool_path || '/',
+  })
 
   return NextResponse.json({ invite: data })
 }

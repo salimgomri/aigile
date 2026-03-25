@@ -328,6 +328,122 @@ export async function sendInvitationEmail(params: {
   if (error) console.error('[EMAIL] Invitation send failed:', error)
 }
 
+/** Notification utilisateur : ajouté à la liste d’invités d’un outil (admin /admin/access) */
+export async function sendToolAccessInviteEmail(params: {
+  to: string
+  toolLabelFr: string
+  toolPath: string
+}) {
+  if (!resend) {
+    console.warn('[EMAIL] RESEND_API_KEY not set - skipping tool access invite email')
+    return
+  }
+  const url = `${getBaseUrl()}${params.toolPath.startsWith('/') ? params.toolPath : `/${params.toolPath}`}`
+  const subject = `Accès ${params.toolLabelFr} — AIgile`
+  const html = `<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:-apple-system,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
+        <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
+          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+        </td></tr>
+        <tr><td style="padding:40px;">
+          <p style="margin:0 0 16px;font-size:15px;color:#1a1a1a;">Bonjour,</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
+            Votre adresse a été ajoutée à la liste d’accès pour <strong>${escapeHtml(params.toolLabelFr)}</strong> sur AIgile.
+            Connectez-vous avec <strong>cet email</strong> pour utiliser l’outil lorsque l’accès sur invitation est actif (après la date de lancement).
+          </p>
+          <p style="text-align:center;margin:28px 0 0;">
+            <a href="${url}" style="display:inline-block;background:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Ouvrir l’outil</a>
+          </p>
+        </td></tr>
+        <tr><td style="padding:24px 40px;text-align:center;font-size:11px;color:#94a3b8;">
+          aigile.lu — Si vous n’attendiez pas cet accès, vous pouvez ignorer cet email.
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  const { error } = await resend.emails.send({
+    from: FROM_EMAIL,
+    to: params.to,
+    subject,
+    html,
+  })
+  if (error) console.error('[EMAIL] Tool access invite send failed:', error)
+}
+
+/** Notification utilisateur : promo crédits illimités par outil (admin) */
+export async function sendToolCreditPromoEmail(params: {
+  to: string
+  toolLabelFr: string
+  toolPath: string
+  expiresAtISO: string
+  earlyAdopter: boolean
+}) {
+  if (!resend) {
+    console.warn('[EMAIL] RESEND_API_KEY not set - skipping tool credit promo email')
+    return
+  }
+  const url = `${getBaseUrl()}${params.toolPath.startsWith('/') ? params.toolPath : `/${params.toolPath}`}`
+  const exp = new Date(params.expiresAtISO)
+  const expStr = Number.isNaN(exp.getTime()) ? params.expiresAtISO : exp.toLocaleString('fr-FR')
+  const ea = params.earlyAdopter
+    ? '<p style="margin:16px 0 0;font-size:14px;color:#c9973a;"><strong>Early adopter</strong> : offres mises en avant dans l’app.</p>'
+    : ''
+  const subject = `Promo crédits — ${params.toolLabelFr} — AIgile`
+  const html = `<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:-apple-system,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
+        <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
+          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+        </td></tr>
+        <tr><td style="padding:40px;">
+          <p style="margin:0 0 16px;font-size:15px;color:#1a1a1a;">Bonjour,</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#334155;line-height:1.6;">
+            Une <strong>promo crédits illimités</strong> sur <strong>${escapeHtml(params.toolLabelFr)}</strong> est active pour votre compte
+            (même adresse email), jusqu’au <strong>${escapeHtml(expStr)}</strong>.
+          </p>
+          ${ea}
+          <p style="text-align:center;margin:28px 0 0;">
+            <a href="${url}" style="display:inline-block;background:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Accéder à l’outil</a>
+          </p>
+        </td></tr>
+        <tr><td style="padding:24px 40px;text-align:center;font-size:11px;color:#94a3b8;">
+          aigile.lu
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  const { error } = await resend.emails.send({
+    from: FROM_EMAIL,
+    to: params.to,
+    subject,
+    html,
+  })
+  if (error) console.error('[EMAIL] Tool credit promo send failed:', error)
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
 export { sendAuthorNotificationEmail } from '@/lib/emails/author-notification'
 export { sendBuyerConfirmationEmail } from '@/lib/emails/buyer-confirmation'
 export { sendPaymentFailedEmail } from '@/lib/emails/payment-failed'
