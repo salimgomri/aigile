@@ -16,8 +16,12 @@ export default async function ScoringDeliverablePage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-black via-slate-950 to-black">
-      {/* Même atmosphère que /retro/result */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+      {/* Même atmosphère que /retro/result — exclu de l’export PDF (window.print) */}
+      <div
+        className="pointer-events-none fixed inset-0 overflow-hidden"
+        data-no-print
+        aria-hidden
+      >
         <div className="absolute left-1/4 top-1/4 h-[600px] w-[600px] animate-pulse rounded-full bg-gradient-to-br from-orange-500/20 via-orange-500/10 to-transparent blur-3xl" />
         <div
           className="absolute bottom-1/4 right-1/4 h-[800px] w-[800px] animate-pulse rounded-full bg-gradient-to-br from-blue-500/15 via-blue-500/5 to-transparent blur-3xl"
@@ -25,9 +29,14 @@ export default async function ScoringDeliverablePage() {
         />
       </div>
 
-      <PremiumNavbar />
+      <div data-no-print>
+        <PremiumNavbar />
+      </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-6 pt-10 text-center md:px-8 md:pt-16">
+      <div
+        className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-6 pt-10 text-center md:px-8 md:pt-16"
+        data-no-print
+      >
         <p className="mb-4 text-[11px] font-semibold uppercase tracking-widest text-orange-400">
           Évaluation livrable
         </p>
@@ -48,7 +57,9 @@ export default async function ScoringDeliverablePage() {
         <ScoringWizard allQuestions={questions} scoringModel={model} cadrageItems={cadrageItems} />
       </main>
 
-      <PremiumFooter />
+      <div data-no-print>
+        <PremiumFooter />
+      </div>
     </div>
   )
 }

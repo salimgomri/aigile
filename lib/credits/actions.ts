@@ -4,7 +4,14 @@
  */
 
 /** PDF actions - pour "premier PDF gratuit" */
-export const PDF_ACTIONS = ['dashboard_pdf', 'skill_pdf', 'dora_pdf', 'okr_pdf', 'retro_pdf'] as const
+export const PDF_ACTIONS = [
+  'dashboard_pdf',
+  'skill_pdf',
+  'dora_pdf',
+  'okr_pdf',
+  'retro_pdf',
+  'scoring_pdf',
+] as const
 
 export const CREDIT_ACTIONS = {
   retro_ai_plan: { cost: 3, label: 'Plan rétro IA', tool: '/retro' },
@@ -18,7 +25,8 @@ export const CREDIT_ACTIONS = {
   dora_pdf: { cost: 1, label: 'Export PDF DORA', tool: '/dora' },
   okr_pdf: { cost: 1, label: 'Export PDF OKR', tool: '/okr' },
   retro_pdf: { cost: 1, label: 'Export PDF Rétro', tool: '/retro' },
-  scoring_deliverable: { cost: 2, label: 'Scoring livraison', tool: '/scoring' },
+  scoring_pdf: { cost: 1, label: 'Export PDF Scoring livraison', tool: '/scoring-deliverable' },
+  scoring_deliverable: { cost: 2, label: 'Scoring livraison', tool: '/scoring-deliverable' },
 } as const
 
 export type CreditAction = keyof typeof CREDIT_ACTIONS

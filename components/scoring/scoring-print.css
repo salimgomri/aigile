@@ -1,13 +1,116 @@
+/* Export PDF = window.print() — uniquement quand le rapport scoring est présent (body:has) */
+
 @media print {
-  nav,
-  aside,
-  [data-no-print] {
+  @page {
+    margin: 14mm 12mm;
+    size: A4;
+  }
+
+  /* Ne pas polluer les autres pages : ce fichier n’est importé que par ScoringReport */
+  body:has([data-scoring-report-print]) [data-no-print],
+  body:has([data-scoring-report-print]) nav,
+  body:has([data-scoring-report-print]) footer {
     display: none !important;
   }
-  body {
-    background: white !important;
-    color: black !important;
+
+  body:has([data-scoring-report-print]) {
+    background: #fff !important;
   }
+
+  [data-scoring-report-print] {
+    position: relative;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #111827 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  [data-scoring-report-print] * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  [data-scoring-report-print] .backdrop-blur-3xl,
+  [data-scoring-report-print] .backdrop-blur-2xl,
+  [data-scoring-report-print] .backdrop-blur-xl {
+    backdrop-filter: none !important;
+  }
+
+  /* Texte lisible sur fond blanc */
+  [data-scoring-report-print] .text-white,
+  [data-scoring-report-print] h1,
+  [data-scoring-report-print] h2,
+  [data-scoring-report-print] h3 {
+    color: #111827 !important;
+  }
+
+  [data-scoring-report-print] .text-white\/40,
+  [data-scoring-report-print] .text-white\/50,
+  [data-scoring-report-print] .text-white\/60,
+  [data-scoring-report-print] .text-white\/70,
+  [data-scoring-report-print] .text-white\/80 {
+    color: #4b5563 !important;
+  }
+
+  [data-scoring-report-print] .text-green-400 {
+    color: #15803d !important;
+  }
+  [data-scoring-report-print] .text-red-400,
+  [data-scoring-report-print] .text-red-300 {
+    color: #b91c1c !important;
+  }
+  [data-scoring-report-print] .text-orange-400 {
+    color: #c2410c !important;
+  }
+  [data-scoring-report-print] .text-yellow-300 {
+    color: #a16207 !important;
+  }
+
+  /* Cartes : bordure légère au lieu du glass sombre */
+  [data-scoring-report-print] .rounded-\[3rem\],
+  [data-scoring-report-print] .rounded-\[2rem\],
+  [data-scoring-report-print] .rounded-3xl,
+  [data-scoring-report-print] .rounded-2xl {
+    background: #f9fafb !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  [data-scoring-report-print] .border-white\/5,
+  [data-scoring-report-print] .border-white\/10,
+  [data-scoring-report-print] .divide-white\/5 {
+    border-color: #e5e7eb !important;
+  }
+
+  [data-scoring-report-print] .bg-white\/5,
+  [data-scoring-report-print] .bg-white\/\[0\.02\],
+  [data-scoring-report-print] .bg-white\/\[0\.05\] {
+    background: #f3f4f6 !important;
+  }
+
+  /* Radar Recharts */
+  [data-scoring-report-print] .recharts-layer,
+  [data-scoring-report-print] .recharts-surface {
+    overflow: visible !important;
+  }
+  [data-scoring-report-print] .recharts-polar-grid path,
+  [data-scoring-report-print] .recharts-polar-angle-axis line {
+    stroke: #d1d5db !important;
+  }
+  [data-scoring-report-print] .recharts-polar-radius-axis path,
+  [data-scoring-report-print] .recharts-polar-radius-axis line {
+    stroke: #d1d5db !important;
+  }
+  [data-scoring-report-print] svg .recharts-polar-angle-axis-tick-value,
+  [data-scoring-report-print] svg .recharts-text,
+  [data-scoring-report-print] svg text {
+    fill: #374151 !important;
+  }
+
+  /* Badges RAG en impression */
   .rag-red {
     background-color: #fee2e2 !important;
     -webkit-print-color-adjust: exact;
@@ -22,5 +125,23 @@
     background-color: #d1fae5 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  /* Hero : pastille score */
+  [data-scoring-report-print] .from-green-500,
+  [data-scoring-report-print] .from-orange-500,
+  [data-scoring-report-print] .from-red-500 {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  [data-scoring-report-print] .text-white.tabular-nums {
+    color: #fff !important;
+  }
+
+  /* Historique : graphique */
+  [data-scoring-report-print] .recharts-cartesian-grid-horizontal line,
+  [data-scoring-report-print] .recharts-cartesian-grid-vertical line {
+    stroke: #e5e7eb !important;
   }
 }

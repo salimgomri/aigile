@@ -18,6 +18,7 @@ import { ScoringReport } from '@/components/scoring/ScoringReport'
 import { ScoringHistory } from '@/components/scoring/ScoringHistory'
 import { SprintDateField } from '@/components/scoring/SprintDateField'
 import { ScoringCompletionGate } from '@/components/scoring/ScoringCompletionGate'
+import { ScoringRagAmbient } from '@/components/scoring/ScoringRagAmbient'
 import { SCORING_DELIVERABLE_COST } from '@/lib/credits/costs'
 import {
   buildLocalhostMockScoringResult,
@@ -792,7 +793,12 @@ export function ScoringWizard({ allQuestions, scoringModel, cadrageItems }: Scor
       )}
 
       {step === 'result' && scoreResult && reportMarkdown && sessionForReport && (
-        <div className="w-full space-y-10 pb-8 md:space-y-12">
+        <>
+          <ScoringRagAmbient rag={scoreResult.rag_global} />
+          <div
+            className="relative z-10 w-full space-y-10 pb-8 md:space-y-12"
+            data-scoring-report-print
+          >
           <ScoringReport
             session={sessionForReport}
             scoreResult={scoreResult}
@@ -805,7 +811,8 @@ export function ScoringWizard({ allQuestions, scoringModel, cadrageItems }: Scor
               <ScoringHistory />
             </div>
           )}
-        </div>
+          </div>
+        </>
       )}
     </div>
   )
