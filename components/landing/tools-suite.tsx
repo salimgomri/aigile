@@ -31,6 +31,8 @@ export default function ToolsSuiteSection() {
   const { language } = useLanguage()
   const t = translations[language]
   const [flags, setFlags] = useState<Record<string, PublicFeatureFlag>>({})
+  /** null = chargement ; true = admin / invité / promo — CTA direct comme accès public */
+  const [scoringAccess, setScoringAccess] = useState<boolean | null>(null)
 
   useEffect(() => {
     fetch('/api/feature-flags')
@@ -40,6 +42,30 @@ export default function ToolsSuiteSection() {
       })
       .catch(() => {})
   }, [])
+
+  useEffect(() => {
+    const sd = flags.scoring_deliverable
+    if (!sd?.is_live) {
+      setScoringAccess(null)
+      return
+    }
+    if (!(sd.invite_only ?? true)) {
+      setScoringAccess(null)
+      return
+    }
+    let cancelled = false
+    fetch('/api/tool-access?slug=scoring_deliverable')
+      .then((r) => r.json())
+      .then((d: { canAccess?: boolean }) => {
+        if (!cancelled) setScoringAccess(!!d.canAccess)
+      })
+      .catch(() => {
+        if (!cancelled) setScoringAccess(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [flags])
 
   const sm = flags.skill_matrix
   const skillTitle =
@@ -60,6 +86,10 @@ export default function ToolsSuiteSection() {
   const sd = flags.scoring_deliverable
   const scoringInviteOnly = sd?.invite_only ?? true
   const scoringFullyPublic = sd?.is_live && !scoringInviteOnly
+  const scoringDirectCta =
+    scoringFullyPublic || (sd?.is_live && scoringInviteOnly && scoringAccess === true)
+  const scoringAccessLoading =
+    !!sd?.is_live && scoringInviteOnly && !scoringFullyPublic && scoringAccess === null
   const scoringTitle =
     sd && (language === 'fr' ? sd.label_fr : sd.label_en)
       ? language === 'fr'
@@ -217,7 +247,7 @@ export default function ToolsSuiteSection() {
               </div>
             </div>
             <div className="mt-8 space-y-4">
-              {scoringFullyPublic ? (
+              {scoringDirectCta ? (
                 <Link
                   href="/scoring-deliverable"
                   onClick={() => trackEvent('tools_suite_click', { tool: 'scoring_deliverable' })}
@@ -226,6 +256,12 @@ export default function ToolsSuiteSection() {
                   {language === 'fr' ? 'Lancer l’évaluation' : 'Start assessment'}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
+              ) : scoringAccessLoading ? (
+                <div
+                  className="h-11 w-full animate-pulse rounded-full bg-muted"
+                  aria-busy
+                  aria-label={language === 'fr' ? 'Vérification de l’accès…' : 'Checking access…'}
+                />
               ) : (
                 <>
                   {sd?.is_live && scoringInviteOnly ? (

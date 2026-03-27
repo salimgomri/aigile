@@ -301,6 +301,7 @@ export default function LandingHero() {
   const [slide, setSlide] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [publicFlags, setPublicFlags] = useState<Record<string, PublicFeatureFlag>>({})
+  const [scoringCanAccess, setScoringCanAccess] = useState<boolean | null>(null)
 
   useEffect(() => {
     fetch('/api/feature-flags')
@@ -310,6 +311,30 @@ export default function LandingHero() {
       })
       .catch(() => {})
   }, [])
+
+  useEffect(() => {
+    const sd = publicFlags.scoring_deliverable
+    if (!sd?.is_live) {
+      setScoringCanAccess(null)
+      return
+    }
+    if (!(sd.invite_only ?? true)) {
+      setScoringCanAccess(null)
+      return
+    }
+    let cancelled = false
+    fetch('/api/tool-access?slug=scoring_deliverable')
+      .then((r) => r.json())
+      .then((d: { canAccess?: boolean }) => {
+        if (!cancelled) setScoringCanAccess(!!d.canAccess)
+      })
+      .catch(() => {
+        if (!cancelled) setScoringCanAccess(false)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [publicFlags])
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -395,6 +420,7 @@ export default function LandingHero() {
     const sd = publicFlags.scoring_deliverable
     const live = sd?.is_live === true
     const invite = (sd?.invite_only ?? true) === true
+    const unlocked = !invite || scoringCanAccess === true
 
     if (langFr) {
       if (!live) {
@@ -411,30 +437,30 @@ export default function LandingHero() {
           visualIsMailto: true,
         }
       }
-      if (invite) {
+      if (live && unlocked) {
         return {
-          teaser: 'En ligne — accès sur invitation.',
-          primaryLabel: 'Se connecter pour accéder →',
-          primaryHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
+          teaser: 'Disponible — évaluez vos livrables en quelques minutes.',
+          primaryLabel: 'Lancer l’évaluation →',
+          primaryHref: '/scoring-deliverable',
           primaryIsMailto: false,
-          ghostLabel: 'Demander une invitation →',
-          ghostHref: scoringEarlyAccessMailto('fr'),
-          ghostIsMailto: true,
-          visualLabel: 'Accès Scoring Deliverable',
-          visualHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
+          ghostLabel: 'En savoir plus ›',
+          ghostHref: '/#tools',
+          ghostIsMailto: false,
+          visualLabel: 'Ouvrir Scoring Deliverable',
+          visualHref: '/scoring-deliverable',
           visualIsMailto: false,
         }
       }
       return {
-        teaser: 'Disponible — évaluez vos livrables en quelques minutes.',
-        primaryLabel: 'Lancer l’évaluation →',
-        primaryHref: '/scoring-deliverable',
+        teaser: 'En ligne — accès sur invitation.',
+        primaryLabel: 'Se connecter pour accéder →',
+        primaryHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
         primaryIsMailto: false,
-        ghostLabel: 'En savoir plus ›',
-        ghostHref: '/#tools',
-        ghostIsMailto: false,
-        visualLabel: 'Ouvrir Scoring Deliverable',
-        visualHref: '/scoring-deliverable',
+        ghostLabel: 'Demander une invitation →',
+        ghostHref: scoringEarlyAccessMailto('fr'),
+        ghostIsMailto: true,
+        visualLabel: 'Accès Scoring Deliverable',
+        visualHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
         visualIsMailto: false,
       }
     }
@@ -453,33 +479,33 @@ export default function LandingHero() {
         visualIsMailto: true,
       }
     }
-    if (invite) {
+    if (live && unlocked) {
       return {
-        teaser: 'Live — invitation-only access.',
-        primaryLabel: 'Sign in to access →',
-        primaryHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
+        teaser: 'Available — score your deliverables in minutes.',
+        primaryLabel: 'Start the assessment →',
+        primaryHref: '/scoring-deliverable',
         primaryIsMailto: false,
-        ghostLabel: 'Request an invitation →',
-        ghostHref: scoringEarlyAccessMailto('en'),
-        ghostIsMailto: true,
-        visualLabel: 'Scoring Deliverable access',
-        visualHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
+        ghostLabel: 'Learn more ›',
+        ghostHref: '/#tools',
+        ghostIsMailto: false,
+        visualLabel: 'Open Scoring Deliverable',
+        visualHref: '/scoring-deliverable',
         visualIsMailto: false,
       }
     }
     return {
-      teaser: 'Available — score your deliverables in minutes.',
-      primaryLabel: 'Start the assessment →',
-      primaryHref: '/scoring-deliverable',
+      teaser: 'Live — invitation-only access.',
+      primaryLabel: 'Sign in to access →',
+      primaryHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
       primaryIsMailto: false,
-      ghostLabel: 'Learn more ›',
-      ghostHref: '/#tools',
-      ghostIsMailto: false,
-      visualLabel: 'Open Scoring Deliverable',
-      visualHref: '/scoring-deliverable',
+      ghostLabel: 'Request an invitation →',
+      ghostHref: scoringEarlyAccessMailto('en'),
+      ghostIsMailto: true,
+      visualLabel: 'Scoring Deliverable access',
+      visualHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
       visualIsMailto: false,
     }
-  }, [langFr, publicFlags])
+  }, [langFr, publicFlags, scoringCanAccess])
 
   const staggerDelays = ['0.05s', '0.1s', '0.17s', '0.24s', '0.31s']
 
