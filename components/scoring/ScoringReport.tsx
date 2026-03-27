@@ -474,9 +474,9 @@ export function ScoringReport({
 
       <section id="scoring-radar" className={`scroll-mt-28 mb-10 rounded-[3rem] p-6 md:p-8 ${glassCard}`}>
         <h2 className="mb-4 text-xl font-semibold text-white md:text-2xl">Vue radar — 9 dimensions</h2>
-        <div className="h-[320px] w-full md:h-[360px]">
+        <div data-radar-chart className="h-[320px] w-full min-h-[280px] md:h-[360px]">
           <ResponsiveContainer width="100%" height="100%">
-            <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="75%">
+            <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="68%">
               <PolarGrid stroke="rgba(255,255,255,0.08)" />
               <PolarAngleAxis
                 dataKey="subject"
@@ -602,7 +602,7 @@ export function ScoringReport({
                   Priorité rouge
                 </h3>
                 <div
-                  className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+                  className="scoring-tips-grid grid grid-cols-1 gap-4 sm:grid-cols-2"
                   role="list"
                   aria-label="Conseils priorité rouge"
                 >
@@ -610,12 +610,13 @@ export function ScoringReport({
                     <article
                       key={`${row.qid}-${i}`}
                       role="listitem"
-                      className="flex min-h-0 flex-col rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm leading-relaxed text-white/90 shadow-lg shadow-black/20"
+                      data-tip-priority="red"
+                      className="scoring-tip-card flex flex-col rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm leading-relaxed shadow-lg shadow-black/20"
                     >
-                      <p className="mb-2 text-xs font-semibold text-red-300">
+                      <p className="scoring-tip-title mb-2 text-xs font-semibold text-red-300">
                         {row.dimLabel} · {row.qid}
                       </p>
-                      <p className="min-w-0 flex-1">{row.text}</p>
+                      <p className="scoring-tip-body min-w-0 text-[15px] leading-relaxed text-white/90">{row.text}</p>
                     </article>
                   ))}
                 </div>
@@ -628,7 +629,7 @@ export function ScoringReport({
                   Priorité orange
                 </h3>
                 <div
-                  className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+                  className="scoring-tips-grid grid grid-cols-1 gap-4 sm:grid-cols-2"
                   role="list"
                   aria-label="Conseils priorité orange"
                 >
@@ -636,12 +637,13 @@ export function ScoringReport({
                     <article
                       key={`${row.qid}-${i}`}
                       role="listitem"
-                      className="flex min-h-0 flex-col rounded-2xl border border-orange-500/25 bg-orange-500/10 p-4 text-sm leading-relaxed text-white/90 shadow-lg shadow-black/20"
+                      data-tip-priority="orange"
+                      className="scoring-tip-card flex flex-col rounded-2xl border border-orange-500/25 bg-orange-500/10 p-4 text-sm leading-relaxed shadow-lg shadow-black/20"
                     >
-                      <p className="mb-2 text-xs font-semibold text-orange-200/90">
+                      <p className="scoring-tip-title mb-2 text-xs font-semibold text-orange-200/90">
                         {row.dimLabel} · {row.qid}
                       </p>
-                      <p className="min-w-0 flex-1">{row.text}</p>
+                      <p className="scoring-tip-body min-w-0 text-[15px] leading-relaxed text-white/90">{row.text}</p>
                     </article>
                   ))}
                 </div>

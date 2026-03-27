@@ -39,7 +39,7 @@ export default async function SkillMatrixPage() {
     redirect('/login?redirect=' + encodeURIComponent('/skill-matrix'))
   }
 
-  if (!(await canAccessTool('skill_matrix', session.user.email))) {
+  if (!(await canAccessTool('skill_matrix', session.user.email, { userId: session.user.id }))) {
     return <ToolAccessDenied toolLabel={flag.label_fr} language={lang} />
   }
 

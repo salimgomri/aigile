@@ -69,6 +69,45 @@
   [data-scoring-report-print] .text-yellow-300 {
     color: #a16207 !important;
   }
+  [data-scoring-report-print] .text-white\/90,
+  [data-scoring-report-print] .text-orange-200\/90 {
+    color: #1f2937 !important;
+  }
+  [data-scoring-report-print] .text-orange-300 {
+    color: #9a3412 !important;
+  }
+
+  /* Conseils : une colonne, corps lisible, pas de troncature (flex min-h-0) */
+  [data-scoring-report-print] .scoring-tips-grid {
+    grid-template-columns: 1fr !important;
+  }
+  [data-scoring-report-print] .scoring-tip-card {
+    overflow: visible !important;
+    min-height: 0 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  [data-scoring-report-print] .scoring-tip-body {
+    color: #1f2937 !important;
+    overflow: visible !important;
+    max-height: none !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+  }
+  [data-scoring-report-print] [data-tip-priority='red'] .scoring-tip-title {
+    color: #991b1b !important;
+  }
+  [data-scoring-report-print] [data-tip-priority='orange'] .scoring-tip-title {
+    color: #9a3412 !important;
+  }
+  [data-scoring-report-print] [data-tip-priority='red'].scoring-tip-card {
+    background: #fef2f2 !important;
+    border-color: #fecaca !important;
+  }
+  [data-scoring-report-print] [data-tip-priority='orange'].scoring-tip-card {
+    background: #fff7ed !important;
+    border-color: #fed7aa !important;
+  }
 
   /* Cartes : bordure légère au lieu du glass sombre */
   [data-scoring-report-print] .rounded-\[3rem\],
@@ -89,6 +128,25 @@
   [data-scoring-report-print] .bg-white\/\[0\.02\],
   [data-scoring-report-print] .bg-white\/\[0\.05\] {
     background: #f3f4f6 !important;
+  }
+
+  /* Radar : éviter découpe page + marges pour les libellés */
+  [data-scoring-report-print] #scoring-radar {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    overflow: visible !important;
+  }
+  [data-scoring-report-print] [data-radar-chart] {
+    height: 400px !important;
+    min-height: 400px !important;
+    overflow: visible !important;
+  }
+  [data-scoring-report-print] [data-radar-chart] .recharts-responsive-container,
+  [data-scoring-report-print] [data-radar-chart] .recharts-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 400px !important;
+    overflow: visible !important;
   }
 
   /* Radar Recharts */

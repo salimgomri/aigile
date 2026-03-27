@@ -36,7 +36,10 @@ export default async function ScoringDeliverablePage() {
   }
 
   const inviteOnly = flag.invite_only ?? true
-  if (inviteOnly && !(await canAccessTool('scoring_deliverable', session?.user?.email))) {
+  if (
+    inviteOnly &&
+    !(await canAccessTool('scoring_deliverable', session?.user?.email, { userId: session?.user?.id }))
+  ) {
     return <ToolAccessDenied toolLabel={lang === 'fr' ? flag.label_fr : flag.label_en} language={lang} />
   }
 
