@@ -14,7 +14,8 @@ export type FeatureFlagRow = {
   updated_at?: string
 }
 
-export type PublicFeatureFlag = Omit<FeatureFlagRow, 'invite_only'> & {
+/** Flags exposés au client (landing, hero) — `invite_only` sert aux libellés CTA */
+export type PublicFeatureFlag = FeatureFlagRow & {
   is_live: boolean
 }
 
@@ -41,10 +42,8 @@ export async function getPublicFeatureFlagsPayload(): Promise<Record<string, Pub
   const rows = await getAllFeatureFlags()
   const out: Record<string, PublicFeatureFlag> = {}
   for (const r of rows) {
-    const { invite_only: _invOnly, ...rest } = r
-    void _invOnly
     out[r.slug] = {
-      ...rest,
+      ...r,
       is_live: isLiveAt(r.launch_at),
     }
   }

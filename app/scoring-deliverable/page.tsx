@@ -1,11 +1,45 @@
 import 'server-only'
 
+import { headers } from 'next/headers'
+import { auth } from '@/lib/auth'
 import { getClientSafeData, getQuestionBank } from '@/lib/scoring/rules-loader'
 import { ScoringWizard } from '@/components/scoring/ScoringWizard'
 import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
+import ComingSoonTool from '@/components/feature-flag/ComingSoonTool'
+import ToolAccessDenied from '@/components/feature-flag/ToolAccessDenied'
+import { getFeatureFlag, shouldShowComingSoon } from '@/lib/feature-flags'
+import { canAccessTool } from '@/lib/tool-access'
+import { notFound } from 'next/navigation'
 
 export default async function ScoringDeliverablePage() {
+  const session = await auth.api.getSession({ headers: await headers() })
+  const flag = await getFeatureFlag('scoring_deliverable')
+  if (!flag) notFound()
+
+  const h = await headers()
+  const accept = h.get('accept-language') || ''
+  const lang = accept.toLowerCase().startsWith('en') ? 'en' : 'fr'
+
+  if (await shouldShowComingSoon('scoring_deliverable', session?.user?.email)) {
+    return (
+      <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-black via-slate-950 to-black">
+        <div data-no-print>
+          <PremiumNavbar />
+        </div>
+        <ComingSoonTool flag={flag} language={lang} />
+        <div data-no-print>
+          <PremiumFooter />
+        </div>
+      </div>
+    )
+  }
+
+  const inviteOnly = flag.invite_only ?? true
+  if (inviteOnly && !(await canAccessTool('scoring_deliverable', session?.user?.email))) {
+    return <ToolAccessDenied toolLabel={lang === 'fr' ? flag.label_fr : flag.label_en} language={lang} />
+  }
+
   const { questions, model } = getClientSafeData({
     C2: 'a',
     C4: 'b',
@@ -16,7 +50,6 @@ export default async function ScoringDeliverablePage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-black via-slate-950 to-black">
-      {/* Même atmosphère que /retro/result — exclu de l’export PDF (window.print) */}
       <div
         className="pointer-events-none fixed inset-0 overflow-hidden"
         data-no-print
@@ -48,8 +81,9 @@ export default async function ScoringDeliverablePage() {
           enregistrement après authentification.
         </p>
         <p className="mx-auto max-w-xl text-sm text-white/50">
-          Vous pouvez parcourir le cadrage et le questionnaire sans compte. La connexion est requise
-          uniquement pour générer le rapport ; les crédits sont débités à cette étape.
+          {inviteOnly
+            ? 'Accès sur invitation — parcourez le cadrage et le questionnaire. La connexion est requise pour le rapport (crédits débités à cette étape).'
+            : 'Vous pouvez parcourir le cadrage et le questionnaire sans compte. La connexion est requise uniquement pour générer le rapport ; les crédits sont débités à cette étape.'}
         </p>
       </div>
 

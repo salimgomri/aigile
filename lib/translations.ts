@@ -69,6 +69,8 @@ export const translations = {
     "nav-signin": "Sign In",
     "nav-signup": "Sign Up",
     "nav-signout": "Sign out",
+    "nav-dashboard": "Dashboard",
+    "nav-admin": "Admin",
     
     // New Landing Page - Hero
     "landing-hero-title": "Agile Augmented by AI",
@@ -222,6 +224,8 @@ export const translations = {
     "nav-signin": "Se connecter",
     "nav-signup": "S'inscrire",
     "nav-signout": "Déconnexion",
+    "nav-dashboard": "Tableau de bord",
+    "nav-admin": "Administration",
     
     // New Landing Page - Hero
     "landing-hero-title": "L'Agile Augmenté par l'IA",

@@ -135,6 +135,27 @@
     print-color-adjust: exact;
   }
 
+  /* Grand score global : fond RAG lisible à l’impression */
+  [data-scoring-report-print] [data-rag-panel='green'] {
+    background-color: #059669 !important;
+    color: #ecfdf5 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  [data-scoring-report-print] [data-rag-panel='red'] {
+    background-color: #dc2626 !important;
+    color: #fef2f2 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  [data-scoring-report-print] [data-rag-panel='orange'],
+  [data-scoring-report-print] [data-rag-panel='capped_orange'] {
+    background-color: #ea580c !important;
+    color: #fff7ed !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   [data-scoring-report-print] .text-white.tabular-nums {
     color: #fff !important;
   }

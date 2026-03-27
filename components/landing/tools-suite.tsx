@@ -15,6 +15,7 @@ import { translations } from '@/lib/translations'
 import type { PublicFeatureFlag } from '@/lib/feature-flags'
 import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package } from 'lucide-react'
 import Link from 'next/link'
+import { EarlyAccessRequestForm } from '@/components/landing/EarlyAccessRequestForm'
 
 type ToolItem = {
   key: string
@@ -57,6 +58,8 @@ export default function ToolsSuiteSection() {
       : 'Skills mapping'
 
   const sd = flags.scoring_deliverable
+  const scoringInviteOnly = sd?.invite_only ?? true
+  const scoringFullyPublic = sd?.is_live && !scoringInviteOnly
   const scoringTitle =
     sd && (language === 'fr' ? sd.label_fr : sd.label_en)
       ? language === 'fr'
@@ -159,91 +162,110 @@ export default function ToolsSuiteSection() {
           </p>
         </div>
 
-        {/* Featured Tool - AI Retro — micro-animation + hover */}
-        <div className="mb-12 bg-gradient-to-br from-aigile-gold/5 to-aigile-blue/5 backdrop-blur-sm rounded-3xl p-8 sm:p-12 border border-aigile-gold/20 hover:border-aigile-gold/30 transition-all duration-500 animate-fade-in-up opacity-0" style={{ animationFillMode: 'forwards', animationDelay: '0.15s' }}>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 bg-aigile-gold/10 rounded-full border border-aigile-gold/20">
-                <Brain className="w-5 h-5 text-aigile-gold" />
-                <span className="text-sm font-bold text-aigile-gold uppercase">
-                  {language === 'fr' ? 'Outil Phare' : 'Flagship Tool'}
+        {/* Deux outils phares — moitié de page chacun (desktop) */}
+        <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 animate-fade-in-up opacity-0" style={{ animationFillMode: 'forwards', animationDelay: '0.1s' }}>
+          {/* Retro */}
+          <div className="flex min-h-[min(520px,70vh)] flex-col justify-between rounded-3xl border border-aigile-gold/25 bg-gradient-to-br from-aigile-gold/5 to-aigile-blue/5 p-8 sm:p-10 shadow-xl shadow-black/5 transition-all hover:border-aigile-gold/40">
+            <div className="space-y-5">
+              <div className="inline-flex items-center space-x-2 rounded-full border border-aigile-gold/25 bg-aigile-gold/10 px-3 py-1">
+                <Brain className="h-5 w-5 text-aigile-gold" />
+                <span className="text-xs font-bold uppercase tracking-wide text-aigile-gold">
+                  {language === 'fr' ? 'Outil phare' : 'Flagship'}
                 </span>
               </div>
-              
-              <h3 className="text-3xl sm:text-4xl font-bold text-foreground">
-                {t['tools-retro-title']}
-              </h3>
-              
-              <p className="text-lg text-muted-foreground">
-                {t['tools-retro-desc']}
-              </p>
-
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                <Link
-                  href="/retro"
-                  onClick={() => trackEvent('try_free_click', { source: 'tools_suite', value: 9.99, currency: 'EUR' })}
-                  className="group px-6 py-3 bg-aigile-gold hover:bg-book-orange text-black font-semibold rounded-full hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
-                >
-                  <span>{t['tools-cta']}</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-                
-                <Link
-                  href="/parcours"
-                  className="group/parcours px-6 py-3 bg-transparent text-foreground font-semibold rounded-full border-2 border-border hover:border-aigile-gold hover:bg-aigile-gold/10 hover:shadow-lg transition-all duration-300 text-center flex items-center justify-center gap-2"
-                >
-                  {language === 'fr' ? 'Découvrir le Parcours' : 'Discover Journey'}
-                  <span className="group-hover/parcours:translate-x-0.5 transition-transform duration-300">→</span>
-                </Link>
+              <h3 className="text-3xl font-bold text-foreground sm:text-4xl">{t['tools-retro-title']}</h3>
+              <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{t['tools-retro-desc']}</p>
+              <div className="relative mx-auto aspect-[4/3] w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card/60 to-muted/40">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Brain className="h-28 w-28 text-aigile-gold/25 sm:h-36 sm:w-36" />
+                </div>
               </div>
             </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link
+                href="/retro"
+                onClick={() => trackEvent('try_free_click', { source: 'tools_suite', value: 9.99, currency: 'EUR' })}
+                className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-aigile-gold px-6 py-3 text-center text-sm font-bold text-black transition-all hover:scale-[1.02] hover:bg-book-orange hover:shadow-lg"
+              >
+                <span>{t['tools-cta']}</span>
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/parcours"
+                className="inline-flex flex-1 items-center justify-center rounded-full border-2 border-border px-6 py-3 text-center text-sm font-semibold text-foreground transition-colors hover:border-aigile-gold hover:bg-aigile-gold/10"
+              >
+                {language === 'fr' ? 'Parcours' : 'Journey'}
+              </Link>
+            </div>
+          </div>
 
-            {/* Mockup/Visual — Apple-style hover */}
-            <div className="relative group/mockup">
-              <div className="aspect-square bg-gradient-to-br from-card/50 to-muted/30 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-border group-hover/mockup:shadow-aigile-gold/20 group-hover/mockup:scale-[1.02] transition-all duration-500">
-                {/* Placeholder for AI Retro Tool screenshot/mockup */}
+          {/* Scoring Deliverable */}
+          <div className="flex min-h-[min(520px,70vh)] flex-col justify-between rounded-3xl border border-[#c9973a]/35 bg-gradient-to-br from-[#c9973a]/10 via-aigile-blue/5 to-background p-8 sm:p-10 shadow-xl shadow-[#c9973a]/10 ring-1 ring-[#e8961e]/20 transition-all hover:border-[#e8961e]/50">
+            <div className="space-y-5">
+              <div className="inline-flex items-center space-x-2 rounded-full border border-[#c9973a]/35 bg-[#c9973a]/10 px-3 py-1">
+                <Package className="h-5 w-5 text-[#c9973a]" />
+                <span className="text-xs font-bold uppercase tracking-wide text-[#c9973a]">
+                  {language === 'fr' ? 'Outil phare' : 'Flagship'}
+                </span>
+              </div>
+              <h3 className="text-3xl font-bold text-foreground sm:text-4xl">{scoringTitle}</h3>
+              <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{scoringDesc}</p>
+              <div className="relative mx-auto aspect-[4/3] w-full max-w-sm overflow-hidden rounded-2xl border border-[#c9973a]/20 bg-gradient-to-br from-[#07111f] to-[#0a0a0f]">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Brain className="w-32 h-32 text-aigile-gold/20 group-hover/mockup:scale-110 transition-transform duration-700" />
+                  <Package className="h-28 w-28 text-[#c9973a]/30 sm:h-36 sm:w-36" />
                 </div>
-                {/* Overlay pattern */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-aigile-gold/10 via-transparent to-aigile-blue/10 opacity-0 group-hover/mockup:opacity-100 transition-opacity duration-500" />
               </div>
-              {/* Floating badge — subtle pulse */}
-              <div className="absolute -top-4 -right-4 bg-aigile-gold text-black px-6 py-3 rounded-full shadow-xl font-bold animate-pulse-slow">
-                {language === 'fr' ? 'Logique Terrain' : 'Field Logic'}
-              </div>
+            </div>
+            <div className="mt-8 space-y-4">
+              {scoringFullyPublic ? (
+                <Link
+                  href="/scoring-deliverable"
+                  onClick={() => trackEvent('tools_suite_click', { tool: 'scoring_deliverable' })}
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02] hover:from-orange-400 hover:to-orange-500"
+                >
+                  {language === 'fr' ? 'Lancer l’évaluation' : 'Start assessment'}
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              ) : (
+                <>
+                  {sd?.is_live && scoringInviteOnly ? (
+                    <Link
+                      href={'/login?redirect=' + encodeURIComponent('/scoring-deliverable')}
+                      className="mb-2 block w-full rounded-full border border-border bg-background py-2.5 text-center text-sm font-semibold text-foreground hover:bg-muted"
+                    >
+                      {language === 'fr' ? 'Se connecter (déjà invité·e)' : 'Sign in (already invited)'}
+                    </Link>
+                  ) : null}
+                  <EarlyAccessRequestForm language={language} toolSlug="scoring_deliverable" />
+                </>
+              )}
             </div>
           </div>
         </div>
 
+        <p className="mb-6 text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          {language === 'fr' ? 'Autres outils' : 'More tools'}
+        </p>
+
         {/* Other Tools Grid — staggered fade-in */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools.slice(1).map((tool, index) => {
+          {tools
+            .filter((tool) => tool.key !== 'retro' && tool.key !== 'scoring_deliverable')
+            .map((tool, index) => {
             const Icon = tool.icon
-            const isInteractiveTool =
-              tool.key === 'skill_matrix' || tool.key === 'scoring_deliverable'
+            const isInteractiveTool = tool.key === 'skill_matrix'
             const interactive = isInteractiveTool && tool.href !== '#'
             const live = tool.available
-            const isScoring = tool.key === 'scoring_deliverable'
-            const scoringCardLive =
-              'group relative overflow-hidden p-6 rounded-2xl cursor-pointer animate-fade-in-up transition-all duration-300 border border-[#c9973a]/45 bg-gradient-to-br from-[#c9973a]/[0.2] via-[#07111f] to-[#0a0a0f] shadow-[0_16px_48px_-12px_rgba(201,151,58,0.45)] ring-1 ring-[#e8961e]/30 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_95%_65%_at_100%_0%,rgba(232,150,30,0.25),transparent_58%)] hover:border-[#e8961e]/60 hover:shadow-[0_22px_60px_-8px_rgba(201,151,58,0.55)]'
-            const scoringCardPreview =
-              'group relative overflow-hidden p-6 rounded-2xl cursor-pointer animate-fade-in-up transition-all duration-300 border border-[#c9973a]/40 bg-gradient-to-br from-[#c9973a]/12 via-aigile-blue/5 to-[#0a0a0f] shadow-[0_12px_40px_-10px_rgba(201,151,58,0.35)] ring-1 ring-[#c9973a]/20 before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_80%_20%,rgba(232,150,30,0.12),transparent_50%)] hover:border-[#c9973a]/55'
 
-            const cardClass =
-              interactive && isScoring
-                ? live
-                  ? scoringCardLive
-                  : scoringCardPreview
-                : interactive
-                  ? live
-                    ? 'group p-6 bg-card/40 backdrop-blur-sm rounded-2xl border border-aigile-gold/25 hover:border-aigile-gold/50 hover:shadow-lg cursor-pointer animate-fade-in-up transition-all duration-300'
-                    : 'group p-6 bg-gradient-to-br from-aigile-gold/5 to-aigile-blue/5 backdrop-blur-sm rounded-2xl border border-aigile-gold/30 hover:border-aigile-gold/50 cursor-pointer animate-fade-in-up transition-all duration-300'
-                  : 'group p-6 bg-card/20 backdrop-blur-sm rounded-2xl border border-border opacity-60 cursor-not-allowed animate-fade-in-up hover:border-border/80 transition-colors duration-300'
+            const cardClass = interactive
+              ? live
+                ? 'group p-6 bg-card/40 backdrop-blur-sm rounded-2xl border border-aigile-gold/25 hover:border-aigile-gold/50 hover:shadow-lg cursor-pointer animate-fade-in-up transition-all duration-300'
+                : 'group p-6 bg-gradient-to-br from-aigile-gold/5 to-aigile-blue/5 backdrop-blur-sm rounded-2xl border border-aigile-gold/30 hover:border-aigile-gold/50 cursor-pointer animate-fade-in-up transition-all duration-300'
+              : 'group p-6 bg-card/20 backdrop-blur-sm rounded-2xl border border-border opacity-60 cursor-not-allowed animate-fade-in-up hover:border-border/80 transition-colors duration-300'
 
             const inner = (
               <>
-                <div className={`flex items-start space-x-4 ${isScoring ? 'relative z-10' : ''}`}>
+                <div className="flex items-start space-x-4">
                   <div
                     className={`p-3 rounded-xl transition-colors duration-300 ${
                       interactive ? 'bg-aigile-gold/10 group-hover:bg-aigile-gold/20' : 'bg-muted/50 group-hover:bg-muted/70'

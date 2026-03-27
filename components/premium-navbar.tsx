@@ -14,7 +14,7 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 import { useLanguage } from './language-provider'
 import { useTheme } from './theme-provider'
@@ -40,11 +40,13 @@ export default function PremiumNavbar() {
 
   const toolsLinks = [
     { href: '/retro', label: t['tools-retro-title'], match: (p: string) => p.startsWith('/retro') },
+    { href: '/scoring-deliverable', label: t['tools-scoring-title'], match: (p: string) => p.startsWith('/scoring') },
     { href: '/start-scrum', label: t['tools-start-journey'], match: (p: string) => p.startsWith('/start-scrum') || p.startsWith('/parcours') },
   ]
 
-  const navLinks = isLanding
-    ? [
+  const navLinks = useMemo(() => {
+    if (isLanding) {
+      return [
         { href: '/', label: t['nav-home'] },
         { href: '/manifesto', label: t['nav-manifesto'] },
         { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
@@ -55,10 +57,35 @@ export default function PremiumNavbar() {
         { href: '#book', label: t['nav-book'] },
         { href: '#cards', label: t['nav-cards'] },
       ]
-    : [
-        { href: '/', label: t['nav-home'], isActive: false },
-        ...toolsLinks.map((tool) => ({ href: tool.href, label: tool.label, isActive: tool.match(pathname || '') })),
-      ]
+    }
+    const home = { href: '/', label: t['nav-home'], isActive: false as boolean }
+    const dashboard =
+      session != null
+        ? [
+            {
+              href: '/dashboard',
+              label: t['nav-dashboard'],
+              isActive: pathname === '/dashboard',
+            },
+          ]
+        : []
+    const adminNav =
+      status?.isAdmin && session
+        ? [
+            {
+              href: '/admin/orders',
+              label: t['nav-admin'],
+              isActive: pathname?.startsWith('/admin') ?? false,
+            },
+          ]
+        : []
+    const tools = toolsLinks.map((tool) => ({
+      href: tool.href,
+      label: tool.label,
+      isActive: tool.match(pathname || ''),
+    }))
+    return [home, ...dashboard, ...adminNav, ...tools]
+  }, [isLanding, session, status?.isAdmin, pathname, language, t])
 
   // Admin: ne jamais afficher l'email (ni nom dérivé)
   const userDisplayName = status?.isAdmin

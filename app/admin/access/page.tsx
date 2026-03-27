@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Loader2, Trash2, UserPlus } from 'lucide-react'
+import { Loader2, Trash2, UserPlus, CheckCircle } from 'lucide-react'
 
 type FlagRow = { slug: string; label_fr: string }
 
@@ -10,6 +10,17 @@ function toDatetimeLocalValue(iso: string): string {
   if (Number.isNaN(d.getTime())) return ''
   const pad = (n: number) => String(n).padStart(2, '0')
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`
+}
+
+/** Prochain 30 avril 23:59 (local) — fenêtre type « fin avril », ajustable avant validation */
+function defaultEndOfAprilDatetimeLocal(): string {
+  const now = new Date()
+  let year = now.getFullYear()
+  const april30 = new Date(year, 3, 30, 23, 59, 0, 0)
+  if (now.getTime() > april30.getTime()) {
+    year += 1
+  }
+  return `${year}-04-30T23:59`
 }
 
 export default function AdminAccessPage() {
@@ -28,6 +39,19 @@ export default function AdminAccessPage() {
   const [loading, setLoading] = useState(true)
   const [loadingInvites, setLoadingInvites] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const [earlyRequests, setEarlyRequests] = useState<
+    {
+      id: string
+      email: string
+      tool_slug: string
+      message: string | null
+      status: string
+      created_at: string
+    }[]
+  >([])
+  const [loadingEarly, setLoadingEarly] = useState(false)
+  const [approvingId, setApprovingId] = useState<string | null>(null)
+  const [earlyAdopterExpires, setEarlyAdopterExpires] = useState(defaultEndOfAprilDatetimeLocal)
 
   const loadFlags = () => {
     fetch('/api/admin/feature-flags')
@@ -60,9 +84,20 @@ export default function AdminAccessPage() {
       })
   }
 
+  const loadEarlyRequests = () => {
+    setLoadingEarly(true)
+    fetch('/api/admin/early-access-requests')
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.requests) setEarlyRequests(d.requests)
+      })
+      .finally(() => setLoadingEarly(false))
+  }
+
   useEffect(() => {
     loadFlags()
     loadPromos()
+    loadEarlyRequests()
   }, [])
 
   useEffect(() => {
@@ -138,6 +173,33 @@ export default function AdminAccessPage() {
     loadPromos()
   }
 
+  const approveEarlyAccess = async (id: string, requestToolSlug: string) => {
+    setMessage(null)
+    const expiresIso = earlyAdopterExpires ? new Date(earlyAdopterExpires).toISOString() : ''
+    if (!expiresIso || Number.isNaN(new Date(expiresIso).getTime())) {
+      setMessage('Renseignez une date/heure de fin de promo early adopter valide.')
+      return
+    }
+    setApprovingId(id)
+    try {
+      const res = await fetch('/api/admin/early-access-requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, expires_at: expiresIso }),
+      })
+      const j = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        setMessage(j.error || 'Erreur validation')
+        return
+      }
+      loadEarlyRequests()
+      loadPromos()
+      loadInvites(requestToolSlug)
+    } finally {
+      setApprovingId(null)
+    }
+  }
+
   const removePromo = async (email: string, slug: string) => {
     setMessage(null)
     const res = await fetch('/api/admin/credit-promos', {
@@ -176,6 +238,69 @@ export default function AdminAccessPage() {
           {message}
         </p>
       )}
+
+      <section className="rounded-xl border border-border bg-card p-6 space-y-4">
+        <h2 className="text-lg font-semibold text-foreground">Demandes early access (landing)</h2>
+        <p className="text-sm text-muted-foreground">
+          Demandes depuis le formulaire sur la page d’accueil (ex. Scoring livraison). Valider ajoute l’email aux
+          invitations, active la promo crédits illimités <strong>jusqu’à la date ci-dessous</strong> (early adopter) et
+          envoie l’email de félicitations. Tu modifies la date quand tu veux couper la fenêtre (ex. fin avril).
+        </p>
+        <label className="block max-w-md space-y-1">
+          <span className="text-xs font-medium text-muted-foreground">
+            Fin de la promo illimitée early adopter (local)
+          </span>
+          <input
+            type="datetime-local"
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+            value={earlyAdopterExpires}
+            onChange={(e) => setEarlyAdopterExpires(e.target.value)}
+          />
+        </label>
+        {loadingEarly ? (
+          <p className="text-sm text-muted-foreground flex items-center gap-2">
+            <Loader2 className="w-4 h-4 animate-spin" /> Chargement…
+          </p>
+        ) : (
+          <ul className="divide-y divide-border rounded-lg border border-border">
+            {earlyRequests.filter((r) => r.status === 'pending').length === 0 && (
+              <li className="px-4 py-3 text-sm text-muted-foreground">Aucune demande en attente.</li>
+            )}
+            {earlyRequests
+              .filter((r) => r.status === 'pending')
+              .map((r) => (
+                <li
+                  key={r.id}
+                  className="flex flex-col gap-2 px-4 py-3 text-sm sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div>
+                    <span className="font-medium">{r.email}</span>
+                    <code className="ml-2 text-xs bg-muted px-1 rounded">{r.tool_slug}</code>
+                    {r.message ? (
+                      <p className="mt-1 text-xs text-muted-foreground max-w-xl">{r.message}</p>
+                    ) : null}
+                    <p className="text-xs text-muted-foreground">
+                      {new Date(r.created_at).toLocaleString('fr-FR')}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    disabled={approvingId === r.id}
+                    onClick={() => approveEarlyAccess(r.id, r.tool_slug)}
+                    className="inline-flex shrink-0 items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-50"
+                  >
+                    {approvingId === r.id ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <CheckCircle className="h-4 w-4" />
+                    )}
+                    Valider (invite + illimité + email)
+                  </button>
+                </li>
+              ))}
+          </ul>
+        )}
+      </section>
 
       <section className="rounded-xl border border-border bg-card p-6 space-y-4">
         <h2 className="text-lg font-semibold text-foreground">Invitations par outil</h2>

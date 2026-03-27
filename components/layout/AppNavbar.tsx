@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Menu, X, ChevronDown, Settings, LogOut, Users } from 'lucide-react'
 import { useSession, signOut } from '@/lib/auth-client'
+import { useCredits } from '@/lib/credits/CreditContext'
 import CreditsBadge from '@/components/credits/CreditsBadge'
 import CreditsCountBadge from '@/components/credits/CreditsCountBadge'
 
@@ -15,16 +16,27 @@ export default function AppNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [avatarOpen, setAvatarOpen] = useState(false)
   const { data: session, isPending } = useSession()
+  const { status } = useCredits()
+  const isAdmin = status?.isAdmin
 
   const displayName = session?.user?.name
     ? `${(session.user as { firstName?: string }).firstName || session.user.name.split(' ')[0] || ''} ${(session.user as { lastName?: string }).lastName || session.user.name.split(' ').slice(1).join(' ') || ''}`.trim()
     : session?.user?.email?.split('@')[0] || session?.user?.email || ''
 
   const navLinks = [
-    { href: '/dashboard', label: 'Home', isActive: pathname === '/dashboard', available: true },
+    { href: '/dashboard', label: 'Tableau de bord', isActive: pathname === '/dashboard', available: true },
     { href: '/retro', label: 'Rétro IA', isActive: pathname?.startsWith('/retro') ?? false, available: true },
-    { href: '/niko-niko', label: 'Niko-Niko', isActive: false, available: false },
-    { href: '/dora', label: 'DORA', isActive: false, available: false },
+    { href: '/scoring-deliverable', label: 'Scoring livraison', isActive: pathname?.startsWith('/scoring') ?? false, available: true },
+    ...(isAdmin
+      ? [
+          { href: '/admin/orders', label: 'Admin', isActive: pathname?.startsWith('/admin') ?? false, available: true },
+          { href: '/niko-niko', label: 'Niko-Niko', isActive: pathname?.startsWith('/niko-niko') ?? false, available: true },
+          { href: '/dora', label: 'DORA', isActive: pathname?.startsWith('/dora') ?? false, available: true },
+        ]
+      : [
+          { href: '/niko-niko', label: 'Niko-Niko', isActive: false, available: false },
+          { href: '/dora', label: 'DORA', isActive: false, available: false },
+        ]),
   ]
 
   return (

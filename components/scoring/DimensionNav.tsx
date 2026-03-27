@@ -64,6 +64,20 @@ const RAG_BG_RETRO: Record<RAGStatus, string> = {
   na: 'rgba(255, 255, 255, 0.08)',
 }
 
+/** Remplissage de la barre de progression dimension : orange par défaut, couleurs RAG si prévisualisation active */
+function progressBarFillClass(
+  retro: boolean,
+  showRagPreview: boolean,
+  rag: RAGStatus | null
+): string {
+  if (!retro) return 'bg-aigile-gold'
+  if (!showRagPreview || rag === null) return 'bg-orange-400'
+  if (rag === 'green') return 'bg-emerald-500'
+  if (rag === 'red') return 'bg-red-500'
+  if (rag === 'orange' || rag === 'capped_orange') return 'bg-orange-400'
+  return 'bg-white/35'
+}
+
 export function DimensionNav({
   currentDimension,
   answers,
@@ -163,7 +177,10 @@ export function DimensionNav({
                 aria-hidden
               >
                 <div
-                  className={cn('h-full rounded-full transition-[width] duration-300', retro ? 'bg-orange-400' : 'bg-aigile-gold')}
+                  className={cn(
+                    'h-full rounded-full transition-[width] duration-300',
+                    progressBarFillClass(retro, showRagPreview, rag)
+                  )}
                   style={{ width: `${Math.round(pct * 100)}%` }}
                 />
               </div>

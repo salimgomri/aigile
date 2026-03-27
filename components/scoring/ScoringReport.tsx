@@ -88,10 +88,24 @@ function formatPlainReportLine(line: string): string {
 }
 
 function globalScoreColor(rag: RAGStatus): string {
-  if (rag === 'green') return 'text-green-400'
-  if (rag === 'red') return 'text-red-400'
-  if (rag === 'orange' || rag === 'capped_orange') return 'text-orange-400'
+  if (rag === 'green') return 'text-green-100'
+  if (rag === 'red') return 'text-red-100'
+  if (rag === 'orange' || rag === 'capped_orange') return 'text-orange-100'
   return 'text-white/80'
+}
+
+/** Fond derrière le score global pour lier visuellement au RAG (ex. fond vert si synthèse verte) */
+function globalScorePanelClass(rag: RAGStatus): string {
+  if (rag === 'green') {
+    return 'rounded-2xl bg-emerald-600/45 px-5 py-3 shadow-inner ring-1 ring-emerald-400/40'
+  }
+  if (rag === 'red') {
+    return 'rounded-2xl bg-red-600/35 px-5 py-3 shadow-inner ring-1 ring-red-400/35'
+  }
+  if (rag === 'orange' || rag === 'capped_orange') {
+    return 'rounded-2xl bg-orange-600/35 px-5 py-3 shadow-inner ring-1 ring-orange-400/35'
+  }
+  return 'rounded-2xl bg-white/5 px-5 py-3 ring-1 ring-white/10'
 }
 
 function heroCircleClass(rag: RAGStatus): string {
@@ -401,10 +415,12 @@ export function ScoringReport({
             </p>
             <div className={`p-6 ${glassInner}`}>
               <div className="mb-4 text-xs font-medium uppercase tracking-widest text-white/40">
-                Score global
+                Score global · synthèse RAG
               </div>
               <p
-                className={`font-semibold tabular-nums leading-none ${globalScoreColor(globalRag)}`}
+                data-rag-panel={globalRag}
+                className={`inline-block font-semibold tabular-nums leading-none ${globalScorePanelClass(globalRag)} ${globalScoreColor(globalRag)}`}
+                title="Score pondéré — niveau RAG (rouge / orange / vert)"
                 style={{ fontSize: 'clamp(3rem, 10vw, 5rem)' }}
               >
                 {scoreResult.score_global.toFixed(1)}
