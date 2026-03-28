@@ -6,6 +6,7 @@ import { DM_Serif_Display, Syne } from 'next/font/google'
 import { useLanguage } from '../language-provider'
 import { trackEvent } from '@/lib/gtag'
 import type { PublicFeatureFlag } from '@/lib/feature-flags'
+import { EarlyAccessRequestForm } from '@/components/landing/EarlyAccessRequestForm'
 
 const dmSerif = DM_Serif_Display({
   weight: '400',
@@ -26,18 +27,6 @@ const GOLD = 'var(--aigile-hero-gold)'
 const ORANGE = 'var(--aigile-hero-orange)'
 const GOLD_DIM = 'var(--aigile-hero-gold-dim)'
 const NAVY_CTA = '#0f2240'
-
-const CONTACT_EMAIL = 'edition.malis@gmail.com'
-
-function scoringEarlyAccessMailto(lang: 'fr' | 'en') {
-  const subject = encodeURIComponent('Early access — Scoring Deliverable')
-  const body = encodeURIComponent(
-    lang === 'fr'
-      ? 'Bonjour,\n\nJe souhaite être invité·e à l’early access Scoring Deliverable.\n\n—'
-      : 'Hello,\n\nI would like to request early access to Scoring Deliverable.\n\n—'
-  )
-  return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
-}
 
 function PulseDot({ reducedMotion: rm }: { reducedMotion?: boolean }) {
   const color = GOLD
@@ -425,85 +414,67 @@ export default function LandingHero() {
     if (langFr) {
       if (!live) {
         return {
-          teaser: 'Bientôt — demandez un early access illimité par e-mail.',
-          primaryLabel: 'Demander un early access illimité →',
-          primaryHref: scoringEarlyAccessMailto('fr'),
-          primaryIsMailto: true,
+          kind: 'coming_soon' as const,
+          teaser: 'Bientôt — demandez un early access (validation équipe).',
           ghostLabel: 'Découvrir la suite d’outils ›',
           ghostHref: '/#tools',
-          ghostIsMailto: false,
-          visualLabel: 'Demander l’early access',
-          visualHref: scoringEarlyAccessMailto('fr'),
-          visualIsMailto: true,
+          visualLabel: 'Scoring livraison',
         }
       }
-      if (live && unlocked) {
+      if (unlocked) {
         return {
+          kind: 'unlocked' as const,
           teaser: 'Disponible — évaluez vos livrables en quelques minutes.',
           primaryLabel: 'Lancer l’évaluation →',
           primaryHref: '/scoring-deliverable',
-          primaryIsMailto: false,
           ghostLabel: 'En savoir plus ›',
           ghostHref: '/#tools',
-          ghostIsMailto: false,
           visualLabel: 'Ouvrir Scoring Deliverable',
           visualHref: '/scoring-deliverable',
-          visualIsMailto: false,
         }
       }
       return {
+        kind: 'invite_gated' as const,
         teaser: 'En ligne — accès sur invitation.',
         primaryLabel: 'Se connecter pour accéder →',
         primaryHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
-        primaryIsMailto: false,
-        ghostLabel: 'Demander une invitation →',
-        ghostHref: scoringEarlyAccessMailto('fr'),
-        ghostIsMailto: true,
+        ghostLabel: 'Découvrir la suite d’outils ›',
+        ghostHref: '/#tools',
         visualLabel: 'Accès Scoring Deliverable',
         visualHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
-        visualIsMailto: false,
       }
     }
 
     if (!live) {
       return {
-        teaser: 'Coming soon — request unlimited early access by email.',
-        primaryLabel: 'Request unlimited early access →',
-        primaryHref: scoringEarlyAccessMailto('en'),
-        primaryIsMailto: true,
+        kind: 'coming_soon' as const,
+        teaser: 'Coming soon — request early access for your team.',
         ghostLabel: 'Explore the tool suite ›',
         ghostHref: '/#tools',
-        ghostIsMailto: false,
-        visualLabel: 'Request early access',
-        visualHref: scoringEarlyAccessMailto('en'),
-        visualIsMailto: true,
+        visualLabel: 'Delivery scoring',
       }
     }
-    if (live && unlocked) {
+    if (unlocked) {
       return {
+        kind: 'unlocked' as const,
         teaser: 'Available — score your deliverables in minutes.',
         primaryLabel: 'Start the assessment →',
         primaryHref: '/scoring-deliverable',
-        primaryIsMailto: false,
         ghostLabel: 'Learn more ›',
         ghostHref: '/#tools',
-        ghostIsMailto: false,
         visualLabel: 'Open Scoring Deliverable',
         visualHref: '/scoring-deliverable',
-        visualIsMailto: false,
       }
     }
     return {
+      kind: 'invite_gated' as const,
       teaser: 'Live — invitation-only access.',
       primaryLabel: 'Sign in to access →',
       primaryHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
-      primaryIsMailto: false,
-      ghostLabel: 'Request an invitation →',
-      ghostHref: scoringEarlyAccessMailto('en'),
-      ghostIsMailto: true,
+      ghostLabel: 'Explore the tool suite ›',
+      ghostHref: '/#tools',
       visualLabel: 'Scoring Deliverable access',
       visualHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
-      visualIsMailto: false,
     }
   }, [langFr, publicFlags, scoringCanAccess])
 
@@ -827,63 +798,92 @@ export default function LandingHero() {
                   {s3Cta.teaser}
                 </p>
                 <div
-                  className={reducedMotion ? '' : 'landing-hero-stagger flex flex-col gap-3 sm:flex-row sm:items-center'}
+                  className={reducedMotion ? '' : 'landing-hero-stagger flex w-full flex-col gap-4'}
                   style={{ animationDelay: staggerDelays[4] }}
                 >
-                  {s3Cta.primaryIsMailto ? (
-                    <a
-                      href={s3Cta.primaryHref}
-                      onClick={() => trackEvent('hero_scoring_early_access', { slide: 'scoring' })}
-                      className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
-                      style={{
-                        background: GOLD,
-                        color: NAVY_CTA,
-                      }}
-                    >
-                      {s3Cta.primaryLabel}
-                    </a>
-                  ) : (
-                    <Link
-                      href={s3Cta.primaryHref}
-                      onClick={() => trackEvent('hero_scoring_early_access', { slide: 'scoring' })}
-                      className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
-                      style={{
-                        background: GOLD,
-                        color: NAVY_CTA,
-                      }}
-                    >
-                      {s3Cta.primaryLabel}
-                    </Link>
+                  {s3Cta.kind === 'coming_soon' && (
+                    <>
+                      <div className="max-w-md">
+                        <EarlyAccessRequestForm
+                          language={language}
+                          toolSlug="scoring_deliverable"
+                          variant="heroDark"
+                          className="[&_button]:w-full sm:[&_button]:w-auto"
+                        />
+                      </div>
+                      <Link
+                        href={s3Cta.ghostHref}
+                        className="w-fit text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
+                        style={{ color: 'var(--aigile-muted)' }}
+                        onClick={() => trackEvent('hero_scoring_ghost', { slide: 'scoring' })}
+                      >
+                        {s3Cta.ghostLabel}
+                      </Link>
+                    </>
                   )}
-                  {s3Cta.ghostIsMailto ? (
-                    <a
-                      href={s3Cta.ghostHref}
-                      className="text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
-                      style={{ color: 'var(--aigile-muted)' }}
-                      onClick={() => trackEvent('hero_scoring_ghost', { slide: 'scoring' })}
-                    >
-                      {s3Cta.ghostLabel}
-                    </a>
-                  ) : (
-                    <Link
-                      href={s3Cta.ghostHref}
-                      className="text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
-                      style={{ color: 'var(--aigile-muted)' }}
-                      onClick={() => trackEvent('hero_scoring_ghost', { slide: 'scoring' })}
-                    >
-                      {s3Cta.ghostLabel}
-                    </Link>
+                  {s3Cta.kind === 'unlocked' && (
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                      <Link
+                        href={s3Cta.primaryHref}
+                        onClick={() => trackEvent('hero_scoring_early_access', { slide: 'scoring' })}
+                        className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
+                        style={{
+                          background: GOLD,
+                          color: NAVY_CTA,
+                        }}
+                      >
+                        {s3Cta.primaryLabel}
+                      </Link>
+                      <Link
+                        href={s3Cta.ghostHref}
+                        className="text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
+                        style={{ color: 'var(--aigile-muted)' }}
+                        onClick={() => trackEvent('hero_scoring_ghost', { slide: 'scoring' })}
+                      >
+                        {s3Cta.ghostLabel}
+                      </Link>
+                    </div>
+                  )}
+                  {s3Cta.kind === 'invite_gated' && (
+                    <>
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <Link
+                          href={s3Cta.primaryHref}
+                          onClick={() => trackEvent('hero_scoring_early_access', { slide: 'scoring' })}
+                          className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
+                          style={{
+                            background: GOLD,
+                            color: NAVY_CTA,
+                          }}
+                        >
+                          {s3Cta.primaryLabel}
+                        </Link>
+                        <Link
+                          href={s3Cta.ghostHref}
+                          className="text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
+                          style={{ color: 'var(--aigile-muted)' }}
+                          onClick={() => trackEvent('hero_scoring_ghost', { slide: 'scoring' })}
+                        >
+                          {s3Cta.ghostLabel}
+                        </Link>
+                      </div>
+                      <div className="max-w-md">
+                        <EarlyAccessRequestForm
+                          language={language}
+                          toolSlug="scoring_deliverable"
+                          variant="heroDark"
+                          className="[&_button]:w-full sm:[&_button]:w-auto"
+                        />
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
               <div className="flex flex-1 items-center justify-center px-4 pb-12 max-[479px]:hidden md:pb-12 md:pl-2 md:pr-10">
-                {s3Cta.visualIsMailto ? (
-                  <a
-                    href={s3Cta.visualHref}
-                    onClick={() =>
-                      trackEvent('hero_scoring_early_access', { slide: 'scoring', source: 'hero_visual' })
-                    }
-                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                {s3Cta.kind === 'coming_soon' ? (
+                  <div
+                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                    role="img"
                     aria-label={s3Cta.visualLabel}
                   >
                     <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#e8961e]/30 to-transparent opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
@@ -898,7 +898,7 @@ export default function LandingHero() {
                     >
                       {s3Cta.visualLabel}
                     </span>
-                  </a>
+                  </div>
                 ) : (
                   <Link
                     href={s3Cta.visualHref}
