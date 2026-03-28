@@ -6,7 +6,7 @@ import { DM_Serif_Display, Syne } from 'next/font/google'
 import { useLanguage } from '../language-provider'
 import { trackEvent } from '@/lib/gtag'
 import type { PublicFeatureFlag } from '@/lib/feature-flags'
-import { EarlyAccessRequestForm } from '@/components/landing/EarlyAccessRequestForm'
+import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
 
 const dmSerif = DM_Serif_Display({
   weight: '400',
@@ -291,6 +291,7 @@ export default function LandingHero() {
   const [reducedMotion, setReducedMotion] = useState(false)
   const [publicFlags, setPublicFlags] = useState<Record<string, PublicFeatureFlag>>({})
   const [scoringCanAccess, setScoringCanAccess] = useState<boolean | null>(null)
+  const [earlyAccessOpen, setEarlyAccessOpen] = useState(false)
 
   useEffect(() => {
     fetch('/api/feature-flags')
@@ -803,14 +804,20 @@ export default function LandingHero() {
                 >
                   {s3Cta.kind === 'coming_soon' && (
                     <>
-                      <div className="max-w-md">
-                        <EarlyAccessRequestForm
-                          language={language}
-                          toolSlug="scoring_deliverable"
-                          variant="heroDark"
-                          className="[&_button]:w-full sm:[&_button]:w-auto"
-                        />
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEarlyAccessOpen(true)
+                          trackEvent('hero_scoring_early_access', { slide: 'scoring', source: 'open_modal' })
+                        }}
+                        className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
+                        style={{
+                          background: GOLD,
+                          color: NAVY_CTA,
+                        }}
+                      >
+                        {language === 'fr' ? 'Demander un early access' : 'Request early access'}
+                      </button>
                       <Link
                         href={s3Cta.ghostHref}
                         className="w-fit text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
@@ -867,24 +874,36 @@ export default function LandingHero() {
                           {s3Cta.ghostLabel}
                         </Link>
                       </div>
-                      <div className="max-w-md">
-                        <EarlyAccessRequestForm
-                          language={language}
-                          toolSlug="scoring_deliverable"
-                          variant="heroDark"
-                          className="[&_button]:w-full sm:[&_button]:w-auto"
-                        />
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEarlyAccessOpen(true)
+                          trackEvent('hero_scoring_early_access', { slide: 'scoring', source: 'open_modal_invite' })
+                        }}
+                        className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
+                        style={{
+                          background: GOLD,
+                          color: NAVY_CTA,
+                        }}
+                      >
+                        {language === 'fr' ? 'Demander une invitation' : 'Request an invitation'}
+                      </button>
                     </>
                   )}
                 </div>
               </div>
               <div className="flex flex-1 items-center justify-center px-4 pb-12 max-[479px]:hidden md:pb-12 md:pl-2 md:pr-10">
                 {s3Cta.kind === 'coming_soon' ? (
-                  <div
-                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
-                    role="img"
-                    aria-label={s3Cta.visualLabel}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEarlyAccessOpen(true)
+                      trackEvent('hero_scoring_early_access', { slide: 'scoring', source: 'hero_visual_modal' })
+                    }}
+                    className={`group relative block w-full max-w-[340px] cursor-pointer rounded-2xl p-2 text-left outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                    aria-label={
+                      language === 'fr' ? 'Ouvrir la demande d’early access' : 'Open early access request'
+                    }
                   >
                     <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#e8961e]/30 to-transparent opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
                     <div className={reducedMotion ? '' : 'landing-hero-visual-breathe'}>
@@ -898,7 +917,7 @@ export default function LandingHero() {
                     >
                       {s3Cta.visualLabel}
                     </span>
-                  </div>
+                  </button>
                 ) : (
                   <Link
                     href={s3Cta.visualHref}
@@ -970,6 +989,13 @@ export default function LandingHero() {
           </button>
         </div>
       </div>
+
+      <EarlyAccessRequestModal
+        open={earlyAccessOpen}
+        onClose={() => setEarlyAccessOpen(false)}
+        language={language}
+        toolSlug="scoring_deliverable"
+      />
     </section>
   )
 }

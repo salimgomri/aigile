@@ -15,7 +15,7 @@ import { translations } from '@/lib/translations'
 import type { PublicFeatureFlag } from '@/lib/feature-flags'
 import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package } from 'lucide-react'
 import Link from 'next/link'
-import { EarlyAccessRequestForm } from '@/components/landing/EarlyAccessRequestForm'
+import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
 
 type ToolItem = {
   key: string
@@ -33,6 +33,7 @@ export default function ToolsSuiteSection() {
   const [flags, setFlags] = useState<Record<string, PublicFeatureFlag>>({})
   /** null = chargement ; true = admin / invité / promo — CTA direct comme accès public */
   const [scoringAccess, setScoringAccess] = useState<boolean | null>(null)
+  const [earlyAccessOpen, setEarlyAccessOpen] = useState(false)
 
   useEffect(() => {
     fetch('/api/feature-flags')
@@ -272,7 +273,16 @@ export default function ToolsSuiteSection() {
                       {language === 'fr' ? 'Se connecter (déjà invité·e)' : 'Sign in (already invited)'}
                     </Link>
                   ) : null}
-                  <EarlyAccessRequestForm language={language} toolSlug="scoring_deliverable" />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEarlyAccessOpen(true)
+                      trackEvent('tools_suite_click', { tool: 'scoring_deliverable', action: 'early_access_modal' })
+                    }}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02] hover:from-orange-400 hover:to-orange-500"
+                  >
+                    {language === 'fr' ? 'Demander un early access' : 'Request early access'}
+                  </button>
                 </>
               )}
             </div>
@@ -362,6 +372,13 @@ export default function ToolsSuiteSection() {
 
         {/* Bottom CTA - Removed duplicate "Start for Free" */}
       </div>
+
+      <EarlyAccessRequestModal
+        open={earlyAccessOpen}
+        onClose={() => setEarlyAccessOpen(false)}
+        language={language}
+        toolSlug="scoring_deliverable"
+      />
     </section>
   )
 }

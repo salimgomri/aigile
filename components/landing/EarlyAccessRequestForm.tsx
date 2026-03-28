@@ -9,6 +9,8 @@ type Props = {
   className?: string
   /** Fond sombre (hero landing) — bordures et texte lisibles sur noir */
   variant?: 'default' | 'heroDark'
+  /** Titre du formulaire masqué (ex. modale avec titre dans l’en-tête) */
+  hideHeading?: boolean
 }
 
 export function EarlyAccessRequestForm({
@@ -16,6 +18,7 @@ export function EarlyAccessRequestForm({
   toolSlug = 'scoring_deliverable',
   className = '',
   variant = 'default',
+  hideHeading = false,
 }: Props) {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -101,7 +104,7 @@ export function EarlyAccessRequestForm({
 
   return (
     <form onSubmit={submit} className={`space-y-3 ${className}`}>
-      <p className={labelClass}>{fr ? 'Demander un early access' : 'Request early access'}</p>
+      {!hideHeading && <p className={labelClass}>{fr ? 'Demander un early access' : 'Request early access'}</p>}
       <input
         type="email"
         required
