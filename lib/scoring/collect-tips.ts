@@ -1,5 +1,6 @@
 import type { DimensionId, ScoreResult } from '@/types/scoring'
-import type { ClientSafeModel, TipsMap } from '@/lib/scoring/schema'
+import type { ClientSafeModel, QuestionDef, TipsMap } from '@/lib/scoring/schema'
+import { ALL_DIMS, getPerQuestionRAG } from '@/lib/scoring/engine'
 import tipsJson from '@/lib/scoring/data/tips.json'
 
 const tips = tipsJson as unknown as TipsMap
@@ -15,29 +16,36 @@ export type ActionTipRow = {
   dimLabel: string
 }
 
-/** Conseils actionnables (rouge / orange) alignés sur le générateur de rapport */
+/**
+ * Conseils actionnables (rouge / orange) : une seule entrée par question dont le RAG **item**
+ * est rouge ou orange (pas toute la liste tips d’une dimension en difficulté).
+ */
 export function collectActionTips(
   scoreResult: ScoreResult,
-  model: ClientSafeModel
+  model: ClientSafeModel,
+  answersByQuestionId: Record<string, string>,
+  activeQuestions: Pick<QuestionDef, 'id' | 'dimension' | 'scale_id'>[]
 ): { red: ActionTipRow[]; orange: ActionTipRow[] } {
   const red: ActionTipRow[] = []
   const orange: ActionTipRow[] = []
 
-  const redDims = scoreResult.dimension_scores.filter((ds) => ds.rag === 'red' && !ds.excluded)
-  for (const ds of redDims) {
-    const label = model.dimensions[ds.id].label_fr
-    for (const qid of tipKeysForDimension(ds.id)) {
-      const t = tips[qid]?.red
-      if (t) red.push({ qid, text: t, dimLabel: label })
-    }
-  }
+  const qById = new Map(activeQuestions.map((q) => [q.id, q]))
 
-  const orangeDims = scoreResult.dimension_scores.filter((ds) => ds.rag === 'orange' && !ds.excluded)
-  for (const ds of orangeDims) {
-    const label = model.dimensions[ds.id].label_fr
-    for (const qid of tipKeysForDimension(ds.id)) {
-      const t = tips[qid]?.orange
-      if (t) orange.push({ qid, text: t, dimLabel: label })
+  for (const dimId of ALL_DIMS) {
+    const ds = scoreResult.dimension_scores.find((d) => d.id === dimId)
+    if (!ds || ds.excluded) continue
+
+    const label = model.dimensions[dimId].label_fr
+    for (const qid of tipKeysForDimension(dimId)) {
+      if (!qById.has(qid)) continue
+      const qRag = getPerQuestionRAG(qid, answersByQuestionId, activeQuestions, model)
+      if (qRag === 'red') {
+        const t = tips[qid]?.red
+        if (t) red.push({ qid, text: t, dimLabel: label })
+      } else if (qRag === 'orange') {
+        const t = tips[qid]?.orange
+        if (t) orange.push({ qid, text: t, dimLabel: label })
+      }
     }
   }
 

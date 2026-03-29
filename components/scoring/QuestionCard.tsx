@@ -81,14 +81,25 @@ export function QuestionCard({
         visible ? 'opacity-100' : 'opacity-0'
       )}
     >
-      <h2
-        className={cn(
-          'text-xl font-semibold mb-6 leading-snug',
-          retro ? 'text-white' : 'text-foreground'
-        )}
-      >
-        {question.question_fr}
-      </h2>
+      <div className="mb-6 space-y-3">
+        <h2
+          className={cn(
+            'text-xl font-semibold leading-snug',
+            retro ? 'text-white' : 'text-foreground'
+          )}
+        >
+          {question.question_fr}
+        </h2>
+        <p
+          className={cn(
+            'text-[15px] font-normal leading-relaxed',
+            retro ? 'text-white/65' : 'text-muted-foreground'
+          )}
+          lang="en"
+        >
+          {question.question_en}
+        </p>
+      </div>
       <div className="flex flex-wrap gap-3">
         {buttons.map(({ key, label }) => (
           <button

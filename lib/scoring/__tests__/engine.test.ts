@@ -56,6 +56,7 @@ function q(
     id,
     dimension,
     question_fr: id,
+    question_en: id,
     scale_id: scale,
     detail_level: ['short', 'medium', 'long'],
     conditions: [],

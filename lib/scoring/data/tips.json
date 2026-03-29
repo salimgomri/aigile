@@ -1,7 +1,7 @@
 {
   "D0Q1": {
-    "red": "Configurer SAST dans le pipeline CI dès le prochain sprint (SonarQube Community, Semgrep ou équivalent). Pas de déploiement en prod sans ce gate.",
-    "orange": "Étendre SAST aux branches feature et ajouter DAST sur l'environnement staging.",
+    "red": "Mettre en place des contrôles automatiques sur le code et sur l’application déployée (ex. SonarQube, Semgrep, scans dynamiques). Pas de mise en prod sans ce garde-fou.",
+    "orange": "Étendre les analyses au code des branches de fonctionnalités et ajouter des tests de sécurité sur l’environnement de préproduction.",
     "green": "Documenter la stratégie sécurité pour les autres équipes."
   },
   "D0Q2": {

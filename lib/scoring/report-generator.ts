@@ -2,7 +2,8 @@ import 'server-only'
 
 import type { DimensionId } from '@/types/scoring'
 import type { RAGStatus, ScoreResult, ScoringSession } from '@/types/scoring'
-import type { ScoringModel, TipsMap } from '@/lib/scoring/schema'
+import type { QuestionDef, ScoringModel, TipsMap } from '@/lib/scoring/schema'
+import { ALL_DIMS, getPerQuestionRAG } from '@/lib/scoring/engine'
 
 /** Libellé RAG lisible dans le markdown (évite « red » brut + ** non rendus dans l’UI accordéon) */
 function ragLabelFr(rag: RAGStatus): string {
@@ -23,7 +24,9 @@ export function generateMarkdownReport(
   session: Pick<ScoringSession, 'team_name' | 'sprint_number'>,
   scoreResult: ScoreResult,
   tips: TipsMap,
-  model: ScoringModel
+  model: ScoringModel,
+  answers: Record<string, string>,
+  activeQuestions: QuestionDef[]
 ): string {
   const lines: string[] = []
   const { score_global, rag_global, blocking_rule_applied, dimension_scores, critical_flags } = scoreResult
@@ -78,31 +81,51 @@ export function generateMarkdownReport(
   }
   lines.push('')
 
+  const qById = new Map(activeQuestions.map((q) => [q.id, q]))
+
   lines.push(`## Recommandations 🔴→🟠`)
-  const redDims = dimension_scores.filter((ds) => ds.rag === 'red' && !ds.excluded)
-  if (redDims.length === 0) {
-    lines.push(`Aucune dimension en « rouge » : pas de recommandations prioritaires dans cette catégorie.`)
-  } else {
-    for (const ds of redDims) {
-      for (const qid of tipKeysForDimension(ds.id, tips)) {
-        const t = tips[qid]?.red
-        if (t) lines.push(`- **${qid}** : ${t}`)
+  let redTipCount = 0
+  for (const dimId of ALL_DIMS) {
+    const ds = dimension_scores.find((d) => d.id === dimId)
+    if (!ds || ds.excluded) continue
+    for (const qid of tipKeysForDimension(dimId, tips)) {
+      if (!qById.has(qid)) continue
+      const qRag = getPerQuestionRAG(qid, answers, activeQuestions, model)
+      if (qRag !== 'red') continue
+      const t = tips[qid]?.red
+      if (t) {
+        lines.push(`- **${qid}** : ${t}`)
+        redTipCount += 1
       }
     }
+  }
+  if (redTipCount === 0) {
+    lines.push(
+      `Aucune question au niveau « rouge » sur les items évalués : pas de recommandations prioritaires dans cette catégorie.`
+    )
   }
   lines.push('')
 
   lines.push(`## Recommandations 🟠→🟢`)
-  const orangeDims = dimension_scores.filter((ds) => ds.rag === 'orange' && !ds.excluded)
-  if (orangeDims.length === 0) {
-    lines.push(`Aucune dimension en « orange » : pas de recommandations dans cette catégorie.`)
-  } else {
-    for (const ds of orangeDims) {
-      for (const qid of tipKeysForDimension(ds.id, tips)) {
-        const t = tips[qid]?.orange
-        if (t) lines.push(`- **${qid}** : ${t}`)
+  let orangeTipCount = 0
+  for (const dimId of ALL_DIMS) {
+    const ds = dimension_scores.find((d) => d.id === dimId)
+    if (!ds || ds.excluded) continue
+    for (const qid of tipKeysForDimension(dimId, tips)) {
+      if (!qById.has(qid)) continue
+      const qRag = getPerQuestionRAG(qid, answers, activeQuestions, model)
+      if (qRag !== 'orange') continue
+      const t = tips[qid]?.orange
+      if (t) {
+        lines.push(`- **${qid}** : ${t}`)
+        orangeTipCount += 1
       }
     }
+  }
+  if (orangeTipCount === 0) {
+    lines.push(
+      `Aucune question au niveau « orange » sur les items évalués : pas de recommandations dans cette catégorie.`
+    )
   }
   lines.push('')
 

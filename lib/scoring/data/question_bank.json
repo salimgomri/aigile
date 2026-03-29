@@ -1,40 +1,65 @@
 {
-  "version": "2.0",
+  "version": "2.1",
   "cadrage": [
     {
       "id": "C2",
-      "question_fr": "Sur quel périmètre veux-tu évaluer la qualité de la livraison ?",
+      "question_fr": "Sur quel périmètre souhaitez-vous évaluer la qualité de la livraison ?",
+      "question_en": "What scope do you want to use to evaluate delivery quality?",
       "options": {
         "a": "Une seule équipe",
-        "b": "Plusieurs équipes / tribe",
+        "b": "Plusieurs équipes / tribu",
         "c": "Programme multi-équipes / ART"
+      },
+      "options_en": {
+        "a": "A single team",
+        "b": "Several teams / tribe",
+        "c": "Multi-team programme / Agile Release Train (ART)"
       }
     },
     {
       "id": "C4",
-      "question_fr": "Quel est ton rôle principal par rapport à cette livraison ?",
+      "question_fr": "Quel est votre rôle principal par rapport à cette livraison ?",
+      "question_en": "What is your main role in relation to this delivery?",
       "options": {
-        "a": "Non-technique / métier (PO, manager)",
-        "b": "Intermédiaire / Agile (SM, tech lead)",
-        "c": "Expert / praticien SAFe certifié"
+        "a": "Non-technique / métier (PO, manager, sponsor)",
+        "b": "Intermédiaire / agile (Scrum Master, tech lead, RTE)",
+        "c": "Expert / praticien SAFe ou profil équivalent certifié"
+      },
+      "options_en": {
+        "a": "Non-technical / business (PO, manager, sponsor)",
+        "b": "Intermediate / agile (Scrum Master, tech lead, RTE)",
+        "c": "Expert / SAFe practitioner or similarly certified profile"
       }
     },
     {
       "id": "C5",
-      "question_fr": "Quel niveau de détail souhaites-tu ?",
-      "options": { "a": "Court (~15 questions)", "b": "Moyen (~25 questions)", "c": "Long (~40 questions)" }
+      "question_fr": "Quel niveau de détail souhaitez-vous pour le questionnaire ?",
+      "question_en": "How detailed do you want the questionnaire to be?",
+      "options": {
+        "a": "Court (environ 15 questions)",
+        "b": "Moyen (environ 25 questions)",
+        "c": "Long (environ 40 questions)"
+      },
+      "options_en": {
+        "a": "Short (~15 questions)",
+        "b": "Medium (~25 questions)",
+        "c": "Long (~40 questions)"
+      }
     },
     {
       "id": "C7",
-      "question_fr": "L'équipe utilise-t-elle des outils IA de façon structurée ?",
-      "options": { "a": "Oui", "b": "Non", "c": "Partiellement / incertain" }
+      "question_fr": "L’équipe utilise-t-elle des outils d’intelligence artificielle de façon structurée (assistants, copilotes, etc.) ?",
+      "question_en": "Does the team use AI tools in a structured way (assistants, copilots, etc.)?",
+      "options": { "a": "Oui", "b": "Non", "c": "Partiellement / je ne sais pas" },
+      "options_en": { "a": "Yes", "b": "No", "c": "Partially / not sure" }
     }
   ],
   "questions": [
     {
       "id": "D0Q1",
       "dimension": "d0",
-      "question_fr": "SAST/DAST automatisé dans le pipeline CI/CD ?",
+      "question_fr": "Le pipeline de déploiement lance-t-il automatiquement des contrôles de sécurité sur le code source et sur l’application en cours d’exécution (par exemple analyse du code et tests sur l’application déployée) ?",
+      "question_en": "Does your deployment pipeline automatically run security checks on the source code and on the running application (e.g. static analysis of code and dynamic tests against the deployed app)?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -43,7 +68,8 @@
     {
       "id": "D0Q2",
       "dimension": "d0",
-      "question_fr": "Scan de dépendances vulnérables à chaque build ?",
+      "question_fr": "À chaque build, les dépendances (bibliothèques, paquets) sont-elles analysées pour repérer des failles de sécurité connues ?",
+      "question_en": "Does each build scan dependencies (libraries, packages) for known security vulnerabilities?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -52,7 +78,8 @@
     {
       "id": "D0Q3",
       "dimension": "d0",
-      "question_fr": "Zéro secret/credential dans le code ou l'historique git ?",
+      "question_fr": "Mots de passe, clés API et autres secrets restent-ils hors du code et de l’historique Git (aucun secret en clair dans le dépôt) ?",
+      "question_en": "Are passwords, API keys, and other secrets kept out of source code and Git history (no plaintext secrets in the repository)?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -61,7 +88,8 @@
     {
       "id": "D1Q1",
       "dimension": "d1",
-      "question_fr": "DoD avec critères d'acceptation métier pour chaque story ?",
+      "question_fr": "La définition du « Done » (critères de fin de travail) inclut-elle des critères d’acceptation métier pour chaque story ou ticket ?",
+      "question_en": "Does your Definition of Done include business acceptance criteria for each user story or work item?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -70,7 +98,8 @@
     {
       "id": "D1Q2",
       "dimension": "d1",
-      "question_fr": "Les items Done respectent-ils réellement la DoD ?",
+      "question_fr": "Les éléments marqués « terminés » respectent-ils réellement cette définition du Done ?",
+      "question_en": "Do items marked as done actually meet the Definition of Done?",
       "scale_id": "FREQ_3",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -79,7 +108,8 @@
     {
       "id": "D1Q3",
       "dimension": "d1",
-      "question_fr": "Taux de réalisation des engagements initiaux du sprint",
+      "question_fr": "Quelle part des engagements annoncés en début de sprint est livrée à la fin du sprint ?",
+      "question_en": "What share of commitments made at sprint start is delivered by sprint end?",
       "scale_id": "REALIZATION_3",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -88,7 +118,8 @@
     {
       "id": "D1Q4",
       "dimension": "d1",
-      "question_fr": "Un représentant métier a validé la complétude fonctionnelle ?",
+      "question_fr": "Un représentant métier a-t-il validé que la livraison couvre bien le besoin fonctionnel attendu ?",
+      "question_en": "Has a business representative validated that the delivery covers the expected functional scope?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -97,7 +128,8 @@
     {
       "id": "D2Q1",
       "dimension": "d2",
-      "question_fr": "Outil de static analysis avec quality gate bloquant ?",
+      "question_fr": "Un outil d’analyse automatique du code (qualité, bugs, dette) impose-t-il un seuil bloquant avant fusion dans la branche principale ou mise en production ?",
+      "question_en": "Does an automated code-quality tool (bugs, debt, rules) enforce a blocking threshold before merge to main or release to production?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -106,7 +138,8 @@
     {
       "id": "D2Q2",
       "dimension": "d2",
-      "question_fr": "La dette technique est-elle mesurée et suivie ?",
+      "question_fr": "La dette technique est-elle mesurée (indicateurs ou backlog) et suivie dans le temps ?",
+      "question_en": "Is technical debt measured (metrics or backlog) and tracked over time?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [{ "type": "answer_based", "question_id": "D2Q1", "in_values": ["yes"] }],
@@ -115,7 +148,8 @@
     {
       "id": "D2Q3",
       "dimension": "d2",
-      "question_fr": "Standards architecture et coding guidelines respectés ?",
+      "question_fr": "Les règles d’architecture et les conventions de code convenues sont-elles respectées dans les livraisons ?",
+      "question_en": "Are agreed architecture rules and coding standards respected in deliveries?",
       "scale_id": "FREQ_3",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -124,7 +158,8 @@
     {
       "id": "D2Q4",
       "dimension": "d2",
-      "question_fr": "Incidents critiques post-release maîtrisés (faibles ou en baisse) ?",
+      "question_fr": "Après mise en production, les incidents graves sont-ils rares ou en diminution ?",
+      "question_en": "After release, are serious incidents infrequent or decreasing?",
       "scale_id": "MATURITY_4",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -133,7 +168,8 @@
     {
       "id": "D3Q1",
       "dimension": "d3",
-      "question_fr": "Contribution claire à des OKR ou PI Objectives actifs ?",
+      "question_fr": "Cette livraison contribue-t-elle clairement à des objectifs d’équipe ou de programme (OKR, objectifs de PI, ou équivalent) ?",
+      "question_en": "Does this delivery clearly contribute to team or programme objectives (OKRs, PI objectives, or equivalent)?",
       "scale_id": "FREQ_3",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -142,7 +178,8 @@
     {
       "id": "D3Q2",
       "dimension": "d3",
-      "question_fr": "Éléments livrés priorisés principalement par valeur métier ?",
+      "question_fr": "Le contenu du sprint a-t-il été priorisé surtout selon la valeur métier (et pas seulement l’effort ou l’urgence locale) ?",
+      "question_en": "Was sprint content prioritized mainly by business value (not only effort or local urgency)?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -151,7 +188,8 @@
     {
       "id": "D3Q3",
       "dimension": "d3",
-      "question_fr": "Les stakeholders comprennent ce qui a été livré et l'impact attendu ?",
+      "question_fr": "Les parties prenantes comprennent-elles ce qui a été livré et l’impact attendu pour les utilisateurs ou le métier ?",
+      "question_en": "Do stakeholders understand what was delivered and the expected impact for users or the business?",
       "scale_id": "MATURITY_4",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -160,7 +198,8 @@
     {
       "id": "D4Q1",
       "dimension": "d4",
-      "question_fr": "Déploiement automatisé (CI/CD) plutôt que manuel ?",
+      "question_fr": "Le passage en production repose-t-il surtout sur un déploiement automatisé (CI/CD) plutôt que sur des opérations manuelles ?",
+      "question_en": "Does production delivery rely mainly on automated deployment (CI/CD) rather than manual steps?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -169,7 +208,8 @@
     {
       "id": "D4Q2",
       "dimension": "d4",
-      "question_fr": "Rollback ou feature toggle éprouvé et testé ?",
+      "question_fr": "Peut-on annuler un déploiement ou désactiver une fonctionnalité rapidement (retour arrière ou interrupteur de fonctionnalité), et cette procédure a-t-elle été testée ?",
+      "question_en": "Can you roll back a deployment or turn off a feature quickly (rollback or feature toggle), and has that procedure been tested?",
       "scale_id": "YES_NO",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -178,7 +218,8 @@
     {
       "id": "D4Q3",
       "dimension": "d4",
-      "question_fr": "Fréquence et fiabilité des déploiements satisfaisantes ?",
+      "question_fr": "La fréquence et la fiabilité des mises en production vous semblent-elles satisfaisantes ?",
+      "question_en": "Are the frequency and reliability of production releases satisfactory?",
       "scale_id": "MATURITY_4",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -187,7 +228,8 @@
     {
       "id": "D4Q4",
       "dimension": "d4",
-      "question_fr": "Homogénéité des environnements dev/test/stage/prod ?",
+      "question_fr": "Les environnements (développement, test, préproduction, production) sont-ils suffisamment proches pour limiter les surprises au moment du go-live ?",
+      "question_en": "Are environments (dev, test, staging, production) similar enough to limit surprises at go-live?",
       "scale_id": "MATURITY_4",
       "detail_level": ["long"],
       "conditions": [],
@@ -196,7 +238,8 @@
     {
       "id": "D5Q1",
       "dimension": "d5",
-      "question_fr": "Tests automatisés présents couvrant cette livraison ?",
+      "question_fr": "Cette livraison est-elle couverte par des tests automatisés pertinents ?",
+      "question_en": "Is this delivery covered by relevant automated tests?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -205,7 +248,8 @@
     {
       "id": "D5Q2",
       "dimension": "d5",
-      "question_fr": "Non-régression dans le pipeline CI/CD à chaque changement ?",
+      "question_fr": "À chaque changement, des tests de non-régression automatisés s’exécutent-ils dans le pipeline (CI/CD) ?",
+      "question_en": "Does each change trigger automated regression tests in the pipeline (CI/CD)?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [{ "type": "answer_based", "question_id": "D5Q1", "in_values": ["yes"] }],
@@ -214,7 +258,8 @@
     {
       "id": "D5Q3",
       "dimension": "d5",
-      "question_fr": "Niveau de couverture de tests automatisés sur les composants impactés",
+      "question_fr": "Quel est le niveau de couverture des tests automatisés sur les zones modifiées ou à risque ?",
+      "question_en": "What is the level of automated test coverage on changed or risky areas?",
       "scale_id": "COVERAGE_5",
       "detail_level": ["medium", "long"],
       "conditions": [{ "type": "answer_based", "question_id": "D5Q1", "in_values": ["yes"] }],
@@ -223,7 +268,8 @@
     {
       "id": "D5Q4",
       "dimension": "d5",
-      "question_fr": "Tests exploratoires ou UAT avec des utilisateurs représentatifs ?",
+      "question_fr": "Des tests exploratoires ou une recette utilisateurs (UAT) avec des représentants réels sont-ils réalisés ?",
+      "question_en": "Are exploratory tests or user acceptance testing (UAT) run with real representatives?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -232,7 +278,8 @@
     {
       "id": "D5Q5",
       "dimension": "d5",
-      "question_fr": "Outils IA utilisés pour générer ou améliorer les tests ?",
+      "question_fr": "Des outils d’IA sont-ils utilisés pour générer ou améliorer les tests ?",
+      "question_en": "Are AI tools used to generate or improve tests?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
@@ -241,7 +288,8 @@
     {
       "id": "D6Q1",
       "dimension": "d6",
-      "question_fr": "Documentation technique mise à jour pour cette livraison ?",
+      "question_fr": "La documentation technique (design, API, déploiement) est-elle à jour pour cette livraison ?",
+      "question_en": "Is technical documentation (design, APIs, deployment) up to date for this delivery?",
       "scale_id": "FREQ_3",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -250,7 +298,8 @@
     {
       "id": "D6Q2",
       "dimension": "d6",
-      "question_fr": "Runbooks ou procédures d'exploitation existants ?",
+      "question_fr": "Existe-t-il des guides d’exploitation ou procédures (runbooks) pour faire tourner et corriger le service en production ?",
+      "question_en": "Are there operational runbooks or procedures to run and troubleshoot the service in production?",
       "scale_id": "YES_NO",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -259,7 +308,8 @@
     {
       "id": "D6Q3",
       "dimension": "d6",
-      "question_fr": "Documentation utilisateur / release notes claires ?",
+      "question_fr": "La documentation utilisateur et les notes de version sont-elles claires pour les utilisateurs finaux ?",
+      "question_en": "Is user documentation and release information clear for end users?",
       "scale_id": "MATURITY_4",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -268,7 +318,8 @@
     {
       "id": "D7Q1",
       "dimension": "d7",
-      "question_fr": "Adoption réelle mesurée (utilisateurs actifs, taux d'usage) ?",
+      "question_fr": "L’adoption réelle est-elle mesurée (utilisateurs actifs, taux d’usage, etc.) ?",
+      "question_en": "Is real adoption measured (active users, usage rate, etc.)?",
       "scale_id": "YES_NO",
       "detail_level": ["short", "medium", "long"],
       "conditions": [],
@@ -277,7 +328,8 @@
     {
       "id": "D7Q2",
       "dimension": "d7",
-      "question_fr": "Mécanisme structuré de collecte de feedback utilisateur ?",
+      "question_fr": "Existe-t-il un mode structuré de collecte des retours utilisateurs (enquêtes, NPS, support, etc.) ?",
+      "question_en": "Is there a structured way to collect user feedback (surveys, NPS, support, etc.)?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -286,7 +338,8 @@
     {
       "id": "D7Q3",
       "dimension": "d7",
-      "question_fr": "Le feedback alimente réellement les prochains incréments ?",
+      "question_fr": "Les retours utilisateurs influencent-ils réellement les prochains incréments ou la roadmap ?",
+      "question_en": "Does user feedback actually influence the next increments or the roadmap?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -295,7 +348,8 @@
     {
       "id": "D7Q4",
       "dimension": "d7",
-      "question_fr": "Niveau de satisfaction perçue des utilisateurs ?",
+      "question_fr": "Comment percevez-vous le niveau de satisfaction des utilisateurs ?",
+      "question_en": "How do you perceive the level of user satisfaction?",
       "scale_id": "MATURITY_4",
       "detail_level": ["medium", "long"],
       "conditions": [],
@@ -304,7 +358,8 @@
     {
       "id": "D8Q1",
       "dimension": "d8",
-      "question_fr": "Usage IA pour rédaction ou revue de code ?",
+      "question_fr": "L’IA est-elle utilisée pour rédiger ou relire le code (assistant, revue assistée) ?",
+      "question_en": "Is AI used to write or review code (assistant, assisted review)?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
@@ -313,7 +368,8 @@
     {
       "id": "D8Q2",
       "dimension": "d8",
-      "question_fr": "Usage IA pour générer ou améliorer les tests ?",
+      "question_fr": "L’IA est-elle utilisée pour générer ou améliorer les tests ?",
+      "question_en": "Is AI used to generate or improve tests?",
       "scale_id": "FREQ_3",
       "detail_level": ["medium", "long"],
       "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
@@ -322,7 +378,8 @@
     {
       "id": "D8Q3",
       "dimension": "d8",
-      "question_fr": "IA intégrée dans le workflow standard plutôt qu'ad hoc ?",
+      "question_fr": "L’usage de l’IA est-il intégré au flux de travail habituel plutôt qu’occasionnel ?",
+      "question_en": "Is AI usage part of the standard workflow rather than occasional?",
       "scale_id": "MATURITY_4",
       "detail_level": ["long"],
       "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],
@@ -331,7 +388,8 @@
     {
       "id": "D8Q4",
       "dimension": "d8",
-      "question_fr": "Impact positif clair de l'IA sur la qualité ?",
+      "question_fr": "Les effets de l’IA sur la qualité ou la rapidité sont-ils clairement positifs ?",
+      "question_en": "Are the effects of AI on quality or speed clearly positive?",
       "scale_id": "MATURITY_4",
       "detail_level": ["medium", "long"],
       "conditions": [{ "type": "cadrage_based", "question_id": "C7", "not_in_values": ["b"] }],

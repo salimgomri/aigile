@@ -69,12 +69,16 @@ import BookSection from '@/components/landing/book-section'
 import PricingSection from '@/components/landing/PricingSection'
 import EntreprisesSection from '@/components/landing/entreprises-section'
 import ToolsSuiteSection from '@/components/landing/tools-suite'
+import { AdminLandingTools } from '@/components/landing/admin-landing-tools'
+import { getSessionIsAdmin } from '@/lib/landing-admin'
 import ManifestoSection from '@/components/landing/manifesto-section'
 import CardsSection from '@/components/landing/cards-section'
 import NewsletterContactSection from '@/components/landing/newsletter-contact'
 import PremiumFooter from '@/components/landing/premium-footer'
 
-export default function Home() {
+export default async function Home() {
+  const isAdmin = await getSessionIsAdmin()
+
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       {/* 
@@ -132,7 +136,7 @@ export default function Home() {
         - Links: /retro (start) + /start-scrum (journey)
         - "Free for teams" messaging
       */}
-      <ToolsSuiteSection />
+      <ToolsSuiteSection>{isAdmin ? <AdminLandingTools /> : null}</ToolsSuiteSection>
 
       {/* 
         SECTION 4: MANIFESTO

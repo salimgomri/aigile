@@ -6,9 +6,11 @@ import tipsJson from './data/tips.json'
 
 import type { CadrageAnswers } from '@/types/scoring'
 import type {
+  CadrageItem,
   ClientSafeModel,
   ClientSafeQuestion,
   QuestionBank,
+  QuestionDef,
   ScoringModel,
   TipsMap,
 } from '@/lib/scoring/schema'
@@ -23,12 +25,28 @@ export function validateRules(): void {
   if (validated) return
   const model = scoringModel
   const bank = questionBank
-  for (const q of bank.questions) {
+  for (const q of bank.questions as QuestionDef[]) {
     if (!model.scales[q.scale_id]) {
       throw new Error(`[validateRules] scale_id "${q.scale_id}" introuvable pour ${q.id}`)
     }
     if (!model.dimensions[q.dimension]) {
       throw new Error(`[validateRules] dimension "${q.dimension}" introuvable pour ${q.id}`)
+    }
+    if (!q.question_en?.trim()) {
+      throw new Error(`[validateRules] question_en manquant ou vide pour ${q.id}`)
+    }
+  }
+  for (const c of bank.cadrage as CadrageItem[]) {
+    if (!c.question_en?.trim()) {
+      throw new Error(`[validateRules] question_en manquant pour cadrage ${c.id}`)
+    }
+    if (!c.options_en) {
+      throw new Error(`[validateRules] options_en manquant pour cadrage ${c.id}`)
+    }
+    for (const k of Object.keys(c.options)) {
+      if (c.options_en[k] === undefined) {
+        throw new Error(`[validateRules] options_en["${k}"] manquant pour cadrage ${c.id}`)
+      }
     }
   }
   validated = true

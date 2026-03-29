@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { notifyEarlyAccessRequest } from '@/lib/callmebot'
 import { supabaseAdmin } from '@/lib/supabase'
 
 function normEmail(email: string) {
@@ -63,6 +64,14 @@ export async function POST(request: Request) {
     console.error('[tool-early-access POST]', error)
     return NextResponse.json({ error: 'Enregistrement impossible' }, { status: 500 })
   }
+
+  void notifyEarlyAccessRequest({
+    email: normalized,
+    toolSlug,
+    message,
+  }).then((r) => {
+    if (!r.ok) console.warn('[callmebot early-access]', r.error)
+  })
 
   return NextResponse.json({ ok: true })
 }

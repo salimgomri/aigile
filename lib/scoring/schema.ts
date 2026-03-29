@@ -13,6 +13,8 @@ export interface QuestionDef {
   id: string
   dimension: DimensionId
   question_fr: string
+  /** Libellé anglais (affiché sous le FR pour lisibilité internationale) */
+  question_en: string
   scale_id: ScaleId
   detail_level: ('short' | 'medium' | 'long')[]
   conditions: QuestionCondition[]
@@ -22,7 +24,10 @@ export interface QuestionDef {
 export interface CadrageItem {
   id: keyof CadrageAnswers | string
   question_fr: string
+  question_en: string
   options: Record<string, string>
+  /** Même clés que `options` (a, b, c…) */
+  options_en: Record<string, string>
 }
 
 export interface QuestionBank {

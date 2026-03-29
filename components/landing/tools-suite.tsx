@@ -8,6 +8,7 @@
 
 'use client'
 
+import type { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { useLanguage } from '../language-provider'
 import { trackEvent } from '@/lib/gtag'
@@ -27,7 +28,7 @@ type ToolItem = {
   available: boolean
 }
 
-export default function ToolsSuiteSection() {
+export default function ToolsSuiteSection({ children }: { children?: ReactNode }) {
   const { language } = useLanguage()
   const t = translations[language]
   const [flags, setFlags] = useState<Record<string, PublicFeatureFlag>>({})
@@ -369,6 +370,8 @@ export default function ToolsSuiteSection() {
             )
           })}
         </div>
+
+        {children}
 
         {/* Bottom CTA - Removed duplicate "Start for Free" */}
       </div>

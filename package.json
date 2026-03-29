@@ -1,6 +1,6 @@
 {
   "name": "aigile",
-  "version": "1.9.4",
+  "version": "1.10.0",
   "private": true,
   "engines": {
     "node": ">=20.0.0"

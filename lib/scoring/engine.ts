@@ -14,7 +14,7 @@ import type {
 import type { CadrageAnswers } from '@/types/scoring'
 import type { BlockingRule, QuestionDef, ScoringModel } from '@/lib/scoring/schema'
 
-const ALL_DIMS: DimensionId[] = ['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8']
+export const ALL_DIMS: DimensionId[] = ['d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8']
 
 export function mapAnswerToScore(answerKey: string, scaleId: string, scales: ScoringModel['scales']): number {
   if (answerKey === 'na') return 0
@@ -196,6 +196,22 @@ export function getRAGStatus(
   if (score >= t.green_min) return 'green'
   if (score >= t.orange_min) return 'orange'
   return 'red'
+}
+
+/** RAG d’une question isolée (même seuils que pour l’agrégat dimension) — pour tips / rapport ciblés. */
+export function getPerQuestionRAG(
+  questionId: string,
+  answers: Record<string, string>,
+  questions: Pick<QuestionDef, 'id' | 'dimension' | 'scale_id'>[],
+  model: Pick<ScoringModel, 'scales' | 'rag_thresholds' | 'dimensions'>
+): RAGStatus | null {
+  const q = questions.find((x) => x.id === questionId)
+  if (!q) return null
+  const key = answers[questionId]
+  if (key === undefined || key === '') return null
+  const score = mapAnswerToScore(key, q.scale_id, model.scales)
+  const dimType = model.dimensions[q.dimension].type
+  return getRAGStatus(score, dimType, model.rag_thresholds)
 }
 
 function scoreForQuestionId(

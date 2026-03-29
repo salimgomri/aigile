@@ -85,7 +85,9 @@ export async function POST(
       },
       scoreResult,
       tips,
-      model
+      model,
+      answers,
+      activeQuestions
     )
 
     const excluded_dimensions = scoreResult.dimension_scores

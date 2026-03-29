@@ -31,7 +31,7 @@ import {
   Table2,
 } from 'lucide-react'
 import type { DimensionId, RAGStatus, ScoreResult, ScoringSession } from '@/types/scoring'
-import type { ClientSafeModel } from '@/lib/scoring/schema'
+import type { ClientSafeModel, ClientSafeQuestion } from '@/lib/scoring/schema'
 import { collectActionTips } from '@/lib/scoring/collect-tips'
 import { CREDIT_ACTIONS } from '@/lib/credits/actions'
 import { useCredits } from '@/lib/credits/CreditContext'
@@ -150,6 +150,9 @@ interface ScoringReportProps {
   scoreResult: ScoreResult
   reportMarkdown: string
   scoringModel: ClientSafeModel
+  /** Réponses par id de question — filtre les conseils au niveau item (RAG par question). */
+  answersByQuestionId: Record<string, string>
+  activeQuestions: ClientSafeQuestion[]
   onNewSession: () => void
 }
 
@@ -158,6 +161,8 @@ export function ScoringReport({
   scoreResult,
   reportMarkdown,
   scoringModel,
+  answersByQuestionId,
+  activeQuestions,
   onNewSession,
 }: ScoringReportProps) {
   const { refresh: refreshCredits } = useCredits()
@@ -195,8 +200,8 @@ export function ScoringReport({
   }, [scoreResult.dimension_scores])
 
   const actionTips = useMemo(
-    () => collectActionTips(scoreResult, scoringModel),
-    [scoreResult, scoringModel]
+    () => collectActionTips(scoreResult, scoringModel, answersByQuestionId, activeQuestions),
+    [scoreResult, scoringModel, answersByQuestionId, activeQuestions]
   )
   const tipsCount = actionTips.red.length + actionTips.orange.length
 
@@ -570,8 +575,9 @@ export function ScoringReport({
             </h2>
             <p className="max-w-2xl text-sm text-white/60 md:text-base">
               Extraits des fiches{' '}
-              <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white/80">tips</code> par priorité
-              (rouge puis orange). Le détail complet reste dans le rapport ci‑dessous.
+              <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs text-white/80">tips</code> pour les
+              questions en difficulté (RAG rouge ou orange au niveau de chaque item), par priorité. Le détail
+              complet reste dans le rapport ci‑dessous.
             </p>
           </div>
           {tipsCount > 0 && (
@@ -582,8 +588,8 @@ export function ScoringReport({
         </div>
         {tipsCount === 0 ? (
           <p className="text-sm text-white/55">
-            Aucun conseil prioritaire affiché ici : les dimensions en difficulté n’ont pas de fiche tip associée,
-            ou tout est déjà au vert. Consultez le{' '}
+            Aucun conseil prioritaire affiché ici : aucune question évaluée n’est au rouge ou à l’orange au
+            niveau item, ou il n’y a pas de fiche tip associée. Consultez le{' '}
             <button
               type="button"
               onClick={() => scrollTo('scoring-report-full')}

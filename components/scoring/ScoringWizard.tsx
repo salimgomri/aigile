@@ -155,6 +155,11 @@ export function ScoringWizard({ allQuestions, scoringModel, cadrageItems }: Scor
     return firstUnanswered(activeQuestions, answers)
   }, [activeQuestions, answers, jumpTarget])
 
+  const answersByQuestionId = useMemo(
+    () => Object.fromEntries(answers.map((a) => [a.question_id, a.answer_key])),
+    [answers]
+  )
+
   const currentDim: DimensionId | null = currentQuestion?.dimension ?? null
 
   useEffect(() => {
@@ -601,6 +606,9 @@ export function ScoringWizard({ allQuestions, scoringModel, cadrageItems }: Scor
       {cadrageItems.map((item) => (
         <div key={item.id}>
           <p className={labelClass}>{item.question_fr}</p>
+          <p className="mb-3 text-sm font-normal leading-relaxed text-white/60" lang="en">
+            {item.question_en}
+          </p>
           <div className="flex flex-col gap-2">
             {(Object.entries(item.options) as [string, string][]).map(([key, label]) => (
               <label key={key} className={optionLabelClass}>
@@ -617,7 +625,14 @@ export function ScoringWizard({ allQuestions, scoringModel, cadrageItems }: Scor
                     setCadrage((prev) => ({ ...prev, [item.id]: key } as CadrageAnswers))
                   }
                 />
-                <span className="text-sm text-white/90">{label}</span>
+                <span className="text-sm text-white/90">
+                  <span className="block">{label}</span>
+                  {item.options_en?.[key] ? (
+                    <span className="mt-1 block text-xs font-normal text-white/50" lang="en">
+                      {item.options_en[key]}
+                    </span>
+                  ) : null}
+                </span>
               </label>
             ))}
           </div>
@@ -804,6 +819,8 @@ export function ScoringWizard({ allQuestions, scoringModel, cadrageItems }: Scor
             scoreResult={scoreResult}
             reportMarkdown={reportMarkdown}
             scoringModel={scoringModel}
+            answersByQuestionId={answersByQuestionId}
+            activeQuestions={activeQuestions}
             onNewSession={startNewSession}
           />
           {sessionForReport.user_id !== 'dev-localhost' && (
