@@ -103,6 +103,9 @@ export const translations = {
     "tools-skills": "Skills Matrix",
     "tools-scoring-title": "Delivery Scoring",
     "tools-scoring-desc": "Measure software delivery maturity — critical dimensions, quality gate, sprint-over-sprint trends.",
+    "tools-scoring-cta-use": "Score deliverable",
+    "tools-scoring-request-access": "Request early access",
+    "tools-scoring-sign-in-invited": "Sign in (already invited)",
     "tools-cta": "Start for Free",
     "tools-start-journey": "Start Your Scrum Journey",
     
@@ -258,6 +261,9 @@ export const translations = {
     "tools-skills": "Matrice de Compétences",
     "tools-scoring-title": "Scoring livraison",
     "tools-scoring-desc": "Mesurez la maturité de livraison logicielle — dimensions critiques, quality gate, tendances sprint après sprint.",
+    "tools-scoring-cta-use": "Mesurer le livrable",
+    "tools-scoring-request-access": "Demander un early access",
+    "tools-scoring-sign-in-invited": "Se connecter (déjà invité·e)",
     "tools-cta": "Commencer Gratuitement",
     "tools-start-journey": "Démarrer Votre Parcours Scrum",
     

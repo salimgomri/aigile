@@ -17,6 +17,7 @@ import type { PublicFeatureFlag } from '@/lib/feature-flags'
 import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package } from 'lucide-react'
 import Link from 'next/link'
 import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
+import { useSession } from '@/lib/auth-client'
 
 type ToolItem = {
   key: string
@@ -31,9 +32,12 @@ type ToolItem = {
 export default function ToolsSuiteSection({ children }: { children?: ReactNode }) {
   const { language } = useLanguage()
   const t = translations[language]
+  const { data: session } = useSession()
   const [flags, setFlags] = useState<Record<string, PublicFeatureFlag>>({})
   /** null = chargement ; true = admin / invité / promo — CTA direct comme accès public */
   const [scoringAccess, setScoringAccess] = useState<boolean | null>(null)
+  /** null tant que la requête invite-only n’a pas répondu (pour masquer « Se connecter » si déjà connecté) */
+  const [scoringAuthenticated, setScoringAuthenticated] = useState<boolean | null>(null)
   const [earlyAccessOpen, setEarlyAccessOpen] = useState(false)
 
   useEffect(() => {
@@ -49,25 +53,31 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
     const sd = flags.scoring_deliverable
     if (!sd?.is_live) {
       setScoringAccess(null)
+      setScoringAuthenticated(null)
       return
     }
     if (!(sd.invite_only ?? true)) {
       setScoringAccess(null)
+      setScoringAuthenticated(null)
       return
     }
     let cancelled = false
-    fetch('/api/tool-access?slug=scoring_deliverable')
+    fetch('/api/tool-access?slug=scoring_deliverable', { credentials: 'same-origin' })
       .then((r) => r.json())
-      .then((d: { canAccess?: boolean }) => {
-        if (!cancelled) setScoringAccess(!!d.canAccess)
+      .then((d: { authenticated?: boolean; canAccess?: boolean }) => {
+        if (cancelled) return
+        setScoringAuthenticated(!!d.authenticated)
+        setScoringAccess(!!d.canAccess)
       })
       .catch(() => {
-        if (!cancelled) setScoringAccess(false)
+        if (cancelled) return
+        setScoringAuthenticated(false)
+        setScoringAccess(false)
       })
     return () => {
       cancelled = true
     }
-  }, [flags])
+  }, [flags, session?.user?.id])
 
   const sm = flags.skill_matrix
   const skillTitle =
@@ -252,10 +262,10 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
               {scoringDirectCta ? (
                 <Link
                   href="/scoring-deliverable"
-                  onClick={() => trackEvent('tools_suite_click', { tool: 'scoring_deliverable' })}
+                  onClick={() => trackEvent('tools_suite_click', { tool: 'scoring_deliverable', cta: 'use_tool' })}
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02] hover:from-orange-400 hover:to-orange-500"
                 >
-                  {language === 'fr' ? 'Lancer l’évaluation' : 'Start assessment'}
+                  {t['tools-scoring-cta-use']}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               ) : scoringAccessLoading ? (
@@ -266,12 +276,12 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
                 />
               ) : (
                 <>
-                  {sd?.is_live && scoringInviteOnly ? (
+                  {sd?.is_live && scoringInviteOnly && scoringAuthenticated === false ? (
                     <Link
                       href={'/login?redirect=' + encodeURIComponent('/scoring-deliverable')}
                       className="mb-2 block w-full rounded-full border border-border bg-background py-2.5 text-center text-sm font-semibold text-foreground hover:bg-muted"
                     >
-                      {language === 'fr' ? 'Se connecter (déjà invité·e)' : 'Sign in (already invited)'}
+                      {t['tools-scoring-sign-in-invited']}
                     </Link>
                   ) : null}
                   <button
@@ -282,7 +292,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
                     }}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02] hover:from-orange-400 hover:to-orange-500"
                   >
-                    {language === 'fr' ? 'Demander un early access' : 'Request early access'}
+                    {t['tools-scoring-request-access']}
                   </button>
                 </>
               )}
