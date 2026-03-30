@@ -8,8 +8,8 @@ import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
 import ComingSoonTool from '@/components/feature-flag/ComingSoonTool'
 import ToolAccessDenied from '@/components/feature-flag/ToolAccessDenied'
-import { getFeatureFlag, shouldShowComingSoon } from '@/lib/feature-flags'
-import { canAccessTool } from '@/lib/tool-access'
+import { getFeatureFlag } from '@/lib/feature-flags'
+import { canAccessTool, shouldShowComingSoon } from '@/lib/tool-access'
 import { notFound } from 'next/navigation'
 
 export default async function ScoringDeliverablePage() {
@@ -21,7 +21,11 @@ export default async function ScoringDeliverablePage() {
   const accept = h.get('accept-language') || ''
   const lang = accept.toLowerCase().startsWith('en') ? 'en' : 'fr'
 
-  if (await shouldShowComingSoon('scoring_deliverable', session?.user?.email)) {
+  if (
+    await shouldShowComingSoon('scoring_deliverable', session?.user?.email, {
+      userId: session?.user?.id,
+    })
+  ) {
     return (
       <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-black via-slate-950 to-black">
         <div data-no-print>

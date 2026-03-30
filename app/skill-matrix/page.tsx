@@ -5,8 +5,8 @@ import PremiumFooter from '@/components/landing/premium-footer'
 import ComingSoonTool from '@/components/feature-flag/ComingSoonTool'
 import ToolAccessDenied from '@/components/feature-flag/ToolAccessDenied'
 import EarlyAdopterToolBanner from '@/components/feature-flag/EarlyAdopterToolBanner'
-import { getFeatureFlag, shouldShowComingSoon } from '@/lib/feature-flags'
-import { canAccessTool } from '@/lib/tool-access'
+import { getFeatureFlag } from '@/lib/feature-flags'
+import { canAccessTool, shouldShowComingSoon } from '@/lib/tool-access'
 import { getToolCreditPromoGrant } from '@/lib/credits/tool-promo'
 import { notFound, redirect } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -25,7 +25,7 @@ export default async function SkillMatrixPage() {
   const accept = h.get('accept-language') || ''
   const lang = accept.toLowerCase().startsWith('en') ? 'en' : 'fr'
 
-  if (await shouldShowComingSoon('skill_matrix', session?.user?.email)) {
+  if (await shouldShowComingSoon('skill_matrix', session?.user?.email, { userId: session?.user?.id })) {
     return (
       <main className="min-h-screen bg-background">
         <PremiumNavbar />

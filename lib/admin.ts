@@ -17,12 +17,17 @@ export function isAdminEmail(email: string | null | undefined): boolean {
 
 export async function isAdminUserId(userId: string): Promise<boolean> {
   if (!userId || ADMIN_EMAILS.length === 0) return false
-  const { data } = await supabaseAdmin.from('user').select('email').eq('id', userId).single()
-  return isAdminEmail(data?.email)
+  const { data, error } = await supabaseAdmin
+    .from('user')
+    .select('email')
+    .eq('id', userId)
+    .maybeSingle()
+  if (error || !data?.email) return false
+  return isAdminEmail(data.email)
 }
 
 export async function getEmailForUserId(userId: string): Promise<string | null> {
-  const { data } = await supabaseAdmin.from('user').select('email').eq('id', userId).single()
+  const { data } = await supabaseAdmin.from('user').select('email').eq('id', userId).maybeSingle()
   const e = data?.email
   if (!e || typeof e !== 'string') return null
   return e.trim().toLowerCase()

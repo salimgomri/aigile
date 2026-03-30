@@ -7,6 +7,8 @@ import { useLanguage } from '../language-provider'
 import { trackEvent } from '@/lib/gtag'
 import type { PublicFeatureFlag } from '@/lib/feature-flags'
 import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
+import { useSession } from '@/lib/auth-client'
+import { translations } from '@/lib/translations'
 
 const dmSerif = DM_Serif_Display({
   weight: '400',
@@ -287,6 +289,7 @@ function RetroMockup({ lang }: { lang: 'fr' | 'en' }) {
 
 export default function LandingHero() {
   const { language } = useLanguage()
+  const { data: session } = useSession()
   const [slide, setSlide] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [publicFlags, setPublicFlags] = useState<Record<string, PublicFeatureFlag>>({})
@@ -304,16 +307,17 @@ export default function LandingHero() {
 
   useEffect(() => {
     const sd = publicFlags.scoring_deliverable
-    if (!sd?.is_live) {
+    if (!sd) {
       setScoringCanAccess(null)
       return
     }
-    if (!(sd.invite_only ?? true)) {
+    const fullyPublic = sd.is_live === true && !(sd.invite_only ?? true)
+    if (fullyPublic) {
       setScoringCanAccess(null)
       return
     }
     let cancelled = false
-    fetch('/api/tool-access?slug=scoring_deliverable')
+    fetch('/api/tool-access?slug=scoring_deliverable', { credentials: 'same-origin' })
       .then((r) => r.json())
       .then((d: { canAccess?: boolean }) => {
         if (!cancelled) setScoringCanAccess(!!d.canAccess)
@@ -324,7 +328,7 @@ export default function LandingHero() {
     return () => {
       cancelled = true
     }
-  }, [publicFlags])
+  }, [publicFlags, session?.user?.id])
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -407,10 +411,58 @@ export default function LandingHero() {
 
   const langFr = language === 'fr'
   const s3Cta = useMemo(() => {
+    const t = translations[language]
+    const ctaPrimary = `${t['tools-scoring-cta-use']} →`
     const sd = publicFlags.scoring_deliverable
     const live = sd?.is_live === true
     const invite = (sd?.invite_only ?? true) === true
     const unlocked = !invite || scoringCanAccess === true
+
+    /** Admin / invité / promo : accès API — même avant date is_live (aperçu) */
+    if (scoringCanAccess === true) {
+      if (langFr) {
+        return {
+          kind: 'unlocked' as const,
+          teaser: 'Disponible — évaluez vos livrables en quelques minutes.',
+          primaryLabel: ctaPrimary,
+          primaryHref: '/scoring-deliverable',
+          ghostLabel: 'En savoir plus ›',
+          ghostHref: '/#tools',
+          visualLabel: 'Ouvrir Scoring Deliverable',
+          visualHref: '/scoring-deliverable',
+        }
+      }
+      return {
+        kind: 'unlocked' as const,
+        teaser: 'Available — score your deliverables in minutes.',
+        primaryLabel: ctaPrimary,
+        primaryHref: '/scoring-deliverable',
+        ghostLabel: 'Learn more ›',
+        ghostHref: '/#tools',
+        visualLabel: 'Open Scoring Deliverable',
+        visualHref: '/scoring-deliverable',
+      }
+    }
+
+    /** Live + invite-only : en attente de la réponse /api/tool-access (évite flash « invitation only ») */
+    if (scoringCanAccess === null && live && invite) {
+      if (langFr) {
+        return {
+          kind: 'access_check' as const,
+          teaser: 'Vérification de l’accès…',
+          ghostLabel: 'Découvrir la suite d’outils ›',
+          ghostHref: '/#tools',
+          visualLabel: 'Scoring livraison',
+        }
+      }
+      return {
+        kind: 'access_check' as const,
+        teaser: 'Checking access…',
+        ghostLabel: 'Explore the tool suite ›',
+        ghostHref: '/#tools',
+        visualLabel: 'Delivery scoring',
+      }
+    }
 
     if (langFr) {
       if (!live) {
@@ -426,7 +478,7 @@ export default function LandingHero() {
         return {
           kind: 'unlocked' as const,
           teaser: 'Disponible — évaluez vos livrables en quelques minutes.',
-          primaryLabel: 'Lancer l’évaluation →',
+          primaryLabel: ctaPrimary,
           primaryHref: '/scoring-deliverable',
           ghostLabel: 'En savoir plus ›',
           ghostHref: '/#tools',
@@ -459,7 +511,7 @@ export default function LandingHero() {
       return {
         kind: 'unlocked' as const,
         teaser: 'Available — score your deliverables in minutes.',
-        primaryLabel: 'Start the assessment →',
+        primaryLabel: ctaPrimary,
         primaryHref: '/scoring-deliverable',
         ghostLabel: 'Learn more ›',
         ghostHref: '/#tools',
@@ -477,7 +529,7 @@ export default function LandingHero() {
       visualLabel: 'Scoring Deliverable access',
       visualHref: '/login?redirect=' + encodeURIComponent('/scoring-deliverable'),
     }
-  }, [langFr, publicFlags, scoringCanAccess])
+  }, [langFr, language, publicFlags, scoringCanAccess])
 
   const staggerDelays = ['0.05s', '0.1s', '0.17s', '0.24s', '0.31s']
 
@@ -802,6 +854,23 @@ export default function LandingHero() {
                   className={reducedMotion ? '' : 'landing-hero-stagger flex w-full flex-col gap-4'}
                   style={{ animationDelay: staggerDelays[4] }}
                 >
+                  {s3Cta.kind === 'access_check' && (
+                    <>
+                      <div
+                        className="h-11 w-full max-w-[220px] animate-pulse rounded-full bg-white/[0.08]"
+                        aria-busy
+                        aria-label={language === 'fr' ? 'Vérification de l’accès' : 'Checking access'}
+                      />
+                      <Link
+                        href={s3Cta.ghostHref}
+                        className="w-fit text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
+                        style={{ color: 'var(--aigile-muted)' }}
+                        onClick={() => trackEvent('hero_scoring_ghost', { slide: 'scoring' })}
+                      >
+                        {s3Cta.ghostLabel}
+                      </Link>
+                    </>
+                  )}
                   {s3Cta.kind === 'coming_soon' && (
                     <>
                       <button
@@ -893,16 +962,24 @@ export default function LandingHero() {
                 </div>
               </div>
               <div className="flex flex-1 items-center justify-center px-4 pb-12 max-[479px]:hidden md:pb-12 md:pl-2 md:pr-10">
-                {s3Cta.kind === 'coming_soon' ? (
+                {s3Cta.kind === 'coming_soon' || s3Cta.kind === 'access_check' ? (
                   <button
                     type="button"
                     onClick={() => {
+                      if (s3Cta.kind === 'access_check') return
                       setEarlyAccessOpen(true)
                       trackEvent('hero_scoring_early_access', { slide: 'scoring', source: 'hero_visual_modal' })
                     }}
-                    className={`group relative block w-full max-w-[340px] cursor-pointer rounded-2xl p-2 text-left outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                    disabled={s3Cta.kind === 'access_check'}
+                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 text-left outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'} ${s3Cta.kind === 'access_check' ? 'cursor-default opacity-90' : 'cursor-pointer'}`}
                     aria-label={
-                      language === 'fr' ? 'Ouvrir la demande d’early access' : 'Open early access request'
+                      s3Cta.kind === 'access_check'
+                        ? language === 'fr'
+                          ? 'Aperçu scoring'
+                          : 'Scoring preview'
+                        : language === 'fr'
+                          ? 'Ouvrir la demande d’early access'
+                          : 'Open early access request'
                     }
                   >
                     <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#e8961e]/30 to-transparent opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />

@@ -51,16 +51,19 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
 
   useEffect(() => {
     const sd = flags.scoring_deliverable
-    if (!sd?.is_live) {
+    if (!sd) {
       setScoringAccess(null)
       setScoringAuthenticated(null)
       return
     }
-    if (!(sd.invite_only ?? true)) {
+    /** Outil ouvert à tous (live + pas invite-only) : pas besoin d’appeler l’API */
+    const fullyPublic = sd.is_live === true && !(sd.invite_only ?? true)
+    if (fullyPublic) {
       setScoringAccess(null)
       setScoringAuthenticated(null)
       return
     }
+    /** Sinon : admin / invité / promo — y compris avant is_live (aperçu admin) */
     let cancelled = false
     fetch('/api/tool-access?slug=scoring_deliverable', { credentials: 'same-origin' })
       .then((r) => r.json())
@@ -97,11 +100,11 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
 
   const sd = flags.scoring_deliverable
   const scoringInviteOnly = sd?.invite_only ?? true
-  const scoringFullyPublic = sd?.is_live && !scoringInviteOnly
-  const scoringDirectCta =
-    scoringFullyPublic || (sd?.is_live && scoringInviteOnly && scoringAccess === true)
+  const scoringFullyPublic = !!(sd?.is_live && !scoringInviteOnly)
+  /** Accès public total OU droits explicites (admin, invité, early adopter…) */
+  const scoringDirectCta = scoringFullyPublic || scoringAccess === true
   const scoringAccessLoading =
-    !!sd?.is_live && scoringInviteOnly && !scoringFullyPublic && scoringAccess === null
+    !!sd && !scoringFullyPublic && scoringAccess === null
   const scoringTitle =
     sd && (language === 'fr' ? sd.label_fr : sd.label_en)
       ? language === 'fr'

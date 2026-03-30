@@ -1,5 +1,4 @@
 import { supabaseAdmin } from '@/lib/supabase'
-import { isAdminEmail } from '@/lib/admin'
 
 export type FeatureFlagRow = {
   slug: string
@@ -50,15 +49,3 @@ export async function getPublicFeatureFlagsPayload(): Promise<Record<string, Pub
   return out
 }
 
-/** Avant la date de lancement : écran coming soon (sauf admins). */
-export async function shouldShowComingSoon(slug: string, email: string | null | undefined): Promise<boolean> {
-  if (email && isAdminEmail(email)) return false
-  const row = await getFeatureFlag(slug)
-  if (!row) return true
-  return !isLiveAt(row.launch_at)
-}
-
-/** Alias pratique (ex. landing) : outil « sorti » pour cet utilisateur. */
-export async function isToolLiveForUser(slug: string, email: string | null | undefined): Promise<boolean> {
-  return !(await shouldShowComingSoon(slug, email))
-}
