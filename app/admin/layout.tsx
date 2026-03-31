@@ -39,6 +39,12 @@ export default async function AdminLayout({
             >
               Accès / promos
             </Link>
+            <Link
+              href="/admin/stripe-sync"
+              className="text-sm font-medium text-aigile-gold hover:text-book-orange"
+            >
+              Sync Stripe
+            </Link>
             <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
               ← Dashboard
             </Link>

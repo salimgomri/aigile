@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Flag, KeyRound, LayoutDashboard, ShoppingBag } from 'lucide-react'
+import { Flag, KeyRound, LayoutDashboard, RefreshCw, ShoppingBag } from 'lucide-react'
 
 /**
  * Bloc réservé aux admins — rendu uniquement par le serveur (parent page),
@@ -31,6 +31,14 @@ export function AdminLandingTools() {
       descFr: 'Invitations, early access, crédits promo',
       descEn: 'Invites, early access, promo credits',
     },
+    {
+      href: '/admin/stripe-sync',
+      icon: RefreshCw,
+      titleFr: 'Sync Stripe',
+      titleEn: 'Stripe sync',
+      descFr: 'Importer les paiements Stripe vers les commandes (sans doublon)',
+      descEn: 'Backfill Stripe payments into orders (no duplicates)',
+    },
   ]
 
   return (
@@ -42,7 +50,7 @@ export function AdminLandingTools() {
           <p className="text-sm text-muted-foreground">Raccourcis — même session que le tableau admin</p>
         </div>
       </div>
-      <ul className="grid gap-4 sm:grid-cols-3">
+      <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {items.map(({ href, icon: Icon, titleFr, titleEn, descFr, descEn }) => (
           <li key={href}>
             <Link

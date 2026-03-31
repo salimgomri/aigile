@@ -98,24 +98,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
 
-  // 1. Vérifier si l'événement a déjà été traité
+  // 1. Idempotence : si déjà traité avec succès (ligne enregistrée après le métier), ne pas rejouer.
   const { data: existing } = await supabaseAdmin
     .from('stripe_webhook_events')
     .select('id')
     .eq('id', event.id)
-    .single()
+    .maybeSingle()
   if (existing) {
     console.log('[WEBHOOK] event déjà traité (idempotence)', { id: event.id })
     return Response.json({ received: true, skipped: true })
   }
-
-  // 2. Enregistrer l'événement AVANT le traitement
-  await supabaseAdmin.from('stripe_webhook_events').insert({
-    id: event.id,
-    type: event.type,
-  })
-
-  // 3. Traitement normal...
 
   try {
     if (event.type === 'checkout.session.completed') {
@@ -134,6 +126,25 @@ export async function POST(request: Request) {
       const { getBaseUrlFromRequest } = await import('@/lib/utils/base-url')
       const baseUrl = getBaseUrlFromRequest(request)
       await handleInvoicePaymentFailed(event.data.object as Stripe.Invoice, baseUrl)
+    }
+
+    // 2. Enregistrer l’événement APRÈS succès du métier uniquement.
+    // Avant : insert avant handleCheckoutCompleted → échec ou retry Stripe « skipped » sans order en BDD.
+    const { error: idemError } = await supabaseAdmin.from('stripe_webhook_events').insert({
+      id: event.id,
+      type: event.type,
+    })
+    if (idemError) {
+      const msg = idemError.message ?? ''
+      const isDup =
+        (idemError as { code?: string }).code === '23505' ||
+        msg.includes('duplicate') ||
+        msg.includes('unique')
+      if (isDup) {
+        console.log('[WEBHOOK] idempotence déjà enregistrée (course ou retry)', { id: event.id })
+      } else {
+        console.error('[WEBHOOK] échec enregistrement idempotence post-traitement', idemError)
+      }
     }
   } catch (err) {
     console.error('[WEBHOOK] handler error', { eventId: event.id, eventType: event.type, err })

@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { getProduct, getCurrentBookProduct } from '@/lib/payments/catalog'
+import { clampStripeMetadata } from '@/lib/payments/stripe-metadata'
 import { getBaseUrlFromRequest } from '@/lib/utils/base-url'
 
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
@@ -164,12 +165,31 @@ export async function POST(request: Request) {
       metadata.shipping_country = shipping.country
       metadata.shipping_phone = shipping.phone ?? ''
     }
+    // Résumé lisible côté Dashboard Stripe (Session + PaymentIntent) — sans changer montants / line_items.
+    if (resolvedProduct.requiresShipping) {
+      if (inPersonPickup) {
+        metadata.delivery_summary =
+          'Retrait en main propre — pas de livraison postale (adresse collectée côté site pour organisation)'
+      } else if (shipping) {
+        metadata.delivery_summary = [
+          shipping.name,
+          [shipping.address1, shipping.address2].filter(Boolean).join(', '),
+          `${shipping.postal} ${shipping.city}`,
+          shipping.country,
+          shipping.phone ? `Tél. ${shipping.phone}` : '',
+        ]
+          .filter(Boolean)
+          .join(' · ')
+      }
+    }
+
+    const metadataSafe = clampStripeMetadata(metadata)
 
     const baseConfig: Stripe.Checkout.SessionCreateParams = {
       customer_email: userEmail,
       success_url: successUrl,
       cancel_url: cancelUrl,
-      metadata,
+      metadata: metadataSafe,
     }
 
     if (resolvedProduct.isRecurring) {
@@ -178,7 +198,10 @@ export async function POST(request: Request) {
         mode: 'subscription',
         line_items: [{ price: resolvedProduct.stripePriceId, quantity: 1 }],
         subscription_data: {
-          metadata: { product_id: resolvedProduct.id, user_id: session?.user?.id ?? '' },
+          metadata: clampStripeMetadata({
+            product_id: resolvedProduct.id,
+            user_id: session?.user?.id ?? '',
+          }),
         },
         ...(promotionCodeId && { discounts: [{ promotion_code: promotionCodeId }] }),
       })
@@ -220,6 +243,10 @@ export async function POST(request: Request) {
       ...baseConfig,
       mode: 'payment',
       line_items: lineItems,
+      // Copie des métadonnées sur le PaymentIntent : visible dans Paiements Stripe même si la BDD échoue plus tard.
+      payment_intent_data: {
+        metadata: { ...metadataSafe },
+      },
       ...(promotionCodeId && { discounts: [{ promotion_code: promotionCodeId }] }),
       // Pas de code promo pour buy_coffee
       ...(resolvedId === 'buy_coffee' && { allow_promotion_codes: false }),

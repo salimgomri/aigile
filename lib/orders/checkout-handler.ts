@@ -9,67 +9,37 @@ import {
   sendBuyerConfirmationEmail,
 } from '@/lib/email'
 import Stripe from 'stripe'
-import { getProduct, CATALOG, type Product } from '@/lib/payments/catalog'
+import { parseCheckoutSessionForOrder } from '@/lib/orders/parse-checkout-session'
 
 export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   console.log('[CHECKOUT] handleCheckoutCompleted début', { sessionId: session.id, customer_email: session.customer_email })
-  const metadata = session.metadata ?? {}
-  const productId = (metadata.product_id ?? metadata.productId ?? metadata.product) as string
-  const productType = metadata.product_type as string
-  const userId = (metadata.user_id ?? metadata.userId) as string | undefined
-  const buyerName = (metadata.buyer_name ?? '') as string
-  const inPersonPickup = metadata.in_person_pickup === 'true'
-  const quantity = Math.max(1, parseInt(String(metadata.quantity ?? '1'), 10) || 1)
-
-  const resolvedId = productId === 'pack_credits' ? 'credits_10' : productId
-  const product: Product | null = resolvedId
-    ? (getProduct(resolvedId) ?? (CATALOG[resolvedId] as Product | undefined) ?? null)
-    : null
-  const productTitle = product?.title ?? (productId === 'buy_coffee' ? 'Buy a coffee' : 'Commande')
-
-  const amountTotal = session.amount_total ?? 0
-  const amountShipping = session.total_details?.amount_shipping ?? (inPersonPickup ? 0 : 500)
-  const amountDiscount = session.total_details?.amount_discount ?? 0
-  const amountSubtotal = amountTotal - amountShipping + amountDiscount
-  const buyerEmail = session.customer_email ?? session.customer_details?.email ?? ''
-
-  if (!session.id || !buyerEmail) {
-    console.warn('[CHECKOUT] handleCheckoutCompleted skip (session.id ou buyerEmail manquant)', { sessionId: session.id, buyerEmail })
-    return
+  const parsed = parseCheckoutSessionForOrder(session)
+  if (!parsed) {
+    console.warn('[CHECKOUT] handleCheckoutCompleted skip (session.id ou buyerEmail manquant)', {
+      sessionId: session.id,
+      buyerEmail: session.customer_email ?? session.customer_details?.email ?? '',
+    })
+    throw new Error('[CHECKOUT] session.id ou buyer_email manquant — impossible de persister la commande')
   }
 
-  // ── Insérer la commande dans orders ──────────────────────
-  const orderData: Record<string, unknown> = {
-    stripe_session_id: session.id,
-    stripe_payment_intent: typeof session.payment_intent === 'string' ? session.payment_intent : null,
-    stripe_subscription_id: typeof session.subscription === 'string' ? session.subscription : null,
-    product_id: resolvedId ?? productId ?? 'unknown',
-    product_type: productType ?? product?.type ?? 'unknown',
-    product_title: productTitle,
+  const { orderData, ctx } = parsed
+  const {
+    product,
+    resolvedId,
+    productId,
+    productType,
+    userId,
+    buyerName,
     quantity,
-    buyer_email: buyerEmail,
-    buyer_name: buyerName,
-    user_id: userId || null,
-    amount_subtotal: amountSubtotal,
-    amount_discount: amountDiscount,
-    amount_shipping: amountShipping,
-    amount_total: amountTotal,
-    currency: session.currency ?? 'eur',
-    coupon_code: metadata.coupon_code || null,
-    status: 'paid',
-  }
-
-  if (product?.requiresShipping) {
-    orderData.in_person_pickup = inPersonPickup
-    orderData.shipping_fee = inPersonPickup ? 0 : 500
-    orderData.shipping_name = metadata.shipping_name ?? null
-    orderData.shipping_address1 = metadata.shipping_address1 ?? null
-    orderData.shipping_address2 = metadata.shipping_address2 ?? null
-    orderData.shipping_city = metadata.shipping_city ?? null
-    orderData.shipping_postal = metadata.shipping_postal ?? null
-    orderData.shipping_country = metadata.shipping_country ?? null
-    orderData.shipping_phone = metadata.shipping_phone ?? null
-  }
+    inPersonPickup,
+    metadata,
+    amountTotal,
+    amountShipping,
+    amountDiscount,
+    amountSubtotal,
+    productTitle,
+    buyerEmail,
+  } = ctx
 
   const { error: orderError } = await supabaseAdmin.from('orders').upsert(orderData, {
     onConflict: 'stripe_session_id',
@@ -137,8 +107,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
       await ensureUserCredits(userId)
       await supabaseAdmin.rpc('increment_credits', { p_user_id: userId, p_amount: 10 })
       await logCreditAddition(userId, 'credits_pack', 10)
-    }
-    else if (productId === 'day_pass') {
+    } else if (productId === 'day_pass') {
       await ensureUserCredits(userId)
       const { data: current } = await supabaseAdmin
         .from('user_credits')
