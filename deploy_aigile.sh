@@ -28,20 +28,35 @@ echo ""
 
 ssh "${REMOTE_HOST}" "mkdir -p ${REMOTE_PATH}"
 
-rsync -avz --delete \
-  --exclude='node_modules' \
-  --exclude='.git' \
-  --exclude='.env.local' \
-  --exclude='.env' \
-  --exclude='.DS_Store' \
-  --exclude='._*' \
-  --exclude='*.md' \
-  --exclude='.next/cache' \
-  --exclude='tests' \
-  --exclude='scripts' \
-  --exclude='supabase' \
-  --exclude='out' \
-  "${PROJECT_ROOT}/" "${REMOTE_HOST}:${REMOTE_PATH}/"
+# Build Next : sur T9 la sortie peut être dans ../aigile-next-build (voir next.config.ts)
+SIBLING_BUILD="${PROJECT_ROOT}/../aigile-next-build"
+RSYNC_EXCLUDES=(
+  --exclude='node_modules'
+  --exclude='.git'
+  --exclude='.env.local'
+  --exclude='.env'
+  --exclude='.DS_Store'
+  --exclude='._*'
+  --exclude='*.md'
+  --exclude='tests'
+  --exclude='scripts'
+  --exclude='supabase'
+  --exclude='out'
+)
+
+if [ -d "${SIBLING_BUILD}" ]; then
+  echo "📂 Sortie Next.js : ${SIBLING_BUILD} (volume T9)"
+  rsync -avz --delete \
+    "${RSYNC_EXCLUDES[@]}" \
+    --exclude='.next' \
+    "${PROJECT_ROOT}/" "${REMOTE_HOST}:${REMOTE_PATH}/"
+  rsync -avz --delete "${SIBLING_BUILD}/" "${REMOTE_HOST}:${REMOTE_PATH}/.next/"
+else
+  rsync -avz --delete \
+    "${RSYNC_EXCLUDES[@]}" \
+    --exclude='.next/cache' \
+    "${PROJECT_ROOT}/" "${REMOTE_HOST}:${REMOTE_PATH}/"
+fi
 
 echo ""
 echo -e "${GREEN}✅ Fichiers synchronisés${NC}"

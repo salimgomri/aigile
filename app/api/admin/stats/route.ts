@@ -3,6 +3,8 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { isAdminEmail } from '@/lib/admin'
 import { supabaseAdmin } from '@/lib/supabase'
+import { isInternalTestCoupon } from '@/lib/admin/promo-filters'
+import { aggregateOrdersMacroTotals } from '@/lib/admin/aggregate-orders-macro'
 
 export async function GET() {
   const session = await auth.api.getSession({ headers: await headers() })
@@ -17,22 +19,14 @@ export async function GET() {
       .select('*')
       .order('total_uses', { ascending: false })
 
-    // 2. Achats agrégés (totaux depuis v_user_purchases)
-    const { data: purchaseRows } = await supabaseAdmin
-      .from('v_user_purchases')
-      .select('total_orders, books, credits_packs, pro_monthly, pro_annual, day_passes, total_centimes')
+    // 2. Achats agrégés — depuis orders, hors codes promo test internes (ex. TEST100)
+    const { data: orderRows } = await supabaseAdmin
+      .from('orders')
+      .select('buyer_email, buyer_name, user_id, product_type, amount_total, coupon_code')
+      .in('status', ['paid', 'fulfilled', 'shipped'])
 
-    const purchases = purchaseRows ?? []
-    const macroPurchases = {
-      totalBuyers: purchases.length,
-      totalOrders: purchases.reduce((s, r) => s + (r.total_orders ?? 0), 0),
-      totalBooks: purchases.reduce((s, r) => s + (r.books ?? 0), 0),
-      totalCreditsPacks: purchases.reduce((s, r) => s + (r.credits_packs ?? 0), 0),
-      totalProMonthly: purchases.reduce((s, r) => s + (r.pro_monthly ?? 0), 0),
-      totalProAnnual: purchases.reduce((s, r) => s + (r.pro_annual ?? 0), 0),
-      totalDayPasses: purchases.reduce((s, r) => s + (r.day_passes ?? 0), 0),
-      totalRevenueCentimes: purchases.reduce((s, r) => s + (r.total_centimes ?? 0), 0),
-    }
+    const filteredOrders = (orderRows ?? []).filter((o) => !isInternalTestCoupon(o.coupon_code))
+    const macroPurchases = aggregateOrdersMacroTotals(filteredOrders)
 
     // 3. Dernières utilisations (v_tool_usage_with_user)
     const { data: recentUsage } = await supabaseAdmin
@@ -45,6 +39,8 @@ export async function GET() {
       toolUsage: toolUsage ?? [],
       purchases: macroPurchases,
       recentUsage: recentUsage ?? [],
+      purchasesNote:
+        'Totaux calculés sur les commandes payées/livrées, hors codes promo test internes (TEST100).',
     })
   } catch (err) {
     console.error('[API] admin stats error:', err)

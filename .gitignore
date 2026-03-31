@@ -1,5 +1,7 @@
 node_modules
 .next
+# Sortie Next quand distDir pointe hors repo (voir next.config.ts, volume T9)
+aigile-next-build
 tsconfig.tsbuildinfo
 .env.local
 .env

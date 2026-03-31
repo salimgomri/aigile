@@ -7,6 +7,7 @@ type SyncResult = {
   imported: number
   skipped: number
   skippedMissingEmail: number
+  feesBackfilled: number
   errors: Array<{ sessionId: string; message: string }>
   has_more: boolean
   next_starting_after: string | null
@@ -17,7 +18,7 @@ export default function AdminStripeSyncPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [lastResult, setLastResult] = useState<SyncResult | null>(null)
-  const [totals, setTotals] = useState({ imported: 0, skipped: 0, skippedMissingEmail: 0 })
+  const [totals, setTotals] = useState({ imported: 0, skipped: 0, skippedMissingEmail: 0, feesBackfilled: 0 })
 
   async function runSync(nextCursor: string | null) {
     setLoading(true)
@@ -42,6 +43,7 @@ export default function AdminStripeSyncPage() {
         imported: t.imported + r.imported,
         skipped: t.skipped + r.skipped,
         skippedMissingEmail: t.skippedMissingEmail + r.skippedMissingEmail,
+        feesBackfilled: t.feesBackfilled + (r.feesBackfilled ?? 0),
       }))
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Erreur réseau')
@@ -52,7 +54,7 @@ export default function AdminStripeSyncPage() {
 
   function resetRun() {
     setLastResult(null)
-    setTotals({ imported: 0, skipped: 0, skippedMissingEmail: 0 })
+    setTotals({ imported: 0, skipped: 0, skippedMissingEmail: 0, feesBackfilled: 0 })
     setError(null)
   }
 
@@ -61,8 +63,7 @@ export default function AdminStripeSyncPage() {
       <h1 className="text-2xl font-bold text-foreground mb-2">Sync Stripe → commandes</h1>
       <p className="text-muted-foreground text-sm mb-8">
         Importe depuis Stripe les sessions Checkout <strong>terminées</strong> qui ne sont pas encore dans la base.
-        Les commandes déjà présentes (même <code className="text-xs bg-muted px-1 rounded">stripe_session_id</code>) sont
-        ignorées — pas de doublon, pas d’emails, pas de crédits.
+        Les commandes déjà présentes ne sont pas dupliquées ; si <code className="text-xs bg-muted px-1 rounded">stripe_fee_amount</code> manque encore, la sync le remplit depuis Stripe. Pas d’emails ni de crédits.
       </p>
 
       <div className="flex flex-wrap items-end gap-4 mb-6">
@@ -120,6 +121,13 @@ export default function AdminStripeSyncPage() {
                 <strong>{lastResult.skippedMissingEmail}</strong> sans email acheteur (ignorée(s))
               </span>
             </li>
+            {(lastResult.feesBackfilled ?? 0) > 0 && (
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <span>
+                  <strong>{lastResult.feesBackfilled}</strong> ligne(s) déjà en base : frais Stripe complétés
+                </span>
+              </li>
+            )}
           </ul>
 
           {lastResult.errors.length > 0 && (
@@ -138,7 +146,8 @@ export default function AdminStripeSyncPage() {
           {(totals.imported > lastResult.imported || totals.skipped > lastResult.skipped) && (
             <p className="text-xs text-muted-foreground pt-2 border-t border-border">
               Cumul session : {totals.imported} importée(s), {totals.skipped} ignorée(s) déjà en base,{' '}
-              {totals.skippedMissingEmail} sans email.
+              {totals.skippedMissingEmail} sans email
+              {totals.feesBackfilled > 0 ? `, ${totals.feesBackfilled} frais Stripe complétés` : ''}.
             </p>
           )}
 

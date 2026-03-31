@@ -10,6 +10,9 @@ import {
 } from '@/lib/email'
 import Stripe from 'stripe'
 import { parseCheckoutSessionForOrder } from '@/lib/orders/parse-checkout-session'
+import { fetchStripeFeeAmountCentimes } from '@/lib/payments/stripe-fee'
+
+const stripeForFees = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
 export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   console.log('[CHECKOUT] handleCheckoutCompleted début', { sessionId: session.id, customer_email: session.customer_email })
@@ -22,7 +25,9 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
     throw new Error('[CHECKOUT] session.id ou buyer_email manquant — impossible de persister la commande')
   }
 
-  const { orderData, ctx } = parsed
+  const fee = stripeForFees ? await fetchStripeFeeAmountCentimes(stripeForFees, session) : null
+  const orderData = { ...parsed.orderData, stripe_fee_amount: fee }
+  const { ctx } = parsed
   const {
     product,
     resolvedId,
@@ -48,7 +53,7 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
     console.error('[CHECKOUT] orders insert failed', { sessionId: session.id, error: orderError })
     throw new Error(`orders insert failed: ${orderError.message}`)
   }
-  console.log('[CHECKOUT] order inséré en BDD', { sessionId: session.id, productId: orderData.product_id })
+  console.log('[CHECKOUT] order inséré en BDD', { sessionId: session.id, productId: resolvedId ?? productId })
 
   // ── Bonus 10 crédits pour acheteurs du livre S.A.L.I.M (si connecté) ───
   if (product?.type === 'book_physical' && userId) {

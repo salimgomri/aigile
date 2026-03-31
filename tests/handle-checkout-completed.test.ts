@@ -37,6 +37,10 @@ vi.mock('@/lib/email', () => ({
   sendAuthorNotificationEmail: vi.fn().mockResolvedValue(undefined),
 }))
 
+vi.mock('@/lib/payments/stripe-fee', () => ({
+  fetchStripeFeeAmountCentimes: vi.fn().mockResolvedValue(null),
+}))
+
 import { handleCheckoutCompleted } from '@/lib/orders/checkout-handler'
 
 function sessionBookGuest(): Stripe.Checkout.Session {

@@ -65,6 +65,8 @@ type Order = {
   shipping_country: string | null
   amount_total: number
   coupon_code: string | null
+  /** Frais Stripe (commission) en centimes */
+  stripe_fee_amount?: number | null
   status: string
   created_at: string
   stripe_session_id: string
@@ -127,6 +129,10 @@ export default function AdminOrdersPage() {
   const [filterCountry, setFilterCountry] = useState('')
   const [filterPeriod, setFilterPeriod] = useState('')
   const [filterSearch, setFilterSearch] = useState('')
+  /** Par défaut : masquer les commandes avec code promo test (TEST100). */
+  const [includeInternalTest, setIncludeInternalTest] = useState(false)
+  /** Sous-chaîne sur le code promo ; « __none__ » = sans code uniquement. */
+  const [filterCoupon, setFilterCoupon] = useState('')
 
   const fetchOrders = async () => {
     setLoading(true)
@@ -136,6 +142,8 @@ export default function AdminOrdersPage() {
     if (filterCountry) params.set('country', filterCountry)
     if (filterPeriod) params.set('period', filterPeriod)
     if (filterSearch) params.set('search', filterSearch)
+    if (includeInternalTest) params.set('include_internal_test', '1')
+    if (filterCoupon.trim()) params.set('coupon', filterCoupon.trim())
     const res = await fetch(`/api/admin/orders?${params}`)
     const data = await res.json()
     if (res.ok) {
@@ -147,7 +155,7 @@ export default function AdminOrdersPage() {
 
   useEffect(() => {
     fetchOrders()
-  }, [filterType, filterStatus, filterCountry, filterPeriod, filterSearch])
+  }, [filterType, filterStatus, filterCountry, filterPeriod, filterSearch, includeInternalTest, filterCoupon])
 
   useEffect(() => {
     fetch('/api/admin/stats')
@@ -188,10 +196,13 @@ export default function AdminOrdersPage() {
       {/* Vue macro */}
       {macroStats && (
         <div className="mb-8 p-6 rounded-xl border border-border bg-card">
-          <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-semibold text-foreground mb-1 flex items-center gap-2">
             <BarChart3 className="w-5 h-5 text-aigile-gold" />
             Vue macro
           </h2>
+          <p className="text-xs text-muted-foreground mb-4">
+            Achats : hors commandes avec le code promo test TEST100 (usage interne).
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
             <div className="p-3 rounded-lg bg-muted/30">
               <p className="text-xl font-bold text-foreground">{formatPrice(macroStats.purchases.totalRevenueCentimes)}</p>
@@ -316,9 +327,37 @@ export default function AdminOrdersPage() {
             className="w-full pl-10 pr-4 py-2 bg-background border border-border rounded-lg text-foreground"
           />
         </div>
+        <input
+          type="text"
+          placeholder="Code promo (filtre)"
+          value={filterCoupon}
+          onChange={(e) => setFilterCoupon(e.target.value)}
+          title="Sous-chaîne sur le code ; taper __none__ pour les commandes sans code promo"
+          className="px-3 py-2 bg-background border border-border rounded-lg text-foreground w-44 min-w-[10rem]"
+        />
+        <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer whitespace-nowrap">
+          <input
+            type="checkbox"
+            checked={includeInternalTest}
+            onChange={(e) => setIncludeInternalTest(e.target.checked)}
+            className="rounded border-border"
+          />
+          Inclure TEST100
+        </label>
       </div>
 
       {/* Stats */}
+      {stats && (
+        <div className="mb-2 text-xs text-muted-foreground">
+          {!includeInternalTest && !filterCoupon.trim() && (
+            <span>Stats et liste : hors commandes avec code promo test TEST100.</span>
+          )}
+          {!includeInternalTest && filterCoupon.trim() && (
+            <span>TEST100 exclu ; filtre promo : « {filterCoupon} ».</span>
+          )}
+          {includeInternalTest && <span>Toutes les commandes visibles (y compris TEST100).</span>}
+        </div>
+      )}
       {stats && (
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           <div className="p-4 rounded-xl bg-card border border-border text-center">
@@ -354,6 +393,7 @@ export default function AdminOrdersPage() {
               <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Nom</th>
               <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Pays</th>
               <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Montant</th>
+              <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Frais Stripe</th>
               <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Promo</th>
               <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Statut</th>
               <th className="text-left px-4 py-3 text-sm font-semibold text-foreground">Action</th>
@@ -377,6 +417,9 @@ export default function AdminOrdersPage() {
                   </td>
                   <td className="px-4 py-3">
                     <Skeleton className="h-4 w-14" />
+                  </td>
+                  <td className="px-4 py-3">
+                    <Skeleton className="h-4 w-12" />
                   </td>
                   <td className="px-4 py-3">
                     <Skeleton className="h-4 w-12" />
@@ -408,6 +451,9 @@ export default function AdminOrdersPage() {
                     {order.shipping_country ? getCountryName(order.shipping_country) : '-'}
                   </td>
                   <td className="px-4 py-3 text-sm text-foreground">{formatPrice(order.amount_total)}</td>
+                  <td className="px-4 py-3 text-sm text-muted-foreground">
+                    {order.stripe_fee_amount != null ? formatPrice(order.stripe_fee_amount) : '—'}
+                  </td>
                   <td className="px-4 py-3 text-sm text-muted-foreground">
                     {order.coupon_code || '-'}
                   </td>
@@ -452,6 +498,16 @@ export default function AdminOrdersPage() {
                 <p className="font-semibold text-muted-foreground">Acheteur</p>
                 <p>{selectedOrder.buyer_name}</p>
                 <p>{selectedOrder.buyer_email}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-muted-foreground">Paiement</p>
+                <p>Montant TTC : {formatPrice(selectedOrder.amount_total)}</p>
+                <p>
+                  Frais Stripe (commission) :{' '}
+                  {selectedOrder.stripe_fee_amount != null
+                    ? formatPrice(selectedOrder.stripe_fee_amount)
+                    : '—'}
+                </p>
               </div>
               {(selectedOrder.shipping_address1 || selectedOrder.in_person_pickup) && (
                 <div>

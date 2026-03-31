@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { isAdminEmail } from '@/lib/admin'
 import { supabaseAdmin } from '@/lib/supabase'
+import { isInternalTestCoupon, matchesCouponSubstring } from '@/lib/admin/promo-filters'
 
 export async function GET(request: Request) {
   const session = await auth.api.getSession({ headers: await headers() })
@@ -16,6 +17,10 @@ export async function GET(request: Request) {
   const country = searchParams.get('country')
   const period = searchParams.get('period') // 'month' | 'week' | 'all'
   const search = searchParams.get('search')?.trim()
+  /** Inclure les commandes avec code promo test interne (ex. TEST100). Par défaut : non. */
+  const includeInternalTest = searchParams.get('include_internal_test') === '1'
+  /** Sous-chaîne sur coupon_code ; utiliser __none__ pour « sans code promo ». */
+  const coupon = searchParams.get('coupon')?.trim() ?? ''
 
   let query = supabaseAdmin
     .from('orders')
@@ -41,40 +46,61 @@ export async function GET(request: Request) {
     query = query.gte('created_at', start.toISOString())
   }
   if (search) {
-    query = query.or(
-      `buyer_email.ilike.%${search}%,buyer_name.ilike.%${search}%`
-    )
+    query = query.or(`buyer_email.ilike.%${search}%,buyer_name.ilike.%${search}%`)
   }
 
-  const { data: orders, error } = await query
+  const { data: ordersRaw, error } = await query
 
   if (error) {
     console.error('[API] admin orders list error:', error)
     return NextResponse.json({ error: 'Erreur' }, { status: 500 })
   }
 
-  // Stats (depuis toutes les commandes, pas filtrées)
-  const { data: allOrders } = await supabaseAdmin
+  let orders = ordersRaw ?? []
+  if (!includeInternalTest) {
+    orders = orders.filter((o) => !isInternalTestCoupon(o.coupon_code))
+  }
+  if (coupon) {
+    orders = orders.filter((o) => matchesCouponSubstring(o.coupon_code, coupon))
+  }
+
+  // Stats : mêmes exclusions que la liste (hors filtres type/statut/période/recherche pays — on veut des totaux « business » globaux)
+  const { data: allOrdersRaw } = await supabaseAdmin
     .from('orders')
-    .select('id, product_type, status, amount_total, created_at')
+    .select('id, product_type, status, amount_total, created_at, coupon_code')
+
+  let allOrders = allOrdersRaw ?? []
+  if (!includeInternalTest) {
+    allOrders = allOrders.filter((o) => !isInternalTestCoupon(o.coupon_code))
+  }
+  if (coupon) {
+    allOrders = allOrders.filter((o) => matchesCouponSubstring(o.coupon_code, coupon))
+  }
+
   const now = new Date()
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1)
-  const monthOrders = allOrders?.filter((o) => new Date(o.created_at) >= monthStart) ?? []
-  const booksPaid = allOrders?.filter((o) => o.product_type === 'book_physical').length ?? 0
-  const pendingShipment = allOrders?.filter((o) => o.product_type === 'book_physical' && o.status === 'paid').length ?? 0
+  const monthOrders = allOrders.filter((o) => new Date(o.created_at) >= monthStart)
+  const booksPaid = allOrders.filter((o) => o.product_type === 'book_physical').length
+  const pendingShipment = allOrders.filter((o) => o.product_type === 'book_physical' && o.status === 'paid').length
   const monthRevenue = monthOrders.reduce((s, o) => s + (o.amount_total ?? 0), 0)
-  const activePro = allOrders?.filter((o) =>
-    ['subscription_monthly', 'subscription_annual'].includes(o.product_type) && o.status === 'paid'
-  ).length ?? 0
+  const activePro =
+    allOrders.filter(
+      (o) => ['subscription_monthly', 'subscription_annual'].includes(o.product_type ?? '') && o.status === 'paid'
+    ).length ?? 0
 
   return NextResponse.json({
-    orders: orders ?? [],
+    orders,
     stats: {
-      total: allOrders?.length ?? 0,
+      total: allOrders.length,
       booksPaid,
       monthRevenue,
       pendingShipment,
       activePro,
+    },
+    filtersMeta: {
+      excludeInternalTestCoupons: !includeInternalTest,
+      internalTestCodes: ['TEST100'],
+      coupon: coupon || null,
     },
   })
 }
