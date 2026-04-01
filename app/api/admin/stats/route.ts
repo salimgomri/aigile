@@ -5,6 +5,57 @@ import { isAdminEmail } from '@/lib/admin'
 import { supabaseAdmin } from '@/lib/supabase'
 import { isInternalTestCoupon } from '@/lib/admin/promo-filters'
 import { aggregateOrdersMacroTotals } from '@/lib/admin/aggregate-orders-macro'
+import {
+  aggregateRetroInsights,
+  aggregateScoringInsights,
+  type RetroCreditRow,
+  type ScoringSessionRow,
+} from '@/lib/admin/aggregate-tool-insights'
+
+const PAGE = 1000
+
+async function fetchRetroCreditRows(): Promise<RetroCreditRow[]> {
+  const out: RetroCreditRow[] = []
+  let from = 0
+  for (;;) {
+    const { data, error } = await supabaseAdmin
+      .from('credit_transactions')
+      .select('action, user_id, created_at, cost, metadata')
+      .eq('tool_slug', 'retro')
+      .order('created_at', { ascending: true })
+      .range(from, from + PAGE - 1)
+
+    if (error) throw error
+    if (!data?.length) break
+    out.push(...(data as RetroCreditRow[]))
+    if (data.length < PAGE) break
+    from += PAGE
+    if (from > 200_000) break
+  }
+  return out
+}
+
+async function fetchScoringSessionRows(): Promise<ScoringSessionRow[]> {
+  const out: ScoringSessionRow[] = []
+  let from = 0
+  for (;;) {
+    const { data, error } = await supabaseAdmin
+      .from('scoring_sessions')
+      .select('user_id, score_global, rag_global, completed_at, created_at')
+      .eq('status', 'complete')
+      .not('score_global', 'is', null)
+      .order('completed_at', { ascending: true })
+      .range(from, from + PAGE - 1)
+
+    if (error) throw error
+    if (!data?.length) break
+    out.push(...(data as ScoringSessionRow[]))
+    if (data.length < PAGE) break
+    from += PAGE
+    if (from > 100_000) break
+  }
+  return out
+}
 
 export async function GET() {
   const session = await auth.api.getSession({ headers: await headers() })
@@ -35,10 +86,20 @@ export async function GET() {
       .limit(15)
       .order('created_at', { ascending: false })
 
+    const [retroCreditRows, scoringSessionRows] = await Promise.all([
+      fetchRetroCreditRows(),
+      fetchScoringSessionRows(),
+    ])
+
+    const retroInsights = aggregateRetroInsights(retroCreditRows)
+    const scoringInsights = aggregateScoringInsights(scoringSessionRows)
+
     return NextResponse.json({
       toolUsage: toolUsage ?? [],
       purchases: macroPurchases,
       recentUsage: recentUsage ?? [],
+      retroInsights,
+      scoringInsights,
       purchasesNote:
         'Totaux calculés sur les commandes payées/livrées, hors codes promo test internes (TEST100).',
     })

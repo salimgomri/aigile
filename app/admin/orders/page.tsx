@@ -6,6 +6,8 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import { COUNTRIES } from '@/lib/countries'
+import { AdminToolInsights } from '@/components/admin/AdminToolInsights'
+import type { RetroInsights, ScoringInsights } from '@/lib/admin/aggregate-tool-insights'
 
 function formatPrice(centimes: number): string {
   return (centimes / 100).toFixed(2).replace('.', ',') + ' €'
@@ -17,6 +19,7 @@ const TOOL_LABELS: Record<string, string> = {
   okr: 'OKR',
   'skill-matrix': 'Skill Matrix',
   dashboard: 'Dashboard',
+  'scoring-deliverable': 'Score livraison',
 }
 
 function getTypeIcon(type: string) {
@@ -110,6 +113,8 @@ type MacroStats = {
     credits_cost: number
     created_at: string
   }>
+  retroInsights: RetroInsights
+  scoringInsights: ScoringInsights
 }
 
 export default function AdminOrdersPage() {
@@ -270,6 +275,10 @@ export default function AdminOrdersPage() {
             </div>
           </div>
         </div>
+      )}
+
+      {macroStats?.retroInsights && macroStats?.scoringInsights && (
+        <AdminToolInsights retro={macroStats.retroInsights} scoring={macroStats.scoringInsights} />
       )}
 
       {/* Filtres */}

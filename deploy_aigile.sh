@@ -68,8 +68,8 @@ ssh "${REMOTE_HOST}" "rm -rf ${REMOTE_PATH}/out 2>/dev/null || true"
 
 # Sur le serveur: npm install + permissions + restart
 echo ""
-echo "📦 Installation des dépendances sur le serveur..."
-ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && npm install --production"
+echo "📦 Installation + build Next.js sur le serveur (sortie .next complète, évite 502 upstream)..."
+ssh "${REMOTE_HOST}" "cd ${REMOTE_PATH} && npm install && npm run build"
 
 echo ""
 echo "🔐 Permissions (root pour PM2, nginx proxy ne lit pas les fichiers)..."

@@ -120,10 +120,17 @@ export async function canPerformAction(
   return { allowed: true }
 }
 
+export type ConsumeCreditsContext = {
+  teamId?: string
+  sprintId?: string
+  /** Ex. { retro_pattern_code: 'P1' } pour retro_ai_plan */
+  metadata?: Record<string, unknown>
+}
+
 export async function consumeCredits(
   userId: string,
   action: CreditAction,
-  context?: { teamId?: string; sprintId?: string }
+  context?: ConsumeCreditsContext
 ): Promise<{ success: boolean; creditsRemaining: number | null }> {
   if (await isAdminUserId(userId)) {
     await supabaseAdmin.from('credit_transactions').insert({
@@ -135,6 +142,7 @@ export async function consumeCredits(
       team_id: context?.teamId ?? null,
       sprint_id: context?.sprintId ?? null,
       tool_slug: getToolSlugForAction(action),
+      metadata: context?.metadata ?? null,
     })
     return { success: true, creditsRemaining: null }
   }
@@ -150,6 +158,7 @@ export async function consumeCredits(
       team_id: context?.teamId ?? null,
       sprint_id: context?.sprintId ?? null,
       tool_slug: getToolSlugForAction(action),
+      metadata: context?.metadata ?? null,
     })
     return { success: true, creditsRemaining: null }
   }
@@ -194,6 +203,7 @@ export async function consumeCredits(
     team_id: context?.teamId ?? null,
     sprint_id: context?.sprintId ?? null,
     tool_slug: getToolSlugForAction(action),
+    metadata: context?.metadata ?? null,
   })
 
   const updated = await getCreditStatus(userId)

@@ -22,7 +22,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid action' }, { status: 400 })
     }
 
-    const result = await consumeCredits(session.user.id, action, { teamId, sprintId })
+    const retroMeta =
+      action === 'retro_ai_plan' && patternCode && VALID_PATTERN_CODES.includes(patternCode)
+        ? { retro_pattern_code: patternCode }
+        : undefined
+
+    const result = await consumeCredits(session.user.id, action, {
+      teamId,
+      sprintId,
+      metadata: retroMeta,
+    })
 
     if (result.success && action === 'retro_ai_plan' && patternCode && VALID_PATTERN_CODES.includes(patternCode)) {
       const pattern = PATTERNS[patternCode as PatternCode]
