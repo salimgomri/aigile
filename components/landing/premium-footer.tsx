@@ -52,7 +52,7 @@ export default function PremiumFooter() {
   return (
     <footer className="relative bg-gradient-to-b from-white to-gray-100 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* 4 CTA toujours visibles — Feedback, Buy a coffee, Livre, Coaching */}
+        {/* 4 CTA — Livre / pré-commande mis en avant, Coaching secondaire */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 pb-8 border-b border-gray-200">
           <FeedbackButtonWithModal variant="button" />
           <BuyCoffeeSheet
@@ -75,11 +75,11 @@ export default function PremiumFooter() {
                 <button
                   type="button"
                   onClick={() => trackEvent('cta_book_footer', {})}
-                  className="flex items-center gap-2 px-4 py-3 rounded-full border border-book-orange/50 text-book-orange hover:bg-book-orange/10 transition-all"
+                  className="flex items-center gap-2 px-4 py-3 rounded-full bg-aigile-gold hover:bg-book-orange text-black font-semibold transition-all shadow-md"
                   aria-label={t['nav-book']}
                 >
                   <BookOpen className="w-5 h-5" />
-                  <span className="font-medium text-sm">{getBookCtaLabel(language)}</span>
+                  <span className="text-sm">{getBookCtaLabel(language)}</span>
                 </button>
               }
             />
@@ -93,7 +93,7 @@ export default function PremiumFooter() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-3 rounded-full bg-aigile-gold hover:bg-book-orange text-black font-semibold transition-all"
+            className="flex items-center gap-2 px-4 py-3 rounded-full border border-book-orange/50 text-book-orange hover:bg-book-orange/10 transition-all font-medium"
             aria-label={t['coaching-float']}
           >
             <Calendar className="w-5 h-5" />

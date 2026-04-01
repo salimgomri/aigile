@@ -11,7 +11,7 @@ import CheckoutSheet from '@/components/checkout/CheckoutSheet'
 
 const CALENDLY_URL = 'https://calendly.com/salimdulux/30min'
 
-/** Barre flottante — 2 CTA principaux : Coaching (Calendly) + Livre. Les autres (Feedback, Buy a coffee) sont dans le footer. */
+/** Barre flottante — 2 CTA : Livre / pré-commande (mis en avant) + Coaching Calendly (secondaire). */
 export default function FloatingBottomBar() {
   const { language } = useLanguage()
   const pathname = usePathname()
@@ -35,7 +35,7 @@ export default function FloatingBottomBar() {
             <button
               type="button"
               onClick={() => trackEvent('cta_book_float', { from: pathname })}
-              className={`${btnClass} bg-book-orange/20 hover:bg-book-orange/30 border border-book-orange/50 text-book-orange`}
+              className={`${btnClass} bg-aigile-gold hover:bg-book-orange text-black font-semibold`}
               aria-label={t['nav-book']}
             >
               <BookOpen className={iconClass} />
@@ -47,7 +47,7 @@ export default function FloatingBottomBar() {
         <button
           type="button"
           disabled
-          className={`${btnClass} bg-book-orange/10 border border-book-orange/30 text-book-orange/70 cursor-not-allowed`}
+          className={`${btnClass} bg-aigile-gold/30 border border-aigile-gold/40 text-black/60 cursor-not-allowed`}
           aria-label={t['nav-book']}
           title={language === 'fr' ? 'Chargement...' : 'Loading...'}
         >
@@ -56,12 +56,12 @@ export default function FloatingBottomBar() {
         </button>
       )}
 
-      {/* Coaching — CTA principal */}
+      {/* Coaching — secondaire */}
       <a
         href={CALENDLY_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${btnClass} bg-aigile-gold hover:bg-book-orange text-black font-semibold`}
+        className={`${btnClass} bg-book-orange/20 hover:bg-book-orange/30 border border-book-orange/50 text-book-orange font-medium`}
         aria-label={t['coaching-float']}
       >
         <Calendar className={iconClass} />
