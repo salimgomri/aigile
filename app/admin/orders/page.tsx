@@ -115,6 +115,7 @@ type MacroStats = {
   }>
   retroInsights: RetroInsights
   scoringInsights: ScoringInsights
+  toolStatsExclusionNote?: string
 }
 
 export default function AdminOrdersPage() {
@@ -205,9 +206,14 @@ export default function AdminOrdersPage() {
             <BarChart3 className="w-5 h-5 text-aigile-gold" />
             Vue macro
           </h2>
-          <p className="text-xs text-muted-foreground mb-4">
+          <p className="text-xs text-muted-foreground mb-2">
             Achats : hors commandes avec le code promo test TEST100 (usage interne).
           </p>
+          {macroStats.toolStatsExclusionNote && (
+            <p className="text-xs text-muted-foreground mb-4 border-l-2 border-aigile-gold/35 pl-3">
+              {macroStats.toolStatsExclusionNote}
+            </p>
+          )}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
             <div className="p-3 rounded-lg bg-muted/30">
               <p className="text-xl font-bold text-foreground">{formatPrice(macroStats.purchases.totalRevenueCentimes)}</p>
