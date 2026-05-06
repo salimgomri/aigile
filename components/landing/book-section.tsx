@@ -23,12 +23,12 @@ export default function BookSection() {
   const { language } = useLanguage()
   const t = translations[language]
   const { product: bookProduct } = useBookProduct()
-  const [pricingMeta, setPricingMeta] = useState<{ priceFormatted: string; isPreorder: boolean; daysLeft: number } | null>(null)
+  const [pricingMeta, setPricingMeta] = useState<{ priceFormatted: string } | null>(null)
 
   useEffect(() => {
     fetch('/api/book/pricing')
-      .then((r) => r.ok ? r.json() : null)
-      .then((d) => d && setPricingMeta({ priceFormatted: d.priceFormatted, isPreorder: d.isPreorder, daysLeft: d.daysLeft }))
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => d && setPricingMeta({ priceFormatted: d.priceFormatted }))
       .catch(() => {})
   }, [])
 
@@ -65,7 +65,7 @@ export default function BookSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-book-orange/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Badge Précommander / Commander selon lib/book-config.ts */}
+              {/* Badge Commander / Buy selon lib/book-config.ts */}
               <div className="absolute top-8 -right-12 bg-gradient-to-r from-book-orange to-aigile-gold text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-2xl animate-pulse">
                 {getBookCtaLabel(language)}
               </div>
@@ -78,7 +78,7 @@ export default function BookSection() {
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-book-orange/10 backdrop-blur-sm rounded-full border border-book-orange/30">
               <Sparkles className="w-4 h-4 text-book-orange" />
               <span className="text-sm font-semibold text-book-orange uppercase tracking-wider">
-                {language === 'fr' ? 'Sortie Prioritaire' : 'Priority Release'}
+                {language === 'fr' ? 'Disponible' : 'Available now'}
               </span>
             </div>
 
@@ -117,10 +117,10 @@ export default function BookSection() {
                     product={bookProduct}
                     trigger={
                       <button
-                        onClick={() => trackEvent('preorder_book', { product: 's-a-l-i-m', value: 65 })}
+                        onClick={() => trackEvent('book_order_click', { product: 's-a-l-i-m', value: 65 })}
                         className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300"
                       >
-                        {getBookCtaLabel(language)} — {pricingMeta?.priceFormatted ?? '35,00 €'}
+                        {getBookCtaLabel(language)} — {pricingMeta?.priceFormatted ?? '65,00 €'}
                       </button>
                     }
                   />
@@ -139,19 +139,10 @@ export default function BookSection() {
               <p className="text-sm text-muted-foreground">
                 {pricingMeta ? (
                   <>
-                    {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && (
-                      <span className="text-book-orange font-medium">
-                        {language === 'fr' ? `Il reste ${pricingMeta.daysLeft} jours` : `${pricingMeta.daysLeft} days left`} —{' '}
-                      </span>
-                    )}
-                    {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && (
-                      <span className="line-through text-muted-foreground/70">45,00 €</span>
-                    )}
-                    {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && ' → '}
                     {pricingMeta.priceFormatted}
-                    {!pricingMeta.isPreorder && pricingMeta.daysLeft === 0 && (
-                      <span> {language === 'fr' ? '(prix de vente)' : '(sale price)'}</span>
-                    )}
+                    {language === 'fr'
+                      ? ' · Livraison ou retrait en main propre (voir checkout).'
+                      : ' · Shipping or in-person pickup (see checkout).'}
                   </>
                 ) : (
                   t['book-price']

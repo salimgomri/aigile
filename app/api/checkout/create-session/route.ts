@@ -60,7 +60,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'productId requis' }, { status: 400 })
     }
 
-    // 1. Charger le produit (livre = dynamique selon date)
+    // 1. Charger le produit (livre = getCurrentBookProduct → book_sale)
     const resolvedProduct =
       resolvedId === 'book_preorder' || resolvedId === 'book_sale'
         ? getCurrentBookProduct()
@@ -224,6 +224,25 @@ export async function POST(request: Request) {
           unit_amount: coffeeAmount,
         },
         quantity: 1,
+      })
+    } else if (resolvedProduct.type === 'book_physical') {
+      // Montant = catalog.amount (ex. 65 €) — évite le décalage avec un ancien Price Stripe (ex. 40 €).
+      const coverPath = '/images/book-cover.jpg'
+      const coverUrl =
+        baseUrl.startsWith('http') && /^https:\/\//i.test(baseUrl)
+          ? `${baseUrl.replace(/\/$/, '')}${coverPath}`
+          : undefined
+      lineItems.push({
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: resolvedProduct.title,
+            description: resolvedProduct.description,
+            ...(coverUrl ? { images: [coverUrl] } : {}),
+          },
+          unit_amount: resolvedProduct.amount,
+        },
+        quantity,
       })
     } else {
       lineItems.push({ price: resolvedProduct.stripePriceId, quantity })

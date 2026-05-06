@@ -87,7 +87,7 @@ export const translations = {
     "book-benefit-1": "Proven frameworks for AI integration",
     "book-benefit-2": "Real-world case studies",
     "book-benefit-3": "Step-by-step implementation guide",
-    "book-cta": "Pre-order Now",
+    "book-cta": "Buy now",
     "book-price": "Coming Spring 2026",
     
     // Tools Suite
@@ -245,7 +245,7 @@ export const translations = {
     "book-benefit-1": "Frameworks éprouvés pour l'intégration IA",
     "book-benefit-2": "Cas d'usage réels",
     "book-benefit-3": "Guide d'implémentation étape par étape",
-    "book-cta": "Pré-commander",
+    "book-cta": "Commander",
     "book-price": "Printemps 2026",
     
     // Tools Suite

@@ -354,12 +354,12 @@ export default function LandingHero() {
     if (language === 'fr') {
       return {
         s1: {
-          badge: 'Pré-commande ouverte',
-          eyebrow: 'Nouveau livre · Spring 2026',
+          badge: 'Le livre',
+          eyebrow: 'S.A.L.I.M — disponible',
           title: 'Le Système S.A.L.I.M',
           body:
             "Le premier guide complet pour implémenter le Scrum augmenté par l'IA dans votre équipe. 21 ans de terrain, condensés en un système actionnable.",
-          primary: 'Pré-commander →',
+          primary: 'Commander →',
           ghost: 'Découvrir le contenu ›',
         },
         s2: {
@@ -382,12 +382,12 @@ export default function LandingHero() {
     }
     return {
       s1: {
-        badge: 'Pre-order open',
-        eyebrow: 'New book · Spring 2026',
+        badge: 'The book',
+        eyebrow: 'S.A.L.I.M — available',
         title: 'The S.A.L.I.M System',
         body:
           'The first complete guide to implementing AI-augmented Scrum in your team. 21 years in the field, distilled into an actionable system.',
-        primary: 'Pre-order →',
+        primary: 'Order →',
         ghost: "See what's inside ›",
       },
       s2: {
@@ -651,8 +651,8 @@ export default function LandingHero() {
                   className="group relative mx-auto flex w-full max-w-[min(100%,440px)] flex-col items-center rounded-2xl px-2 pb-2 pt-6 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70"
                   aria-label={
                     language === 'fr'
-                      ? 'Précommander — aller à la section livre'
-                      : 'Pre-order — go to the book section'
+                      ? 'Commander le livre — aller à la section livre'
+                      : 'Order the book — go to the book section'
                   }
                 >
                   <div
@@ -673,7 +673,7 @@ export default function LandingHero() {
                           fontFamily: 'var(--font-hero-syne), sans-serif',
                         }}
                       >
-                        {language === 'fr' ? 'Précommander' : 'Pre-order'}
+                        {language === 'fr' ? 'Commander' : 'Order'}
                       </span>
                       {/* eslint-disable-next-line @next/next/no-img-element -- object-fit contain + explicit dimensions per design */}
                       <img
@@ -692,7 +692,7 @@ export default function LandingHero() {
                     className="mt-4 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--aigile-muted)] transition-colors duration-300 group-hover:text-[#c9973a]/90"
                     aria-hidden
                   >
-                    {language === 'fr' ? 'Toucher pour précommander' : 'Tap to pre-order'}
+                    {language === 'fr' ? 'Aller commander le livre' : 'Tap to order the book'}
                   </span>
                 </Link>
               </div>

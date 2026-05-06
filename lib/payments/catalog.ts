@@ -168,18 +168,16 @@ export function getProduct(productId: string): Product | null {
   // buy_coffee n'a pas de stripePriceId — on utilise price_data
   if (productId === 'buy_coffee') return { ...p }
   const priceId = getStripePriceId(productId)
+  // Livre physique : le checkout utilise price_data + amount du catalog — Price Stripe optionnel (sync affichage / encaissement).
+  if (p.type === 'book_physical') {
+    return { ...p, stripePriceId: priceId || '' }
+  }
   if (!priceId) return null
   return { ...p, stripePriceId: priceId }
 }
 
-/** Produit livre actif selon la date (précommande vs vente) */
+/** Livre : toujours le produit vente (précommande close — prix unique côté catalog / Stripe STRIPE_PRICE_ID_SALE). */
 export function getCurrentBookProduct(): Product | null {
-  const endStr = process.env.PREORDER_END_DATE
-  const preorderEnd = endStr ? new Date(endStr) : null
-  const now = new Date()
-  if (preorderEnd && now < preorderEnd) {
-    return getProduct('book_preorder')
-  }
   return getProduct('book_sale')
 }
 

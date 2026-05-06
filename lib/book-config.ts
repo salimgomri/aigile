@@ -4,9 +4,9 @@
  * false = Précommander / Pre-order (livre pas encore publié)
  * true  = Commander / Buy (livre publié)
  *
- * Change cette valeur quand le livre est publié.
+ * Précommande terminée : vente au prix catalogue (book_sale).
  */
-export const BOOK_IS_PUBLISHED = false
+export const BOOK_IS_PUBLISHED = true
 
 export function getBookCtaLabel(language: 'fr' | 'en'): string {
   return BOOK_IS_PUBLISHED
