@@ -23,7 +23,7 @@ function createSignedStripeEvent(payload: object, secret: string): { body: strin
 }
 
 function buildCheckoutCompletedEvent(sessionId: string, buyerEmail: string) {
-  const amountSubtotal = 4000 // 40€ livre
+  const amountSubtotal = 6500 // 65€ livre (aligné catalog)
   return {
     id: `evt_test_${Date.now()}`,
     object: 'event',

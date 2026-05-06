@@ -117,7 +117,7 @@ export default function BookSection() {
                     product={bookProduct}
                     trigger={
                       <button
-                        onClick={() => trackEvent('preorder_book', { product: 's-a-l-i-m', value: 35 })}
+                        onClick={() => trackEvent('preorder_book', { product: 's-a-l-i-m', value: 65 })}
                         className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300"
                       >
                         {getBookCtaLabel(language)} — {pricingMeta?.priceFormatted ?? '35,00 €'}
@@ -145,7 +145,7 @@ export default function BookSection() {
                       </span>
                     )}
                     {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && (
-                      <span className="line-through text-muted-foreground/70">40,00 €</span>
+                      <span className="line-through text-muted-foreground/70">45,00 €</span>
                     )}
                     {pricingMeta.isPreorder && pricingMeta.daysLeft > 0 && ' → '}
                     {pricingMeta.priceFormatted}

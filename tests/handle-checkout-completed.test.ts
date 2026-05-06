@@ -47,7 +47,7 @@ function sessionBookGuest(): Stripe.Checkout.Session {
   return {
     id: 'cs_unit_persist_1',
     object: 'checkout.session',
-    amount_total: 4000,
+        amount_total: 6500,
     currency: 'eur',
     customer_email: 'acheteur@example.com',
     customer_details: { email: 'acheteur@example.com' },
