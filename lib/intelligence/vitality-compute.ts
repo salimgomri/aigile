@@ -81,7 +81,8 @@ export function computeVitalityScore(input: {
   return { score, empireBoostApplied: empireBoost }
 }
 
-export const TRANSCRIPT_AUTO_THRESHOLD = 90
+/** Vitalité ≥ cette valeur : à la sync YAML, file transcript YouTube + scraping Web/Podcast sans clic « Analyser ». */
+export const TRANSCRIPT_AUTO_THRESHOLD = 80
 
 export function isDemoPaulArticlesUrl(url: string): boolean {
   const nu = normalizeUrl(url)

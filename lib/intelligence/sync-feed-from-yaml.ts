@@ -26,10 +26,50 @@ const DEMO_PG_SUMMARY =
 /** Seuil aligné sur fetchWebPagePlainText (caractères utiles minimum). */
 const WEB_BODY_OK_CHARS = 80
 
+/** Même logique que l’action « Analyser » pour Web/Podcast (réutilisée à la sync si vitalité > seuil). */
+async function computeWebPodcastIntelPayload(args: {
+  url: string
+  sourceLabel: string
+  urlKind: 'web' | 'podcast'
+  vitalityScore: number
+}): Promise<{
+  preview_snippet: string | null
+  summary: string | null
+  content: string | null
+  transcript_text: string | null
+  transcript_error: string | null
+}> {
+  const fetched = await fetchWebPagePlainText(args.url)
+  const scoreLabel = Number.isFinite(args.vitalityScore) ? args.vitalityScore.toFixed(0) : '?'
+  const baseSnippet = `${args.sourceLabel} · ${args.urlKind === 'podcast' ? 'Podcast' : 'Web'} · Vitalité ${scoreLabel}`
+
+  if (fetched.text.length >= WEB_BODY_OK_CHARS) {
+    const summaryLine = fetched.title ? `${fetched.title} — ${baseSnippet}` : baseSnippet
+    return {
+      preview_snippet: summaryLine.slice(0, 500),
+      summary: summaryLine.slice(0, 2000),
+      content: fetched.text,
+      transcript_text: fetched.text,
+      transcript_error: null,
+    }
+  }
+
+  const errNote = fetched.error ? ` (${fetched.error})` : ''
+  const snippet = `${baseSnippet} — extraction texte courte ou bloquée${errNote}. Ouvrir l’URL source pour lire l’article.`
+  return {
+    preview_snippet: snippet.slice(0, 500),
+    summary: snippet.slice(0, 2000),
+    content: fetched.text.length > 0 ? fetched.text : null,
+    transcript_text: fetched.text.length > 0 ? fetched.text : null,
+    transcript_error: fetched.error ?? null,
+  }
+}
+
 export type SyncIntelFeedResult = {
   rotationDay: string
   upserted: number
   youtubeJobsQueued: number
+  webPodcastAutoScraped: number
 }
 
 export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
@@ -40,6 +80,7 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
   const data = loadIntelligenceSources()
   let upserted = 0
   let youtubeJobsQueued = 0
+  let webPodcastAutoScraped = 0
 
   for (const tier of data.tiers) {
     for (const group of tier.groups) {
@@ -56,6 +97,7 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
         let transcriptText: string | null = null
         let contentBody: string | null = null
         let summaryOverride: string | undefined
+        let transcriptErrorPass: string | null | undefined
 
         const thumbnailUrl = await resolveIntelThumbnailUrl(u.href, urlKind)
 
@@ -75,13 +117,43 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
             contentBody = null
           }
         } else if (urlKind === 'youtube') {
-          const autoTranscript = score > TRANSCRIPT_AUTO_THRESHOLD
+          const autoTranscript = score >= TRANSCRIPT_AUTO_THRESHOLD
           status = autoTranscript ? 'analyzing' : 'pending'
           previewSnippet = `${group.name} · YouTube · Vitalité ${score}`
         } else if (urlKind === 'podcast') {
           previewSnippet = `${group.name} · Podcast · Vitalité ${score}`
+          if (score >= TRANSCRIPT_AUTO_THRESHOLD) {
+            webPodcastAutoScraped += 1
+            const payload = await computeWebPodcastIntelPayload({
+              url: u.href,
+              sourceLabel: group.name,
+              urlKind: 'podcast',
+              vitalityScore: score,
+            })
+            status = 'ready'
+            previewSnippet = payload.preview_snippet
+            transcriptText = payload.transcript_text
+            contentBody = payload.content
+            summaryOverride = payload.summary ?? undefined
+            transcriptErrorPass = payload.transcript_error
+          }
         } else {
           previewSnippet = `${group.name} · Web · Vitalité ${score}`
+          if (score >= TRANSCRIPT_AUTO_THRESHOLD) {
+            webPodcastAutoScraped += 1
+            const payload = await computeWebPodcastIntelPayload({
+              url: u.href,
+              sourceLabel: group.name,
+              urlKind: 'web',
+              vitalityScore: score,
+            })
+            status = 'ready'
+            previewSnippet = payload.preview_snippet
+            transcriptText = payload.transcript_text
+            contentBody = payload.content
+            summaryOverride = payload.summary ?? undefined
+            transcriptErrorPass = payload.transcript_error
+          }
         }
 
         const row = await intelFeedUpsertItem({
@@ -97,12 +169,13 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
           thumbnailUrl,
           summary: summaryOverride ?? previewSnippet ?? undefined,
           content: contentBody ?? transcriptText,
+          transcriptError: transcriptErrorPass ?? null,
           rotationDay,
         })
 
         upserted++
 
-        if (row && urlKind === 'youtube' && score > TRANSCRIPT_AUTO_THRESHOLD) {
+        if (row && urlKind === 'youtube' && score >= TRANSCRIPT_AUTO_THRESHOLD) {
           enqueueYoutubeTranscriptJob(row.id, u.href, { skipAnalyzingBootstrap: true })
           youtubeJobsQueued++
         }
@@ -110,7 +183,7 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
     }
   }
 
-  return { rotationDay, upserted, youtubeJobsQueued }
+  return { rotationDay, upserted, youtubeJobsQueued, webPodcastAutoScraped }
 }
 
 export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: boolean; error?: string }> {
@@ -132,8 +205,6 @@ export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: bo
   }
 
   if (row.url_kind === 'web' || row.url_kind === 'podcast') {
-    const score = Number(row.vitality_score)
-    const scoreLabel = Number.isFinite(score) ? score.toFixed(0) : '?'
     const now = new Date().toISOString()
 
     await intelFeedPatch(row.id, {
@@ -142,32 +213,20 @@ export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: bo
       transcript_error: null,
     })
 
-    const fetched = await fetchWebPagePlainText(row.url)
-    const baseSnippet = `${row.source_label} · ${row.url_kind === 'podcast' ? 'Podcast' : 'Web'} · Vitalité ${scoreLabel}`
+    const payload = await computeWebPodcastIntelPayload({
+      url: row.url,
+      sourceLabel: row.source_label,
+      urlKind: row.url_kind,
+      vitalityScore: Number(row.vitality_score),
+    })
 
-    if (fetched.text.length >= WEB_BODY_OK_CHARS) {
-      const summaryLine = fetched.title ? `${fetched.title} — ${baseSnippet}` : baseSnippet
-      await intelFeedPatch(row.id, {
-        status: 'ready',
-        preview_snippet: summaryLine.slice(0, 500),
-        summary: summaryLine.slice(0, 2000),
-        content: fetched.text,
-        transcript_text: fetched.text,
-        transcript_error: null,
-        ready_at: new Date().toISOString(),
-      })
-      return { ok: true }
-    }
-
-    const errNote = fetched.error ? ` (${fetched.error})` : ''
-    const snippet = `${baseSnippet} — extraction texte courte ou bloquée${errNote}. Ouvrir l’URL source pour lire l’article.`
     await intelFeedPatch(row.id, {
       status: 'ready',
-      preview_snippet: snippet.slice(0, 500),
-      summary: snippet.slice(0, 2000),
-      content: fetched.text.length > 0 ? fetched.text : null,
-      transcript_text: fetched.text.length > 0 ? fetched.text : null,
-      transcript_error: fetched.error ?? null,
+      preview_snippet: payload.preview_snippet,
+      summary: payload.summary,
+      content: payload.content,
+      transcript_text: payload.transcript_text,
+      transcript_error: payload.transcript_error,
       ready_at: new Date().toISOString(),
     })
     return { ok: true }

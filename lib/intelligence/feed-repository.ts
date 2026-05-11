@@ -23,6 +23,26 @@ export type IntelFeedRow = {
   content: string | null
 }
 
+const INTEL_FEED_STATUS_ORDER: Record<IntelFeedRow['status'], number> = {
+  ready: 0,
+  analyzing: 1,
+  pending: 2,
+  error: 3,
+}
+
+/** Prêt (lisible) en tête, puis vitalité décroissante. */
+export function sortIntelFeedRowsForAdmin(rows: IntelFeedRow[]): IntelFeedRow[] {
+  return [...rows].sort((a, b) => {
+    const sa = INTEL_FEED_STATUS_ORDER[a.status] ?? 99
+    const sb = INTEL_FEED_STATUS_ORDER[b.status] ?? 99
+    if (sa !== sb) return sa - sb
+    const va = Number(a.vitality_score)
+    const vb = Number(b.vitality_score)
+    if (vb !== va) return vb - va
+    return (b.updated_at ?? '').localeCompare(a.updated_at ?? '')
+  })
+}
+
 export function utcTodayDateString(): string {
   return new Date().toISOString().slice(0, 10)
 }
@@ -51,6 +71,7 @@ export async function intelFeedUpsertItem(input: {
   thumbnailUrl?: string | null
   summary?: string | null
   content?: string | null
+  transcriptError?: string | null
   rotationDay: string
 }): Promise<IntelFeedRow | null> {
   const now = new Date().toISOString()
@@ -69,7 +90,7 @@ export async function intelFeedUpsertItem(input: {
         status: input.status,
         preview_snippet: input.previewSnippet ?? null,
         transcript_text: input.transcriptText ?? null,
-        transcript_error: null,
+        transcript_error: input.transcriptError ?? null,
         summary: summaryVal,
         content: contentVal,
         thumbnail_url: input.thumbnailUrl ?? null,

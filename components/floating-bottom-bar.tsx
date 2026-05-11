@@ -18,6 +18,8 @@ export default function FloatingBottomBar() {
   const t = translations[language]
   const { product: bookProduct } = useBookProduct()
 
+  if (pathname?.startsWith('/admin')) return null
+
   const btnClass =
     'flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:scale-105'
   const iconClass = 'w-5 h-5 flex-shrink-0'

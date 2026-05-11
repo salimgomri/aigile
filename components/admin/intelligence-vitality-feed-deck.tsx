@@ -132,9 +132,14 @@ export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: str
         setBanner('Échec de la synchronisation.')
         return
       }
-      const summary = (await res.json()) as { rotationDay?: string; upserted?: number; youtubeJobsQueued?: number }
+      const summary = (await res.json()) as {
+        rotationDay?: string
+        upserted?: number
+        youtubeJobsQueued?: number
+        webPodcastAutoScraped?: number
+      }
       setBanner(
-        `Synchronisation · jour UTC ${summary.rotationDay ?? '—'} · ${summary.upserted ?? 0} lignes · ${summary.youtubeJobsQueued ?? 0} jobs YouTube.`,
+        `Synchronisation · jour UTC ${summary.rotationDay ?? '—'} · ${summary.upserted ?? 0} lignes · ${summary.youtubeJobsQueued ?? 0} jobs YouTube · ${summary.webPodcastAutoScraped ?? 0} scrapes Web/Podcast auto (≥80).`,
       )
       await load()
     } finally {
@@ -168,7 +173,8 @@ export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: str
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
             Miniatures · transcripts YouTube · texte Web après analyse · jour UTC sélectionné :{' '}
-            <span className="font-mono text-foreground/90">{rotationDay}</span>.
+            <span className="font-mono text-foreground/90">{rotationDay}</span>. À la synchronisation YAML,
+            scraping Web/Podcast automatique si vitalité ≥ 80 ; entrées « prêt » listées en premier.
           </p>
           <p className="mt-2 max-w-2xl text-xs leading-relaxed text-aigile-gold/90">
             {langUi === 'fr'
