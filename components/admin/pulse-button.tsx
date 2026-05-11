@@ -29,46 +29,51 @@ export function PulseButton({ variant, shimmerLayer, children, className }: Puls
       typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)') : null
     if (mq?.matches) return
 
-    const ctx = gsap.context(() => {
-      gsap.killTweensOf(root)
-      if (shimmerEl) gsap.killTweensOf(shimmerEl)
+    try {
+      const ctx = gsap.context(() => {
+        gsap.killTweensOf(root)
+        if (shimmerEl) gsap.killTweensOf(shimmerEl)
 
-      if (variant === 'critical') {
-        gsap.set(root, { transformOrigin: '50% 50%', scale: 1 })
-        const beat = gsap.timeline({ repeat: -1 })
-        beat.to(root, {
-          scale: 1.038,
-          boxShadow:
-            '0 0 0 4px rgba(201,151,58,0.48), 0 0 36px rgba(232,150,30,0.42), 0 0 64px rgba(201,151,58,0.18)',
-          duration: 0.11,
-          ease: 'power2.out',
-        })
-        beat.to(root, { scale: 1.014, duration: 0.075, ease: 'power2.inOut' })
-        beat.to(root, {
-          scale: 1.042,
-          boxShadow:
-            '0 0 0 7px rgba(201,151,58,0.4), 0 0 48px rgba(232,150,30,0.52), 0 0 80px rgba(201,151,58,0.22)',
-          duration: 0.11,
-          ease: 'power2.out',
-        })
-        beat.to(root, {
-          scale: 1,
-          boxShadow: '0 0 0 0 rgba(201,151,58,0), 0 0 0 rgba(0,0,0,0)',
-          duration: 0.19,
-          ease: 'power3.inOut',
-        })
-        beat.to(root, { duration: 0.72 })
-      } else if (shimmerEl) {
-        gsap.set(shimmerEl, { xPercent: -140 })
-        gsap.timeline({ repeat: -1, repeatDelay: 5 }).to(shimmerEl, {
-          xPercent: 220,
-          duration: 1.05,
-          ease: 'power2.inOut',
-        })
-      }
-    }, root)
+        if (variant === 'critical') {
+          gsap.set(root, { transformOrigin: '50% 50%', scale: 1 })
+          const beat = gsap.timeline({ repeat: -1 })
+          beat.to(root, {
+            scale: 1.038,
+            boxShadow:
+              '0 0 0 4px rgba(201,151,58,0.48), 0 0 36px rgba(232,150,30,0.42), 0 0 64px rgba(201,151,58,0.18)',
+            duration: 0.11,
+            ease: 'power2.out',
+          })
+          beat.to(root, { scale: 1.014, duration: 0.075, ease: 'power2.inOut' })
+          beat.to(root, {
+            scale: 1.042,
+            boxShadow:
+              '0 0 0 7px rgba(201,151,58,0.4), 0 0 48px rgba(232,150,30,0.52), 0 0 80px rgba(201,151,58,0.22)',
+            duration: 0.11,
+            ease: 'power2.out',
+          })
+          beat.to(root, {
+            scale: 1,
+            boxShadow: '0 0 0 0 rgba(201,151,58,0), 0 0 0 rgba(0,0,0,0)',
+            duration: 0.19,
+            ease: 'power3.inOut',
+          })
+          beat.to(root, { duration: 0.72 })
+        } else if (shimmerEl) {
+          gsap.set(shimmerEl, { xPercent: -140 })
+          gsap.timeline({ repeat: -1, repeatDelay: 5 }).to(shimmerEl, {
+            xPercent: 220,
+            duration: 1.05,
+            ease: 'power2.inOut',
+          })
+        }
+      }, root)
 
-    return () => ctx.revert()
+      return () => ctx.revert()
+    } catch (e) {
+      console.warn('[PulseButton] GSAP désactivé pour cette carte', e)
+      return undefined
+    }
   }, [variant])
 
   return (

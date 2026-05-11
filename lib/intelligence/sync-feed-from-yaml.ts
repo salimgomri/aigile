@@ -13,6 +13,7 @@ import {
 import { loadIntelligenceSources } from '@/lib/intelligence/load-sources'
 import { resolveIntelThumbnailUrl } from '@/lib/intelligence/media-metadata-server'
 import { enqueueYoutubeTranscriptJob } from '@/lib/intelligence/transcript-job'
+import { fetchWebPagePlainText } from '@/lib/intelligence/web-page-text-server'
 import {
   computeVitalityScore,
   isDemoPaulArticlesUrl,
@@ -123,12 +124,40 @@ export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: bo
     const score = Number(row.vitality_score)
     const scoreLabel = Number.isFinite(score) ? score.toFixed(0) : '?'
     const now = new Date().toISOString()
-    const snippet = `Source · Vitalité ${scoreLabel} — ${row.url}`
+
+    await intelFeedPatch(row.id, {
+      status: 'analyzing',
+      analyst_started_at: now,
+      transcript_error: null,
+    })
+
+    const fetched = await fetchWebPagePlainText(row.url)
+    const baseSnippet = `${row.source_label} · ${row.url_kind === 'podcast' ? 'Podcast' : 'Web'} · Vitalité ${scoreLabel}`
+
+    if (fetched.text.length >= 120) {
+      const summaryLine = fetched.title ? `${fetched.title} — ${baseSnippet}` : baseSnippet
+      await intelFeedPatch(row.id, {
+        status: 'ready',
+        preview_snippet: summaryLine.slice(0, 500),
+        summary: summaryLine.slice(0, 2000),
+        content: fetched.text,
+        transcript_text: fetched.text,
+        transcript_error: null,
+        ready_at: new Date().toISOString(),
+      })
+      return { ok: true }
+    }
+
+    const errNote = fetched.error ? ` (${fetched.error})` : ''
+    const snippet = `${baseSnippet} — extraction texte courte ou bloquée${errNote}. Ouvrir l’URL source pour lire l’article.`
     await intelFeedPatch(row.id, {
       status: 'ready',
-      preview_snippet: snippet,
-      summary: snippet,
-      ready_at: now,
+      preview_snippet: snippet.slice(0, 500),
+      summary: snippet.slice(0, 2000),
+      content: fetched.text.length > 0 ? fetched.text : null,
+      transcript_text: fetched.text.length > 0 ? fetched.text : null,
+      transcript_error: fetched.error ?? null,
+      ready_at: new Date().toISOString(),
     })
     return { ok: true }
   }

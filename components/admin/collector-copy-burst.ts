@@ -1,8 +1,6 @@
 'use client'
 
-import gsap from 'gsap'
-
-/** Petit burst doré au centre du bouton — désactivé si prefers-reduced-motion. */
+/** Rafale dorée sans GSAP (Web Animations API) — évite les effets de bord navigateur / cssRules. */
 export function playCollectorCopyBurst(anchorEl: HTMLElement | null) {
   if (typeof window === 'undefined') return
 
@@ -27,22 +25,17 @@ export function playCollectorCopyBurst(anchorEl: HTMLElement | null) {
     const dist = 36 + Math.random() * 52
     dot.style.cssText = `position:fixed;left:${cx}px;top:${cy}px;width:3px;height:3px;margin:-1.5px 0 0 -1.5px;border-radius:9999px;background:rgba(201,151,58,0.92);box-shadow:0 0 10px rgba(201,151,58,0.55)`
     parent.appendChild(dot)
-    gsap.fromTo(
-      dot,
-      { opacity: 1, scale: 1 },
-      {
-        x: Math.cos(angle) * dist,
-        y: Math.sin(angle) * dist,
-        opacity: 0,
-        scale: 0.15,
-        duration: 0.5 + Math.random() * 0.18,
-        ease: 'power2.out',
-        onComplete: () => dot.remove(),
-      },
+    const dx = Math.cos(angle) * dist
+    const dy = Math.sin(angle) * dist
+    const anim = dot.animate(
+      [
+        { transform: 'translate(0,0) scale(1)', opacity: 1 },
+        { transform: `translate(${dx}px,${dy}px) scale(0.15)`, opacity: 0 },
+      ],
+      { duration: 520 + Math.random() * 140, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' },
     )
+    void anim.finished.then(() => dot.remove()).catch(() => dot.remove())
   }
 
-  gsap.delayedCall(1.1, () => {
-    parent.remove()
-  })
+  window.setTimeout(() => parent.remove(), 900)
 }

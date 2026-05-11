@@ -1,8 +1,7 @@
 'use client'
 
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import gsap from 'gsap'
-import { BookOpen, Check, ChevronDown, ClipboardCopy, Loader2, Send, Sparkles, X } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { BookOpen, Check, ClipboardCopy, Loader2, Send, Sparkles, X } from 'lucide-react'
 import { Literata } from 'next/font/google'
 
 import type { CollectorItem } from '@/lib/intelligence/collector-format'
@@ -27,77 +26,17 @@ type Props = {
   language: 'fr' | 'en'
 }
 
-function ReaderSkeleton({ lang }: { lang: 'fr' | 'en' }) {
-  return (
-    <div className="space-y-3 pt-2" aria-busy="true">
-      <div className="h-3 w-11/12 max-w-full animate-pulse rounded bg-muted/50" />
-      <div className="h-3 w-full animate-pulse rounded bg-muted/40" />
-      <div className="h-3 w-4/5 animate-pulse rounded bg-muted/35" />
-      <p className="text-xs text-muted-foreground">
-        {lang === 'fr' ? 'En attente du contenu synchronisé…' : 'Waiting for synced content…'}
-      </p>
-    </div>
-  )
-}
+function CollectorReaderBlock({ item, lang }: { item: CollectorItem; lang: 'fr' | 'en' }) {
+  const rawBody = (item.content ?? '').trim()
+  const fallbackSnippet = (item.summary ?? '').trim()
+  const displayBody =
+    rawBody.length >= 40 ? rawBody : rawBody.length > 0 ? rawBody : fallbackSnippet
 
-function CollectorReaderSection({
-  item,
-  lang,
-  expanded,
-  onToggle,
-}: {
-  item: CollectorItem
-  lang: 'fr' | 'en'
-  expanded: boolean
-  onToggle: () => void
-}) {
-  const innerRef = useRef<HTMLDivElement>(null)
-  const openedOnce = useRef(false)
-
-  const summaryLine =
-    (item.summary ?? '').trim() ||
-    (lang === 'fr'
-      ? 'Résumé disponible après synchronisation du flux.'
-      : 'Summary available after feed sync.')
-
-  const contentBody = (item.content ?? '').trim()
   const showSkeleton =
-    !contentBody && (item.feedPending || item.feedStatus === 'pending' || item.feedStatus === 'analyzing')
+    !displayBody &&
+    (item.feedPending || item.feedStatus === 'pending' || item.feedStatus === 'analyzing')
 
   const bullets = keyPointsForSmartCopy(item, lang)
-
-  useLayoutEffect(() => {
-    const el = innerRef.current
-    if (!el) return
-
-    const mq =
-      typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)') : null
-    if (mq?.matches) {
-      el.style.overflow = 'hidden'
-      el.style.height = expanded ? 'auto' : '0px'
-      el.style.opacity = expanded ? '1' : '0'
-      return
-    }
-
-    gsap.killTweensOf(el)
-    el.style.overflow = 'hidden'
-
-    if (!openedOnce.current) {
-      openedOnce.current = true
-      gsap.set(el, { height: 0, opacity: 0 })
-      return
-    }
-
-    if (expanded) {
-      gsap.fromTo(
-        el,
-        { height: 0, opacity: 0 },
-        { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out' },
-      )
-    } else {
-      gsap.to(el, { height: 0, opacity: 0, duration: 0.28, ease: 'power2.in' })
-    }
-  }, [expanded])
 
   const charterStack = {
     fontFamily: `Charter, 'Bitstream Charter', ${readerSerif.style.fontFamily}, Georgia, serif`,
@@ -105,92 +44,81 @@ function CollectorReaderSection({
 
   const linkUrls = item.primaryUrl ? [{ href: item.primaryUrl }] : item.urls
 
+  const emptyHint =
+    lang === 'fr'
+      ? 'Aucun texte brut stocké : dans le flux Intelligence, cliquez « Analyser » sur cette URL (Web = extraction HTML, YouTube = transcript).'
+      : 'No stored raw text: open the Intelligence feed and click Analyze for this URL (Web = HTML extract, YouTube = transcript).'
+
   return (
-    <div className="rounded-xl border border-border/70 bg-card/60 px-4 py-3 shadow-sm">
-      <button
-        type="button"
-        onClick={onToggle}
-        className="flex w-full items-start gap-3 text-left"
-        aria-expanded={expanded}
+    <div className="rounded-xl border border-border/70 bg-card/60 px-4 py-4 shadow-sm">
+      <p className="font-semibold text-foreground">{item.groupName}</p>
+      {typeof item.vitality_score === 'number' && Number.isFinite(item.vitality_score) ? (
+        <p className="mt-1 text-[11px] text-muted-foreground/90">
+          {lang === 'fr' ? 'Vitalité' : 'Vitality'} · {Math.round(item.vitality_score)} ·{' '}
+          {item.feedStatus ?? '—'}
+        </p>
+      ) : null}
+
+      <p className="mb-2 mt-3 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        {lang === 'fr' ? 'Points clés (aperçu)' : 'Key points (preview)'}
+      </p>
+      <ul
+        className={cn(
+          readerSerif.className,
+          'mb-4 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-foreground/95',
+        )}
+        style={charterStack}
       >
-        <div className="min-w-0 flex-1">
-          <p className="font-semibold text-foreground">{item.groupName}</p>
-          <p className="mt-1 text-sm leading-snug text-muted-foreground">{summaryLine}</p>
-          {typeof item.vitality_score === 'number' && Number.isFinite(item.vitality_score) ? (
-            <p className="mt-1 text-[11px] text-muted-foreground/90">
-              {lang === 'fr' ? 'Vitalité' : 'Vitality'} · {Math.round(item.vitality_score)}
-            </p>
-          ) : null}
-        </div>
-        <ChevronDown
+        {bullets.map((k) => (
+          <li key={k}>{k}</li>
+        ))}
+      </ul>
+
+      <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        {lang === 'fr' ? 'Texte brut (article ou transcript)' : 'Raw text (article or transcript)'}
+      </p>
+      {displayBody ? (
+        <div
           className={cn(
-            'mt-1 h-5 w-5 shrink-0 text-aigile-gold transition-transform duration-300',
-            expanded && 'rotate-180',
+            readerSerif.className,
+            'max-h-[min(480px,52vh)] overflow-y-auto whitespace-pre-wrap text-[15px] leading-relaxed text-foreground/95',
           )}
-          aria-hidden
-        />
-      </button>
-
-      <div ref={innerRef}>
-        <div className="mt-4 border-t border-border/50 pt-4">
-          <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-            {lang === 'fr' ? 'Points clés' : 'Key points'}
+          style={charterStack}
+        >
+          {displayBody}
+        </div>
+      ) : showSkeleton ? (
+        <div className="space-y-2 pt-1" aria-busy="true">
+          <div className="h-3 w-full animate-pulse rounded bg-muted/45" />
+          <div className="h-3 w-[92%] animate-pulse rounded bg-muted/35" />
+          <p className="text-xs text-muted-foreground">
+            {lang === 'fr' ? 'Collecte ou analyse en cours…' : 'Fetching or analyzing…'}
           </p>
-          <ul
-            className={cn(
-              readerSerif.className,
-              'mb-4 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-foreground/95',
-            )}
-            style={charterStack}
-          >
-            {bullets.map((k) => (
-              <li key={k}>{k}</li>
-            ))}
-          </ul>
+        </div>
+      ) : (
+        <p className={cn(readerSerif.className, 'text-sm text-amber-200/90')} style={charterStack}>
+          {emptyHint}
+        </p>
+      )}
 
-          <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-            {lang === 'fr' ? 'Mode lecture (contenu)' : 'Reader (full content)'}
-          </p>
-          {contentBody ? (
-            <div
+      <ul className="mt-4 space-y-1.5 border-t border-border/40 pt-3">
+        {linkUrls.map((u) => (
+          <li key={u.href}>
+            <a
+              href={u.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 readerSerif.className,
-                'max-h-[min(360px,45vh)] overflow-y-auto whitespace-pre-wrap text-[15px] leading-relaxed text-foreground/95',
+                'break-all text-sm text-aigile-gold underline-offset-2 hover:underline',
               )}
               style={charterStack}
             >
-              {contentBody}
-            </div>
-          ) : showSkeleton ? (
-            <ReaderSkeleton lang={lang} />
-          ) : (
-            <p className={cn(readerSerif.className, 'text-sm text-muted-foreground')} style={charterStack}>
-              {lang === 'fr'
-                ? 'Pas encore de contenu long — lancez l’analyse ou la synchro.'
-                : 'No long content yet — run analysis or sync.'}
-            </p>
-          )}
-
-          <ul className="mt-4 space-y-1.5">
-            {linkUrls.map((u) => (
-              <li key={u.href}>
-                <a
-                  href={u.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    readerSerif.className,
-                    'text-sm text-aigile-gold underline-offset-2 hover:underline',
-                  )}
-                  style={charterStack}
-                >
-                  {u.href}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+              {u.href}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
@@ -198,7 +126,6 @@ function CollectorReaderSection({
 export function IntelligenceCollectorModal({ open, onClose, items, language }: Props) {
   const lang = language === 'fr' ? 'fr' : 'en'
   const copyBtnRef = useRef<HTMLButtonElement>(null)
-  const [expandedKey, setExpandedKey] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const [exportLoading, setExportLoading] = useState(false)
   const [exportMsg, setExportMsg] = useState<{ type: 'ok' | 'err'; text: string } | null>(null)
@@ -220,7 +147,6 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
 
   useEffect(() => {
     if (!open) {
-      setExpandedKey(null)
       setCopied(false)
       setExportLoading(false)
       setExportMsg(null)
@@ -490,19 +416,10 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
                 <BookOpen className="h-4 w-4 text-muted-foreground" aria-hidden />
                 <h3 className="text-sm font-bold uppercase tracking-wide text-foreground">{tierTitle}</h3>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {(grouped.map.get(tierTitle) ?? []).map((item) => {
                   const key = item.feedItemId ?? `${item.tierId}:::${item.groupName}:::${item.primaryUrl ?? ''}`
-                  const ex = expandedKey === key
-                  return (
-                    <CollectorReaderSection
-                      key={key}
-                      item={item}
-                      lang={lang}
-                      expanded={ex}
-                      onToggle={() => setExpandedKey((prev) => (prev === key ? null : key))}
-                    />
-                  )
+                  return <CollectorReaderBlock key={key} item={item} lang={lang} />
                 })}
               </div>
             </section>

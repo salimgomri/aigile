@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { Sparkles } from 'lucide-react'
+import { AdminIntelligenceClient } from '@/components/admin/admin-intelligence-client'
 import { loadIntelligenceSources } from '@/lib/intelligence/load-sources'
-import { IntelligenceVitalityFeedDeck } from '@/components/admin/intelligence-vitality-feed-deck'
-import { IntelligenceSourcesMatrix } from '@/components/admin/intelligence-sources-matrix'
 
 export default function AdminIntelligencePage() {
   const sources = loadIntelligenceSources()
@@ -15,8 +14,7 @@ export default function AdminIntelligencePage() {
           <div>
             <h1 className="text-2xl font-bold text-foreground md:text-3xl">Intelligence</h1>
             <p className="text-sm text-muted-foreground">
-              Matrice des géants · sources d&apos;élite ·{' '}
-              <span lang="en">bento · deep search · quality filter</span>
+              Sources Visionnaires, Empire, Wealth… · lecture · transcripts · export
             </p>
           </div>
         </div>
@@ -28,9 +26,7 @@ export default function AdminIntelligencePage() {
         </Link>
       </div>
 
-      <IntelligenceVitalityFeedDeck />
-
-      <IntelligenceSourcesMatrix data={sources} />
+      <AdminIntelligenceClient sources={sources} />
     </div>
   )
 }

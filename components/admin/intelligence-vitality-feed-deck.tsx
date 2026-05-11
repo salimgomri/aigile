@@ -28,6 +28,7 @@ type FeedPayload = {
   items: FeedItem[]
   retentionDays: number
   rotationHint: string | null
+  rotationDayFilter?: string | null
 }
 
 function vitalityLabel(score: number): string {
@@ -65,7 +66,7 @@ function FeedCardCover({
   )
 }
 
-export function IntelligenceVitalityFeedDeck() {
+export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: string }) {
   const [data, setData] = useState<FeedPayload | null>(null)
   const [loading, setLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
@@ -74,7 +75,8 @@ export function IntelligenceVitalityFeedDeck() {
 
   const load = useCallback(async () => {
     setBanner(null)
-    const res = await fetch('/api/admin/intelligence/feed')
+    const q = encodeURIComponent(rotationDay)
+    const res = await fetch(`/api/admin/intelligence/feed?rotationDay=${q}`)
     if (!res.ok) {
       setData(null)
       setLoading(false)
@@ -84,7 +86,7 @@ export function IntelligenceVitalityFeedDeck() {
     const json = (await res.json()) as FeedPayload
     setData(json)
     setLoading(false)
-  }, [])
+  }, [rotationDay])
 
   useEffect(() => {
     void load()
@@ -142,8 +144,8 @@ export function IntelligenceVitalityFeedDeck() {
             Flux opérationnel Intelligence
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-            Rotation {data?.retentionDays ?? 7} jours · miniature YouTube / RSS · résumés et contenus depuis Supabase ·
-            transcription auto si vitalité &gt; 90.
+            Miniatures · transcripts YouTube · texte Web après analyse · jour UTC sélectionné :{' '}
+            <span className="font-mono text-foreground/90">{rotationDay}</span>.
           </p>
           {data?.rotationHint ? (
             <p className="mt-2 text-xs text-muted-foreground">
@@ -173,9 +175,24 @@ export function IntelligenceVitalityFeedDeck() {
           Chargement du flux…
         </div>
       ) : items.length === 0 ? (
-        <p className="text-sm text-muted-foreground">
-          Aucune entrée. Lancez une synchronisation pour peupler le flux depuis les sources YAML.
-        </p>
+        <div className="flex flex-col items-center justify-center gap-5 rounded-xl border border-dashed border-aigile-gold/40 bg-amber-950/15 px-6 py-14 text-center">
+          <p className="max-w-md text-sm text-muted-foreground">
+            Aucune ligne Supabase pour le <span className="font-mono text-foreground">{rotationDay}</span> UTC. Lancez
+            une synchronisation pour ingérer les URLs YAML (scraping des métadonnées + file d’attente YouTube).
+          </p>
+          <button
+            type="button"
+            onClick={() => void sync()}
+            disabled={syncing}
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-aigile-gold/70 bg-aigile-gold px-8 py-3 text-base font-semibold text-black shadow-lg hover:bg-aigile-gold/90 disabled:opacity-50"
+          >
+            {syncing ? <Loader2 className="h-5 w-5 animate-spin" aria-hidden /> : <RefreshCw className="h-5 w-5" aria-hidden />}
+            Lancer le scraping maintenant
+          </button>
+          <p className="text-xs text-muted-foreground">
+            Équivalent au bouton « Synchroniser depuis YAML » ci-dessus — ingestion + jobs transcript selon les règles.
+          </p>
+        </div>
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {items.map((item) => {

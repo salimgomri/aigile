@@ -4,6 +4,10 @@ import { useEffect, useMemo, useState } from 'react'
 import { Check, ExternalLink, Filter, Plus, Search, Sparkles } from 'lucide-react'
 
 import { IntelligenceCollectorModal } from '@/components/admin/intelligence-collector-modal'
+import {
+  IntelligenceSourceReaderModal,
+  type ReaderFeedRow,
+} from '@/components/admin/intelligence-source-reader-modal'
 import { useLanguage } from '@/components/language-provider'
 import type { CollectorItem } from '@/lib/intelligence/collector-format'
 import { youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
@@ -15,14 +19,6 @@ import type {
   IntelligenceTier,
   SourceUrl,
 } from '@/lib/intelligence/types'
-
-function normalizeHost(u: string) {
-  try {
-    return new URL(u).hostname.replace(/^www\./, '')
-  } catch {
-    return u
-  }
-}
 
 function matchesQuery(tier: IntelligenceTier, group: IntelligenceSourceGroup, q: string): boolean {
   const needle = q.trim().toLowerCase()
@@ -120,28 +116,33 @@ function TierBadge({ tier }: { tier: IntelligenceTier }) {
   )
 }
 
-function UrlChip({ url }: { url: SourceUrl }) {
-  const host = normalizeHost(url.href)
-  const kindClass =
-    url.kind === 'youtube'
-      ? 'border-red-500/35 bg-red-500/10 text-red-100/95'
-      : url.kind === 'podcast'
-        ? 'border-violet-500/35 bg-violet-500/10 text-violet-100/95'
-        : 'border-aigile-gold/30 bg-aigile-gold/5 text-foreground/95'
+function UrlThumbnailRow({ url, row }: { url: SourceUrl; row?: FeedApiItem }) {
+  const yt = url.kind === 'youtube' ? youtubeThumbnailUrlForPageUrl(url.href) : null
+  const thumb = row?.thumbnail_url?.trim() || yt || null
 
   return (
-    <a
-      href={url.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        'group/chip inline-flex max-w-full items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors hover:border-aigile-gold/50 hover:bg-aigile-gold/10',
-        kindClass,
-      )}
-    >
-      <span className="truncate">{host}</span>
-      <ExternalLink className="h-3 w-3 shrink-0 opacity-60 group-hover/chip:opacity-100" aria-hidden />
-    </a>
+    <div className="flex items-center gap-2 rounded-lg border border-border/55 bg-background/50 px-2 py-1.5">
+      <div className="relative h-11 w-[4.5rem] shrink-0 overflow-hidden rounded-md bg-muted">
+        {thumb ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={thumb} alt="" className="h-full w-full object-cover" />
+        ) : (
+          <span className="flex h-full items-center justify-center px-1 text-center text-[9px] leading-tight text-muted-foreground">
+            {url.kind === 'youtube' ? 'YT' : url.kind === 'podcast' ? 'RSS' : 'WEB'}
+          </span>
+        )}
+      </div>
+      <a
+        href={url.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => e.stopPropagation()}
+        className="min-w-0 flex-1 truncate text-[11px] font-medium text-aigile-gold underline-offset-2 hover:underline"
+      >
+        {url.href}
+      </a>
+      <ExternalLink className="h-3 w-3 shrink-0 text-muted-foreground" aria-hidden />
+    </div>
   )
 }
 
@@ -153,6 +154,10 @@ function SourceCard({
   selected,
   onToggleSelect,
   coverImageUrl,
+  groupFeedRows,
+  tierTitleUi,
+  language,
+  onOpenReader,
 }: {
   tier: IntelligenceTier
   group: IntelligenceSourceGroup
@@ -161,14 +166,73 @@ function SourceCard({
   selected: boolean
   onToggleSelect: () => void
   coverImageUrl: string | null
+  groupFeedRows: FeedApiItem[]
+  tierTitleUi: string
+  language: 'fr' | 'en'
+  onOpenReader: (payload: {
+    tierTitle: string
+    groupName: string
+    urls: SourceUrl[]
+    rows: ReaderFeedRow[]
+  }) => void
 }) {
   const ok = matchesQuery(tier, group, query)
   const urls = filterUrls(group.urls, hideYoutube)
 
+  const hint =
+    language === 'fr'
+      ? 'Cliquer pour lire le texte / transcript'
+      : 'Click to read text / transcript'
+
   return (
     <article
+      tabIndex={ok ? 0 : undefined}
+      role={ok ? 'button' : undefined}
+      aria-label={ok ? `${group.name} — ${hint}` : undefined}
+      onClick={() => {
+        if (!ok) return
+        const rows: ReaderFeedRow[] = groupFeedRows.map((r) => ({
+          id: r.id,
+          url: r.url,
+          url_kind: r.url_kind,
+          status: r.status,
+          thumbnail_url: r.thumbnail_url,
+          summary: r.summary,
+          content: r.content,
+          transcript_text: r.transcript_text,
+        }))
+        onOpenReader({
+          tierTitle: tierTitleUi,
+          groupName: group.name,
+          urls: group.urls,
+          rows,
+        })
+      }}
+      onKeyDown={(e) => {
+        if (!ok) return
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          const rows: ReaderFeedRow[] = groupFeedRows.map((r) => ({
+            id: r.id,
+            url: r.url,
+            url_kind: r.url_kind,
+            status: r.status,
+            thumbnail_url: r.thumbnail_url,
+            summary: r.summary,
+            content: r.content,
+            transcript_text: r.transcript_text,
+          }))
+          onOpenReader({
+            tierTitle: tierTitleUi,
+            groupName: group.name,
+            urls: group.urls,
+            rows,
+          })
+        }
+      }}
       className={cn(
-        'relative flex flex-col overflow-hidden rounded-2xl border bg-card/80 shadow-sm transition-[filter,opacity,transform,box-shadow] duration-500 ease-out',
+        'relative flex flex-col overflow-hidden rounded-2xl border bg-card/80 shadow-sm transition-[filter,opacity,transform,box-shadow,border-color] duration-300 ease-out',
+        ok && 'cursor-pointer hover:border-aigile-gold/40',
         tier.layout.variant === 'visionnaires_gold_fine' &&
           'border-[0.5px] border-aigile-gold/55 bg-gradient-to-b from-black/55 via-zinc-950/88 to-black/92 shadow-[0_0_0_0.5px_rgba(201,151,58,0.1)] md:min-h-[148px]',
         tier.layout.variant === 'empire_gold_black' &&
@@ -186,7 +250,10 @@ function SourceCard({
         {ok ? (
           <button
             type="button"
-            onClick={onToggleSelect}
+            onClick={(e) => {
+              e.stopPropagation()
+              onToggleSelect()
+            }}
             aria-pressed={selected}
             title={selected ? 'Retirer du collector' : 'Ajouter au collector'}
             className={cn(
@@ -202,7 +269,7 @@ function SourceCard({
         {ok ? <BentoCover tierId={tier.id} src={coverImageUrl} /> : null}
         <h3
           className={cn(
-            'mb-3 pr-10 font-semibold leading-snug text-foreground',
+            'mb-2 pr-10 font-semibold leading-snug text-foreground',
             tier.layout.variant === 'visionnaires_gold_fine' &&
               'text-base text-aigile-gold/95 md:text-lg md:tracking-tight',
             tier.layout.variant === 'empire_gold_black' && 'text-lg md:text-2xl md:tracking-tight',
@@ -211,10 +278,14 @@ function SourceCard({
         >
           {group.name}
         </h3>
-        <div className="flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()} role="presentation">
-          {urls.map((u) => (
-            <UrlChip key={u.href} url={u} />
-          ))}
+        {ok ? (
+          <p className="mb-2 text-[10px] uppercase tracking-wide text-muted-foreground">{hint}</p>
+        ) : null}
+        <div className="space-y-1.5" onClick={(e) => e.stopPropagation()} role="presentation">
+          {urls.map((u) => {
+            const row = groupFeedRows.find((r) => r.url === u.href)
+            return <UrlThumbnailRow key={u.href} url={u} row={row} />
+          })}
           {urls.length === 0 && hideYoutube && group.urls.some((u) => u.kind === 'youtube') ? (
             <p className="text-xs italic text-muted-foreground">
               Liens YouTube masqués — filtre qualité (≥ durée configurée à l’ingestion).
@@ -226,7 +297,13 @@ function SourceCard({
   )
 }
 
-export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesFile }) {
+export function IntelligenceSourcesMatrix({
+  data,
+  rotationDay,
+}: {
+  data: IntelligenceSourcesFile
+  rotationDay: string
+}) {
   const { language } = useLanguage()
   const [query, setQuery] = useState('')
   const [hideYoutube, setHideYoutube] = useState(false)
@@ -236,9 +313,17 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
 
   const langUi = language === 'fr' ? 'fr' : 'en'
 
+  const [reader, setReader] = useState<{
+    tierTitle: string
+    groupName: string
+    urls: SourceUrl[]
+    rows: ReaderFeedRow[]
+  } | null>(null)
+
   useEffect(() => {
     let cancelled = false
-    void fetch('/api/admin/intelligence/feed')
+    const q = encodeURIComponent(rotationDay)
+    void fetch(`/api/admin/intelligence/feed?rotationDay=${q}`)
       .then((r) => (r.ok ? r.json() : null))
       .then((json: { items?: FeedApiItem[] } | null) => {
         if (cancelled || !json?.items) return
@@ -248,7 +333,7 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [rotationDay])
 
   function selectionKey(tierId: string, groupName: string) {
     return `${tierId}:::${groupName}`
@@ -392,19 +477,28 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
                   'rounded-3xl border border-aigile-gold/20 bg-gradient-to-br from-black/80 via-zinc-950/70 to-zinc-950/40 p-4 md:p-6',
               )}
             >
-              {tier.groups.map((group) => (
-                <div key={group.name} className={span}>
-                  <SourceCard
-                    tier={tier}
-                    group={group}
-                    query={query}
-                    hideYoutube={hideYoutube}
-                    selected={selectedKeys.has(selectionKey(tier.id, group.name))}
-                    onToggleSelect={() => toggleKey(tier.id, group.name)}
-                    coverImageUrl={pickCoverForGroup(tier.id, group.name, feedRows)}
-                  />
-                </div>
-              ))}
+              {tier.groups.map((group) => {
+                const groupFeedRows = feedRows.filter(
+                  (r) => r.tier_id === tier.id && r.source_label === group.name,
+                )
+                return (
+                  <div key={group.name} className={span}>
+                    <SourceCard
+                      tier={tier}
+                      group={group}
+                      query={query}
+                      hideYoutube={hideYoutube}
+                      selected={selectedKeys.has(selectionKey(tier.id, group.name))}
+                      onToggleSelect={() => toggleKey(tier.id, group.name)}
+                      coverImageUrl={pickCoverForGroup(tier.id, group.name, feedRows)}
+                      groupFeedRows={groupFeedRows}
+                      tierTitleUi={title}
+                      language={langUi}
+                      onOpenReader={setReader}
+                    />
+                  </div>
+                )
+              })}
             </div>
           </section>
         )
@@ -412,9 +506,19 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
 
       <p className="text-center text-[11px] text-muted-foreground/85">
         {language === 'fr'
-          ? 'Démo complète : pulsation Intelligence (heartbeat admin) → synchronisez le flux → matrice → lecture → Collector → doctrine → « Envoyer à mon futur moi » (Notion/Slack via Zapier). Astuce : « Naval », « Jobs », « Lex ».'
-          : 'Full demo: Intelligence pulse (admin heartbeat) → sync feed → matrix → read → Collector → doctrine → “Send to my future self” (Notion/Slack via Zapier). Try “Naval”, “Jobs”, “Lex”.'}
+          ? `Flux filtré : jour UTC ${rotationDay}. Sync YAML puis « Analyser » sur le flux pour remplir texte et transcripts.`
+          : `Feed filtered: UTC day ${rotationDay}. Run YAML sync then Analyze on feed rows for full text.`}
       </p>
+
+      <IntelligenceSourceReaderModal
+        open={reader !== null}
+        onClose={() => setReader(null)}
+        tierTitle={reader?.tierTitle ?? ''}
+        groupName={reader?.groupName ?? ''}
+        urls={reader?.urls ?? []}
+        rows={reader?.rows ?? []}
+        language={langUi}
+      />
 
       <IntelligenceCollectorModal
         open={collectorOpen}

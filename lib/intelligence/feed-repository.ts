@@ -105,6 +105,23 @@ export async function intelFeedListRecent(limit = 120): Promise<IntelFeedRow[]> 
   return (data ?? []) as IntelFeedRow[]
 }
 
+const ROTATION_DAY_RE = /^\d{4}-\d{2}-\d{2}$/
+
+export async function intelFeedListByRotationDay(rotationDay: string): Promise<IntelFeedRow[]> {
+  if (!ROTATION_DAY_RE.test(rotationDay)) return []
+  const { data, error } = await supabaseAdmin
+    .from('intel_feed_items')
+    .select('*')
+    .eq('rotation_day', rotationDay)
+    .order('vitality_score', { ascending: false })
+
+  if (error) {
+    console.error('[intel-feed list by day]', error.message)
+    return []
+  }
+  return (data ?? []) as IntelFeedRow[]
+}
+
 export async function intelFeedGetById(id: string): Promise<IntelFeedRow | null> {
   const { data, error } = await supabaseAdmin.from('intel_feed_items').select('*').eq('id', id).maybeSingle()
   if (error) return null
