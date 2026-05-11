@@ -1,6 +1,6 @@
 /**
- * Table + ligne seed Intelligence (Master).
- * Idempotent : table déjà là ou ligne déjà là → OK.
+ * Migrations SQL Intelligence : Master (`030`/`031`) + flux vitalité (`032_intel_feed_items`).
+ * Idempotent où possible (ré-exécution sans erreur si déjà appliqué).
  *
  * Run: npx tsx scripts/intel-setup.ts
  */
@@ -41,6 +41,18 @@ async function main() {
       `SELECT source_key, vitality_score, read_at FROM intel_master_signals WHERE source_key = 'master'`,
     )
     console.log('État master:', rows[0] ?? '(aucune ligne — anormal)')
+
+    try {
+      await pool.query(readMigration('032_intel_feed_items.sql'))
+      console.log('032_intel_feed_items.sql: OK')
+    } catch (e: unknown) {
+      const err = e as { code?: string }
+      if (err.code === '42P07' || err.code === '42710') {
+        console.log('032_intel_feed_items.sql: déjà appliquée (table ou enum existante)')
+      } else {
+        throw e
+      }
+    }
   } finally {
     await pool.end()
   }

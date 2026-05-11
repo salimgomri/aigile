@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Sparkles } from 'lucide-react'
 import { loadIntelligenceSources } from '@/lib/intelligence/load-sources'
+import { IntelligenceVitalityFeedDeck } from '@/components/admin/intelligence-vitality-feed-deck'
 import { IntelligenceSourcesMatrix } from '@/components/admin/intelligence-sources-matrix'
 
 export default function AdminIntelligencePage() {
@@ -26,6 +27,8 @@ export default function AdminIntelligencePage() {
           ← Administration
         </Link>
       </div>
+
+      <IntelligenceVitalityFeedDeck />
 
       <IntelligenceSourcesMatrix data={sources} />
     </div>
