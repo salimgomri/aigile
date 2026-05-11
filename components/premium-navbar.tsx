@@ -24,6 +24,7 @@ import { Menu, X, ChevronDown, Globe, User, LogOut } from 'lucide-react'
 import { useSession, signOut } from '@/lib/auth-client'
 import { useCredits } from '@/lib/credits/CreditContext'
 import CreditsCountBadge from '@/components/credits/CreditsCountBadge'
+import { LocalhostAdminSimToggle } from '@/components/dev/localhost-admin-sim-toggle'
 
 export default function PremiumNavbar() {
   const pathname = usePathname()
@@ -184,6 +185,7 @@ export default function PremiumNavbar() {
 
               {/* Authentication Buttons (Desktop) */}
               <div className="hidden lg:flex items-center space-x-3">
+                <LocalhostAdminSimToggle />
                 {isPending ? (
                   <div className="w-8 h-8 rounded-full bg-muted animate-pulse" />
                 ) : session ? (
@@ -293,6 +295,7 @@ export default function PremiumNavbar() {
 
               {/* Mobile Auth Buttons */}
               <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+                <LocalhostAdminSimToggle className="w-full" />
                 {isPending ? (
                   <div className="w-full h-12 rounded-lg bg-muted animate-pulse" />
                 ) : session ? (

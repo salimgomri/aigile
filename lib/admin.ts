@@ -4,6 +4,7 @@
  */
 
 import { supabaseAdmin } from '@/lib/supabase'
+import { isAigileDevAdminSimEnabled } from '@/lib/dev-admin-sim-toggle-env'
 
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || '')
   .split(',')
@@ -13,6 +14,23 @@ const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || '')
 export function isAdminEmail(email: string | null | undefined): boolean {
   if (!email) return false
   return ADMIN_EMAILS.includes(email.toLowerCase())
+}
+
+/** Cookie posé uniquement par POST /api/dev/admin-sim si NEXT_PUBLIC_AIGILE_DEV_ADMIN_SIM est activée + localhost. */
+export const DEV_ADMIN_SIM_COOKIE_NAME = 'aigile_dev_admin_sim'
+
+export function hasDevLocalAdminSimCookie(cookieHeader: string | null | undefined): boolean {
+  if (!isAigileDevAdminSimEnabled()) return false
+  if (!cookieHeader) return false
+  return cookieHeader.split(';').some((part) => part.trim().startsWith(`${DEV_ADMIN_SIM_COOKIE_NAME}=1`))
+}
+
+/** Admin réel (email) ou simulation dev localhost (cookie). */
+export function isAdminAccessAllowed(
+  email: string | null | undefined,
+  cookieHeader: string | null | undefined,
+): boolean {
+  return isAdminEmail(email) || hasDevLocalAdminSimCookie(cookieHeader)
 }
 
 export async function isAdminUserId(userId: string): Promise<boolean> {

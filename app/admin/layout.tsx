@@ -1,8 +1,9 @@
 import { redirect } from 'next/navigation'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
-import { isAdminEmail } from '@/lib/admin'
+import { isAdminAccessAllowed } from '@/lib/admin'
 import Link from 'next/link'
+import { Sparkles } from 'lucide-react'
 
 export default async function AdminLayout({
   children,
@@ -11,7 +12,8 @@ export default async function AdminLayout({
 }) {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session?.user) redirect('/login')
-  if (!isAdminEmail(session.user.email)) redirect('/dashboard')
+  const cookieHeader = (await headers()).get('cookie')
+  if (!isAdminAccessAllowed(session.user.email, cookieHeader)) redirect('/dashboard')
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,6 +46,13 @@ export default async function AdminLayout({
               className="text-sm font-medium text-aigile-gold hover:text-book-orange"
             >
               Sync Stripe
+            </Link>
+            <Link
+              href="/admin/intelligence"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-aigile-gold hover:text-book-orange"
+            >
+              <Sparkles className="h-4 w-4" aria-hidden />
+              Intelligence
             </Link>
             <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
               ← Dashboard

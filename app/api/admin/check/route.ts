@@ -1,16 +1,18 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
-import { isAdminEmail } from '@/lib/admin'
+import { isAdminAccessAllowed } from '@/lib/admin'
 
 const ADMIN_COOKIE_NAME = 'aigile.admin'
 const ADMIN_COOKIE_MAX_AGE = 60 * 60 * 24 * 7 // 7 jours
 
 export async function GET() {
   try {
-    const session = await auth.api.getSession({ headers: await headers() })
+    const h = await headers()
+    const session = await auth.api.getSession({ headers: h })
     const email = session?.user?.email ?? null
-    const isAdmin = isAdminEmail(email)
+    const cookieHeader = h.get('cookie')
+    const isAdmin = !!session?.user && isAdminAccessAllowed(email, cookieHeader)
 
     const res = NextResponse.json({ admin: isAdmin })
 

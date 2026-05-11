@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { isAigileDevAdminSimEnabled } from '@/lib/dev-admin-sim-toggle-env'
+import { isLocalDevHostname } from '@/lib/dev-local-host'
 
 /**
  * Middleware runs ONLY on protected routes (positive matcher).
@@ -22,6 +24,12 @@ const PROTECTED_ROUTES = [
 
 const COMING_SOON_REDIRECT = ['/niko-niko', '/dora']
 const ADMIN_COOKIE_NAME = 'aigile.admin'
+const DEV_ADMIN_SIM_COOKIE = 'aigile_dev_admin_sim'
+
+function isDevLocalhostHostname(request: NextRequest): boolean {
+  const h = request.nextUrl.hostname.toLowerCase()
+  return isLocalDevHostname(h)
+}
 
 // En prod (useSecureCookies), Better Auth préfixe avec __Secure-
 const SESSION_COOKIE_NAMES = ['aigile.session_token', '__Secure-aigile.session_token'] as const
@@ -46,7 +54,12 @@ export async function middleware(request: NextRequest) {
   }
 
   // Lancement: rediriger niko-niko et dora vers dashboard (sauf si admin)
-  const isAdmin = !!request.cookies.get(ADMIN_COOKIE_NAME)?.value
+  const devSimAdmin =
+    isAigileDevAdminSimEnabled() &&
+    isDevLocalhostHostname(request) &&
+    request.cookies.get(DEV_ADMIN_SIM_COOKIE)?.value === '1'
+
+  const isAdmin = !!request.cookies.get(ADMIN_COOKIE_NAME)?.value || devSimAdmin
   if (!isAdmin && COMING_SOON_REDIRECT.some(r => pathname === r || pathname.startsWith(r + '/'))) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }

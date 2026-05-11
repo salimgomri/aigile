@@ -1,0 +1,202 @@
+# Matrice des géants — sources Intelligence (admin)
+# youtube_min_duration_minutes : règle métier — les flux vidéo sous cette durée (minutes) seront ignorés à l’ingestion.
+
+version: 1
+youtube_min_duration_minutes: 8
+
+tiers:
+  - id: empire_builders
+    rank: empire
+    title_fr: "L'Olympe des Visionnaires & Empire Builders"
+    title_en: "Olympus — Visionaries & Empire Builders"
+    tagline_fr: "Ceux qui dessinent le monde de demain."
+    tagline_en: "Those who sketch tomorrow's world."
+    layout:
+      bento_column_span: 2
+      variant: empire_gold_black
+    groups:
+      - name: "Elon Musk — Tesla"
+        urls:
+          - { href: "https://www.tesla.com/blog", kind: web }
+      - name: "Elon Musk — SpaceX"
+        urls:
+          - { href: "https://www.spacex.com/updates", kind: web }
+      - name: "NVIDIA (Jensen Huang)"
+        urls:
+          - { href: "https://blogs.nvidia.com/", kind: web }
+          - { href: "https://nvidianews.nvidia.com/", kind: web }
+      - name: "OpenAI — Actualités"
+        urls:
+          - { href: "https://openai.com/news/", kind: web }
+      - name: "Sam Altman — Blog"
+        urls:
+          - { href: "https://blog.samaltman.com/", kind: web }
+      - name: "Anthropic (Dario Amodei)"
+        urls:
+          - { href: "https://www.anthropic.com/news", kind: web }
+      - name: "Steve Jobs Archive"
+        urls:
+          - { href: "https://www.youtube.com/@SteveJobsArchive", kind: youtube }
+      - name: "Wait But Why (Tim Urban)"
+        urls:
+          - { href: "https://waitbutwhy.com/", kind: web }
+      - name: "The Gates Notes (Bill Gates)"
+        urls:
+          - { href: "https://www.gatesnotes.com/", kind: web }
+
+  - id: wealth_architects
+    rank: wealth
+    title_fr: "Wealth Architects & Stratégie Business"
+    title_en: "Wealth Architects & Business Strategy"
+    tagline_fr: "La science de la création de richesse et du scale."
+    tagline_en: "The science of wealth creation and scale."
+    layout:
+      bento_column_span: 1
+      variant: wealth_hbr
+    groups:
+      - name: "Naval Ravikant"
+        urls:
+          - { href: "https://nav.al/", kind: web }
+          - { href: "https://www.youtube.com/@Naval", kind: youtube }
+      - name: "Alex Hormozi"
+        urls:
+          - { href: "https://acquisition.com/training", kind: web }
+          - { href: "https://www.youtube.com/@AlexHormozi", kind: youtube }
+      - name: "Ray Dalio — Principles"
+        urls:
+          - { href: "https://www.principles.com/", kind: web }
+          - { href: "https://www.youtube.com/@PrinciplesbyRayDalio", kind: youtube }
+      - name: "Paul Graham — Essays"
+        urls:
+          - { href: "https://www.paulgraham.com/articles.html", kind: web }
+      - name: "Y Combinator — Startup School"
+        urls:
+          - { href: "https://www.youtube.com/@ycombinator", kind: youtube }
+      - name: "Graham Stephan"
+        urls:
+          - { href: "https://www.youtube.com/@GrahamStephan", kind: youtube }
+
+  - id: product_elite
+    rank: product
+    title_fr: "Product Management Elite (US & FR)"
+    title_en: "Product Management Elite (US & FR)"
+    tagline_fr: "Construire des produits que les gens aiment."
+    tagline_en: "Build products people love."
+    layout:
+      bento_column_span: 1
+      variant: product
+    groups:
+      - name: "Marty Cagan — SVPG"
+        urls:
+          - { href: "https://svpg.com/articles/", kind: web }
+      - name: "Melissa Perri"
+        urls:
+          - { href: "https://melissaperri.com/blog", kind: web }
+      - name: "Lenny Rachitsky — Newsletter"
+        urls:
+          - { href: "https://www.lennysnewsletter.com/", kind: web }
+      - name: "Mind The Product"
+        urls:
+          - { href: "https://www.mindtheproduct.com/", kind: web }
+      - name: "Thiga (FR)"
+        urls:
+          - { href: "https://thiga.co/fr/blog", kind: web }
+      - name: "ProductBoard — Blog"
+        urls:
+          - { href: "https://www.productboard.com/blog", kind: web }
+      - name: "Hubvisory — UX Republic"
+        urls:
+          - { href: "https://hubvisory.com/blog", kind: web }
+      - name: "Jeff Patton"
+        urls:
+          - { href: "https://jpattonassociates.com/articles", kind: web }
+
+  - id: agile_scale
+    rank: agile
+    title_fr: "Agilité, Scale & Systémique"
+    title_en: "Agility, Scale & Systems"
+    tagline_fr: "Transformer les organisations et les équipes."
+    tagline_en: "Transform organisations and teams."
+    layout:
+      bento_column_span: 1
+      variant: agile
+    groups:
+      - name: "Martin Fowler"
+        urls:
+          - { href: "https://martinfowler.com/", kind: web }
+      - name: "Mike Cohn — Mountain Goat Software"
+        urls:
+          - { href: "https://www.mountaingoatsoftware.com/blog", kind: web }
+      - name: "Jean-Pierre Lambert"
+        urls:
+          - { href: "https://jp-lambert.me/", kind: web }
+      - name: "Team Topologies"
+        urls:
+          - { href: "https://teamtopologies.com/blog", kind: web }
+      - name: "Scaled Agile (SAFe)"
+        urls:
+          - { href: "https://scaledagileframework.com/blog/", kind: web }
+      - name: "Claude Aubry — Scrum FR"
+        urls:
+          - { href: "https://claudeaubry.fr/", kind: web }
+      - name: "Esther Derby"
+        urls:
+          - { href: "https://estherderby.com/blog", kind: web }
+      - name: "Radical Candor — Blog"
+        urls:
+          - { href: "https://radicalcandor.com/blog/", kind: web }
+
+  - id: coaching_leadership
+    rank: coaching
+    title_fr: "Coaching, Leadership & Management"
+    title_en: "Coaching, Leadership & Management"
+    tagline_fr: "L'humain au centre de la performance."
+    tagline_en: "People at the centre of performance."
+    layout:
+      bento_column_span: 1
+      variant: coaching
+    groups:
+      - name: "Patrick Lencioni — Table Group"
+        urls:
+          - { href: "https://www.tablegroup.com/topics-and-resources", kind: web }
+      - name: "Marshall Goldsmith"
+        urls:
+          - { href: "https://www.marshallgoldsmith.com/articles", kind: web }
+      - name: "Kim Scott — Radical Candor"
+        urls:
+          - { href: "https://radicalcandor.com/blog/", kind: web }
+      - name: "Simon Sinek"
+        urls:
+          - { href: "https://simonsinek.com/discover", kind: web }
+      - name: "Tony Robbins — Blog"
+        urls:
+          - { href: "https://www.tonyrobbins.com/blog", kind: web }
+
+  - id: podcasts_audio
+    rank: podcasts
+    title_fr: "Podcasts & Flux audio"
+    title_en: "Podcasts & Audio feeds"
+    tagline_fr: "Intelligence de flux pour l’écoute et la transcription (RSS / plateformes)."
+    tagline_en: "Feed intelligence for listening and transcription."
+    layout:
+      bento_column_span: 1
+      variant: podcasts
+    groups:
+      - name: "Lenny’s Podcast"
+        urls:
+          - { href: "https://www.lennyspodcast.com/", kind: podcast }
+      - name: "Masters of Scale (Reid Hoffman)"
+        urls:
+          - { href: "https://mastersofscale.com/", kind: podcast }
+      - name: "Dans la tête d’un PM"
+        urls:
+          - { href: "https://podcasts.apple.com/fr/podcast/dans-la-t%C3%AAte-dun-pm/id1559820565", kind: podcast }
+      - name: "Scrum Life (JP Lambert)"
+        urls:
+          - { href: "https://www.ausha.co/jp-lambert/scrum-life", kind: podcast }
+      - name: "Product Squad"
+        urls:
+          - { href: "https://productsquad.fr/le-podcast/", kind: podcast }
+      - name: "The Product Tape"
+        urls:
+          - { href: "https://podcasts.apple.com/podcast/the-product-tape/id1639358949", kind: podcast }

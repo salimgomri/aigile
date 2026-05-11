@@ -18,7 +18,9 @@ import {
   ClipboardCheck,
   Flag,
   KeyRound,
+  RefreshCw,
 } from 'lucide-react'
+import { AdminIntelligenceToolCard } from '@/components/admin/admin-intelligence-tool-card'
 
 function toolCardClass(active: boolean) {
   return active
@@ -204,10 +206,15 @@ export default function DashboardPage() {
 
         {isAdmin ? (
           <>
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
               {language === 'fr' ? 'Administration' : 'Administration'}
             </p>
-            <div className="grid gap-6 md:grid-cols-2">
+            <p className="text-sm text-muted-foreground mb-6">
+              {language === 'fr'
+                ? 'Raccourcis — même session que le tableau admin'
+                : 'Shortcuts — same session as the admin dashboard'}
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               <Link
                 href="/admin/orders"
                 className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
@@ -225,6 +232,8 @@ export default function DashboardPage() {
                 </div>
                 <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
               </Link>
+
+              <AdminIntelligenceToolCard layout="dashboard" />
 
               <Link
                 href="/admin/feature-flags"
@@ -244,7 +253,7 @@ export default function DashboardPage() {
 
               <Link
                 href="/admin/access"
-                className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200 md:col-span-2"
+                className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
               >
                 <div className="w-14 h-14 rounded-xl bg-teal-500/15 flex items-center justify-center group-hover:bg-teal-500/25 transition-colors">
                   <KeyRound className="w-7 h-7 text-teal-400" />
@@ -257,6 +266,26 @@ export default function DashboardPage() {
                     {language === 'fr'
                       ? 'Invitations outils, promos crédits'
                       : 'Tool invites, credit promos'}
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
+              </Link>
+
+              <Link
+                href="/admin/stripe-sync"
+                className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
+              >
+                <div className="w-14 h-14 rounded-xl bg-sky-500/15 flex items-center justify-center group-hover:bg-sky-500/25 transition-colors">
+                  <RefreshCw className="w-7 h-7 text-sky-400" />
+                </div>
+                <div className="flex-1">
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {language === 'fr' ? 'Sync Stripe' : 'Stripe sync'}
+                  </h2>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {language === 'fr'
+                      ? 'Importer les paiements Stripe vers les commandes (sans doublon)'
+                      : 'Backfill Stripe payments into orders (no duplicates)'}
                   </p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />

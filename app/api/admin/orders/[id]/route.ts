@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server'
-import { auth } from '@/lib/auth'
-import { headers } from 'next/headers'
-import { isAdminEmail } from '@/lib/admin'
+import { requireAdminApiSession } from '@/lib/admin/require-admin-api-session'
 import { supabaseAdmin } from '@/lib/supabase'
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const session = await auth.api.getSession({ headers: await headers() })
-  if (!session?.user || !isAdminEmail(session.user.email)) {
+  const session = await requireAdminApiSession()
+  if (!session) {
     return NextResponse.json({ error: 'Non autorisé' }, { status: 403 })
   }
 
@@ -31,8 +29,8 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const session = await auth.api.getSession({ headers: await headers() })
-  if (!session?.user || !isAdminEmail(session.user.email)) {
+  const session = await requireAdminApiSession()
+  if (!session) {
     return NextResponse.json({ error: 'Non autorisé' }, { status: 403 })
   }
 
