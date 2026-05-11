@@ -64,6 +64,12 @@ export const COLLECTOR_THEMES: Record<string, CollectorTheme> = {
     keyPointsFr: ['Impact metrics', 'R&D', 'Policy / philanthropy'],
     keyPointsEn: ['Impact metrics', 'R&D', 'Policy'],
   },
+  'Lex Fridman — Podcast': {
+    thesisFr: 'Conversations longues — rigueur, éthique et fondements des systèmes intelligents.',
+    thesisEn: 'Long-form rigor on foundations, ethics, and intelligent systems.',
+    keyPointsFr: ['Profondeur', 'Contrepoints', 'Science × société'],
+    keyPointsEn: ['Depth', 'Steel-manning', 'Science × society'],
+  },
   'Naval Ravikant': {
     thesisFr: 'Leverage asymétrique, specific knowledge, équité > salaire.',
     thesisEn: 'Asymmetric leverage, specific knowledge, equity > wage.',

@@ -92,6 +92,13 @@ function BentoCover({ tierId, src }: { tierId: string; src: string | null }) {
 
 function TierBadge({ tier }: { tier: IntelligenceTier }) {
   const { layout, rank } = tier
+  if (layout.variant === 'visionnaires_gold_fine') {
+    return (
+      <span className="inline-flex items-center rounded-md border-[0.5px] border-aigile-gold/75 bg-black/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-aigile-gold shadow-[0_0_18px_rgba(201,151,58,0.22)]">
+        Vision
+      </span>
+    )
+  }
   if (layout.variant === 'empire_gold_black') {
     return (
       <span className="inline-flex items-center rounded-md border border-aigile-gold/70 bg-black px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-aigile-gold shadow-[0_0_24px_rgba(201,151,58,0.25)]">
@@ -162,10 +169,13 @@ function SourceCard({
     <article
       className={cn(
         'relative flex flex-col overflow-hidden rounded-2xl border bg-card/80 shadow-sm transition-[filter,opacity,transform,box-shadow] duration-500 ease-out',
+        tier.layout.variant === 'visionnaires_gold_fine' &&
+          'border-[0.5px] border-aigile-gold/55 bg-gradient-to-b from-black/55 via-zinc-950/88 to-black/92 shadow-[0_0_0_0.5px_rgba(201,151,58,0.1)] md:min-h-[148px]',
         tier.layout.variant === 'empire_gold_black' &&
           'border-aigile-gold/35 bg-gradient-to-b from-zinc-950/90 to-black/80 md:min-h-[160px]',
         tier.layout.variant === 'wealth_hbr' && 'border-emerald-900/40 bg-emerald-950/10',
         tier.layout.variant !== 'empire_gold_black' &&
+          tier.layout.variant !== 'visionnaires_gold_fine' &&
           tier.layout.variant !== 'wealth_hbr' &&
           'border-border/80',
         !ok && 'pointer-events-none blur-[8px] opacity-[0.22] saturate-[0.35]',
@@ -193,6 +203,8 @@ function SourceCard({
         <h3
           className={cn(
             'mb-3 pr-10 font-semibold leading-snug text-foreground',
+            tier.layout.variant === 'visionnaires_gold_fine' &&
+              'text-base text-aigile-gold/95 md:text-lg md:tracking-tight',
             tier.layout.variant === 'empire_gold_black' && 'text-lg md:text-2xl md:tracking-tight',
             tier.layout.variant === 'wealth_hbr' && 'font-serif text-base md:text-lg',
           )}
@@ -348,6 +360,7 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
             <div
               className={cn(
                 'flex flex-wrap items-center gap-3 border-b border-border/60 pb-4',
+                tier.layout.variant === 'visionnaires_gold_fine' && 'border-b-[0.5px] border-aigile-gold/38',
                 tier.layout.variant === 'empire_gold_black' && 'border-aigile-gold/25',
               )}
             >
@@ -356,9 +369,12 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
                 <h2
                   className={cn(
                     'font-bold text-foreground',
+                    tier.layout.variant === 'visionnaires_gold_fine' &&
+                      'bg-gradient-to-r from-aigile-gold/95 via-foreground to-aigile-gold/80 bg-clip-text text-xl text-transparent md:text-2xl',
                     tier.layout.variant === 'empire_gold_black' && 'text-2xl md:text-3xl',
                     tier.layout.variant === 'wealth_hbr' && 'font-serif text-xl md:text-2xl',
-                    !['empire_gold_black', 'wealth_hbr'].includes(tier.layout.variant) && 'text-xl md:text-2xl',
+                    !['empire_gold_black', 'wealth_hbr', 'visionnaires_gold_fine'].includes(tier.layout.variant) &&
+                      'text-xl md:text-2xl',
                   )}
                 >
                   {title}
@@ -370,6 +386,8 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
             <div
               className={cn(
                 'grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-5',
+                tier.layout.variant === 'visionnaires_gold_fine' &&
+                  'rounded-3xl border-[0.5px] border-aigile-gold/42 bg-gradient-to-b from-amber-950/18 via-black/45 to-zinc-950/55 p-4 shadow-[inset_0_1px_0_rgba(201,151,58,0.07)] md:p-6',
                 tier.layout.variant === 'empire_gold_black' &&
                   'rounded-3xl border border-aigile-gold/20 bg-gradient-to-br from-black/80 via-zinc-950/70 to-zinc-950/40 p-4 md:p-6',
               )}
@@ -394,8 +412,8 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
 
       <p className="text-center text-[11px] text-muted-foreground/85">
         {language === 'fr'
-          ? 'Synchronisez le flux vitalité pour miniatures réelles et Collector branché sur Supabase. Démo : recherchez « Naval » ou « Cagan », sélectionnez les cartes visibles, ouvrez le Collector.'
-          : 'Sync the vitality feed for real thumbnails and Supabase-backed Collector. Demo: search “Naval” or “Cagan”, pick visible cards, open Collector.'}
+          ? 'Démo complète : pulsation Intelligence (heartbeat admin) → synchronisez le flux → matrice → lecture → Collector → doctrine → « Envoyer à mon futur moi » (Notion/Slack via Zapier). Astuce : « Naval », « Jobs », « Lex ».'
+          : 'Full demo: Intelligence pulse (admin heartbeat) → sync feed → matrix → read → Collector → doctrine → “Send to my future self” (Notion/Slack via Zapier). Try “Naval”, “Jobs”, “Lex”.'}
       </p>
 
       <IntelligenceCollectorModal

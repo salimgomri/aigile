@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { BookOpen, Check, ChevronDown, ClipboardCopy, Loader2, Sparkles, X } from 'lucide-react'
+import { BookOpen, Check, ChevronDown, ClipboardCopy, Loader2, Send, Sparkles, X } from 'lucide-react'
 import { Literata } from 'next/font/google'
 
 import type { CollectorItem } from '@/lib/intelligence/collector-format'
@@ -13,6 +13,7 @@ import {
   keyPointsForSmartCopy,
 } from '@/lib/intelligence/collector-format'
 import { cn } from '@/lib/utils'
+import { playCollectorCopyBurst } from '@/components/admin/collector-copy-burst'
 
 const readerSerif = Literata({
   subsets: ['latin'],
@@ -196,8 +197,11 @@ function CollectorReaderSection({
 
 export function IntelligenceCollectorModal({ open, onClose, items, language }: Props) {
   const lang = language === 'fr' ? 'fr' : 'en'
+  const copyBtnRef = useRef<HTMLButtonElement>(null)
   const [expandedKey, setExpandedKey] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
+  const [exportLoading, setExportLoading] = useState(false)
+  const [exportMsg, setExportMsg] = useState<{ type: 'ok' | 'err'; text: string } | null>(null)
   const [doctrineLoading, setDoctrineLoading] = useState(false)
   const [doctrineText, setDoctrineText] = useState('')
   const [doctrineSource, setDoctrineSource] = useState<'openai' | 'anthropic' | 'heuristic' | null>(null)
@@ -218,6 +222,8 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
     if (!open) {
       setExpandedKey(null)
       setCopied(false)
+      setExportLoading(false)
+      setExportMsg(null)
       setDoctrineLoading(false)
       setDoctrineText('')
       setDoctrineSource(null)
@@ -292,10 +298,56 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
     const text = formatSmartCopyForGpt(items, lang, doctrine)
     try {
       await navigator.clipboard.writeText(text)
+      playCollectorCopyBurst(copyBtnRef.current)
       setCopied(true)
       window.setTimeout(() => setCopied(false), 2200)
     } catch {
       setCopied(false)
+    }
+  }, [items, lang, doctrineText])
+
+  const sendFutureSelf = useCallback(async () => {
+    const doctrine =
+      doctrineText.trim().length > 0 ? doctrineText : buildDailyDoctrineHeuristic(items, lang)
+    const smartCopy = formatSmartCopyForGpt(items, lang, doctrine)
+    setExportLoading(true)
+    setExportMsg(null)
+    try {
+      const res = await fetch('/api/admin/intelligence/collector/export', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ doctrine, smartCopy, lang }),
+      })
+      let data: { ok?: boolean; errors?: string[]; error?: string } = {}
+      try {
+        data = (await res.json()) as typeof data
+      } catch {
+        /* ignore */
+      }
+      if (!res.ok) {
+        const errText = Array.isArray(data.errors)
+          ? data.errors.join(' ')
+          : typeof data.error === 'string'
+            ? data.error
+            : `${res.status}`
+        setExportMsg({ type: 'err', text: errText })
+        return
+      }
+      setExportMsg({
+        type: 'ok',
+        text:
+          lang === 'fr'
+            ? 'Envoyé vers votre webhook (Notion/Slack selon config serveur).'
+            : 'Sent to your webhook (Notion/Slack per server config).',
+      })
+    } catch {
+      setExportMsg({
+        type: 'err',
+        text: lang === 'fr' ? 'Échec réseau.' : 'Network error.',
+      })
+    } finally {
+      setExportLoading(false)
     }
   }, [items, lang, doctrineText])
 
@@ -383,24 +435,53 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
-          <div className="mb-4 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={() => void copyGpt()}
-              className="inline-flex items-center gap-2 rounded-full border border-aigile-gold/45 bg-aigile-gold/10 px-4 py-2 text-sm font-medium text-aigile-gold transition-colors hover:bg-aigile-gold/15"
-            >
-              {copied ? (
-                <Check className="h-4 w-4 text-emerald-400" aria-hidden />
-              ) : (
-                <ClipboardCopy className="h-4 w-4" aria-hidden />
-              )}
-              {lang === 'fr' ? 'Copier pour GPT' : 'Copy for GPT'}
-            </button>
-            <span className="text-xs text-muted-foreground">
-              {lang === 'fr'
-                ? 'Format : [Source] | Heure humaine | Points clés'
-                : 'Format: [Source] | Human time | Key points'}
-            </span>
+          <div className="mb-4 flex flex-col gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                ref={copyBtnRef}
+                type="button"
+                onClick={() => void copyGpt()}
+                className="inline-flex items-center gap-2 rounded-full border border-aigile-gold/45 bg-aigile-gold/10 px-4 py-2 text-sm font-medium text-aigile-gold transition-colors hover:bg-aigile-gold/15"
+              >
+                {copied ? (
+                  <Check className="h-4 w-4 text-emerald-400" aria-hidden />
+                ) : (
+                  <ClipboardCopy className="h-4 w-4" aria-hidden />
+                )}
+                {lang === 'fr' ? 'Copier pour GPT' : 'Copy for GPT'}
+              </button>
+              <button
+                type="button"
+                disabled={exportLoading || items.length === 0}
+                onClick={() => void sendFutureSelf()}
+                className={cn(
+                  'inline-flex items-center gap-2 rounded-full border border-emerald-500/35 bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-200 transition-colors hover:bg-emerald-500/15 disabled:pointer-events-none disabled:opacity-45',
+                )}
+              >
+                {exportLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin text-emerald-300" aria-hidden />
+                ) : (
+                  <Send className="h-4 w-4 text-emerald-300" aria-hidden />
+                )}
+                {lang === 'fr' ? 'Envoyer à mon futur moi' : 'Send to my future self'}
+              </button>
+              <span className="text-xs text-muted-foreground">
+                {lang === 'fr'
+                  ? 'Format copie : [Source] | Heure humaine | Points clés · Webhook : INTEL_EXPORT_WEBHOOK_URL / INTEL_SLACK_WEBHOOK_URL.'
+                  : 'Copy format: [Source] | Human time | Key points · Webhooks: INTEL_EXPORT_WEBHOOK_URL / INTEL_SLACK_WEBHOOK_URL.'}
+              </span>
+            </div>
+            {exportMsg ? (
+              <p
+                className={cn(
+                  'text-xs',
+                  exportMsg.type === 'ok' ? 'text-emerald-400/95' : 'text-red-400/95',
+                )}
+                role="status"
+              >
+                {exportMsg.text}
+              </p>
+            ) : null}
           </div>
 
           {grouped.order.map((tierTitle) => (

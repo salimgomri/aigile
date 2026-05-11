@@ -10,6 +10,10 @@ import { intelFeedPatch } from '@/lib/intelligence/feed-repository'
 
 const execFileAsync = promisify(execFile)
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 function stripVtt(raw: string): string {
   return raw
     .replace(/^WEBVTT[^\n]*\n+/im, '')
@@ -90,7 +94,16 @@ export async function runYoutubeTranscriptJob(
     })
   }
 
-  const result = await fetchYoutubeTranscriptText(youtubeUrl)
+  let result = await fetchYoutubeTranscriptText(youtubeUrl)
+  const missingBinary =
+    (result.error ?? '').includes('yt-dlp introuvable') ||
+    (result.error ?? '').toLowerCase().includes('spawn')
+
+  if (!result.text && result.error && !missingBinary) {
+    await sleep(3_500)
+    result = await fetchYoutubeTranscriptText(youtubeUrl)
+  }
+
   const now = new Date().toISOString()
 
   if (result.text) {

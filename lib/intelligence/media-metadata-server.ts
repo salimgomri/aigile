@@ -101,6 +101,9 @@ export async function resolveIntelThumbnailUrl(href: string, urlKind: string): P
     return id ? youtubeThumbnailMaxRes(id) : null
   }
   if (urlKind === 'podcast') {
+    const first = await resolveFeedOrPageImage(href)
+    if (first) return first
+    await new Promise((r) => setTimeout(r, 2_000))
     return resolveFeedOrPageImage(href)
   }
   return null

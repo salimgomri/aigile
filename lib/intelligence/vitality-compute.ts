@@ -33,6 +33,8 @@ function hashSignal(url: string): number {
 /** Plancher déterministe par palier (signal brut avant boost Empire). */
 function tierFloor(tierId: string): number {
   switch (tierId) {
+    case 'visionnaires':
+      return 27
     case EMPIRE_TIER:
       return 26
     case 'wealth_architects':

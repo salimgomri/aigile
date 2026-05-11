@@ -5,6 +5,27 @@ version: 1
 youtube_min_duration_minutes: 8
 
 tiers:
+  - id: visionnaires
+    rank: vision
+    title_fr: "Visionnaires — archives & conversations profondes"
+    title_en: "Visionaries — archives & deep conversations"
+    tagline_fr: "Long terme, sens et transmissions (Jobs, Gates, Lex Fridman)."
+    tagline_en: "Long horizon, meaning, and transmission (Jobs, Gates, Lex Fridman)."
+    layout:
+      bento_column_span: 2
+      variant: visionnaires_gold_fine
+    groups:
+      - name: "Steve Jobs Archive"
+        urls:
+          - { href: "https://www.youtube.com/@SteveJobsArchive", kind: youtube }
+      - name: "The Gates Notes (Bill Gates)"
+        urls:
+          - { href: "https://www.gatesnotes.com/", kind: web }
+      - name: "Lex Fridman — Podcast"
+        urls:
+          - { href: "https://www.youtube.com/@lexfridman", kind: youtube }
+          - { href: "https://lexfridman.com/", kind: web }
+
   - id: empire_builders
     rank: empire
     title_fr: "L'Olympe des Visionnaires & Empire Builders"
@@ -34,15 +55,9 @@ tiers:
       - name: "Anthropic (Dario Amodei)"
         urls:
           - { href: "https://www.anthropic.com/news", kind: web }
-      - name: "Steve Jobs Archive"
-        urls:
-          - { href: "https://www.youtube.com/@SteveJobsArchive", kind: youtube }
       - name: "Wait But Why (Tim Urban)"
         urls:
           - { href: "https://waitbutwhy.com/", kind: web }
-      - name: "The Gates Notes (Bill Gates)"
-        urls:
-          - { href: "https://www.gatesnotes.com/", kind: web }
 
   - id: wealth_architects
     rank: wealth
