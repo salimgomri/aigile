@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { ExternalLink, Filter, Search } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { Check, ExternalLink, Filter, Plus, Search, Sparkles } from 'lucide-react'
+
+import { IntelligenceCollectorModal } from '@/components/admin/intelligence-collector-modal'
 import { useLanguage } from '@/components/language-provider'
+import type { CollectorItem } from '@/lib/intelligence/collector-format'
 import { cn } from '@/lib/utils'
 import type {
   IntelligenceSourceGroup,
@@ -93,11 +96,15 @@ function SourceCard({
   group,
   query,
   hideYoutube,
+  selected,
+  onToggleSelect,
 }: {
   tier: IntelligenceTier
   group: IntelligenceSourceGroup
   query: string
   hideYoutube: boolean
+  selected: boolean
+  onToggleSelect: () => void
 }) {
   const ok = matchesQuery(tier, group, query)
   const urls = filterUrls(group.urls, hideYoutube)
@@ -105,7 +112,7 @@ function SourceCard({
   return (
     <article
       className={cn(
-        'flex flex-col rounded-2xl border bg-card/80 p-4 shadow-sm transition-[filter,opacity,transform] duration-500 ease-out md:p-5',
+        'relative flex flex-col rounded-2xl border bg-card/80 p-4 shadow-sm transition-[filter,opacity,transform,box-shadow] duration-500 ease-out md:p-5',
         tier.layout.variant === 'empire_gold_black' &&
           'border-aigile-gold/35 bg-gradient-to-b from-zinc-950/90 to-black/80 md:min-h-[160px]',
         tier.layout.variant === 'wealth_hbr' && 'border-emerald-900/40 bg-emerald-950/10',
@@ -113,18 +120,35 @@ function SourceCard({
           tier.layout.variant !== 'wealth_hbr' &&
           'border-border/80',
         !ok && 'pointer-events-none blur-[8px] opacity-[0.22] saturate-[0.35]',
+        ok && selected && 'ring-2 ring-aigile-gold/70 ring-offset-2 ring-offset-background',
       )}
     >
+      {ok ? (
+        <button
+          type="button"
+          onClick={onToggleSelect}
+          aria-pressed={selected}
+          title={selected ? 'Retirer du collector' : 'Ajouter au collector'}
+          className={cn(
+            'absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border text-[11px] transition-colors',
+            selected
+              ? 'border-aigile-gold bg-aigile-gold/25 text-aigile-gold'
+              : 'border-border/70 bg-background/70 text-muted-foreground hover:border-aigile-gold/45 hover:text-aigile-gold',
+          )}
+        >
+          {selected ? <Check className="h-4 w-4" aria-hidden /> : <Plus className="h-4 w-4" aria-hidden />}
+        </button>
+      ) : null}
       <h3
         className={cn(
-          'mb-3 font-semibold leading-snug text-foreground',
+          'mb-3 pr-10 font-semibold leading-snug text-foreground',
           tier.layout.variant === 'empire_gold_black' && 'text-lg md:text-2xl md:tracking-tight',
           tier.layout.variant === 'wealth_hbr' && 'font-serif text-base md:text-lg',
         )}
       >
         {group.name}
       </h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()} role="presentation">
         {urls.map((u) => (
           <UrlChip key={u.href} url={u} />
         ))}
@@ -142,6 +166,41 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
   const { language } = useLanguage()
   const [query, setQuery] = useState('')
   const [hideYoutube, setHideYoutube] = useState(false)
+  const [selectedKeys, setSelectedKeys] = useState<Set<string>>(() => new Set())
+  const [collectorOpen, setCollectorOpen] = useState(false)
+
+  const langUi = language === 'fr' ? 'fr' : 'en'
+
+  function selectionKey(tierId: string, groupName: string) {
+    return `${tierId}:::${groupName}`
+  }
+
+  function toggleKey(tierId: string, groupName: string) {
+    const k = selectionKey(tierId, groupName)
+    setSelectedKeys((prev) => {
+      const next = new Set(prev)
+      if (next.has(k)) next.delete(k)
+      else next.add(k)
+      return next
+    })
+  }
+
+  const collectorItems: CollectorItem[] = useMemo(() => {
+    const out: CollectorItem[] = []
+    for (const tier of data.tiers) {
+      const tierTitle = langUi === 'fr' ? tier.title_fr : tier.title_en
+      for (const group of tier.groups) {
+        if (!selectedKeys.has(selectionKey(tier.id, group.name))) continue
+        out.push({
+          tierId: tier.id,
+          tierTitle,
+          groupName: group.name,
+          urls: filterUrls(group.urls, hideYoutube),
+        })
+      }
+    }
+    return out
+  }, [data.tiers, selectedKeys, hideYoutube, langUi])
 
   const searchPlaceholder =
     language === 'fr' ? 'Recherche profonde — nom, domaine, créateur…' : 'Deep search — name, domain, creator…'
@@ -222,7 +281,14 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
             >
               {tier.groups.map((group) => (
                 <div key={group.name} className={span}>
-                  <SourceCard tier={tier} group={group} query={query} hideYoutube={hideYoutube} />
+                  <SourceCard
+                    tier={tier}
+                    group={group}
+                    query={query}
+                    hideYoutube={hideYoutube}
+                    selected={selectedKeys.has(selectionKey(tier.id, group.name))}
+                    onToggleSelect={() => toggleKey(tier.id, group.name)}
+                  />
                 </div>
               ))}
             </div>
@@ -232,9 +298,39 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
 
       <p className="text-center text-[11px] text-muted-foreground/85">
         {language === 'fr'
-          ? 'Démo : tape un mot-clé (ex. NVIDIA, Agile, Lenny) — les autres cartes se trouvent dans le flou.'
-          : 'Demo: type a keyword (e.g. NVIDIA, Agile, Lenny) — non-matching cards stay blurred.'}
+          ? 'Démo Collector : recherche « Naval » ou « Cagan », + sur deux cartes visibles, puis « Ouvrir le Collector » — Doctrine du jour + Copier pour GPT.'
+          : 'Collector demo: search “Naval” or “Cagan”, + two visible cards, then Open Collector — daily doctrine + Copy for GPT.'}
       </p>
+
+      <IntelligenceCollectorModal
+        open={collectorOpen}
+        onClose={() => setCollectorOpen(false)}
+        items={collectorItems}
+        language={langUi}
+      />
+
+      {selectedKeys.size > 0 ? (
+        <div className="fixed bottom-6 left-1/2 z-[120] flex -translate-x-1/2 flex-wrap items-center justify-center gap-3 rounded-full border border-aigile-gold/35 bg-background/90 px-5 py-2.5 shadow-[0_8px_40px_rgba(0,0,0,0.35)] backdrop-blur-md">
+          <Sparkles className="h-4 w-4 shrink-0 text-aigile-gold" aria-hidden />
+          <span className="text-sm font-medium text-foreground">
+            {selectedKeys.size} source{selectedKeys.size > 1 ? 's' : ''}
+          </span>
+          <button
+            type="button"
+            onClick={() => setCollectorOpen(true)}
+            className="rounded-full bg-aigile-gold px-4 py-1.5 text-sm font-semibold text-black hover:bg-aigile-gold/90"
+          >
+            {language === 'fr' ? 'Ouvrir le Collector' : 'Open Collector'}
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedKeys(new Set())}
+            className="text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+          >
+            {language === 'fr' ? 'Vider' : 'Clear'}
+          </button>
+        </div>
+      ) : null}
     </div>
   )
 }
