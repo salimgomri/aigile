@@ -55,6 +55,7 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
         let previewSnippet: string | null = `${group.name} · Vitalité ${score}`
         let transcriptText: string | null = null
         let contentBody: string | null = null
+        let summaryOverride: string | undefined
 
         const thumbnailUrl = await resolveIntelThumbnailUrl(u.href, urlKind)
 
@@ -66,13 +67,12 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
             previewSnippet = `${head} · Vitalité ${score}`
             transcriptText = fetched.text
             contentBody = fetched.text
-            summary = fetched.title ? `${fetched.title.slice(0, 500)}` : previewSnippet
+            summaryOverride = fetched.title ? fetched.title.slice(0, 500) : previewSnippet ?? undefined
           } else {
             status = 'pending'
             previewSnippet = DEMO_PG_SUMMARY
             transcriptText = null
             contentBody = null
-            summary = DEMO_PG_SUMMARY
           }
         } else if (urlKind === 'youtube') {
           const autoTranscript = score > TRANSCRIPT_AUTO_THRESHOLD
@@ -95,7 +95,7 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
           previewSnippet,
           transcriptText,
           thumbnailUrl,
-          summary: previewSnippet,
+          summary: summaryOverride ?? previewSnippet ?? undefined,
           content: contentBody ?? transcriptText,
           rotationDay,
         })

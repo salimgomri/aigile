@@ -359,6 +359,7 @@ export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: str
                   summary: readerItem.summary ?? readerItem.preview_snippet ?? null,
                   content: readerItem.content ?? null,
                   transcript_text: readerItem.transcript_text ?? null,
+                  transcript_error: readerItem.transcript_error ?? null,
                 },
               ]
             : []

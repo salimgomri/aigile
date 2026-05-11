@@ -51,6 +51,7 @@ type FeedApiItem = {
   status: 'pending' | 'analyzing' | 'ready' | 'error'
   preview_snippet: string | null
   transcript_text: string | null
+  transcript_error: string | null
   thumbnail_url: string | null
   summary: string | null
   content: string | null
@@ -204,6 +205,7 @@ function SourceCard({
           summary: r.summary,
           content: r.content,
           transcript_text: r.transcript_text,
+          transcript_error: r.transcript_error,
         }))
         onOpenReader({
           tierTitle: tierTitleUi,
@@ -225,6 +227,7 @@ function SourceCard({
             summary: r.summary,
             content: r.content,
             transcript_text: r.transcript_text,
+            transcript_error: r.transcript_error,
           }))
           onOpenReader({
             tierTitle: tierTitleUi,

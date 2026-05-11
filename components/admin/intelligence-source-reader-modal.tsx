@@ -20,6 +20,7 @@ export type ReaderFeedRow = {
   summary: string | null
   content: string | null
   transcript_text: string | null
+  transcript_error: string | null
 }
 
 type Props = {
