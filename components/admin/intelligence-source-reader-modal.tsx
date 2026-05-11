@@ -29,9 +29,9 @@ type Props = {
 
 function rawTextFromRow(r: ReaderFeedRow): string {
   const a = (r.content ?? '').trim()
-  if (a.length >= 80) return a
+  if (a.length > 0) return a
   const b = (r.transcript_text ?? '').trim()
-  if (b.length >= 80) return b
+  if (b.length > 0) return b
   const c = (r.summary ?? '').trim()
   return c.length > 0 ? c : ''
 }

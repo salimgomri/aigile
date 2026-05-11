@@ -1,10 +1,13 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { CheckCircle2, ExternalLink, Flame, Loader2, RefreshCw } from 'lucide-react'
+import { BookOpen, CheckCircle2, ExternalLink, Flame, Loader2, RefreshCw } from 'lucide-react'
 
+import { IntelligenceSourceReaderModal } from '@/components/admin/intelligence-source-reader-modal'
+import { useLanguage } from '@/components/language-provider'
 import { youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
 import { tierCoverGradientClass } from '@/lib/intelligence/tier-visuals'
+import type { SourceUrl } from '@/lib/intelligence/types'
 import { cn } from '@/lib/utils'
 
 type FeedItem = {
@@ -18,6 +21,7 @@ type FeedItem = {
   status: 'pending' | 'analyzing' | 'ready' | 'error'
   preview_snippet: string | null
   transcript_error: string | null
+  transcript_text?: string | null
   thumbnail_url?: string | null
   summary?: string | null
   content?: string | null
@@ -35,6 +39,16 @@ function vitalityLabel(score: number): string {
   const n = Number(score)
   if (!Number.isFinite(n)) return '?'
   return Math.round(n).toString()
+}
+
+function tierTitleFromId(tierId: string): string {
+  return tierId.replace(/_/g, ' ')
+}
+
+function feedItemToSourceUrl(item: FeedItem): SourceUrl {
+  const k = item.url_kind
+  const kind: SourceUrl['kind'] = k === 'youtube' ? 'youtube' : k === 'podcast' ? 'podcast' : 'web'
+  return { href: item.url, kind }
 }
 
 function FeedCardCover({
@@ -67,11 +81,14 @@ function FeedCardCover({
 }
 
 export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: string }) {
+  const { language } = useLanguage()
+  const langUi = language === 'fr' ? 'fr' : 'en'
   const [data, setData] = useState<FeedPayload | null>(null)
   const [loading, setLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
   const [analyzeId, setAnalyzeId] = useState<string | null>(null)
   const [banner, setBanner] = useState<string | null>(null)
+  const [readerItem, setReaderItem] = useState<FeedItem | null>(null)
 
   const load = useCallback(async () => {
     setBanner(null)
@@ -146,6 +163,11 @@ export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: str
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
             Miniatures · transcripts YouTube · texte Web après analyse · jour UTC sélectionné :{' '}
             <span className="font-mono text-foreground/90">{rotationDay}</span>.
+          </p>
+          <p className="mt-2 max-w-2xl text-xs leading-relaxed text-aigile-gold/90">
+            {langUi === 'fr'
+              ? 'Lecture : sur chaque carte verte (prêt), utilisez le bouton doré « Lire le texte extrait ». La ligne « Prêt » seule n’ouvre rien — c’est un statut, pas un lien.'
+              : 'Reading: on each green (ready) card, use the gold “Read extracted text” button. “Ready” alone is only a status — it does not open content.'}
           </p>
           {data?.rotationHint ? (
             <p className="mt-2 text-xs text-muted-foreground">
@@ -269,23 +291,43 @@ export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: str
                     <p className="mb-3 line-clamp-3 text-xs text-red-300/90">{item.transcript_error}</p>
                   ) : null}
 
-                  <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-border/40 pt-3">
-                    <span className="text-xs text-muted-foreground">
-                      {item.status === 'ready' && 'Prêt · lecture immédiate'}
-                      {item.status === 'analyzing' && 'En cours d’analyse'}
-                      {item.status === 'pending' && 'Analyser à la demande'}
-                      {item.status === 'error' && 'Erreur — nouvelle tentative possible'}
-                    </span>
-                    {(item.status === 'pending' || item.status === 'error') && (
+                  <div className="mt-auto flex flex-col gap-2 border-t border-border/40 pt-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs text-muted-foreground">
+                        {item.status === 'ready' &&
+                          (langUi === 'fr'
+                            ? 'Statut : prêt — ouvrez avec le bouton ci-dessous'
+                            : 'Status: ready — use the button below')}
+                        {item.status === 'analyzing' &&
+                          (langUi === 'fr' ? 'En cours d’analyse…' : 'Analyzing…')}
+                        {item.status === 'pending' &&
+                          (langUi === 'fr' ? 'En attente — lancez l’analyse' : 'Pending — run analysis')}
+                        {item.status === 'error' &&
+                          (langUi === 'fr'
+                            ? 'Erreur — nouvelle tentative possible'
+                            : 'Error — you can retry')}
+                      </span>
+                      {(item.status === 'pending' || item.status === 'error') && (
+                        <button
+                          type="button"
+                          disabled={analyzeId === item.id}
+                          onClick={() => void analyze(item.id)}
+                          className="ml-auto rounded-md border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium hover:bg-muted/60 disabled:opacity-50"
+                        >
+                          {analyzeId === item.id ? '…' : langUi === 'fr' ? 'Analyser' : 'Analyze'}
+                        </button>
+                      )}
+                    </div>
+                    {item.status === 'ready' ? (
                       <button
                         type="button"
-                        disabled={analyzeId === item.id}
-                        onClick={() => void analyze(item.id)}
-                        className="ml-auto rounded-md border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium hover:bg-muted/60 disabled:opacity-50"
+                        onClick={() => setReaderItem(item)}
+                        className="flex w-full items-center justify-center gap-2 rounded-lg border border-aigile-gold/55 bg-aigile-gold/15 py-2.5 text-sm font-semibold text-aigile-gold transition-colors hover:bg-aigile-gold/25"
                       >
-                        {analyzeId === item.id ? '…' : 'Analyser'}
+                        <BookOpen className="h-4 w-4 shrink-0" aria-hidden />
+                        {langUi === 'fr' ? 'Lire le texte extrait' : 'Read extracted text'}
                       </button>
-                    )}
+                    ) : null}
                   </div>
                 </article>
               </li>
@@ -293,6 +335,30 @@ export function IntelligenceVitalityFeedDeck({ rotationDay }: { rotationDay: str
           })}
         </ul>
       )}
+      <IntelligenceSourceReaderModal
+        open={readerItem !== null}
+        onClose={() => setReaderItem(null)}
+        tierTitle={readerItem ? tierTitleFromId(readerItem.tier_id) : ''}
+        groupName={readerItem?.source_label ?? ''}
+        urls={readerItem ? [feedItemToSourceUrl(readerItem)] : []}
+        rows={
+          readerItem
+            ? [
+                {
+                  id: readerItem.id,
+                  url: readerItem.url,
+                  url_kind: readerItem.url_kind,
+                  status: readerItem.status,
+                  thumbnail_url: readerItem.thumbnail_url ?? null,
+                  summary: readerItem.summary ?? readerItem.preview_snippet ?? null,
+                  content: readerItem.content ?? null,
+                  transcript_text: readerItem.transcript_text ?? null,
+                },
+              ]
+            : []
+        }
+        language={langUi}
+      />
     </section>
   )
 }
