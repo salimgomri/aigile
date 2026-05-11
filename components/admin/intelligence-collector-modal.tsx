@@ -2,12 +2,16 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { BookOpen, Check, ChevronDown, ClipboardCopy, Sparkles, X } from 'lucide-react'
+import { BookOpen, Check, ChevronDown, ClipboardCopy, Loader2, Sparkles, X } from 'lucide-react'
 import { Literata } from 'next/font/google'
 
 import type { CollectorItem } from '@/lib/intelligence/collector-format'
-import { buildDailyDoctrine, formatSmartCopyForGpt, humanTimeNow } from '@/lib/intelligence/collector-format'
-import { getCollectorTheme } from '@/lib/intelligence/collector-themes'
+import {
+  buildDailyDoctrineHeuristic,
+  formatSmartCopyForGpt,
+  humanTimeNow,
+  keyPointsForSmartCopy,
+} from '@/lib/intelligence/collector-format'
 import { cn } from '@/lib/utils'
 
 const readerSerif = Literata({
@@ -20,6 +24,19 @@ type Props = {
   onClose: () => void
   items: CollectorItem[]
   language: 'fr' | 'en'
+}
+
+function ReaderSkeleton({ lang }: { lang: 'fr' | 'en' }) {
+  return (
+    <div className="space-y-3 pt-2" aria-busy="true">
+      <div className="h-3 w-11/12 max-w-full animate-pulse rounded bg-muted/50" />
+      <div className="h-3 w-full animate-pulse rounded bg-muted/40" />
+      <div className="h-3 w-4/5 animate-pulse rounded bg-muted/35" />
+      <p className="text-xs text-muted-foreground">
+        {lang === 'fr' ? 'En attente du contenu synchronisé…' : 'Waiting for synced content…'}
+      </p>
+    </div>
+  )
 }
 
 function CollectorReaderSection({
@@ -35,9 +52,18 @@ function CollectorReaderSection({
 }) {
   const innerRef = useRef<HTMLDivElement>(null)
   const openedOnce = useRef(false)
-  const theme = getCollectorTheme(item.groupName)
-  const thesis = lang === 'fr' ? theme.thesisFr : theme.thesisEn
-  const keys = lang === 'fr' ? theme.keyPointsFr : theme.keyPointsEn
+
+  const summaryLine =
+    (item.summary ?? '').trim() ||
+    (lang === 'fr'
+      ? 'Résumé disponible après synchronisation du flux.'
+      : 'Summary available after feed sync.')
+
+  const contentBody = (item.content ?? '').trim()
+  const showSkeleton =
+    !contentBody && (item.feedPending || item.feedStatus === 'pending' || item.feedStatus === 'analyzing')
+
+  const bullets = keyPointsForSmartCopy(item, lang)
 
   useLayoutEffect(() => {
     const el = innerRef.current
@@ -76,6 +102,8 @@ function CollectorReaderSection({
     fontFamily: `Charter, 'Bitstream Charter', ${readerSerif.style.fontFamily}, Georgia, serif`,
   } as const
 
+  const linkUrls = item.primaryUrl ? [{ href: item.primaryUrl }] : item.urls
+
   return (
     <div className="rounded-xl border border-border/70 bg-card/60 px-4 py-3 shadow-sm">
       <button
@@ -86,7 +114,12 @@ function CollectorReaderSection({
       >
         <div className="min-w-0 flex-1">
           <p className="font-semibold text-foreground">{item.groupName}</p>
-          <p className="mt-1 text-sm leading-snug text-muted-foreground">{thesis}</p>
+          <p className="mt-1 text-sm leading-snug text-muted-foreground">{summaryLine}</p>
+          {typeof item.vitality_score === 'number' && Number.isFinite(item.vitality_score) ? (
+            <p className="mt-1 text-[11px] text-muted-foreground/90">
+              {lang === 'fr' ? 'Vitalité' : 'Vitality'} · {Math.round(item.vitality_score)}
+            </p>
+          ) : null}
         </div>
         <ChevronDown
           className={cn(
@@ -100,21 +133,45 @@ function CollectorReaderSection({
       <div ref={innerRef}>
         <div className="mt-4 border-t border-border/50 pt-4">
           <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-            {lang === 'fr' ? 'Points clés (mode lecture)' : 'Key points (reader mode)'}
+            {lang === 'fr' ? 'Points clés' : 'Key points'}
           </p>
           <ul
             className={cn(
               readerSerif.className,
-              'list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-foreground/95',
+              'mb-4 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-foreground/95',
             )}
             style={charterStack}
           >
-            {keys.map((k) => (
+            {bullets.map((k) => (
               <li key={k}>{k}</li>
             ))}
           </ul>
+
+          <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+            {lang === 'fr' ? 'Mode lecture (contenu)' : 'Reader (full content)'}
+          </p>
+          {contentBody ? (
+            <div
+              className={cn(
+                readerSerif.className,
+                'max-h-[min(360px,45vh)] overflow-y-auto whitespace-pre-wrap text-[15px] leading-relaxed text-foreground/95',
+              )}
+              style={charterStack}
+            >
+              {contentBody}
+            </div>
+          ) : showSkeleton ? (
+            <ReaderSkeleton lang={lang} />
+          ) : (
+            <p className={cn(readerSerif.className, 'text-sm text-muted-foreground')} style={charterStack}>
+              {lang === 'fr'
+                ? 'Pas encore de contenu long — lancez l’analyse ou la synchro.'
+                : 'No long content yet — run analysis or sync.'}
+            </p>
+          )}
+
           <ul className="mt-4 space-y-1.5">
-            {item.urls.map((u) => (
+            {linkUrls.map((u) => (
               <li key={u.href}>
                 <a
                   href={u.href}
@@ -141,8 +198,9 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
   const lang = language === 'fr' ? 'fr' : 'en'
   const [expandedKey, setExpandedKey] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
-
-  const doctrine = useMemo(() => buildDailyDoctrine(items, lang), [items, lang])
+  const [doctrineLoading, setDoctrineLoading] = useState(false)
+  const [doctrineText, setDoctrineText] = useState('')
+  const [doctrineSource, setDoctrineSource] = useState<'openai' | 'anthropic' | 'heuristic' | null>(null)
 
   const grouped = useMemo(() => {
     const order: string[] = []
@@ -160,8 +218,59 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
     if (!open) {
       setExpandedKey(null)
       setCopied(false)
+      setDoctrineLoading(false)
+      setDoctrineText('')
+      setDoctrineSource(null)
+      return
     }
-  }, [open])
+
+    const heuristic = buildDailyDoctrineHeuristic(items, lang)
+    const ids = items.map((i) => i.feedItemId).filter((x): x is string => !!x)
+
+    if (ids.length === 0) {
+      setDoctrineText(heuristic)
+      setDoctrineSource('heuristic')
+      return
+    }
+
+    let cancelled = false
+    setDoctrineLoading(true)
+    void (async () => {
+      try {
+        const res = await fetch('/api/admin/intelligence/collector/doctrine', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ itemIds: ids, lang }),
+        })
+        if (!res.ok) {
+          if (!cancelled) {
+            setDoctrineText(heuristic)
+            setDoctrineSource('heuristic')
+          }
+          return
+        }
+        const data = (await res.json()) as { doctrine?: string; source?: string }
+        if (cancelled) return
+        setDoctrineText(data.doctrine ?? heuristic)
+        setDoctrineSource(
+          data.source === 'openai' || data.source === 'anthropic' || data.source === 'heuristic'
+            ? data.source
+            : 'heuristic',
+        )
+      } catch {
+        if (!cancelled) {
+          setDoctrineText(heuristic)
+          setDoctrineSource('heuristic')
+        }
+      } finally {
+        if (!cancelled) setDoctrineLoading(false)
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [open, items, lang])
 
   useEffect(() => {
     if (!open) return
@@ -178,7 +287,9 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
   }, [open, onClose])
 
   const copyGpt = useCallback(async () => {
-    const text = formatSmartCopyForGpt(items, lang)
+    const doctrine =
+      doctrineText.trim().length > 0 ? doctrineText : buildDailyDoctrineHeuristic(items, lang)
+    const text = formatSmartCopyForGpt(items, lang, doctrine)
     try {
       await navigator.clipboard.writeText(text)
       setCopied(true)
@@ -186,17 +297,24 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
     } catch {
       setCopied(false)
     }
-  }, [items, lang])
+  }, [items, lang, doctrineText])
 
   if (!open) return null
 
   const doctrineTitle = lang === 'fr' ? 'Doctrine du jour' : 'Daily doctrine'
   const subtitle =
     lang === 'fr'
-      ? 'Synthèse Steve Jobs — une phrase pour orienter la journée.'
-      : 'Steve Jobs-style synthesis — one line to steer the day.'
+      ? 'Synthèse à partir des contenus sélectionnés (IA si clés API configurées).'
+      : 'Synthesis from selected content (AI when API keys are set).'
 
   const humanLabel = humanTimeNow(lang)
+
+  const sourceBadge =
+    doctrineSource === 'openai' || doctrineSource === 'anthropic'
+      ? lang === 'fr'
+        ? ' · IA'
+        : ' · AI'
+      : ''
 
   return (
     <div className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center sm:p-6">
@@ -238,17 +356,29 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
             {doctrineTitle}
           </p>
           <p className="mt-1 text-[11px] text-muted-foreground">{subtitle}</p>
-          <p
-            className={cn(
-              readerSerif.className,
-              'mt-4 text-lg font-medium leading-snug text-foreground sm:text-xl',
+          <div className="relative mt-4 min-h-[3rem]">
+            {doctrineLoading ? (
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Loader2 className="h-5 w-5 animate-spin text-aigile-gold" aria-hidden />
+                <span className="text-sm">
+                  {lang === 'fr' ? 'Génération de la doctrine…' : 'Generating doctrine…'}
+                </span>
+              </div>
+            ) : (
+              <p
+                className={cn(
+                  readerSerif.className,
+                  'text-lg font-medium leading-snug text-foreground sm:text-xl',
+                )}
+                style={{
+                  fontFamily: `Charter, 'Bitstream Charter', ${readerSerif.style.fontFamily}, Georgia, serif`,
+                }}
+              >
+                {doctrineText}
+                <span className="text-xs font-normal text-muted-foreground">{sourceBadge}</span>
+              </p>
             )}
-            style={{
-              fontFamily: `Charter, 'Bitstream Charter', ${readerSerif.style.fontFamily}, Georgia, serif`,
-            }}
-          >
-            {doctrine}
-          </p>
+          </div>
           <p className="mt-3 text-xs text-muted-foreground/90">{humanLabel}</p>
         </div>
 
@@ -281,7 +411,7 @@ export function IntelligenceCollectorModal({ open, onClose, items, language }: P
               </div>
               <div className="space-y-3">
                 {(grouped.map.get(tierTitle) ?? []).map((item) => {
-                  const key = `${item.tierId}:::${item.groupName}`
+                  const key = item.feedItemId ?? `${item.tierId}:::${item.groupName}:::${item.primaryUrl ?? ''}`
                   const ex = expandedKey === key
                   return (
                     <CollectorReaderSection

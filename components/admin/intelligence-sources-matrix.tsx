@@ -1,11 +1,13 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Check, ExternalLink, Filter, Plus, Search, Sparkles } from 'lucide-react'
 
 import { IntelligenceCollectorModal } from '@/components/admin/intelligence-collector-modal'
 import { useLanguage } from '@/components/language-provider'
 import type { CollectorItem } from '@/lib/intelligence/collector-format'
+import { youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
+import { tierCoverGradientClass } from '@/lib/intelligence/tier-visuals'
 import { cn } from '@/lib/utils'
 import type {
   IntelligenceSourceGroup,
@@ -41,6 +43,51 @@ function matchesQuery(tier: IntelligenceTier, group: IntelligenceSourceGroup, q:
 function filterUrls(urls: SourceUrl[], hideYoutube: boolean): SourceUrl[] {
   if (!hideYoutube) return urls
   return urls.filter((u) => u.kind !== 'youtube')
+}
+
+type FeedApiItem = {
+  id: string
+  tier_id: string
+  source_label: string
+  url: string
+  url_kind: string
+  vitality_score: number
+  status: 'pending' | 'analyzing' | 'ready' | 'error'
+  preview_snippet: string | null
+  transcript_text: string | null
+  thumbnail_url: string | null
+  summary: string | null
+  content: string | null
+}
+
+function pickCoverForGroup(tierId: string, groupName: string, rows: FeedApiItem[]): string | null {
+  const matches = rows.filter((r) => r.tier_id === tierId && r.source_label === groupName)
+  const thumb = matches.map((r) => r.thumbnail_url).find((u) => !!u?.trim())
+  if (thumb) return thumb
+  for (const r of matches) {
+    const u = youtubeThumbnailUrlForPageUrl(r.url)
+    if (u) return u
+  }
+  return null
+}
+
+function BentoCover({ tierId, src }: { tierId: string; src: string | null }) {
+  const [broken, setBroken] = useState(false)
+  const showImg = !!src && !broken
+
+  return (
+    <div
+      className={cn(
+        'relative mb-3 h-28 w-full overflow-hidden rounded-xl md:h-32',
+        !showImg && tierCoverGradientClass(tierId),
+      )}
+    >
+      {showImg ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt="" className="h-full w-full object-cover" onError={() => setBroken(true)} />
+      ) : null}
+    </div>
+  )
 }
 
 function TierBadge({ tier }: { tier: IntelligenceTier }) {
@@ -98,6 +145,7 @@ function SourceCard({
   hideYoutube,
   selected,
   onToggleSelect,
+  coverImageUrl,
 }: {
   tier: IntelligenceTier
   group: IntelligenceSourceGroup
@@ -105,6 +153,7 @@ function SourceCard({
   hideYoutube: boolean
   selected: boolean
   onToggleSelect: () => void
+  coverImageUrl: string | null
 }) {
   const ok = matchesQuery(tier, group, query)
   const urls = filterUrls(group.urls, hideYoutube)
@@ -112,7 +161,7 @@ function SourceCard({
   return (
     <article
       className={cn(
-        'relative flex flex-col rounded-2xl border bg-card/80 p-4 shadow-sm transition-[filter,opacity,transform,box-shadow] duration-500 ease-out md:p-5',
+        'relative flex flex-col overflow-hidden rounded-2xl border bg-card/80 shadow-sm transition-[filter,opacity,transform,box-shadow] duration-500 ease-out',
         tier.layout.variant === 'empire_gold_black' &&
           'border-aigile-gold/35 bg-gradient-to-b from-zinc-950/90 to-black/80 md:min-h-[160px]',
         tier.layout.variant === 'wealth_hbr' && 'border-emerald-900/40 bg-emerald-950/10',
@@ -123,40 +172,43 @@ function SourceCard({
         ok && selected && 'ring-2 ring-aigile-gold/70 ring-offset-2 ring-offset-background',
       )}
     >
-      {ok ? (
-        <button
-          type="button"
-          onClick={onToggleSelect}
-          aria-pressed={selected}
-          title={selected ? 'Retirer du collector' : 'Ajouter au collector'}
+      <div className="relative p-4 md:p-5">
+        {ok ? (
+          <button
+            type="button"
+            onClick={onToggleSelect}
+            aria-pressed={selected}
+            title={selected ? 'Retirer du collector' : 'Ajouter au collector'}
+            className={cn(
+              'absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border text-[11px] transition-colors',
+              selected
+                ? 'border-aigile-gold bg-aigile-gold/25 text-aigile-gold'
+                : 'border-border/70 bg-background/70 text-muted-foreground hover:border-aigile-gold/45 hover:text-aigile-gold',
+            )}
+          >
+            {selected ? <Check className="h-4 w-4" aria-hidden /> : <Plus className="h-4 w-4" aria-hidden />}
+          </button>
+        ) : null}
+        {ok ? <BentoCover tierId={tier.id} src={coverImageUrl} /> : null}
+        <h3
           className={cn(
-            'absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border text-[11px] transition-colors',
-            selected
-              ? 'border-aigile-gold bg-aigile-gold/25 text-aigile-gold'
-              : 'border-border/70 bg-background/70 text-muted-foreground hover:border-aigile-gold/45 hover:text-aigile-gold',
+            'mb-3 pr-10 font-semibold leading-snug text-foreground',
+            tier.layout.variant === 'empire_gold_black' && 'text-lg md:text-2xl md:tracking-tight',
+            tier.layout.variant === 'wealth_hbr' && 'font-serif text-base md:text-lg',
           )}
         >
-          {selected ? <Check className="h-4 w-4" aria-hidden /> : <Plus className="h-4 w-4" aria-hidden />}
-        </button>
-      ) : null}
-      <h3
-        className={cn(
-          'mb-3 pr-10 font-semibold leading-snug text-foreground',
-          tier.layout.variant === 'empire_gold_black' && 'text-lg md:text-2xl md:tracking-tight',
-          tier.layout.variant === 'wealth_hbr' && 'font-serif text-base md:text-lg',
-        )}
-      >
-        {group.name}
-      </h3>
-      <div className="flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()} role="presentation">
-        {urls.map((u) => (
-          <UrlChip key={u.href} url={u} />
-        ))}
-        {urls.length === 0 && hideYoutube && group.urls.some((u) => u.kind === 'youtube') ? (
-          <p className="text-xs italic text-muted-foreground">
-            Liens YouTube masqués — filtre qualité (≥ durée configurée à l’ingestion).
-          </p>
-        ) : null}
+          {group.name}
+        </h3>
+        <div className="flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()} role="presentation">
+          {urls.map((u) => (
+            <UrlChip key={u.href} url={u} />
+          ))}
+          {urls.length === 0 && hideYoutube && group.urls.some((u) => u.kind === 'youtube') ? (
+            <p className="text-xs italic text-muted-foreground">
+              Liens YouTube masqués — filtre qualité (≥ durée configurée à l’ingestion).
+            </p>
+          ) : null}
+        </div>
       </div>
     </article>
   )
@@ -168,8 +220,23 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
   const [hideYoutube, setHideYoutube] = useState(false)
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(() => new Set())
   const [collectorOpen, setCollectorOpen] = useState(false)
+  const [feedRows, setFeedRows] = useState<FeedApiItem[]>([])
 
   const langUi = language === 'fr' ? 'fr' : 'en'
+
+  useEffect(() => {
+    let cancelled = false
+    void fetch('/api/admin/intelligence/feed')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((json: { items?: FeedApiItem[] } | null) => {
+        if (cancelled || !json?.items) return
+        setFeedRows(json.items)
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   function selectionKey(tierId: string, groupName: string) {
     return `${tierId}:::${groupName}`
@@ -191,16 +258,44 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
       const tierTitle = langUi === 'fr' ? tier.title_fr : tier.title_en
       for (const group of tier.groups) {
         if (!selectedKeys.has(selectionKey(tier.id, group.name))) continue
-        out.push({
-          tierId: tier.id,
-          tierTitle,
-          groupName: group.name,
-          urls: filterUrls(group.urls, hideYoutube),
-        })
+        const urls = filterUrls(group.urls, hideYoutube)
+        const rows = feedRows.filter((r) => r.tier_id === tier.id && r.source_label === group.name)
+
+        if (rows.length === 0) {
+          out.push({
+            tierId: tier.id,
+            tierTitle,
+            groupName: group.name,
+            urls,
+            feedPending: true,
+          })
+          continue
+        }
+
+        for (const row of rows) {
+          const matchUrls = urls.filter((u) => u.href === row.url)
+          const kind = row.url_kind as SourceUrl['kind']
+          const safeKind: SourceUrl['kind'] =
+            kind === 'youtube' || kind === 'podcast' || kind === 'web' ? kind : 'web'
+          out.push({
+            tierId: tier.id,
+            tierTitle,
+            groupName: group.name,
+            urls: matchUrls.length ? matchUrls : [{ href: row.url, kind: safeKind }],
+            feedItemId: row.id,
+            vitality_score: Number(row.vitality_score),
+            summary: row.summary ?? row.preview_snippet,
+            content: row.content ?? row.transcript_text,
+            thumbnail_url: row.thumbnail_url,
+            primaryUrl: row.url,
+            feedStatus: row.status,
+            feedPending: false,
+          })
+        }
       }
     }
     return out
-  }, [data.tiers, selectedKeys, hideYoutube, langUi])
+  }, [data.tiers, selectedKeys, hideYoutube, langUi, feedRows])
 
   const searchPlaceholder =
     language === 'fr' ? 'Recherche profonde — nom, domaine, créateur…' : 'Deep search — name, domain, creator…'
@@ -288,6 +383,7 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
                     hideYoutube={hideYoutube}
                     selected={selectedKeys.has(selectionKey(tier.id, group.name))}
                     onToggleSelect={() => toggleKey(tier.id, group.name)}
+                    coverImageUrl={pickCoverForGroup(tier.id, group.name, feedRows)}
                   />
                 </div>
               ))}
@@ -298,8 +394,8 @@ export function IntelligenceSourcesMatrix({ data }: { data: IntelligenceSourcesF
 
       <p className="text-center text-[11px] text-muted-foreground/85">
         {language === 'fr'
-          ? 'Démo Collector : recherche « Naval » ou « Cagan », + sur deux cartes visibles, puis « Ouvrir le Collector » — Doctrine du jour + Copier pour GPT.'
-          : 'Collector demo: search “Naval” or “Cagan”, + two visible cards, then Open Collector — daily doctrine + Copy for GPT.'}
+          ? 'Synchronisez le flux vitalité pour miniatures réelles et Collector branché sur Supabase. Démo : recherchez « Naval » ou « Cagan », sélectionnez les cartes visibles, ouvrez le Collector.'
+          : 'Sync the vitality feed for real thumbnails and Supabase-backed Collector. Demo: search “Naval” or “Cagan”, pick visible cards, open Collector.'}
       </p>
 
       <IntelligenceCollectorModal

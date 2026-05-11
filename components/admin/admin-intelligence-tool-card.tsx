@@ -49,8 +49,8 @@ export function AdminIntelligenceToolCard({ layout = 'landing' }: { layout?: Lay
             <h2 className="text-xl font-semibold text-foreground">Intelligence</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               {language === 'fr'
-                ? 'Sources Master, vitalité · Sprint 1'
-                : 'Master signals, vitality · Sprint 1'}
+                ? 'Veille opérationnelle : flux YAML, vitalité, transcripts.'
+                : 'Operational radar: YAML feed, vitality, transcripts.'}
             </p>
           </div>
           <ArrowRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-aigile-gold" />
@@ -75,13 +75,13 @@ export function AdminIntelligenceToolCard({ layout = 'landing' }: { layout?: Lay
             <Sparkles className="mb-3 h-8 w-8 text-aigile-gold/90" aria-hidden />
             <span className="font-semibold text-foreground">Intelligence</span>
             <span className="text-xs text-muted-foreground" lang="en">
-              Living anchor · Sprint 1
+              Intelligence workspace
             </span>
             <span className="mt-2 text-sm text-muted-foreground">
-              Sources Master, vitalité et couche « âme » admin.
+              Flux synchronisé, collector doctrine, mode lecture.
             </span>
             <span className="text-xs text-muted-foreground/80" lang="en">
-              Master signals, vitality, admin soul layer.
+              Feed sync, doctrine synthesis, reader mode.
             </span>
           </div>
         </PulseButton>

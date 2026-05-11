@@ -18,6 +18,9 @@ export type IntelFeedRow = {
   rotation_day: string
   created_at: string
   updated_at: string
+  thumbnail_url: string | null
+  summary: string | null
+  content: string | null
 }
 
 export function utcTodayDateString(): string {
@@ -45,9 +48,14 @@ export async function intelFeedUpsertItem(input: {
   status: IntelFeedRow['status']
   previewSnippet?: string | null
   transcriptText?: string | null
+  thumbnailUrl?: string | null
+  summary?: string | null
+  content?: string | null
   rotationDay: string
 }): Promise<IntelFeedRow | null> {
   const now = new Date().toISOString()
+  const summaryVal = input.summary ?? input.previewSnippet ?? null
+  const contentVal = input.content ?? input.transcriptText ?? null
   const { data, error } = await supabaseAdmin
     .from('intel_feed_items')
     .upsert(
@@ -62,6 +70,9 @@ export async function intelFeedUpsertItem(input: {
         preview_snippet: input.previewSnippet ?? null,
         transcript_text: input.transcriptText ?? null,
         transcript_error: null,
+        summary: summaryVal,
+        content: contentVal,
+        thumbnail_url: input.thumbnailUrl ?? null,
         analyst_started_at: input.status === 'analyzing' ? now : null,
         ready_at: input.status === 'ready' ? now : null,
         rotation_day: input.rotationDay,
@@ -100,9 +111,33 @@ export async function intelFeedGetById(id: string): Promise<IntelFeedRow | null>
   return data as IntelFeedRow | null
 }
 
+export async function intelFeedGetByIds(ids: string[]): Promise<IntelFeedRow[]> {
+  const uniq = [...new Set(ids)].filter(Boolean)
+  if (uniq.length === 0) return []
+  const { data, error } = await supabaseAdmin.from('intel_feed_items').select('*').in('id', uniq)
+  if (error) {
+    console.error('[intel-feed getByIds]', error.message)
+    return []
+  }
+  return (data ?? []) as IntelFeedRow[]
+}
+
 export async function intelFeedPatch(
   id: string,
-  patch: Partial<Pick<IntelFeedRow, 'status' | 'transcript_text' | 'transcript_error' | 'preview_snippet' | 'analyst_started_at' | 'ready_at'>>,
+  patch: Partial<
+    Pick<
+      IntelFeedRow,
+      | 'status'
+      | 'transcript_text'
+      | 'transcript_error'
+      | 'preview_snippet'
+      | 'analyst_started_at'
+      | 'ready_at'
+      | 'thumbnail_url'
+      | 'summary'
+      | 'content'
+    >
+  >,
 ): Promise<boolean> {
   const now = new Date().toISOString()
   const { error } = await supabaseAdmin

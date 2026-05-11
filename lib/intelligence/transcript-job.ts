@@ -98,8 +98,10 @@ export async function runYoutubeTranscriptJob(
     await intelFeedPatch(itemId, {
       status: 'ready',
       transcript_text: result.text,
-      transcript_error: null,
+      content: result.text,
+      summary: snippet || null,
       preview_snippet: snippet || null,
+      transcript_error: null,
       ready_at: now,
     })
     return

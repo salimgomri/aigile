@@ -11,6 +11,7 @@ import {
   type IntelFeedRow,
 } from '@/lib/intelligence/feed-repository'
 import { loadIntelligenceSources } from '@/lib/intelligence/load-sources'
+import { resolveIntelThumbnailUrl } from '@/lib/intelligence/media-metadata-server'
 import { enqueueYoutubeTranscriptJob } from '@/lib/intelligence/transcript-job'
 import {
   computeVitalityScore,
@@ -18,10 +19,11 @@ import {
   TRANSCRIPT_AUTO_THRESHOLD,
 } from '@/lib/intelligence/vitality-compute'
 
-const DEMO_PG_SNIPPET =
-  'Paul Graham — Essays · Vitalité 94 · lecture immédiate (liste sur paulgraham.com/articles).'
+const DEMO_PG_SUMMARY =
+  'Bibliothèque d’essais fondateurs sur startups, équipes produit et stratégie — contenus sur paulgraham.com/articles.'
 
-const DEMO_PG_TRANSCRIPT = `Sprint 3 · Démo « prêt instantané » : la page liste les essais fondateurs de Paul Graham (ex. Founder Mode, équipes produit, startups). Ouvrir paulgraham.com/articles pour une lecture immédiate sans attente de transcription vidéo.`
+const DEMO_PG_BODY =
+  'Les textes intégraux sont publiés sur le site officiel Paul Graham ; ouvrir l’URL pour lire chaque essai.'
 
 export type SyncIntelFeedResult = {
   rotationDay: string
@@ -51,11 +53,15 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
         let status: IntelFeedRow['status'] = 'pending'
         let previewSnippet: string | null = `${group.name} · Vitalité ${score}`
         let transcriptText: string | null = null
+        let contentBody: string | null = null
+
+        const thumbnailUrl = await resolveIntelThumbnailUrl(u.href, urlKind)
 
         if (isDemoPaulArticlesUrl(u.href)) {
           status = 'ready'
-          previewSnippet = DEMO_PG_SNIPPET
-          transcriptText = DEMO_PG_TRANSCRIPT
+          previewSnippet = DEMO_PG_SUMMARY
+          transcriptText = DEMO_PG_BODY
+          contentBody = DEMO_PG_BODY
         } else if (urlKind === 'youtube') {
           const autoTranscript = score > TRANSCRIPT_AUTO_THRESHOLD
           status = autoTranscript ? 'analyzing' : 'pending'
@@ -76,6 +82,9 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
           status,
           previewSnippet,
           transcriptText,
+          thumbnailUrl,
+          summary: previewSnippet,
+          content: contentBody ?? transcriptText,
           rotationDay,
         })
 
@@ -114,9 +123,11 @@ export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: bo
     const score = Number(row.vitality_score)
     const scoreLabel = Number.isFinite(score) ? score.toFixed(0) : '?'
     const now = new Date().toISOString()
+    const snippet = `Source · Vitalité ${scoreLabel} — ${row.url}`
     await intelFeedPatch(row.id, {
       status: 'ready',
-      preview_snippet: `Source marquée prête · Vitalité ${scoreLabel} — ${row.url}`,
+      preview_snippet: snippet,
+      summary: snippet,
       ready_at: now,
     })
     return { ok: true }

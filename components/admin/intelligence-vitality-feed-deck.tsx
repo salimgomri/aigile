@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import { CheckCircle2, ExternalLink, Flame, Loader2, RefreshCw } from 'lucide-react'
 
+import { youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
+import { tierCoverGradientClass } from '@/lib/intelligence/tier-visuals'
 import { cn } from '@/lib/utils'
 
 type FeedItem = {
@@ -16,6 +18,9 @@ type FeedItem = {
   status: 'pending' | 'analyzing' | 'ready' | 'error'
   preview_snippet: string | null
   transcript_error: string | null
+  thumbnail_url?: string | null
+  summary?: string | null
+  content?: string | null
   rotation_day: string
 }
 
@@ -29,6 +34,35 @@ function vitalityLabel(score: number): string {
   const n = Number(score)
   if (!Number.isFinite(n)) return '?'
   return Math.round(n).toString()
+}
+
+function FeedCardCover({
+  tierId,
+  thumb,
+  href,
+}: {
+  tierId: string
+  thumb: string | null
+  href: string
+}) {
+  const [broken, setBroken] = useState(false)
+  const fallbackYt = youtubeThumbnailUrlForPageUrl(href)
+  const src = thumb?.trim() || fallbackYt || null
+  const show = src && !broken
+
+  return (
+    <div
+      className={cn(
+        'relative -mx-4 -mt-4 mb-4 h-36 overflow-hidden sm:h-40',
+        !show && tierCoverGradientClass(tierId),
+      )}
+    >
+      {show ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt="" className="h-full w-full object-cover" onError={() => setBroken(true)} />
+      ) : null}
+    </div>
+  )
 }
 
 export function IntelligenceVitalityFeedDeck() {
@@ -105,10 +139,11 @@ export function IntelligenceVitalityFeedDeck() {
       <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
         <div>
           <h2 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-            Moteur vitalité (Sprint 3)
+            Flux opérationnel Intelligence
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-            Rotation {data?.retentionDays ?? 7} jours · purge du jour courant avant resync · transcription auto YouTube si vitalité &gt; 90 · démo Paul Graham « prêt » après synchro.
+            Rotation {data?.retentionDays ?? 7} jours · miniature YouTube / RSS · résumés et contenus depuis Supabase ·
+            transcription auto si vitalité &gt; 90.
           </p>
           {data?.rotationHint ? (
             <p className="mt-2 text-xs text-muted-foreground">
@@ -139,89 +174,106 @@ export function IntelligenceVitalityFeedDeck() {
         </div>
       ) : items.length === 0 ? (
         <p className="text-sm text-muted-foreground">
-          Aucune entrée. Lancez une synchronisation pour peupler le flux (dont la carte Paul Graham prête à lire).
+          Aucune entrée. Lancez une synchronisation pour peupler le flux depuis les sources YAML.
         </p>
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {items.map((item) => (
-            <li key={item.id}>
-              <article
-                className={cn(
-                  'flex h-full flex-col rounded-xl border p-4 transition-colors',
-                  item.status === 'ready' &&
-                    'border-emerald-500/55 bg-emerald-950/15 shadow-[0_0_0_1px_rgba(16,185,129,0.12)]',
-                  item.status === 'analyzing' && 'animate-pulse border-amber-500/70 bg-amber-950/20',
-                  item.status === 'pending' && 'border-dashed border-muted-foreground/35 bg-muted/5',
-                  item.status === 'error' && 'border-red-500/45 bg-red-950/15',
-                )}
-              >
-                <div className="mb-3 flex items-start justify-between gap-2">
-                  <div className="flex flex-wrap items-center gap-2">
-                    {item.status === 'ready' ? (
-                      <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-400" aria-hidden />
-                    ) : item.status === 'analyzing' ? (
-                      <Loader2 className="h-5 w-5 shrink-0 animate-spin text-amber-400" aria-hidden />
-                    ) : null}
-                    <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                      {item.source_label}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm font-semibold tabular-nums text-foreground">
-                    <Flame className="h-4 w-4 text-orange-400/90" aria-hidden />
-                    {vitalityLabel(item.vitality_score)}
-                    {Number(item.empire_boost_applied) >= 1.9 ? (
-                      <span className="ml-1 rounded bg-aigile-gold/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-aigile-gold">
-                        ×{Number(item.empire_boost_applied).toFixed(1)}
-                      </span>
-                    ) : null}
-                  </div>
-                </div>
+          {items.map((item) => {
+            const summaryText = (item.summary ?? item.preview_snippet ?? '').trim()
+            const contentLen = (item.content ?? '').trim().length
+            const showBodySkeleton =
+              item.status === 'analyzing' ||
+              (item.status === 'pending' && item.url_kind === 'youtube' && contentLen < 40 && summaryText.length < 120)
 
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mb-2 inline-flex items-center gap-1 text-sm font-medium text-aigile-gold hover:underline"
-                >
-                  <span className="truncate">{item.url}</span>
-                  <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
-                </a>
-
-                <p className="mb-1 text-[11px] uppercase tracking-wide text-muted-foreground">
-                  {item.url_kind} · {item.tier_id.replace(/_/g, ' ')}
-                </p>
-
-                {item.preview_snippet ? (
-                  <p className="mb-3 line-clamp-4 flex-1 text-sm leading-snug text-foreground/85">{item.preview_snippet}</p>
-                ) : (
-                  <div className="mb-3 flex-1" />
-                )}
-
-                {item.status === 'error' && item.transcript_error ? (
-                  <p className="mb-3 line-clamp-3 text-xs text-red-300/90">{item.transcript_error}</p>
-                ) : null}
-
-                <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-border/40 pt-3">
-                  <span className="text-xs text-muted-foreground">
-                    {item.status === 'ready' && 'Prêt · lecture immédiate'}
-                    {item.status === 'analyzing' && 'En cours d’analyse'}
-                    {item.status === 'pending' && 'Analyser à la demande'}
-                    {item.status === 'error' && 'Erreur — nouvelle tentative possible'}
-                  </span>
-                  {(item.status === 'pending' || item.status === 'error') && (
-                    <button
-                      type="button"
-                      disabled={analyzeId === item.id}
-                      onClick={() => void analyze(item.id)}
-                      className="ml-auto rounded-md border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium hover:bg-muted/60 disabled:opacity-50"
-                    >
-                      {analyzeId === item.id ? '…' : 'Analyser'}
-                    </button>
+            return (
+              <li key={item.id}>
+                <article
+                  className={cn(
+                    'flex h-full flex-col overflow-hidden rounded-xl border p-4 transition-colors',
+                    item.status === 'ready' &&
+                      'border-emerald-500/55 bg-emerald-950/15 shadow-[0_0_0_1px_rgba(16,185,129,0.12)]',
+                    item.status === 'analyzing' && 'animate-pulse border-amber-500/70 bg-amber-950/20',
+                    item.status === 'pending' && 'border-dashed border-muted-foreground/35 bg-muted/5',
+                    item.status === 'error' && 'border-red-500/45 bg-red-950/15',
                   )}
-                </div>
-              </article>
-            </li>
-          ))}
+                >
+                  <FeedCardCover tierId={item.tier_id} thumb={item.thumbnail_url ?? null} href={item.url} />
+
+                  <div className="mb-3 flex items-start justify-between gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {item.status === 'ready' ? (
+                        <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-400" aria-hidden />
+                      ) : item.status === 'analyzing' ? (
+                        <Loader2 className="h-5 w-5 shrink-0 animate-spin text-amber-400" aria-hidden />
+                      ) : null}
+                      <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                        {item.source_label}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1 text-sm font-semibold tabular-nums text-foreground">
+                      <Flame className="h-4 w-4 text-orange-400/90" aria-hidden />
+                      {vitalityLabel(item.vitality_score)}
+                      {Number(item.empire_boost_applied) >= 1.9 ? (
+                        <span className="ml-1 rounded bg-aigile-gold/20 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-aigile-gold">
+                          ×{Number(item.empire_boost_applied).toFixed(1)}
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mb-2 inline-flex items-center gap-1 text-sm font-medium text-aigile-gold hover:underline"
+                  >
+                    <span className="truncate">{item.url}</span>
+                    <ExternalLink className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
+                  </a>
+
+                  <p className="mb-1 text-[11px] uppercase tracking-wide text-muted-foreground">
+                    {item.url_kind} · {item.tier_id.replace(/_/g, ' ')}
+                  </p>
+
+                  {showBodySkeleton ? (
+                    <div className="mb-3 flex-1 space-y-2" aria-busy="true">
+                      <div className="h-3 w-full animate-pulse rounded bg-muted/45" />
+                      <div className="h-3 w-[92%] max-w-full animate-pulse rounded bg-muted/35" />
+                      <div className="h-3 w-4/5 animate-pulse rounded bg-muted/30" />
+                      <p className="text-[11px] text-muted-foreground">Collecte du contenu…</p>
+                    </div>
+                  ) : summaryText ? (
+                    <p className="mb-3 line-clamp-4 flex-1 text-sm leading-snug text-foreground/85">{summaryText}</p>
+                  ) : (
+                    <div className="mb-3 flex-1" />
+                  )}
+
+                  {item.status === 'error' && item.transcript_error ? (
+                    <p className="mb-3 line-clamp-3 text-xs text-red-300/90">{item.transcript_error}</p>
+                  ) : null}
+
+                  <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-border/40 pt-3">
+                    <span className="text-xs text-muted-foreground">
+                      {item.status === 'ready' && 'Prêt · lecture immédiate'}
+                      {item.status === 'analyzing' && 'En cours d’analyse'}
+                      {item.status === 'pending' && 'Analyser à la demande'}
+                      {item.status === 'error' && 'Erreur — nouvelle tentative possible'}
+                    </span>
+                    {(item.status === 'pending' || item.status === 'error') && (
+                      <button
+                        type="button"
+                        disabled={analyzeId === item.id}
+                        onClick={() => void analyze(item.id)}
+                        className="ml-auto rounded-md border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium hover:bg-muted/60 disabled:opacity-50"
+                      >
+                        {analyzeId === item.id ? '…' : 'Analyser'}
+                      </button>
+                    )}
+                  </div>
+                </article>
+              </li>
+            )
+          })}
         </ul>
       )}
     </section>
