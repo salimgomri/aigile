@@ -10,7 +10,7 @@ import {
 } from '@/components/admin/intelligence-source-reader-modal'
 import { useLanguage } from '@/components/language-provider'
 import type { CollectorItem } from '@/lib/intelligence/collector-format'
-import { youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
+import { faviconUrlForPageUrl, youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
 import { tierCoverGradientClass } from '@/lib/intelligence/tier-visuals'
 import { cn } from '@/lib/utils'
 import type {
@@ -119,13 +119,17 @@ function TierBadge({ tier }: { tier: IntelligenceTier }) {
 function UrlThumbnailRow({ url, row }: { url: SourceUrl; row?: FeedApiItem }) {
   const yt = url.kind === 'youtube' ? youtubeThumbnailUrlForPageUrl(url.href) : null
   const thumb = row?.thumbnail_url?.trim() || yt || null
+  const fav = faviconUrlForPageUrl(url.href)
 
   return (
     <div className="flex items-center gap-2 rounded-lg border border-border/55 bg-background/50 px-2 py-1.5">
-      <div className="relative h-11 w-[4.5rem] shrink-0 overflow-hidden rounded-md bg-muted">
+      <div className="relative flex h-11 w-[4.5rem] shrink-0 items-center justify-center overflow-hidden rounded-md bg-muted">
         {thumb ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={thumb} alt="" className="h-full w-full object-cover" />
+        ) : fav ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={fav} alt="" className="h-8 w-8 object-contain" />
         ) : (
           <span className="flex h-full items-center justify-center px-1 text-center text-[9px] leading-tight text-muted-foreground">
             {url.kind === 'youtube' ? 'YT' : url.kind === 'podcast' ? 'RSS' : 'WEB'}

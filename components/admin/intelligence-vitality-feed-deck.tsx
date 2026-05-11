@@ -5,7 +5,7 @@ import { BookOpen, CheckCircle2, ExternalLink, Flame, Loader2, RefreshCw } from 
 
 import { IntelligenceSourceReaderModal } from '@/components/admin/intelligence-source-reader-modal'
 import { useLanguage } from '@/components/language-provider'
-import { youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
+import { faviconUrlForPageUrl, youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
 import { tierCoverGradientClass } from '@/lib/intelligence/tier-visuals'
 import type { SourceUrl } from '@/lib/intelligence/types'
 import { cn } from '@/lib/utils'
@@ -62,6 +62,7 @@ function FeedCardCover({
 }) {
   const [broken, setBroken] = useState(false)
   const fallbackYt = youtubeThumbnailUrlForPageUrl(href)
+  const fav = faviconUrlForPageUrl(href)
   const src = thumb?.trim() || fallbackYt || null
   const show = src && !broken
 
@@ -69,12 +70,17 @@ function FeedCardCover({
     <div
       className={cn(
         'relative -mx-4 -mt-4 mb-4 h-36 overflow-hidden sm:h-40',
-        !show && tierCoverGradientClass(tierId),
+        !show && !fav && tierCoverGradientClass(tierId),
       )}
     >
       {show ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={src} alt="" className="h-full w-full object-cover" onError={() => setBroken(true)} />
+      ) : fav ? (
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-zinc-900 to-black">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={fav} alt="" className="h-16 w-16 rounded-xl border border-white/10 bg-black/40 object-contain p-2" />
+        </div>
       ) : null}
     </div>
   )

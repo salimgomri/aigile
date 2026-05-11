@@ -21,10 +21,10 @@ import {
 } from '@/lib/intelligence/vitality-compute'
 
 const DEMO_PG_SUMMARY =
-  'Bibliothèque d’essais fondateurs sur startups, équipes produit et stratégie — contenus sur paulgraham.com/articles.'
+  'Bibliothèque d’essais Paul Graham — synchronisez puis « Analyser » pour extraire le HTML réel de cette page (liste d’articles).'
 
-const DEMO_PG_BODY =
-  'Les textes intégraux sont publiés sur le site officiel Paul Graham ; ouvrir l’URL pour lire chaque essai.'
+/** Seuil aligné sur fetchWebPagePlainText (caractères utiles minimum). */
+const WEB_BODY_OK_CHARS = 80
 
 export type SyncIntelFeedResult = {
   rotationDay: string
@@ -59,10 +59,21 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
         const thumbnailUrl = await resolveIntelThumbnailUrl(u.href, urlKind)
 
         if (isDemoPaulArticlesUrl(u.href)) {
-          status = 'ready'
-          previewSnippet = DEMO_PG_SUMMARY
-          transcriptText = DEMO_PG_BODY
-          contentBody = DEMO_PG_BODY
+          const fetched = await fetchWebPagePlainText(u.href)
+          if (fetched.text.length >= WEB_BODY_OK_CHARS) {
+            status = 'ready'
+            const head = fetched.title?.slice(0, 200) ?? 'Paul Graham — articles'
+            previewSnippet = `${head} · Vitalité ${score}`
+            transcriptText = fetched.text
+            contentBody = fetched.text
+            summary = fetched.title ? `${fetched.title.slice(0, 500)}` : previewSnippet
+          } else {
+            status = 'pending'
+            previewSnippet = DEMO_PG_SUMMARY
+            transcriptText = null
+            contentBody = null
+            summary = DEMO_PG_SUMMARY
+          }
         } else if (urlKind === 'youtube') {
           const autoTranscript = score > TRANSCRIPT_AUTO_THRESHOLD
           status = autoTranscript ? 'analyzing' : 'pending'
@@ -134,7 +145,7 @@ export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: bo
     const fetched = await fetchWebPagePlainText(row.url)
     const baseSnippet = `${row.source_label} · ${row.url_kind === 'podcast' ? 'Podcast' : 'Web'} · Vitalité ${scoreLabel}`
 
-    if (fetched.text.length >= 120) {
+    if (fetched.text.length >= WEB_BODY_OK_CHARS) {
       const summaryLine = fetched.title ? `${fetched.title} — ${baseSnippet}` : baseSnippet
       await intelFeedPatch(row.id, {
         status: 'ready',

@@ -43,3 +43,27 @@ export function youtubeThumbnailUrlForPageUrl(href: string): string | null {
   const id = extractYoutubeVideoId(href)
   return id ? youtubeThumbnailMaxRes(id) : null
 }
+
+/** URL canonique pour matcher les lignes feed (évite ratés trailing slash / hash). */
+export function normalizeIntelUrl(href: string): string {
+  try {
+    const u = new URL(href.trim())
+    u.hash = ''
+    let out = u.href
+    if (out.endsWith('/') && u.pathname !== '/') out = out.slice(0, -1)
+    return out
+  } catch {
+    return href.trim()
+  }
+}
+
+/** Favicon haute résolution (preview Web sans og:image). */
+export function faviconUrlForPageUrl(href: string, size = 128): string | null {
+  try {
+    const host = new URL(href.trim()).hostname
+    if (!host) return null
+    return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=${size}`
+  } catch {
+    return null
+  }
+}
