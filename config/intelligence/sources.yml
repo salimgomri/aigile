@@ -49,9 +49,11 @@ tiers:
       - name: "OpenAI — Actualités"
         urls:
           - { href: "https://openai.com/news/", kind: web }
+          - { href: "https://openai.com/index/ten-years/", kind: web }
       - name: "Sam Altman — Blog"
         urls:
           - { href: "https://blog.samaltman.com/", kind: web }
+          - { href: "https://blog.samaltman.com/2279512", kind: web }
       - name: "Anthropic (Dario Amodei)"
         urls:
           - { href: "https://www.anthropic.com/news", kind: web }
@@ -125,6 +127,33 @@ tiers:
       - name: "Jeff Patton"
         urls:
           - { href: "https://jpattonassociates.com/articles", kind: web }
+      - name: "One Knight in Product"
+        urls:
+          - { href: "https://oneknightinproduct.substack.com/", kind: web }
+      - name: "Marily — AI Product Academy"
+        urls:
+          - { href: "https://marily.substack.com/", kind: web }
+      - name: "AI Product Craft"
+        urls:
+          - { href: "https://www.aiproductcraft.com/", kind: web }
+      - name: "Le Ticket (FR)"
+        urls:
+          - { href: "https://www.le-ticket.fr/newsletter-product-management/", kind: web }
+      - name: "Monsieur Guiz (FR)"
+        urls:
+          - { href: "https://blog.monsieurguiz.fr/newsletter/", kind: web }
+      - name: "Lewis Lin — Newsletter"
+        urls:
+          - { href: "https://lewislin.substack.com/", kind: web }
+      - name: "Teresa Torres — Product Talk"
+        urls:
+          - { href: "https://www.producttalk.org/", kind: web }
+      - name: "People in Product (Medium)"
+        urls:
+          - { href: "https://peopleinproduct.medium.com/", kind: web }
+      - name: "Andrew Quan (Medium)"
+        urls:
+          - { href: "https://andrewhquan.medium.com/", kind: web }
 
   - id: agile_scale
     rank: agile
@@ -139,6 +168,7 @@ tiers:
       - name: "Martin Fowler"
         urls:
           - { href: "https://martinfowler.com/", kind: web }
+          - { href: "https://martinfowler.com/articles/products-over-projects.html", kind: web }
       - name: "Mike Cohn — Mountain Goat Software"
         urls:
           - { href: "https://www.mountaingoatsoftware.com/blog", kind: web }
@@ -151,6 +181,8 @@ tiers:
       - name: "Scaled Agile (SAFe)"
         urls:
           - { href: "https://scaledagileframework.com/blog/", kind: web }
+          - { href: "https://scaledagile.com/", kind: web }
+          - { href: "https://scaledagile.com/blog/", kind: web }
       - name: "Claude Aubry — Scrum FR"
         urls:
           - { href: "https://claudeaubry.fr/", kind: web }
@@ -160,6 +192,75 @@ tiers:
       - name: "Radical Candor — Blog"
         urls:
           - { href: "https://radicalcandor.com/blog/", kind: web }
+      - name: "Agile Alliance"
+        urls:
+          - { href: "https://www.agilealliance.org/", kind: web }
+          - { href: "https://www.agilealliance.org/wp-content/uploads/2018/07/AgilePG_FRE.pdf", kind: web }
+      - name: "Scrum Guide"
+        urls:
+          - { href: "https://scrumguides.org/", kind: web }
+      - name: "Scrum.org"
+        urls:
+          - { href: "https://www.scrum.org/", kind: web }
+          - { href: "https://www.scrum.org/resources/blog", kind: web }
+      - name: "LeSS"
+        urls:
+          - { href: "https://less.works/", kind: web }
+      - name: "Kanban University"
+        urls:
+          - { href: "https://kanban.university/", kind: web }
+          - { href: "https://kanban.university/resources/", kind: web }
+      - name: "LeadingAgile"
+        urls:
+          - { href: "https://www.leadingagile.com/blog/", kind: web }
+      - name: "Nave"
+        urls:
+          - { href: "https://www.nave.com/blog", kind: web }
+      - name: "Kanbanize"
+        urls:
+          - { href: "https://kanbanize.com/kanban-resources", kind: web }
+      - name: "Retrium"
+        urls:
+          - { href: "https://www.retrium.com/blog", kind: web }
+      - name: "Scrum Alliance"
+        urls:
+          - { href: "https://www.scrumalliance.org/articles", kind: web }
+      - name: "Journal du Net — DSI"
+        urls:
+          - { href: "https://www.journaldunet.com/solutions/dsi/1548009-agilite-et-product-management-en-2026-neuf-tendances-qui-redessinent-le-jeu/", kind: web }
+      - name: "Atlassian — Agile (FR)"
+        urls:
+          - { href: "https://www.atlassian.com/fr/agile/project-management/templates", kind: web }
+      - name: "Planview — Ressources (FR)"
+        urls:
+          - { href: "https://www.planview.com/fr/resources/articles/using-artificial-intelligence-for-project-management/", kind: web }
+      - name: "Blog Gestion de Projet"
+        urls:
+          - { href: "https://blog-gestion-de-projet.com/agilite-et-scrum-fondamentaux/concept-produit/", kind: web }
+      - name: "ORSYS Le Mag"
+        urls:
+          - { href: "https://www.orsys.fr/orsys-lemag/quelles-methodes-agiles-pour-reussir-projets-xp-kanban-lean-safe-scrum/", kind: web }
+      - name: "Agile Academy (FR)"
+        urls:
+          - { href: "https://www.agile-academy.com/fr/newsletter/", kind: web }
+      - name: "SuperTilt"
+        urls:
+          - { href: "https://supertilt.fr/nos-conseils-pour-faire-sa-veille-ia/", kind: web }
+      - name: "Yield Advisory"
+        urls:
+          - { href: "https://www.yieldadvisory.fr/blog", kind: web }
+      - name: "Newsletters agilité (Substack)"
+        urls:
+          - { href: "https://substack.com/@stefanwolpers", kind: web }
+          - { href: "https://agileadmiral.substack.com/", kind: web }
+          - { href: "https://handsonagile.substack.com/", kind: web }
+          - { href: "https://agilechronicles.substack.com/", kind: web }
+      - name: "Craig Larman"
+        urls:
+          - { href: "https://craiglarman.com/", kind: web }
+      - name: "Lyssa Adkins"
+        urls:
+          - { href: "https://lyssaadkins.com/", kind: web }
 
   - id: coaching_leadership
     rank: coaching
