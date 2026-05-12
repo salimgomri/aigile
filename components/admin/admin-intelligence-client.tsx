@@ -1,6 +1,8 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
+
+import { IntelligenceImmersiveReader } from '@/components/admin/intelligence-immersive-reader'
 
 import { IntelligenceSourcesMatrix } from '@/components/admin/intelligence-sources-matrix'
 import { IntelligenceVitalityFeedDeck } from '@/components/admin/intelligence-vitality-feed-deck'
@@ -20,9 +22,11 @@ function utcDayOffset(days: number): string {
 function RotationDayNav({
   value,
   onChange,
+  actions,
 }: {
   value: string
   onChange: (isoDay: string) => void
+  actions?: ReactNode
 }) {
   const { language } = useLanguage()
   const fr = language === 'fr'
@@ -34,7 +38,7 @@ function RotationDayNav({
   ]
 
   return (
-    <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-border/70 bg-card/30 px-4 py-4 sm:flex-row sm:flex-wrap sm:items-center">
+    <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-border/70 bg-card/30 px-4 py-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           {fr ? 'Jour de rotation (UTC)' : 'Rotation day (UTC)'}
@@ -55,20 +59,23 @@ function RotationDayNav({
           </button>
         ))}
       </div>
-      <label className="flex items-center gap-2 text-sm text-muted-foreground">
-        <span className="whitespace-nowrap text-xs uppercase tracking-wide">
-          {fr ? 'Calendrier' : 'Calendar'}
-        </span>
-        <input
-          type="date"
-          value={value}
-          onChange={(e) => {
-            const v = e.target.value
-            if (/^\d{4}-\d{2}-\d{2}$/.test(v)) onChange(v)
-          }}
-          className="rounded-lg border border-border/80 bg-background px-2 py-1.5 text-sm text-foreground"
-        />
-      </label>
+      <div className="flex flex-wrap items-center gap-3">
+        <label className="flex items-center gap-2 text-sm text-muted-foreground">
+          <span className="whitespace-nowrap text-xs uppercase tracking-wide">
+            {fr ? 'Calendrier' : 'Calendar'}
+          </span>
+          <input
+            type="date"
+            value={value}
+            onChange={(e) => {
+              const v = e.target.value
+              if (/^\d{4}-\d{2}-\d{2}$/.test(v)) onChange(v)
+            }}
+            className="rounded-lg border border-border/80 bg-background px-2 py-1.5 text-sm text-foreground"
+          />
+        </label>
+        {actions}
+      </div>
     </div>
   )
 }
@@ -85,7 +92,11 @@ export function AdminIntelligenceClient({ sources }: { sources: IntelligenceSour
 
   return (
     <>
-      <RotationDayNav value={rotationDay} onChange={setRotationDay} />
+      <RotationDayNav
+        value={rotationDay}
+        onChange={setRotationDay}
+        actions={<IntelligenceImmersiveReader rotationDay={rotationDay} tiers={filtered.tiers} />}
+      />
       <IntelligenceVitalityFeedDeck rotationDay={rotationDay} />
       <IntelligenceSourcesMatrix data={filtered} rotationDay={rotationDay} />
     </>
