@@ -1,31 +1,37 @@
 import Link from 'next/link'
-import { Sparkles } from 'lucide-react'
+import { IBM_Plex_Sans, Inter } from 'next/font/google'
+
 import { AdminIntelligenceClient } from '@/components/admin/admin-intelligence-client'
 import { loadIntelligenceSources } from '@/lib/intelligence/load-sources'
+
+import './intelligence-apple.css'
+
+const interIntel = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter-intel',
+  display: 'swap',
+})
+
+const ibmIntel = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-ibm-intel',
+  display: 'swap',
+})
 
 export default function AdminIntelligencePage() {
   const sources = loadIntelligenceSources()
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-16">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <Sparkles className="h-9 w-9 text-aigile-gold/90" aria-hidden />
-          <div>
-            <h1 className="text-2xl font-bold text-foreground md:text-3xl">Intelligence</h1>
-            <p className="text-sm text-muted-foreground">
-              Sources Visionnaires, Empire, Wealth… · lecture · transcripts · export
-            </p>
-          </div>
+    <div className={`${interIntel.variable} ${ibmIntel.variable} min-h-[calc(100vh-4rem)]`}>
+      <div className="border-b border-[var(--ia-line,#e6e6ec)] bg-[#fbfbfd]/90 px-4 py-2 backdrop-blur-md sm:px-6">
+        <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-2 text-sm">
+          <Link href="/admin/orders" className="font-medium text-[#353a45] underline-offset-4 hover:text-[#0b1220] hover:underline">
+            ← Administration
+          </Link>
+          <span className="text-[#6e7480]">Intelligence · charte « Veilles » (UTC)</span>
         </div>
-        <Link
-          href="/admin/orders"
-          className="text-sm font-medium text-aigile-gold hover:text-book-orange"
-        >
-          ← Administration
-        </Link>
       </div>
-
       <AdminIntelligenceClient sources={sources} />
     </div>
   )

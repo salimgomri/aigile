@@ -1,3 +1,25 @@
+/** Accent lisible sur fond clair (dots / chips style « Veilles »). */
+export function tierAccentHex(tierId: string): string {
+  switch (tierId) {
+    case 'visionnaires':
+      return '#b08544'
+    case 'empire_builders':
+      return '#c9a227'
+    case 'wealth_architects':
+      return '#0a7d4b'
+    case 'product_elite':
+      return '#1d6cf0'
+    case 'agile_scale':
+      return '#2563eb'
+    case 'coaching_leadership':
+      return '#b91c5c'
+    case 'podcasts_audio':
+      return '#8b3fbf'
+    default:
+      return '#0b1220'
+  }
+}
+
 /** Dégradé de secours quand aucune miniature n’est disponible (couleur par palier). */
 export function tierCoverGradientClass(tierId: string): string {
   switch (tierId) {
