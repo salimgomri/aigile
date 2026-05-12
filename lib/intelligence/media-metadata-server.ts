@@ -35,6 +35,16 @@ function parseItunesImageFromXml(xml: string): string | null {
   return m?.[1]?.trim() ?? null
 }
 
+/** RSS 2.0 classique (Substack, etc.) — logo chaîne sous `<channel><image><url>`. */
+function parseRssChannelImageUrl(xml: string): string | null {
+  const ch = xml.match(/<channel[^>]*>([\s\S]*?)<\/channel>/i)?.[1]
+  if (!ch) return null
+  const inner = ch.match(/<image[^>]*>([\s\S]*?)<\/image>/i)?.[1]
+  if (!inner) return null
+  const u = inner.match(/<url[^>]*>([\s\S]*?)<\/url>/i)?.[1]?.trim()
+  return u ?? null
+}
+
 function parseOgImage(html: string): string | null {
   const m =
     html.match(/property=["']og:image["'][^>]*content=["']([^"']+)["']/i) ??
@@ -75,7 +85,9 @@ export async function resolveFeedOrPageImage(url: string): Promise<string | null
     text.includes('<feed')
 
   if (isXml) {
-    const img = parseItunesImageFromXml(text)
+    const img =
+      parseItunesImageFromXml(text) ??
+      parseRssChannelImageUrl(text)
     return img ? absolutize(url, img) : null
   }
 

@@ -30,6 +30,8 @@ const INTEL_FEED_STATUS_ORDER: Record<IntelFeedRow['status'], number> = {
   error: 3,
 }
 
+const ROTATION_DAY_RE = /^\d{4}-\d{2}-\d{2}$/
+
 /** Prêt (lisible) en tête, puis vitalité décroissante. */
 export function sortIntelFeedRowsForAdmin(rows: IntelFeedRow[]): IntelFeedRow[] {
   return [...rows].sort((a, b) => {
@@ -111,6 +113,33 @@ export async function intelFeedUpsertItem(input: {
   return data as IntelFeedRow | null
 }
 
+/** Tri pour récap multi-jours : jour décroissant, puis statut / vitalité. */
+export function sortIntelFeedRowsWeekly(rows: IntelFeedRow[]): IntelFeedRow[] {
+  return [...rows].sort((a, b) => {
+    const dayCmp = b.rotation_day.localeCompare(a.rotation_day)
+    if (dayCmp !== 0) return dayCmp
+    const sa = INTEL_FEED_STATUS_ORDER[a.status] ?? 99
+    const sb = INTEL_FEED_STATUS_ORDER[b.status] ?? 99
+    if (sa !== sb) return sa - sb
+    const va = Number(a.vitality_score)
+    const vb = Number(b.vitality_score)
+    if (vb !== va) return vb - va
+    return (b.updated_at ?? '').localeCompare(a.updated_at ?? '')
+  })
+}
+
+export async function intelFeedListByRotationDays(days: string[]): Promise<IntelFeedRow[]> {
+  const uniq = [...new Set(days)].filter((d) => ROTATION_DAY_RE.test(d))
+  if (uniq.length === 0) return []
+  const { data, error } = await supabaseAdmin.from('intel_feed_items').select('*').in('rotation_day', uniq)
+
+  if (error) {
+    console.error('[intel-feed list by rotation days]', error.message)
+    return []
+  }
+  return sortIntelFeedRowsWeekly((data ?? []) as IntelFeedRow[])
+}
+
 export async function intelFeedListRecent(limit = 120): Promise<IntelFeedRow[]> {
   const { data, error } = await supabaseAdmin
     .from('intel_feed_items')
@@ -125,8 +154,6 @@ export async function intelFeedListRecent(limit = 120): Promise<IntelFeedRow[]> 
   }
   return (data ?? []) as IntelFeedRow[]
 }
-
-const ROTATION_DAY_RE = /^\d{4}-\d{2}-\d{2}$/
 
 export async function intelFeedListByRotationDay(rotationDay: string): Promise<IntelFeedRow[]> {
   if (!ROTATION_DAY_RE.test(rotationDay)) return []

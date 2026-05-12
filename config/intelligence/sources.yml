@@ -111,7 +111,7 @@ tiers:
           - { href: "https://melissaperri.com/blog", kind: web }
       - name: "Lenny Rachitsky — Newsletter"
         urls:
-          - { href: "https://www.lennysnewsletter.com/", kind: web }
+          - { href: "https://www.lennysnewsletter.com/feed", kind: podcast }
       - name: "Mind The Product"
         urls:
           - { href: "https://www.mindtheproduct.com/", kind: web }

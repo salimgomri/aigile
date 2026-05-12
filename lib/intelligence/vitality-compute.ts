@@ -30,6 +30,17 @@ function hashSignal(url: string): number {
   return Math.abs(h)
 }
 
+/** URL pointant vers un flux RSS (pas une page HTML) — scrape fiable → seuil auto-ingestion aligné sur TRANSCRIPT_AUTO_THRESHOLD. */
+function isLikelyDirectRssFeedUrl(url: string): boolean {
+  try {
+    const u = new URL(url.trim())
+    const p = u.pathname.replace(/\/+$/, '')
+    return p.endsWith('/feed') || p.endsWith('/rss') || p.endsWith('/rss.xml')
+  } catch {
+    return false
+  }
+}
+
 /** Plancher déterministe par palier (signal brut avant boost Empire). */
 function tierFloor(tierId: string): number {
   switch (tierId) {
@@ -77,6 +88,9 @@ export function computeVitalityScore(input: {
   const empireBoost = input.tierId === EMPIRE_TIER ? EMPIRE_VITALITY_MULTIPLIER : 1
   let score = Math.round(raw * empireBoost)
   score = Math.min(100, Math.max(0, score))
+  if (isLikelyDirectRssFeedUrl(input.url)) {
+    score = Math.max(score, 82)
+  }
 
   return { score, empireBoostApplied: empireBoost }
 }

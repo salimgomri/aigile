@@ -57,12 +57,13 @@ export function normalizeIntelUrl(href: string): string {
   }
 }
 
-/** Favicon haute résolution (preview Web sans og:image). */
-export function faviconUrlForPageUrl(href: string, size = 128): string | null {
+/** Favicon pour preview Web (sans og:image). DuckDuckGo renvoie une icône par défaut si le domaine est inconnu ; l’API Google s2/favicons 404 souvent côté navigateur. */
+export function faviconUrlForPageUrl(href: string): string | null {
   try {
-    const host = new URL(href.trim()).hostname
+    let host = new URL(href.trim()).hostname
     if (!host) return null
-    return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=${size}`
+    host = host.replace(/^www\./, '')
+    return `https://icons.duckduckgo.com/ip3/${host}.ico`
   } catch {
     return null
   }
