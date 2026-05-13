@@ -531,6 +531,35 @@
   gap: 14px;
 }
 
+.intelligence-apple .ia-card--muted {
+  opacity: 0.62;
+  filter: grayscale(0.18);
+  cursor: default;
+}
+
+.intelligence-apple .ia-card--muted:hover .ia-card__title {
+  color: inherit;
+}
+
+.intelligence-apple .ia-card__read--off {
+  margin-left: auto;
+  color: var(--ia-ink-3);
+  font-weight: 400;
+  cursor: default;
+}
+
+.intelligence-apple .ia-weekgroup__pending {
+  color: var(--ia-ink-3);
+  font-weight: 400;
+}
+
+.intelligence-apple .ia-hint--compact {
+  margin-top: 14px;
+  margin-bottom: 0;
+  font-size: 13px;
+  color: var(--ia-ink-3);
+}
+
 .intelligence-apple .ia-card {
   background: transparent;
   padding: 0;

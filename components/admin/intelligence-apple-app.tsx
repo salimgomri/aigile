@@ -19,7 +19,13 @@ const LS_KEYS = {
   accent: 'intelApple.accent',
   density: 'intelApple.density',
   font: 'intelApple.font',
+  /** false = n’afficher que les entrées avec corps lisible (défaut) */
+  showAllIntel: 'intelApple.showAllIntel',
 }
+
+/** Aligné sur la sync serveur : en dessous ce seuil, pas de « papier » exploitable. */
+const MIN_READABLE_FEED_CHARS = 80
+const MIN_RSS_ARTICLE_TEXT_CHARS = 48
 
 export type AppleFeedItem = {
   id: string
@@ -48,6 +54,7 @@ export type AppleArticleRow = {
   article_url: string
   title: string
   summary: string | null
+  content?: string | null
   published_at: string
   ingestion_kind: string
 }
@@ -108,6 +115,17 @@ function articleBody(item: AppleFeedItem): string {
   const c = (item.content ?? '').trim()
   if (c.length > 0) return c
   return (item.transcript_text ?? '').trim()
+}
+
+/** Corps exploitable pour le lecteur plein écran (pas seulement résumé / snippet). */
+function feedItemHasReadableBody(item: AppleFeedItem): boolean {
+  return articleBody(item).length >= MIN_READABLE_FEED_CHARS
+}
+
+function rssArticleHasReadableText(row: AppleArticleRow): boolean {
+  const sum = (row.summary ?? '').trim()
+  const body = (row.content ?? '').trim()
+  return sum.length >= MIN_RSS_ARTICLE_TEXT_CHARS || body.length >= MIN_READABLE_FEED_CHARS
 }
 
 function splitParagraphs(body: string): string[] {
@@ -480,15 +498,18 @@ function articlePubLabel(iso: string): string {
 function NewsArticleApple({
   row,
   tiers,
+  fr,
 }: {
   row: AppleArticleRow
   tiers: IntelligenceTier[]
+  fr: boolean
 }) {
   const accent = tierAccentHex(row.tier_id)
   const tierLab = tierTitle(tiers, row.tier_id, true)
   const sum = (row.summary ?? '').trim()
+  const readable = rssArticleHasReadableText(row)
   return (
-    <article className="ia-card ia-card--article">
+    <article className={cn('ia-card', 'ia-card--article', !readable && 'ia-card--muted')}>
       <div className="ia-card__meta">
         <span className="ia-card__theme" style={{ color: accent }}>
           <span className="ia-dot" style={{ background: accent }} /> {tierLab}
@@ -503,9 +524,13 @@ function NewsArticleApple({
       <div className="ia-card__foot">
         <span className="ia-card__src">{articlePubLabel(row.published_at)}</span>
         <span className="ia-card__host">{hostFromUrl(row.article_url)}</span>
-        <a className="ia-card__read" href={row.article_url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
-          Ouvrir →
-        </a>
+        {readable ? (
+          <a className="ia-card__read" href={row.article_url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
+            {fr ? 'Ouvrir →' : 'Open →'}
+          </a>
+        ) : (
+          <span className="ia-card__read ia-card__read--off">{fr ? 'Résumé trop court' : 'Short summary'}</span>
+        )}
       </div>
     </article>
   )
@@ -515,17 +540,26 @@ function NewsCardApple({
   item,
   large,
   tiers,
+  fr,
   onOpen,
 }: {
   item: AppleFeedItem
   large?: boolean
   tiers: IntelligenceTier[]
+  fr: boolean
   onOpen: () => void
 }) {
   const accent = tierAccentHex(item.tier_id)
   const tierLab = tierTitle(tiers, item.tier_id, true)
+  const readable = feedItemHasReadableBody(item)
   return (
-    <article className={cn('ia-card', large && 'ia-card--lg')} role="button" tabIndex={0} onClick={onOpen} onKeyDown={(e) => e.key === 'Enter' && onOpen()}>
+    <article
+      className={cn('ia-card', large && 'ia-card--lg', !readable && 'ia-card--muted')}
+      role={readable ? 'button' : undefined}
+      tabIndex={readable ? 0 : undefined}
+      onClick={() => readable && onOpen()}
+      onKeyDown={(e) => readable && e.key === 'Enter' && onOpen()}
+    >
       <div className="ia-card__meta">
         <span className="ia-card__theme" style={{ color: accent }}>
           <span className="ia-dot" style={{ background: accent }} /> {tierLab}
@@ -540,7 +574,9 @@ function NewsCardApple({
       <div className="ia-card__foot">
         <span className="ia-card__src">{item.url_kind}</span>
         <span className="ia-card__host">{hostFromUrl(item.url)}</span>
-        <span className="ia-card__read">Lire →</span>
+        <span className={cn('ia-card__read', !readable && 'ia-card__read--off')}>
+          {readable ? (fr ? 'Lire →' : 'Read →') : fr ? 'Pas encore lisible' : 'Not readable yet'}
+        </span>
       </div>
     </article>
   )
@@ -574,6 +610,8 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
   const [accent, setAccent] = useState('#0b1220')
   const [density, setDensity] = useState<'compact' | 'comfortable'>('comfortable')
   const [fontChoice, setFontChoice] = useState<'inter' | 'ibm' | 'georgia'>('inter')
+  /** false = masquer les flux sans corps lisible et les articles RSS au résumé trop court */
+  const [showAllIntel, setShowAllIntel] = useState(false)
 
   useEffect(() => {
     try {
@@ -583,6 +621,7 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
       if (a) setAccent(a)
       if (d === 'compact' || d === 'comfortable') setDensity(d)
       if (f === 'inter' || f === 'ibm' || f === 'georgia') setFontChoice(f)
+      if (localStorage.getItem(LS_KEYS.showAllIntel) === '1') setShowAllIntel(true)
     } catch {
       /* ignore */
     }
@@ -593,10 +632,11 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
       localStorage.setItem(LS_KEYS.accent, accent)
       localStorage.setItem(LS_KEYS.density, density)
       localStorage.setItem(LS_KEYS.font, fontChoice)
+      localStorage.setItem(LS_KEYS.showAllIntel, showAllIntel ? '1' : '0')
     } catch {
       /* ignore */
     }
-  }, [accent, density, fontChoice])
+  }, [accent, density, fontChoice, showAllIntel])
 
   const fontStack = useMemo(() => {
     if (fontChoice === 'ibm') return `var(--font-ibm-intel), 'IBM Plex Sans', system-ui, sans-serif`
@@ -658,15 +698,25 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
 
   const rawArticles = weekView ? articlesWeek : articlesDay
 
-  const filteredArticles = useMemo(() => {
+  const tierFilteredFeed = useMemo(() => {
+    if (tierFilter === 'all') return rawItems
+    return rawItems.filter((i) => i.tier_id === tierFilter)
+  }, [rawItems, tierFilter])
+
+  const tierFilteredArticles = useMemo(() => {
     if (tierFilter === 'all') return rawArticles
     return rawArticles.filter((a) => a.tier_id === tierFilter)
   }, [rawArticles, tierFilter])
 
-  const filtered = useMemo(() => {
-    if (tierFilter === 'all') return rawItems
-    return rawItems.filter((i) => i.tier_id === tierFilter)
-  }, [rawItems, tierFilter])
+  const displayFeedItems = useMemo(
+    () => (showAllIntel ? tierFilteredFeed : tierFilteredFeed.filter(feedItemHasReadableBody)),
+    [tierFilteredFeed, showAllIntel],
+  )
+
+  const displayArticles = useMemo(
+    () => (showAllIntel ? tierFilteredArticles : tierFilteredArticles.filter(rssArticleHasReadableText)),
+    [tierFilteredArticles, showAllIntel],
+  )
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { all: rawItems.length + rawArticles.length }
@@ -730,36 +780,35 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
 
   const groupedByDay = useMemo(() => {
     if (!weekView) return null
-    const m = new Map<string, AppleFeedItem[]>()
-    for (const it of filtered) {
-      const arr = m.get(it.rotation_day) ?? []
-      arr.push(it)
-      m.set(it.rotation_day, arr)
-    }
-    const artByDay = new Map<string, AppleArticleRow[]>()
-    for (const a of filteredArticles) {
-      const dd = String(a.digest_date).slice(0, 10)
-      const arr = artByDay.get(dd) ?? []
-      arr.push(a)
-      artByDay.set(dd, arr)
-    }
-    const keys = new Set([...m.keys(), ...artByDay.keys()])
-    return [...keys]
+    const days = new Set<string>()
+    for (const it of tierFilteredFeed) days.add(it.rotation_day)
+    for (const a of tierFilteredArticles) days.add(String(a.digest_date).slice(0, 10))
+
+    return [...days]
       .sort((a, b) => b.localeCompare(a))
-      .map((k) => ({
-        day: k,
-        items: m.get(k) ?? [],
-        articles: artByDay.get(k) ?? [],
-      }))
-      .filter((g) => g.items.length > 0 || g.articles.length > 0)
-  }, [filtered, filteredArticles, weekView])
+      .map((dayKey) => {
+        const feedAll = tierFilteredFeed.filter((i) => i.rotation_day === dayKey)
+        const feedVisible = showAllIntel ? feedAll : feedAll.filter(feedItemHasReadableBody)
+        const artAll = tierFilteredArticles.filter((a) => String(a.digest_date).slice(0, 10) === dayKey)
+        const artVisible = showAllIntel ? artAll : artAll.filter(rssArticleHasReadableText)
+        return {
+          day: dayKey,
+          items: feedVisible,
+          articles: artVisible,
+          pending: pendingForAnalyze(feedAll),
+        }
+      })
+      .filter((g) => g.items.length > 0 || g.articles.length > 0 || g.pending.length > 0)
+  }, [tierFilteredFeed, tierFilteredArticles, weekView, showAllIntel])
 
   const openReader = useCallback(
     (item: AppleFeedItem) => {
-      const ix = Math.max(0, filtered.findIndex((x) => x.id === item.id))
-      setReader({ items: filtered.length ? filtered : [item], index: ix })
+      if (!feedItemHasReadableBody(item)) return
+      const readableOnly = tierFilteredFeed.filter(feedItemHasReadableBody)
+      const ix = Math.max(0, readableOnly.findIndex((x) => x.id === item.id))
+      setReader({ items: readableOnly, index: ix })
     },
-    [filtered],
+    [tierFilteredFeed],
   )
 
   const weekStrip = digestWeekOffsetsMonFirst(INTEL_DIGEST_UI_TZ)
@@ -793,6 +842,12 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
             <div className="ia-hdr__actions">
               {pageTab === 'feed' ? (
                 <>
+                  <button type="button" className={cn('ia-tab', !showAllIntel && 'ia-tab--on')} onClick={() => setShowAllIntel(false)}>
+                    {fr ? 'Prêt à lire' : 'Readable'}
+                  </button>
+                  <button type="button" className={cn('ia-tab', showAllIntel && 'ia-tab--on')} onClick={() => setShowAllIntel(true)}>
+                    {fr ? 'Tout' : 'All'}
+                  </button>
                   <button type="button" className={cn('ia-tab', !weekView && 'ia-tab--on')} onClick={() => setWeekView(false)}>
                     {fr ? 'Jour' : 'Day'}
                   </button>
@@ -895,7 +950,7 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
               <div className="ia-empty">{fr ? 'Chargement…' : 'Loading…'}</div>
             ) : weekView && groupedByDay ? (
               <div className="ia-feed">
-                {groupedByDay.map(({ day, items, articles }) => {
+                {groupedByDay.map(({ day, items, articles, pending }) => {
                   const dl = labelDigestIso(day, todayDigest)
                   const total = items.length + articles.length
                   return (
@@ -906,6 +961,12 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
                         </h2>
                         <span className="ia-weekgroup__count">
                           {total} {fr ? 'entrées' : 'entries'}
+                          {pending.length > 0 ? (
+                            <span className="ia-weekgroup__pending">
+                              {' '}
+                              · {pending.length} {fr ? 'à traiter' : 'pending'}
+                            </span>
+                          ) : null}
                         </span>
                       </header>
                       {articles.length > 0 ? (
@@ -913,7 +974,7 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
                           <p className="ia-rss-hint">{fr ? 'Articles RSS du jour' : 'RSS articles'}</p>
                           <div className="ia-feed__grid">
                             {articles.slice(0, 24).map((row) => (
-                              <NewsArticleApple key={row.id} row={row} tiers={sources.tiers} />
+                              <NewsArticleApple key={row.id} row={row} tiers={sources.tiers} fr={fr} />
                             ))}
                           </div>
                         </>
@@ -923,14 +984,14 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
                           <p className="ia-rss-hint">{fr ? 'Sources (flux)' : 'Sources (feed)'}</p>
                           <div className="ia-feed__grid">
                             {items.slice(0, 12).map((it) => (
-                              <NewsCardApple key={it.id} item={it} tiers={sources.tiers} onOpen={() => openReader(it)} />
+                              <NewsCardApple key={it.id} item={it} tiers={sources.tiers} fr={fr} onOpen={() => openReader(it)} />
                             ))}
                           </div>
                         </>
                       ) : null}
-                      {pendingForAnalyze(items).length > 0 ? (
+                      {pending.length > 0 ? (
                         <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                          {pendingForAnalyze(items).map((it) => (
+                          {pending.map((it) => (
                             <button key={it.id} type="button" className="ia-btn" disabled={analyzeId === it.id} onClick={() => void analyze(it.id)}>
                               {analyzeId === it.id ? '…' : fr ? `Analyser · ${it.source_label}` : `Analyze · ${it.source_label}`}
                             </button>
@@ -944,36 +1005,57 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
               </div>
             ) : (
               <div className="ia-feed">
-                {filtered.length === 0 && filteredArticles.length === 0 ? (
-                  <div className="ia-empty">{fr ? 'Aucune entrée pour cette journée.' : 'No entries for this day.'}</div>
+                {displayFeedItems.length === 0 && displayArticles.length === 0 ? (
+                  <div className="ia-empty">
+                    {tierFilteredFeed.length > 0 || tierFilteredArticles.length > 0
+                      ? fr
+                        ? 'Aucune entrée avec contenu lisible pour ce filtre. Utilisez « Tout » pour voir les sources sans texte, ou lancez « Analyser ».'
+                        : 'Nothing readable for this filter. Use « All » to see sources without body, or run « Analyze ».'
+                      : fr
+                        ? 'Aucune entrée pour cette journée.'
+                        : 'No entries for this day.'}
+                  </div>
                 ) : (
                   <>
-                    {filtered.length > 0 ? (
+                    {displayFeedItems.length > 0 ? (
                       <>
                         <div className="ia-feed__hero">
-                          <NewsCardApple item={filtered[0]!} large tiers={sources.tiers} onOpen={() => openReader(filtered[0]!)} />
+                          <NewsCardApple
+                            item={displayFeedItems[0]!}
+                            large
+                            tiers={sources.tiers}
+                            fr={fr}
+                            onOpen={() => openReader(displayFeedItems[0]!)}
+                          />
                         </div>
                         <div className="ia-feed__grid">
-                          {filtered.slice(1).map((it) => (
-                            <NewsCardApple key={it.id} item={it} tiers={sources.tiers} onOpen={() => openReader(it)} />
+                          {displayFeedItems.slice(1).map((it) => (
+                            <NewsCardApple key={it.id} item={it} tiers={sources.tiers} fr={fr} onOpen={() => openReader(it)} />
                           ))}
                         </div>
                       </>
                     ) : null}
-                    {filteredArticles.length > 0 ? (
+                    {showAllIntel && tierFilteredFeed.some((i) => !feedItemHasReadableBody(i)) ? (
+                      <p className="ia-hint ia-hint--compact">
+                        {fr
+                          ? 'Les cartes grisées n’ont pas assez de texte collecté pour le lecteur (ou sont encore en attente).'
+                          : 'Grey cards lack enough collected text for the reader (or are still pending).'}
+                      </p>
+                    ) : null}
+                    {displayArticles.length > 0 ? (
                       <>
-                        <p className="ia-rss-hint" style={{ marginTop: filtered.length > 0 ? 28 : 0 }}>
+                        <p className="ia-rss-hint" style={{ marginTop: displayFeedItems.length > 0 ? 28 : 0 }}>
                           {fr ? 'Articles RSS du jour' : 'RSS articles'}
                         </p>
                         <div className="ia-feed__grid">
-                          {filteredArticles.map((row) => (
-                            <NewsArticleApple key={row.id} row={row} tiers={sources.tiers} />
+                          {displayArticles.map((row) => (
+                            <NewsArticleApple key={row.id} row={row} tiers={sources.tiers} fr={fr} />
                           ))}
                         </div>
                       </>
                     ) : null}
                     <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                      {filtered
+                      {tierFilteredFeed
                         .filter((i) => (i.status === 'pending' || i.status === 'error') && i.url_kind !== 'rss')
                         .map((it) => (
                           <button key={it.id} type="button" className="ia-btn" disabled={analyzeId === it.id} onClick={() => void analyze(it.id)}>
