@@ -4,6 +4,13 @@ import { useCallback, useEffect, useMemo, useState, type CSSProperties } from 'r
 
 import { IntelligenceSourcesMatrix } from '@/components/admin/intelligence-sources-matrix'
 import { useLanguage } from '@/components/language-provider'
+import { civilDateMinusDays } from '@/lib/intelligence/digest-calendar-shared'
+import {
+  digestWeekOffsetsMonFirst,
+  digestTodayUi,
+  INTEL_DIGEST_UI_TZ,
+  labelDigestIso,
+} from '@/lib/intelligence/digest-calendar-ui'
 import { tierAccentHex } from '@/lib/intelligence/tier-visuals'
 import type { IntelligenceSourcesFile, IntelligenceTier } from '@/lib/intelligence/types'
 import { cn } from '@/lib/utils'
@@ -32,42 +39,20 @@ export type AppleFeedItem = {
   rotation_day: string
 }
 
-const DAYS_MONDAY_FIRST_FR = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
-const MONTHS_FR_SHORT = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']
+export type AppleArticleRow = {
+  id: string
+  digest_date: string
+  tier_id: string
+  source_label: string
+  source_feed_url: string
+  article_url: string
+  title: string
+  summary: string | null
+  published_at: string
+  ingestion_kind: string
+}
 
 const ACCENT_PRESETS = ['#0b1220', '#b08544', '#1d6cf0', '#0a7d4b', '#b91c5c']
-
-function utcIsoMinus(offsetDays: number): string {
-  const d = new Date()
-  d.setUTCDate(d.getUTCDate() - offsetDays)
-  return d.toISOString().slice(0, 10)
-}
-
-/** Décalages jours pour une bande Lu→Di en UTC (même logique que Veilles : Lund comme première colonne). */
-function utcWeekOffsets(): number[] {
-  const day = new Date().getUTCDay()
-  const monIdx = (day + 6) % 7
-  return Array.from({ length: 7 }, (_, i) => monIdx - i)
-}
-
-function parseUtcIso(iso: string): Date {
-  const [y, m, d] = iso.split('-').map(Number)
-  return new Date(Date.UTC(y, m - 1, d))
-}
-
-function labelUtcIso(iso: string): { weekday: string; day: number; month: string; isFuture: boolean; iso: string } {
-  const dt = parseUtcIso(iso)
-  const todayIso = utcIsoMinus(0)
-  const tToday = parseUtcIso(todayIso).getTime()
-  const diffDays = Math.round((tToday - dt.getTime()) / (86400 * 1000))
-  return {
-    weekday: DAYS_MONDAY_FIRST_FR[(dt.getUTCDay() + 6) % 7],
-    day: dt.getUTCDate(),
-    month: MONTHS_FR_SHORT[dt.getUTCMonth()],
-    isFuture: diffDays < 0,
-    iso,
-  }
-}
 
 function hostFromUrl(url: string): string {
   try {
@@ -135,7 +120,7 @@ function splitParagraphs(body: string): string[] {
 }
 
 function pendingForAnalyze(items: AppleFeedItem[]): AppleFeedItem[] {
-  return items.filter((i) => i.status === 'pending' || i.status === 'error')
+  return items.filter((i) => (i.status === 'pending' || i.status === 'error') && i.url_kind !== 'rss')
 }
 
 function IntelligenceAppleReader({
@@ -484,6 +469,48 @@ function TweaksFloating({
   )
 }
 
+function articlePubLabel(iso: string): string {
+  try {
+    return new Date(iso).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' })
+  } catch {
+    return ''
+  }
+}
+
+function NewsArticleApple({
+  row,
+  tiers,
+}: {
+  row: AppleArticleRow
+  tiers: IntelligenceTier[]
+}) {
+  const accent = tierAccentHex(row.tier_id)
+  const tierLab = tierTitle(tiers, row.tier_id, true)
+  const sum = (row.summary ?? '').trim()
+  return (
+    <article className="ia-card ia-card--article">
+      <div className="ia-card__meta">
+        <span className="ia-card__theme" style={{ color: accent }}>
+          <span className="ia-dot" style={{ background: accent }} /> {tierLab}
+        </span>
+        <span className="ia-card__sep">·</span>
+        <span>{row.source_label}</span>
+        <span className="ia-card__sep">·</span>
+        <span className="ia-card__rsspill">RSS</span>
+      </div>
+      <h3 className="ia-card__title">{row.title}</h3>
+      <p className="ia-card__summary">{sum.length > 0 ? sum.slice(0, 280) : row.article_url}</p>
+      <div className="ia-card__foot">
+        <span className="ia-card__src">{articlePubLabel(row.published_at)}</span>
+        <span className="ia-card__host">{hostFromUrl(row.article_url)}</span>
+        <a className="ia-card__read" href={row.article_url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
+          Ouvrir →
+        </a>
+      </div>
+    </article>
+  )
+}
+
 function NewsCardApple({
   item,
   large,
@@ -525,11 +552,13 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
 
   const [pageTab, setPageTab] = useState<'feed' | 'sources'>('feed')
   const [weekView, setWeekView] = useState(false)
-  const [rotationDay, setRotationDay] = useState(() => utcIsoMinus(0))
+  const [rotationDay, setRotationDay] = useState(() => digestTodayUi())
   const [tierFilter, setTierFilter] = useState<string>('all')
 
   const [itemsDay, setItemsDay] = useState<AppleFeedItem[]>([])
   const [itemsWeek, setItemsWeek] = useState<AppleFeedItem[]>([])
+  const [articlesDay, setArticlesDay] = useState<AppleArticleRow[]>([])
+  const [articlesWeek, setArticlesWeek] = useState<AppleArticleRow[]>([])
   const [loading, setLoading] = useState(true)
   const [banner, setBanner] = useState<string | null>(null)
 
@@ -581,12 +610,14 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
     const res = await fetch(`/api/admin/intelligence/feed?rotationDay=${q}`)
     if (!res.ok) {
       setItemsDay([])
+      setArticlesDay([])
       setLoading(false)
       setBanner('Impossible de charger le flux.')
       return
     }
-    const json = (await res.json()) as { items: AppleFeedItem[] }
+    const json = (await res.json()) as { items: AppleFeedItem[]; articles?: AppleArticleRow[] }
     setItemsDay(sortFeedLikeAdmin(json.items ?? []))
+    setArticlesDay(json.articles ?? [])
     setLoading(false)
   }, [rotationDay])
 
@@ -595,12 +626,14 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
     const res = await fetch('/api/admin/intelligence/feed/weekly-recap?days=7')
     if (!res.ok) {
       setItemsWeek([])
+      setArticlesWeek([])
       setLoading(false)
       setBanner('Impossible de charger la semaine.')
       return
     }
-    const json = (await res.json()) as { items: AppleFeedItem[] }
+    const json = (await res.json()) as { items: AppleFeedItem[]; articles?: AppleArticleRow[] }
     setItemsWeek(json.items ?? [])
+    setArticlesWeek(json.articles ?? [])
     setLoading(false)
   }, [])
 
@@ -623,21 +656,29 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
     return () => window.clearInterval(t)
   }, [analyzing, load])
 
+  const rawArticles = weekView ? articlesWeek : articlesDay
+
+  const filteredArticles = useMemo(() => {
+    if (tierFilter === 'all') return rawArticles
+    return rawArticles.filter((a) => a.tier_id === tierFilter)
+  }, [rawArticles, tierFilter])
+
   const filtered = useMemo(() => {
     if (tierFilter === 'all') return rawItems
     return rawItems.filter((i) => i.tier_id === tierFilter)
   }, [rawItems, tierFilter])
 
   const counts = useMemo(() => {
-    const c: Record<string, number> = { all: rawItems.length }
+    const c: Record<string, number> = { all: rawItems.length + rawArticles.length }
     for (const t of sources.tiers) {
-      c[t.id] = rawItems.filter((i) => i.tier_id === t.id).length
+      c[t.id] =
+        rawItems.filter((i) => i.tier_id === t.id).length + rawArticles.filter((a) => a.tier_id === t.id).length
     }
     return c
-  }, [rawItems, sources.tiers])
+  }, [rawItems, rawArticles, sources.tiers])
 
-  const todayIso = utcIsoMinus(0)
-  const lede = labelUtcIso(weekView ? todayIso : rotationDay)
+  const todayDigest = digestTodayUi()
+  const lede = labelDigestIso(weekView ? todayDigest : rotationDay, todayDigest)
 
   async function runSync() {
     setSyncing(true)
@@ -658,8 +699,14 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
       const res = await fetch('/api/admin/intelligence/feed/sync', { method: 'POST' })
       if (!res.ok) setBanner('Échec synchronisation.')
       else {
-        const summary = (await res.json()) as { rotationDay?: string; upserted?: number }
-        setBanner(`Sync OK · ${summary.rotationDay ?? '—'} · ${summary.upserted ?? 0} lignes.`)
+        const summary = (await res.json()) as {
+          rotationDay?: string
+          upserted?: number
+          rssArticlesInserted?: number
+        }
+        setBanner(
+          `Sync OK · ${summary.rotationDay ?? '—'} · ${summary.upserted ?? 0} lignes · RSS ${summary.rssArticlesInserted ?? 0} articles.`,
+        )
       }
       await load()
     } finally {
@@ -689,9 +736,23 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
       arr.push(it)
       m.set(it.rotation_day, arr)
     }
-    const keys = [...m.keys()].sort((a, b) => b.localeCompare(a))
-    return keys.map((k) => ({ day: k, items: m.get(k) ?? [] })).filter((g) => g.items.length > 0)
-  }, [filtered, weekView])
+    const artByDay = new Map<string, AppleArticleRow[]>()
+    for (const a of filteredArticles) {
+      const dd = String(a.digest_date).slice(0, 10)
+      const arr = artByDay.get(dd) ?? []
+      arr.push(a)
+      artByDay.set(dd, arr)
+    }
+    const keys = new Set([...m.keys(), ...artByDay.keys()])
+    return [...keys]
+      .sort((a, b) => b.localeCompare(a))
+      .map((k) => ({
+        day: k,
+        items: m.get(k) ?? [],
+        articles: artByDay.get(k) ?? [],
+      }))
+      .filter((g) => g.items.length > 0 || g.articles.length > 0)
+  }, [filtered, filteredArticles, weekView])
 
   const openReader = useCallback(
     (item: AppleFeedItem) => {
@@ -701,7 +762,7 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
     [filtered],
   )
 
-  const weekStrip = utcWeekOffsets()
+  const weekStrip = digestWeekOffsetsMonFirst(INTEL_DIGEST_UI_TZ)
 
   return (
     <div
@@ -749,10 +810,10 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
           {pageTab === 'feed' && !weekView ? (
             <div className="ia-daystrip" role="tablist">
               {weekStrip.map((offset) => {
-                const iso = utcIsoMinus(offset)
-                const lbl = labelUtcIso(iso)
+                const iso = civilDateMinusDays(todayDigest, offset)
+                const lbl = labelDigestIso(iso, todayDigest)
                 const isOn = iso === rotationDay
-                const isToday = iso === todayIso
+                const isToday = iso === todayDigest
                 return (
                   <button
                     key={iso}
@@ -777,19 +838,19 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
           <main className="ia-main">
             <div className="ia-main__lede">
               <h1 className="ia-lede__title">
-                {weekView ? (fr ? 'Sept jours glissants (UTC)' : 'Rolling 7 days (UTC)') : fr ? 'Veille' : 'Digest'}
+                {weekView ? (fr ? 'Sept jours (fuseau digest)' : 'Rolling 7 days (digest TZ)') : fr ? 'Veille' : 'Digest'}
                 <span className="ia-lede__date">
-                  {lede.day} {lede.month} {parseUtcIso(rotationDay).getUTCFullYear()}
+                  {lede.day} {lede.month} {Number((weekView ? todayDigest : rotationDay).slice(0, 4))}
                 </span>
               </h1>
               <p className="ia-lede__sub">
                 {weekView
                   ? fr
-                    ? 'Articles agrégés par jour de rotation (fenêtre 7 jours UTC).'
-                    : 'Items grouped by rotation day (7-day UTC window).'
+                    ? `Sources et articles RSS agrégés par jour (${INTEL_DIGEST_UI_TZ}).`
+                    : `Sources and RSS articles grouped by day (${INTEL_DIGEST_UI_TZ}).`
                   : fr
-                    ? `Rotation UTC sélectionnée · ${rotationDay}. Cliquez une carte pour le lecteur « papier ».`
-                    : `Selected UTC rotation · ${rotationDay}. Click a card for the reader view.`}
+                    ? `Jour calendaire ${rotationDay} (${INTEL_DIGEST_UI_TZ}). Cartes flux + articles RSS du même jour.`
+                    : `Calendar day ${rotationDay} (${INTEL_DIGEST_UI_TZ}). Feed cards + RSS articles for that day.`}
               </p>
             </div>
 
@@ -799,43 +860,74 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
               </p>
             ) : null}
 
-            <div className="ia-filters">
-              <button type="button" className={cn('ia-chip', tierFilter === 'all' && 'ia-chip--on')} onClick={() => setTierFilter('all')}>
-                {fr ? 'Tous les paliers' : 'All tiers'} <span className="ia-badge">{counts.all}</span>
-              </button>
-              {sources.tiers.map((t) => (
+            <nav className="ia-dock" aria-label={fr ? 'Filtres par palier' : 'Tier filters'}>
+              <div className="ia-dock__inner">
                 <button
-                  key={t.id}
                   type="button"
-                  className={cn('ia-chip', tierFilter === t.id && 'ia-chip--on')}
-                  style={tierFilter === t.id ? { borderColor: tierAccentHex(t.id), color: tierAccentHex(t.id) } : undefined}
-                  onClick={() => setTierFilter(t.id)}
+                  className={cn('ia-dockitem', tierFilter === 'all' && 'ia-dockitem--on')}
+                  onClick={() => setTierFilter('all')}
                 >
-                  <span className="ia-dot" style={{ background: tierAccentHex(t.id) }} /> {fr ? t.title_fr : t.title_en}{' '}
-                  <span className="ia-badge">{counts[t.id] ?? 0}</span>
+                  {fr ? 'Tous' : 'All'}
+                  <span className="ia-dockitem__count">{counts.all}</span>
                 </button>
-              ))}
-            </div>
+                <span className="ia-dock__sep" aria-hidden />
+                {sources.tiers.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    className={cn('ia-dockitem', tierFilter === t.id && 'ia-dockitem--on')}
+                    style={
+                      tierFilter === t.id
+                        ? ({ '--ia-dock-theme': tierAccentHex(t.id) } as CSSProperties)
+                        : undefined
+                    }
+                    onClick={() => setTierFilter(t.id)}
+                  >
+                    <span className="ia-dockitem__icon" style={{ background: tierAccentHex(t.id) }} />
+                    <span className="ia-dockitem__label">{fr ? t.title_fr.split(/[—–-]/)[0]?.trim() : t.title_en.split(/[—–-]/)[0]?.trim()}</span>
+                    <span className="ia-dockitem__count">{counts[t.id] ?? 0}</span>
+                  </button>
+                ))}
+              </div>
+            </nav>
 
             {loading ? (
               <div className="ia-empty">{fr ? 'Chargement…' : 'Loading…'}</div>
             ) : weekView && groupedByDay ? (
               <div className="ia-feed">
-                {groupedByDay.map(({ day, items }) => {
-                  const dl = labelUtcIso(day)
+                {groupedByDay.map(({ day, items, articles }) => {
+                  const dl = labelDigestIso(day, todayDigest)
+                  const total = items.length + articles.length
                   return (
                     <section key={day} className="ia-weekgroup">
                       <header className="ia-weekgroup__hdr">
                         <h2>
                           {dl.weekday} <span className="ia-weekgroup__date">{dl.day} {dl.month}</span>
                         </h2>
-                        <span className="ia-weekgroup__count">{items.length} entrées</span>
+                        <span className="ia-weekgroup__count">
+                          {total} {fr ? 'entrées' : 'entries'}
+                        </span>
                       </header>
-                      <div className="ia-feed__grid">
-                        {items.slice(0, 12).map((it) => (
-                          <NewsCardApple key={it.id} item={it} tiers={sources.tiers} onOpen={() => openReader(it)} />
-                        ))}
-                      </div>
+                      {articles.length > 0 ? (
+                        <>
+                          <p className="ia-rss-hint">{fr ? 'Articles RSS du jour' : 'RSS articles'}</p>
+                          <div className="ia-feed__grid">
+                            {articles.slice(0, 24).map((row) => (
+                              <NewsArticleApple key={row.id} row={row} tiers={sources.tiers} />
+                            ))}
+                          </div>
+                        </>
+                      ) : null}
+                      {items.length > 0 ? (
+                        <>
+                          <p className="ia-rss-hint">{fr ? 'Sources (flux)' : 'Sources (feed)'}</p>
+                          <div className="ia-feed__grid">
+                            {items.slice(0, 12).map((it) => (
+                              <NewsCardApple key={it.id} item={it} tiers={sources.tiers} onOpen={() => openReader(it)} />
+                            ))}
+                          </div>
+                        </>
+                      ) : null}
                       {pendingForAnalyze(items).length > 0 ? (
                         <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                           {pendingForAnalyze(items).map((it) => (
@@ -852,21 +944,37 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
               </div>
             ) : (
               <div className="ia-feed">
-                {filtered.length === 0 ? (
+                {filtered.length === 0 && filteredArticles.length === 0 ? (
                   <div className="ia-empty">{fr ? 'Aucune entrée pour cette journée.' : 'No entries for this day.'}</div>
                 ) : (
                   <>
-                    <div className="ia-feed__hero">
-                      <NewsCardApple item={filtered[0]!} large tiers={sources.tiers} onOpen={() => openReader(filtered[0]!)} />
-                    </div>
-                    <div className="ia-feed__grid">
-                      {filtered.slice(1).map((it) => (
-                        <NewsCardApple key={it.id} item={it} tiers={sources.tiers} onOpen={() => openReader(it)} />
-                      ))}
-                    </div>
+                    {filtered.length > 0 ? (
+                      <>
+                        <div className="ia-feed__hero">
+                          <NewsCardApple item={filtered[0]!} large tiers={sources.tiers} onOpen={() => openReader(filtered[0]!)} />
+                        </div>
+                        <div className="ia-feed__grid">
+                          {filtered.slice(1).map((it) => (
+                            <NewsCardApple key={it.id} item={it} tiers={sources.tiers} onOpen={() => openReader(it)} />
+                          ))}
+                        </div>
+                      </>
+                    ) : null}
+                    {filteredArticles.length > 0 ? (
+                      <>
+                        <p className="ia-rss-hint" style={{ marginTop: filtered.length > 0 ? 28 : 0 }}>
+                          {fr ? 'Articles RSS du jour' : 'RSS articles'}
+                        </p>
+                        <div className="ia-feed__grid">
+                          {filteredArticles.map((row) => (
+                            <NewsArticleApple key={row.id} row={row} tiers={sources.tiers} />
+                          ))}
+                        </div>
+                      </>
+                    ) : null}
                     <div style={{ marginTop: 20, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                       {filtered
-                        .filter((i) => i.status === 'pending' || i.status === 'error')
+                        .filter((i) => (i.status === 'pending' || i.status === 'error') && i.url_kind !== 'rss')
                         .map((it) => (
                           <button key={it.id} type="button" className="ia-btn" disabled={analyzeId === it.id} onClick={() => void analyze(it.id)}>
                             {analyzeId === it.id ? '…' : fr ? `Analyser · ${it.source_label}` : `Analyze · ${it.source_label}`}

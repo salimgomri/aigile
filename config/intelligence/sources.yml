@@ -49,6 +49,7 @@ tiers:
       - name: "OpenAI — Actualités"
         urls:
           - { href: "https://openai.com/news/", kind: web }
+          - { href: "https://openai.com/news/rss.xml", kind: rss }
           - { href: "https://openai.com/index/ten-years/", kind: web }
       - name: "Sam Altman — Blog"
         urls:
@@ -57,6 +58,7 @@ tiers:
       - name: "Anthropic (Dario Amodei)"
         urls:
           - { href: "https://www.anthropic.com/news", kind: web }
+          - { href: "https://www.anthropic.com/rss.xml", kind: rss }
       - name: "Wait But Why (Tim Urban)"
         urls:
           - { href: "https://waitbutwhy.com/", kind: web }
@@ -111,7 +113,7 @@ tiers:
           - { href: "https://melissaperri.com/blog", kind: web }
       - name: "Lenny Rachitsky — Newsletter"
         urls:
-          - { href: "https://www.lennysnewsletter.com/feed", kind: podcast }
+          - { href: "https://www.lennysnewsletter.com/feed", kind: rss }
       - name: "Mind The Product"
         urls:
           - { href: "https://www.mindtheproduct.com/", kind: web }
@@ -203,6 +205,7 @@ tiers:
         urls:
           - { href: "https://www.scrum.org/", kind: web }
           - { href: "https://www.scrum.org/resources/blog", kind: web }
+          - { href: "https://www.scrum.org/rss/blog", kind: rss }
       - name: "LeSS"
         urls:
           - { href: "https://less.works/", kind: web }

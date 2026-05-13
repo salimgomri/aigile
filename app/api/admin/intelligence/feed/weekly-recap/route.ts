@@ -4,7 +4,7 @@ import { sortIntelFeedRowsWeekly } from '@/lib/intelligence/feed-repository'
 import { loadWeeklyRecap } from '@/lib/intelligence/weekly-recap'
 import { requireAdminApiSession } from '@/lib/admin/require-admin-api-session'
 
-/** Agrège le flux Intelligence sur N jours UTC (défaut 7). */
+/** Agrège le flux Intelligence sur N jours calendaires (fuseau digest, défaut 7). */
 export async function GET(req: Request) {
   const session = await requireAdminApiSession()
   if (!session) {
@@ -34,6 +34,18 @@ export async function GET(req: Request) {
     }
 
     const sortedItems = sortIntelFeedRowsWeekly(recap.items)
+    const liteArticles = (recap.articles ?? []).map((a) => ({
+      id: a.id,
+      digest_date: a.digest_date,
+      tier_id: a.tier_id,
+      source_label: a.source_label,
+      source_feed_url: a.source_feed_url,
+      article_url: a.article_url,
+      title: a.title,
+      summary: a.summary,
+      published_at: a.published_at,
+      ingestion_kind: a.ingestion_kind,
+    }))
     const liteItems = sortedItems.map((r) => ({
       id: r.id,
       tier_id: r.tier_id,
@@ -55,8 +67,10 @@ export async function GET(req: Request) {
     return NextResponse.json({
       rotationDaysQueried: recap.rotationDaysQueried,
       itemCount: recap.itemCount,
+      articleCount: recap.articleCount,
       plainText: recap.plainText,
       items: liteItems,
+      articles: liteArticles,
     })
   } catch (e) {
     console.error('[intelligence-feed/weekly-recap]', e)

@@ -83,6 +83,7 @@ export function computeVitalityScore(input: {
   let raw = floor + sig
 
   if (input.urlKind === 'podcast') raw += 4
+  if (input.urlKind === 'rss') raw += 5
   if (input.urlKind === 'youtube') raw += 3
 
   const empireBoost = input.tierId === EMPIRE_TIER ? EMPIRE_VITALITY_MULTIPLIER : 1

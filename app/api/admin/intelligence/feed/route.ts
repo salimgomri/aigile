@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
+import { intelArticlesListByDigestDate } from '@/lib/intelligence/article-repository'
+import { digestDateToday, INTEL_DIGEST_TZ } from '@/lib/intelligence/digest-calendar'
 import {
   intelFeedListByRotationDay,
   intelFeedListRecent,
@@ -22,8 +24,12 @@ export async function GET(req: Request) {
     const rotationHint = items.length
       ? items.reduce((a, r) => (r.rotation_day > a ? r.rotation_day : a), items[0]!.rotation_day)
       : null
+    const articles = /^\d{4}-\d{2}-\d{2}$/.test(day) ? await intelArticlesListByDigestDate(day) : []
     return NextResponse.json({
       items,
+      articles,
+      digestToday: digestDateToday(),
+      digestTimezone: INTEL_DIGEST_TZ,
       retentionDays: 7,
       rotationHint,
       rotationDayFilter: /^\d{4}-\d{2}-\d{2}$/.test(day) ? day : null,

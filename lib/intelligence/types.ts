@@ -1,4 +1,4 @@
-export type UrlKind = 'web' | 'youtube' | 'podcast'
+export type UrlKind = 'web' | 'youtube' | 'podcast' | 'rss'
 
 export type SourceUrl = {
   href: string

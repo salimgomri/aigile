@@ -112,7 +112,7 @@ export async function resolveIntelThumbnailUrl(href: string, urlKind: string): P
     const id = extractYoutubeVideoId(href)
     return id ? youtubeThumbnailMaxRes(id) : null
   }
-  if (urlKind === 'podcast') {
+  if (urlKind === 'podcast' || urlKind === 'rss') {
     const first = await resolveFeedOrPageImage(href)
     if (first) return first
     await new Promise((r) => setTimeout(r, 2_000))

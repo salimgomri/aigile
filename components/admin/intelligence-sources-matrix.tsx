@@ -133,7 +133,7 @@ function UrlThumbnailRow({ url, row }: { url: SourceUrl; row?: FeedApiItem }) {
           <img src={fav} alt="" className="h-8 w-8 object-contain" />
         ) : (
           <span className="flex h-full items-center justify-center px-1 text-center text-[9px] leading-tight text-muted-foreground">
-            {url.kind === 'youtube' ? 'YT' : url.kind === 'podcast' ? 'RSS' : 'WEB'}
+            {url.kind === 'youtube' ? 'YT' : url.kind === 'rss' ? 'RSS' : url.kind === 'podcast' ? 'POD' : 'WEB'}
           </span>
         )}
       </div>
@@ -380,7 +380,7 @@ export function IntelligenceSourcesMatrix({
           const matchUrls = urls.filter((u) => u.href === row.url)
           const kind = row.url_kind as SourceUrl['kind']
           const safeKind: SourceUrl['kind'] =
-            kind === 'youtube' || kind === 'podcast' || kind === 'web' ? kind : 'web'
+            kind === 'youtube' || kind === 'podcast' || kind === 'web' || kind === 'rss' ? kind : 'web'
           out.push({
             tierId: tier.id,
             tierTitle,

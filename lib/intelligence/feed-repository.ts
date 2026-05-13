@@ -1,5 +1,7 @@
-import { supabaseAdmin } from '@/lib/supabase'
+import { digestDateToday } from '@/lib/intelligence/digest-calendar'
+import { civilDateMinusDays } from '@/lib/intelligence/digest-calendar-shared'
 import type { UrlKind } from '@/lib/intelligence/types'
+import { supabaseAdmin } from '@/lib/supabase'
 
 export type IntelFeedRow = {
   id: string
@@ -50,9 +52,7 @@ export function utcTodayDateString(): string {
 }
 
 export async function intelFeedPurgeOlderThanDays(days: number): Promise<void> {
-  const cutoff = new Date()
-  cutoff.setUTCDate(cutoff.getUTCDate() - days)
-  const d = cutoff.toISOString().slice(0, 10)
+  const d = civilDateMinusDays(digestDateToday(), days)
   await supabaseAdmin.from('intel_feed_items').delete().lt('rotation_day', d)
 }
 

@@ -1,5 +1,7 @@
 import 'server-only'
 
+import { intelArticlesPurgeOlderThanDays } from '@/lib/intelligence/article-repository'
+import { digestDateToday } from '@/lib/intelligence/digest-calendar'
 import type { UrlKind } from '@/lib/intelligence/types'
 import {
   intelFeedGetById,
@@ -7,11 +9,11 @@ import {
   intelFeedPurgeOlderThanDays,
   intelFeedPurgeRotationDay,
   intelFeedUpsertItem,
-  utcTodayDateString,
   type IntelFeedRow,
 } from '@/lib/intelligence/feed-repository'
 import { loadIntelligenceSources } from '@/lib/intelligence/load-sources'
 import { resolveIntelThumbnailUrl } from '@/lib/intelligence/media-metadata-server'
+import { ingestRssFeedForDigestDay } from '@/lib/intelligence/rss-ingest'
 import { enqueueYoutubeTranscriptJob } from '@/lib/intelligence/transcript-job'
 import { fetchWebPagePlainText } from '@/lib/intelligence/web-page-text-server'
 import {
@@ -70,17 +72,20 @@ export type SyncIntelFeedResult = {
   upserted: number
   youtubeJobsQueued: number
   webPodcastAutoScraped: number
+  rssArticlesInserted: number
 }
 
 export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
-  const rotationDay = utcTodayDateString()
+  const rotationDay = digestDateToday()
   await intelFeedPurgeOlderThanDays(7)
+  await intelArticlesPurgeOlderThanDays(7)
   await intelFeedPurgeRotationDay(rotationDay)
 
   const data = loadIntelligenceSources()
   let upserted = 0
   let youtubeJobsQueued = 0
   let webPodcastAutoScraped = 0
+  let rssArticlesInserted = 0
 
   for (const tier of data.tiers) {
     for (const group of tier.groups) {
@@ -116,6 +121,18 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
             transcriptText = null
             contentBody = null
           }
+        } else if (urlKind === 'rss') {
+          const ingest = await ingestRssFeedForDigestDay({
+            feedUrl: u.href,
+            digestDate: rotationDay,
+            tierId: tier.id,
+            sourceLabel: group.name,
+          })
+          rssArticlesInserted += ingest.inserted
+          const errNote = ingest.error ? ` · ${ingest.error}` : ''
+          previewSnippet = `${group.name} · RSS · ${ingest.inserted} article(s) ce jour · Vitalité ${score}${errNote}`
+          status = 'ready'
+          summaryOverride = previewSnippet.slice(0, 2000)
         } else if (urlKind === 'youtube') {
           const autoTranscript = score >= TRANSCRIPT_AUTO_THRESHOLD
           status = autoTranscript ? 'analyzing' : 'pending'
@@ -183,7 +200,7 @@ export async function syncIntelFeedFromYaml(): Promise<SyncIntelFeedResult> {
     }
   }
 
-  return { rotationDay, upserted, youtubeJobsQueued, webPodcastAutoScraped }
+  return { rotationDay, upserted, youtubeJobsQueued, webPodcastAutoScraped, rssArticlesInserted }
 }
 
 export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: boolean; error?: string }> {
@@ -191,6 +208,23 @@ export async function requestIntelFeedAnalysis(itemId: string): Promise<{ ok: bo
   if (!row) return { ok: false, error: 'not_found' }
 
   if (row.status === 'analyzing') return { ok: true }
+
+  if (row.url_kind === 'rss') {
+    const ingest = await ingestRssFeedForDigestDay({
+      feedUrl: row.url,
+      digestDate: row.rotation_day,
+      tierId: row.tier_id,
+      sourceLabel: row.source_label,
+    })
+    const preview = `${row.source_label} · RSS · ${ingest.inserted} article(s) ce jour · Vitalité ${Number(row.vitality_score)}`
+    await intelFeedPatch(row.id, {
+      status: 'ready',
+      preview_snippet: preview.slice(0, 500),
+      summary: preview.slice(0, 2000),
+      ready_at: new Date().toISOString(),
+    })
+    return { ok: true }
+  }
 
   if (row.url_kind === 'youtube') {
     if (row.status === 'ready') return { ok: true }
