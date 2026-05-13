@@ -1,5 +1,5 @@
 /**
- * Migrations SQL Intelligence : Master (`030`/`031`) + flux vitalité (`032`/`033`).
+ * Migrations SQL Intelligence : Master (`030`/`031`) + flux vitalité (`032`/`033`) + articles RSS (`034`).
  * Idempotent où possible (ré-exécution sans erreur si déjà appliqué).
  *
  * Run: npx tsx scripts/intel-setup.ts
@@ -61,6 +61,18 @@ async function main() {
       const err = e as { code?: string; message?: string }
       if (err.code === '42701' || (err.message ?? '').includes('already exists')) {
         console.log('033_intel_feed_items_media.sql: déjà appliquée')
+      } else {
+        throw e
+      }
+    }
+
+    try {
+      await pool.query(readMigration('034_intel_feed_articles.sql'))
+      console.log('034_intel_feed_articles.sql: OK')
+    } catch (e: unknown) {
+      const err = e as { code?: string }
+      if (err.code === '42P07') {
+        console.log('034_intel_feed_articles.sql: déjà appliquée (table existante)')
       } else {
         throw e
       }
