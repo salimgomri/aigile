@@ -49,7 +49,7 @@ export default async function DashboardManagerStudioPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#dadada] print:bg-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#c8c8c8] print:bg-white">
       <div
         className="pointer-events-none fixed inset-0 overflow-hidden print:hidden"
         data-no-print

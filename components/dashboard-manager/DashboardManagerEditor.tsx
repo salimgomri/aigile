@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { FileDown, RotateCcw, Sparkles } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
 import UpgradeModal from '@/components/credits/UpgradeModal'
@@ -23,17 +23,22 @@ import {
   type DashboardManagerState,
 } from '@/lib/dashboard-manager/storage'
 import styles from './dashboard-manager.module.css'
+import './dashboard-manager-print.css'
+
+const RAG_BTN_BG = { vert: '#1A7A3C', ambre: '#B85C00', rouge: '#B01B1B' } as const
 
 function Editable({
   value,
   onChange,
   placeholder,
   className = '',
+  style,
 }: {
   value: string
   onChange: (v: string) => void
   placeholder: string
   className?: string
+  style?: CSSProperties
 }) {
   const ref = useRef<HTMLSpanElement>(null)
   useEffect(() => {
@@ -49,8 +54,19 @@ function Editable({
       suppressContentEditableWarning
       data-placeholder={placeholder}
       className={`${styles.editable} ${styles.editableEmpty} ${className}`}
+      style={style}
       onInput={(e) => onChange(e.currentTarget.textContent || '')}
     />
+  )
+}
+
+function PrintRagMark({ rag }: { rag: RagColor }) {
+  if (!rag) return null
+  const sym = rag === 'vert' ? '✓' : rag === 'ambre' ? '!' : '✕'
+  return (
+    <span className={`${styles.printRag} dm-printOnly`} style={{ color: RAG_COLORS[rag].text }}>
+      {sym}
+    </span>
   )
 }
 
@@ -76,6 +92,12 @@ export default function DashboardManagerEditor() {
     if (!hydrated) return
     saveDashboardState(state)
   }, [state, hydrated])
+
+  useEffect(() => {
+    const onBefore = () => window.scrollTo(0, 0)
+    window.addEventListener('beforeprint', onBefore)
+    return () => window.removeEventListener('beforeprint', onBefore)
+  }, [])
 
   const global = useMemo(() => computeGlobalScore(state.ragState), [state.ragState])
   const velocityAvg = useMemo(() => computeVelocityAvg(state.sparkData), [state.sparkData])
@@ -173,7 +195,6 @@ export default function DashboardManagerEditor() {
 
   const autoCol = RAG_COLORS[global.autoRag || '']
   const manualCol = RAG_COLORS[state.manualRag || '']
-
   const sparkMax = Math.max(...state.sparkData.map((v) => v || 0), 1)
 
   if (!hydrated) {
@@ -185,17 +206,15 @@ export default function DashboardManagerEditor() {
   }
 
   return (
-    <div className="pb-16">
-      <div
-        className={`${styles.noPrint} mx-auto mb-4 flex max-w-[297mm] flex-wrap items-center gap-3 px-4`}
-      >
+    <div className={styles.root} data-dashboard-manager-print>
+      <div className={`${styles.controls} dm-screenOnly`} data-no-print>
         <button
           type="button"
           onClick={handlePdf}
           disabled={pdfLoading}
-          className="inline-flex items-center gap-2 rounded-sm bg-[#c8a84b] px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-[#0d0d0d] hover:bg-[#b8943e] disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-sm bg-[#c8a84b] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0d0d0d] hover:bg-[#b8943e] disabled:opacity-50"
         >
-          <FileDown className="h-3.5 w-3.5" />
+          <FileDown className="h-4 w-4" />
           {fr ? 'Exporter PDF' : 'Export PDF'}
           <span className="opacity-70">· 1 cr.</span>
         </button>
@@ -204,41 +223,38 @@ export default function DashboardManagerEditor() {
           type="button"
           onClick={handleNarrative}
           disabled={narrativeLoading || !canAffordNarrative}
-          className="inline-flex items-center gap-2 rounded-sm bg-[#c9973a] px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-black hover:bg-[#E8961E] disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-sm bg-[#c9973a] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-black hover:bg-[#E8961E] disabled:cursor-not-allowed disabled:opacity-50"
         >
-          <Sparkles className="h-3.5 w-3.5" />
+          <Sparkles className="h-4 w-4" />
           {fr ? 'Narrative IA (P25)' : 'AI narrative (P25)'}
-          <span className="opacity-80">
-            · {narrativeCost} cr.
-          </span>
+          <span className="opacity-80">· {narrativeCost} cr.</span>
         </button>
 
         <button
           type="button"
           onClick={handleReset}
-          className="inline-flex items-center gap-2 rounded-sm bg-[#0d0d0d] px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-white hover:bg-[#333]"
+          className="inline-flex items-center gap-2 rounded-sm bg-[#0d0d0d] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#333]"
         >
-          <RotateCcw className="h-3.5 w-3.5" />
+          <RotateCcw className="h-4 w-4" />
           {fr ? 'Réinitialiser' : 'Reset'}
         </button>
 
-        <span className="text-[10px] text-white/50">
+        <p className="w-full text-xs leading-relaxed text-white/55 sm:w-auto">
           {fr
-            ? 'Imprimer → Enregistrer en PDF · Paysage A4 · Marges : aucune'
-            : 'Print → Save as PDF · A4 landscape · No margins'}
-        </span>
+            ? 'PDF : Paysage · A4 · Marges « Aucune » · Cocher « Graphiques d’arrière-plan »'
+            : 'PDF: Landscape · A4 · Margins None · Enable Background graphics'}
+        </p>
       </div>
 
-      <div className={styles.sheet}>
-        {/* Header */}
-        <div className="flex items-end justify-between border-b-2 border-[#0d0d0d] pb-[3mm]">
+      <div className={`${styles.sheet} dm-sheet`}>
+        <header className={styles.header}>
           <div>
-            <div className="mb-0.5 text-[7.5pt] font-semibold uppercase tracking-[0.15em] text-[#888]">
-              <span className="text-[#c8a84b]">AI</span>gile · Le Système S.A.L.I.M.
+            <div className={styles.brand}>
+              <span className={styles.brandGold}>AI</span>gile · Le Système S.A.L.I.M.
             </div>
-            <div className="text-[14pt] font-bold tracking-tight">Dashboard Manager</div>
+            <h1 className={styles.title}>Dashboard Manager</h1>
           </div>
-          <div className="flex items-end gap-[5mm]">
+          <div className={styles.headerMeta}>
             {(
               [
                 ['team', fr ? 'Équipe' : 'Team', fr ? 'Équipe' : 'Team'],
@@ -247,9 +263,9 @@ export default function DashboardManagerEditor() {
                 ['sm', 'SM', fr ? 'Nom SM' : 'SM name'],
               ] as const
             ).map(([key, lbl, ph]) => (
-              <div key={key} className="flex flex-col items-end gap-0.5">
-                <div className="text-[6pt] font-semibold uppercase tracking-wider text-[#888]">{lbl}</div>
-                <div className="min-w-[20mm] text-right text-[8.5pt] font-semibold">
+              <div key={key} className={styles.metaField}>
+                <div className={styles.metaLbl}>{lbl}</div>
+                <div className={styles.metaVal}>
                   <Editable
                     value={state.header[key]}
                     onChange={(v) =>
@@ -260,55 +276,47 @@ export default function DashboardManagerEditor() {
                 </div>
               </div>
             ))}
-            <div className="ml-[4mm] flex items-center gap-[3.5mm] border-l border-[#dedede] pl-[4mm]">
+            <div className={styles.legend}>
               {[
                 { c: '#1A7A3C', t: fr ? 'Attendu' : 'On track', icon: '✓' },
                 { c: '#B85C00', t: fr ? 'Tension' : 'Watch', icon: '!' },
                 { c: '#B01B1B', t: fr ? 'Action' : 'Act', icon: '✕' },
               ].map((leg) => (
-                <div key={leg.t} className="flex items-center gap-1 text-[6.5pt] text-[#888]">
-                  <div
-                    className="flex h-[9px] w-[9px] shrink-0 items-center justify-center rounded-full text-[5.5px] font-bold text-white"
-                    style={{ background: leg.c }}
-                  >
+                <div key={leg.t} className={styles.legItem}>
+                  <span className={styles.legDot} style={{ background: leg.c }}>
                     {leg.icon}
-                  </div>
+                  </span>
                   {leg.t}
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </header>
 
-        {/* Cadrans */}
-        <div className="grid grid-cols-6 gap-[2.5mm]">
+        <div className={styles.cadransGrid}>
           {CADRANS.map((c, i) => {
             const rag = state.ragState[i]
             const col = RAG_COLORS[rag]
+            const seuilCls = [styles.slV, styles.slA, styles.slR]
             return (
               <div
                 key={c.id}
-                className="flex flex-col gap-[1.5mm] rounded-[3px] border-[1.5px] p-[3mm] transition-colors"
+                className={styles.cadran}
                 style={{ background: col.bg, borderColor: col.border }}
               >
-                <div className="flex items-center justify-between">
-                  <div
-                    className="text-[7pt] font-bold uppercase tracking-wide"
-                    style={{ color: col.text }}
-                  >
+                <div className={styles.cadranHdr}>
+                  <div className={styles.cadranTitle} style={{ color: col.text }}>
                     {c.title}
                   </div>
-                  <div className={`${styles.ragSel} flex gap-0.5`}>
+                  <PrintRagMark rag={rag} />
+                  <div className={`${styles.ragSel} dm-ragSel dm-screenOnly`}>
                     {(['vert', 'ambre', 'rouge'] as const).map((r) => (
                       <button
                         key={r}
                         type="button"
                         title={r}
-                        className={`flex h-3 w-3 items-center justify-center rounded-full text-[6.5px] font-bold text-white transition ${rag === r ? 'scale-110 opacity-100' : 'opacity-25 hover:opacity-55'}`}
-                        style={{
-                          background:
-                            r === 'vert' ? '#1A7A3C' : r === 'ambre' ? '#B85C00' : '#B01B1B',
-                        }}
+                        className={`${styles.ragBtn} ${rag === r ? styles.ragBtnOn : ''}`}
+                        style={{ background: RAG_BTN_BG[r] }}
                         onClick={() => setRag(i, r)}
                       >
                         {r === 'vert' ? '✓' : r === 'ambre' ? '!' : '✕'}
@@ -318,17 +326,11 @@ export default function DashboardManagerEditor() {
                 </div>
 
                 {c.type === 'binary' ? (
-                  <div
-                    className="text-[18pt] font-bold leading-none"
-                    style={{ color: rag ? col.text : 'rgba(0,0,0,.18)' }}
-                  >
-                    {rag ? WORD_MAP[rag] : '--'}
+                  <div className={styles.bword} style={{ color: rag ? col.text : 'rgba(0,0,0,.2)' }}>
+                    {rag ? WORD_MAP[rag] : '—'}
                   </div>
                 ) : (
-                  <div
-                    className="flex items-baseline gap-[1mm] font-mono text-[16pt] font-semibold leading-none"
-                    style={{ color: rag ? col.text : 'rgba(0,0,0,.18)' }}
-                  >
+                  <div className={styles.cvalRow} style={{ color: rag ? col.text : 'rgba(0,0,0,.2)' }}>
                     <Editable
                       value={state.values[i]}
                       onChange={(v) => {
@@ -337,11 +339,11 @@ export default function DashboardManagerEditor() {
                         setState((s) => ({ ...s, values }))
                       }}
                       placeholder={c.ph ?? ''}
-                      className={styles.cvalInput}
+                      className="dm-cvalInput"
                     />
                     <button
                       type="button"
-                      className={`${styles.trendBtn} text-[10pt] opacity-50 hover:opacity-100`}
+                      className={`${styles.trendBtn} dm-trendBtn dm-screenOnly`}
                       style={{ color: rag ? col.text : undefined }}
                       onClick={() => {
                         const trends = [...state.trends]
@@ -351,10 +353,13 @@ export default function DashboardManagerEditor() {
                     >
                       {TRENDS[state.trends[i]]}
                     </button>
+                    <span className={`${styles.printRag} dm-printOnly`} style={{ fontSize: '11pt' }}>
+                      {TRENDS[state.trends[i]]}
+                    </span>
                   </div>
                 )}
 
-                <div className="text-[6pt] leading-snug" style={{ color: col.subtext }}>
+                <div className={styles.cadranDesc} style={{ color: col.subtext }}>
                   {c.desc.split('\n').map((line, li) => (
                     <span key={li}>
                       {li > 0 && <br />}
@@ -365,10 +370,7 @@ export default function DashboardManagerEditor() {
 
                 {c.type === 'binary' && (
                   <>
-                    <div
-                      className="mt-[1mm] text-[5.5pt] font-bold uppercase tracking-wider"
-                      style={{ color: col.subtext }}
-                    >
+                    <div className={styles.bnoteLbl} style={{ color: col.subtext }}>
                       Note
                     </div>
                     <Editable
@@ -379,26 +381,23 @@ export default function DashboardManagerEditor() {
                         setState((s) => ({ ...s, notes }))
                       }}
                       placeholder={fr ? 'Commentaire…' : 'Comment…'}
-                      className={`${styles.bnote} min-h-4 rounded-[2px] border px-1 py-0.5 text-[6.5pt] italic leading-snug`}
+                      className={`${styles.bnote} dm-bnote`}
+                      style={{
+                        background: rag ? 'rgba(255,255,255,.12)' : '#fff',
+                        borderColor: rag ? 'rgba(255,255,255,.25)' : undefined,
+                        color: rag ? col.text : undefined,
+                      }}
                     />
                   </>
                 )}
 
-                <div
-                  className="mt-auto border-t pt-[1.5mm] font-mono text-[5.5pt]"
-                  style={{ borderColor: col.seuilBorder }}
-                >
+                <div className={styles.cadranSeuils} style={{ borderColor: col.seuilBorder }}>
                   {c.seuils.map((s, si) => (
                     <div
                       key={s}
+                      className={!rag ? seuilCls[si] ?? '' : undefined}
                       style={{
-                        color: rag
-                          ? col.seuil ?? col.subtext
-                          : si === 0
-                            ? '#1A7A3C'
-                            : si === 1
-                              ? '#B85C00'
-                              : '#B01B1B',
+                        color: rag ? (col.seuil ?? col.subtext) : undefined,
                       }}
                     >
                       {s}
@@ -410,79 +409,80 @@ export default function DashboardManagerEditor() {
           })}
         </div>
 
-        {/* Note globale */}
-        <div className="flex overflow-hidden rounded-[3px] border-[1.5px] border-[#dedede]">
+        <div className={styles.noteGlobale}>
           <div
-            className="flex min-w-[58mm] flex-col gap-0.5 border-r-[1.5px] p-[3mm_4mm] transition-colors"
+            className={styles.ngAuto}
             style={{ background: autoCol.bg, borderColor: autoCol.border }}
           >
-            <div className="text-[6pt] font-bold uppercase tracking-wider" style={{ color: autoCol.subtext }}>
+            <div className={styles.ngLbl} style={{ color: autoCol.subtext }}>
               {fr ? 'Note globale (auto)' : 'Global score (auto)'}
             </div>
-            <div className="flex items-baseline gap-[2mm] font-mono text-[22pt] font-bold leading-none">
-              <span style={{ color: global.autoRag ? autoCol.text : 'rgba(0,0,0,.18)' }}>
+            <div className={styles.ngScore}>
+              <span style={{ color: global.autoRag ? autoCol.text : 'rgba(0,0,0,.2)' }}>
                 {global.scoreRounded}
               </span>
-              <span className="text-[11pt] opacity-50" style={{ color: global.autoRag ? autoCol.text : undefined }}>
+              <span className={styles.ngDen} style={{ color: global.autoRag ? autoCol.text : undefined }}>
                 / 6
               </span>
             </div>
-            <div className="text-[8pt] font-bold" style={{ color: global.autoRag ? autoCol.text : 'rgba(0,0,0,.18)' }}>
+            <div
+              className={styles.ngRagWord}
+              style={{ color: global.autoRag ? autoCol.text : 'rgba(0,0,0,.2)' }}
+            >
               {global.autoWord}
             </div>
-            <div className="mt-[1mm] text-[6pt]" style={{ color: autoCol.subtext }}>
-              V:{global.counts.vert} A:{global.counts.ambre} R:{global.counts.rouge}
+            <div className={styles.ngDetail} style={{ color: autoCol.subtext }}>
+              V:{global.counts.vert} · A:{global.counts.ambre} · R:{global.counts.rouge}
             </div>
           </div>
 
-          <div
-            className="flex flex-1 flex-col gap-0.5 p-[3mm_4mm] transition-colors"
-            style={{ background: manualCol.bg }}
-          >
-            <div className="flex items-center gap-[3mm]">
-              <div className="text-[6pt] font-bold uppercase tracking-wider" style={{ color: manualCol.subtext }}>
+          <div className={styles.ngManual} style={{ background: manualCol.bg }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3mm' }}>
+              <div className={styles.ngLbl} style={{ color: manualCol.subtext }}>
                 {fr ? 'Note manuelle' : 'Manual score'}
               </div>
               {state.manualOverride && (
                 <span
-                  className={`${styles.ngOverrideBadge} rounded-[10px] bg-black/10 px-1.5 py-px text-[5.5pt]`}
+                  className={`${styles.ngOverride} dm-ngOverride dm-screenOnly`}
                   style={{ color: manualCol.text }}
                 >
                   {fr ? 'modifié' : 'edited'}
                 </span>
               )}
             </div>
-            <div className="flex items-baseline gap-[2mm] font-mono text-[22pt] font-bold leading-none">
+            <div className={styles.ngScore}>
               <Editable
                 value={state.manualScore}
                 onChange={(v) =>
                   setState((s) => ({ ...s, manualOverride: true, manualScore: v }))
                 }
-                placeholder="--"
-                className={styles.ngManualInput}
+                placeholder="—"
+                className={`${styles.ngManualInput} dm-ngManualInput`}
+                style={{ color: state.manualRag ? manualCol.text : 'rgba(0,0,0,.2)' }}
               />
-              <span className="text-[11pt] opacity-50" style={{ color: state.manualRag ? manualCol.text : undefined }}>
+              <span className={styles.ngDen} style={{ color: state.manualRag ? manualCol.text : undefined }}>
                 / 6
               </span>
             </div>
-            <div className={`${styles.ngRagBtns} flex gap-[3mm] mt-[2mm]`}>
+            <div className={`${styles.ngRagBtns} dm-ngRagBtns dm-screenOnly`}>
               {(['vert', 'ambre', 'rouge'] as const).map((r) => (
                 <button
                   key={r}
                   type="button"
-                  className={`rounded-[2px] border-[1.5px] border-transparent px-2 py-0.5 text-[7pt] font-bold text-white transition ${state.manualRag === r ? 'opacity-100' : 'opacity-30 hover:opacity-60'}`}
-                  style={{
-                    background: r === 'vert' ? '#1A7A3C' : r === 'ambre' ? '#B85C00' : '#B01B1B',
-                  }}
-                  onClick={() =>
-                    setState((s) => ({ ...s, manualOverride: true, manualRag: r }))
-                  }
+                  className={`${styles.ngRagBtn} ${state.manualRag === r ? styles.ngRagBtnOn : ''}`}
+                  style={{ background: RAG_BTN_BG[r] }}
+                  onClick={() => setState((s) => ({ ...s, manualOverride: true, manualRag: r }))}
                 >
                   {r === 'vert' ? 'Vert' : r === 'ambre' ? 'Ambre' : 'Rouge'}
                 </button>
               ))}
             </div>
-            <div className="mt-[2mm] text-[6pt] font-bold uppercase tracking-wider" style={{ color: manualCol.subtext }}>
+            {state.manualRag && (
+              <div className={`${styles.printRag} dm-printOnly`} style={{ color: manualCol.text, marginTop: '1mm' }}>
+                RAG : {state.manualRag === 'vert' ? 'Vert' : state.manualRag === 'ambre' ? 'Ambre' : 'Rouge'}
+              </div>
+            )}
+            <div className={styles.ngCommentLbl} style={{ color: manualCol.subtext }}>
               {fr ? 'Commentaire' : 'Comment'}
             </div>
             <Editable
@@ -495,12 +495,13 @@ export default function DashboardManagerEditor() {
                   ? 'Justification si note manuelle différente du calcul auto…'
                   : 'Rationale if manual score differs from auto…'
               }
-              className={`${styles.ngComment} block w-full text-[7pt] italic leading-snug`}
+              className={`${styles.ngComment} dm-ngComment`}
+              style={{ color: state.manualRag ? manualCol.text : undefined }}
             />
             {state.manualOverride && (
               <button
                 type="button"
-                className={`${styles.ngResetBtn} mt-[2mm] text-left text-[6pt] underline`}
+                className={`${styles.ngReset} dm-ngReset dm-screenOnly`}
                 style={{ color: manualCol.text }}
                 onClick={() =>
                   setState((s) => ({
@@ -518,16 +519,15 @@ export default function DashboardManagerEditor() {
           </div>
         </div>
 
-        {/* Row 2 */}
-        <div className="grid grid-cols-[1.65fr_1fr] gap-[4mm]">
-          <div className="flex flex-col gap-[2mm] rounded-[3px] border-[1.5px] border-[#dedede] bg-[#f2f2f2] p-[3mm_4mm]">
-            <div className="text-[7pt] font-bold uppercase tracking-wide">
+        <div className={styles.row2}>
+          <div className={styles.bloc}>
+            <div className={styles.blocTitle}>
               {fr ? 'Vélocité — 6 derniers sprints' : 'Velocity — last 6 sprints'}
             </div>
-            <div className={`${styles.sparkInputRow} flex gap-[2mm]`}>
+            <div className={`${styles.sparkInputs} dm-sparkInputs dm-screenOnly`}>
               {SPARK_LABELS.map((lbl, i) => (
-                <div key={lbl} className="flex flex-1 flex-col items-center gap-px">
-                  <label className="font-mono text-[5.5pt] text-[#888]">{lbl}</label>
+                <div key={lbl} className={styles.sparkField}>
+                  <label className={styles.sparkLbl}>{lbl}</label>
                   <input
                     type="number"
                     min={0}
@@ -539,40 +539,40 @@ export default function DashboardManagerEditor() {
                       sparkData[i] = e.target.value ? parseInt(e.target.value, 10) : null
                       setState((s) => ({ ...s, sparkData }))
                     }}
-                    className={`w-full rounded-[2px] border px-0.5 py-0.5 text-center font-mono text-[7.5pt] font-semibold outline-none focus:border-[#c8a84b] ${i === 5 ? 'border-[#0d0d0d] bg-[#0d0d0d] text-white' : 'border-[#dedede] bg-white'}`}
+                    className={`${styles.sparkInp} ${i === 5 ? styles.sparkInpCur : ''}`}
                   />
                 </div>
               ))}
             </div>
-            <div className="flex min-h-[55px] flex-1 items-end gap-[3mm] pt-[2mm]">
+            <div className={styles.sparkZone}>
               {state.sparkData.map((v, i) => {
                 const val = v || 0
-                const h = val ? Math.max(4, Math.round((val / sparkMax) * 50)) : 4
+                const h = val ? Math.max(6, Math.round((val / sparkMax) * 58)) : 6
                 return (
-                  <div key={i} className="flex flex-1 flex-col items-center gap-[1.5mm]">
-                    <div className="text-center font-mono text-[6pt] font-semibold">{val || ''}</div>
+                  <div key={i} className={styles.sparkCol}>
+                    <div className={styles.sparkVal}>{val || '—'}</div>
                     <div
-                      className={`w-full rounded-t-[2px] ${i === 5 ? 'bg-[#0d0d0d]' : 'bg-[#d0d0d0]'}`}
+                      className={`${styles.sparkBar} ${i === 5 ? styles.sparkBarCur : ''}`}
                       style={{ height: h }}
                     />
-                    <div className="text-center font-mono text-[5.5pt] text-[#888]">
-                      {SPARK_LABELS[i].replace(' actuel', '')}
+                    <div className={styles.sparkLblBot}>
+                      {SPARK_LABELS[i].replace(' actuel', '').replace('S ', 'S')}
                     </div>
                   </div>
                 )
               })}
             </div>
-            <div className="text-[6.5pt] text-[#888]">
+            <div className={styles.velociteFooter}>
               {fr ? 'Moy. 3 sprints' : 'Avg. 3 sprints'} :{' '}
-              <strong className="font-mono text-[#0d0d0d]">{velocityAvg}</strong>
+              <strong>{velocityAvg}</strong>
               {' · '}
-              {fr ? 'Tendance' : 'Trend'} : <span>{velocityTrend}</span>
+              {fr ? 'Tendance' : 'Trend'} : {velocityTrend}
             </div>
           </div>
 
-          <div className="flex flex-col gap-[2mm] rounded-[3px] bg-[#0d0d0d] p-[3mm_4mm]">
-            <div className="text-[7pt] font-bold uppercase tracking-wide text-white/45">OKR Check-in</div>
-            <div className="border-b border-white/10 pb-[2mm] text-[7.5pt] font-semibold leading-snug text-white">
+          <div className={`${styles.bloc} ${styles.blocOkr}`}>
+            <div className={styles.blocTitle}>OKR Check-in</div>
+            <div className={styles.okrObj}>
               <Editable
                 value={state.okr.objective}
                 onChange={(v) => setState((s) => ({ ...s, okr: { ...s.okr, objective: v } }))}
@@ -587,8 +587,8 @@ export default function DashboardManagerEditor() {
               ] as const
             ).map(([key, lbl]) => (
               <div key={key}>
-                <div className="text-[5.5pt] font-bold uppercase tracking-wider text-white/35">{lbl}</div>
-                <div className="text-[7pt] italic leading-snug text-white/80">
+                <div className={styles.okrRowLbl}>{lbl}</div>
+                <div className={styles.okrRowTxt}>
                   <Editable
                     value={state.okr[key]}
                     onChange={(v) => setState((s) => ({ ...s, okr: { ...s.okr, [key]: v } }))}
@@ -600,14 +600,8 @@ export default function DashboardManagerEditor() {
           </div>
         </div>
 
-        {/* Narrative */}
-        <div className="flex gap-[4mm] rounded-[3px] border-[1.5px] border-[#dedede] bg-[#f4f4f4] p-[3mm_4mm]">
-          <div
-            className="shrink-0 self-center text-[6pt] font-bold uppercase tracking-wider text-[#888]"
-            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-          >
-            {fr ? 'Narrative IA' : 'AI narrative'}
-          </div>
+        <div className={styles.narrative}>
+          <div className={styles.narLbl}>{fr ? 'Narrative IA' : 'AI narrative'}</div>
           <Editable
             value={state.narrative}
             onChange={(v) => setState((s) => ({ ...s, narrative: v }))}
@@ -616,20 +610,20 @@ export default function DashboardManagerEditor() {
                 ? 'Générez la narrative (2 crédits) ou collez le texte P25 — factuel, orienté action, 200 mots max.'
                 : 'Generate narrative (2 credits) or paste P25 text — factual, action-oriented, 200 words max.'
             }
-            className={`${styles.narBody} min-h-7 flex-1 text-[7pt] italic leading-relaxed`}
+            className={`${styles.narBody} dm-narBody`}
           />
         </div>
 
-        <div className="flex items-center justify-between border-t border-[#d0d0d0] pt-[2mm]">
-          <div className="text-[6pt] text-[#888]">
+        <footer className={styles.footer}>
+          <div>
             Dashboard {fr ? 'généré via' : 'via'}{' '}
-            <strong className="font-semibold text-[#c8a84b]">aigile.lu</strong> · Le Système S.A.L.I.M. · Prompt P25
+            <strong className={styles.footerGold}>aigile.lu</strong> · Le Système S.A.L.I.M. · Prompt P25
           </div>
-          <div className="font-mono text-[6pt] text-[#888]">
-            Sprint {state.header.sprint || '--'} · {state.header.period || '--'} ·{' '}
+          <div className={styles.footerMono}>
+            Sprint {state.header.sprint || '—'} · {state.header.period || '—'} ·{' '}
             {fr ? 'Mis à jour par le SM' : 'Updated by SM'}
           </div>
-        </div>
+        </footer>
       </div>
 
       {showUpgrade && <UpgradeModal open onClose={() => setShowUpgrade(false)} />}

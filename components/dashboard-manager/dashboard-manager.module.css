@@ -1,23 +1,573 @@
+/* Dashboard Manager — preview écran + base impression (complété par dashboard-manager-print.css) */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem 3rem;
+}
+
+.controls {
+  width: 100%;
+  max-width: 297mm;
+  margin: 0 auto 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .sheet {
   width: 297mm;
   min-height: 210mm;
   background: #fff;
-  margin: 0 auto 20px;
+  margin: 0 auto;
   padding: 8mm 10mm 7mm;
   display: flex;
   flex-direction: column;
-  gap: 4mm;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.18);
+  gap: 3.5mm;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
   color: #0d0d0d;
-  font-family: var(--font-ibm-plex-sans, 'IBM Plex Sans', system-ui, sans-serif);
+  font-family: var(--font-dm-sans, 'IBM Plex Sans'), system-ui, sans-serif;
+  font-size: 10pt;
+  line-height: 1.35;
 }
 
+/* —— Header —— */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 2px solid #0d0d0d;
+  padding-bottom: 3mm;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1px;
+}
+
+.brandGold {
+  color: #c8a84b;
+}
+
+.title {
+  font-size: 17pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.headerMeta {
+  display: flex;
+  align-items: flex-end;
+  gap: 4mm;
+}
+
+.metaField {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.metaLbl {
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+}
+
+.metaVal {
+  font-size: 9.5pt;
+  font-weight: 600;
+  min-width: 18mm;
+  text-align: right;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-left: 3mm;
+  padding-left: 3mm;
+  border-left: 1px solid #dedede;
+}
+
+.legItem {
+  display: flex;
+  align-items: center;
+  gap: 1.5px;
+  font-size: 7pt;
+  color: #888;
+}
+
+.legDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* —— Cadrans —— */
+.cadransGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2.5mm;
+  flex-shrink: 0;
+}
+
+.cadran {
+  border: 1.5px solid #dedede;
+  border-radius: 3px;
+  padding: 3mm;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+  min-height: 32mm;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.cadranHdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.cadranTitle {
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ragSel {
+  display: flex;
+  gap: 2px;
+}
+
+.ragBtn {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0.25;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.ragBtnOn {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.printRag {
+  display: none;
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.cvalRow {
+  display: flex;
+  align-items: baseline;
+  gap: 1mm;
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  font-size: 17pt;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.bword {
+  font-size: 19pt;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.cadranDesc {
+  font-size: 7pt;
+  line-height: 1.35;
+}
+
+.bnoteLbl {
+  font-size: 6.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.5mm;
+}
+
+.cadranSeuils {
+  margin-top: auto;
+  padding-top: 1.5mm;
+  border-top: 1px solid #dedede;
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  font-size: 6.5pt;
+  line-height: 1.4;
+}
+
+.slV {
+  color: #1a7a3c;
+}
+.slA {
+  color: #b85c00;
+}
+.slR {
+  color: #b01b1b;
+}
+
+.trendBtn {
+  font-size: 11pt;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.5;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.trendBtn:hover {
+  opacity: 1;
+}
+
+/* —— Note globale —— */
+.noteGlobale {
+  display: flex;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1.5px solid #dedede;
+  flex-shrink: 0;
+}
+
+.ngAuto,
+.ngManual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5px;
+  padding: 3mm 4mm;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.ngAuto {
+  flex: 0 0 auto;
+  min-width: 56mm;
+  border-right: 1.5px solid #dedede;
+}
+
+.ngManual {
+  flex: 1;
+}
+
+.ngLbl {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ngScore {
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  font-size: 24pt;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+}
+
+.ngDen {
+  font-size: 12pt;
+  opacity: 0.5;
+}
+
+.ngRagWord {
+  font-size: 9pt;
+  font-weight: 700;
+}
+
+.ngDetail {
+  font-size: 7pt;
+  margin-top: 0.5mm;
+}
+
+.ngRagBtns {
+  display: flex;
+  gap: 2.5mm;
+  margin-top: 1.5mm;
+}
+
+.ngRagBtn {
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 7.5pt;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  color: #fff;
+  opacity: 0.35;
+}
+
+.ngRagBtnOn {
+  opacity: 1;
+}
+
+.ngCommentLbl {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 1.5mm;
+}
+
+.ngReset {
+  font-size: 6.5pt;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 1.5mm;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+.ngOverride {
+  font-size: 6pt;
+  border-radius: 10px;
+  padding: 1px 5px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* —— Row 2 —— */
+.row2 {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 3.5mm;
+  flex: 1;
+  min-height: 0;
+}
+
+.bloc {
+  border: 1.5px solid #dedede;
+  border-radius: 3px;
+  padding: 3mm 4mm;
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+  background: #f2f2f2;
+}
+
+.blocTitle {
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sparkInputs {
+  display: flex;
+  gap: 2mm;
+}
+
+.sparkField {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.sparkLbl {
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  font-size: 6.5pt;
+  color: #888;
+}
+
+.sparkInp {
+  width: 100%;
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  font-size: 8pt;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  padding: 2px;
+  background: #fff;
+  outline: none;
+}
+
+.sparkInpCur {
+  border-color: #0d0d0d;
+  background: #0d0d0d;
+  color: #fff;
+}
+
+.sparkZone {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  gap: 2.5mm;
+  padding-top: 2mm;
+  min-height: 52px;
+}
+
+.sparkCol {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5mm;
+}
+
+.sparkVal {
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  font-size: 7pt;
+  font-weight: 600;
+  text-align: center;
+  min-height: 9px;
+}
+
+.sparkBar {
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  background: #d0d0d0;
+  min-height: 4px;
+}
+
+.sparkBarCur {
+  background: #0d0d0d;
+}
+
+.sparkLblBot {
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  font-size: 6.5pt;
+  color: #888;
+  text-align: center;
+}
+
+.velociteFooter {
+  font-size: 7.5pt;
+  color: #888;
+}
+
+.velociteFooter strong {
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+  color: #0d0d0d;
+}
+
+.blocOkr {
+  background: #0d0d0d;
+  border: none;
+}
+
+.blocOkr .blocTitle {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.okrObj {
+  font-size: 8.5pt;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 2mm;
+}
+
+.okrRowLbl {
+  font-size: 6.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.okrRowTxt {
+  font-size: 8pt;
+  font-style: italic;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* —— Narrative —— */
+.narrative {
+  display: flex;
+  gap: 3.5mm;
+  border: 1.5px solid #dedede;
+  border-radius: 3px;
+  background: #f4f4f4;
+  padding: 3mm 4mm;
+  flex-shrink: 0;
+}
+
+.narLbl {
+  font-size: 7pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.narBody {
+  flex: 1;
+  font-size: 8.5pt;
+  font-style: italic;
+  line-height: 1.55;
+  min-height: 10mm;
+}
+
+/* —— Footer —— */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #d0d0d0;
+  padding-top: 2mm;
+  flex-shrink: 0;
+  font-size: 7pt;
+  color: #888;
+}
+
+.footerGold {
+  color: #c8a84b;
+  font-weight: 600;
+}
+
+.footerMono {
+  font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
+}
+
+/* —— Editable —— */
 .editable {
   outline: none;
   border-bottom: 1.5px dashed #d0d0d0;
   cursor: text;
-  transition: border-color 0.2s;
-  min-width: 10px;
+  transition: border-color 0.2s, background 0.2s;
+  min-width: 8px;
   display: inline-block;
 }
 
@@ -32,29 +582,55 @@
   font-style: italic;
 }
 
-@media print {
-  .noPrint {
-    display: none !important;
-  }
+.bnote {
+  font-size: 7pt;
+  font-style: italic;
+  line-height: 1.35;
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  padding: 2px 3px;
+  min-height: 18px;
+  background: #fff;
+}
+
+.ngManualInput {
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.2);
+}
+
+.ngComment {
+  display: block;
+  width: 100%;
+  font-size: 8pt;
+  font-style: italic;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  padding-bottom: 1px;
+}
+
+.screenOnly {
+  display: revert;
+}
+
+.printOnly {
+  display: none;
+}
+
+.noPrint {
+  /* masqué en impression via dashboard-manager-print.css */
+}
+
+/* Preview écran : zoom confortable sur petits viewports */
+@media screen and (max-width: 1100px) {
   .sheet {
-    margin: 0;
-    box-shadow: none;
+    transform: scale(0.88);
+    transform-origin: top center;
+    margin-bottom: -24mm;
   }
-  .editable,
-  .cvalInput,
-  .bnote,
-  .narBody,
-  .ngComment,
-  .ngManualInput {
-    border-color: transparent !important;
-    background: transparent !important;
-  }
-  .ragSel,
-  .sparkInputRow,
-  .ngRagBtns,
-  .ngResetBtn,
-  .ngOverrideBadge,
-  .trendBtn {
-    display: none !important;
+}
+
+@media screen and (max-width: 900px) {
+  .sheet {
+    transform: scale(0.72);
+    transform-origin: top center;
+    margin-bottom: -56mm;
   }
 }

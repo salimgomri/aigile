@@ -1,0 +1,111 @@
+/* Export PDF = window.print() — actif uniquement avec [data-dashboard-manager-print] */
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 297mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  body:has([data-dashboard-manager-print]) nav,
+  body:has([data-dashboard-manager-print]) footer,
+  body:has([data-dashboard-manager-print]) [data-no-print] {
+    display: none !important;
+  }
+
+  body:has([data-dashboard-manager-print]) {
+    background: #fff !important;
+  }
+
+  [data-dashboard-manager-print] {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  [data-dashboard-manager-print] * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  [data-dashboard-manager-print] .dm-sheet {
+    width: 297mm !important;
+    min-height: 210mm !important;
+    max-height: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 7mm 9mm 6mm !important;
+    box-shadow: none !important;
+    transform: none !important;
+    zoom: 1 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  [data-dashboard-manager-print] .dm-screenOnly {
+    display: none !important;
+  }
+
+  [data-dashboard-manager-print] .dm-printOnly,
+  [data-dashboard-manager-print] .printRag {
+    display: inline !important;
+  }
+
+  [data-dashboard-manager-print] .sparkZone {
+    min-height: 58px !important;
+  }
+
+  [data-dashboard-manager-print] .sparkBar {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  [data-dashboard-manager-print] .cadran,
+  [data-dashboard-manager-print] .ngAuto,
+  [data-dashboard-manager-print] .ngManual,
+  [data-dashboard-manager-print] .blocOkr {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  [data-dashboard-manager-print] .dm-ragSel,
+  [data-dashboard-manager-print] .dm-sparkInputs,
+  [data-dashboard-manager-print] .dm-ngRagBtns,
+  [data-dashboard-manager-print] .dm-ngReset,
+  [data-dashboard-manager-print] .dm-ngOverride,
+  [data-dashboard-manager-print] .dm-trendBtn {
+    display: none !important;
+  }
+
+  [data-dashboard-manager-print] .dm-editable,
+  [data-dashboard-manager-print] .dm-cvalInput,
+  [data-dashboard-manager-print] .dm-bnote,
+  [data-dashboard-manager-print] .dm-narBody,
+  [data-dashboard-manager-print] .dm-ngComment,
+  [data-dashboard-manager-print] .dm-ngManualInput {
+    border-color: transparent !important;
+    background: transparent !important;
+    outline: none !important;
+  }
+
+  [data-dashboard-manager-print] .dm-editable:empty::before {
+    color: #bbb !important;
+  }
+}
