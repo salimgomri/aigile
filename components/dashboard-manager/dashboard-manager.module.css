@@ -1,0 +1,60 @@
+.sheet {
+  width: 297mm;
+  min-height: 210mm;
+  background: #fff;
+  margin: 0 auto 20px;
+  padding: 8mm 10mm 7mm;
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.18);
+  color: #0d0d0d;
+  font-family: var(--font-ibm-plex-sans, 'IBM Plex Sans', system-ui, sans-serif);
+}
+
+.editable {
+  outline: none;
+  border-bottom: 1.5px dashed #d0d0d0;
+  cursor: text;
+  transition: border-color 0.2s;
+  min-width: 10px;
+  display: inline-block;
+}
+
+.editable:focus {
+  border-bottom-color: #c8a84b;
+  background: rgba(200, 168, 75, 0.06);
+}
+
+.editableEmpty:empty::before {
+  content: attr(data-placeholder);
+  color: #d0d0d0;
+  font-style: italic;
+}
+
+@media print {
+  .noPrint {
+    display: none !important;
+  }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+  }
+  .editable,
+  .cvalInput,
+  .bnote,
+  .narBody,
+  .ngComment,
+  .ngManualInput {
+    border-color: transparent !important;
+    background: transparent !important;
+  }
+  .ragSel,
+  .sparkInputRow,
+  .ngRagBtns,
+  .ngResetBtn,
+  .ngOverrideBadge,
+  .trendBtn {
+    display: none !important;
+  }
+}

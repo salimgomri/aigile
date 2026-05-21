@@ -74,7 +74,7 @@ const PROFILES: Profile[] = [
       { title: 'Happiness Index', titleEn: 'Happiness Index', chapters: [7], tool: { name: 'Niko-Niko', href: '/niko-niko', isPro: false }, time: '~15 min' },
       { title: 'Métriques DORA', titleEn: 'DORA metrics', chapters: [8], tool: { name: 'DORA', href: '/dora', isPro: true }, time: '~20 min' },
       { title: 'Alignement OKR', titleEn: 'OKR alignment', chapters: [12], tool: { name: 'OKR', href: '/okr', isPro: true }, time: '~15 min' },
-      { title: 'Dashboard équipe', titleEn: 'Team dashboard', chapters: [13], tool: { name: 'Dashboard', href: '/dashboard', isPro: false }, time: '~15 min' },
+      { title: 'Dashboard équipe', titleEn: 'Team dashboard', chapters: [13], tool: { name: 'Dashboard Manager', href: '/dashboard-manager', isPro: false }, time: '~15 min' },
     ],
   },
   {

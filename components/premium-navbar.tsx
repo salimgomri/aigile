@@ -25,6 +25,7 @@ import { useSession, signOut } from '@/lib/auth-client'
 import { useCredits } from '@/lib/credits/CreditContext'
 import CreditsCountBadge from '@/components/credits/CreditsCountBadge'
 import { LocalhostAdminSimToggle } from '@/components/dev/localhost-admin-sim-toggle'
+import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
 
 export default function PremiumNavbar() {
   const pathname = usePathname()
@@ -42,6 +43,11 @@ export default function PremiumNavbar() {
   const toolsLinks = [
     { href: '/retro', label: t['tools-retro-title'], match: (p: string) => p.startsWith('/retro') },
     { href: '/scoring-deliverable', label: t['tools-scoring-title'], match: (p: string) => p.startsWith('/scoring') },
+    {
+      href: '/dashboard-manager',
+      label: t['tools-dashboard-manager'],
+      match: (p: string) => p.startsWith('/dashboard-manager'),
+    },
     { href: '/start-scrum', label: t['tools-start-journey'], match: (p: string) => p.startsWith('/start-scrum') || p.startsWith('/parcours') },
   ]
 
@@ -84,6 +90,7 @@ export default function PremiumNavbar() {
       href: tool.href,
       label: tool.label,
       isActive: tool.match(pathname || ''),
+      showNewBadge: tool.href === '/dashboard-manager',
     }))
     return [home, ...dashboard, ...adminNav, ...tools]
   }, [isLanding, session, status?.isAdmin, pathname, language, t])
@@ -147,7 +154,12 @@ export default function PremiumNavbar() {
                           : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800'
                     }`}
                   >
-                    {link.label}
+                    <span className="inline-flex items-center gap-2">
+                      {link.label}
+                      {'showNewBadge' in link && link.showNewBadge ? (
+                        <DashboardManagerNewBadge language={language} />
+                      ) : null}
+                    </span>
                   </Link>
                 )
               })}
@@ -258,7 +270,12 @@ export default function PremiumNavbar() {
                           : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary'
                     }`}
                   >
-                    {link.label}
+                    <span className="inline-flex items-center gap-2">
+                      {link.label}
+                      {'showNewBadge' in link && link.showNewBadge ? (
+                        <DashboardManagerNewBadge language={language} />
+                      ) : null}
+                    </span>
                   </Link>
                 )
               })}

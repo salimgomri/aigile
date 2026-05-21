@@ -9,6 +9,9 @@ import type { PublicFeatureFlag } from '@/lib/feature-flags'
 import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
 import { useSession } from '@/lib/auth-client'
 import { translations } from '@/lib/translations'
+import { isDashboardManagerNewBadgeActive } from '@/lib/tool-new-badge'
+
+const HERO_SLIDE_COUNT = 4
 
 const dmSerif = DM_Serif_Display({
   weight: '400',
@@ -223,6 +226,68 @@ function ScoringRingMockup({ lang }: { lang: 'fr' | 'en' }) {
   )
 }
 
+function DashboardMockup({ lang }: { lang: 'fr' | 'en' }) {
+  const cadrans =
+    lang === 'fr'
+      ? [
+          { label: 'On Time', rag: '#1A7A3C', val: '92%' },
+          { label: 'Budget', rag: '#B85C00', val: 'ATT.' },
+          { label: 'Scope', rag: '#1A7A3C', val: 'OUI' },
+          { label: 'Qualité', rag: '#B01B1B', val: '12%' },
+          { label: 'Maturité', rag: '#B85C00', val: '6.1' },
+          { label: 'Bien-être', rag: '#1A7A3C', val: '4.2' },
+        ]
+      : [
+          { label: 'On Time', rag: '#1A7A3C', val: '92%' },
+          { label: 'Budget', rag: '#B85C00', val: 'WATCH' },
+          { label: 'Scope', rag: '#1A7A3C', val: 'YES' },
+          { label: 'Quality', rag: '#B01B1B', val: '12%' },
+          { label: 'Maturity', rag: '#B85C00', val: '6.1' },
+          { label: 'Wellbeing', rag: '#1A7A3C', val: '4.2' },
+        ]
+  const title = lang === 'fr' ? 'Cockpit sprint' : 'Sprint cockpit'
+  const sub = lang === 'fr' ? '6 cadrans RAG' : '6 RAG dials'
+  return (
+    <div
+      className="relative w-full max-w-[380px] rounded-2xl p-5"
+      style={{
+        background: 'var(--aigile-card)',
+        border: '1px solid var(--aigile-border)',
+        fontFamily: 'var(--font-hero-syne), sans-serif',
+      }}
+    >
+      <div
+        className="absolute left-0 right-0 top-0 h-0.5 rounded-t-2xl"
+        style={{ background: `linear-gradient(90deg, #34d399, transparent)` }}
+      />
+      <div className="mb-3 flex items-center justify-between border-b border-white/[0.06] pb-3">
+        <span className="text-sm font-semibold text-[var(--aigile-white)]">{title}</span>
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-[var(--aigile-muted)]">
+          {sub}
+        </span>
+      </div>
+      <div className="grid grid-cols-3 gap-2">
+        {cadrans.map((c) => (
+          <div
+            key={c.label}
+            className="rounded-md border border-white/[0.08] px-2 py-2"
+            style={{ background: `${c.rag}22` }}
+          >
+            <div className="text-[9px] font-bold uppercase tracking-wide text-white/70">{c.label}</div>
+            <div className="mt-1 font-mono text-[13px] font-bold" style={{ color: c.rag }}>
+              {c.val}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 flex items-center justify-between rounded-md bg-white/[0.04] px-3 py-2 text-[11px]">
+        <span className="text-[var(--aigile-muted)]">{lang === 'fr' ? 'Note globale' : 'Global score'}</span>
+        <span className="font-mono font-bold text-[#34d399]">4.5 / 6</span>
+      </div>
+    </div>
+  )
+}
+
 function RetroMockup({ lang }: { lang: 'fr' | 'en' }) {
   const rows =
     lang === 'fr'
@@ -341,13 +406,13 @@ export default function LandingHero() {
   useEffect(() => {
     if (reducedMotion) return
     const id = window.setInterval(() => {
-      setSlide((s) => (s + 1) % 3)
+      setSlide((s) => (s + 1) % HERO_SLIDE_COUNT)
     }, 5000)
     return () => window.clearInterval(id)
   }, [slide, reducedMotion])
 
   const go = useCallback((i: number) => {
-    setSlide(((i % 3) + 3) % 3)
+    setSlide(((i % HERO_SLIDE_COUNT) + HERO_SLIDE_COUNT) % HERO_SLIDE_COUNT)
   }, [])
 
   const copy = useMemo(() => {
@@ -378,6 +443,16 @@ export default function LandingHero() {
           body:
             'Évaluez la qualité de vos livrables Scrum en secondes. Score objectif, critères terrain, recommandations actionnables.',
         },
+        s4: {
+          badge: isDashboardManagerNewBadgeActive() ? 'Nouveau' : 'Manager',
+          badgeNew: isDashboardManagerNewBadgeActive(),
+          eyebrow: 'Management · Sprint',
+          title: 'Dashboard Manager',
+          body:
+            'Tableau de bord manager S.A.L.I.M. : 6 cadrans RAG, vélocité, OKR et narrative IA (P25). Personnalisez et exportez en PDF.',
+          primary: 'Ouvrir le studio →',
+          ghost: 'Découvrir ›',
+        },
       }
     }
     return {
@@ -405,6 +480,16 @@ export default function LandingHero() {
         title: 'Scoring Deliverable',
         body:
           'Assess Scrum deliverable quality in seconds. Objective scoring, field criteria, actionable recommendations.',
+      },
+      s4: {
+        badge: isDashboardManagerNewBadgeActive() ? 'New' : 'Manager',
+        badgeNew: isDashboardManagerNewBadgeActive(),
+        eyebrow: 'Management · Sprint',
+        title: 'Dashboard Manager',
+        body:
+          'S.A.L.I.M. manager dashboard: 6 RAG dials, velocity, OKRs and AI narrative (P25). Customize and export to PDF.',
+        primary: 'Open studio →',
+        ghost: 'Learn more ›',
       },
     }
   }, [language])
@@ -557,16 +642,16 @@ export default function LandingHero() {
       <div className="relative z-10">
         <div className="overflow-hidden">
           <div
-            className={`flex w-[300%] transition-transform ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`flex w-[400%] transition-transform ease-[cubic-bezier(0.22,1,0.36,1)] ${
               reducedMotion ? '' : 'duration-[650ms]'
             }`}
             style={{
-              transform: `translateX(-${slide * (100 / 3)}%)`,
+              transform: `translateX(-${slide * (100 / HERO_SLIDE_COUNT)}%)`,
             }}
           >
             {/* Slide 1 — Book */}
             <div
-              className="box-border flex w-1/3 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -700,7 +785,7 @@ export default function LandingHero() {
 
             {/* Slide 2 — Retro */}
             <div
-              className="box-border flex w-1/3 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -797,7 +882,7 @@ export default function LandingHero() {
 
             {/* Slide 3 — Scoring */}
             <div
-              className="box-border flex w-1/3 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -1020,6 +1105,123 @@ export default function LandingHero() {
                 )}
               </div>
             </div>
+
+            {/* Slide 4 — Dashboard Manager */}
+            <div
+              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              style={{ background: 'var(--aigile-black)' }}
+            >
+              <div
+                key={`s3-${slide === 3}`}
+                className="flex flex-1 flex-col justify-center gap-5 px-6 py-12 md:px-12 lg:px-16"
+              >
+                <div
+                  className={reducedMotion ? '' : 'landing-hero-stagger'}
+                  style={{ animationDelay: staggerDelays[0] }}
+                >
+                  <span
+                    className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide"
+                    style={
+                      copy.s4.badgeNew
+                        ? {
+                            background: 'rgba(16, 185, 129, 0.15)',
+                            color: '#34d399',
+                            border: '1px solid rgba(52, 211, 153, 0.4)',
+                          }
+                        : {
+                            background: GOLD_DIM,
+                            color: GOLD,
+                            border: '1px solid rgba(201,151,58,0.35)',
+                          }
+                    }
+                  >
+                    <PulseDot reducedMotion={reducedMotion} />
+                    {copy.s4.badge}
+                  </span>
+                </div>
+                <p
+                  className={reducedMotion ? '' : 'landing-hero-stagger text-sm'}
+                  style={{ color: 'var(--aigile-muted)', animationDelay: staggerDelays[1] }}
+                >
+                  {copy.s4.eyebrow}
+                </p>
+                <h1
+                  className={reducedMotion ? '' : 'landing-hero-stagger'}
+                  style={{
+                    fontFamily: 'var(--font-hero-dm), Georgia, serif',
+                    fontSize: 'clamp(2rem, 5vw, 52px)',
+                    lineHeight: 1.08,
+                    color: 'var(--aigile-white)',
+                    animationDelay: staggerDelays[2],
+                  }}
+                >
+                  {copy.s4.title}
+                </h1>
+                <p
+                  className={reducedMotion ? '' : 'landing-hero-stagger max-w-xl text-[15px] leading-relaxed'}
+                  style={{ color: 'rgba(240,237,230,0.85)', animationDelay: staggerDelays[3] }}
+                >
+                  {copy.s4.body}
+                </p>
+                <p
+                  className="text-[13px] font-semibold leading-snug"
+                  style={{ color: '#34d399', fontFamily: 'var(--font-hero-syne), sans-serif' }}
+                >
+                  {langFr
+                    ? 'Disponible — personnalisez votre dashboard manager.'
+                    : 'Available — customize your manager dashboard.'}
+                </p>
+                <div
+                  className={reducedMotion ? '' : 'landing-hero-stagger flex flex-col gap-3 sm:flex-row sm:items-center'}
+                  style={{ animationDelay: staggerDelays[4] }}
+                >
+                  <Link
+                    href="/dashboard-manager/studio"
+                    onClick={() => trackEvent('hero_dashboard_manager', { slide: 'dashboard_manager' })}
+                    className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
+                    style={{
+                      background: GOLD,
+                      color: NAVY_CTA,
+                    }}
+                  >
+                    {copy.s4.primary}
+                  </Link>
+                  <Link
+                    href="/dashboard-manager"
+                    className="text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
+                    style={{ color: 'var(--aigile-muted)' }}
+                    onClick={() => trackEvent('hero_dashboard_manager_ghost', { slide: 'dashboard_manager' })}
+                  >
+                    {copy.s4.ghost}
+                  </Link>
+                </div>
+              </div>
+              <div className="flex flex-1 items-center justify-center px-4 pb-12 max-[479px]:hidden md:pb-12 md:pl-2 md:pr-10">
+                <Link
+                  href="/dashboard-manager/studio"
+                  onClick={() =>
+                    trackEvent('hero_dashboard_manager', { slide: 'dashboard_manager', source: 'hero_visual' })
+                  }
+                  className={`group relative block w-full max-w-[380px] rounded-2xl p-2 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-emerald-400/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                  aria-label={
+                    language === 'fr' ? 'Ouvrir Dashboard Manager' : 'Open Dashboard Manager'
+                  }
+                >
+                  <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-emerald-500/25 to-transparent opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className={reducedMotion ? '' : 'landing-hero-visual-breathe'}>
+                    <div className="relative origin-center transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.14]">
+                      <DashboardMockup lang={language === 'fr' ? 'fr' : 'en'} />
+                    </div>
+                  </div>
+                  <span
+                    className="mt-3 block text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--aigile-muted)] transition-colors group-hover:text-emerald-400/90"
+                    aria-hidden
+                  >
+                    {language === 'fr' ? 'Ouvrir le studio' : 'Open studio'}
+                  </span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1035,7 +1237,7 @@ export default function LandingHero() {
             ←
           </button>
           <div className="flex items-center gap-2">
-            {[0, 1, 2].map((i) => {
+            {Array.from({ length: HERO_SLIDE_COUNT }, (_, i) => i).map((i) => {
               const active = slide === i
               const color = GOLD
               return (

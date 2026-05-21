@@ -17,6 +17,7 @@ import type { PublicFeatureFlag } from '@/lib/feature-flags'
 import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package } from 'lucide-react'
 import Link from 'next/link'
 import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
+import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
 import { useSession } from '@/lib/auth-client'
 
 type ToolItem = {
@@ -167,11 +168,14 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
     {
       key: 'dashboard',
       icon: Layout,
-      title: t['tools-dashboard'],
-      description: language === 'fr' ? "Santé d'équipe & outils" : 'Team health & tools',
+      title: t['tools-dashboard-manager'],
+      description:
+        language === 'fr'
+          ? 'Cockpit manager — 6 cadrans RAG, vélocité, OKR, narrative P25'
+          : 'Manager cockpit — 6 RAG dials, velocity, OKRs, P25 narrative',
       featured: false,
-      href: '#',
-      available: false,
+      href: '/dashboard-manager',
+      available: true,
     },
     {
       key: 'skill_matrix',
@@ -313,7 +317,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
             .filter((tool) => tool.key !== 'retro' && tool.key !== 'scoring_deliverable')
             .map((tool, index) => {
             const Icon = tool.icon
-            const isInteractiveTool = tool.key === 'skill_matrix'
+            const isInteractiveTool = tool.key === 'skill_matrix' || tool.key === 'dashboard'
             const interactive = isInteractiveTool && tool.href !== '#'
             const live = tool.available
 
@@ -334,8 +338,13 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
                     <Icon className={`w-6 h-6 ${interactive ? 'text-aigile-gold' : 'text-muted-foreground'}`} />
                   </div>
                   <div className="flex-1 text-left">
-                    <h4 className={`font-bold mb-2 ${interactive ? 'text-foreground' : 'text-muted-foreground'}`}>
+                    <h4
+                      className={`mb-2 flex flex-wrap items-center gap-2 font-bold ${interactive ? 'text-foreground' : 'text-muted-foreground'}`}
+                    >
                       {tool.title}
+                      {tool.key === 'dashboard' ? (
+                        <DashboardManagerNewBadge language={language === 'fr' ? 'fr' : 'en'} />
+                      ) : null}
                     </h4>
                     <p className={`text-sm ${interactive ? 'text-muted-foreground' : 'text-muted-foreground/80'}`}>
                       {tool.description}

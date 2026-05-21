@@ -16,7 +16,7 @@ SET tool_slug = CASE
   WHEN action IN ('dora_ai_reco', 'dora_pdf') THEN 'dora'
   WHEN action IN ('okr_ai_summary', 'okr_pdf') THEN 'okr'
   WHEN action IN ('skill_ai_reco', 'skill_pdf') THEN 'skill-matrix'
-  WHEN action IN ('dashboard_narrative', 'dashboard_pdf') THEN 'dashboard'
+  WHEN action IN ('dashboard_narrative', 'dashboard_pdf') THEN 'dashboard-manager'
   ELSE NULL
 END
 WHERE tool_slug IS NULL;

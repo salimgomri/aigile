@@ -12,6 +12,7 @@ import {
   Brain,
   ArrowRight,
   Layout,
+  LayoutDashboard,
   Smile,
   BarChart3,
   Package,
@@ -21,6 +22,7 @@ import {
   RefreshCw,
 } from 'lucide-react'
 import { AdminIntelligenceToolCard } from '@/components/admin/admin-intelligence-tool-card'
+import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
 
 function toolCardClass(active: boolean) {
   return active
@@ -89,6 +91,27 @@ export default function DashboardPage() {
                 {language === 'fr'
                   ? 'Générez des rétrospectives personnalisées'
                   : 'Generate personalized retrospectives'}
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
+          </Link>
+
+          <Link
+            href="/dashboard-manager"
+            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
+          >
+            <div className="w-14 h-14 rounded-xl bg-emerald-500/15 flex items-center justify-center group-hover:bg-emerald-500/25 transition-colors">
+              <LayoutDashboard className="w-7 h-7 text-emerald-400" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-xl font-semibold text-foreground flex flex-wrap items-center gap-2">
+                Dashboard Manager
+                <DashboardManagerNewBadge language={language === 'fr' ? 'fr' : 'en'} />
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                {language === 'fr'
+                  ? 'Cockpit sprint S.A.L.I.M. — cadrans RAG, OKR, narrative IA'
+                  : 'S.A.L.I.M. sprint cockpit — RAG dials, OKRs, AI narrative'}
               </p>
             </div>
             <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />

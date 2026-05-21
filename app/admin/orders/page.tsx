@@ -18,7 +18,8 @@ const TOOL_LABELS: Record<string, string> = {
   dora: 'DORA',
   okr: 'OKR',
   'skill-matrix': 'Skill Matrix',
-  dashboard: 'Dashboard',
+  dashboard: 'Dashboard (legacy)',
+  'dashboard-manager': 'Dashboard Manager',
   'scoring-deliverable': 'Score livraison',
 }
 
