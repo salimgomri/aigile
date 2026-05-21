@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
-import { Check, ExternalLink, Filter, Plus, Search, Sparkles } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Check, ExternalLink, Filter, Loader2, Plus, Search, Sparkles } from 'lucide-react'
 
 import { IntelligenceCollectorModal } from '@/components/admin/intelligence-collector-modal'
+import { IntelligenceCollectorScopeModal } from '@/components/admin/intelligence-collector-scope-modal'
 import {
   IntelligenceSourceReaderModal,
   type ReaderFeedRow,
@@ -11,6 +12,7 @@ import {
 import { useLanguage } from '@/components/language-provider'
 import type { CollectorItem } from '@/lib/intelligence/collector-format'
 import { faviconUrlForPageUrl, youtubeThumbnailUrlForPageUrl } from '@/lib/intelligence/media-metadata-shared'
+import { intelFeedRowHasReadableBody } from '@/lib/intelligence/feed-readable-body'
 import { tierCoverGradientClass } from '@/lib/intelligence/tier-visuals'
 import { cn } from '@/lib/utils'
 import type {
@@ -315,10 +317,49 @@ export function IntelligenceSourcesMatrix({
   const [query, setQuery] = useState('')
   const [hideYoutube, setHideYoutube] = useState(false)
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(() => new Set())
+  const [scopeOpen, setScopeOpen] = useState(false)
+  const [scopePrefillKeys, setScopePrefillKeys] = useState<string[]>([])
   const [collectorOpen, setCollectorOpen] = useState(false)
+  const [collectorItems, setCollectorItems] = useState<CollectorItem[]>([])
   const [feedRows, setFeedRows] = useState<FeedApiItem[]>([])
+  const [analysisBusy, setAnalysisBusy] = useState(false)
+  const [analyzeBanner, setAnalyzeBanner] = useState<string | null>(null)
 
   const langUi = language === 'fr' ? 'fr' : 'en'
+
+  const reloadFeed = useCallback(async () => {
+    const q = encodeURIComponent(rotationDay)
+    try {
+      const res = await fetch(`/api/admin/intelligence/feed?rotationDay=${q}`)
+      if (!res.ok) return
+      const json = (await res.json()) as { items?: FeedApiItem[] }
+      if (json.items) setFeedRows(json.items)
+    } catch {
+      /* ignore */
+    }
+  }, [rotationDay])
+
+  useEffect(() => {
+    void reloadFeed()
+  }, [reloadFeed])
+
+  const rowsCountByTier = useMemo(() => {
+    const m: Record<string, number> = {}
+    for (const t of data.tiers) m[t.id] = 0
+    for (const r of feedRows) {
+      m[r.tier_id] = (m[r.tier_id] ?? 0) + 1
+    }
+    return m
+  }, [feedRows, data.tiers])
+
+  const readableCountByTier = useMemo(() => {
+    const m: Record<string, number> = {}
+    for (const t of data.tiers) m[t.id] = 0
+    for (const r of feedRows) {
+      if (intelFeedRowHasReadableBody(r)) m[r.tier_id] = (m[r.tier_id] ?? 0) + 1
+    }
+    return m
+  }, [feedRows, data.tiers])
 
   const [reader, setReader] = useState<{
     tierTitle: string
@@ -326,21 +367,6 @@ export function IntelligenceSourcesMatrix({
     urls: SourceUrl[]
     rows: ReaderFeedRow[]
   } | null>(null)
-
-  useEffect(() => {
-    let cancelled = false
-    const q = encodeURIComponent(rotationDay)
-    void fetch(`/api/admin/intelligence/feed?rotationDay=${q}`)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((json: { items?: FeedApiItem[] } | null) => {
-        if (cancelled || !json?.items) return
-        setFeedRows(json.items)
-      })
-      .catch(() => {})
-    return () => {
-      cancelled = true
-    }
-  }, [rotationDay])
 
   function selectionKey(tierId: string, groupName: string) {
     return `${tierId}:::${groupName}`
@@ -356,50 +382,56 @@ export function IntelligenceSourcesMatrix({
     })
   }
 
-  const collectorItems: CollectorItem[] = useMemo(() => {
-    const out: CollectorItem[] = []
-    for (const tier of data.tiers) {
-      const tierTitle = langUi === 'fr' ? tier.title_fr : tier.title_en
-      for (const group of tier.groups) {
-        if (!selectedKeys.has(selectionKey(tier.id, group.name))) continue
-        const urls = filterUrls(group.urls, hideYoutube)
-        const rows = feedRows.filter((r) => r.tier_id === tier.id && r.source_label === group.name)
+  function openGenerateScope(prefillKeys: string[]) {
+    if (analysisBusy) return
+    setAnalyzeBanner(null)
+    setScopePrefillKeys(prefillKeys)
+    setScopeOpen(true)
+  }
 
-        if (rows.length === 0) {
-          out.push({
-            tierId: tier.id,
-            tierTitle,
-            groupName: group.name,
-            urls,
-            feedPending: true,
-          })
-          continue
-        }
+  function openCollectorFromScope(items: CollectorItem[]) {
+    setCollectorItems(items)
+    setCollectorOpen(true)
+  }
 
-        for (const row of rows) {
-          const matchUrls = urls.filter((u) => u.href === row.url)
-          const kind = row.url_kind as SourceUrl['kind']
-          const safeKind: SourceUrl['kind'] =
-            kind === 'youtube' || kind === 'podcast' || kind === 'web' || kind === 'rss' ? kind : 'web'
-          out.push({
-            tierId: tier.id,
-            tierTitle,
-            groupName: group.name,
-            urls: matchUrls.length ? matchUrls : [{ href: row.url, kind: safeKind }],
-            feedItemId: row.id,
-            vitality_score: Number(row.vitality_score),
-            summary: row.summary ?? row.preview_snippet,
-            content: row.content ?? row.transcript_text,
-            thumbnail_url: row.thumbnail_url,
-            primaryUrl: row.url,
-            feedStatus: row.status,
-            feedPending: false,
-          })
-        }
+  async function runAnalysisFromScope(items: CollectorItem[]) {
+    const ids = new Set<string>()
+    for (const it of items) {
+      if (!it.feedItemId || it.feedPending) continue
+      const row = feedRows.find((r) => r.id === it.feedItemId)
+      if (!row || row.url_kind === 'rss') continue
+      ids.add(it.feedItemId)
+    }
+    const list = [...ids]
+    if (list.length === 0) {
+      setAnalyzeBanner(
+        language === 'fr'
+          ? 'Aucune source analysable dans cette sélection (hors RSS ou non présente dans le flux).'
+          : 'Nothing to analyze in this selection (non-feed or RSS skipped).',
+      )
+      return
+    }
+    setAnalysisBusy(true)
+    setAnalyzeBanner(null)
+    let ok = 0
+    let ko = 0
+    for (const id of list) {
+      try {
+        const res = await fetch(`/api/admin/intelligence/feed/items/${id}/analyze`, { method: 'POST' })
+        if (res.ok) ok++
+        else ko++
+      } catch {
+        ko++
       }
     }
-    return out
-  }, [data.tiers, selectedKeys, hideYoutube, langUi, feedRows])
+    await reloadFeed()
+    setAnalysisBusy(false)
+    setAnalyzeBanner(
+      language === 'fr'
+        ? `Analyses · ${ok} réussie(s)${ko ? ` · ${ko} échec(s)` : ''} sur ${list.length} envoyée(s).`
+        : `Analysis · ${ok} OK${ko ? ` · ${ko} failed` : ''} of ${list.length} sent.`,
+    )
+  }
 
   const searchPlaceholder =
     language === 'fr' ? 'Recherche profonde — nom, domaine, créateur…' : 'Deep search — name, domain, creator…'
@@ -430,17 +462,40 @@ export function IntelligenceSourcesMatrix({
           </div>
         </div>
 
-        <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-border/70 bg-muted/20 px-4 py-3 text-xs text-muted-foreground backdrop-blur-sm transition-colors hover:bg-muted/30 lg:max-w-sm">
-          <Filter className="h-4 w-4 shrink-0 text-aigile-gold/90" aria-hidden />
-          <span className="leading-snug">{filterLabel}</span>
-          <input
-            type="checkbox"
-            className="ml-auto h-4 w-4 accent-aigile-gold"
-            checked={hideYoutube}
-            onChange={(e) => setHideYoutube(e.target.checked)}
-          />
-        </label>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch lg:items-end">
+          <label className="flex flex-1 cursor-pointer items-center gap-3 rounded-2xl border border-border/70 bg-muted/20 px-4 py-3 text-xs text-muted-foreground backdrop-blur-sm transition-colors hover:bg-muted/30 lg:max-w-sm">
+            <Filter className="h-4 w-4 shrink-0 text-aigile-gold/90" aria-hidden />
+            <span className="leading-snug">{filterLabel}</span>
+            <input
+              type="checkbox"
+              className="ml-auto h-4 w-4 accent-aigile-gold"
+              checked={hideYoutube}
+              onChange={(e) => setHideYoutube(e.target.checked)}
+            />
+          </label>
+          <button
+            type="button"
+            disabled={analysisBusy}
+            onClick={() => openGenerateScope([])}
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl border border-aigile-gold/45 bg-aigile-gold/10 px-5 py-3 text-sm font-semibold text-aigile-gold hover:bg-aigile-gold/18 disabled:pointer-events-none disabled:opacity-50"
+          >
+            {analysisBusy ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Sparkles className="h-4 w-4" aria-hidden />}
+            {language === 'fr' ? 'Générer' : 'Generate'}
+          </button>
+        </div>
       </div>
+
+      {analysisBusy ? (
+        <p className="flex items-center gap-2 rounded-xl border border-border/70 bg-muted/25 px-4 py-3 text-sm text-muted-foreground">
+          <Loader2 className="h-4 w-4 shrink-0 animate-spin text-aigile-gold" aria-hidden />
+          {language === 'fr' ? 'Analyses en cours sur les sources sélectionnées…' : 'Running analyses on selected sources…'}
+        </p>
+      ) : null}
+      {analyzeBanner ? (
+        <p className="rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-900 dark:text-emerald-100/95">
+          {analyzeBanner}
+        </p>
+      ) : null}
 
       {data.tiers.map((tier) => {
         const title = language === 'fr' ? tier.title_fr : tier.title_en
@@ -472,6 +527,25 @@ export function IntelligenceSourcesMatrix({
                   {title}
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">{tagline}</p>
+                <p className="mt-2 text-xs tabular-nums text-muted-foreground/95">
+                  {language === 'fr' ? (
+                    <>
+                      <span className="font-medium text-foreground">{readableCountByTier[tier.id] ?? 0}</span>
+                      {' analyse(s) avec texte exploitable'}
+                      {' · '}
+                      <span className="font-medium text-foreground">{rowsCountByTier[tier.id] ?? 0}</span>
+                      {' ligne(s) dans le flux du jour'}
+                    </>
+                  ) : (
+                    <>
+                      <span className="font-medium text-foreground">{readableCountByTier[tier.id] ?? 0}</span>
+                      {' non-empty bodies'}
+                      {' · '}
+                      <span className="font-medium text-foreground">{rowsCountByTier[tier.id] ?? 0}</span>
+                      {' feed row(s)'}
+                    </>
+                  )}
+                </p>
               </div>
             </div>
 
@@ -513,8 +587,8 @@ export function IntelligenceSourcesMatrix({
 
       <p className="text-center text-[11px] text-muted-foreground/85">
         {language === 'fr'
-          ? `Flux filtré : jour UTC ${rotationDay}. Sync YAML puis « Analyser » sur le flux pour remplir texte et transcripts.`
-          : `Feed filtered: UTC day ${rotationDay}. Run YAML sync then Analyze on feed rows for full text.`}
+          ? `Flux filtré : jour UTC ${rotationDay}. « Générer » lance les analyses sur la sélection ; le Collector (doctrine) reste disponible depuis la même fenêtre.`
+          : `Feed: UTC day ${rotationDay}. « Generate » runs analyses on your selection; Collector (doctrine) is optional in the same dialog.`}
       </p>
 
       <IntelligenceSourceReaderModal
@@ -525,6 +599,19 @@ export function IntelligenceSourcesMatrix({
         urls={reader?.urls ?? []}
         rows={reader?.rows ?? []}
         language={langUi}
+      />
+
+      <IntelligenceCollectorScopeModal
+        open={scopeOpen}
+        onClose={() => setScopeOpen(false)}
+        data={data}
+        feedRows={feedRows}
+        hideYoutube={hideYoutube}
+        language={langUi}
+        prefillGroupKeys={scopePrefillKeys}
+        analysisBusy={analysisBusy}
+        onAnalyzeSelection={runAnalysisFromScope}
+        onOpenCollector={openCollectorFromScope}
       />
 
       <IntelligenceCollectorModal
@@ -542,10 +629,11 @@ export function IntelligenceSourcesMatrix({
           </span>
           <button
             type="button"
-            onClick={() => setCollectorOpen(true)}
-            className="rounded-full bg-aigile-gold px-4 py-1.5 text-sm font-semibold text-black hover:bg-aigile-gold/90"
+            disabled={analysisBusy}
+            onClick={() => openGenerateScope(Array.from(selectedKeys))}
+            className="rounded-full bg-aigile-gold px-4 py-1.5 text-sm font-semibold text-black hover:bg-aigile-gold/90 disabled:pointer-events-none disabled:opacity-50"
           >
-            {language === 'fr' ? 'Ouvrir le Collector' : 'Open Collector'}
+            {language === 'fr' ? 'Générer' : 'Generate'}
           </button>
           <button
             type="button"

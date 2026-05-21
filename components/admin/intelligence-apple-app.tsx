@@ -11,6 +11,7 @@ import {
   INTEL_DIGEST_UI_TZ,
   labelDigestIso,
 } from '@/lib/intelligence/digest-calendar-ui'
+import { intelFeedPrimaryBody, intelFeedRowHasReadableBody, MIN_READABLE_FEED_CHARS } from '@/lib/intelligence/feed-readable-body'
 import { tierAccentHex } from '@/lib/intelligence/tier-visuals'
 import type { IntelligenceSourcesFile, IntelligenceTier } from '@/lib/intelligence/types'
 import { cn } from '@/lib/utils'
@@ -23,8 +24,6 @@ const LS_KEYS = {
   showAllIntel: 'intelApple.showAllIntel',
 }
 
-/** Aligné sur la sync serveur : en dessous ce seuil, pas de « papier » exploitable. */
-const MIN_READABLE_FEED_CHARS = 80
 const MIN_RSS_ARTICLE_TEXT_CHARS = 48
 
 export type AppleFeedItem = {
@@ -112,14 +111,12 @@ function cardDeck(item: AppleFeedItem): string {
 }
 
 function articleBody(item: AppleFeedItem): string {
-  const c = (item.content ?? '').trim()
-  if (c.length > 0) return c
-  return (item.transcript_text ?? '').trim()
+  return intelFeedPrimaryBody(item)
 }
 
 /** Corps exploitable pour le lecteur plein écran (pas seulement résumé / snippet). */
 function feedItemHasReadableBody(item: AppleFeedItem): boolean {
-  return articleBody(item).length >= MIN_READABLE_FEED_CHARS
+  return intelFeedRowHasReadableBody(item)
 }
 
 function rssArticleHasReadableText(row: AppleArticleRow): boolean {
@@ -367,45 +364,9 @@ function SyncSheet({
   )
 }
 
-function GenOverlay({
-  open,
-  tiers,
-  progressByTier,
-}: {
-  open: boolean
-  tiers: IntelligenceTier[]
-  progressByTier: Record<string, number>
-}) {
-  if (!open) return null
-  return (
-    <aside className="ia-gen">
-      <header className="ia-gen__hdr">
-        <div>
-          <span className="ia-gen__eyebrow">Synchronisation</span>
-          <h3>Récupération des sources…</h3>
-        </div>
-      </header>
-      <div className="ia-gen__bars">
-        {tiers.slice(0, 8).map((t) => (
-          <div key={t.id}>
-            <div className="ia-gbar__row">
-              <span>{t.title_fr}</span>
-              <span>{Math.round((progressByTier[t.id] ?? 0) * 100)}%</span>
-            </div>
-            <div className="ia-gbar__track">
-              <div
-                className="ia-gbar__fill"
-                style={{
-                  width: `${Math.round((progressByTier[t.id] ?? 0) * 100)}%`,
-                  background: tierAccentHex(t.id),
-                }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </aside>
-  )
+function tierDockShortTitle(tier: IntelligenceTier, fr: boolean): string {
+  const raw = fr ? tier.title_fr : tier.title_en
+  return raw.split(/[—–-]/)[0]?.trim() ?? raw
 }
 
 function TweaksFloating({
@@ -600,8 +561,6 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
 
   const [syncSheet, setSyncSheet] = useState(false)
   const [syncing, setSyncing] = useState(false)
-  const [genOpen, setGenOpen] = useState(false)
-  const [fakeProg, setFakeProg] = useState<Record<string, number>>({})
 
   const [reader, setReader] = useState<{ items: AppleFeedItem[]; index: number } | null>(null)
   const [analyzeId, setAnalyzeId] = useState<string | null>(null)
@@ -732,19 +691,6 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
 
   async function runSync() {
     setSyncing(true)
-    setGenOpen(true)
-    setFakeProg({})
-    const tierIds = sources.tiers.map((t) => t.id)
-    const iv = window.setInterval(() => {
-      setFakeProg((prev) => {
-        const next: Record<string, number> = { ...prev }
-        for (const id of tierIds) {
-          next[id] = Math.min(1, (next[id] ?? 0) + 0.055)
-        }
-        return next
-      })
-    }, 420)
-
     try {
       const res = await fetch('/api/admin/intelligence/feed/sync', { method: 'POST' })
       if (!res.ok) setBanner('Échec synchronisation.')
@@ -760,10 +706,7 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
       }
       await load()
     } finally {
-      clearInterval(iv)
       setSyncing(false)
-      setFakeProg(Object.fromEntries(tierIds.map((id) => [id, 1])))
-      window.setTimeout(() => setGenOpen(false), 900)
       setSyncSheet(false)
     }
   }
@@ -939,7 +882,7 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
                     onClick={() => setTierFilter(t.id)}
                   >
                     <span className="ia-dockitem__icon" style={{ background: tierAccentHex(t.id) }} />
-                    <span className="ia-dockitem__label">{fr ? t.title_fr.split(/[—–-]/)[0]?.trim() : t.title_en.split(/[—–-]/)[0]?.trim()}</span>
+                    <span className="ia-dockitem__label">{tierDockShortTitle(t, fr)}</span>
                     <span className="ia-dockitem__count">{counts[t.id] ?? 0}</span>
                   </button>
                 ))}
@@ -1075,7 +1018,6 @@ export function IntelligenceAppleApp({ sources }: { sources: IntelligenceSources
         )}
 
         <SyncSheet open={syncSheet} onClose={() => setSyncSheet(false)} rotationDay={rotationDay} onLaunch={() => void runSync()} syncing={syncing} />
-        <GenOverlay open={genOpen} tiers={sources.tiers} progressByTier={fakeProg} />
         <TweaksFloating
           open={tweakOpen}
           onToggle={() => setTweakOpen((v) => !v)}
