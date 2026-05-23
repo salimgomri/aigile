@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import { auth } from '@/lib/auth'
-import { getLatestWestrumResult, getWestrumHistory } from '@/lib/supabase/westrum'
+import { getLatestWestrumResult, getWestrumHistory } from '@/lib/westrum/store'
 
 export async function GET() {
   try {

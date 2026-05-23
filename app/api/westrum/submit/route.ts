@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import { auth } from '@/lib/auth'
 import { computeWestrumScore, isValidWestrumScores } from '@/lib/westrum/score'
-import { insertWestrumResult } from '@/lib/supabase/westrum'
+import { insertWestrumResult } from '@/lib/westrum/store'
 
 export async function POST(request: Request) {
   try {
