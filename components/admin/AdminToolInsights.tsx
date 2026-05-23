@@ -11,8 +11,8 @@ import {
   YAxis,
   Cell,
 } from 'recharts'
-import { Sparkles, Target, TrendingUp, Users, BarChart3, Layers, Calendar } from 'lucide-react'
-import type { RetroInsights, ScoringInsights } from '@/lib/admin/aggregate-tool-insights'
+import { Sparkles, Target, TrendingUp, Users, BarChart3, Layers, Calendar, HeartPulse } from 'lucide-react'
+import type { RetroInsights, ScoringInsights, WestrumInsights } from '@/lib/admin/aggregate-tool-insights'
 import { PATTERNS, type PatternCode } from '@/lib/retro/patterns'
 
 const GOLD = '#c9973a'
@@ -42,10 +42,11 @@ function patternLabelFr(code: string): string {
 type Props = {
   retro: RetroInsights
   scoring: ScoringInsights
+  westrum: WestrumInsights
 }
 
-export function AdminToolInsights({ retro, scoring }: Props) {
-  const [tab, setTab] = useState<'retro' | 'scoring'>('retro')
+export function AdminToolInsights({ retro, scoring, westrum }: Props) {
+  const [tab, setTab] = useState<'retro' | 'scoring' | 'westrum'>('retro')
 
   const maxPattern = useMemo(
     () => Math.max(1, ...retro.patternCounts.map((p) => p.count)),
@@ -62,6 +63,11 @@ export function AdminToolInsights({ retro, scoring }: Props) {
     [scoring.scoreBuckets]
   )
 
+  const maxNiveau = useMemo(
+    () => Math.max(1, ...westrum.niveauCounts.map((n) => n.count)),
+    [westrum.niveauCounts]
+  )
+
   return (
     <div className="mb-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-muted/20 shadow-sm">
       <div className="border-b border-border/80 bg-muted/20 px-5 py-4 sm:px-6">
@@ -72,10 +78,10 @@ export function AdminToolInsights({ retro, scoring }: Props) {
               Insights détaillés
             </h2>
             <p className="mt-0.5 text-xs text-muted-foreground">
-              Rétro IA et Score livraison — volumes, patterns et distribution des scores.
+              Rétro IA, Score livraison et Westrum — volumes, patterns et distribution des scores.
             </p>
           </div>
-          <div className="flex rounded-xl border border-border bg-background/80 p-1 shadow-inner">
+          <div className="flex flex-wrap rounded-xl border border-border bg-background/80 p-1 shadow-inner">
             <button
               type="button"
               onClick={() => setTab('retro')}
@@ -99,6 +105,18 @@ export function AdminToolInsights({ retro, scoring }: Props) {
             >
               <Target className="h-4 w-4 shrink-0" />
               Score livraison
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab('westrum')}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition ${
+                tab === 'westrum'
+                  ? 'bg-aigile-gold text-black shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <HeartPulse className="h-4 w-4 shrink-0" />
+              Westrum
             </button>
           </div>
         </div>
@@ -420,6 +438,172 @@ export function AdminToolInsights({ retro, scoring }: Props) {
                 </div>
               </div>
             )}
+          </div>
+        )}
+
+        {tab === 'westrum' && (
+          <div className="space-y-8">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+              <Kpi
+                icon={<BarChart3 className="h-4 w-4" />}
+                label="Questionnaires soumis"
+                value={westrum.totalSubmissions}
+              />
+              <Kpi
+                icon={<Users className="h-4 w-4" />}
+                label="Utilisateurs distincts"
+                value={westrum.uniqueUsers}
+              />
+              <Kpi
+                icon={<Target className="h-4 w-4" />}
+                label="Score min"
+                value={westrum.scoreMin != null ? westrum.scoreMin.toFixed(1) : '—'}
+                variant="cool"
+              />
+              <Kpi
+                icon={<TrendingUp className="h-4 w-4" />}
+                label="Score moyen"
+                value={westrum.scoreAvg != null ? westrum.scoreAvg.toFixed(1) : '—'}
+              />
+              <Kpi
+                icon={<Sparkles className="h-4 w-4" />}
+                label="Score max"
+                value={westrum.scoreMax != null ? westrum.scoreMax.toFixed(1) : '—'}
+                variant="warm"
+              />
+            </div>
+
+            {westrum.scoreMedian != null && (
+              <div className="rounded-xl border border-border bg-muted/15 px-4 py-3 text-center text-sm">
+                <span className="text-muted-foreground">Médiane : </span>
+                <span className="font-semibold tabular-nums text-foreground">
+                  {westrum.scoreMedian.toFixed(1)} / 7
+                </span>
+                <span className="text-muted-foreground"> · cible DORA 5.5</span>
+              </div>
+            )}
+
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div>
+                <h3 className="mb-3 text-sm font-semibold text-foreground">Type de culture</h3>
+                {westrum.niveauCounts.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">Aucune soumission.</p>
+                ) : (
+                  <div className="space-y-3">
+                    {westrum.niveauCounts.map((n) => {
+                      const pct = Math.round((n.count / maxNiveau) * 100)
+                      const color =
+                        n.niveau === 'Générative'
+                          ? 'from-emerald-600 to-emerald-400'
+                          : n.niveau === 'Bureaucratique'
+                            ? 'from-amber-600 to-amber-400'
+                            : 'from-rose-600 to-rose-400'
+                      return (
+                        <div key={n.niveau}>
+                          <div className="mb-1 flex justify-between text-xs">
+                            <span className="font-medium text-foreground">{n.niveau}</span>
+                            <span className="text-muted-foreground">{n.count}</span>
+                          </div>
+                          <div className="h-2 overflow-hidden rounded-full bg-muted">
+                            <div
+                              className={`h-full rounded-full bg-gradient-to-r ${color}`}
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <h3 className="mb-1 text-sm font-semibold text-foreground">Activité (30 derniers jours)</h3>
+                <p className="mb-3 text-xs text-muted-foreground">Soumissions par jour.</p>
+                <div className="h-[220px] w-full rounded-xl border border-border/80 bg-muted/10 p-2">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={westrum.dailyLast30}
+                      margin={{ top: 4, right: 8, left: -16, bottom: 0 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.5} />
+                      <XAxis
+                        dataKey="label"
+                        tick={{ fontSize: 9, fill: 'hsl(var(--muted-foreground))' }}
+                        interval={4}
+                        stroke="hsl(var(--border))"
+                      />
+                      <YAxis
+                        allowDecimals={false}
+                        tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
+                        stroke="hsl(var(--border))"
+                      />
+                      <Tooltip
+                        cursor={{ fill: 'hsl(var(--muted) / 0.25)' }}
+                        content={({ active, payload }) => {
+                          if (!active || !payload?.length) return null
+                          const p = payload[0].payload as (typeof westrum.dailyLast30)[0]
+                          return (
+                            <div className="rounded-lg border border-border bg-popover px-3 py-2 text-xs shadow-md">
+                              <div className="font-medium">{p.date}</div>
+                              <div className="text-muted-foreground">{p.count} soumission(s)</div>
+                            </div>
+                          )
+                        }}
+                      />
+                      <Bar dataKey="count" fill={GOLD} radius={[3, 3, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="mb-3 text-sm font-semibold text-foreground">Dernières soumissions</h3>
+              {westrum.recentSubmissions.length === 0 ? (
+                <p className="text-sm text-muted-foreground">Pas encore de données.</p>
+              ) : (
+                <div className="overflow-x-auto rounded-xl border border-border">
+                  <table className="w-full min-w-[480px] text-left text-xs">
+                    <thead className="border-b border-border bg-muted/30 text-muted-foreground">
+                      <tr>
+                        <th className="px-3 py-2 font-medium">Utilisateur</th>
+                        <th className="px-3 py-2 font-medium">Score</th>
+                        <th className="px-3 py-2 font-medium">Culture</th>
+                        <th className="px-3 py-2 font-medium">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {westrum.recentSubmissions.map((row, i) => (
+                        <tr key={`${row.created_at}-${i}`} className="border-b border-border/60 last:border-0">
+                          <td className="px-3 py-2">
+                            <span className="font-medium text-foreground">
+                              {row.user_name || row.user_email?.split('@')[0] || '—'}
+                            </span>
+                            {row.user_email && (
+                              <span className="block truncate text-[10px] text-muted-foreground">
+                                {row.user_email}
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-3 py-2 tabular-nums">{row.score_moyen.toFixed(1)} / 7</td>
+                          <td className="px-3 py-2">{row.niveau}</td>
+                          <td className="px-3 py-2 text-muted-foreground whitespace-nowrap">
+                            {new Date(row.created_at).toLocaleString('fr-FR', {
+                              day: 'numeric',
+                              month: 'short',
+                              year: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

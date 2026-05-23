@@ -27,6 +27,7 @@ export const CREDIT_ACTIONS = {
   retro_pdf: { cost: 1, label: 'Export PDF Rétro', tool: '/retro' },
   scoring_pdf: { cost: 1, label: 'Export PDF Scoring livraison', tool: '/scoring-deliverable' },
   scoring_deliverable: { cost: 2, label: 'Scoring livraison', tool: '/scoring-deliverable' },
+  westrum_submit: { cost: 0, label: 'Westrum Culture Survey', tool: '/dashboard/westrum' },
 } as const
 
 export type CreditAction = keyof typeof CREDIT_ACTIONS

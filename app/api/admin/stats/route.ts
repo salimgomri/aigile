@@ -12,8 +12,10 @@ import {
 import {
   aggregateRetroInsights,
   aggregateScoringInsights,
+  aggregateWestrumInsights,
   type RetroCreditRow,
   type ScoringSessionRow,
+  type WestrumResultInsightRow,
 } from '@/lib/admin/aggregate-tool-insights'
 
 const PAGE = 1000
@@ -82,6 +84,26 @@ async function fetchToolUsageCreditRows(): Promise<ToolUsageCreditRow[]> {
   return out
 }
 
+async function fetchWestrumResultRows(): Promise<WestrumResultInsightRow[]> {
+  const out: WestrumResultInsightRow[] = []
+  let from = 0
+  for (;;) {
+    const { data, error } = await supabaseAdmin
+      .from('v_westrum_usage_with_user')
+      .select('user_id, score_moyen, niveau, created_at, user_email, user_name')
+      .order('created_at', { ascending: true })
+      .range(from, from + PAGE - 1)
+
+    if (error) throw error
+    if (!data?.length) break
+    out.push(...(data as WestrumResultInsightRow[]))
+    if (data.length < PAGE) break
+    from += PAGE
+    if (from > 100_000) break
+  }
+  return out
+}
+
 export async function GET() {
   const session = await requireAdminApiSession()
   if (!session) {
@@ -116,9 +138,10 @@ export async function GET() {
       .filter((u) => !shouldExcludeEmailFromToolStats(u.user_email))
       .slice(0, 15)
 
-    const [retroCreditRows, scoringSessionRows] = await Promise.all([
+    const [retroCreditRows, scoringSessionRows, westrumResultRows] = await Promise.all([
       fetchRetroCreditRows(),
       fetchScoringSessionRows(),
+      fetchWestrumResultRows(),
     ])
 
     const retroInsights = aggregateRetroInsights(
@@ -126,6 +149,9 @@ export async function GET() {
     )
     const scoringInsights = aggregateScoringInsights(
       scoringSessionRows.filter((r) => !excludedUserIds.has(r.user_id))
+    )
+    const westrumInsights = aggregateWestrumInsights(
+      westrumResultRows.filter((r) => !excludedUserIds.has(r.user_id))
     )
 
     const toolStatsExclusionNote =
@@ -137,6 +163,7 @@ export async function GET() {
       recentUsage,
       retroInsights,
       scoringInsights,
+      westrumInsights,
       purchasesNote:
         'Totaux calculés sur les commandes payées/livrées, hors codes promo test internes (TEST100).',
       toolStatsExclusionNote,

@@ -20,6 +20,7 @@ import {
   Flag,
   KeyRound,
   RefreshCw,
+  Users,
 } from 'lucide-react'
 import { AdminIntelligenceToolCard } from '@/components/admin/admin-intelligence-tool-card'
 import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
@@ -132,6 +133,26 @@ export default function DashboardPage() {
                 {language === 'fr'
                   ? 'Évaluez la maturité de vos livrables sur 9 dimensions'
                   : 'Assess deliverable maturity across nine dimensions'}
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
+          </Link>
+
+          <Link
+            href="/dashboard/westrum"
+            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
+          >
+            <div className="w-14 h-14 rounded-xl bg-[#138eec]/15 flex items-center justify-center group-hover:bg-[#138eec]/25 transition-colors">
+              <Users className="w-7 h-7 text-[#138eec]" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-xl font-semibold text-foreground">
+                {language === 'fr' ? 'Westrum Culture Survey' : 'Westrum Culture Survey'}
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                {language === 'fr'
+                  ? 'Culture organisationnelle DORA — 6 questions Likert'
+                  : 'DORA organizational culture — 6 Likert questions'}
               </p>
             </div>
             <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />

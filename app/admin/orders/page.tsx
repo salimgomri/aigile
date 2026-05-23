@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import { COUNTRIES } from '@/lib/countries'
 import { AdminToolInsights } from '@/components/admin/AdminToolInsights'
-import type { RetroInsights, ScoringInsights } from '@/lib/admin/aggregate-tool-insights'
+import type { RetroInsights, ScoringInsights, WestrumInsights } from '@/lib/admin/aggregate-tool-insights'
 
 function formatPrice(centimes: number): string {
   return (centimes / 100).toFixed(2).replace('.', ',') + ' €'
@@ -21,6 +21,7 @@ const TOOL_LABELS: Record<string, string> = {
   dashboard: 'Dashboard (legacy)',
   'dashboard-manager': 'Dashboard Manager',
   'scoring-deliverable': 'Score livraison',
+  westrum: 'Westrum Culture Survey',
 }
 
 function getTypeIcon(type: string) {
@@ -116,6 +117,7 @@ type MacroStats = {
   }>
   retroInsights: RetroInsights
   scoringInsights: ScoringInsights
+  westrumInsights: WestrumInsights
   toolStatsExclusionNote?: string
 }
 
@@ -284,8 +286,12 @@ export default function AdminOrdersPage() {
         </div>
       )}
 
-      {macroStats?.retroInsights && macroStats?.scoringInsights && (
-        <AdminToolInsights retro={macroStats.retroInsights} scoring={macroStats.scoringInsights} />
+      {macroStats?.retroInsights && macroStats?.scoringInsights && macroStats?.westrumInsights && (
+        <AdminToolInsights
+          retro={macroStats.retroInsights}
+          scoring={macroStats.scoringInsights}
+          westrum={macroStats.westrumInsights}
+        />
       )}
 
       {/* Filtres */}

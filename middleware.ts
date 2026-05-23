@@ -23,6 +23,9 @@ const PROTECTED_ROUTES = [
 ]
 
 const COMING_SOON_REDIRECT = ['/niko-niko', '/dora']
+
+/** Sous-routes dashboard accessibles sans session (questionnaires culture) */
+const PUBLIC_DASHBOARD_PREFIXES = ['/dashboard/westrum', '/dashboard/edmondson']
 const ADMIN_COOKIE_NAME = 'aigile.admin'
 const DEV_ADMIN_SIM_COOKIE = 'aigile_dev_admin_sim'
 
@@ -43,6 +46,9 @@ function getSessionCookie(request: NextRequest): string | undefined {
 }
 
 function isProtectedRoute(pathname: string): boolean {
+  if (PUBLIC_DASHBOARD_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + '/'))) {
+    return false
+  }
   return PROTECTED_ROUTES.some(route => pathname === route || pathname.startsWith(route + '/'))
 }
 

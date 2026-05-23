@@ -25,6 +25,15 @@ export type ScoringSessionRow = {
   created_at?: string | null
 }
 
+export type WestrumResultInsightRow = {
+  user_id: string
+  score_moyen: number | string
+  niveau: string
+  created_at: string
+  user_email?: string | null
+  user_name?: string | null
+}
+
 function parseScore(v: number | string | null | undefined): number | null {
   if (v === null || v === undefined) return null
   const n = typeof v === 'number' ? v : Number(v)
@@ -62,6 +71,24 @@ export type ScoringInsights = {
   scoreBuckets: Array<{ range: string; count: number }>
   dailyLast30: Array<{ date: string; label: string; count: number }>
   monthlyCompleted: Array<{ month: string; label: string; count: number }>
+}
+
+export type WestrumInsights = {
+  totalSubmissions: number
+  uniqueUsers: number
+  scoreMin: number | null
+  scoreMax: number | null
+  scoreAvg: number | null
+  scoreMedian: number | null
+  niveauCounts: Array<{ niveau: string; count: number }>
+  dailyLast30: Array<{ date: string; label: string; count: number }>
+  recentSubmissions: Array<{
+    user_email: string | null
+    user_name: string | null
+    score_moyen: number
+    niveau: string
+    created_at: string
+  }>
 }
 
 export function aggregateRetroInsights(rows: RetroCreditRow[]): RetroInsights {
@@ -240,5 +267,90 @@ export function aggregateScoringInsights(rows: ScoringSessionRow[]): ScoringInsi
     scoreBuckets,
     dailyLast30,
     monthlyCompleted,
+  }
+}
+
+const WESTRUM_NIVEAU_LABELS: Record<string, string> = {
+  pathologique: 'Pathologique',
+  bureaucratique: 'Bureaucratique',
+  generative: 'Générative',
+}
+
+export function aggregateWestrumInsights(
+  rows: WestrumResultInsightRow[]
+): WestrumInsights {
+  const scores: number[] = []
+  const userSet = new Set<string>()
+  const niveauMap = new Map<string, number>()
+
+  const today = startOfDay(new Date())
+  const dayStart = subDays(today, 29)
+  const dayKeys = eachDayOfInterval({ start: dayStart, end: today })
+  const dailyMap = new Map<string, number>()
+  for (const d of dayKeys) {
+    dailyMap.set(format(d, 'yyyy-MM-dd'), 0)
+  }
+
+  for (const r of rows) {
+    const s = parseScore(r.score_moyen)
+    if (s === null) continue
+    userSet.add(r.user_id)
+    scores.push(s)
+
+    const niveau = r.niveau ?? '—'
+    niveauMap.set(niveau, (niveauMap.get(niveau) ?? 0) + 1)
+
+    const day = r.created_at?.slice(0, 10)
+    if (day && dailyMap.has(day)) {
+      dailyMap.set(day, (dailyMap.get(day) ?? 0) + 1)
+    }
+  }
+
+  scores.sort((a, b) => a - b)
+  const n = scores.length
+  const scoreMin = n ? scores[0] : null
+  const scoreMax = n ? scores[n - 1] : null
+  const scoreAvg = n ? scores.reduce((a, b) => a + b, 0) / n : null
+  const scoreMedian =
+    n === 0
+      ? null
+      : n % 2 === 1
+        ? scores[(n - 1) / 2]
+        : (scores[n / 2 - 1] + scores[n / 2]) / 2
+
+  const niveauCounts = [...niveauMap.entries()]
+    .map(([niveau, count]) => ({
+      niveau: WESTRUM_NIVEAU_LABELS[niveau] ?? niveau,
+      count,
+    }))
+    .sort((a, b) => b.count - a.count)
+
+  const dailyLast30 = [...dailyMap.entries()].map(([date, count]) => ({
+    date,
+    label: format(parseISO(date), 'd MMM', { locale: fr }),
+    count,
+  }))
+
+  const recentSubmissions = [...rows]
+    .sort((a, b) => b.created_at.localeCompare(a.created_at))
+    .slice(0, 20)
+    .map((r) => ({
+      user_email: r.user_email ?? null,
+      user_name: r.user_name ?? null,
+      score_moyen: parseScore(r.score_moyen) ?? 0,
+      niveau: WESTRUM_NIVEAU_LABELS[r.niveau] ?? r.niveau,
+      created_at: r.created_at,
+    }))
+
+  return {
+    totalSubmissions: n,
+    uniqueUsers: userSet.size,
+    scoreMin,
+    scoreMax,
+    scoreAvg,
+    scoreMedian,
+    niveauCounts,
+    dailyLast30,
+    recentSubmissions,
   }
 }
