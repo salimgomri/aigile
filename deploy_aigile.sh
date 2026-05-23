@@ -40,7 +40,7 @@ RSYNC_EXCLUDES=(
   --exclude='*.md'
   --exclude='tests'
   --exclude='scripts'
-  --exclude='supabase'
+  --exclude='/supabase'
   --exclude='out'
 )
 
