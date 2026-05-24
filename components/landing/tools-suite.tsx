@@ -141,6 +141,39 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
       available: !!sd?.is_live,
     },
     {
+      key: 'dashboard',
+      icon: Layout,
+      title: t['tools-dashboard-manager'],
+      description:
+        language === 'fr'
+          ? 'Cockpit manager — 6 cadrans RAG, vélocité, OKR, narrative P25'
+          : 'Manager cockpit — 6 RAG dials, velocity, OKRs, P25 narrative',
+      featured: false,
+      href: '/dashboard-manager',
+      available: true,
+    },
+    {
+      key: 'westrum',
+      icon: HeartPulse,
+      title: t['tools-westrum'],
+      description:
+        language === 'fr'
+          ? 'Questionnaire DORA — culture pathologique, bureaucratique ou générative'
+          : 'DORA survey — pathological, bureaucratic, or generative culture',
+      featured: false,
+      href: '/dashboard/westrum',
+      available: westrum?.is_live ?? true,
+    },
+    {
+      key: 'skill_matrix',
+      icon: Users,
+      title: skillTitle,
+      description: skillDesc,
+      featured: false,
+      href: '/skill-matrix',
+      available: !!sm?.is_live,
+    },
+    {
       key: 'niko',
       icon: Smile,
       title: t['tools-nikoni'],
@@ -167,40 +200,12 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
       href: '#',
       available: false,
     },
-    {
-      key: 'dashboard',
-      icon: Layout,
-      title: t['tools-dashboard-manager'],
-      description:
-        language === 'fr'
-          ? 'Cockpit manager — 6 cadrans RAG, vélocité, OKR, narrative P25'
-          : 'Manager cockpit — 6 RAG dials, velocity, OKRs, P25 narrative',
-      featured: false,
-      href: '/dashboard-manager',
-      available: true,
-    },
-    {
-      key: 'westrum',
-      icon: HeartPulse,
-      title: t['tools-westrum'],
-      description:
-        language === 'fr'
-          ? 'Questionnaire DORA — culture pathologique, bureaucratique ou générative'
-          : 'DORA survey — pathological, bureaucratic, or generative culture',
-      featured: false,
-      href: '/dashboard/westrum',
-      available: westrum?.is_live !== false,
-    },
-    {
-      key: 'skill_matrix',
-      icon: Users,
-      title: skillTitle,
-      description: skillDesc,
-      featured: false,
-      href: '/skill-matrix',
-      available: !!sm?.is_live,
-    },
   ]
+
+  /** Grille « Autres outils » — hors phares ; disponibles en premier */
+  const moreTools = tools
+    .filter((tool) => tool.key !== 'retro' && tool.key !== 'scoring_deliverable')
+    .sort((a, b) => Number(b.available) - Number(a.available))
 
   return (
     <section id="tools" className="relative py-24 bg-background">
@@ -327,9 +332,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
 
         {/* Other Tools Grid — staggered fade-in */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools
-            .filter((tool) => tool.key !== 'retro' && tool.key !== 'scoring_deliverable')
-            .map((tool, index) => {
+          {moreTools.map((tool, index) => {
             const Icon = tool.icon
             const isInteractiveTool = tool.key === 'skill_matrix' || tool.key === 'dashboard' || tool.key === 'westrum'
             const interactive = isInteractiveTool && tool.href !== '#'
