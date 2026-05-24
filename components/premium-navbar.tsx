@@ -26,6 +26,7 @@ import { useCredits } from '@/lib/credits/CreditContext'
 import CreditsCountBadge from '@/components/credits/CreditsCountBadge'
 import { LocalhostAdminSimToggle } from '@/components/dev/localhost-admin-sim-toggle'
 import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
+import { WestrumNewBadge } from '@/components/tools/WestrumNewBadge'
 
 export default function PremiumNavbar() {
   const pathname = usePathname()
@@ -47,6 +48,11 @@ export default function PremiumNavbar() {
       href: '/dashboard-manager',
       label: t['tools-dashboard-manager'],
       match: (p: string) => p.startsWith('/dashboard-manager'),
+    },
+    {
+      href: '/dashboard/westrum',
+      label: t['tools-westrum'],
+      match: (p: string) => p.startsWith('/dashboard/westrum'),
     },
     { href: '/start-scrum', label: t['tools-start-journey'], match: (p: string) => p.startsWith('/start-scrum') || p.startsWith('/parcours') },
   ]
@@ -91,6 +97,7 @@ export default function PremiumNavbar() {
       label: tool.label,
       isActive: tool.match(pathname || ''),
       showNewBadge: tool.href === '/dashboard-manager',
+      showWestrumBadge: tool.href === '/dashboard/westrum',
     }))
     return [home, ...dashboard, ...adminNav, ...tools]
   }, [isLanding, session, status?.isAdmin, pathname, language, t])
@@ -158,6 +165,9 @@ export default function PremiumNavbar() {
                       {link.label}
                       {'showNewBadge' in link && link.showNewBadge ? (
                         <DashboardManagerNewBadge language={language} />
+                      ) : null}
+                      {'showWestrumBadge' in link && link.showWestrumBadge ? (
+                        <WestrumNewBadge language={language} />
                       ) : null}
                     </span>
                   </Link>
@@ -274,6 +284,9 @@ export default function PremiumNavbar() {
                       {link.label}
                       {'showNewBadge' in link && link.showNewBadge ? (
                         <DashboardManagerNewBadge language={language} />
+                      ) : null}
+                      {'showWestrumBadge' in link && link.showWestrumBadge ? (
+                        <WestrumNewBadge language={language} />
                       ) : null}
                     </span>
                   </Link>

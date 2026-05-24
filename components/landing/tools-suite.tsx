@@ -14,10 +14,11 @@ import { useLanguage } from '../language-provider'
 import { trackEvent } from '@/lib/gtag'
 import { translations } from '@/lib/translations'
 import type { PublicFeatureFlag } from '@/lib/feature-flags'
-import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package } from 'lucide-react'
+import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package, HeartPulse } from 'lucide-react'
 import Link from 'next/link'
 import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
 import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
+import { WestrumNewBadge } from '@/components/tools/WestrumNewBadge'
 import { useSession } from '@/lib/auth-client'
 
 type ToolItem = {
@@ -84,6 +85,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
   }, [flags, session?.user?.id])
 
   const sm = flags.skill_matrix
+  const westrum = flags.westrum
   const skillTitle =
     sm && (language === 'fr' ? sm.label_fr : sm.label_en)
       ? language === 'fr'
@@ -176,6 +178,18 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
       featured: false,
       href: '/dashboard-manager',
       available: true,
+    },
+    {
+      key: 'westrum',
+      icon: HeartPulse,
+      title: t['tools-westrum'],
+      description:
+        language === 'fr'
+          ? 'Questionnaire DORA — culture pathologique, bureaucratique ou générative'
+          : 'DORA survey — pathological, bureaucratic, or generative culture',
+      featured: false,
+      href: '/dashboard/westrum',
+      available: westrum?.is_live !== false,
     },
     {
       key: 'skill_matrix',
@@ -317,7 +331,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
             .filter((tool) => tool.key !== 'retro' && tool.key !== 'scoring_deliverable')
             .map((tool, index) => {
             const Icon = tool.icon
-            const isInteractiveTool = tool.key === 'skill_matrix' || tool.key === 'dashboard'
+            const isInteractiveTool = tool.key === 'skill_matrix' || tool.key === 'dashboard' || tool.key === 'westrum'
             const interactive = isInteractiveTool && tool.href !== '#'
             const live = tool.available
 
@@ -344,6 +358,9 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
                       {tool.title}
                       {tool.key === 'dashboard' ? (
                         <DashboardManagerNewBadge language={language === 'fr' ? 'fr' : 'en'} />
+                      ) : null}
+                      {tool.key === 'westrum' ? (
+                        <WestrumNewBadge language={language === 'fr' ? 'fr' : 'en'} />
                       ) : null}
                     </h4>
                     <p className={`text-sm ${interactive ? 'text-muted-foreground' : 'text-muted-foreground/80'}`}>

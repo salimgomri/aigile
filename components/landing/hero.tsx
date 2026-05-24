@@ -9,9 +9,9 @@ import type { PublicFeatureFlag } from '@/lib/feature-flags'
 import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
 import { useSession } from '@/lib/auth-client'
 import { translations } from '@/lib/translations'
-import { isDashboardManagerNewBadgeActive } from '@/lib/tool-new-badge'
+import { isDashboardManagerNewBadgeActive, isWestrumNewBadgeActive } from '@/lib/tool-new-badge'
 
-const HERO_SLIDE_COUNT = 4
+const HERO_SLIDE_COUNT = 5
 
 const dmSerif = DM_Serif_Display({
   weight: '400',
@@ -288,6 +288,57 @@ function DashboardMockup({ lang }: { lang: 'fr' | 'en' }) {
   )
 }
 
+function WestrumMockup({ lang }: { lang: 'fr' | 'en' }) {
+  const title = lang === 'fr' ? 'Culture organisationnelle' : 'Organizational culture'
+  const sub = lang === 'fr' ? '6 questions · DORA' : '6 questions · DORA'
+  const level = lang === 'fr' ? 'Générative' : 'Generative'
+  const target = lang === 'fr' ? 'Cible DORA 5.5' : 'DORA target 5.5'
+  return (
+    <div
+      className="relative w-full max-w-[380px] rounded-2xl p-5"
+      style={{
+        background: 'var(--aigile-card)',
+        border: '1px solid var(--aigile-border)',
+        fontFamily: 'var(--font-hero-syne), sans-serif',
+      }}
+    >
+      <div
+        className="absolute left-0 right-0 top-0 h-0.5 rounded-t-2xl"
+        style={{ background: 'linear-gradient(90deg, #138eec, transparent)' }}
+      />
+      <div className="mb-3 flex items-center justify-between border-b border-white/[0.06] pb-3">
+        <span className="text-sm font-semibold text-[var(--aigile-white)]">{title}</span>
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-[var(--aigile-muted)]">
+          {sub}
+        </span>
+      </div>
+      <div className="mb-4 flex justify-center gap-1.5">
+        {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+          <div
+            key={n}
+            className="flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold"
+            style={{
+              background: n >= 5 ? 'rgba(201,151,58,0.25)' : 'rgba(255,255,255,0.06)',
+              color: n === 6 ? GOLD : 'rgba(255,255,255,0.55)',
+              border: n === 6 ? `1px solid ${GOLD}` : '1px solid transparent',
+            }}
+          >
+            {n}
+          </div>
+        ))}
+      </div>
+      <div className="rounded-md bg-white/[0.04] px-3 py-3 text-center">
+        <div className="font-mono text-3xl font-bold text-[var(--aigile-white)]">5.8</div>
+        <div className="text-[11px] text-[var(--aigile-muted)]">/ 7</div>
+      </div>
+      <div className="mt-3 flex items-center justify-between rounded-md bg-white/[0.04] px-3 py-2 text-[11px]">
+        <span className="font-semibold text-[#16a34a]">{level}</span>
+        <span className="text-[var(--aigile-muted)]">{target}</span>
+      </div>
+    </div>
+  )
+}
+
 function RetroMockup({ lang }: { lang: 'fr' | 'en' }) {
   const rows =
     lang === 'fr'
@@ -453,6 +504,16 @@ export default function LandingHero() {
           primary: 'Ouvrir le studio →',
           ghost: 'Découvrir ›',
         },
+        s5: {
+          badge: isWestrumNewBadgeActive() ? 'Nouveau' : 'Culture',
+          badgeNew: isWestrumNewBadgeActive(),
+          eyebrow: 'DORA · Culture organisationnelle',
+          title: 'Westrum Culture Survey',
+          body:
+            'Six questions Likert pour situer la culture de ton organisation — pathologique, bureaucratique ou générative. Mesure recommandée : une fois par trimestre.',
+          primary: 'Passer le questionnaire →',
+          ghost: 'En savoir plus ›',
+        },
       }
     }
     return {
@@ -489,6 +550,16 @@ export default function LandingHero() {
         body:
           'S.A.L.I.M. manager dashboard: 6 RAG dials, velocity, OKRs and AI narrative (P25). Customize and export to PDF.',
         primary: 'Open studio →',
+        ghost: 'Learn more ›',
+      },
+      s5: {
+        badge: isWestrumNewBadgeActive() ? 'New' : 'Culture',
+        badgeNew: isWestrumNewBadgeActive(),
+        eyebrow: 'DORA · Organizational culture',
+        title: 'Westrum Culture Survey',
+        body:
+          'Six Likert questions to map your organization’s culture — pathological, bureaucratic, or generative. Recommended cadence: once per quarter.',
+        primary: 'Take the survey →',
         ghost: 'Learn more ›',
       },
     }
@@ -642,7 +713,7 @@ export default function LandingHero() {
       <div className="relative z-10">
         <div className="overflow-hidden">
           <div
-            className={`flex w-[400%] transition-transform ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`flex w-[500%] transition-transform ease-[cubic-bezier(0.22,1,0.36,1)] ${
               reducedMotion ? '' : 'duration-[650ms]'
             }`}
             style={{
@@ -651,7 +722,7 @@ export default function LandingHero() {
           >
             {/* Slide 1 — Book */}
             <div
-              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -785,7 +856,7 @@ export default function LandingHero() {
 
             {/* Slide 2 — Retro */}
             <div
-              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -882,7 +953,7 @@ export default function LandingHero() {
 
             {/* Slide 3 — Scoring */}
             <div
-              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -1108,7 +1179,7 @@ export default function LandingHero() {
 
             {/* Slide 4 — Dashboard Manager */}
             <div
-              className="box-border flex w-1/4 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -1218,6 +1289,123 @@ export default function LandingHero() {
                     aria-hidden
                   >
                     {language === 'fr' ? 'Ouvrir le studio' : 'Open studio'}
+                  </span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Slide 5 — Westrum Culture Survey */}
+            <div
+              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              style={{ background: 'var(--aigile-black)' }}
+            >
+              <div
+                key={`s4-${slide === 4}`}
+                className="flex flex-1 flex-col justify-center gap-5 px-6 py-12 md:px-12 lg:px-16"
+              >
+                <div
+                  className={reducedMotion ? '' : 'landing-hero-stagger'}
+                  style={{ animationDelay: staggerDelays[0] }}
+                >
+                  <span
+                    className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide"
+                    style={
+                      copy.s5.badgeNew
+                        ? {
+                            background: 'rgba(19, 142, 236, 0.15)',
+                            color: '#60a5fa',
+                            border: '1px solid rgba(96, 165, 250, 0.4)',
+                          }
+                        : {
+                            background: GOLD_DIM,
+                            color: GOLD,
+                            border: '1px solid rgba(201,151,58,0.35)',
+                          }
+                    }
+                  >
+                    <PulseDot reducedMotion={reducedMotion} />
+                    {copy.s5.badge}
+                  </span>
+                </div>
+                <p
+                  className={reducedMotion ? '' : 'landing-hero-stagger text-sm'}
+                  style={{ color: 'var(--aigile-muted)', animationDelay: staggerDelays[1] }}
+                >
+                  {copy.s5.eyebrow}
+                </p>
+                <h1
+                  className={reducedMotion ? '' : 'landing-hero-stagger'}
+                  style={{
+                    fontFamily: 'var(--font-hero-dm), Georgia, serif',
+                    fontSize: 'clamp(2rem, 5vw, 52px)',
+                    lineHeight: 1.08,
+                    color: 'var(--aigile-white)',
+                    animationDelay: staggerDelays[2],
+                  }}
+                >
+                  {copy.s5.title}
+                </h1>
+                <p
+                  className={reducedMotion ? '' : 'landing-hero-stagger max-w-xl text-[15px] leading-relaxed'}
+                  style={{ color: 'rgba(240,237,230,0.85)', animationDelay: staggerDelays[3] }}
+                >
+                  {copy.s5.body}
+                </p>
+                <p
+                  className="text-[13px] font-semibold leading-snug"
+                  style={{ color: '#60a5fa', fontFamily: 'var(--font-hero-syne), sans-serif' }}
+                >
+                  {langFr
+                    ? 'Gratuit — sans compte pour voir le résultat.'
+                    : 'Free — no account required to see your result.'}
+                </p>
+                <div
+                  className={reducedMotion ? '' : 'landing-hero-stagger flex flex-col gap-3 sm:flex-row sm:items-center'}
+                  style={{ animationDelay: staggerDelays[4] }}
+                >
+                  <Link
+                    href="/dashboard/westrum"
+                    onClick={() => trackEvent('hero_westrum', { slide: 'westrum' })}
+                    className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
+                    style={{
+                      background: GOLD,
+                      color: NAVY_CTA,
+                    }}
+                  >
+                    {copy.s5.primary}
+                  </Link>
+                  <Link
+                    href="/#tools"
+                    className="text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
+                    style={{ color: 'var(--aigile-muted)' }}
+                    onClick={() => trackEvent('hero_westrum_ghost', { slide: 'westrum' })}
+                  >
+                    {copy.s5.ghost}
+                  </Link>
+                </div>
+              </div>
+              <div className="flex flex-1 items-center justify-center px-4 pb-12 max-[479px]:hidden md:pb-12 md:pl-2 md:pr-10">
+                <Link
+                  href="/dashboard/westrum"
+                  onClick={() =>
+                    trackEvent('hero_westrum', { slide: 'westrum', source: 'hero_visual' })
+                  }
+                  className={`group relative block w-full max-w-[380px] rounded-2xl p-2 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#138eec]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                  aria-label={
+                    language === 'fr' ? 'Passer le questionnaire Westrum' : 'Take the Westrum survey'
+                  }
+                >
+                  <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#138eec]/25 to-transparent opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className={reducedMotion ? '' : 'landing-hero-visual-breathe'}>
+                    <div className="relative origin-center transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.14]">
+                      <WestrumMockup lang={language === 'fr' ? 'fr' : 'en'} />
+                    </div>
+                  </div>
+                  <span
+                    className="mt-3 block text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--aigile-muted)] transition-colors group-hover:text-[#60a5fa]/90"
+                    aria-hidden
+                  >
+                    {language === 'fr' ? '6 questions · 2 min' : '6 questions · 2 min'}
                   </span>
                 </Link>
               </div>
