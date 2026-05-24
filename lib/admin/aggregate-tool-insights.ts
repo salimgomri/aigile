@@ -354,3 +354,56 @@ export function aggregateWestrumInsights(
     recentSubmissions,
   }
 }
+
+export type OkrCheckinInsightRow = {
+  user_id: string
+  created_at: string
+  user_email?: string | null
+  user_name?: string | null
+  team_name?: string | null
+  sprint_number?: number | null
+  has_ai_summary?: boolean
+}
+
+export type OkrCheckinInsights = {
+  totalCheckIns: number
+  uniqueUsers: number
+  aiSummariesCount: number
+  recentCheckIns: Array<{
+    user_email: string | null
+    user_name: string | null
+    team_name: string | null
+    sprint_number: number | null
+    has_ai_summary: boolean
+    created_at: string
+  }>
+}
+
+export function aggregateOkrCheckinInsights(rows: OkrCheckinInsightRow[]): OkrCheckinInsights {
+  const userSet = new Set<string>()
+  let aiSummariesCount = 0
+
+  for (const r of rows) {
+    userSet.add(r.user_id)
+    if (r.has_ai_summary) aiSummariesCount += 1
+  }
+
+  const recentCheckIns = [...rows]
+    .sort((a, b) => b.created_at.localeCompare(a.created_at))
+    .slice(0, 20)
+    .map((r) => ({
+      user_email: r.user_email ?? null,
+      user_name: r.user_name ?? null,
+      team_name: r.team_name ?? null,
+      sprint_number: r.sprint_number ?? null,
+      has_ai_summary: !!r.has_ai_summary,
+      created_at: r.created_at,
+    }))
+
+  return {
+    totalCheckIns: rows.length,
+    uniqueUsers: userSet.size,
+    aiSummariesCount,
+    recentCheckIns,
+  }
+}

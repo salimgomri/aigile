@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import { COUNTRIES } from '@/lib/countries'
 import { AdminToolInsights } from '@/components/admin/AdminToolInsights'
-import type { RetroInsights, ScoringInsights, WestrumInsights } from '@/lib/admin/aggregate-tool-insights'
+import type { RetroInsights, ScoringInsights, WestrumInsights, OkrCheckinInsights } from '@/lib/admin/aggregate-tool-insights'
 
 function formatPrice(centimes: number): string {
   return (centimes / 100).toFixed(2).replace('.', ',') + ' €'
@@ -22,6 +22,7 @@ const TOOL_LABELS: Record<string, string> = {
   'dashboard-manager': 'Dashboard Manager',
   'scoring-deliverable': 'Score livraison',
   westrum: 'Westrum Culture Survey',
+  'okr-checkin': 'OKR Check-in',
 }
 
 function getTypeIcon(type: string) {
@@ -118,6 +119,7 @@ type MacroStats = {
   retroInsights: RetroInsights
   scoringInsights: ScoringInsights
   westrumInsights: WestrumInsights
+  okrCheckinInsights: OkrCheckinInsights
   toolStatsExclusionNote?: string
 }
 
@@ -286,11 +288,12 @@ export default function AdminOrdersPage() {
         </div>
       )}
 
-      {macroStats?.retroInsights && macroStats?.scoringInsights && macroStats?.westrumInsights && (
+      {macroStats?.retroInsights && macroStats?.scoringInsights && macroStats?.westrumInsights && macroStats?.okrCheckinInsights && (
         <AdminToolInsights
           retro={macroStats.retroInsights}
           scoring={macroStats.scoringInsights}
           westrum={macroStats.westrumInsights}
+          okrCheckin={macroStats.okrCheckinInsights}
         />
       )}
 

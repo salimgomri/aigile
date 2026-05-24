@@ -18,6 +18,8 @@ export const CREDIT_ACTIONS = {
   retro_random: { cost: 1, label: 'Rétro aléatoire', tool: '/retro' },
   dora_ai_reco: { cost: 2, label: 'Recommandations DORA', tool: '/dora' },
   okr_ai_summary: { cost: 2, label: 'Résumé OKR manager', tool: '/okr' },
+  okr_checkin_summary: { cost: 1, label: 'Synthèse IA OKR Check-in', tool: '/okr-checkin' },
+  okr_checkin_create: { cost: 0, label: 'OKR Check-in Sprint', tool: '/okr-checkin' },
   dashboard_narrative: { cost: 2, label: 'Génération narrative Dashboard Manager', tool: '/dashboard-manager' },
   skill_ai_reco: { cost: 2, label: 'Recommandation Skill Matrix', tool: '/skill-matrix' },
   dashboard_pdf: { cost: 1, label: 'Export PDF Dashboard Manager', tool: '/dashboard-manager' },

@@ -12,7 +12,9 @@ import {
 import {
   aggregateRetroInsights,
   aggregateScoringInsights,
+  aggregateOkrCheckinInsights,
   aggregateWestrumInsights,
+  type OkrCheckinInsightRow,
   type RetroCreditRow,
   type ScoringSessionRow,
   type WestrumResultInsightRow,
@@ -104,6 +106,28 @@ async function fetchWestrumResultRows(): Promise<WestrumResultInsightRow[]> {
   return out
 }
 
+async function fetchOkrCheckinInsightRows(): Promise<OkrCheckinInsightRow[]> {
+  const out: OkrCheckinInsightRow[] = []
+  let from = 0
+  for (;;) {
+    const { data, error } = await supabaseAdmin
+      .from('v_okr_checkin_usage_with_user')
+      .select(
+        'user_id, created_at, user_email, user_name, team_name, sprint_number, has_ai_summary'
+      )
+      .order('created_at', { ascending: true })
+      .range(from, from + PAGE - 1)
+
+    if (error) throw error
+    if (!data?.length) break
+    out.push(...(data as OkrCheckinInsightRow[]))
+    if (data.length < PAGE) break
+    from += PAGE
+    if (from > 100_000) break
+  }
+  return out
+}
+
 export async function GET() {
   const session = await requireAdminApiSession()
   if (!session) {
@@ -138,10 +162,12 @@ export async function GET() {
       .filter((u) => !shouldExcludeEmailFromToolStats(u.user_email))
       .slice(0, 15)
 
-    const [retroCreditRows, scoringSessionRows, westrumResultRows] = await Promise.all([
+    const [retroCreditRows, scoringSessionRows, westrumResultRows, okrCheckinRows] =
+      await Promise.all([
       fetchRetroCreditRows(),
       fetchScoringSessionRows(),
       fetchWestrumResultRows(),
+      fetchOkrCheckinInsightRows(),
     ])
 
     const retroInsights = aggregateRetroInsights(
@@ -152,6 +178,9 @@ export async function GET() {
     )
     const westrumInsights = aggregateWestrumInsights(
       westrumResultRows.filter((r) => !excludedUserIds.has(r.user_id))
+    )
+    const okrCheckinInsights = aggregateOkrCheckinInsights(
+      okrCheckinRows.filter((r) => !excludedUserIds.has(r.user_id))
     )
 
     const toolStatsExclusionNote =
@@ -164,6 +193,7 @@ export async function GET() {
       retroInsights,
       scoringInsights,
       westrumInsights,
+      okrCheckinInsights,
       purchasesNote:
         'Totaux calculés sur les commandes payées/livrées, hors codes promo test internes (TEST100).',
       toolStatsExclusionNote,

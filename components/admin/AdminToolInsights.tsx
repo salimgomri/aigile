@@ -12,7 +12,7 @@ import {
   Cell,
 } from 'recharts'
 import { Sparkles, Target, TrendingUp, Users, BarChart3, Layers, Calendar, HeartPulse } from 'lucide-react'
-import type { RetroInsights, ScoringInsights, WestrumInsights } from '@/lib/admin/aggregate-tool-insights'
+import type { RetroInsights, ScoringInsights, WestrumInsights, OkrCheckinInsights } from '@/lib/admin/aggregate-tool-insights'
 import { PATTERNS, type PatternCode } from '@/lib/retro/patterns'
 
 const GOLD = '#c9973a'
@@ -43,10 +43,11 @@ type Props = {
   retro: RetroInsights
   scoring: ScoringInsights
   westrum: WestrumInsights
+  okrCheckin: OkrCheckinInsights
 }
 
-export function AdminToolInsights({ retro, scoring, westrum }: Props) {
-  const [tab, setTab] = useState<'retro' | 'scoring' | 'westrum'>('retro')
+export function AdminToolInsights({ retro, scoring, westrum, okrCheckin }: Props) {
+  const [tab, setTab] = useState<'retro' | 'scoring' | 'westrum' | 'okr'>('retro')
 
   const maxPattern = useMemo(
     () => Math.max(1, ...retro.patternCounts.map((p) => p.count)),
@@ -78,7 +79,7 @@ export function AdminToolInsights({ retro, scoring, westrum }: Props) {
               Insights détaillés
             </h2>
             <p className="mt-0.5 text-xs text-muted-foreground">
-              Rétro IA, Score livraison et Westrum — volumes, patterns et distribution des scores.
+              Rétro IA, Score livraison, Westrum et OKR Check-in — volumes et activité.
             </p>
           </div>
           <div className="flex flex-wrap rounded-xl border border-border bg-background/80 p-1 shadow-inner">
@@ -117,6 +118,18 @@ export function AdminToolInsights({ retro, scoring, westrum }: Props) {
             >
               <HeartPulse className="h-4 w-4 shrink-0" />
               Westrum
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab('okr')}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition ${
+                tab === 'okr'
+                  ? 'bg-aigile-gold text-black shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Target className="h-4 w-4 shrink-0" />
+              OKR Check-in
             </button>
           </div>
         </div>
@@ -603,6 +616,77 @@ export function AdminToolInsights({ retro, scoring, westrum }: Props) {
                   </table>
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {tab === 'okr' && (
+          <div className="space-y-8">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+              <Kpi
+                icon={<BarChart3 className="h-4 w-4" />}
+                label="Check-ins enregistrés"
+                value={okrCheckin.totalCheckIns}
+              />
+              <Kpi
+                icon={<Users className="h-4 w-4" />}
+                label="Utilisateurs distincts"
+                value={okrCheckin.uniqueUsers}
+              />
+              <Kpi
+                icon={<Sparkles className="h-4 w-4" />}
+                label="Synthèses IA générées"
+                value={okrCheckin.aiSummariesCount}
+                hint="1 crédit par génération (okr_checkin_summary)"
+              />
+            </div>
+
+            <div>
+              <h3 className="mb-3 text-sm font-semibold text-foreground">Derniers check-ins</h3>
+              {okrCheckin.recentCheckIns.length === 0 ? (
+                <p className="text-sm text-muted-foreground">Pas encore de données.</p>
+              ) : (
+                <div className="overflow-x-auto rounded-xl border border-border">
+                  <table className="w-full min-w-[520px] text-left text-xs">
+                    <thead className="border-b border-border bg-muted/30 text-muted-foreground">
+                      <tr>
+                        <th className="px-3 py-2 font-medium">Utilisateur</th>
+                        <th className="px-3 py-2 font-medium">Équipe</th>
+                        <th className="px-3 py-2 font-medium">Sprint</th>
+                        <th className="px-3 py-2 font-medium">Synthèse IA</th>
+                        <th className="px-3 py-2 font-medium">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {okrCheckin.recentCheckIns.map((row, i) => (
+                        <tr key={`${row.created_at}-${i}`} className="border-b border-border/60 last:border-0">
+                          <td className="px-3 py-2">
+                            <span className="font-medium text-foreground">
+                              {row.user_name || row.user_email?.split('@')[0] || '—'}
+                            </span>
+                          </td>
+                          <td className="px-3 py-2">{row.team_name ?? '—'}</td>
+                          <td className="px-3 py-2">{row.sprint_number != null ? `S${row.sprint_number}` : '—'}</td>
+                          <td className="px-3 py-2">{row.has_ai_summary ? 'Oui' : '—'}</td>
+                          <td className="px-3 py-2 whitespace-nowrap text-muted-foreground">
+                            {new Date(row.created_at).toLocaleString('fr-FR', {
+                              day: 'numeric',
+                              month: 'short',
+                              year: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              <p className="mt-3 text-xs text-muted-foreground">
+                Crédits IA : filtrer <code className="rounded bg-muted px-1">tool_slug = okr-checkin</code> et action{' '}
+                <code className="rounded bg-muted px-1">okr_checkin_summary</code> dans l&apos;activité récente ci-dessus.
+              </p>
             </div>
           </div>
         )}
