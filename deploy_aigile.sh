@@ -42,6 +42,7 @@ RSYNC_EXCLUDES=(
   --exclude='scripts'
   --exclude='/supabase'
   --exclude='out'
+  --exclude='Volumes'
 )
 
 if [ -d "${SIBLING_BUILD}" ]; then
@@ -50,7 +51,8 @@ if [ -d "${SIBLING_BUILD}" ]; then
     "${RSYNC_EXCLUDES[@]}" \
     --exclude='.next' \
     "${PROJECT_ROOT}/" "${REMOTE_HOST}:${REMOTE_PATH}/"
-  rsync -avz --delete "${SIBLING_BUILD}/" "${REMOTE_HOST}:${REMOTE_PATH}/.next/"
+  rsync -avz --delete "${SIBLING_BUILD}/" "${REMOTE_HOST}:${REMOTE_PATH}/.next/" \
+    --exclude='cache'
 else
   rsync -avz --delete \
     "${RSYNC_EXCLUDES[@]}" \
