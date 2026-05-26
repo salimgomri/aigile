@@ -90,7 +90,7 @@ function MerciContent() {
     )
   }
 
-  const { productType, productTitle, inPersonPickup, shipping } = data
+  const { productType, productId, productTitle, inPersonPickup, shipping } = data
   const isBook = productType === 'book_physical'
   const isDayPass = productType === 'day_pass'
   const isSubscription = productType.startsWith('subscription_')

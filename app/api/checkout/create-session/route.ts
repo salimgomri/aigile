@@ -3,6 +3,12 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { getProduct, getCurrentBookProduct } from '@/lib/payments/catalog'
+import {
+  buildBookPhysicalLineItem,
+  buildCombinedProductTitle,
+  resolveBookCatalogProduct,
+} from '@/lib/payments/book-checkout-line-items'
+import { isValidCrossSellAddon } from '@/lib/payments/salim-cross-sell'
 import { clampStripeMetadata } from '@/lib/payments/stripe-metadata'
 import { getBaseUrlFromRequest } from '@/lib/utils/base-url'
 
@@ -31,6 +37,7 @@ type BodyInput = {
   shipping?: ShippingInput
   couponCode?: string
   inPersonPickup?: boolean
+  addonProductId?: string
 }
 
 export async function POST(request: Request) {
@@ -51,6 +58,7 @@ export async function POST(request: Request) {
       shipping,
       couponCode,
       inPersonPickup = false,
+      addonProductId,
     } = body
 
     const id = productId ?? product
@@ -68,6 +76,17 @@ export async function POST(request: Request) {
 
     if (!resolvedProduct) {
       return NextResponse.json({ error: 'Produit invalide ou non configuré' }, { status: 400 })
+    }
+
+    let addonProduct = null
+    if (addonProductId?.trim()) {
+      if (!isValidCrossSellAddon(resolvedId, addonProductId)) {
+        return NextResponse.json({ error: 'Produit additionnel invalide' }, { status: 400 })
+      }
+      addonProduct = resolveBookCatalogProduct(addonProductId)
+      if (!addonProduct || addonProduct.type !== 'book_physical') {
+        return NextResponse.json({ error: 'Produit additionnel invalide' }, { status: 400 })
+      }
     }
 
     // buy_coffee : montant libre requis (min 1€, max 999€)
@@ -155,6 +174,10 @@ export async function POST(request: Request) {
       coupon_code: couponCode ?? '',
       in_person_pickup: String(inPersonPickup),
       quantity: String(quantity),
+      ...(addonProduct && {
+        addon_product_id: addonProduct.id,
+        product_title: buildCombinedProductTitle(resolvedProduct, addonProduct),
+      }),
     }
     if (resolvedProduct.requiresShipping && !inPersonPickup && shipping) {
       metadata.shipping_name = shipping.name
@@ -226,24 +249,10 @@ export async function POST(request: Request) {
         quantity: 1,
       })
     } else if (resolvedProduct.type === 'book_physical') {
-      // Montant = catalog.amount (ex. 65 €) — évite le décalage avec un ancien Price Stripe (ex. 40 €).
-      const coverPath = '/images/book-cover.jpg'
-      const coverUrl =
-        baseUrl.startsWith('http') && /^https:\/\//i.test(baseUrl)
-          ? `${baseUrl.replace(/\/$/, '')}${coverPath}`
-          : undefined
-      lineItems.push({
-        price_data: {
-          currency: 'eur',
-          product_data: {
-            name: resolvedProduct.title,
-            description: resolvedProduct.description,
-            ...(coverUrl ? { images: [coverUrl] } : {}),
-          },
-          unit_amount: resolvedProduct.amount,
-        },
-        quantity,
-      })
+      lineItems.push(buildBookPhysicalLineItem(resolvedProduct, resolvedId, baseUrl, quantity))
+      if (addonProduct && addonProductId) {
+        lineItems.push(buildBookPhysicalLineItem(addonProduct, addonProductId, baseUrl, 1))
+      }
     } else {
       lineItems.push({ price: resolvedProduct.stripePriceId, quantity })
     }

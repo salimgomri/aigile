@@ -9,6 +9,8 @@ import { z } from 'zod'
 import type { Product } from '@/lib/payments/catalog'
 import { COUNTRIES } from '@/lib/countries'
 import { getCheckoutErrorMessage } from '@/lib/checkout/errors'
+import SalimCrossSellAddon from '@/components/checkout/SalimCrossSellAddon'
+import { getSalimCrossSellTargetId } from '@/lib/payments/salim-cross-sell'
 
 function formatPrice(centimes: number): string {
   return (centimes / 100).toFixed(2).replace('.', ',') + ' €'
@@ -91,6 +93,8 @@ export default function CheckoutSheet({
   const [couponLoading, setCouponLoading] = useState(false)
   const [discount, setDiscount] = useState<{ label: string; amount: number } | null>(null)
   const [quantity, setQuantity] = useState(1)
+  const [crossSellAddon, setCrossSellAddon] = useState(false)
+  const [addonProduct, setAddonProduct] = useState<Product | null>(null)
 
   // Ouvrir automatiquement si defaultOpen (ex: retour après login)
   useEffect(() => {
@@ -114,6 +118,11 @@ export default function CheckoutSheet({
     }
   }, [])
 
+  useEffect(() => {
+    setCrossSellAddon(false)
+    setAddonProduct(null)
+  }, [product?.id])
+
   const requiresShipping = product?.requiresShipping ?? false
   const showAddress = requiresShipping && !inPersonPickup
   const requiresAuth = product ? productRequiresAuth(product) : false
@@ -123,8 +132,13 @@ export default function CheckoutSheet({
   const showCoupon = product?.type !== 'buy_coffee'
   const shippingFee = inPersonPickup ? 0 : (product?.shippingFee ?? 0)
   const qty = product?.type === 'book_physical' ? Math.max(1, Math.min(99, quantity)) : 1
-  const subtotal = (product?.amount ?? 0) * qty
+  const addonAmount = crossSellAddon && addonProduct ? addonProduct.amount : 0
+  const subtotal = (product?.amount ?? 0) * qty + addonAmount
   const total = Math.max(0, subtotal - (discount?.amount ?? 0) + shippingFee)
+  const addonProductId =
+    crossSellAddon && addonProduct && product?.id && getSalimCrossSellTargetId(product.id)
+      ? addonProduct.id
+      : undefined
 
   const handleApplyCoupon = useCallback(async () => {
     if (!product || !couponInput.trim()) return
@@ -185,6 +199,7 @@ export default function CheckoutSheet({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           productId: product.id,
+          addonProductId,
           buyerEmail: email,
           buyerName: name,
           quantity: product.type === 'book_physical' ? qty : undefined,
@@ -224,6 +239,7 @@ export default function CheckoutSheet({
     couponApplied,
     showAddress,
     qty,
+    addonProductId,
   ])
 
   if (!product) return null
@@ -309,7 +325,22 @@ export default function CheckoutSheet({
                     </div>
                   </div>
                 </div>
+                {crossSellAddon && addonProduct && (
+                  <div className="mt-3 flex justify-between gap-3 rounded-lg border border-border/60 bg-background/50 px-3 py-2 text-sm">
+                    <span className="text-muted-foreground">+ {addonProduct.title}</span>
+                    <span className="font-semibold text-foreground">{formatPrice(addonProduct.amount)}</span>
+                  </div>
+                )}
               </div>
+
+              {product.id && getSalimCrossSellTargetId(product.id) && (
+                <SalimCrossSellAddon
+                  sourceProductId={product.id}
+                  checked={crossSellAddon}
+                  onCheckedChange={setCrossSellAddon}
+                  onAddonProduct={setAddonProduct}
+                />
+              )}
 
               {/* TES INFORMATIONS — ou S'inscrire/Se connecter si produit nécessite auth */}
               <div>
@@ -524,6 +555,12 @@ export default function CheckoutSheet({
                   <span className="text-muted-foreground">Sous-total</span>
                   <span className="text-foreground">{formatPrice(subtotal)}</span>
                 </div>
+                {crossSellAddon && addonProduct && (
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>dont {addonProduct.title}</span>
+                    <span>{formatPrice(addonProduct.amount)}</span>
+                  </div>
+                )}
                 {discount && discount.amount > 0 && (
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Réduction {couponApplied}</span>

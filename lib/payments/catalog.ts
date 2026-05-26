@@ -65,6 +65,36 @@ export const CATALOG: Record<string, Product> = {
     fulfillmentType: 'manual_kdp',
   },
 
+  fiches_salim: {
+    id: 'fiches_salim',
+    stripePriceId: envPriceId('PRICE_FICHES_SALIM'),
+    type: 'book_physical',
+    title: 'Le Système S.A.L.I.M. — Fiches pratiques',
+    description: 'Cahier de fiches pratiques — Prix direct aigile.lu',
+    amount: 3500,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: true,
+    shippingFee: 500,
+    freeShippingInPerson: true,
+    fulfillmentType: 'manual_kdp',
+  },
+
+  bundle_salim: {
+    id: 'bundle_salim',
+    stripePriceId: envPriceId('PRICE_BUNDLE_SALIM'),
+    type: 'book_physical',
+    title: 'Collection S.A.L.I.M.',
+    description: 'Livre + fiches pratiques + Early Access Scoring Deliverable',
+    amount: 10000,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: true,
+    shippingFee: 500,
+    freeShippingInPerson: true,
+    fulfillmentType: 'manual_kdp',
+  },
+
   // ─── ABONNEMENTS ──────────────────────────────────────────
   pro_monthly: {
     id: 'pro_monthly',

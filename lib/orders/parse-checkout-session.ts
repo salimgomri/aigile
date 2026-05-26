@@ -54,7 +54,15 @@ export function parseCheckoutSessionForOrder(
   const product: Product | null = resolvedId
     ? (getProduct(resolvedId) ?? (CATALOG[resolvedId] as Product | undefined) ?? null)
     : null
-  const productTitle = product?.title ?? (productId === 'buy_coffee' ? 'Buy a coffee' : 'Commande')
+  const addonId = metadata.addon_product_id as string | undefined
+  const addonProduct = addonId
+    ? (getProduct(addonId) ?? (CATALOG[addonId] as Product | undefined) ?? null)
+    : null
+  const productTitle =
+    metadata.product_title ||
+    (product && addonProduct
+      ? `${product.title} + ${addonProduct.title}`
+      : product?.title ?? (productId === 'buy_coffee' ? 'Buy a coffee' : 'Commande'))
 
   const amountTotal = session.amount_total ?? 0
   const amountShipping = session.total_details?.amount_shipping ?? (inPersonPickup ? 0 : 500)
@@ -75,7 +83,7 @@ export function parseCheckoutSessionForOrder(
     product_title: productTitle,
     quantity,
     buyer_email: buyerEmail,
-    buyer_name: buyerName || buyerEmail.split('@')[0] || '—',
+    buyer_name: buyerName || buyerEmail.split('@')[0] || 'Client',
     user_id: userId || null,
     amount_subtotal: amountSubtotal,
     amount_discount: amountDiscount,
@@ -89,13 +97,29 @@ export function parseCheckoutSessionForOrder(
   if (product?.requiresShipping) {
     orderData.in_person_pickup = inPersonPickup
     orderData.shipping_fee = inPersonPickup ? 0 : 500
-    orderData.shipping_name = metadata.shipping_name ?? null
-    orderData.shipping_address1 = metadata.shipping_address1 ?? null
-    orderData.shipping_address2 = metadata.shipping_address2 ?? null
-    orderData.shipping_city = metadata.shipping_city ?? null
-    orderData.shipping_postal = metadata.shipping_postal ?? null
-    orderData.shipping_country = metadata.shipping_country ?? null
-    orderData.shipping_phone = metadata.shipping_phone ?? null
+
+    const shippingDetails = (
+      session as Stripe.Checkout.Session & {
+        shipping_details?: {
+          name?: string | null
+          address?: Stripe.Address | null
+        } | null
+      }
+    ).shipping_details
+    const stripeShipping = shippingDetails?.address
+    const stripePhone = session.customer_details?.phone
+
+    orderData.shipping_name = metadata.shipping_name ?? shippingDetails?.name ?? null
+    orderData.shipping_address1 =
+      metadata.shipping_address1 ?? stripeShipping?.line1 ?? null
+    orderData.shipping_address2 =
+      metadata.shipping_address2 ?? stripeShipping?.line2 ?? null
+    orderData.shipping_city = metadata.shipping_city ?? stripeShipping?.city ?? null
+    orderData.shipping_postal =
+      metadata.shipping_postal ?? stripeShipping?.postal_code ?? null
+    orderData.shipping_country =
+      metadata.shipping_country ?? stripeShipping?.country ?? null
+    orderData.shipping_phone = metadata.shipping_phone ?? stripePhone ?? null
   }
 
   const ctx: CheckoutOrderContext = {

@@ -20,6 +20,8 @@ export default function FloatingBottomBar() {
 
   if (pathname?.startsWith('/admin')) return null
 
+  const isSalimLanding = pathname?.startsWith('/salim')
+
   const btnClass =
     'flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:scale-105'
   const iconClass = 'w-5 h-5 flex-shrink-0'
@@ -58,17 +60,18 @@ export default function FloatingBottomBar() {
         </button>
       )}
 
-      {/* Coaching — secondaire */}
-      <a
-        href={CALENDLY_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${btnClass} bg-book-orange/20 hover:bg-book-orange/30 border border-book-orange/50 text-book-orange font-medium`}
-        aria-label={t['coaching-float']}
-      >
-        <Calendar className={iconClass} />
-        <span className="text-sm whitespace-nowrap">{t['coaching-float-short']}</span>
-      </a>
+      {!isSalimLanding && (
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${btnClass} bg-book-orange/20 hover:bg-book-orange/30 border border-book-orange/50 text-book-orange font-medium`}
+          aria-label={t['coaching-float']}
+        >
+          <Calendar className={iconClass} />
+          <span className="text-sm whitespace-nowrap">{t['coaching-float-short']}</span>
+        </a>
+      )}
     </div>
   )
 }

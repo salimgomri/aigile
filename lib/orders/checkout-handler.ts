@@ -56,7 +56,14 @@ export async function handleCheckoutCompleted(session: Stripe.Checkout.Session) 
   console.log('[CHECKOUT] order inséré en BDD', { sessionId: session.id, productId: resolvedId ?? productId })
 
   // ── Bonus 10 crédits pour acheteurs du livre S.A.L.I.M (si connecté) ───
-  if (product?.type === 'book_physical' && userId) {
+  const addonProductId = metadata.addon_product_id as string | undefined
+  const includesBook =
+    resolvedId === 'book_sale' ||
+    resolvedId === 'book_preorder' ||
+    addonProductId === 'book_sale' ||
+    addonProductId === 'book_preorder'
+
+  if (product?.type === 'book_physical' && includesBook && userId) {
     await ensureUserCredits(userId)
     await supabaseAdmin.rpc('increment_credits', { p_user_id: userId, p_amount: 10 })
     await logCreditAddition(userId, 'book_bonus', 10)
