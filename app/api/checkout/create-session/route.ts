@@ -38,6 +38,7 @@ type BodyInput = {
   couponCode?: string
   inPersonPickup?: boolean
   addonProductId?: string
+  checkoutSource?: string
 }
 
 export async function POST(request: Request) {
@@ -59,6 +60,7 @@ export async function POST(request: Request) {
       couponCode,
       inPersonPickup = false,
       addonProductId,
+      checkoutSource,
     } = body
 
     const id = productId ?? product
@@ -149,9 +151,14 @@ export async function POST(request: Request) {
 
     // X-Forwarded-Proto/Host (nginx) ou request.url
     const baseUrl = getBaseUrlFromRequest(request)
-    const successUrl = `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
-    const cancelUrl =
-      resolvedProduct.type === 'book_physical'
+    // Achat depuis la landing /salim : page de remerciement et annulation dédiées
+    const isSalimSource = checkoutSource === 'salim_landing'
+    const successUrl = isSalimSource
+      ? `${baseUrl}/salim/merci?session_id={CHECKOUT_SESSION_ID}`
+      : `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
+    const cancelUrl = isSalimSource
+      ? `${baseUrl}/salim`
+      : resolvedProduct.type === 'book_physical'
         ? `${baseUrl}/#book`
         : resolvedProduct.type === 'buy_coffee'
           ? `${baseUrl}/#contact`
@@ -174,6 +181,7 @@ export async function POST(request: Request) {
       coupon_code: couponCode ?? '',
       in_person_pickup: String(inPersonPickup),
       quantity: String(quantity),
+      ...(checkoutSource && { checkout_source: checkoutSource }),
       ...(addonProduct && {
         addon_product_id: addonProduct.id,
         product_title: buildCombinedProductTitle(resolvedProduct, addonProduct),

@@ -10,6 +10,7 @@ import { SalimProof } from '@/components/salim/salim-proof'
 import { SalimSocialProof } from '@/components/salim/salim-social-proof'
 import { SalimStickyMobileCta } from '@/components/salim/salim-sticky-mobile-cta'
 import { SalimContactLinks } from '@/components/salim/salim-contact-links'
+import { getCurrentBookProduct, getProduct } from '@/lib/payments/catalog'
 import './salim.css'
 
 export const metadata: Metadata = {
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
 }
 
 export default function SalimLandingPage() {
+  const bookProduct = getCurrentBookProduct()
+  const fichesProduct = getProduct('fiches_salim')
+  const bundleProduct = getProduct('bundle_salim')
+
   return (
     <main className="salim-page min-h-screen bg-white text-aigile-navy pb-20 md:pb-0">
       <SalimPageAnalytics />
@@ -53,7 +58,7 @@ export default function SalimLandingPage() {
 
       <SalimBusinessOutcomes />
 
-      <SalimOffers />
+      <SalimOffers book={bookProduct} fiches={fichesProduct} bundle={bundleProduct} />
 
       <section className="delivery-section">
         <div className="delivery-inner">
@@ -76,7 +81,7 @@ export default function SalimLandingPage() {
         </div>
       </section>
 
-      <SalimStickyMobileCta />
+      <SalimStickyMobileCta bundle={bundleProduct} />
     </main>
   )
 }

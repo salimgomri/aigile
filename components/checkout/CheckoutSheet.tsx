@@ -63,6 +63,8 @@ export type CheckoutSheetProps = {
   defaultEmail?: string
   defaultName?: string
   defaultOpen?: boolean
+  /** Attribution + page de remerciement dédiée (ex: 'salim_landing' → /salim/merci) */
+  checkoutSource?: string
 }
 
 export default function CheckoutSheet({
@@ -71,6 +73,7 @@ export default function CheckoutSheet({
   defaultEmail = '',
   defaultName = '',
   defaultOpen = false,
+  checkoutSource,
 }: CheckoutSheetProps) {
   const { data: session } = useSession()
   const [open, setOpen] = useState(defaultOpen)
@@ -205,6 +208,7 @@ export default function CheckoutSheet({
           quantity: product.type === 'book_physical' ? qty : undefined,
           inPersonPickup: requiresShipping ? inPersonPickup : undefined,
           couponCode: couponApplied ?? undefined,
+          checkoutSource,
           ...(requiresShipping &&
             !inPersonPickup && {
               shipping: { name, address1, address2, city, postal, country, phone },
@@ -240,6 +244,7 @@ export default function CheckoutSheet({
     showAddress,
     qty,
     addonProductId,
+    checkoutSource,
   ])
 
   if (!product) return null

@@ -56,12 +56,12 @@ PRICE_BUNDLE_SALIM=
 
 ## Flux technique (inchangé si tu ajoutes des Price IDs)
 
-1. Clic bouton → Server Action `app/salim/actions.ts`
-2. `lib/payments/create-checkout-session.ts` → session Stripe (`mode: payment`)
-3. Webhook existant → table `orders` (metadata `product_id` : `book_sale`, `fiches_salim`, `bundle_salim`)
-4. Succès → `/salim/merci`
+1. Clic bouton → ouverture du panneau `components/checkout/CheckoutSheet` (même UX que la homepage : récap, infos, adresse, **code promo**, cross-sell, total)
+2. « Procéder au paiement » → `POST /api/checkout/create-session` avec `checkoutSource: 'salim_landing'`
+3. Session Stripe (`mode: payment`) → success `/salim/merci`, cancel `/salim`, metadata `checkout_source = salim_landing`
+4. Webhook existant → table `orders` (metadata `product_id` : `book_sale`, `fiches_salim`, `bundle_salim`)
 
-La route `/api/checkout/create-session` (homepage, pricing) **n’est pas utilisée** par `/salim`.
+`/salim` utilise désormais **la même route et le même composant** que la homepage / pricing (`/api/checkout/create-session`).
 
 ---
 

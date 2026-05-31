@@ -12,7 +12,8 @@ import {
   getBookCtaLabel,
 } from '@/lib/book-config'
 import { trackEvent } from '@/lib/gtag'
-import { checkoutBundle, checkoutFiches, checkoutLivre } from '@/app/salim/actions'
+import CheckoutSheet from '@/components/checkout/CheckoutSheet'
+import type { Product } from '@/lib/payments/catalog'
 import { AnimateIn } from './animate-in'
 import { SalimContactLinks } from './salim-contact-links'
 
@@ -50,7 +51,13 @@ function CompareCell({ value }: { value: boolean }) {
   )
 }
 
-export function SalimOffers() {
+type SalimOffersProps = {
+  book: Product | null
+  fiches: Product | null
+  bundle: Product | null
+}
+
+export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
   return (
     <section id="salim-offres" className="products-section">
       <AnimateIn>
@@ -127,23 +134,27 @@ export function SalimOffers() {
               'Rien à compléter après l’achat',
             ]}
           />
-          <form id="salim-bundle-form" action={checkoutBundle}>
-            <button
-              type="submit"
-              onClick={() =>
-                trackEvent('bundle_order_click', {
-                  product: 'bundle-salim',
-                  value: 100,
-                  currency: 'EUR',
-                  source: 'salim_landing',
-                })
-              }
-              className="product-cta gold cta-primary"
-            >
-              Commander la collection · {formatBookPrice(BUNDLE_SALE_CENTIMES)} · expédié sous 48h
-            </button>
-            <Reassurance />
-          </form>
+          <CheckoutSheet
+            product={bundle}
+            checkoutSource="salim_landing"
+            trigger={
+              <button
+                type="button"
+                onClick={() =>
+                  trackEvent('bundle_order_click', {
+                    product: 'bundle-salim',
+                    value: 110,
+                    currency: 'EUR',
+                    source: 'salim_landing',
+                  })
+                }
+                className="product-cta gold cta-primary"
+              >
+                Commander la collection · {formatBookPrice(BUNDLE_SALE_CENTIMES)} · expédié sous 48h
+              </button>
+            }
+          />
+          <Reassurance />
         </article>
 
         <article className="product-card">
@@ -169,23 +180,27 @@ export function SalimOffers() {
               '93 prompts IA prêts pour ChatGPT ou Claude',
             ]}
           />
-          <form action={checkoutLivre}>
-            <button
-              type="submit"
-              onClick={() =>
-                trackEvent('book_order_click', {
-                  product: 's-a-l-i-m',
-                  value: 65,
-                  currency: 'EUR',
-                  source: 'salim_landing',
-                })
-              }
-              className="product-cta navy"
-            >
-              {getBookCtaLabel('fr')} · {formatBookPrice(BOOK_SALE_CENTIMES)} · paiement sécurisé
-            </button>
-            <Reassurance />
-          </form>
+          <CheckoutSheet
+            product={book}
+            checkoutSource="salim_landing"
+            trigger={
+              <button
+                type="button"
+                onClick={() =>
+                  trackEvent('book_order_click', {
+                    product: 's-a-l-i-m',
+                    value: 65,
+                    currency: 'EUR',
+                    source: 'salim_landing',
+                  })
+                }
+                className="product-cta navy"
+              >
+                {getBookCtaLabel('fr')} · {formatBookPrice(BOOK_SALE_CENTIMES)} · paiement sécurisé
+              </button>
+            }
+          />
+          <Reassurance />
         </article>
 
         <article className="product-card">
@@ -212,23 +227,27 @@ export function SalimOffers() {
               'Complément idéal au livre',
             ]}
           />
-          <form action={checkoutFiches}>
-            <button
-              type="submit"
-              onClick={() =>
-                trackEvent('fiches_order_click', {
-                  product: 'fiches-salim',
-                  value: 35,
-                  currency: 'EUR',
-                  source: 'salim_landing',
-                })
-              }
-              className="product-cta navy"
-            >
-              Commander les fiches · {formatBookPrice(FICHES_SALE_CENTIMES)} · paiement sécurisé
-            </button>
-            <Reassurance />
-          </form>
+          <CheckoutSheet
+            product={fiches}
+            checkoutSource="salim_landing"
+            trigger={
+              <button
+                type="button"
+                onClick={() =>
+                  trackEvent('fiches_order_click', {
+                    product: 'fiches-salim',
+                    value: 49,
+                    currency: 'EUR',
+                    source: 'salim_landing',
+                  })
+                }
+                className="product-cta navy"
+              >
+                Commander les fiches · {formatBookPrice(FICHES_SALE_CENTIMES)} · paiement sécurisé
+              </button>
+            }
+          />
+          <Reassurance />
         </article>
       </div>
     </section>
