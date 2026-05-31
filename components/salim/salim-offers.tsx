@@ -20,7 +20,7 @@ import { SalimContactLinks } from './salim-contact-links'
 const COMPARE_ROWS = [
   { label: 'Cadre complet (415 pages)', book: true, fiches: false, bundle: true },
   { label: 'Fiches terrain sprint', book: false, fiches: true, bundle: true },
-  { label: 'Scoring Deliverable (Early Access)', book: false, fiches: false, bundle: true },
+  { label: 'Scoring Deliverable inclus', book: false, fiches: false, bundle: true },
   { label: 'Applicable dès lundi', book: true, fiches: true, bundle: true },
   { label: 'Système complet, rien à compléter', book: false, fiches: false, bundle: true },
 ] as const
@@ -130,7 +130,7 @@ export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
           <OfferList
             items={[
               'Comprendre, faire, mesurer — le système complet',
-              'Early Access illimité au Scoring Deliverable',
+              'Accès illimité au Scoring Deliverable',
               'Rien à compléter après l’achat',
             ]}
           />

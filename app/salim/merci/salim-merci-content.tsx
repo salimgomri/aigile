@@ -30,7 +30,7 @@ export default function SalimMerciContent() {
         <div className="space-y-4 text-sm leading-relaxed text-aigile-navy/80">
           <p>Tu vas recevoir un email de confirmation dans les prochaines minutes.</p>
           <p>
-            Si tu as commandé la collection, ton accès Early Access au Scoring Deliverable sera activé
+            Si tu as commandé la collection, ton accès au Scoring Deliverable sera activé
             manuellement sous 24h.
           </p>
           <p>

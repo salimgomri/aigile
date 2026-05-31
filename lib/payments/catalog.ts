@@ -85,7 +85,7 @@ export const CATALOG: Record<string, Product> = {
     stripePriceId: envPriceId('PRICE_BUNDLE_SALIM'),
     type: 'book_physical',
     title: 'Collection S.A.L.I.M.',
-    description: 'Livre + fiches pratiques + Early Access Scoring Deliverable',
+    description: 'Livre + fiches pratiques + Scoring Deliverable',
     amount: 11000,
     currency: 'eur',
     isRecurring: false,
