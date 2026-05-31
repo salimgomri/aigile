@@ -1356,8 +1356,8 @@ export default function LandingHero() {
                   style={{ color: '#60a5fa', fontFamily: 'var(--font-hero-syne), sans-serif' }}
                 >
                   {langFr
-                    ? 'Gratuit — sans compte pour voir le résultat.'
-                    : 'Free — no account required to see your result.'}
+                    ? 'Gratuit — connecte-toi pour voir ton résultat.'
+                    : 'Free — sign in to see your result.'}
                 </p>
                 <div
                   className={reducedMotion ? '' : 'landing-hero-stagger flex flex-col gap-3 sm:flex-row sm:items-center'}

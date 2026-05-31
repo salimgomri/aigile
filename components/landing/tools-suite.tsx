@@ -289,7 +289,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
                 <Link
                   href="/scoring-deliverable"
                   onClick={() => trackEvent('tools_suite_click', { tool: 'scoring_deliverable', cta: 'use_tool' })}
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02] hover:from-orange-400 hover:to-orange-500"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-aigile-gold px-6 py-3 text-sm font-bold text-aigile-navy shadow-lg shadow-aigile-gold/30 transition-all hover:scale-[1.02] hover:brightness-105"
                 >
                   {t['tools-scoring-cta-use']}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -316,7 +316,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
                       setEarlyAccessOpen(true)
                       trackEvent('tools_suite_click', { tool: 'scoring_deliverable', action: 'early_access_modal' })
                     }}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02] hover:from-orange-400 hover:to-orange-500"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-aigile-gold px-6 py-3 text-sm font-bold text-aigile-navy shadow-lg shadow-aigile-gold/30 transition-all hover:scale-[1.02] hover:brightness-105"
                   >
                     {t['tools-scoring-request-access']}
                   </button>
