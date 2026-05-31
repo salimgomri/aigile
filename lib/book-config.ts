@@ -17,7 +17,7 @@ export const FICHES_COMPARE_AT_CENTIMES = 5900
 /** Collection — valeur Amazon (79 € livre + 59 € fiches) */
 export const BUNDLE_COMPARE_AT_CENTIMES = 13800
 
-export const BOOK_SALE_CENTIMES = 6500
+export const BOOK_SALE_CENTIMES = 6900
 export const FICHES_SALE_CENTIMES = 4900
 export const BUNDLE_SALE_CENTIMES = 11000
 

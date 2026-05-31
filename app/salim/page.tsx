@@ -32,7 +32,7 @@ export default function SalimLandingPage() {
   return (
     <main className="salim-page min-h-screen bg-white text-aigile-navy pb-20 md:pb-0">
       <SalimPageAnalytics />
-      <SalimHero />
+      <SalimHero bundle={bundleProduct} />
 
       <AnimateIn as="section" className="pain-section">
         <p>Tu livres. Le client n&apos;est pas satisfait. Et personne dans la salle ne sait vraiment pourquoi.</p>

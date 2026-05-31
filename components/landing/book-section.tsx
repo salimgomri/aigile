@@ -162,10 +162,10 @@ export default function BookSection() {
                     product={bookProduct}
                     trigger={
                       <button
-                        onClick={() => trackEvent('book_order_click', { product: 's-a-l-i-m', value: 65 })}
+                        onClick={() => trackEvent('book_order_click', { product: 's-a-l-i-m', value: 69 })}
                         className="px-8 py-4 bg-gradient-to-r from-book-orange to-aigile-gold text-white text-lg font-bold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300"
                       >
-                        {getBookCtaLabel(language)} · {pricingMeta?.priceFormatted ?? '65,00 €'}
+                        {getBookCtaLabel(language)} · {pricingMeta?.priceFormatted ?? '69,00 €'}
                       </button>
                     }
                   />

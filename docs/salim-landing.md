@@ -8,9 +8,9 @@ Le checkout `/salim` fonctionne **sans** créer de produits dans le dashboard St
 
 | Produit | Variable env (optionnelle) | Si vide |
 |---------|---------------------------|---------|
-| Livre | `PRICE_LIVRE_SALIM` ou `STRIPE_PRICE_ID_SALE` | `price_data` depuis le catalogue (65 €) |
-| Fiches | `PRICE_FICHES_SALIM` | `price_data` depuis le catalogue (35 €) |
-| Bundle | `PRICE_BUNDLE_SALIM` | `price_data` depuis le catalogue (100 €) |
+| Livre | `PRICE_LIVRE_SALIM` ou `STRIPE_PRICE_ID_SALE` | `price_data` depuis le catalogue (69 €) |
+| Fiches | `PRICE_FICHES_SALIM` | `price_data` depuis le catalogue (49 €) |
+| Bundle | `PRICE_BUNDLE_SALIM` | `price_data` depuis le catalogue (110 €) |
 
 Seule contrainte prod : **`STRIPE_SECRET_KEY`** doit être renseignée.
 
@@ -24,7 +24,7 @@ Les montants encaissés viennent du **catalogue** (`amount` en centimes). L’af
 
 | Offre | Prix affiché | Centimes checkout | Fichier catalogue | Fichier affichage |
 |-------|--------------|-------------------|-------------------|-------------------|
-| Livre | 65 € (barré 79 €) | `6500` | `lib/payments/catalog.ts` → `book_sale` | `app/salim/page.tsx` + `lib/book-config.ts` (`BOOK_COMPARE_AT_CENTIMES`) + `components/landing/book-section.tsx` |
+| Livre | 69 € (barré 79 €) | `6900` | `lib/payments/catalog.ts` → `book_sale` | `app/salim/page.tsx` + `lib/book-config.ts` (`BOOK_COMPARE_AT_CENTIMES`) + `components/landing/book-section.tsx` |
 | Fiches | 49 € (barré 59 €) | `4900` | `lib/payments/catalog.ts` → `fiches_salim` | `app/salim/page.tsx` |
 | Bundle | 110 € (barré 138 €) | `11000` | `lib/payments/catalog.ts` → `bundle_salim` | `app/salim/page.tsx` |
 | Livraison | +5 € au checkout | `500` (`shippingFee`) | même entrées catalogue | bloc Livraison (texte informatif) |
@@ -75,7 +75,7 @@ npm run dev
 
 Ouvre [http://localhost:3010/salim](http://localhost:3010/salim) — vérifie les 5 blocs, les 3 cards, le bloc livraison.
 
-Homepage livre : [http://localhost:3010/#book](http://localhost:3010/#book) — prix barré 79 € + prix 65 €.
+Homepage livre : [http://localhost:3010/#book](http://localhost:3010/#book) — prix barré 79 € + prix 69 €.
 
 ### 2. Checkout complet (Stripe test)
 

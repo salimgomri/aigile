@@ -82,6 +82,66 @@
   margin-bottom: 48px;
 }
 
+/* ── Hero CTA ── */
+
+.salim-page .hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-bottom: 16px;
+}
+
+.salim-page .hero-cta-primary {
+  background: #febd10;
+  color: #0f2240;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  padding: 16px 30px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+  animation: salim-subtle-pulse 4s ease-in-out infinite;
+}
+
+.salim-page .hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(254, 189, 16, 0.3);
+}
+
+.salim-page .hero-cta-secondary {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.salim-page .hero-cta-secondary:hover {
+  color: #febd10;
+  border-color: #febd10;
+}
+
+.salim-page .hero-cta-reassurance {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 40px;
+}
+
+@media (max-width: 640px) {
+  .salim-page .hero-cta-primary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 .salim-page .hero-stat-number {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 700;

@@ -171,7 +171,7 @@ export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
           <h3 className="product-title">Le Système S.A.L.I.M.</h3>
           <p className="product-price-original">Amazon : {formatBookPrice(BOOK_COMPARE_AT_CENTIMES)}</p>
           <p className="product-price-main">{formatBookPrice(BOOK_SALE_CENTIMES)}</p>
-          <p className="product-price-note">Prix direct aigile.lu · −14 € vs Amazon</p>
+          <p className="product-price-note">Prix direct aigile.lu · −10 € vs Amazon</p>
           <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
           <OfferList
             items={[
@@ -189,7 +189,7 @@ export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
                 onClick={() =>
                   trackEvent('book_order_click', {
                     product: 's-a-l-i-m',
-                    value: 65,
+                    value: 69,
                     currency: 'EUR',
                     source: 'salim_landing',
                   })
@@ -218,7 +218,7 @@ export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
           <p className="product-subtitle">Fiches pratiques</p>
           <p className="product-price-original">Amazon : {formatBookPrice(FICHES_COMPARE_AT_CENTIMES)}</p>
           <p className="product-price-main">{formatBookPrice(FICHES_SALE_CENTIMES)}</p>
-          <p className="product-price-note">Prix direct aigile.lu · −14 € vs Amazon</p>
+          <p className="product-price-note">Prix direct aigile.lu · −10 € vs Amazon</p>
           <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
           <OfferList
             items={[
