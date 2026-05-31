@@ -13,6 +13,16 @@ import {
 } from '@/lib/book-config'
 import { trackEvent } from '@/lib/gtag'
 import { checkoutBundle, checkoutFiches, checkoutLivre } from '@/app/salim/actions'
+import { AnimateIn } from './animate-in'
+import { SalimContactLinks } from './salim-contact-links'
+
+const COMPARE_ROWS = [
+  { label: 'Cadre complet (415 pages)', book: true, fiches: false, bundle: true },
+  { label: 'Fiches terrain sprint', book: false, fiches: true, bundle: true },
+  { label: 'Scoring Deliverable (Early Access)', book: false, fiches: false, bundle: true },
+  { label: 'Applicable dès lundi', book: true, fiches: true, bundle: true },
+  { label: 'Système complet, rien à compléter', book: false, fiches: false, bundle: true },
+] as const
 
 function OfferList({ items }: { items: string[] }) {
   return (
@@ -27,23 +37,115 @@ function OfferList({ items }: { items: string[] }) {
 function Reassurance() {
   return (
     <p className="product-reassurance">
-      Paiement sécurisé · Des questions ?{' '}
-      <a href="mailto:salim@aigile.lu" className="hover:underline">
-        salim@aigile.lu
-      </a>
+      Paiement sécurisé · Des questions ? <SalimContactLinks />
     </p>
+  )
+}
+
+function CompareCell({ value }: { value: boolean }) {
+  return (
+    <td className={value ? 'compare-yes' : 'compare-no'} aria-label={value ? 'Inclus' : 'Non inclus'}>
+      {value ? '✓' : '—'}
+    </td>
   )
 }
 
 export function SalimOffers() {
   return (
     <section id="salim-offres" className="products-section">
-      <h2>Choisis ton format</h2>
-      <p className="section-subtitle">
-        Disponibles uniquement sur aigile.lu · Livraison en France et au Luxembourg
-      </p>
+      <AnimateIn>
+        <h2>Choisis ton format</h2>
+        <p className="section-subtitle">
+          Disponibles uniquement sur aigile.lu · Livraison en France et au Luxembourg
+        </p>
+        <p className="offers-guide">
+          <strong>Meilleur choix :</strong> la Collection — livre + cahier + outil de mesure. C&apos;est le
+          système complet, sans complément à acheter plus tard.
+        </p>
+      </AnimateIn>
+
+      <AnimateIn cascadeDelay={80} className="compare-table-wrap">
+        <table className="compare-table">
+          <thead>
+            <tr>
+              <th scope="col" />
+              <th scope="col">Livre</th>
+              <th scope="col">Fiches</th>
+              <th scope="col" className="compare-col-featured">
+                Collection
+                <span className="compare-badge">Meilleur choix</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {COMPARE_ROWS.map((row) => (
+              <tr key={row.label}>
+                <th scope="row">{row.label}</th>
+                <CompareCell value={row.book} />
+                <CompareCell value={row.fiches} />
+                <CompareCell value={row.bundle} />
+              </tr>
+            ))}
+            <tr className="compare-price-row">
+              <th scope="row">Prix aigile.lu</th>
+              <td>{formatBookPrice(BOOK_SALE_CENTIMES)}</td>
+              <td>{formatBookPrice(FICHES_SALE_CENTIMES)}</td>
+              <td className="compare-col-featured">
+                <span className="compare-price-main">{formatBookPrice(BUNDLE_SALE_CENTIMES)}</span>
+                <span className="compare-price-ref">
+                  vs {formatBookPrice(BUNDLE_COMPARE_AT_CENTIMES)} sur Amazon
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </AnimateIn>
 
       <div className="products-grid">
+        <article className="product-card recommended featured-first">
+          <span className="product-badge product-badge-strong">Meilleur choix</span>
+          <div className="product-cover bundle">
+            <Image
+              src="/images/bundle-covers.png"
+              alt="Collection S.A.L.I.M. · Livre et cahier de fiches"
+              fill
+              className="object-contain p-1"
+              sizes="200px"
+            />
+          </div>
+          <h3 className="product-title">Collection S.A.L.I.M.</h3>
+          <p className="product-price-context">
+            Valeur Amazon : {formatBookPrice(BUNDLE_COMPARE_AT_CENTIMES)} (79 € + 59 €)
+          </p>
+          <p className="product-price-main">{formatBookPrice(BUNDLE_SALE_CENTIMES)}</p>
+          <p className="product-price-note">Ton prix direct · économie de 28 € vs Amazon</p>
+          <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
+          <OfferList
+            items={[
+              'Comprendre, faire, mesurer — le système complet',
+              'Early Access illimité au Scoring Deliverable',
+              'Rien à compléter après l’achat',
+            ]}
+          />
+          <form id="salim-bundle-form" action={checkoutBundle}>
+            <button
+              type="submit"
+              onClick={() =>
+                trackEvent('bundle_order_click', {
+                  product: 'bundle-salim',
+                  value: 100,
+                  currency: 'EUR',
+                  source: 'salim_landing',
+                })
+              }
+              className="product-cta gold cta-primary"
+            >
+              Commander la collection · {formatBookPrice(BUNDLE_SALE_CENTIMES)} · expédié sous 48h
+            </button>
+            <Reassurance />
+          </form>
+        </article>
+
         <article className="product-card">
           <div className="product-cover book">
             <Image
@@ -56,16 +158,15 @@ export function SalimOffers() {
             />
           </div>
           <h3 className="product-title">Le Système S.A.L.I.M.</h3>
-          <p className="product-price-original">{formatBookPrice(BOOK_COMPARE_AT_CENTIMES)}</p>
+          <p className="product-price-original">Amazon : {formatBookPrice(BOOK_COMPARE_AT_CENTIMES)}</p>
           <p className="product-price-main">{formatBookPrice(BOOK_SALE_CENTIMES)}</p>
-          <p className="product-price-note">Prix direct aigile.lu · prix Amazon barré ci-dessus</p>
+          <p className="product-price-note">Prix direct aigile.lu · −14 € vs Amazon</p>
           <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
           <OfferList
             items={[
-              '10 plans d’action concrets, un par chapitre — applicable dès lundi',
-              '73 erreurs terrain nommées avec le diagnostic et la correction',
-              '93 prompts IA utilisables immédiatement dans ChatGPT ou Claude',
-              'Le cadre complet : des rôles aux métriques jusqu’à l’IA dans le sprint',
+              '10 plans d’action concrets — applicable dès lundi',
+              '73 erreurs terrain avec diagnostic et correction',
+              '93 prompts IA prêts pour ChatGPT ou Claude',
             ]}
           />
           <form action={checkoutLivre}>
@@ -81,7 +182,7 @@ export function SalimOffers() {
               }
               className="product-cta navy"
             >
-              {getBookCtaLabel('fr')} · {formatBookPrice(BOOK_SALE_CENTIMES)}
+              {getBookCtaLabel('fr')} · {formatBookPrice(BOOK_SALE_CENTIMES)} · paiement sécurisé
             </button>
             <Reassurance />
           </form>
@@ -100,15 +201,15 @@ export function SalimOffers() {
           </div>
           <h3 className="product-title">Le Système S.A.L.I.M.</h3>
           <p className="product-subtitle">Fiches pratiques</p>
-          <p className="product-price-original">{formatBookPrice(FICHES_COMPARE_AT_CENTIMES)}</p>
+          <p className="product-price-original">Amazon : {formatBookPrice(FICHES_COMPARE_AT_CENTIMES)}</p>
           <p className="product-price-main">{formatBookPrice(FICHES_SALE_CENTIMES)}</p>
-          <p className="product-price-note">Prix direct aigile.lu</p>
+          <p className="product-price-note">Prix direct aigile.lu · −14 € vs Amazon</p>
           <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
           <OfferList
             items={[
-              'Toutes les fiches du système, format terrain — pas académique',
-              'À garder ouvert sur le bureau pendant un sprint',
-              'Utilisable seul, complémentaire au livre',
+              'Fiches terrain — pas académique',
+              'À garder ouvert pendant un sprint',
+              'Complément idéal au livre',
             ]}
           />
           <form action={checkoutFiches}>
@@ -124,51 +225,7 @@ export function SalimOffers() {
               }
               className="product-cta navy"
             >
-              Commander les fiches · {formatBookPrice(FICHES_SALE_CENTIMES)}
-            </button>
-            <Reassurance />
-          </form>
-        </article>
-
-        <article className="product-card recommended">
-          <span className="product-badge">Recommandé</span>
-          <div className="product-cover bundle">
-            <Image
-              src="/images/bundle-covers.png"
-              alt="Collection S.A.L.I.M. · Livre et cahier de fiches"
-              fill
-              className="object-contain p-1"
-              sizes="200px"
-            />
-          </div>
-          <h3 className="product-title">Collection S.A.L.I.M.</h3>
-          <p className="product-price-context">
-            Valeur Amazon : {formatBookPrice(BUNDLE_COMPARE_AT_CENTIMES)}
-          </p>
-          <p className="product-price-main">{formatBookPrice(BUNDLE_SALE_CENTIMES)}</p>
-          <p className="product-price-note">Disponible uniquement sur aigile.lu</p>
-          <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
-          <OfferList
-            items={[
-              'Le livre pour comprendre. Le cahier pour faire. L’outil pour mesurer.',
-              'Accès Early Access illimité au Scoring Deliverable sur aigile.lu',
-              'Le système complet, rien à compléter',
-            ]}
-          />
-          <form id="salim-bundle-form" action={checkoutBundle}>
-            <button
-              type="submit"
-              onClick={() =>
-                trackEvent('bundle_order_click', {
-                  product: 'bundle-salim',
-                  value: 100,
-                  currency: 'EUR',
-                  source: 'salim_landing',
-                })
-              }
-              className="product-cta gold cta-primary"
-            >
-              Commander la collection · {formatBookPrice(BUNDLE_SALE_CENTIMES)}
+              Commander les fiches · {formatBookPrice(FICHES_SALE_CENTIMES)} · paiement sécurisé
             </button>
             <Reassurance />
           </form>

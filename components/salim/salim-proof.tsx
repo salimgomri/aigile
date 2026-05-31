@@ -1,6 +1,5 @@
 'use client'
 
-import { type RefObject } from 'react'
 import { AnimateIn } from './animate-in'
 import { CounterStat } from './counter-stat'
 import { useInView } from '@/hooks/use-in-view'
@@ -64,7 +63,7 @@ export function SalimProof() {
   const { ref, inView } = useInView(0.15)
 
   return (
-    <section ref={ref as RefObject<HTMLElement>} className="metrics-section">
+    <section ref={ref} className="metrics-section">
       <div className="metrics-grid">
         {METRICS.map((metric, index) => (
           <AnimateIn

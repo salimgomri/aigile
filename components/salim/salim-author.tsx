@@ -42,6 +42,12 @@ export function SalimAuthor() {
             Fondateur d&apos;AIgile · Lead Agile Coach depuis 2004 · Premier praticien agile au Luxembourg
             en 2006
           </p>
+          <p className="author-story">
+            En 2009, une release « réussie » côté vélocité a coûté six semaines de rework et la confiance d&apos;un
+            client stratégique. Personne dans l&apos;équipe ne savait expliquer l&apos;écart. J&apos;ai passé les
+            années suivantes à documenter ce que les tableaux de bord ne montrent pas — et à en faire un système
+            reproductible.
+          </p>
           <p className="author-quote">
             Ce livre n&apos;est pas ce que j&apos;aurais voulu lire. C&apos;est ce que j&apos;ai mis 22 ans à
             apprendre.

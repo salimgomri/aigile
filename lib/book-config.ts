@@ -12,14 +12,14 @@ export const BOOK_IS_PUBLISHED = true
 export const BOOK_COMPARE_AT_CENTIMES = 7900
 
 /** Fiches pratiques — prix barré (réf. Amazon) */
-export const FICHES_COMPARE_AT_CENTIMES = 4900
+export const FICHES_COMPARE_AT_CENTIMES = 5900
 
-/** Collection — valeur Amazon (79 € livre + 49 € fiches) */
-export const BUNDLE_COMPARE_AT_CENTIMES = 12800
+/** Collection — valeur Amazon (79 € livre + 59 € fiches) */
+export const BUNDLE_COMPARE_AT_CENTIMES = 13800
 
 export const BOOK_SALE_CENTIMES = 6500
-export const FICHES_SALE_CENTIMES = 3500
-export const BUNDLE_SALE_CENTIMES = 10000
+export const FICHES_SALE_CENTIMES = 4900
+export const BUNDLE_SALE_CENTIMES = 11000
 
 export function formatBookPrice(centimes: number): string {
   return (centimes / 100).toFixed(2).replace('.', ',') + ' €'

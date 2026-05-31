@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import { AnimateIn, DrawLine } from '@/components/salim/animate-in'
 import { SalimAuthor } from '@/components/salim/salim-author'
+import { SalimBusinessOutcomes } from '@/components/salim/salim-business-outcomes'
 import { SalimHero } from '@/components/salim/salim-hero'
 import { SalimOffers } from '@/components/salim/salim-offers'
 import { SalimPageAnalytics } from '@/components/salim/salim-page-analytics'
 import { SalimPersonas } from '@/components/salim/salim-personas'
 import { SalimProof } from '@/components/salim/salim-proof'
+import { SalimSocialProof } from '@/components/salim/salim-social-proof'
 import { SalimStickyMobileCta } from '@/components/salim/salim-sticky-mobile-cta'
+import { SalimContactLinks } from '@/components/salim/salim-contact-links'
 import './salim.css'
 
 export const metadata: Metadata = {
@@ -46,6 +49,10 @@ export default function SalimLandingPage() {
 
       <SalimAuthor />
 
+      <SalimSocialProof />
+
+      <SalimBusinessOutcomes />
+
       <SalimOffers />
 
       <section className="delivery-section">
@@ -62,10 +69,7 @@ export default function SalimLandingPage() {
               <h3>Retrait gratuit</h3>
               <p>
                 Tu passes récupérer ton livre directement. Gratuit. Contacte-moi après commande pour convenir du
-                lieu et du moment.{' '}
-                <a href="mailto:salim@aigile.lu" className="text-aigile-blue hover:underline">
-                  salim@aigile.lu
-                </a>
+                lieu et du moment. <SalimContactLinks className="text-aigile-blue" />
               </p>
             </div>
           </div>

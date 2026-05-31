@@ -25,8 +25,8 @@ Les montants encaissés viennent du **catalogue** (`amount` en centimes). L’af
 | Offre | Prix affiché | Centimes checkout | Fichier catalogue | Fichier affichage |
 |-------|--------------|-------------------|-------------------|-------------------|
 | Livre | 65 € (barré 79 €) | `6500` | `lib/payments/catalog.ts` → `book_sale` | `app/salim/page.tsx` + `lib/book-config.ts` (`BOOK_COMPARE_AT_CENTIMES`) + `components/landing/book-section.tsx` |
-| Fiches | 35 € (barré 49 €) | `3500` | `lib/payments/catalog.ts` → `fiches_salim` | `app/salim/page.tsx` |
-| Bundle | 100 € | `10000` | `lib/payments/catalog.ts` → `bundle_salim` | `app/salim/page.tsx` |
+| Fiches | 49 € (barré 59 €) | `4900` | `lib/payments/catalog.ts` → `fiches_salim` | `app/salim/page.tsx` |
+| Bundle | 110 € (barré 138 €) | `11000` | `lib/payments/catalog.ts` → `bundle_salim` | `app/salim/page.tsx` |
 | Livraison | +5 € au checkout | `500` (`shippingFee`) | même entrées catalogue | bloc Livraison (texte informatif) |
 
 **Règle :** si tu changes un prix, mets à jour **catalogue + page** (et les boutons). Optionnel : créer/mettre à jour le Price Stripe + variable env.

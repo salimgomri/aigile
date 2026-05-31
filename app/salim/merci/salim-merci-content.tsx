@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { SalimContactLinks } from '@/components/salim/salim-contact-links'
 
 type SessionData = {
   productId: string
@@ -33,10 +34,7 @@ export default function SalimMerciContent() {
             manuellement sous 24h.
           </p>
           <p>
-            Des questions :{' '}
-            <a href="mailto:salim@aigile.lu" className="text-aigile-blue hover:underline">
-              salim@aigile.lu
-            </a>
+            Des questions : <SalimContactLinks className="text-aigile-blue" />
           </p>
         </div>
 

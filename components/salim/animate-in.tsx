@@ -1,6 +1,6 @@
 'use client'
 
-import { type CSSProperties, type ReactNode, type RefObject } from 'react'
+import { type CSSProperties, type ReactNode } from 'react'
 import { useInView } from '@/hooks/use-in-view'
 
 type AnimateInProps = {
@@ -26,7 +26,7 @@ export function AnimateIn({
 
   return (
     <Tag
-      ref={ref as RefObject<HTMLDivElement>}
+      ref={ref}
       className={`${fadeOnly ? 'animate-fade' : 'animate-in'} ${inView ? 'visible' : ''} ${className}`}
       style={style}
     >
@@ -40,7 +40,7 @@ export function DrawLine({ className = '' }: { className?: string }) {
 
   return (
     <div
-      ref={ref as RefObject<HTMLDivElement>}
+      ref={ref}
       className={`draw-line ${inView ? 'visible' : ''} ${className}`}
       aria-hidden
     />
