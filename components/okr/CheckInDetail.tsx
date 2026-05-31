@@ -49,7 +49,7 @@ export function CheckInDetail({ teamId, checkIn, rag }: Props) {
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <header>
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#c9973a]">OKR Check-in</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-[#FEBD10]">OKR Check-in</p>
         <h1 className="mt-1 text-2xl font-bold text-[#0f2240]">Sprint {sprintNum}</h1>
         <p className="mt-1 text-sm text-gray-500">{dateLabel}</p>
       </header>

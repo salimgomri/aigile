@@ -82,8 +82,8 @@ export function WestrumForm({ recentWarningDate, onComplete, submitting }: Props
                 onClick={() => pick(n)}
                 className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold transition sm:h-12 sm:w-12 ${
                   on
-                    ? 'border-[#c9973a] bg-[#c9973a] text-[#0f2240]'
-                    : 'border-gray-200 bg-white text-[#0f2240] hover:border-[#c9973a] hover:bg-[#c9973a]/15'
+                    ? 'border-[#FEBD10] bg-[#FEBD10] text-[#0f2240]'
+                    : 'border-gray-200 bg-white text-[#0f2240] hover:border-[#FEBD10] hover:bg-[#FEBD10]/15'
                 }`}
               >
                 {n}

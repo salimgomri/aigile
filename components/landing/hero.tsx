@@ -179,7 +179,7 @@ function ScoringRingMockup({ lang }: { lang: 'fr' | 'en' }) {
             cy={size / 2}
             r={r}
             fill="none"
-            stroke="rgba(201,151,58,0.18)"
+            stroke="rgba(254, 189, 16,0.18)"
             strokeWidth={stroke}
           />
           <circle
@@ -318,7 +318,7 @@ function WestrumMockup({ lang }: { lang: 'fr' | 'en' }) {
             key={n}
             className="flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold"
             style={{
-              background: n >= 5 ? 'rgba(201,151,58,0.25)' : 'rgba(255,255,255,0.06)',
+              background: n >= 5 ? 'rgba(254, 189, 16,0.25)' : 'rgba(255,255,255,0.06)',
               color: n === 6 ? GOLD : 'rgba(255,255,255,0.55)',
               border: n === 6 ? `1px solid ${GOLD}` : '1px solid transparent',
             }}
@@ -343,13 +343,13 @@ function RetroMockup({ lang }: { lang: 'fr' | 'en' }) {
   const rows =
     lang === 'fr'
       ? [
-          { dot: '#c9973a', label: 'Équipe silencieuse', pct: 82 },
+          { dot: '#FEBD10', label: 'Équipe silencieuse', pct: 82 },
           { dot: '#e8961e', label: 'Blame culture', pct: 58 },
           { dot: '#d4a84b', label: 'Retros sans impact', pct: 71 },
           { dot: '#b8860f', label: 'Manque de focus', pct: 44 },
         ]
       : [
-          { dot: '#c9973a', label: 'Silent team', pct: 82 },
+          { dot: '#FEBD10', label: 'Silent team', pct: 82 },
           { dot: '#e8961e', label: 'Blame culture', pct: 58 },
           { dot: '#d4a84b', label: 'Low-impact retros', pct: 71 },
           { dot: '#b8860f', label: 'Lack of focus', pct: 44 },
@@ -738,7 +738,7 @@ export default function LandingHero() {
                     style={{
                       background: GOLD_DIM,
                       color: GOLD,
-                      border: '1px solid rgba(201,151,58,0.35)',
+                      border: '1px solid rgba(254, 189, 16,0.35)',
                     }}
                   >
                     <PulseDot reducedMotion={reducedMotion} />
@@ -804,7 +804,7 @@ export default function LandingHero() {
                 <Link
                   href="#book"
                   onClick={() => trackEvent('hero_preorder', { slide: 'book', source: 'hero_visual' })}
-                  className="group relative mx-auto flex w-full max-w-[min(100%,440px)] flex-col items-center rounded-2xl px-2 pb-2 pt-6 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70"
+                  className="group relative mx-auto flex w-full max-w-[min(100%,440px)] flex-col items-center rounded-2xl px-2 pb-2 pt-6 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#FEBD10]/70"
                   aria-label={
                     language === 'fr'
                       ? 'Commander le livre — aller à la section livre'
@@ -812,10 +812,10 @@ export default function LandingHero() {
                   }
                 >
                   <div
-                    className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[min(480px,58vh)] w-[min(380px,92vw)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-gradient-to-br from-[#c9973a]/45 via-[#e8961e]/22 to-transparent opacity-90 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                    className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[min(480px,58vh)] w-[min(380px,92vw)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-gradient-to-br from-[#FEBD10]/45 via-[#e8961e]/22 to-transparent opacity-90 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
                   />
                   <div
-                    className={`pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[min(420px,52vh)] w-[min(320px,85vw)] -translate-x-1/2 -translate-y-1/2 rounded-[48%] bg-[#c9973a]/35 blur-2xl ${reducedMotion ? '' : 'landing-hero-book-aura-pulse'}`}
+                    className={`pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[min(420px,52vh)] w-[min(320px,85vw)] -translate-x-1/2 -translate-y-1/2 rounded-[48%] bg-[#FEBD10]/35 blur-2xl ${reducedMotion ? '' : 'landing-hero-book-aura-pulse'}`}
                   />
                   <div
                     className={`relative z-10 mt-2 w-full max-w-[380px] ${reducedMotion ? '' : 'landing-hero-book-alive'}`}
@@ -837,7 +837,7 @@ export default function LandingHero() {
                         alt=""
                         width={320}
                         height={480}
-                        className="relative z-10 mx-auto h-auto max-h-[min(420px,52vh)] w-auto object-contain drop-shadow-[0_0_50px_rgba(201,151,58,0.45)] transition-[filter] duration-500 group-hover:drop-shadow-[0_0_80px_rgba(201,151,58,0.65)]"
+                        className="relative z-10 mx-auto h-auto max-h-[min(420px,52vh)] w-auto object-contain drop-shadow-[0_0_50px_rgba(254, 189, 16,0.45)] transition-[filter] duration-500 group-hover:drop-shadow-[0_0_80px_rgba(254, 189, 16,0.65)]"
                         style={{
                           transform: 'perspective(900px) rotateY(-10deg)',
                         }}
@@ -845,7 +845,7 @@ export default function LandingHero() {
                     </div>
                   </div>
                   <span
-                    className="mt-4 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--aigile-muted)] transition-colors duration-300 group-hover:text-[#c9973a]/90"
+                    className="mt-4 text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--aigile-muted)] transition-colors duration-300 group-hover:text-[#FEBD10]/90"
                     aria-hidden
                   >
                     {language === 'fr' ? 'Aller commander le livre' : 'Tap to order the book'}
@@ -872,7 +872,7 @@ export default function LandingHero() {
                     style={{
                       background: GOLD_DIM,
                       color: GOLD,
-                      border: '1px solid rgba(201,151,58,0.35)',
+                      border: '1px solid rgba(254, 189, 16,0.35)',
                     }}
                   >
                     <PulseDot reducedMotion={reducedMotion} />
@@ -932,17 +932,17 @@ export default function LandingHero() {
                 <Link
                   href="/retro"
                   onClick={() => trackEvent('hero_retro', { slide: 'retro', source: 'hero_visual' })}
-                  className={`group relative block w-full max-w-[400px] rounded-2xl p-2 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                  className={`group relative block w-full max-w-[400px] rounded-2xl p-2 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#FEBD10]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
                   aria-label={language === 'fr' ? 'Essayer Retro AI gratuitement' : 'Try Retro AI for free'}
                 >
-                  <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#c9973a]/35 to-transparent opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#FEBD10]/35 to-transparent opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
                   <div className={reducedMotion ? '' : 'landing-hero-visual-breathe'}>
                     <div className="relative origin-center transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.14]">
                       <RetroMockup lang={language === 'fr' ? 'fr' : 'en'} />
                     </div>
                   </div>
                   <span
-                    className="mt-3 block text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--aigile-muted)] transition-colors group-hover:text-[#c9973a]/85"
+                    className="mt-3 block text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--aigile-muted)] transition-colors group-hover:text-[#FEBD10]/85"
                     aria-hidden
                   >
                     {language === 'fr' ? 'Ouvrir Retro AI' : 'Open Retro AI'}
@@ -969,7 +969,7 @@ export default function LandingHero() {
                     style={{
                       background: GOLD_DIM,
                       color: GOLD,
-                      border: '1px solid rgba(201,151,58,0.35)',
+                      border: '1px solid rgba(254, 189, 16,0.35)',
                     }}
                   >
                     <PulseDot reducedMotion={reducedMotion} />
@@ -1127,7 +1127,7 @@ export default function LandingHero() {
                       trackEvent('hero_scoring_early_access', { slide: 'scoring', source: 'hero_visual_modal' })
                     }}
                     disabled={s3Cta.kind === 'access_check'}
-                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 text-left outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'} ${s3Cta.kind === 'access_check' ? 'cursor-default opacity-90' : 'cursor-pointer'}`}
+                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 text-left outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#FEBD10]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'} ${s3Cta.kind === 'access_check' ? 'cursor-default opacity-90' : 'cursor-pointer'}`}
                     aria-label={
                       s3Cta.kind === 'access_check'
                         ? language === 'fr'
@@ -1157,7 +1157,7 @@ export default function LandingHero() {
                     onClick={() =>
                       trackEvent('hero_scoring_early_access', { slide: 'scoring', source: 'hero_visual' })
                     }
-                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#c9973a]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
+                    className={`group relative block w-full max-w-[340px] rounded-2xl p-2 outline-none ring-offset-4 ring-offset-[var(--aigile-black)] transition-shadow duration-300 focus-visible:ring-2 focus-visible:ring-[#FEBD10]/70 ${reducedMotion ? '' : 'landing-hero-visual-in'}`}
                     aria-label={s3Cta.visualLabel}
                   >
                     <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#e8961e]/30 to-transparent opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
@@ -1202,7 +1202,7 @@ export default function LandingHero() {
                         : {
                             background: GOLD_DIM,
                             color: GOLD,
-                            border: '1px solid rgba(201,151,58,0.35)',
+                            border: '1px solid rgba(254, 189, 16,0.35)',
                           }
                     }
                   >
@@ -1319,7 +1319,7 @@ export default function LandingHero() {
                         : {
                             background: GOLD_DIM,
                             color: GOLD,
-                            border: '1px solid rgba(201,151,58,0.35)',
+                            border: '1px solid rgba(254, 189, 16,0.35)',
                           }
                     }
                   >

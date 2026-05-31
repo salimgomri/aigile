@@ -193,7 +193,7 @@ export default function NikoNikoPage() {
   if (isPending || loading || !session) {
     return (
       <div className="min-h-screen bg-[#0f2240] flex items-center justify-center">
-        <div className="text-[#c9973a] animate-pulse">Chargement...</div>
+        <div className="text-[#FEBD10] animate-pulse">Chargement...</div>
       </div>
     )
   }
@@ -209,7 +209,7 @@ export default function NikoNikoPage() {
             <select
               value={selectedSprintId ?? ''}
               onChange={(e) => setSelectedSprintId(e.target.value || null)}
-              className="rounded-lg border border-[#c9973a]/50 bg-[#0f2240] text-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#c9973a]"
+              className="rounded-lg border border-[#FEBD10]/50 bg-[#0f2240] text-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#FEBD10]"
             >
               <option value="">Sprint actuel</option>
               {sprints.map((s) => (
@@ -227,18 +227,18 @@ export default function NikoNikoPage() {
             <span className="ml-2">HI moyen: {consecutiveLow.hi}/3</span>
             <Link
               href="/retro"
-              className="ml-4 text-[#c9973a] hover:underline font-medium"
+              className="ml-4 text-[#FEBD10] hover:underline font-medium"
             >
               Lancer une rétro →
             </Link>
           </div>
         )}
 
-        <div className="rounded-xl border border-[#c9973a]/30 bg-[#0f2240]/80 overflow-hidden">
+        <div className="rounded-xl border border-[#FEBD10]/30 bg-[#0f2240]/80 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[600px]">
               <thead>
-                <tr className="border-b border-[#c9973a]/30">
+                <tr className="border-b border-[#FEBD10]/30">
                   <th className="text-left py-3 px-4 text-white/80 font-medium w-40">Membre</th>
                   {workingDays.map((d) => (
                     <th key={d} className="text-center py-2 px-2 text-white/60 text-xs font-normal w-12">
@@ -260,7 +260,7 @@ export default function NikoNikoPage() {
                             {editable ? (
                               <button
                                 onClick={() => setPopover(popover?.memberId === member.id && popover?.date === date ? null : { memberId: member.id, date })}
-                                className="w-10 h-10 rounded-lg hover:bg-[#c9973a]/20 transition-colors flex items-center justify-center text-xl"
+                                className="w-10 h-10 rounded-lg hover:bg-[#FEBD10]/20 transition-colors flex items-center justify-center text-xl"
                               >
                                 {mood ? MOOD_EMOJI[mood] : '—'}
                               </button>
@@ -276,12 +276,12 @@ export default function NikoNikoPage() {
                                   onClick={() => setPopover(null)}
                                   aria-hidden="true"
                                 />
-                                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 z-50 p-2 rounded-lg bg-[#0f2240] border border-[#c9973a]/50 shadow-xl flex gap-1">
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 z-50 p-2 rounded-lg bg-[#0f2240] border border-[#FEBD10]/50 shadow-xl flex gap-1">
                                   {([3, 2, 1] as const).map((m) => (
                                     <button
                                       key={m}
                                       onClick={() => saveMood(member.id, date, m)}
-                                      className="w-10 h-10 rounded-lg hover:bg-[#c9973a]/20 text-2xl flex items-center justify-center"
+                                      className="w-10 h-10 rounded-lg hover:bg-[#FEBD10]/20 text-2xl flex items-center justify-center"
                                     >
                                       {MOOD_EMOJI[m]}
                                     </button>
@@ -301,8 +301,8 @@ export default function NikoNikoPage() {
                     })}
                   </tr>
                 ))}
-                <tr className="bg-[#c9973a]/10">
-                  <td className="py-2 px-4 text-[#c9973a] font-semibold">Moyenne équipe</td>
+                <tr className="bg-[#FEBD10]/10">
+                  <td className="py-2 px-4 text-[#FEBD10] font-semibold">Moyenne équipe</td>
                   {workingDays.map((date) => {
                     const row = avgMoodByDay.find((r) => r.date === date)
                     const avg = row?.avg ?? 0
@@ -321,14 +321,14 @@ export default function NikoNikoPage() {
         </div>
 
         {hiData.length > 0 && (
-          <div className="mt-8 p-4 rounded-xl border border-[#c9973a]/30 bg-[#0f2240]/80">
+          <div className="mt-8 p-4 rounded-xl border border-[#FEBD10]/30 bg-[#0f2240]/80">
             <h2 className="text-lg font-semibold text-white mb-4">HI moyen par sprint</h2>
             <div className="h-32">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={hiData.map((d) => ({ name: `S${d.sprintNumber}`, hi: d.hi }))}>
-                  <XAxis dataKey="name" stroke="#c9973a" fontSize={12} />
-                  <YAxis domain={[0, 3]} stroke="#c9973a" fontSize={12} />
-                  <Line type="monotone" dataKey="hi" stroke="#c9973a" strokeWidth={2} dot={{ fill: '#c9973a' }} />
+                  <XAxis dataKey="name" stroke="#FEBD10" fontSize={12} />
+                  <YAxis domain={[0, 3]} stroke="#FEBD10" fontSize={12} />
+                  <Line type="monotone" dataKey="hi" stroke="#FEBD10" strokeWidth={2} dot={{ fill: '#FEBD10' }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>

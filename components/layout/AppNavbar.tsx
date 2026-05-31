@@ -41,14 +41,14 @@ export default function AppNavbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-[#0f2240] border-b border-[#c9973a]/30"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#0f2240] border-b border-[#FEBD10]/30"
       style={{ backgroundColor: navy }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <span className="text-xl font-bold text-[#c9973a]">AI</span>
+            <span className="text-xl font-bold text-[#FEBD10]">AI</span>
             <span className="text-xl font-bold text-white">gile</span>
           </Link>
 
@@ -61,7 +61,7 @@ export default function AppNavbar() {
                   href={link.href}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     link.isActive
-                      ? 'bg-[#c9973a]/20 text-[#c9973a]'
+                      ? 'bg-[#FEBD10]/20 text-[#FEBD10]'
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -91,7 +91,7 @@ export default function AppNavbar() {
                   onClick={() => setAvatarOpen(!avatarOpen)}
                   className="flex items-center gap-2 p-1.5 rounded-full hover:bg-white/10 transition-colors"
                 >
-                  <div className="w-9 h-9 rounded-full bg-[#c9973a] flex items-center justify-center text-navy font-semibold text-sm">
+                  <div className="w-9 h-9 rounded-full bg-[#FEBD10] flex items-center justify-center text-navy font-semibold text-sm">
                     {displayName.charAt(0).toUpperCase()}
                   </div>
                   <ChevronDown className="w-4 h-4 text-white/80" />
@@ -169,7 +169,7 @@ export default function AppNavbar() {
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block px-4 py-3 rounded-lg text-sm font-medium ${
-                    link.isActive ? 'bg-[#c9973a]/20 text-[#c9973a]' : 'text-white/90 hover:bg-white/10'
+                    link.isActive ? 'bg-[#FEBD10]/20 text-[#FEBD10]' : 'text-white/90 hover:bg-white/10'
                   }`}
                 >
                   {link.label}

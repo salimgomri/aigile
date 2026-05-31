@@ -78,7 +78,7 @@ function getEmailTemplate(params: {
           <tr>
             <td style="background-color:#0f2240;padding:28px 40px;text-align:center;">
               <span style="font-size:26px;font-weight:800;letter-spacing:-0.5px;">
-                <span style="color:#c9973a;">AI</span><span style="color:#ffffff;">gile</span>
+                <span style="color:#FEBD10;">AI</span><span style="color:#ffffff;">gile</span>
               </span>
               <p style="margin:6px 0 0;color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">
                 Scrum Augmenté par l'IA
@@ -102,7 +102,7 @@ function getEmailTemplate(params: {
           <tr>
             <td style="padding:8px 40px 36px;text-align:center;">
               <a href="${ctaUrl}"
-                 style="display:inline-block;background-color:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;letter-spacing:0.02em;">
+                 style="display:inline-block;background-color:#FEBD10;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;letter-spacing:0.02em;">
                 ${ctaLabel}
               </a>
             </td>
@@ -122,7 +122,7 @@ function getEmailTemplate(params: {
                 ${footerNote}
               </p>
               <p style="margin:0;font-size:11px;color:#cbd5e1;">
-                <strong style="color:#c9973a;">AIgile</strong>
+                <strong style="color:#FEBD10;">AIgile</strong>
                 — Scrum Augmenté par l'IA ·
                 <a href="${baseUrl}" style="color:#94a3b8;text-decoration:none;">aigile.lu</a>
               </p>
@@ -303,12 +303,12 @@ export async function sendInvitationEmail(params: {
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
         <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
-          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+          <span style="font-size:26px;font-weight:800;"><span style="color:#FEBD10;">AI</span><span style="color:#fff;">gile</span></span>
         </td></tr>
         <tr><td style="padding:40px;">
           <p style="margin:0 0 16px;font-size:15px;color:#1a1a1a;">${c.greeting(inviterName, teamName)}</p>
           <p style="margin:0 0 24px;font-size:14px;color:#334155;"><strong>${c.roleLabel}</strong> ${role}</p>
-          <p style="text-align:center;"><a href="${url}" style="display:inline-block;background:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">${c.ctaLabel}</a></p>
+          <p style="text-align:center;"><a href="${url}" style="display:inline-block;background:#FEBD10;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">${c.ctaLabel}</a></p>
           <p style="margin:24px 0 0;font-size:12px;color:#94a3b8;">${c.expiresNote}</p>
         </td></tr>
         <tr><td style="padding:24px 40px;text-align:center;font-size:11px;color:#94a3b8;">${c.footerNote}</td></tr>
@@ -348,7 +348,7 @@ export async function sendToolAccessInviteEmail(params: {
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
         <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
-          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+          <span style="font-size:26px;font-weight:800;"><span style="color:#FEBD10;">AI</span><span style="color:#fff;">gile</span></span>
         </td></tr>
         <tr><td style="padding:40px;">
           <p style="margin:0 0 16px;font-size:15px;color:#1a1a1a;">Bonjour,</p>
@@ -357,7 +357,7 @@ export async function sendToolAccessInviteEmail(params: {
             Connectez-vous avec <strong>cet email</strong> pour utiliser l’outil lorsque l’accès sur invitation est actif (après la date de lancement).
           </p>
           <p style="text-align:center;margin:28px 0 0;">
-            <a href="${url}" style="display:inline-block;background:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Ouvrir l’outil</a>
+            <a href="${url}" style="display:inline-block;background:#FEBD10;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Ouvrir l’outil</a>
           </p>
         </td></tr>
         <tr><td style="padding:24px 40px;text-align:center;font-size:11px;color:#94a3b8;">
@@ -394,7 +394,7 @@ export async function sendToolCreditPromoEmail(params: {
   const exp = new Date(params.expiresAtISO)
   const expStr = Number.isNaN(exp.getTime()) ? params.expiresAtISO : exp.toLocaleString('fr-FR')
   const ea = params.earlyAdopter
-    ? '<p style="margin:16px 0 0;font-size:14px;color:#c9973a;"><strong>Early adopter</strong> : offres mises en avant dans l’app.</p>'
+    ? '<p style="margin:16px 0 0;font-size:14px;color:#FEBD10;"><strong>Early adopter</strong> : offres mises en avant dans l’app.</p>'
     : ''
   const subject = `Promo crédits — ${params.toolLabelFr} — AIgile`
   const html = `<!DOCTYPE html>
@@ -405,7 +405,7 @@ export async function sendToolCreditPromoEmail(params: {
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
         <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
-          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+          <span style="font-size:26px;font-weight:800;"><span style="color:#FEBD10;">AI</span><span style="color:#fff;">gile</span></span>
         </td></tr>
         <tr><td style="padding:40px;">
           <p style="margin:0 0 16px;font-size:15px;color:#1a1a1a;">Bonjour,</p>
@@ -415,7 +415,7 @@ export async function sendToolCreditPromoEmail(params: {
           </p>
           ${ea}
           <p style="text-align:center;margin:28px 0 0;">
-            <a href="${url}" style="display:inline-block;background:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Accéder à l’outil</a>
+            <a href="${url}" style="display:inline-block;background:#FEBD10;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Accéder à l’outil</a>
           </p>
         </td></tr>
         <tr><td style="padding:24px 40px;text-align:center;font-size:11px;color:#94a3b8;">
@@ -459,7 +459,7 @@ export async function sendEarlyAdopterApprovedEmail(params: {
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
         <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
-          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+          <span style="font-size:26px;font-weight:800;"><span style="color:#FEBD10;">AI</span><span style="color:#fff;">gile</span></span>
         </td></tr>
         <tr><td style="padding:40px;">
           <p style="margin:0 0 16px;font-size:18px;color:#1a1a1a;font-weight:700;">Bienvenue parmi les early adopters</p>
@@ -473,9 +473,9 @@ export async function sendEarlyAdopterApprovedEmail(params: {
           <p style="margin:0 0 8px;font-size:13px;color:#64748b;line-height:1.5;">
             Après cette date, l’usage repasse sur les règles habituelles (crédits / offres en vigueur).
           </p>
-          <p style="margin:0 0 8px;font-size:14px;color:#c9973a;"><strong>Early adopter</strong> : merci de nous aider à peaufiner l’expérience.</p>
+          <p style="margin:0 0 8px;font-size:14px;color:#FEBD10;"><strong>Early adopter</strong> : merci de nous aider à peaufiner l’expérience.</p>
           <p style="text-align:center;margin:28px 0 0;">
-            <a href="${url}" style="display:inline-block;background:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Ouvrir l’outil</a>
+            <a href="${url}" style="display:inline-block;background:#FEBD10;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:6px;">Ouvrir l’outil</a>
           </p>
         </td></tr>
         <tr><td style="padding:24px 40px;text-align:center;font-size:11px;color:#94a3b8;">

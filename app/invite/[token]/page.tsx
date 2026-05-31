@@ -78,7 +78,7 @@ export default function InvitePage() {
           </p>
           <Link
             href="/"
-            className="inline-block px-6 py-3 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full"
+            className="inline-block px-6 py-3 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full"
           >
             Retour à l&apos;accueil
           </Link>
@@ -98,7 +98,7 @@ export default function InvitePage() {
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="max-w-md w-full space-y-6">
         <div className="text-center">
-          <div className="w-16 h-16 rounded-xl bg-[#c9973a] mx-auto flex items-center justify-center shadow-lg mb-4">
+          <div className="w-16 h-16 rounded-xl bg-[#FEBD10] mx-auto flex items-center justify-center shadow-lg mb-4">
             <Users className="w-8 h-8 text-black" />
           </div>
           <h1 className="text-2xl font-bold text-foreground">
@@ -124,7 +124,7 @@ export default function InvitePage() {
               <button
                 onClick={handleAccept}
                 disabled={accepting}
-                className="w-full px-6 py-3 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full disabled:opacity-50"
+                className="w-full px-6 py-3 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full disabled:opacity-50"
               >
                 {accepting ? 'Rejoindre...' : 'Rejoindre l\'équipe'}
               </button>
@@ -153,7 +153,7 @@ export default function InvitePage() {
               <div className="flex flex-col gap-3">
                 <Link
                   href={`/login?redirect=${encodeURIComponent(`/invite/${token}`)}`}
-                  className="block w-full text-center px-6 py-3 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full"
+                  className="block w-full text-center px-6 py-3 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full"
                 >
                   Se connecter pour rejoindre
                 </Link>

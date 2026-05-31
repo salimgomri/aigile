@@ -88,7 +88,7 @@ export function WestrumResult({ result, onRestart }: Props) {
         </button>
         <Link
           href="/dashboard/edmondson"
-          className="rounded-full bg-[#c9973a] px-5 py-2.5 text-center text-sm font-semibold text-[#0f2240] transition hover:bg-[#b8872f]"
+          className="rounded-full bg-[#FEBD10] px-5 py-2.5 text-center text-sm font-semibold text-[#0f2240] transition hover:bg-[#b8872f]"
         >
           Passer le questionnaire Edmondson
         </Link>

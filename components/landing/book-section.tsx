@@ -75,7 +75,7 @@ export default function BookSection() {
   return (
     <section id="book" className="relative py-24 overflow-hidden bg-background">
       {/* Subtle brand gradient background */}
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(201,151,58,0.1),transparent_70%)]" />
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(254, 189, 16,0.1),transparent_70%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

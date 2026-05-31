@@ -17,7 +17,7 @@ export default function CreditsBadge() {
   if (status.isUnlimited && status.plan !== 'day_pass') {
     return (
       <>
-        <button onClick={() => setDrawerOpen(true)} className={`${baseClass} text-[#c9973a]`}>
+        <button onClick={() => setDrawerOpen(true)} className={`${baseClass} text-[#FEBD10]`}>
           ⚡ Pro
         </button>
         {drawerOpen && (
@@ -39,7 +39,7 @@ export default function CreditsBadge() {
       <>
         <button
           onClick={() => setDrawerOpen(true)}
-          className={`${baseClass} ${isUrgent ? 'text-red-400 animate-pulse' : 'text-[#c9973a]'}`}
+          className={`${baseClass} ${isUrgent ? 'text-red-400 animate-pulse' : 'text-[#FEBD10]'}`}
         >
           ⚡ {status.dayPassTimeRemaining}
         </button>

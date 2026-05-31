@@ -42,7 +42,7 @@ export function SalimPersonas() {
               cascadeDelay={index * 80}
               className="persona-card"
             >
-              <Icon className="h-5 w-5 text-[#c9973a] mb-4" aria-hidden />
+              <Icon className="h-5 w-5 text-[#FEBD10] mb-4" aria-hidden />
               <h3>{persona.title}</h3>
               <p>{persona.text}</p>
             </AnimateIn>

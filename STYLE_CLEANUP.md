@@ -31,7 +31,7 @@ Complete refactoring to eliminate all "magic classes", establish a single cohere
 **Replaced by:**
 ```tsx
 // Example: aigile-text → inline style
-<h1 style={{ textShadow: '0 0 40px rgba(201, 151, 58, 0.4)' }} className="text-white font-black tracking-tight">
+<h1 style={{ textShadow: '0 0 40px rgba(254, 189, 16, 0.4)' }} className="text-white font-black tracking-tight">
 
 // Example: luxury-glass-card → inline Tailwind
 <div className="bg-card/50 backdrop-blur-sm border border-border rounded-3xl">
@@ -48,7 +48,7 @@ Complete refactoring to eliminate all "magic classes", establish a single cohere
 ```ts
 // tailwind.config.ts - NEW
 colors: {
-  'aigile-gold': '#c9973a',   // Primary brand color
+  'aigile-gold': '#FEBD10',   // Primary brand color
   'aigile-blue': '#138eec',   // Secondary brand color
   'aigile-navy': '#0f2240',   // Deep accent
   'aigile-dark': '#07111f',   // Background
@@ -58,7 +58,7 @@ colors: {
 ```css
 /* globals.css - UPDATED tokens */
 :root {
-  --primary: 42 54% 51%;      /* AIgile Gold #c9973a */
+  --primary: 44 99% 53%;      /* AIgile Gold #FEBD10 */
   --secondary: 207 87% 50%;   /* AIgile Blue #138eec */
   --background: 216 47% 9%;   /* AIgile Dark #07111f */
 }
@@ -131,7 +131,7 @@ bg-background // AIgile Dark #07111f
 **Séparation visuelle** (subtile):
 ```tsx
 // Subtle gradient per section to create light visual breaks
-<div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(201,151,58,0.1),transparent_60%)]" />
+<div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(254, 189, 16,0.1),transparent_60%)]" />
 ```
 
 **Résultat:** Une identité visuelle cohérente d'une section à l'autre. Plus d'effet "collage de templates".
@@ -211,7 +211,7 @@ bg-background // AIgile Dark #07111f
 - Toggle dark mode = 2 identités différentes
 
 ### Après (v2.7.0)
-- **1 seule identité**: AIgile Dark `#07111f` + Gold `#c9973a` + Blue `#138eec`
+- **1 seule identité**: AIgile Dark `#07111f` + Gold `#FEBD10` + Blue `#138eec`
 - **100% transparent**: Tous les styles sont lisibles directement dans le JSX
 - **Couleurs de marque**: Gold/Blue/Navy cohérents avec l'écosystème AIgile
 - **6 CTAs primaires** qui pulsent (`hover:scale-105`), le reste guide par hover discret

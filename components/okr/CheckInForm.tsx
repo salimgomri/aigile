@@ -134,7 +134,7 @@ export function CheckInForm({ teamId, sprints }: Props) {
         type="button"
         disabled={!valid || pending}
         onClick={submit}
-        className="w-full rounded-full bg-[#c9973a] px-6 py-3 text-sm font-bold text-[#0f2240] transition hover:bg-[#b8862f] disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-full bg-[#FEBD10] px-6 py-3 text-sm font-bold text-[#0f2240] transition hover:bg-[#b8862f] disabled:cursor-not-allowed disabled:opacity-50"
       >
         {pending ? 'Enregistrement…' : 'Enregistrer le Check-in'}
       </button>

@@ -11,7 +11,7 @@ export default function CreditCost({ action }: { action: CreditAction }) {
 
   if (status.isUnlimited) {
     return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#c9973a]/20 text-[#c9973a]">
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-[#FEBD10]/20 text-[#FEBD10]">
         ∞
       </span>
     )

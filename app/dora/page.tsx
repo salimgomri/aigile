@@ -433,7 +433,7 @@ export default function DoraPage() {
                   <YAxis stroke="hsl(var(--muted-foreground))" />
                   <Tooltip contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))' }} />
                   <Legend />
-                  <Line type="monotone" dataKey="deployment_frequency" name="Deploy Freq" stroke="#c9973a" strokeWidth={2} />
+                  <Line type="monotone" dataKey="deployment_frequency" name="Deploy Freq" stroke="#FEBD10" strokeWidth={2} />
                   <Line type="monotone" dataKey="lead_time" name="Lead Time (h)" stroke="#138eec" strokeWidth={2} />
                   <Line type="monotone" dataKey="change_failure_rate" name="CFR (Change Failure Rate) %" stroke="#e8961e" strokeWidth={2} />
                   <Line type="monotone" dataKey="restore_time" name="MTTR (Mean Time To Recovery) h" stroke="#0f2240" strokeWidth={2} />

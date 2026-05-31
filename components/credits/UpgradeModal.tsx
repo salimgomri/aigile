@@ -35,7 +35,7 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
     <>
       <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
       <div className="fixed inset-0 z-[61] flex items-center justify-center p-4">
-        <div className="bg-[#0f2240] border border-[#c9973a]/30 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="bg-[#0f2240] border border-[#FEBD10]/30 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="flex justify-between items-start p-6 border-b border-white/10">
             <h2 className="text-xl font-bold text-white">✦ Plus de crédits ce mois</h2>
             <button onClick={onClose} className="p-2 text-white/70 hover:text-white rounded-lg">
@@ -48,12 +48,12 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {creditsProduct && (
-                <div className="rounded-xl border-2 border-[#c9973a] bg-[#c9973a]/10 p-4 relative">
-                  <span className="absolute -top-2 left-4 px-2 py-0.5 bg-[#c9973a] text-black text-xs font-semibold rounded">
+                <div className="rounded-xl border-2 border-[#FEBD10] bg-[#FEBD10]/10 p-4 relative">
+                  <span className="absolute -top-2 left-4 px-2 py-0.5 bg-[#FEBD10] text-black text-xs font-semibold rounded">
                     Crédits
                   </span>
                   <h3 className="font-semibold text-white mb-1">Pack 10 crédits</h3>
-                  <p className="text-2xl font-bold text-[#c9973a]">{formatPrice(creditsProduct.amount)}</p>
+                  <p className="text-2xl font-bold text-[#FEBD10]">{formatPrice(creditsProduct.amount)}</p>
                   <p className="text-sm text-white/70 mb-3">achat unique</p>
                   <ul className="text-sm text-white/80 space-y-1 mb-4">
                     <li>• +10 crédits immédiatement</li>
@@ -62,7 +62,7 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
                   <CheckoutSheet
                     product={creditsProduct}
                     trigger={
-                      <button className="w-full py-2.5 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full flex items-center justify-center gap-2">
+                      <button className="w-full py-2.5 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full flex items-center justify-center gap-2">
                         Acheter
                       </button>
                     }
@@ -73,7 +73,7 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
               {dayPassProduct && (
                 <div className="rounded-xl border border-white/10 bg-white/5 p-4">
                   <h3 className="font-semibold text-white mb-1">Day Pass</h3>
-                  <p className="text-2xl font-bold text-[#c9973a]">{formatPrice(dayPassProduct.amount)}</p>
+                  <p className="text-2xl font-bold text-[#FEBD10]">{formatPrice(dayPassProduct.amount)}</p>
                   <p className="text-sm text-white/70 mb-3">aujourd&apos;hui</p>
                   <ul className="text-sm text-white/80 space-y-1 mb-4">
                     <li>• Accès 24h</li>
@@ -91,12 +91,12 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
               )}
 
               {proMonthlyProduct && (
-                <div className="rounded-xl border-2 border-[#c9973a] bg-[#c9973a]/10 p-4 relative">
-                  <span className="absolute -top-2 left-4 px-2 py-0.5 bg-[#c9973a] text-black text-xs font-semibold rounded">
+                <div className="rounded-xl border-2 border-[#FEBD10] bg-[#FEBD10]/10 p-4 relative">
+                  <span className="absolute -top-2 left-4 px-2 py-0.5 bg-[#FEBD10] text-black text-xs font-semibold rounded">
                     Recommandé
                   </span>
                   <h3 className="font-semibold text-white mb-1">★ Pro Mensuel</h3>
-                  <p className="text-2xl font-bold text-[#c9973a]">{formatPrice(proMonthlyProduct.amount)}<span className="text-sm font-normal text-white/70">/mois</span></p>
+                  <p className="text-2xl font-bold text-[#FEBD10]">{formatPrice(proMonthlyProduct.amount)}<span className="text-sm font-normal text-white/70">/mois</span></p>
                   <ul className="text-sm text-white/80 space-y-1 mb-4">
                     <li>• Crédits ∞</li>
                     <li>• Tous les outils</li>
@@ -106,7 +106,7 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
                   <CheckoutSheet
                     product={proMonthlyProduct}
                     trigger={
-                      <button className="w-full py-2.5 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full flex items-center justify-center gap-2">
+                      <button className="w-full py-2.5 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full flex items-center justify-center gap-2">
                         Commencer Pro
                       </button>
                     }
@@ -117,7 +117,7 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
               {proAnnualProduct && (
                 <div className="rounded-xl border border-white/10 bg-white/5 p-4">
                   <h3 className="font-semibold text-white mb-1">Pro Annuel</h3>
-                  <p className="text-2xl font-bold text-[#c9973a]">{formatPrice(proAnnualProduct.amount)}<span className="text-sm font-normal text-white/70">/an</span></p>
+                  <p className="text-2xl font-bold text-[#FEBD10]">{formatPrice(proAnnualProduct.amount)}<span className="text-sm font-normal text-white/70">/an</span></p>
                   <p className="text-xs text-white/60 mb-3">= 16,66€/mois · Éco 40€</p>
                   <ul className="text-sm text-white/80 space-y-1 mb-4">
                     <li>• Tout Pro Mensuel</li>
@@ -141,7 +141,7 @@ export default function UpgradeModal({ open, onClose }: { open: boolean; onClose
             <Link
               href="/#pricing"
               onClick={onClose}
-              className="block text-center text-sm text-[#c9973a] hover:underline mt-4"
+              className="block text-center text-sm text-[#FEBD10] hover:underline mt-4"
             >
               Voir tous les détails de nos offres →
             </Link>

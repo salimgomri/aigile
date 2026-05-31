@@ -11,7 +11,7 @@
 
 | Nom | Hex | Usage |
 |-----|-----|-------|
-| **AIgile Gold** | `#c9973a` | Couleur principale, icône, texte, CTA |
+| **AIgile Gold** | `#FEBD10` | Couleur principale, icône, texte, CTA |
 | **AIgile Blue** | `#138eec` | Dégradé icône, accents |
 | **AIgile Navy** | `#0f2240` | Fond sombre, contraste |
 | **Book Orange** | `#E8961E` | Hover, accent secondaire |

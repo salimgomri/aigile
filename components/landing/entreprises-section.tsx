@@ -56,7 +56,7 @@ export default function EntreprisesSection() {
 
   return (
     <section id="entreprises" className="relative py-24 overflow-hidden bg-[#0f2240]">
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_70%_30%,rgba(201,151,58,0.2),transparent_50%)]" />
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_70%_30%,rgba(254, 189, 16,0.2),transparent_50%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">

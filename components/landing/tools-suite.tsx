@@ -268,19 +268,19 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
           </div>
 
           {/* Scoring Deliverable */}
-          <div className="flex min-h-[min(520px,70vh)] flex-col justify-between rounded-3xl border border-[#c9973a]/35 bg-gradient-to-br from-[#c9973a]/10 via-aigile-blue/5 to-background p-8 sm:p-10 shadow-xl shadow-[#c9973a]/10 ring-1 ring-[#e8961e]/20 transition-all hover:border-[#e8961e]/50">
+          <div className="flex min-h-[min(520px,70vh)] flex-col justify-between rounded-3xl border border-[#FEBD10]/35 bg-gradient-to-br from-[#FEBD10]/10 via-aigile-blue/5 to-background p-8 sm:p-10 shadow-xl shadow-[#FEBD10]/10 ring-1 ring-[#e8961e]/20 transition-all hover:border-[#e8961e]/50">
             <div className="space-y-5">
-              <div className="inline-flex items-center space-x-2 rounded-full border border-[#c9973a]/35 bg-[#c9973a]/10 px-3 py-1">
-                <Package className="h-5 w-5 text-[#c9973a]" />
-                <span className="text-xs font-bold uppercase tracking-wide text-[#c9973a]">
+              <div className="inline-flex items-center space-x-2 rounded-full border border-[#FEBD10]/35 bg-[#FEBD10]/10 px-3 py-1">
+                <Package className="h-5 w-5 text-[#FEBD10]" />
+                <span className="text-xs font-bold uppercase tracking-wide text-[#FEBD10]">
                   {language === 'fr' ? 'Outil phare' : 'Flagship'}
                 </span>
               </div>
               <h3 className="text-3xl font-bold text-foreground sm:text-4xl">{scoringTitle}</h3>
               <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{scoringDesc}</p>
-              <div className="relative mx-auto aspect-[4/3] w-full max-w-sm overflow-hidden rounded-2xl border border-[#c9973a]/20 bg-gradient-to-br from-[#07111f] to-[#0a0a0f]">
+              <div className="relative mx-auto aspect-[4/3] w-full max-w-sm overflow-hidden rounded-2xl border border-[#FEBD10]/20 bg-gradient-to-br from-[#07111f] to-[#0a0a0f]">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Package className="h-28 w-28 text-[#c9973a]/30 sm:h-36 sm:w-36" />
+                  <Package className="h-28 w-28 text-[#FEBD10]/30 sm:h-36 sm:w-36" />
                 </div>
               </div>
             </div>

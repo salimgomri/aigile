@@ -94,10 +94,10 @@ export function EarlyAccessRequestForm({
   const isHero = variant === 'heroDark'
   const labelClass = isHero ? 'text-sm font-semibold text-white/90' : 'text-sm font-semibold text-foreground'
   const fieldClass = isHero
-    ? 'w-full rounded-lg border border-white/20 bg-white/[0.06] px-3 py-2.5 text-sm text-white placeholder:text-white/40 outline-none ring-offset-2 ring-offset-[var(--aigile-black)] focus-visible:ring-2 focus-visible:ring-[#c9973a]/60'
+    ? 'w-full rounded-lg border border-white/20 bg-white/[0.06] px-3 py-2.5 text-sm text-white placeholder:text-white/40 outline-none ring-offset-2 ring-offset-[var(--aigile-black)] focus-visible:ring-2 focus-visible:ring-[#FEBD10]/60'
     : 'w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground'
   const textareaClass = isHero
-    ? 'w-full resize-none rounded-lg border border-white/20 bg-white/[0.06] px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none ring-offset-2 ring-offset-[var(--aigile-black)] focus-visible:ring-2 focus-visible:ring-[#c9973a]/60'
+    ? 'w-full resize-none rounded-lg border border-white/20 bg-white/[0.06] px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none ring-offset-2 ring-offset-[var(--aigile-black)] focus-visible:ring-2 focus-visible:ring-[#FEBD10]/60'
     : 'w-full resize-none rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground'
   const feedbackOk = isHero ? 'text-emerald-400/95' : 'text-green-600 dark:text-green-400'
   const feedbackErr = isHero ? 'text-red-400' : 'text-destructive'

@@ -11,7 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         // AIgile Brand Colors
-        'aigile-gold': '#c9973a',
+        'aigile-gold': '#FEBD10',
         'aigile-blue': '#138eec',
         'aigile-navy': '#0f2240',
         'aigile-dark': '#07111f',

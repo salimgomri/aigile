@@ -5,7 +5,7 @@
 @layer base {
   /* 
    * AIGILE BRAND COLORS - Fixed Dark Theme
-   * Gold #c9973a, Blue #138eec, Navy #0f2240, Dark #07111f
+   * Gold #FEBD10, Blue #138eec, Navy #0f2240, Dark #07111f
    */
   :root {
     /* Fixed Dark Theme (No Light Mode Toggle) */
@@ -15,19 +15,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 218 40% 12%;
     --popover-foreground: 0 0% 98%;
-    --primary: 42 54% 51%;         /* AIgile Gold #c9973a */
+    --primary: 44 99% 53%;         /* AIgile Gold #FEBD10 */
     --primary-foreground: 216 47% 9%;
     --secondary: 207 87% 50%;      /* AIgile Blue #138eec */
     --secondary-foreground: 0 0% 98%;
     --muted: 218 30% 18%;
     --muted-foreground: 0 0% 65%;
-    --accent: 42 54% 51%;
+    --accent: 44 99% 53%;
     --accent-foreground: 216 47% 9%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 98%;
     --border: 218 30% 20%;
     --input: 218 30% 18%;
-    --ring: 42 54% 51%;
+    --ring: 44 99% 53%;
     --radius: 0.75rem;
 
     /* Landing hero carousel — additive only */
@@ -37,10 +37,10 @@
     --aigile-border: rgba(255, 255, 255, 0.08);
     --aigile-white: #f0ede6;
     --aigile-muted: rgba(240, 237, 230, 0.45);
-    --aigile-hero-gold: #c9973a;
+    --aigile-hero-gold: #FEBD10;
     --aigile-hero-orange: #e8961e;
-    --aigile-hero-gold-dim: rgba(201, 151, 58, 0.14);
-    --aigile-hero-gold-glow: rgba(201, 151, 58, 0.28);
+    --aigile-hero-gold-dim: rgba(254, 189, 16, 0.14);
+    --aigile-hero-gold-glow: rgba(254, 189, 16, 0.28);
   }
 
   * {
@@ -110,8 +110,8 @@
 }
 
 @keyframes cta-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(201, 151, 58, 0.2); }
-  50% { box-shadow: 0 0 28px rgba(201, 151, 58, 0.35); }
+  0%, 100% { box-shadow: 0 0 20px rgba(254, 189, 16, 0.2); }
+  50% { box-shadow: 0 0 28px rgba(254, 189, 16, 0.35); }
 }
 .animate-cta-glow {
   animation: cta-glow 2.5s ease-in-out infinite;
@@ -271,7 +271,7 @@
 
 .landing-hero-cta-micro:hover {
   transform: scale(1.03);
-  box-shadow: 0 12px 40px rgba(201, 151, 58, 0.28);
+  box-shadow: 0 12px 40px rgba(254, 189, 16, 0.28);
 }
 
 .landing-hero-cta-micro:active {

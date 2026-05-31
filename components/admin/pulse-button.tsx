@@ -40,7 +40,7 @@ export function PulseButton({ variant, shimmerLayer, children, className }: Puls
           beat.to(root, {
             scale: 1.038,
             boxShadow:
-              '0 0 0 4px rgba(201,151,58,0.48), 0 0 36px rgba(232,150,30,0.42), 0 0 64px rgba(201,151,58,0.18)',
+              '0 0 0 4px rgba(254, 189, 16,0.48), 0 0 36px rgba(232,150,30,0.42), 0 0 64px rgba(254, 189, 16,0.18)',
             duration: 0.11,
             ease: 'power2.out',
           })
@@ -48,13 +48,13 @@ export function PulseButton({ variant, shimmerLayer, children, className }: Puls
           beat.to(root, {
             scale: 1.042,
             boxShadow:
-              '0 0 0 7px rgba(201,151,58,0.4), 0 0 48px rgba(232,150,30,0.52), 0 0 80px rgba(201,151,58,0.22)',
+              '0 0 0 7px rgba(254, 189, 16,0.4), 0 0 48px rgba(232,150,30,0.52), 0 0 80px rgba(254, 189, 16,0.22)',
             duration: 0.11,
             ease: 'power2.out',
           })
           beat.to(root, {
             scale: 1,
-            boxShadow: '0 0 0 0 rgba(201,151,58,0), 0 0 0 rgba(0,0,0,0)',
+            boxShadow: '0 0 0 0 rgba(254, 189, 16,0), 0 0 0 rgba(0,0,0,0)',
             duration: 0.19,
             ease: 'power3.inOut',
           })

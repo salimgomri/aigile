@@ -15,8 +15,8 @@ import { Sparkles, Target, TrendingUp, Users, BarChart3, Layers, Calendar, Heart
 import type { RetroInsights, ScoringInsights, WestrumInsights, OkrCheckinInsights } from '@/lib/admin/aggregate-tool-insights'
 import { PATTERNS, type PatternCode } from '@/lib/retro/patterns'
 
-const GOLD = '#c9973a'
-const GOLD_DIM = 'rgba(201, 151, 58, 0.35)'
+const GOLD = '#FEBD10'
+const GOLD_DIM = 'rgba(254, 189, 16, 0.35)'
 const TEAL = '#0d9488'
 
 const RETRO_ACTION_LABELS: Record<string, string> = {

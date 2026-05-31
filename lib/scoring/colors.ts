@@ -15,4 +15,4 @@ export const RAG_BG = {
   na: '#F3F4F6',
 } as const
 
-export const BRAND = { navy: '#0F2240', gold: '#C9973A', blue: '#138EEC' } as const
+export const BRAND = { navy: '#0F2240', gold: '#FEBD10', blue: '#138EEC' } as const

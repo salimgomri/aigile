@@ -29,10 +29,10 @@ Je développe une app SaaS "AIgile" (Scrum augmenté par l’IA, aigile.lu). J�
 Contraintes :
 - HTML inline (pas de CSS externe) pour compatibilité clients mail
 - Largeur max ~600px
-- Couleur principale : #c9973a (or/doré)
+- Couleur principale : #FEBD10 (or/doré)
 - Police : système (sans-serif)
 - Structure : header avec logo/titre, corps, CTA (bouton), footer discret
-- Le bouton CTA doit être bien visible, fond #c9973a, texte noir
+- Le bouton CTA doit être bien visible, fond #FEBD10, texte noir
 - Footer : "AIgile — Scrum Augmenté par l’IA · aigile.lu"
 
 Génère un template réutilisable avec des placeholders :

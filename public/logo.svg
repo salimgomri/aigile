@@ -9,7 +9,7 @@
       <stop offset="100%" style="stop-color:#0ba4a0;stop-opacity:1" />
     </linearGradient>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c9973a;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#FEBD10;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#e8b558;stop-opacity:1" />
     </linearGradient>
     <filter id="glow">
@@ -38,7 +38,7 @@
 
   <!-- Decorative arc top-right -->
   <circle cx="260" cy="40" r="80" fill="none" stroke="url(#accentGrad)" stroke-width="1" opacity="0.2"/>
-  <circle cx="260" cy="40" r="55" fill="none" stroke="#c9973a" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="260" cy="40" r="55" fill="none" stroke="#FEBD10" stroke-width="0.5" opacity="0.15"/>
 
   <!-- Gold top accent bar -->
   <rect x="30" y="30" width="50" height="4" rx="2" fill="url(#goldGrad)"/>
@@ -52,7 +52,7 @@
   <rect x="30" y="155" width="240" height="2" rx="1" fill="url(#accentGrad)" opacity="0.6"/>
 
   <!-- Tagline -->
-  <text x="30" y="183" font-family="Georgia, serif" font-size="13" fill="#c9973a" font-style="italic" letter-spacing="0.5">Scrum Augmenté · IA · Terrain</text>
+  <text x="30" y="183" font-family="Georgia, serif" font-size="13" fill="#FEBD10" font-style="italic" letter-spacing="0.5">Scrum Augmenté · IA · Terrain</text>
 
   <!-- Metrics row -->
   <g transform="translate(30, 205)">
@@ -65,8 +65,8 @@
     <text x="102" y="15" font-family="'Courier New', monospace" font-size="9" fill="#0ba4a0" text-anchor="middle" font-weight="bold">DORA</text>
 
     <!-- HI pill -->
-    <rect x="136" y="0" width="38" height="22" rx="11" fill="rgba(201,151,58,0.15)" stroke="#c9973a" stroke-width="0.8"/>
-    <text x="155" y="15" font-family="'Courier New', monospace" font-size="9" fill="#c9973a" text-anchor="middle" font-weight="bold">HI</text>
+    <rect x="136" y="0" width="38" height="22" rx="11" fill="rgba(254, 189, 16,0.15)" stroke="#FEBD10" stroke-width="0.8"/>
+    <text x="155" y="15" font-family="'Courier New', monospace" font-size="9" fill="#FEBD10" text-anchor="middle" font-weight="bold">HI</text>
 
     <!-- OKR pill -->
     <rect x="182" y="0" width="42" height="22" rx="11" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>

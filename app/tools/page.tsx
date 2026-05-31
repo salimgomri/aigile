@@ -20,7 +20,7 @@ export default function ToolsPage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 30% 20%, rgba(201,151,58,0.06) 0%, transparent 50%),
+            backgroundImage: `radial-gradient(circle at 30% 20%, rgba(254, 189, 16,0.06) 0%, transparent 50%),
                              radial-gradient(circle at 70% 80%, rgba(19,142,236,0.05) 0%, transparent 50%)`,
           }}
         />

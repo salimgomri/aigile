@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 40,
     height: 40,
-    backgroundColor: '#c9973a',
+    backgroundColor: '#FEBD10',
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#c9973a',
+    color: '#FEBD10',
   },
   date: {
     fontSize: 10,
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#c9973a',
+    color: '#FEBD10',
     marginBottom: 8,
   },
   metric: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   metricValue: {
     fontSize: 12,
-    color: '#c9973a',
+    color: '#FEBD10',
     fontWeight: 'bold',
   },
   recommendations: {

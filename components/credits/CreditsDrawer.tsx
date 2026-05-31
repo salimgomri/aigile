@@ -30,11 +30,11 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
 
   return (
     <>
-      <div className="fixed top-0 right-0 z-50 w-full max-w-md h-full bg-[#0f2240] border-l border-[#c9973a]/30 shadow-2xl">
+      <div className="fixed top-0 right-0 z-50 w-full max-w-md h-full bg-[#0f2240] border-l border-[#FEBD10]/30 shadow-2xl">
         <div className="flex flex-col h-full overflow-y-auto">
           <div className="flex items-center justify-between p-4 border-b border-white/10">
             <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-              <Zap className="w-5 h-5 text-[#c9973a]" />
+              <Zap className="w-5 h-5 text-[#FEBD10]" />
               Tes crédits AIgile
             </h2>
             <button onClick={onClose} className="p-2 text-white/70 hover:text-white rounded-lg">
@@ -50,7 +50,7 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                     <p className="text-2xl font-bold text-white">⚡ {status.creditsRemaining ?? 0}</p>
                     <p className="text-sm text-white/70">crédits restants ce mois</p>
                     <div className="mt-2 h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#c9973a] rounded-full" style={{ width: `${((status.creditsRemaining ?? 0) / 10) * 100}%` }} />
+                      <div className="h-full bg-[#FEBD10] rounded-full" style={{ width: `${((status.creditsRemaining ?? 0) / 10) * 100}%` }} />
                     </div>
                     <p className="text-xs text-white/50 mt-2">
                       Reset le {status.nextResetAt ? new Date(status.nextResetAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) : '—'}
@@ -63,7 +63,7 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                     {Object.entries(CREDIT_ACTIONS).map(([key, v]) => (
                       <div key={key} className="flex justify-between items-center py-2 px-3 rounded-lg bg-white/5 text-sm">
                         <span className="text-white/90">{v.label}</span>
-                        <span className="text-[#c9973a]">{v.cost} crédit{v.cost > 1 ? 's' : ''}</span>
+                        <span className="text-[#FEBD10]">{v.cost} crédit{v.cost > 1 ? 's' : ''}</span>
                       </div>
                     ))}
                   </div>
@@ -71,14 +71,14 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-sm font-medium text-white mb-3">Passe Pro — crédits illimités</p>
                   <div className="flex gap-2">
-                    <button onClick={() => setShowUpgrade(true)} className="flex-1 py-2.5 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm">
+                    <button onClick={() => setShowUpgrade(true)} className="flex-1 py-2.5 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm">
                       Passer Pro — 19,99€/mois
                     </button>
                     <button onClick={() => setShowUpgrade(true)} className="py-2.5 px-4 border border-white/20 text-white rounded-full text-sm hover:bg-white/10">
                       Day Pass — 9,99€
                     </button>
                   </div>
-                  <Link href="/#pricing" onClick={onClose} className="block text-center text-xs text-[#c9973a] hover:underline mt-3">
+                  <Link href="/#pricing" onClick={onClose} className="block text-center text-xs text-[#FEBD10] hover:underline mt-3">
                     Voir la page tarifs complète →
                   </Link>
                 </div>
@@ -88,17 +88,17 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
               <>
                 <div>
                   <p className="text-sm text-white/60 mb-2">Day Pass actif</p>
-                  <div className="rounded-xl border border-[#c9973a]/30 bg-[#c9973a]/10 p-4">
-                    <p className="text-xl font-bold text-[#c9973a]">⏱ Expire dans {status.dayPassTimeRemaining}</p>
+                  <div className="rounded-xl border border-[#FEBD10]/30 bg-[#FEBD10]/10 p-4">
+                    <p className="text-xl font-bold text-[#FEBD10]">⏱ Expire dans {status.dayPassTimeRemaining}</p>
                     <p className="text-sm text-white/80 mt-1">Crédits illimités jusqu&apos;à expiration</p>
                   </div>
                 </div>
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-sm text-white/80 mb-3">Tu utilises souvent AIgile ? Pro = 2 Day Pass</p>
-                  <button onClick={() => setShowUpgrade(true)} className="w-full py-2.5 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full">
+                  <button onClick={() => setShowUpgrade(true)} className="w-full py-2.5 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full">
                     Passer Pro
                   </button>
-                  <Link href="/#pricing" onClick={onClose} className="block text-center text-xs text-[#c9973a] hover:underline mt-3">
+                  <Link href="/#pricing" onClick={onClose} className="block text-center text-xs text-[#FEBD10] hover:underline mt-3">
                     Voir la page tarifs complète →
                   </Link>
                 </div>
@@ -107,7 +107,7 @@ export default function CreditsDrawer(props: { open: boolean; onClose: () => voi
             {(status?.plan === 'pro_monthly' || status?.plan === 'pro_annual') && (
               <>
                 <div>
-                  <p className="text-sm text-[#c9973a] font-medium">✦ Plan Pro</p>
+                  <p className="text-sm text-[#FEBD10] font-medium">✦ Plan Pro</p>
                   <p className="text-white/80 text-sm">Crédits illimités</p>
                 </div>
                 <button

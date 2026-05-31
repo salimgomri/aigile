@@ -18,7 +18,7 @@ export default function EdmondsonPage() {
         <div className="mx-auto max-w-2xl">
           <Link
             href="/dashboard/westrum"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 transition hover:text-[#c9973a]"
+            className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 transition hover:text-[#FEBD10]"
           >
             <ArrowLeft className="h-4 w-4" />
             Westrum

@@ -93,14 +93,14 @@ function TierBadge({ tier }: { tier: IntelligenceTier }) {
   const { layout, rank } = tier
   if (layout.variant === 'visionnaires_gold_fine') {
     return (
-      <span className="inline-flex items-center rounded-md border-[0.5px] border-aigile-gold/75 bg-black/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-aigile-gold shadow-[0_0_18px_rgba(201,151,58,0.22)]">
+      <span className="inline-flex items-center rounded-md border-[0.5px] border-aigile-gold/75 bg-black/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-aigile-gold shadow-[0_0_18px_rgba(254, 189, 16,0.22)]">
         Vision
       </span>
     )
   }
   if (layout.variant === 'empire_gold_black') {
     return (
-      <span className="inline-flex items-center rounded-md border border-aigile-gold/70 bg-black px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-aigile-gold shadow-[0_0_24px_rgba(201,151,58,0.25)]">
+      <span className="inline-flex items-center rounded-md border border-aigile-gold/70 bg-black px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-aigile-gold shadow-[0_0_24px_rgba(254, 189, 16,0.25)]">
         Empire
       </span>
     )
@@ -243,7 +243,7 @@ function SourceCard({
         'relative flex flex-col overflow-hidden rounded-2xl border bg-card/80 shadow-sm transition-[filter,opacity,transform,box-shadow,border-color] duration-300 ease-out',
         ok && 'cursor-pointer hover:border-aigile-gold/40',
         tier.layout.variant === 'visionnaires_gold_fine' &&
-          'border-[0.5px] border-aigile-gold/55 bg-gradient-to-b from-black/55 via-zinc-950/88 to-black/92 shadow-[0_0_0_0.5px_rgba(201,151,58,0.1)] md:min-h-[148px]',
+          'border-[0.5px] border-aigile-gold/55 bg-gradient-to-b from-black/55 via-zinc-950/88 to-black/92 shadow-[0_0_0_0.5px_rgba(254, 189, 16,0.1)] md:min-h-[148px]',
         tier.layout.variant === 'empire_gold_black' &&
           'border-aigile-gold/35 bg-gradient-to-b from-zinc-950/90 to-black/80 md:min-h-[160px]',
         tier.layout.variant === 'wealth_hbr' && 'border-emerald-900/40 bg-emerald-950/10',
@@ -553,7 +553,7 @@ export function IntelligenceSourcesMatrix({
               className={cn(
                 'grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-5',
                 tier.layout.variant === 'visionnaires_gold_fine' &&
-                  'rounded-3xl border-[0.5px] border-aigile-gold/42 bg-gradient-to-b from-amber-950/18 via-black/45 to-zinc-950/55 p-4 shadow-[inset_0_1px_0_rgba(201,151,58,0.07)] md:p-6',
+                  'rounded-3xl border-[0.5px] border-aigile-gold/42 bg-gradient-to-b from-amber-950/18 via-black/45 to-zinc-950/55 p-4 shadow-[inset_0_1px_0_rgba(254, 189, 16,0.07)] md:p-6',
                 tier.layout.variant === 'empire_gold_black' &&
                   'rounded-3xl border border-aigile-gold/20 bg-gradient-to-br from-black/80 via-zinc-950/70 to-zinc-950/40 p-4 md:p-6',
               )}

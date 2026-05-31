@@ -187,7 +187,7 @@ export default function OnboardingPage() {
     <div className="min-h-screen bg-background flex items-center justify-center px-4 py-8">
       <div className="max-w-lg w-full space-y-8">
         <div className="text-center">
-          <div className="w-16 h-16 rounded-xl bg-[#c9973a] mx-auto flex items-center justify-center shadow-lg mb-4">
+          <div className="w-16 h-16 rounded-xl bg-[#FEBD10] mx-auto flex items-center justify-center shadow-lg mb-4">
             <Users className="w-8 h-8 text-black" />
           </div>
           <h1 className="text-2xl font-bold text-foreground">
@@ -217,7 +217,7 @@ export default function OnboardingPage() {
                 value={organizationName}
                 onChange={(e) => setOrganizationName(e.target.value)}
                 placeholder='ex: "FinTech Luxembourg", "Equipe Phoenix"'
-                className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9973a] text-foreground"
+                className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FEBD10] text-foreground"
               />
             </div>
             <div>
@@ -230,7 +230,7 @@ export default function OnboardingPage() {
                 value={teamName}
                 onChange={(e) => setTeamName(e.target.value)}
                 placeholder='ex: "Équipe Phoenix", "Squad Backend"'
-                className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9973a] text-foreground"
+                className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FEBD10] text-foreground"
               />
             </div>
             <div>
@@ -246,7 +246,7 @@ export default function OnboardingPage() {
                       value={r.value}
                       checked={role === r.value}
                       onChange={() => setRole(r.value)}
-                      className="text-[#c9973a] focus:ring-[#c9973a]"
+                      className="text-[#FEBD10] focus:ring-[#FEBD10]"
                     />
                     <span className="text-sm text-foreground">{r.label}</span>
                   </label>
@@ -256,7 +256,7 @@ export default function OnboardingPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full px-6 py-3 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full transition-colors disabled:opacity-50"
+              className="w-full px-6 py-3 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full transition-colors disabled:opacity-50"
             >
               {loading ? 'Création...' : 'Créer mon espace'}
             </button>
@@ -315,7 +315,7 @@ export default function OnboardingPage() {
                 <button
                   type="button"
                   onClick={addRealMember}
-                  className="text-sm text-[#c9973a] hover:underline flex items-center gap-1"
+                  className="text-sm text-[#FEBD10] hover:underline flex items-center gap-1"
                 >
                   <Plus className="w-4 h-4" /> Ajouter un membre
                 </button>
@@ -347,7 +347,7 @@ export default function OnboardingPage() {
               <button
                 type="button"
                 onClick={addGhost}
-                className="text-sm text-[#c9973a] hover:underline flex items-center gap-1"
+                className="text-sm text-[#FEBD10] hover:underline flex items-center gap-1"
               >
                 <Plus className="w-4 h-4" /> Ajouter un fantôme
               </button>
@@ -365,7 +365,7 @@ export default function OnboardingPage() {
                   <button
                     type="button"
                     onClick={copyCode}
-                    className="px-4 py-2 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full flex items-center gap-2"
+                    className="px-4 py-2 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full flex items-center gap-2"
                   >
                     <Copy className="w-4 h-4" /> Copier
                   </button>
@@ -381,7 +381,7 @@ export default function OnboardingPage() {
                 type="button"
                 onClick={handleStep2Send}
                 disabled={loading}
-                className="flex-1 px-6 py-3 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full disabled:opacity-50"
+                className="flex-1 px-6 py-3 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full disabled:opacity-50"
               >
                 {loading ? 'Envoi...' : 'Envoyer les invitations'}
               </button>

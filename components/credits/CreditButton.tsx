@@ -63,7 +63,7 @@ export default function CreditButton({
   }, [action, extraBody, canAfford, isZero, disabled, onConfirmed, refresh])
 
   const badge = status?.isUnlimited ? (
-    <span className="text-xs font-medium text-[#c9973a]">∞</span>
+    <span className="text-xs font-medium text-[#FEBD10]">∞</span>
   ) : isZero ? (
     <span className="text-xs font-medium text-red-400">0/10 🔒</span>
   ) : (
@@ -81,7 +81,7 @@ export default function CreditButton({
     'inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed'
 
   const enabledClass = canAfford && !isZero
-    ? 'bg-[#c9973a] hover:bg-[#E8961E] text-black'
+    ? 'bg-[#FEBD10] hover:bg-[#E8961E] text-black'
     : 'bg-gray-700 text-gray-400 cursor-not-allowed'
 
   return (

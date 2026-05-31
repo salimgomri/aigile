@@ -157,7 +157,7 @@ function PricingSectionContent() {
               disabled={toggleLocked}
               className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${
                 effectiveIsAnnual
-                  ? 'bg-[#c9973a] text-black'
+                  ? 'bg-[#FEBD10] text-black'
                   : 'text-white/60 hover:text-white'
               } ${toggleLocked ? 'cursor-default opacity-90' : 'cursor-pointer'}`}
             >
@@ -173,35 +173,35 @@ function PricingSectionContent() {
           <div
             className={`rounded-2xl p-6 flex flex-col transition-all ${
               isDayPass && isLoggedIn
-                ? 'border-2 border-[#c9973a] bg-[#c9973a]/15 ring-2 ring-[#c9973a]/30'
+                ? 'border-2 border-[#FEBD10] bg-[#FEBD10]/15 ring-2 ring-[#FEBD10]/30'
                 : isPro && isLoggedIn
                   ? 'border border-white/10 bg-white/5 opacity-60'
                   : 'border border-white/20 bg-white/5'
             }`}
           >
             <h3 className="text-xl font-bold text-white mb-1">Day Pass</h3>
-            <p className="text-3xl font-bold text-[#c9973a] mb-1">
+            <p className="text-3xl font-bold text-[#FEBD10] mb-1">
               {dayPassProduct ? formatPrice(dayPassProduct.amount) : '9,99 €'}
             </p>
             <p className={`text-sm text-white/60 ${isDayPass && isLoggedIn && status?.dayPassTimeRemaining ? 'mb-2' : 'mb-6'}`}>
               {t.dayPassPrice}
             </p>
             {isDayPass && isLoggedIn && status?.dayPassTimeRemaining && (
-              <p className="text-sm font-medium text-[#c9973a] mb-6">
+              <p className="text-sm font-medium text-[#FEBD10] mb-6">
                 ⏱ {t.dayPassExpiresIn} {status.dayPassTimeRemaining}
               </p>
             )}
             <ul className="space-y-3 mb-8 flex-1">
               {DAY_PASS_FEATURES.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-white/90 text-sm">
-                  <Check className="w-4 h-4 text-[#c9973a] flex-shrink-0" />
+                  <Check className="w-4 h-4 text-[#FEBD10] flex-shrink-0" />
                   {f}
                 </li>
               ))}
             </ul>
             {isDayPass && isLoggedIn ? (
               <div className="space-y-2">
-                <div className="w-full py-3 rounded-full bg-white/15 text-white/80 text-center text-sm font-medium cursor-default select-none border border-[#c9973a]/40">
+                <div className="w-full py-3 rounded-full bg-white/15 text-white/80 text-center text-sm font-medium cursor-default select-none border border-[#FEBD10]/40">
                   ✓ {t.currentPlan}
                 </div>
                 {dayPassProduct && (
@@ -209,7 +209,7 @@ function PricingSectionContent() {
                     product={dayPassProduct}
                     defaultOpen={openProductId === 'day_pass'}
                     trigger={
-                      <button className="w-full py-3 rounded-full bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold transition-all">
+                      <button className="w-full py-3 rounded-full bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold transition-all">
                         {t.dayPassRenew}
                       </button>
                     }
@@ -247,17 +247,17 @@ function PricingSectionContent() {
           <div
             className={`rounded-2xl p-6 flex flex-col relative shadow-lg scale-105 max-md:scale-100 transition-all ${
               isPro && isLoggedIn
-                ? 'border-2 border-[#c9973a] bg-[#c9973a]/20 ring-2 ring-[#c9973a]/40'
-                : 'border-2 border-[#c9973a] bg-[#c9973a]/10'
+                ? 'border-2 border-[#FEBD10] bg-[#FEBD10]/20 ring-2 ring-[#FEBD10]/40'
+                : 'border-2 border-[#FEBD10] bg-[#FEBD10]/10'
             }`}
           >
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#c9973a] text-black text-xs font-bold rounded-full">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#FEBD10] text-black text-xs font-bold rounded-full">
               ★ {t.recommended}
             </div>
             <h3 className="text-xl font-bold text-white mt-2 mb-1">{t.pro}</h3>
             {effectiveIsAnnual ? (
               <>
-                <p className="text-3xl font-bold text-[#c9973a] mb-1">
+                <p className="text-3xl font-bold text-[#FEBD10] mb-1">
                   {proAnnualProduct ? formatPrice(proAnnualProduct.amount) : '199,99 €'}
                   <span className="text-sm font-normal text-white/70">/an</span>
                 </p>
@@ -267,7 +267,7 @@ function PricingSectionContent() {
               </>
             ) : (
               <>
-                <p className="text-3xl font-bold text-[#c9973a] mb-1">
+                <p className="text-3xl font-bold text-[#FEBD10] mb-1">
                   {proMonthlyProduct ? formatPrice(proMonthlyProduct.amount) : '19,99 €'}
                   <span className="text-sm font-normal text-white/70">{t.proMonthlyPrice}</span>
                 </p>
@@ -277,14 +277,14 @@ function PricingSectionContent() {
             <ul className="space-y-3 mb-8 flex-1">
               {PRO_FEATURES.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-white/90 text-sm">
-                  <Check className="w-4 h-4 text-[#c9973a] flex-shrink-0" />
+                  <Check className="w-4 h-4 text-[#FEBD10] flex-shrink-0" />
                   {f}
                 </li>
               ))}
             </ul>
             {isPro && isLoggedIn ? (
               <div className="space-y-2">
-                <div className="w-full py-3 rounded-full bg-white/15 text-white/80 text-center text-sm font-medium cursor-default select-none border border-[#c9973a]/40">
+                <div className="w-full py-3 rounded-full bg-white/15 text-white/80 text-center text-sm font-medium cursor-default select-none border border-[#FEBD10]/40">
                   ✓ {t.currentPlan}
                 </div>
                 <button
@@ -304,7 +304,7 @@ function PricingSectionContent() {
                       window.location.href = '/dashboard'
                     }
                   }}
-                  className="block w-full text-center text-sm text-[#c9973a] hover:underline bg-transparent border-0 cursor-pointer"
+                  className="block w-full text-center text-sm text-[#FEBD10] hover:underline bg-transparent border-0 cursor-pointer"
                 >
                   {t.manageSubscription}
                 </button>
@@ -316,7 +316,7 @@ function PricingSectionContent() {
                 trigger={
                   <button
                     onClick={() => trackEvent('pro_subscription', { plan: 'pro', value: 199, currency: 'EUR' })}
-                    className="w-full py-4 rounded-full bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-full bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold transition-all flex items-center justify-center gap-2"
                   >
                     {t.startPro} →
                   </button>
@@ -333,7 +333,7 @@ function PricingSectionContent() {
           <div
             className={`rounded-2xl p-6 flex flex-col transition-all ${
               isFree && isLoggedIn
-                ? 'border-2 border-[#c9973a] bg-[#c9973a]/15 ring-2 ring-[#c9973a]/30'
+                ? 'border-2 border-[#FEBD10] bg-[#FEBD10]/15 ring-2 ring-[#FEBD10]/30'
                 : isPro && isLoggedIn
                   ? 'border border-white/10 bg-white/5 opacity-60'
                   : 'border border-white/20 bg-white/5'
@@ -345,7 +345,7 @@ function PricingSectionContent() {
             <ul className="space-y-3 mb-8 flex-1">
               {FREE_FEATURES.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-white/90 text-sm">
-                  <Check className="w-4 h-4 text-[#c9973a] flex-shrink-0" />
+                  <Check className="w-4 h-4 text-[#FEBD10] flex-shrink-0" />
                   {f}
                 </li>
               ))}
@@ -357,7 +357,7 @@ function PricingSectionContent() {
               ))}
             </ul>
             {isFree && isLoggedIn ? (
-              <div className="w-full py-3 rounded-full bg-white/15 text-white/80 text-center text-sm font-medium cursor-default select-none border border-[#c9973a]/40">
+              <div className="w-full py-3 rounded-full bg-white/15 text-white/80 text-center text-sm font-medium cursor-default select-none border border-[#FEBD10]/40">
                 ✓ {t.currentPlan}
               </div>
             ) : isPro && isLoggedIn ? (

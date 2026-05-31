@@ -250,7 +250,7 @@ export default function SettingsTeamPage() {
                   <option key={r.value} value={r.value}>{r.label}</option>
                 ))}
               </select>
-              <button onClick={handleInvite} disabled={!inviteEmail.trim()} className="px-4 py-2 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm disabled:opacity-50">
+              <button onClick={handleInvite} disabled={!inviteEmail.trim()} className="px-4 py-2 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm disabled:opacity-50">
                 Inviter
               </button>
             </div>
@@ -261,7 +261,7 @@ export default function SettingsTeamPage() {
               <p className="text-sm text-muted-foreground mt-1">Passez Pro pour inviter plus de membres.</p>
               <button
                 onClick={() => setUpgradeModalOpen(true)}
-                className="mt-3 px-4 py-2 bg-[#c9973a] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm"
+                className="mt-3 px-4 py-2 bg-[#FEBD10] hover:bg-[#E8961E] text-black font-semibold rounded-full text-sm"
               >
                 Passer Pro — 19,99€/mois
               </button>
@@ -279,7 +279,7 @@ export default function SettingsTeamPage() {
                   <span>{g.display_name}</span>
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => setMergeGhostId(g.id)} className="text-sm text-[#c9973a] hover:underline flex items-center gap-1">
+                  <button onClick={() => setMergeGhostId(g.id)} className="text-sm text-[#FEBD10] hover:underline flex items-center gap-1">
                     <Merge className="w-4 h-4" /> Fusionner
                   </button>
                   <button onClick={() => handleRemoveGhost(g.id)} className="p-1 text-destructive hover:bg-destructive/10 rounded">
@@ -316,7 +316,7 @@ export default function SettingsTeamPage() {
                     <span>{inv.email}</span>
                     <span className="text-sm text-muted-foreground">{inv.role}</span>
                   </div>
-                  <button onClick={() => handleResend(inv.id)} className="text-sm text-[#c9973a] hover:underline">
+                  <button onClick={() => handleResend(inv.id)} className="text-sm text-[#FEBD10] hover:underline">
                     Renvoyer
                   </button>
                 </div>
@@ -340,7 +340,7 @@ export default function SettingsTeamPage() {
                 placeholder="thomas@fintech.lu"
                 className="w-full px-3 py-2 border rounded-lg"
               />
-              <button onClick={searchUsers} className="px-4 py-2 bg-[#c9973a] text-black font-semibold rounded-full text-sm">
+              <button onClick={searchUsers} className="px-4 py-2 bg-[#FEBD10] text-black font-semibold rounded-full text-sm">
                 Rechercher
               </button>
               {mergeResults.length > 0 && (

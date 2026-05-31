@@ -20,7 +20,7 @@ export default async function CheckInListPage({ params, searchParams }: Props) {
 
       <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#c9973a]">Sprint Review</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#FEBD10]">Sprint Review</p>
           <h1 className="mt-1 text-2xl font-bold text-[#0f2240]">OKR Check-in</h1>
           <p className="mt-2 max-w-xl text-sm text-gray-600">
             Rituel de clôture — verbalisez l&apos;avancement OKR et l&apos;ajustement acté pour le prochain sprint.
@@ -28,7 +28,7 @@ export default async function CheckInListPage({ params, searchParams }: Props) {
         </div>
         <Link
           href={`/dashboard/${teamId}/checkin/new`}
-          className="inline-flex items-center gap-2 rounded-full bg-[#c9973a] px-5 py-2.5 text-sm font-bold text-[#0f2240] hover:bg-[#b8862f]"
+          className="inline-flex items-center gap-2 rounded-full bg-[#FEBD10] px-5 py-2.5 text-sm font-bold text-[#0f2240] hover:bg-[#b8862f]"
         >
           <Plus className="h-4 w-4" />
           Nouveau Check-in

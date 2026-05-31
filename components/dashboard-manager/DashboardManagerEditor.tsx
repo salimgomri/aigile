@@ -223,7 +223,7 @@ export default function DashboardManagerEditor() {
           type="button"
           onClick={handleNarrative}
           disabled={narrativeLoading || !canAffordNarrative}
-          className="inline-flex items-center gap-2 rounded-sm bg-[#c9973a] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-black hover:bg-[#E8961E] disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-sm bg-[#FEBD10] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-black hover:bg-[#E8961E] disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Sparkles className="h-4 w-4" />
           {fr ? 'Narrative IA (P25)' : 'AI narrative (P25)'}

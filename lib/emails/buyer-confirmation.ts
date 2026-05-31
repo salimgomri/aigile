@@ -107,7 +107,7 @@ export async function sendBuyerConfirmationEmail(params: BuyerConfirmationParams
   if (isBook && shipping) {
     if (shipping.inPersonPickup) {
       livraisonBlock = `
-        <div style="margin:24px 0;padding:16px;background:#f8fafc;border-radius:8px;border-left:4px solid #c9973a;">
+        <div style="margin:24px 0;padding:16px;background:#f8fafc;border-radius:8px;border-left:4px solid #FEBD10;">
           <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#0f2240;">LIVRAISON</p>
           <p style="margin:0;font-size:14px;color:#334155;">En main propre — Salim te contactera pour convenir d'un rendez-vous.</p>
         </div>`
@@ -115,7 +115,7 @@ export async function sendBuyerConfirmationEmail(params: BuyerConfirmationParams
       const addr = shipping.address
       const countryName = COUNTRIES.find((c) => c.code === addr.country)?.name ?? addr.country
       livraisonBlock = `
-        <div style="margin:24px 0;padding:16px;background:#f8fafc;border-radius:8px;border-left:4px solid #c9973a;">
+        <div style="margin:24px 0;padding:16px;background:#f8fafc;border-radius:8px;border-left:4px solid #FEBD10;">
           <p style="margin:0 0 8px;font-size:14px;font-weight:600;color:#0f2240;">LIVRAISON</p>
           <p style="margin:0;font-size:14px;color:#334155;line-height:1.6;">
             ${addr.name}<br>
@@ -143,7 +143,7 @@ export async function sendBuyerConfirmationEmail(params: BuyerConfirmationParams
   if (isDigital) {
     accesBlock = `
       <div style="margin:24px 0;text-align:center;">
-        <a href="${baseUrl}/dashboard" style="display:inline-block;background:#c9973a;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:9999px;">
+        <a href="${baseUrl}/dashboard" style="display:inline-block;background:#FEBD10;color:#0f2240;font-weight:700;font-size:15px;text-decoration:none;padding:14px 36px;border-radius:9999px;">
           Accéder à AIgile →
         </a>
       </div>`
@@ -157,7 +157,7 @@ export async function sendBuyerConfirmationEmail(params: BuyerConfirmationParams
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
         <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
-          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+          <span style="font-size:26px;font-weight:800;"><span style="color:#FEBD10;">AI</span><span style="color:#fff;">gile</span></span>
           <p style="margin:6px 0 0;color:rgba(255,255,255,0.55);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">Scrum Augmenté par l'IA</p>
         </td></tr>
         <tr><td style="padding:40px;">

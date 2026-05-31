@@ -37,7 +37,7 @@ export function TeamSidebar({ teamId, teamName }: Props) {
   return (
     <aside className="w-full shrink-0 border-b border-gray-200 bg-[#0f2240] text-white md:w-56 md:border-b-0 md:border-r lg:w-64">
       <div className="px-4 py-5">
-        <p className="text-[10px] font-semibold uppercase tracking-widest text-[#c9973a]">Équipe</p>
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-[#FEBD10]">Équipe</p>
         <p className="mt-1 truncate text-sm font-bold">{teamName}</p>
       </div>
       <nav className="flex gap-1 overflow-x-auto px-2 pb-3 md:flex-col md:px-3 md:pb-6">

@@ -31,7 +31,7 @@ export async function sendShippingNotificationEmail(params: {
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
         <tr><td style="background:#0f2240;padding:28px 40px;text-align:center;">
-          <span style="font-size:26px;font-weight:800;"><span style="color:#c9973a;">AI</span><span style="color:#fff;">gile</span></span>
+          <span style="font-size:26px;font-weight:800;"><span style="color:#FEBD10;">AI</span><span style="color:#fff;">gile</span></span>
         </td></tr>
         <tr><td style="padding:40px;">
           <p style="margin:0 0 16px;font-size:15px;color:#1a1a1a;">Bonjour ${buyerName},</p>

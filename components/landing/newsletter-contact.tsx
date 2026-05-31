@@ -55,7 +55,7 @@ export default function NewsletterContactSection() {
   return (
     <section id="contact" className="relative py-24 bg-background">
       {/* Subtle separator */}
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_30%,rgba(201,151,58,0.1),transparent_60%)]" />
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_30%,rgba(254, 189, 16,0.1),transparent_60%)]" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12">

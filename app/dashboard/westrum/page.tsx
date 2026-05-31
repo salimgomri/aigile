@@ -57,12 +57,12 @@ export default async function WestrumPage() {
         <div className="mx-auto max-w-2xl">
           <Link
             href="/"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 transition hover:text-[#c9973a]"
+            className="mb-6 inline-flex items-center gap-2 text-sm text-white/70 transition hover:text-[#FEBD10]"
           >
             <ArrowLeft className="h-4 w-4" />
             Accueil
           </Link>
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#c9973a]">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#FEBD10]">
             DORA · Culture organisationnelle
           </p>
           <h1 className="mt-2 text-2xl font-bold sm:text-3xl">Westrum Culture Survey</h1>

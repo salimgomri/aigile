@@ -98,9 +98,9 @@ export function WestrumHistory() {
             <Line
               type="monotone"
               dataKey="score"
-              stroke="#c9973a"
+              stroke="#FEBD10"
               strokeWidth={2.5}
-              dot={{ r: 4, fill: '#c9973a', strokeWidth: 0 }}
+              dot={{ r: 4, fill: '#FEBD10', strokeWidth: 0 }}
               activeDot={{ r: 6 }}
             />
           </LineChart>
