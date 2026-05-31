@@ -8,7 +8,7 @@ type AnimateInProps = {
   className?: string
   threshold?: number
   cascadeDelay?: number
-  as?: 'div' | 'section' | 'article'
+  as?: 'div' | 'section' | 'article' | 'blockquote'
   fadeOnly?: boolean
 }
 
