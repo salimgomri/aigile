@@ -52,8 +52,27 @@ const COPY: Record<Lang, {
   },
 }
 
+const AIGILE_QR =
+  'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://aigile.lu&color=0f2240&bgcolor=ffffff'
+const LINKEDIN_QR =
+  'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/salimgomri/&color=0f2240&bgcolor=ffffff'
 const CALENDLY_QR =
   'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://calendly.com/salimdulux/30min&color=0f2240&bgcolor=ffffff'
+
+function AboutQr({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="mt-4 rounded-lg bg-white p-2">
+      <Image
+        src={src}
+        alt={alt}
+        width={200}
+        height={200}
+        unoptimized
+        className="h-auto w-[88px] sm:w-[110px]"
+      />
+    </div>
+  )
+}
 
 /** Icône filaire « appel » (SVG inline, aucune librairie) */
 function PhoneIcon({ color }: { color: string }) {
@@ -152,8 +171,9 @@ export function AboutClient() {
               <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: MUTED }}>
                 {t.b1Body}
               </p>
+              <AboutQr src={AIGILE_QR} alt="QR code — aigile.lu" />
               <span
-                className="mt-5 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
                 style={{ backgroundColor: GOLD, color: NAVY }}
               >
                 {t.b1Cta}
@@ -191,8 +211,9 @@ export function AboutClient() {
               <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: NAVY_LIGHT }}>
                 {t.b2Body}
               </p>
+              <AboutQr src={LINKEDIN_QR} alt="QR code — LinkedIn" />
               <span
-                className="mt-5 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
                 style={{ backgroundColor: NAVY, color: GOLD }}
               >
                 {t.b2Cta}
@@ -227,18 +248,9 @@ export function AboutClient() {
               <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: MUTED }}>
                 {t.b3Body}
               </p>
-              <div className="mt-5 hidden rounded-lg bg-white p-2 sm:block">
-                <Image
-                  src={CALENDLY_QR}
-                  alt="QR code — Calendly"
-                  width={200}
-                  height={200}
-                  unoptimized
-                  className="h-auto w-[110px]"
-                />
-              </div>
+              <AboutQr src={CALENDLY_QR} alt="QR code — Calendly" />
               <span
-                className="mt-5 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
                 style={{ backgroundColor: GOLD, color: NAVY }}
               >
                 {t.b3Cta}
