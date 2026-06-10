@@ -80,17 +80,51 @@ const LINKEDIN_QR =
 const CALENDLY_QR =
   'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://calendly.com/salimdulux/30min&color=0f2240&bgcolor=ffffff'
 
-function AboutQr({ src, alt, size = 'md' }: { src: string; alt: string; size?: 'sm' | 'md' }) {
+function AboutQr({
+  src,
+  alt,
+  size = 'md',
+}: {
+  src: string
+  alt: string
+  size?: 'sm' | 'md' | 'lg'
+}) {
+  const sizeClass =
+    size === 'sm' ? 'about-qr-img-sm' : size === 'lg' ? 'about-qr-img-lg' : 'about-qr-img-md'
+
   return (
-    <div className={`about-qr about-interactive-child ${size === 'sm' ? 'about-qr-sm' : ''}`}>
-      <Image
-        src={src}
-        alt={alt}
-        width={200}
-        height={200}
-        unoptimized
-        className={size === 'sm' ? 'h-auto w-[64px]' : 'h-auto w-[72px]'}
-      />
+    <div
+      className={`about-qr about-interactive-child ${size === 'sm' ? 'about-qr-sm' : ''} ${size === 'lg' ? 'about-qr-lg' : ''}`}
+    >
+      <Image src={src} alt={alt} width={200} height={200} unoptimized className={sizeClass} />
+    </div>
+  )
+}
+
+function AboutMobileCase({
+  title,
+  sub,
+  qrSrc,
+  qrAlt,
+  titleColor,
+  subColor,
+}: {
+  title: string
+  sub: string
+  qrSrc: string
+  qrAlt: string
+  titleColor: string
+  subColor: string
+}) {
+  return (
+    <div className="about-block-mobile about-interactive-child">
+      <h2 className="about-mobile-title" style={{ color: titleColor }}>
+        {title}
+      </h2>
+      <AboutQr src={qrSrc} alt={qrAlt} size="lg" />
+      <p className="about-mobile-sub" style={{ color: subColor }}>
+        {sub}
+      </p>
     </div>
   )
 }
@@ -247,22 +281,14 @@ export function AboutClient() {
             <span className="about-mobile-tap" aria-hidden>
               ↗
             </span>
-            <div className="about-block-mobile about-interactive-child">
-              <Image
-                src="/images/book-cover.jpg"
-                alt=""
-                width={40}
-                height={40}
-                className="about-mobile-thumb"
-                aria-hidden
-              />
-              <h2 className="about-mobile-title" style={{ color: GOLD }}>
-                Le Système S.A.L.I.M.
-              </h2>
-              <p className="about-mobile-sub" style={{ color: '#ffffff' }}>
-                {t.b1Sub}
-              </p>
-            </div>
+            <AboutMobileCase
+              title="Le Système S.A.L.I.M."
+              sub={t.b1Sub}
+              qrSrc={SALIM_QR}
+              qrAlt="QR code — aigile.lu/salim"
+              titleColor={GOLD}
+              subColor="#ffffff"
+            />
             <AboutDesktopCase
               title="Le Système S.A.L.I.M."
               sub={t.b1Sub}
@@ -302,17 +328,14 @@ export function AboutClient() {
             <span className="about-mobile-tap" aria-hidden>
               ↗
             </span>
-            <div className="about-block-mobile about-interactive-child">
-              <span className="about-mobile-icon" aria-hidden>
-                <HomeIcon color={NAVY} size={40} />
-              </span>
-              <h2 className="about-mobile-title" style={{ color: NAVY }}>
-                {t.b2Title}
-              </h2>
-              <p className="about-mobile-sub" style={{ color: NAVY }}>
-                {t.b2Sub}
-              </p>
-            </div>
+            <AboutMobileCase
+              title={t.b2Title}
+              sub={t.b2Sub}
+              qrSrc={AIGILE_QR}
+              qrAlt="QR code — aigile.lu"
+              titleColor={NAVY}
+              subColor={NAVY}
+            />
             <AboutDesktopCase
               title={t.b2Title}
               sub={t.b2Sub}
@@ -347,23 +370,14 @@ export function AboutClient() {
             <span className="about-mobile-tap" aria-hidden>
               ↗
             </span>
-            <div className="about-block-mobile about-interactive-child">
-              <Image
-                src="/images/salim-gomri.jpg"
-                alt=""
-                width={40}
-                height={40}
-                className="about-mobile-photo"
-                style={{ boxShadow: `0 0 0 2px ${NAVY}` }}
-                aria-hidden
-              />
-              <h2 className="about-mobile-title" style={{ color: NAVY }}>
-                Coaching Agile
-              </h2>
-              <p className="about-mobile-sub" style={{ color: NAVY }}>
-                {yearsExperience} {t.b3SubSuffix}
-              </p>
-            </div>
+            <AboutMobileCase
+              title="Coaching Agile"
+              sub={`${yearsExperience} ${t.b3SubSuffix}`}
+              qrSrc={LINKEDIN_QR}
+              qrAlt="QR code — LinkedIn"
+              titleColor={NAVY}
+              subColor={NAVY}
+            />
             <AboutDesktopCase
               title="Coaching Agile"
               sub={`${yearsExperience} ${t.b3SubSuffix}`}
@@ -405,17 +419,14 @@ export function AboutClient() {
             <span className="about-mobile-tap" aria-hidden>
               ↗
             </span>
-            <div className="about-block-mobile about-interactive-child">
-              <span className="about-mobile-icon" aria-hidden>
-                <PhoneIcon color={GOLD} size={40} />
-              </span>
-              <h2 className="about-mobile-title" style={{ color: GOLD }}>
-                {t.b4Title}
-              </h2>
-              <p className="about-mobile-sub" style={{ color: '#ffffff' }}>
-                {t.b4Sub}
-              </p>
-            </div>
+            <AboutMobileCase
+              title={t.b4Title}
+              sub={t.b4Sub}
+              qrSrc={CALENDLY_QR}
+              qrAlt="QR code — Calendly"
+              titleColor={GOLD}
+              subColor="#ffffff"
+            />
             <AboutDesktopCase
               title={t.b4Title}
               sub={t.b4Sub}

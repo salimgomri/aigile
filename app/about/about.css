@@ -69,60 +69,64 @@
   transition: opacity 150ms ease;
 }
 
-/* Mobile : contenu compact */
+/* Mobile : QR code prioritaire dans chaque case */
 .about-block-mobile {
   position: relative;
   z-index: 1;
   display: flex;
   flex: 1;
   width: 100%;
+  min-height: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6px 10px;
+  gap: 4px;
+  padding: 6px 8px;
   text-align: center;
 }
 
-.about-mobile-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 4px;
-}
-
-.about-mobile-thumb {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 4px;
-  border-radius: 4px;
-  object-fit: cover;
-}
-
-.about-mobile-photo {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 4px;
-  border-radius: 999px;
-  object-fit: cover;
-}
-
 .about-mobile-title {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: clamp(0.62rem, 2.8vw, 0.78rem);
+  font-weight: 800;
   line-height: 1.15;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  max-width: 100%;
+  flex-shrink: 0;
 }
 
 .about-mobile-sub {
-  margin-top: 3px;
-  font-size: 0.65rem;
+  font-size: clamp(0.58rem, 2.4vw, 0.68rem);
   font-weight: 600;
   line-height: 1.15;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  flex-shrink: 0;
+}
+
+.about-qr-lg {
+  flex-shrink: 0;
+  margin: 2px 0;
+  padding: 0.2rem;
+}
+
+.about-qr-img-sm {
+  height: auto;
+  width: 64px;
+}
+
+.about-qr-img-md {
+  height: auto;
+  width: 72px;
+}
+
+.about-qr-img-lg {
+  height: auto;
+  width: min(38vw, 112px);
 }
 
 .about-mobile-tap {
