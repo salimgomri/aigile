@@ -23,6 +23,7 @@ const COPY: Record<Lang, {
   b3Sub: string
   b3Body: string
   b3Cta: string
+  universeCta: string
 }> = {
   fr: {
     b1Sub: 'Mon livre',
@@ -36,6 +37,7 @@ const COPY: Record<Lang, {
     b3Sub: '30 min, gratuit',
     b3Body: 'Session découverte pour parler de ton contexte.',
     b3Cta: 'Réserver maintenant',
+    universeCta: "Découvre tout l'univers AIgile →",
   },
   en: {
     b1Sub: 'My book',
@@ -49,11 +51,15 @@ const COPY: Record<Lang, {
     b3Sub: '30 min, free',
     b3Body: 'Discovery session to talk about your context.',
     b3Cta: 'Book now',
+    universeCta: 'Explore the full AIgile universe →',
   },
 }
 
-const AIGILE_QR =
-  'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://aigile.lu&color=0f2240&bgcolor=ffffff'
+const MARQUEE_TOOLS =
+  'Rétro IA · Scoring Deliverable · Dashboard Manager · Westrum Survey · Prompt Library'
+
+const SALIM_QR =
+  'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://aigile.lu/salim&color=0f2240&bgcolor=ffffff'
 const LINKEDIN_QR =
   'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/salimgomri/&color=0f2240&bgcolor=ffffff'
 const CALENDLY_QR =
@@ -142,8 +148,8 @@ export function AboutClient() {
         })}
       </div>
 
-      {/* 3 colonnes : empilées sur mobile, côte à côte (largeur ÷ 3) sur desktop */}
-      <div className="flex min-h-[100dvh] flex-col pt-14 sm:h-[100dvh] sm:flex-row sm:pt-0">
+      {/* 3 colonnes : hauteur ajustée pour barre haute (48px) + strip bas (48px) */}
+      <div className="about-columns flex flex-col sm:flex-row">
         {/* COLONNE 1 — Le Système S.A.L.I.M. → aigile.lu (même onglet) */}
         <div className="about-block-wrap about-delay-1 flex w-full sm:flex-1">
           <a
@@ -171,7 +177,7 @@ export function AboutClient() {
               <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: MUTED }}>
                 {t.b1Body}
               </p>
-              <AboutQr src={AIGILE_QR} alt="QR code — aigile.lu" />
+              <AboutQr src={SALIM_QR} alt="QR code — aigile.lu/salim" />
               <span
                 className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
                 style={{ backgroundColor: GOLD, color: NAVY }}
@@ -259,6 +265,25 @@ export function AboutClient() {
           </a>
         </div>
       </div>
+
+      {/* AIgile Universe — strip fixe en bas */}
+      <a
+        href="https://aigile.lu"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="about-universe-strip"
+        aria-label={t.universeCta.replace(' →', '')}
+      >
+        <div className="about-universe-marquee" aria-hidden>
+          <div className="about-universe-marquee-pill">
+            <div className="about-universe-marquee-track">
+              <span>{MARQUEE_TOOLS}</span>
+              <span>{MARQUEE_TOOLS}</span>
+            </div>
+          </div>
+        </div>
+        <span className="about-universe-cta">{t.universeCta}</span>
+      </a>
     </main>
   )
 }
