@@ -106,10 +106,33 @@ export function AboutClient() {
 
   return (
     <main className="about-main relative" style={{ backgroundColor: NAVY, fontFamily: SYSTEM_FONT }}>
+      {/* AIgile Universe — bande intégrée en haut (comme branding home) */}
+      <a
+        href="https://aigile.lu"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="about-universe-strip"
+        aria-label={t.universeCta.replace(' →', '')}
+      >
+        <span className="about-universe-brand" aria-hidden>
+          <span className="about-universe-logo-mark">A</span>
+          <span className="about-universe-logo-text">AIgile</span>
+        </span>
+        <div className="about-universe-marquee" aria-hidden>
+          <div className="about-universe-marquee-pill">
+            <div className="about-universe-marquee-track">
+              <span>{MARQUEE_TOOLS}</span>
+              <span>{MARQUEE_TOOLS}</span>
+            </div>
+          </div>
+        </div>
+        <span className="about-universe-cta">{t.universeCta}</span>
+      </a>
+
       <a
         href="https://aigile.lu"
         target="_self"
-        className="fixed left-4 top-4 z-50 rounded-full no-underline"
+        className="about-top-back fixed left-4 z-[101] rounded-full no-underline"
         style={{
           backgroundColor: NAVY,
           color: GOLD,
@@ -121,7 +144,7 @@ export function AboutClient() {
         ← aigile.lu
       </a>
 
-      <div className="fixed right-4 top-4 z-50 flex gap-2">
+      <div className="about-top-lang fixed right-4 z-[101] flex gap-2">
         {(['fr', 'en'] as Lang[]).map((l) => {
           const active = lang === l
           return (
@@ -315,24 +338,6 @@ export function AboutClient() {
           </a>
         </div>
       </div>
-
-      <a
-        href="https://aigile.lu"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="about-universe-strip"
-        aria-label={t.universeCta.replace(' →', '')}
-      >
-        <div className="about-universe-marquee" aria-hidden>
-          <div className="about-universe-marquee-pill">
-            <div className="about-universe-marquee-track">
-              <span>{MARQUEE_TOOLS}</span>
-              <span>{MARQUEE_TOOLS}</span>
-            </div>
-          </div>
-        </div>
-        <span className="about-universe-cta">{t.universeCta}</span>
-      </a>
     </main>
   )
 }

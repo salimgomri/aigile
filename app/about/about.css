@@ -4,21 +4,14 @@
   min-height: 100dvh;
   height: 100dvh;
   overflow: hidden;
-  padding-bottom: 44px;
   box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  .about-main {
-    padding-bottom: 48px;
-  }
-}
-
-/* Grille : 3 lignes mobile, 3 colonnes desktop */
+/* Grille : 3 lignes mobile, 3 colonnes desktop — sous la bande haute */
 .about-columns {
   box-sizing: border-box;
-  margin-top: 48px;
-  height: calc(100dvh - 48px - 44px);
+  margin-top: 44px;
+  height: calc(100dvh - 44px);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, 1fr);
@@ -27,9 +20,29 @@
 
 @media (min-width: 768px) {
   .about-columns {
-    height: calc(100dvh - 48px - 48px);
+    margin-top: 48px;
+    height: calc(100dvh - 48px);
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
+  }
+}
+
+/* Pills navigation — centrées verticalement dans la bande */
+.about-top-back {
+  top: 6px;
+}
+
+.about-top-lang {
+  top: 6px;
+}
+
+@media (min-width: 768px) {
+  .about-top-back {
+    top: 8px;
+  }
+
+  .about-top-lang {
+    top: 8px;
   }
 }
 
@@ -206,10 +219,10 @@
   }
 }
 
-/* AIgile Universe — strip fixe en bas */
+/* AIgile Universe — bande fixe en haut, intégrée comme header home */
 .about-universe-strip {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 100;
@@ -218,7 +231,7 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 0 16px;
+  padding: 0 88px;
   background: #febd10;
   color: #0f2240;
   font-weight: 800;
@@ -233,12 +246,65 @@
   .about-universe-strip {
     height: 48px;
     font-size: 13px;
+    padding: 0 120px;
   }
 }
 
 .about-universe-strip:hover {
   background: #0f2240;
   color: #febd10;
+}
+
+.about-universe-strip:hover .about-universe-logo-mark {
+  background: #febd10;
+  color: #0f2240;
+}
+
+.about-universe-brand {
+  position: absolute;
+  left: 72px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .about-universe-brand {
+    left: 50%;
+    gap: 8px;
+    transform: translateX(calc(-50% - 140px));
+  }
+}
+
+.about-universe-logo-text {
+  display: none;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .about-universe-logo-text {
+    display: inline;
+  }
+}
+
+.about-universe-logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #0f2240;
+  color: #febd10;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  transition:
+    background 250ms ease,
+    color 250ms ease;
 }
 
 .about-universe-cta {
