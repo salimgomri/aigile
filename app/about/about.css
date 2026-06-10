@@ -45,12 +45,9 @@
   transition: background-color 300ms ease;
 }
 
-.about-block > .about-interactive-child {
+.about-block > .about-interactive-child,
+.about-block .about-interactive-child * {
   pointer-events: none;
-}
-
-.about-block .about-cta {
-  pointer-events: auto;
 }
 
 .about-overlay {
@@ -138,18 +135,118 @@
   pointer-events: none;
 }
 
-/* Desktop : contenu riche */
+/* Desktop / iPad : 2 colonnes — visuel | contenu */
 .about-block-desktop {
   position: relative;
   z-index: 1;
   display: none;
   flex: 1;
   width: 100%;
-  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.about-desktop-visual {
+  flex: 0 0 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   padding: 10px;
-  text-align: center;
+  min-height: 0;
+}
+
+.about-desktop-cover {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.about-desktop-photo-wrap {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.about-desktop-photo {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.about-desktop-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 140px;
+  border: 1.5px solid;
+  border-radius: 999px;
+}
+
+.about-desktop-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 10px 12px 10px 4px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.about-desktop-title {
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.about-desktop-sub {
+  margin-top: 4px;
+  font-size: clamp(0.7rem, 1.1vw, 0.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.about-desktop-body {
+  margin-top: 6px;
+  font-size: clamp(0.65rem, 1vw, 0.78rem);
+  line-height: 1.35;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.about-desktop-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.about-wire-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: clamp(0.65rem, 1vw, 0.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  background: transparent;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -169,10 +266,11 @@
 .about-qr {
   position: relative;
   z-index: 1;
-  margin-top: 0.5rem;
+  margin-top: 0;
   border-radius: 0.5rem;
   background: #fff;
-  padding: 0.35rem;
+  padding: 0.3rem;
+  flex-shrink: 0;
 }
 
 .about-qr-sm {

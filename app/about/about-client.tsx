@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import Image from 'next/image'
 
 const GOLD = '#FEBD10'
@@ -88,8 +88,64 @@ function AboutQr({ src, alt, size = 'md' }: { src: string; alt: string; size?: '
         width={200}
         height={200}
         unoptimized
-        className={size === 'sm' ? 'h-auto w-[64px]' : 'h-auto w-[90px]'}
+        className={size === 'sm' ? 'h-auto w-[64px]' : 'h-auto w-[72px]'}
       />
+    </div>
+  )
+}
+
+function AboutWireCta({ label, color }: { label: string; color: string }) {
+  return (
+    <span className="about-wire-cta about-interactive-child" style={{ color, borderColor: color }}>
+      <span aria-hidden>→</span>
+      {label}
+    </span>
+  )
+}
+
+function AboutDesktopCase({
+  title,
+  sub,
+  body,
+  cta,
+  qrSrc,
+  qrAlt,
+  titleColor,
+  subColor,
+  bodyColor,
+  ctaColor,
+  visual,
+}: {
+  title: string
+  sub: string
+  body: string
+  cta: string
+  qrSrc: string
+  qrAlt: string
+  titleColor: string
+  subColor: string
+  bodyColor: string
+  ctaColor: string
+  visual: ReactNode
+}) {
+  return (
+    <div className="about-block-desktop about-interactive-child">
+      <div className="about-desktop-visual">{visual}</div>
+      <div className="about-desktop-content">
+        <h2 className="about-desktop-title" style={{ color: titleColor }}>
+          {title}
+        </h2>
+        <p className="about-desktop-sub" style={{ color: subColor }}>
+          {sub}
+        </p>
+        <p className="about-desktop-body" style={{ color: bodyColor }}>
+          {body}
+        </p>
+        <div className="about-desktop-actions">
+          <AboutQr src={qrSrc} alt={qrAlt} />
+          <AboutWireCta label={cta} color={ctaColor} />
+        </div>
+      </div>
     </div>
   )
 }
@@ -176,15 +232,15 @@ export function AboutClient() {
         })}
       </div>
 
-      {/* Grille 2×2 */}
       <div className="about-grid">
-        {/* 1 — Le Système S.A.L.I.M. */}
+        {/* 1 — Le Système S.A.L.I.M. → aigile.lu/salim */}
         <div className="about-block-wrap about-delay-1">
           <a
             href="https://aigile.lu/salim"
             target="_self"
             className="about-block"
             style={{ backgroundColor: NAVY }}
+            aria-label={`Le Système S.A.L.I.M. — ${t.b1Cta}`}
           >
             <span className="about-overlay" style={{ backgroundColor: GOLD }} />
             <span className="about-mobile-tap" aria-hidden>
@@ -206,36 +262,32 @@ export function AboutClient() {
                 {t.b1Sub}
               </p>
             </div>
-            <div className="about-block-desktop about-interactive-child">
-              <Image
-                src="/images/book-cover.jpg"
-                alt="Couverture — Le Système S.A.L.I.M."
-                width={300}
-                height={400}
-                className="mb-2 h-auto w-[100px] rounded-md"
-                priority
-              />
-              <h2 className="text-lg font-bold" style={{ color: GOLD }}>
-                Le Système S.A.L.I.M.
-              </h2>
-              <p className="mt-1 text-xs font-semibold" style={{ color: '#ffffff' }}>
-                {t.b1Sub}
-              </p>
-              <p className="mt-1 max-w-[200px] text-[11px] leading-snug" style={{ color: MUTED }}>
-                {t.b1Body}
-              </p>
-              <AboutQr src={SALIM_QR} alt="QR code — aigile.lu/salim" />
-              <span
-                className="about-cta mt-2 inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold"
-                style={{ backgroundColor: GOLD, color: NAVY }}
-              >
-                {t.b1Cta}
-              </span>
-            </div>
+            <AboutDesktopCase
+              title="Le Système S.A.L.I.M."
+              sub={t.b1Sub}
+              body={t.b1Body}
+              cta={t.b1Cta}
+              qrSrc={SALIM_QR}
+              qrAlt="QR code — aigile.lu/salim"
+              titleColor={GOLD}
+              subColor="#ffffff"
+              bodyColor={MUTED}
+              ctaColor={GOLD}
+              visual={
+                <Image
+                  src="/images/book-cover.jpg"
+                  alt="Couverture — Le Système S.A.L.I.M."
+                  width={400}
+                  height={560}
+                  className="about-desktop-cover"
+                  priority
+                />
+              }
+            />
           </a>
         </div>
 
-        {/* 2 — Univers AIgile */}
+        {/* 2 — Univers AIgile → aigile.lu */}
         <div className="about-block-wrap about-delay-2">
           <a
             href="https://aigile.lu"
@@ -243,6 +295,7 @@ export function AboutClient() {
             rel="noopener noreferrer"
             className="about-block"
             style={{ backgroundColor: GOLD }}
+            aria-label={`${t.b2Title} — ${t.b2Cta}`}
           >
             <span className="about-overlay" style={{ backgroundColor: NAVY }} />
             <span className="about-mobile-tap" aria-hidden>
@@ -259,34 +312,27 @@ export function AboutClient() {
                 {t.b2Sub}
               </p>
             </div>
-            <div className="about-block-desktop about-interactive-child">
-              <span
-                className="mb-2 flex h-[56px] w-[56px] items-center justify-center rounded-full"
-                style={{ border: `1.5px solid ${NAVY}` }}
-              >
-                <HomeIcon color={NAVY} size={32} />
-              </span>
-              <h2 className="text-lg font-bold" style={{ color: NAVY }}>
-                {t.b2Title}
-              </h2>
-              <p className="mt-1 text-xs font-semibold" style={{ color: NAVY }}>
-                {t.b2Sub}
-              </p>
-              <p className="mt-1 max-w-[200px] text-[11px] leading-snug" style={{ color: NAVY_LIGHT }}>
-                {t.b2Body}
-              </p>
-              <AboutQr src={AIGILE_QR} alt="QR code — aigile.lu" />
-              <span
-                className="about-cta mt-2 inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold"
-                style={{ backgroundColor: NAVY, color: GOLD }}
-              >
-                {t.b2Cta}
-              </span>
-            </div>
+            <AboutDesktopCase
+              title={t.b2Title}
+              sub={t.b2Sub}
+              body={t.b2Body}
+              cta={t.b2Cta}
+              qrSrc={AIGILE_QR}
+              qrAlt="QR code — aigile.lu"
+              titleColor={NAVY}
+              subColor={NAVY}
+              bodyColor={NAVY_LIGHT}
+              ctaColor={NAVY}
+              visual={
+                <span className="about-desktop-icon-wrap" style={{ borderColor: NAVY }}>
+                  <HomeIcon color={NAVY} size={72} />
+                </span>
+              }
+            />
           </a>
         </div>
 
-        {/* 3 — Coaching Agile */}
+        {/* 3 — Coaching Agile → LinkedIn */}
         <div className="about-block-wrap about-delay-3">
           <a
             href="https://www.linkedin.com/in/salimgomri/"
@@ -294,6 +340,7 @@ export function AboutClient() {
             rel="noopener noreferrer"
             className="about-block"
             style={{ backgroundColor: GOLD }}
+            aria-label={`Coaching Agile — ${t.b3Cta}`}
           >
             <span className="about-overlay" style={{ backgroundColor: NAVY }} />
             <span className="about-mobile-tap" aria-hidden>
@@ -316,37 +363,34 @@ export function AboutClient() {
                 {yearsExperience} {t.b3SubSuffix}
               </p>
             </div>
-            <div className="about-block-desktop about-interactive-child">
-              <Image
-                src="/images/salim-gomri.jpg"
-                alt="Salim Gomri"
-                width={300}
-                height={300}
-                className="mb-2 h-[80px] w-[80px] rounded-full object-cover"
-                style={{ boxShadow: `0 0 0 3px ${NAVY}` }}
-                priority
-              />
-              <h2 className="text-lg font-bold" style={{ color: NAVY }}>
-                Coaching Agile
-              </h2>
-              <p className="mt-1 text-xs font-semibold" style={{ color: NAVY }}>
-                {yearsExperience} {t.b3SubSuffix}
-              </p>
-              <p className="mt-1 max-w-[200px] text-[11px] leading-snug" style={{ color: NAVY_LIGHT }}>
-                {t.b3Body}
-              </p>
-              <AboutQr src={LINKEDIN_QR} alt="QR code — LinkedIn" />
-              <span
-                className="about-cta mt-2 inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold"
-                style={{ backgroundColor: NAVY, color: GOLD }}
-              >
-                {t.b3Cta}
-              </span>
-            </div>
+            <AboutDesktopCase
+              title="Coaching Agile"
+              sub={`${yearsExperience} ${t.b3SubSuffix}`}
+              body={t.b3Body}
+              cta={t.b3Cta}
+              qrSrc={LINKEDIN_QR}
+              qrAlt="QR code — LinkedIn"
+              titleColor={NAVY}
+              subColor={NAVY}
+              bodyColor={NAVY_LIGHT}
+              ctaColor={NAVY}
+              visual={
+                <div className="about-desktop-photo-wrap" style={{ boxShadow: `inset 0 0 0 3px ${NAVY}` }}>
+                  <Image
+                    src="/images/salim-gomri.jpg"
+                    alt="Salim Gomri"
+                    width={400}
+                    height={400}
+                    className="about-desktop-photo"
+                    priority
+                  />
+                </div>
+              }
+            />
           </a>
         </div>
 
-        {/* 4 — Prendre RDV */}
+        {/* 4 — Prendre RDV → Calendly */}
         <div className="about-block-wrap about-delay-4">
           <a
             href="https://calendly.com/salimdulux/30min"
@@ -354,6 +398,7 @@ export function AboutClient() {
             rel="noopener noreferrer"
             className="about-block"
             style={{ backgroundColor: NAVY }}
+            aria-label={`${t.b4Title} — ${t.b4Cta}`}
           >
             <span className="about-overlay" style={{ backgroundColor: GOLD }} />
             <span className="about-mobile-tap" aria-hidden>
@@ -370,35 +415,27 @@ export function AboutClient() {
                 {t.b4Sub}
               </p>
             </div>
-            <div className="about-block-desktop about-interactive-child">
-              <span
-                className="mb-2 flex h-[56px] w-[56px] items-center justify-center rounded-full"
-                style={{ border: `1.5px solid ${GOLD}` }}
-              >
-                <PhoneIcon color={GOLD} size={32} />
-              </span>
-              <h2 className="text-lg font-bold" style={{ color: GOLD }}>
-                {t.b4Title}
-              </h2>
-              <p className="mt-1 text-xs font-semibold" style={{ color: '#ffffff' }}>
-                {t.b4Sub}
-              </p>
-              <p className="mt-1 max-w-[200px] text-[11px] leading-snug" style={{ color: MUTED }}>
-                {t.b4Body}
-              </p>
-              <AboutQr src={CALENDLY_QR} alt="QR code — Calendly" />
-              <span
-                className="about-cta mt-2 inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-bold"
-                style={{ backgroundColor: GOLD, color: NAVY }}
-              >
-                {t.b4Cta}
-              </span>
-            </div>
+            <AboutDesktopCase
+              title={t.b4Title}
+              sub={t.b4Sub}
+              body={t.b4Body}
+              cta={t.b4Cta}
+              qrSrc={CALENDLY_QR}
+              qrAlt="QR code — Calendly"
+              titleColor={GOLD}
+              subColor="#ffffff"
+              bodyColor={MUTED}
+              ctaColor={GOLD}
+              visual={
+                <span className="about-desktop-icon-wrap" style={{ borderColor: GOLD }}>
+                  <PhoneIcon color={GOLD} size={72} />
+                </span>
+              }
+            />
           </a>
         </div>
       </div>
 
-      {/* Bande Univers AIgile — sous la grille, plus haute */}
       <a
         href="https://aigile.lu"
         target="_blank"
