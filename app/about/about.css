@@ -1,16 +1,20 @@
-/* /about — layout 3 blocs plein écran (scopé via préfixe .about-) */
+/* /about — 3 colonnes responsives (scopé via préfixe .about-) */
 
 .about-main {
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
 }
 
-/* Bloc cliquable : interactions (hover / tap) sur l'élément <a> */
+/* Desktop : triptyque plein écran, pas de scroll */
+@media (min-width: 640px) {
+  .about-main {
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+/* Colonne cliquable : interactions hover / tap sur l'élément <a> */
 .about-block {
-  border-bottom: 3px solid transparent;
-  transition:
-    transform 300ms ease,
-    border-color 300ms ease;
+  transition: transform 300ms ease;
 }
 
 .about-overlay {
@@ -22,7 +26,6 @@
 @media (hover: hover) and (min-width: 640px) {
   .about-block:hover {
     transform: scale(1.01);
-    border-bottom-color: #febd10;
   }
   .about-block:hover .about-overlay {
     opacity: 0.08;
@@ -34,20 +37,19 @@
   transition: transform 150ms ease;
 }
 
-/* Animations d'entrée façon Apple — uniquement si l'utilisateur les accepte.
-   Portées par le wrapper pour ne pas entrer en conflit avec le scale au hover. */
+/* Entrée façon Apple — portée par le wrapper, uniquement si acceptée */
 @media (prefers-reduced-motion: no-preference) {
   .about-block-wrap {
     opacity: 0;
     animation: about-rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
-  .about-block-wrap.about-delay-1 {
+  .about-delay-1 {
     animation-delay: 0ms;
   }
-  .about-block-wrap.about-delay-2 {
+  .about-delay-2 {
     animation-delay: 120ms;
   }
-  .about-block-wrap.about-delay-3 {
+  .about-delay-3 {
     animation-delay: 240ms;
   }
 
@@ -60,14 +62,5 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
-}
-
-/* Très petits écrans : autoriser le scroll uniquement si ça ne tient pas */
-@media (max-height: 374px) {
-  .about-main {
-    height: auto;
-    min-height: 100dvh;
-    overflow-y: auto;
   }
 }
