@@ -67,25 +67,25 @@ const CALENDLY_QR =
 
 function AboutQr({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="mt-4 rounded-lg bg-white p-2">
+    <div className="about-qr about-interactive-child">
       <Image
         src={src}
         alt={alt}
         width={200}
         height={200}
         unoptimized
-        className="h-auto w-[88px] sm:w-[110px]"
+        className="h-auto w-[110px]"
       />
     </div>
   )
 }
 
 /** Icône filaire « appel » (SVG inline, aucune librairie) */
-function PhoneIcon({ color }: { color: string }) {
+function PhoneIcon({ color, size = 44 }: { color: string; size?: number }) {
   return (
     <svg
-      width="44"
-      height="44"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke={color}
@@ -102,12 +102,10 @@ function PhoneIcon({ color }: { color: string }) {
 export function AboutClient() {
   const [lang, setLang] = useState<Lang>('fr')
   const t = COPY[lang]
-  // Expérience terrain calculée dynamiquement depuis 2003 (ne devient jamais obsolète)
   const yearsExperience = new Date().getFullYear() - 2003
 
   return (
     <main className="about-main relative" style={{ backgroundColor: NAVY, fontFamily: SYSTEM_FONT }}>
-      {/* Back to aigile.lu — fixe haut-gauche, toujours visible */}
       <a
         href="https://aigile.lu"
         target="_self"
@@ -123,7 +121,6 @@ export function AboutClient() {
         ← aigile.lu
       </a>
 
-      {/* Switcher FR / EN — fixe haut-droite */}
       <div className="fixed right-4 top-4 z-50 flex gap-2">
         {(['fr', 'en'] as Lang[]).map((l) => {
           const active = lang === l
@@ -148,38 +145,53 @@ export function AboutClient() {
         })}
       </div>
 
-      {/* 3 colonnes : hauteur ajustée pour barre haute (48px) + strip bas (48px) */}
-      <div className="about-columns flex flex-col sm:flex-row">
-        {/* COLONNE 1 — Le Système S.A.L.I.M. → aigile.lu (même onglet) */}
-        <div className="about-block-wrap about-delay-1 flex w-full sm:flex-1">
+      <div className="about-columns">
+        {/* COLONNE 1 — Le Système S.A.L.I.M. */}
+        <div className="about-block-wrap about-delay-1">
           <a
             href="https://aigile.lu"
             target="_self"
-            className="about-block relative flex w-full flex-col items-center justify-center overflow-hidden px-6 py-14 text-center no-underline sm:px-5 sm:py-16 sm:pt-24"
+            className="about-block"
             style={{ backgroundColor: NAVY }}
           >
-            <span className="about-overlay absolute inset-0" style={{ backgroundColor: GOLD }} />
-            <div className="relative z-10 flex flex-col items-center">
+            <span className="about-overlay" style={{ backgroundColor: GOLD }} />
+            <span className="about-mobile-tap" aria-hidden>
+              ↗
+            </span>
+
+            <div className="about-block-mobile about-interactive-child">
+              <span className="about-mobile-icon" aria-hidden>
+                📖
+              </span>
+              <h2 className="about-mobile-title" style={{ color: GOLD }}>
+                Le Système S.A.L.I.M.
+              </h2>
+              <p className="about-mobile-sub" style={{ color: '#ffffff' }}>
+                {t.b1Sub}
+              </p>
+            </div>
+
+            <div className="about-block-desktop about-interactive-child">
               <Image
                 src="/images/book-cover.jpg"
                 alt="Couverture — Le Système S.A.L.I.M."
                 width={300}
                 height={400}
-                className="mb-6 h-auto w-[120px] rounded-md shadow-2xl sm:w-[150px]"
+                className="mb-4 h-auto w-[130px] rounded-md"
                 priority
               />
-              <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: GOLD }}>
+              <h2 className="text-2xl font-bold" style={{ color: GOLD }}>
                 Le Système S.A.L.I.M.
               </h2>
-              <p className="mt-2 text-sm font-semibold sm:text-base" style={{ color: '#ffffff' }}>
+              <p className="mt-2 text-sm font-semibold" style={{ color: '#ffffff' }}>
                 {t.b1Sub}
               </p>
-              <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: MUTED }}>
+              <p className="mt-2 max-w-xs text-xs leading-relaxed" style={{ color: MUTED }}>
                 {t.b1Body}
               </p>
               <AboutQr src={SALIM_QR} alt="QR code — aigile.lu/salim" />
               <span
-                className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="about-cta mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
                 style={{ backgroundColor: GOLD, color: NAVY }}
               >
                 {t.b1Cta}
@@ -188,38 +200,60 @@ export function AboutClient() {
           </a>
         </div>
 
-        {/* COLONNE 2 — Coaching Agile → LinkedIn (nouvel onglet) */}
-        <div className="about-block-wrap about-delay-2 flex w-full sm:flex-1">
+        {/* COLONNE 2 — Coaching Agile */}
+        <div className="about-block-wrap about-delay-2">
           <a
             href="https://www.linkedin.com/in/salimgomri/"
             target="_blank"
             rel="noopener noreferrer"
-            className="about-block relative flex w-full flex-col items-center justify-center overflow-hidden px-6 py-14 text-center no-underline sm:px-5 sm:py-16 sm:pt-24"
+            className="about-block"
             style={{ backgroundColor: GOLD }}
           >
-            <span className="about-overlay absolute inset-0" style={{ backgroundColor: NAVY }} />
-            <div className="relative z-10 flex flex-col items-center">
+            <span className="about-overlay" style={{ backgroundColor: NAVY }} />
+            <span className="about-mobile-tap" aria-hidden>
+              ↗
+            </span>
+
+            <div className="about-block-mobile about-interactive-child">
+              <Image
+                src="/images/salim-gomri.jpg"
+                alt=""
+                width={40}
+                height={40}
+                className="about-mobile-photo"
+                style={{ boxShadow: `0 0 0 2px ${NAVY}` }}
+                aria-hidden
+              />
+              <h2 className="about-mobile-title" style={{ color: NAVY }}>
+                Coaching Agile
+              </h2>
+              <p className="about-mobile-sub" style={{ color: NAVY }}>
+                {yearsExperience} {t.b2SubSuffix}
+              </p>
+            </div>
+
+            <div className="about-block-desktop about-interactive-child">
               <Image
                 src="/images/salim-gomri.jpg"
                 alt="Salim Gomri"
                 width={300}
                 height={300}
-                className="mb-6 h-[120px] w-[120px] rounded-full object-cover sm:h-[140px] sm:w-[140px]"
+                className="mb-4 h-[120px] w-[120px] rounded-full object-cover"
                 style={{ boxShadow: `0 0 0 4px ${NAVY}` }}
                 priority
               />
-              <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: NAVY }}>
+              <h2 className="text-2xl font-bold" style={{ color: NAVY }}>
                 Coaching Agile
               </h2>
-              <p className="mt-2 text-sm font-semibold sm:text-base" style={{ color: NAVY }}>
+              <p className="mt-2 text-sm font-semibold" style={{ color: NAVY }}>
                 {yearsExperience} {t.b2SubSuffix}
               </p>
-              <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: NAVY_LIGHT }}>
+              <p className="mt-2 max-w-xs text-xs leading-relaxed" style={{ color: NAVY_LIGHT }}>
                 {t.b2Body}
               </p>
               <AboutQr src={LINKEDIN_QR} alt="QR code — LinkedIn" />
               <span
-                className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="about-cta mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
                 style={{ backgroundColor: NAVY, color: GOLD }}
               >
                 {t.b2Cta}
@@ -228,35 +262,51 @@ export function AboutClient() {
           </a>
         </div>
 
-        {/* COLONNE 3 — Prendre RDV → Calendly (nouvel onglet) */}
-        <div className="about-block-wrap about-delay-3 flex w-full sm:flex-1">
+        {/* COLONNE 3 — Prendre RDV */}
+        <div className="about-block-wrap about-delay-3">
           <a
             href="https://calendly.com/salimdulux/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="about-block relative flex w-full flex-col items-center justify-center overflow-hidden px-6 py-14 text-center no-underline sm:px-5 sm:py-16 sm:pt-24"
+            className="about-block"
             style={{ backgroundColor: NAVY }}
           >
-            <span className="about-overlay absolute inset-0" style={{ backgroundColor: GOLD }} />
-            <div className="relative z-10 flex flex-col items-center">
+            <span className="about-overlay" style={{ backgroundColor: GOLD }} />
+            <span className="about-mobile-tap" aria-hidden>
+              ↗
+            </span>
+
+            <div className="about-block-mobile about-interactive-child">
+              <span className="about-mobile-icon" aria-hidden>
+                <PhoneIcon color={GOLD} size={40} />
+              </span>
+              <h2 className="about-mobile-title" style={{ color: GOLD }}>
+                {t.b3Title}
+              </h2>
+              <p className="about-mobile-sub" style={{ color: '#ffffff' }}>
+                {t.b3Sub}
+              </p>
+            </div>
+
+            <div className="about-block-desktop about-interactive-child">
               <span
-                className="mb-6 flex h-[80px] w-[80px] items-center justify-center rounded-full"
+                className="mb-4 flex h-[72px] w-[72px] items-center justify-center rounded-full"
                 style={{ border: `1.5px solid ${GOLD}` }}
               >
                 <PhoneIcon color={GOLD} />
               </span>
-              <h2 className="text-2xl font-bold sm:text-3xl" style={{ color: GOLD }}>
+              <h2 className="text-2xl font-bold" style={{ color: GOLD }}>
                 {t.b3Title}
               </h2>
-              <p className="mt-2 text-sm font-semibold sm:text-base" style={{ color: '#ffffff' }}>
+              <p className="mt-2 text-sm font-semibold" style={{ color: '#ffffff' }}>
                 {t.b3Sub}
               </p>
-              <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: MUTED }}>
+              <p className="mt-2 max-w-xs text-xs leading-relaxed" style={{ color: MUTED }}>
                 {t.b3Body}
               </p>
               <AboutQr src={CALENDLY_QR} alt="QR code — Calendly" />
               <span
-                className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="about-cta mt-4 inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
                 style={{ backgroundColor: GOLD, color: NAVY }}
               >
                 {t.b3Cta}
@@ -266,7 +316,6 @@ export function AboutClient() {
         </div>
       </div>
 
-      {/* AIgile Universe — strip fixe en bas */}
       <a
         href="https://aigile.lu"
         target="_blank"

@@ -1,58 +1,184 @@
-/* /about — 3 colonnes responsives (scopé via préfixe .about-) */
+/* /about — layout scopé via préfixe .about- */
 
 .about-main {
   min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
+  padding-bottom: 44px;
+  box-sizing: border-box;
 }
 
-/* Colonnes : réserve 48px haut + 48px strip bas */
+@media (min-width: 768px) {
+  .about-main {
+    padding-bottom: 48px;
+  }
+}
+
+/* Grille : 3 lignes mobile, 3 colonnes desktop */
 .about-columns {
-  padding-top: 48px;
-  height: calc(100dvh - 96px);
+  box-sizing: border-box;
+  margin-top: 48px;
+  height: calc(100dvh - 48px - 44px);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .about-columns {
+    height: calc(100dvh - 48px - 48px);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
 }
 
 .about-block-wrap {
-  width: 100%;
-  height: calc((100dvh - 96px) / 3);
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  height: 100%;
 }
 
-@media (min-width: 640px) {
-  .about-main {
-    height: 100dvh;
-    overflow: hidden;
-  }
-
-  .about-block-wrap {
-    flex: 1;
-    height: 100%;
-  }
-}
-
-/* Colonne cliquable : interactions hover / tap sur l'élément <a> */
+/* Bloc cliquable — pleine surface */
 .about-block {
-  transition: transform 300ms ease;
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 0;
+  transition: background-color 300ms ease;
+}
+
+.about-block > .about-interactive-child {
+  pointer-events: none;
+}
+
+.about-block .about-cta {
+  pointer-events: auto;
 }
 
 .about-overlay {
+  position: absolute;
+  inset: 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 300ms ease;
 }
 
-@media (hover: hover) and (min-width: 640px) {
-  .about-block:hover {
-    transform: scale(1.01);
-  }
+@media (hover: hover) and (min-width: 768px) {
   .about-block:hover .about-overlay {
     opacity: 0.08;
   }
 }
 
 .about-block:active {
-  transform: scale(0.98);
-  transition: transform 150ms ease;
+  opacity: 0.96;
+  transition: opacity 150ms ease;
 }
 
-/* Entrée façon Apple — portée par le wrapper, uniquement si acceptée */
+/* Mobile : contenu minimal */
+.about-block-mobile {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  text-align: center;
+}
+
+.about-mobile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.about-mobile-photo {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.about-mobile-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.about-mobile-sub {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.about-mobile-tap {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Desktop : contenu riche */
+.about-block-desktop {
+  position: relative;
+  z-index: 1;
+  display: none;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .about-block-mobile {
+    display: none;
+  }
+
+  .about-block-desktop {
+    display: flex;
+  }
+
+  .about-mobile-tap {
+    display: none;
+  }
+}
+
+/* QR — contenu dans le bloc parent */
+.about-qr {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+}
+
+/* Entrée — wrapper uniquement, pas de scale au hover */
 @media (prefers-reduced-motion: no-preference) {
   .about-block-wrap {
     opacity: 0;
@@ -71,7 +197,7 @@
   @keyframes about-rise {
     from {
       opacity: 0;
-      transform: translateY(32px);
+      transform: translateY(16px);
     }
     to {
       opacity: 1;
@@ -86,7 +212,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: 100;
   height: 44px;
   display: flex;
   align-items: center;
@@ -103,7 +229,7 @@
     color 250ms ease;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .about-universe-strip {
     height: 48px;
     font-size: 13px;
@@ -119,12 +245,11 @@
   white-space: nowrap;
 }
 
-/* Marquee outils — desktop uniquement */
 .about-universe-marquee {
   display: none;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .about-universe-marquee {
     display: block;
     position: absolute;
