@@ -17,6 +17,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import CheckoutSheet from '@/components/checkout/CheckoutSheet'
 import { getBookCtaLabel } from '@/lib/book-config'
+import { getBookDescription } from '@/lib/salim-experience'
 import { useBookProduct } from '@/lib/book-product-context'
 
 export default function BookSection() {
@@ -128,7 +129,7 @@ export default function BookSection() {
 
             {/* Description */}
             <p className="text-lg text-muted-foreground leading-relaxed">
-              {t['book-description']}
+              {getBookDescription(language)}
             </p>
 
             {/* Benefits */}

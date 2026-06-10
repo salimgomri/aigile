@@ -11,12 +11,12 @@ import { SalimSocialProof } from '@/components/salim/salim-social-proof'
 import { SalimStickyMobileCta } from '@/components/salim/salim-sticky-mobile-cta'
 import { SalimContactLinks } from '@/components/salim/salim-contact-links'
 import { getCurrentBookProduct, getProduct } from '@/lib/payments/catalog'
+import { salimYearsTerrainFr } from '@/lib/salim-experience'
 import './salim.css'
 
 export const metadata: Metadata = {
   title: 'Le Système S.A.L.I.M., Salim Gomri',
-  description:
-    '22 ans de terrain Scrum et IA. Un système pour rendre visible ce que la vélocité cache. Livre disponible sur aigile.lu.',
+  description: `${salimYearsTerrainFr()} Scrum et IA. Un système pour rendre visible ce que la vélocité cache. Livre disponible sur aigile.lu.`,
   openGraph: {
     title: 'Le Système S.A.L.I.M.',
     description: 'On mesure la vélocité. Jamais la solidité.',

@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { AppProviders } from '@/components/app-providers'
+import { salimJobTitleFr } from '@/lib/salim-experience'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-WMG8QLND8X'
 
@@ -20,7 +21,7 @@ const localBusinessSchema = {
   founder: {
     '@type': 'Person',
     name: 'Salim Gomri',
-    jobTitle: 'Agile Coach · 21 ans expérience',
+    jobTitle: salimJobTitleFr(),
   },
   areaServed: ['LU', 'FR', 'BE'],
 }

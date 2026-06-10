@@ -2,6 +2,10 @@
 
 import { useLanguage } from '../language-provider'
 import { Building2, Users, Target, ArrowRight } from 'lucide-react'
+import {
+  salimYearsExperienceEn,
+  salimYearsExperienceFr,
+} from '@/lib/salim-experience'
 
 const CALENDLY_URL = 'https://calendly.com/salimdulux/30min'
 
@@ -9,8 +13,7 @@ const content = {
   fr: {
     badge: 'Pour les entreprises',
     title: 'AIgile pour les PME',
-    subtitle:
-      "AIgile + coaching agile : formation d'équipes, audit, accompagnement sur mesure. 21 ans d'expérience terrain.",
+    subtitle: `AIgile + coaching agile : formation d'équipes, audit, accompagnement sur mesure. ${salimYearsExperienceFr()}.`,
     forLeaders: {
       title: 'Dirigeants & décideurs',
       desc: 'Comprendre les bénéfices, prioriser les investissements, mesurer l\'impact.',
@@ -30,8 +33,7 @@ const content = {
   en: {
     badge: 'For businesses',
     title: 'AIgile for SMBs',
-    subtitle:
-      'AIgile + agile coaching: team training, audit, tailored support. 21 years of field experience.',
+    subtitle: `AIgile + agile coaching: team training, audit, tailored support. ${salimYearsExperienceEn()}.`,
     forLeaders: {
       title: 'Leaders & decision-makers',
       desc: 'Understand the benefits, prioritize investments, measure impact.',

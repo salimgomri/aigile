@@ -10,6 +10,7 @@ import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequest
 import { useSession } from '@/lib/auth-client'
 import { translations } from '@/lib/translations'
 import { isDashboardManagerNewBadgeActive, isWestrumNewBadgeActive } from '@/lib/tool-new-badge'
+import { getHeroBookSlideBody } from '@/lib/salim-experience'
 
 const HERO_SLIDE_COUNT = 5
 
@@ -473,8 +474,7 @@ export default function LandingHero() {
           badge: 'Le livre',
           eyebrow: 'S.A.L.I.M — disponible',
           title: 'Le Système S.A.L.I.M',
-          body:
-            "Le premier guide complet pour implémenter le Scrum augmenté par l'IA dans votre équipe. 21 ans de terrain, condensés en un système actionnable.",
+          body: getHeroBookSlideBody('fr'),
           primary: 'Commander →',
           ghost: 'Découvrir le contenu ›',
         },
@@ -521,8 +521,7 @@ export default function LandingHero() {
         badge: 'The book',
         eyebrow: 'S.A.L.I.M — available',
         title: 'The S.A.L.I.M System',
-        body:
-          'The first complete guide to implementing AI-augmented Scrum in your team. 21 years in the field, distilled into an actionable system.',
+        body: getHeroBookSlideBody('en'),
         primary: 'Order →',
         ghost: "See what's inside ›",
       },

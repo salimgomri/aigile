@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { getSalimYearsExperience } from '@/lib/salim-experience'
 import { AnimateIn } from './animate-in'
 
 function AuthorPhoto() {
@@ -29,6 +30,8 @@ function AuthorPhoto() {
 }
 
 export function SalimAuthor() {
+  const yearsExperience = getSalimYearsExperience()
+
   return (
     <AnimateIn as="section" className="author-section">
       <div className="author-inner">
@@ -49,11 +52,12 @@ export function SalimAuthor() {
             reproductible.
           </p>
           <p className="author-quote">
-            Ce livre n&apos;est pas ce que j&apos;aurais voulu lire. C&apos;est ce que j&apos;ai mis 22 ans à
-            apprendre.
+            Ce livre n&apos;est pas ce que j&apos;aurais voulu lire. C&apos;est ce que j&apos;ai mis {yearsExperience}{' '}
+            ans à apprendre.
           </p>
           <p className="author-body">
-            22 ans. Des centaines d&apos;équipes. Une grande banque internationale. Des PME en croissance. Des
+            {yearsExperience} ans. Des centaines d&apos;équipes. Une grande banque internationale. Des PME en
+            croissance. Des
             DSI sous pression.
           </p>
         </div>

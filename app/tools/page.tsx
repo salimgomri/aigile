@@ -7,6 +7,7 @@ import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
 import Link from 'next/link'
 import { Shield, Star, Lock } from 'lucide-react'
+import { salimYearsExpertiseEn, salimYearsExpertiseFr } from '@/lib/salim-experience'
 
 export default function ToolsPage() {
   const { language } = useLanguage()
@@ -37,7 +38,7 @@ export default function ToolsPage() {
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center justify-center text-center md:text-left">
               <span className="flex items-center gap-2 font-semibold text-lg text-aigile-gold">
                 <Shield className="w-5 h-5 flex-shrink-0" />
-                {language === 'fr' ? '21 ans expertise Agile' : '21 years Agile expertise'}
+                {language === 'fr' ? salimYearsExpertiseFr() : salimYearsExpertiseEn()}
               </span>
               <span className="hidden md:block w-px h-6 bg-aigile-gold/30" aria-hidden />
               <span className="flex items-center gap-2 text-foreground/90">

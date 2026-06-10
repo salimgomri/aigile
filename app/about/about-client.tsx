@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react'
 import Image from 'next/image'
+import { getSalimYearsExperience } from '@/lib/salim-experience'
 
 const GOLD = '#FEBD10'
 const NAVY = '#0f2240'
@@ -189,7 +190,7 @@ function PhoneIcon({ color, size = 40 }: { color: string; size?: number }) {
 export function AboutClient() {
   const [lang, setLang] = useState<Lang>('fr')
   const t = COPY[lang]
-  const yearsExperience = new Date().getFullYear() - 2003
+  const yearsExperience = getSalimYearsExperience()
 
   return (
     <main className="about-main relative" style={{ backgroundColor: NAVY, fontFamily: SYSTEM_FONT }}>

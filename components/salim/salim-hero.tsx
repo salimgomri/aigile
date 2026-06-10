@@ -7,9 +7,11 @@ import { BUNDLE_SALE_CENTIMES, formatBookPrice } from '@/lib/book-config'
 import { trackEvent } from '@/lib/gtag'
 import CheckoutSheet from '@/components/checkout/CheckoutSheet'
 import type { Product } from '@/lib/payments/catalog'
+import { getSalimYearsExperience } from '@/lib/salim-experience'
 import { CounterStat } from './counter-stat'
 
 export function SalimHero({ bundle }: { bundle: Product | null }) {
+  const yearsExperience = getSalimYearsExperience()
   const { ref, inView } = useInView(0.05)
   const [countersActive, setCountersActive] = useState(false)
 
@@ -24,12 +26,12 @@ export function SalimHero({ bundle }: { bundle: Product | null }) {
       <div className="hero-inner">
         <h1>On mesure la vélocité. Jamais la solidité.</h1>
         <p className="hero-subtext">
-          22 ans de terrain. 300 rétrospectives facilitées. Un seul système.
+          {yearsExperience} ans de terrain. 300 rétrospectives facilitées. Un seul système.
         </p>
         <div className="hero-stats">
           <div>
             <span className="hero-stat-number">
-              <CounterStat target={22} active={active} />
+              <CounterStat target={yearsExperience} active={active} />
             </span>
             <span className="hero-stat-label">de terrain</span>
           </div>

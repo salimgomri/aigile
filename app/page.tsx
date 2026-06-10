@@ -50,12 +50,13 @@
 
 import type { Metadata } from 'next'
 import PremiumNavbar from '@/components/premium-navbar'
+import { salimYearsExpertiseSalimFr } from '@/lib/salim-experience'
 import LandingHero from '@/components/landing/hero'
 
 export const metadata: Metadata = {
   title: 'AIgile | Coaching Agile PME & Outils Retro AI Luxembourg France Belgique',
   description:
-    "Coaching agile pour PME et dirigeants · Formation d'équipes · Retro AI gratuit · Méthode S.A.L.I.M · 21 ans expertise Salim Gomri",
+    `Coaching agile pour PME et dirigeants · Formation d'équipes · Retro AI gratuit · Méthode S.A.L.I.M · ${salimYearsExpertiseSalimFr()}`,
   keywords: ['coaching agile', 'PME', 'formation équipes', 'retro AI', 'Scrum', 'Luxembourg', 'France', 'Belgique'],
   openGraph: {
     title: 'AIgile | Coaching Agile PME & Outils Retro AI',
