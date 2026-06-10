@@ -16,7 +16,7 @@ const COPY: Record<Lang, {
   b1Sub: string
   b1Body: string
   b1Cta: string
-  b2Sub: string
+  b2SubSuffix: string
   b2Body: string
   b2Cta: string
   b3Title: string
@@ -29,7 +29,7 @@ const COPY: Record<Lang, {
     b1Body:
       'Scrum Augmenté, Livré en Incrémental et Mesuré. Construit sur 300+ rétrospectives réelles, pour sortir du Scrum de façade.',
     b1Cta: 'Découvrir le livre',
-    b2Sub: '21 ans de terrain',
+    b2SubSuffix: 'ans de terrain',
     b2Body: 'Scrum Masters, équipes, managers en transition. Luxembourg et remote.',
     b2Cta: 'Me suivre sur LinkedIn',
     b3Title: 'Prendre RDV',
@@ -42,7 +42,7 @@ const COPY: Record<Lang, {
     b1Body:
       'Scrum Augmented, Delivered Incrementally and Measured. Built on 300+ real retrospectives, to move past surface-level Scrum.',
     b1Cta: 'Discover the book',
-    b2Sub: '21 years in the field',
+    b2SubSuffix: 'years in the field',
     b2Body: 'Scrum Masters, teams, managers in transition. Luxembourg and remote.',
     b2Cta: 'Follow me on LinkedIn',
     b3Title: 'Book a call',
@@ -77,6 +77,8 @@ function PhoneIcon({ color }: { color: string }) {
 export function AboutClient() {
   const [lang, setLang] = useState<Lang>('fr')
   const t = COPY[lang]
+  // Expérience terrain calculée dynamiquement depuis 2003 (ne devient jamais obsolète)
+  const yearsExperience = new Date().getFullYear() - 2003
 
   return (
     <main className="about-main relative" style={{ backgroundColor: NAVY, fontFamily: SYSTEM_FONT }}>
@@ -184,7 +186,7 @@ export function AboutClient() {
                 Coaching Agile
               </h2>
               <p className="mt-2 text-sm font-semibold sm:text-base" style={{ color: NAVY }}>
-                {t.b2Sub}
+                {yearsExperience} {t.b2SubSuffix}
               </p>
               <p className="mt-2 max-w-xs text-xs leading-relaxed sm:text-sm" style={{ color: NAVY_LIGHT }}>
                 {t.b2Body}

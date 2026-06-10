@@ -6,10 +6,11 @@ import { trackEvent } from '@/lib/gtag'
 import { translations } from '@/lib/translations'
 import { getBookCtaLabel } from '@/lib/book-config'
 import { useBookProduct } from '@/lib/book-product-context'
-import { Calendar, BookOpen } from 'lucide-react'
+import { Calendar, BookOpen, Linkedin } from 'lucide-react'
 import CheckoutSheet from '@/components/checkout/CheckoutSheet'
 
 const CALENDLY_URL = 'https://calendly.com/salimdulux/30min'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/salimgomri/'
 
 /** Barre flottante — 2 CTA : Livre / pré-commande (mis en avant) + Coaching Calendly (secondaire). */
 export default function FloatingBottomBar() {
@@ -28,7 +29,7 @@ export default function FloatingBottomBar() {
 
   return (
     <div
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 sm:gap-4"
+      className="fixed bottom-6 left-1/2 z-40 flex max-w-[95vw] -translate-x-1/2 flex-wrap items-center justify-center gap-3 sm:gap-4"
       role="group"
     >
       {/* Livre S.A.L.I.M */}
@@ -61,16 +62,30 @@ export default function FloatingBottomBar() {
       )}
 
       {!isSalimLanding && (
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${btnClass} bg-book-orange/20 hover:bg-book-orange/30 border border-book-orange/50 text-book-orange font-medium`}
-          aria-label={t['coaching-float']}
-        >
-          <Calendar className={iconClass} />
-          <span className="text-sm whitespace-nowrap">{t['coaching-float-short']}</span>
-        </a>
+        <>
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${btnClass} bg-book-orange hover:brightness-95 text-white font-semibold`}
+            aria-label={t['coaching-float']}
+          >
+            <Calendar className={iconClass} />
+            <span className="text-sm font-medium whitespace-nowrap">{t['coaching-float-short']}</span>
+          </a>
+
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${btnClass} bg-[#0A66C2] hover:brightness-110 text-white font-semibold`}
+            aria-label={language === 'fr' ? 'Se connecter sur LinkedIn' : 'Connect on LinkedIn'}
+            onClick={() => trackEvent('cta_linkedin_float', { from: pathname })}
+          >
+            <Linkedin className={iconClass} />
+            <span className="text-sm font-medium whitespace-nowrap">LinkedIn</span>
+          </a>
+        </>
       )}
     </div>
   )
