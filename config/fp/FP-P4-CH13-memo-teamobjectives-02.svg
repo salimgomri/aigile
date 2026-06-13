@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="794px" height="1123px" viewBox="0 0 794 1123"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  <image id="_sep_v"  width="1px"   height="50px" xlink:href="data:image/png;base64,SEP_V_BASE64_ICI"/>
+  <image id="_sep_h"  width="686px" height="1px"  xlink:href="data:image/png;base64,SEP_H_BASE64_ICI"/>
+  <image id="_logo"   width="139px" height="44px" xlink:href="data:image/png;base64,LOGO_BASE64_ICI"/>
+</defs>
+
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<g><use xlink:href="#_logo" x="0" y="0" width="139px" height="44px"
+        transform="matrix(0,-1.002428,1.002604,0,5.867447,155.566358)"/></g>
+
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;fill:#bbb;">PILOTAGE PAR LA VALEUR &gt; TEAM OBJECTIVES</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="706" y="23" style="font-family:&#x27;Helvetica&#x27;;font-size:9.5px;fill:#0f2240;">IV-13.2</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58" style="font-family:&#x27;Georgia&#x27;,serif;font-size:24px;fill:#0f2240;">Team Objectives : reformulation valeur</text>
+<text x="72" y="72" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:11px;font-style:italic;fill:#febd10;">Passer du plan d&#x27;ex&#233;cution &#224; l&#x27;engagement sur la valeur</text>
+
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<clipPath id="_c1"><rect x="238.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c1)"><use xlink:href="#_sep_v" x="238.7" y="86" width="1px" height="50px"/></g>
+<clipPath id="_c2"><rect x="423.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c2)"><use xlink:href="#_sep_v" x="423.7" y="86" width="1px" height="50px"/></g>
+<clipPath id="_c3"><rect x="608.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c3)"><use xlink:href="#_sep_v" x="608.7" y="86" width="1px" height="50px"/></g>
+<text x="72" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">SM / PO</text>
+<text x="252" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Reformuler les objectifs &#233;quipe</text>
+<text x="252" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">en termes de valeur business</text>
+<text x="437" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L&#x27;UTILISER</text>
+<text x="437" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">PI Planning, breakout &#233;quipe,</text>
+<text x="437" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">formulation Sprint Goal</text>
+<text x="622" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Engagement sur la valeur,</text>
+<text x="622" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">pas sur les t&#226;ches</text>
+
+<!-- PRINCIPE -->
+<rect x="66" y="158" width="662" height="40" style="fill:#0f2240;rx:4px;"/>
+<text x="397" y="175" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;fill:#febd10;text-anchor:middle;">La question &#224; poser pour chaque objectif :</text>
+<text x="397" y="191" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;font-weight:bold;fill:#fff;text-anchor:middle;">Quel changement observable pour l&#x27;utilisateur ou le business ce travail produit-il ?</text>
+
+<!-- TABLEAU NON / OUI -->
+<rect x="66" y="208" width="662" height="24" style="fill:#e0e0e0;"/>
+<text x="182" y="224" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#cc3333;text-anchor:middle;">NON : plan d&#x27;ex&#233;cution</text>
+<text x="545" y="224" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#2a7a2a;text-anchor:middle;">OUI : engagement sur la valeur</text>
+<line x1="364" y1="208" x2="364" y2="530" style="stroke:#e0e0e0;stroke-width:1px;"/>
+
+<!-- Paire 1 -->
+<rect x="66" y="232" width="298" height="50" style="fill:#fff8f8;rx:2px;"/>
+<text x="80" y="248" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#cc3333;">NON</text>
+<text x="105" y="248" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">Livrer 23 story points sur le module</text>
+<text x="105" y="262" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">de paiement.</text>
+<text x="80" y="276" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#cc3333;">Trop t&#244;t ou trop tard, le scope &#233;volue.</text>
+
+<rect x="370" y="232" width="358" height="50" style="fill:#f0fff0;rx:2px;"/>
+<text x="384" y="248" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#2a7a2a;">OUI</text>
+<text x="409" y="248" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">Permettre au client de finaliser un achat</text>
+<text x="409" y="262" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">sans intervention support.</text>
+<text x="384" y="276" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#2a7a2a;">Le client peut finaliser. C&#x27;est mesurable.</text>
+
+<!-- Paire 2 -->
+<rect x="66" y="288" width="298" height="50" style="fill:#fff8f8;rx:2px;"/>
+<text x="80" y="304" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#cc3333;">NON</text>
+<text x="105" y="304" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">Impl&#233;menter les 3 APIs de</text>
+<text x="105" y="318" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">l&#x27;&#233;quipe platform.</text>
+<text x="80" y="332" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#cc3333;">T&#226;che technique. Valeur invisible pour le business.</text>
+
+<rect x="370" y="288" width="358" height="50" style="fill:#f0fff0;rx:2px;"/>
+<text x="384" y="304" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#2a7a2a;">OUI</text>
+<text x="409" y="304" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">R&#233;duire de 2 jours &#224; 4 heures le d&#233;lai</text>
+<text x="409" y="318" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">d&#x27;int&#233;gration pour les nouvelles &#233;quipes.</text>
+<text x="384" y="332" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#2a7a2a;">De 2 jours &#224; 4 heures. Chiffr&#233;. V&#233;rifiable.</text>
+
+<!-- Paire 3 -->
+<rect x="66" y="344" width="298" height="50" style="fill:#fff8f8;rx:2px;"/>
+<text x="80" y="360" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#cc3333;">NON</text>
+<text x="105" y="360" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">R&#233;duire le temps de connexion</text>
+<text x="105" y="374" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">utilisateur.</text>
+<text x="80" y="388" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#cc3333;">Vague. Pas de cible. Pas mesurable.</text>
+
+<rect x="370" y="344" width="358" height="50" style="fill:#f0fff0;rx:2px;"/>
+<text x="384" y="360" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#2a7a2a;">OUI</text>
+<text x="409" y="360" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">R&#233;duire le temps de connexion</text>
+<text x="409" y="374" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#555;">utilisateur de 40 %.</text>
+<text x="384" y="388" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#2a7a2a;">40 %. Mesure apr&#232;s sprint. Engag&#233;.</text>
+
+<!-- STRETCH OBJECTIVE -->
+<rect x="66" y="406" width="662" height="24" style="fill:#0f2240;"/>
+<text x="80" y="422" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#fff;">STRETCH OBJECTIVE : R&#200;GLE D&#x27;USAGE</text>
+
+<rect x="66" y="430" width="662" height="56" style="fill:#fafaf7;"/>
+<text x="80" y="446" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#0f2240;">Le stretch objective est une ambition sans engagement ferme. L&#x27;&#233;quipe le tente</text>
+<text x="80" y="460" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#0f2240;">si la capacit&#233; le permet apr&#232;s le sprint 3, sans contraindre le PI.</text>
+<text x="80" y="476" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;font-style:italic;fill:#febd10;">Exemple : Supporter 3 m&#233;thodes de paiement alternatives, si capacit&#233; disponible apr&#232;s sprint 3.</text>
+
+<!-- BUSINESS VALUE SCORING -->
+<rect x="66" y="496" width="662" height="24" style="fill:#0f2240;"/>
+<text x="80" y="512" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#fff;">BUSINESS VALUE : SCORE 1 &#224; 10 PAR PRODUCT MANAGER ART</text>
+
+<rect x="66" y="520" width="662" height="44" style="fill:#fafaf7;"/>
+<text x="80" y="536" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#0f2240;">Chaque Team Objective re&#231;oit une valeur business de 1 &#224; 10. En fin de PI, le pourcentage</text>
+<text x="80" y="550" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#0f2240;">de valeur livr&#233;e est calcul&#233; sur cette base. Cible : sup&#233;rieur &#224; 80 % Business Value du PI.</text>
+<text x="80" y="558" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#cc3333;">En dessous de 80 % : la cadence PI ne produit pas l&#x27;alignement business attendu.</text>
+
+<!-- RÈGLE REFORMULATION -->
+<rect x="66" y="574" width="662" height="44" style="fill:#0f2240;rx:4px;"/>
+<text x="397" y="591" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;fill:#febd10;text-anchor:middle;">La reformulation n&#x27;est pas cosm&#233;tique.</text>
+<text x="397" y="609" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;font-weight:bold;fill:#fff;text-anchor:middle;">Elle change le p&#233;rim&#232;tre de d&#233;cision en sprint.</text>
+
+<!-- GUIDE DE SELECTION PAR TAILLE -->
+<rect x="66" y="628" width="662" height="24" style="fill:#0f2240;"/>
+<text x="80" y="644" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#fff;">GUIDE DE S&#201;LECTION FRAMEWORK PAR TAILLE D&#x27;&#201;QUIPE</text>
+
+<rect x="66" y="652" width="218" height="60" style="fill:#fafaf7;rx:2px;"/>
+<text x="175" y="668" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;font-weight:bold;fill:#0f2240;text-anchor:middle;">Moins de 3 &#233;quipes</text>
+<text x="175" y="684" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#2a7a2a;text-anchor:middle;">Scrum + OKR</text>
+<text x="175" y="700" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#bbb;text-anchor:middle;">SAFe surdimensionn&#233;</text>
+
+<rect x="290" y="652" width="218" height="60" style="fill:#fafaf7;rx:2px;"/>
+<text x="399" y="668" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;font-weight:bold;fill:#0f2240;text-anchor:middle;">3 &#224; 9 &#233;quipes</text>
+<text x="399" y="684" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#2a7a2a;text-anchor:middle;">LeSS ou Nexus</text>
+<text x="399" y="700" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#bbb;text-anchor:middle;">1 produit 1 backlog</text>
+
+<rect x="514" y="652" width="214" height="60" style="fill:#fafaf7;rx:2px;"/>
+<text x="621" y="668" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;font-weight:bold;fill:#0f2240;text-anchor:middle;">9+ &#233;quipes</text>
+<text x="621" y="684" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;fill:#febd10;text-anchor:middle;">SAFe Essential</text>
+<text x="621" y="700" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#bbb;text-anchor:middle;">p&#233;rim&#232;tres multiples</text>
+
+<!-- NOTES PERSONNELLES -->
+<rect x="66" y="726" width="662" height="24" style="fill:#f5f5f5;"/>
+<text x="80" y="742" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;fill:#bbb;letter-spacing:1px;">NOTES TERRAIN</text>
+<rect x="66" y="750" width="662" height="304" style="fill:#fafaf7;"/>
+<line x1="80" y1="768" x2="714" y2="768" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="788" x2="714" y2="788" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="808" x2="714" y2="808" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="828" x2="714" y2="828" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="848" x2="714" y2="848" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="868" x2="714" y2="868" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="888" x2="714" y2="888" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="908" x2="714" y2="908" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="928" x2="714" y2="928" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="948" x2="714" y2="948" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="968" x2="714" y2="968" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="988" x2="714" y2="988" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="1008" x2="714" y2="1008" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="1028" x2="714" y2="1028" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="1048" x2="714" y2="1048" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="396" y="1088" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;fill:#febd10;text-anchor:middle;">13</text>
+<text x="72" y="1089" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. - Chapitre 13</text>
+<text x="677" y="1089" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

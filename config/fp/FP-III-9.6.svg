@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  </defs>
+
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <g transform="translate(27,900) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold"
+          text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+  <g transform="translate(27,60)">
+    <polygon points="0,-18 14,0 0,18 -14,0" fill="#0f2240" opacity="0.85"/>
+    <text font-family="Georgia,serif" font-size="7" fill="#febd10" text-anchor="middle" dy="2.5">S</text>
+  </g>
+  <rect x="54" y="0" width="740" height="80" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb"
+        letter-spacing="1">CHECKLIST D&#201;CISION &gt; POSTURE SM</text>
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="23" font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-9.6</text>
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="22" fill="#0f2240"
+        font-weight="bold">Filtre de d&#233;cision AIgile</text>
+  <text x="72" y="76" font-family="Georgia,serif" font-size="10" fill="#febd10"
+        font-style="italic">Quelle valeur ou quel principe appliques-tu face &#224; cette situation aujourd&#39;hui ?</text>
+  <rect x="54" y="80" width="740" height="72" fill="#febd10"/>
+  <line x1="239" y1="88" x2="239" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="424" y1="88" x2="424" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="609" y1="88" x2="609" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <text x="72"  y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="257" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="442" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUAND L&#39;UTILISER</text>
+  <text x="627" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="72"  y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">SM</text>
+  <text x="257" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">4 situations + r&#233;ponse AIgile</text>
+  <text x="442" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">D&#232;s qu&#39;une situation IA se pose</text>
+  <text x="627" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Passer des valeurs aux r&#233;flexes</text>
+  <line x1="54" y1="1072" x2="794" y2="1072" stroke="#febd10" stroke-width="1"/>
+  <text x="72"  y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 9 : AIgile Manifesto</text>
+  <text x="630" y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">Le Syst&#232;me S.A.L.I.M.</text>
+  <rect x="370" y="1076" width="54" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10"
+        text-anchor="middle" font-weight="bold">9.6</text>
+
+  <rect x="72" y="162" width="676" height="28" fill="#0f2240" rx="2"/>
+  <text x="410" y="172" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" text-anchor="middle" font-weight="bold" letter-spacing="0.8">
+    L&#39;AIgile Manifesto n&#39;est pas un texte &#224; afficher. C&#39;est un filtre de d&#233;cision quotidien.
+  </text>
+  <text x="410" y="184" font-family="Georgia,serif" font-size="9"
+        fill="#ffffff" text-anchor="middle">
+    Pour chaque situation : identifie la valeur concern&#233;e, applique la r&#233;ponse, assume le r&#233;sultat.
+  </text>
+
+  <rect x="72" y="202" width="676" height="108" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="202" width="676" height="22" fill="#0f2240" rx="2"/>
+  <text x="84" y="217" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">SITUATION 1</text>
+  <text x="248" y="217" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff">|</text>
+  <rect x="258" y="207" width="200" height="14" rx="7" fill="#febd10" opacity="0.25"/>
+  <text x="358" y="217" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#febd10" text-anchor="middle" font-weight="bold">VALEUR 1</text>
+  <text x="84" y="238" font-family="Georgia,serif" font-size="10"
+        fill="#0f2240" font-weight="bold">Un outil IA propose d&#39;automatiser la r&#233;trospective</text>
+  <line x1="84" y1="246" x2="736" y2="246" stroke="#febd10" stroke-width="0.6"/>
+  <text x="84" y="258" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#0f2240" font-weight="bold" letter-spacing="0.5">VALEUR CONCERN&#201;E</text>
+  <text x="84" y="270" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Collaboration humain-IA plut&#244;t qu&#39;automatisation aveugle</text>
+  <text x="84" y="284" font-family="Georgia,serif" font-size="9" fill="#0f2240">Est-ce que cette automatisation sert l&#39;&#233;quipe,</text>
+  <text x="84" y="296" font-family="Georgia,serif" font-size="9" fill="#0f2240">ou est-ce que l&#39;&#233;quipe va s&#39;adapter &#224; l&#39;outil ?</text>
+  <text x="84" y="308" font-family="Georgia,serif" font-size="9"
+        fill="#febd10" font-style="italic">R&#233;ponse AIgile : tester sur 1 c&#233;r&#233;monie. Observer. D&#233;cider.</text>
+
+  <rect x="72" y="318" width="676" height="108" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="318" width="676" height="22" fill="#0f2240" rx="2"/>
+  <text x="84" y="333" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">SITUATION 2</text>
+  <text x="248" y="333" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff">|</text>
+  <rect x="258" y="323" width="200" height="14" rx="7" fill="#febd10" opacity="0.25"/>
+  <text x="358" y="333" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#febd10" text-anchor="middle" font-weight="bold">VALEUR 3</text>
+  <text x="84" y="354" font-family="Georgia,serif" font-size="10"
+        fill="#0f2240" font-weight="bold">Un manager demande si les user stories ont &#233;t&#233; &#233;crites par l&#39;IA</text>
+  <line x1="84" y1="362" x2="736" y2="362" stroke="#febd10" stroke-width="0.6"/>
+  <text x="84" y="374" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#0f2240" font-weight="bold" letter-spacing="0.5">VALEUR CONCERN&#201;E</text>
+  <text x="84" y="386" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Transparence algorithmique plut&#244;t qu&#39;opacit&#233; des mod&#232;les</text>
+  <text x="84" y="400" font-family="Georgia,serif" font-size="9" fill="#0f2240">R&#233;ponse directe : &#171; oui, assist&#233;es par l&#39;IA, valid&#233;es,</text>
+  <text x="84" y="412" font-family="Georgia,serif" font-size="9" fill="#0f2240">relues, assum&#233;es par les personnes qui les signent. &#187;</text>
+  <text x="84" y="424" font-family="Georgia,serif" font-size="9"
+        fill="#febd10" font-style="italic">La transparence n&#39;est pas un aveu. C&#39;est une condition de confiance.</text>
+
+  <rect x="72" y="434" width="676" height="108" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="434" width="676" height="22" fill="#0f2240" rx="2"/>
+  <text x="84" y="449" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">SITUATION 3</text>
+  <text x="248" y="449" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff">|</text>
+  <rect x="258" y="439" width="200" height="14" rx="7" fill="#febd10" opacity="0.25"/>
+  <text x="358" y="449" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#febd10" text-anchor="middle" font-weight="bold">PRINCIPE 3</text>
+  <text x="84" y="470" font-family="Georgia,serif" font-size="10"
+        fill="#0f2240" font-weight="bold">Un d&#233;veloppeur accepte sans relecture le code g&#233;n&#233;r&#233; par Copilot</text>
+  <line x1="84" y1="478" x2="736" y2="478" stroke="#febd10" stroke-width="0.6"/>
+  <text x="84" y="490" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#0f2240" font-weight="bold" letter-spacing="0.5">VALEUR CONCERN&#201;E</text>
+  <text x="84" y="502" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Le jugement humain reste la ressource critique</text>
+  <text x="84" y="516" font-family="Georgia,serif" font-size="9" fill="#0f2240">Trois questions avant de merger : je comprends ligne par ligne ?</text>
+  <text x="84" y="528" font-family="Georgia,serif" font-size="9" fill="#0f2240">Je peux l&#39;expliquer sans montrer le prompt ? J&#39;assume en prod ?</text>
+  <text x="84" y="540" font-family="Georgia,serif" font-size="9"
+        fill="#febd10" font-style="italic">Ce n&#39;est pas une r&#232;gle de lenteur. C&#39;est une r&#232;gle de discernement.</text>
+
+  <rect x="72" y="550" width="676" height="108" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="550" width="676" height="22" fill="#0f2240" rx="2"/>
+  <text x="84" y="565" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">SITUATION 4</text>
+  <text x="248" y="565" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff">|</text>
+  <rect x="258" y="555" width="200" height="14" rx="7" fill="#febd10" opacity="0.25"/>
+  <text x="358" y="565" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#febd10" text-anchor="middle" font-weight="bold">VALEUR 4</text>
+  <text x="84" y="586" font-family="Georgia,serif" font-size="10"
+        fill="#0f2240" font-weight="bold">&#171; L&#39;IA a dit que &#187; est utilis&#233; comme justification dans une d&#233;cision</text>
+  <line x1="84" y1="594" x2="736" y2="594" stroke="#febd10" stroke-width="0.6"/>
+  <text x="84" y="606" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#0f2240" font-weight="bold" letter-spacing="0.5">VALEUR CONCERN&#201;E</text>
+  <text x="84" y="618" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Responsabilit&#233; humaine plut&#244;t que d&#233;l&#233;gation de la d&#233;cision</text>
+  <text x="84" y="632" font-family="Georgia,serif" font-size="9" fill="#0f2240">Dans un contexte professionnel, &#171; l&#39;IA a dit que &#187;</text>
+  <text x="84" y="644" font-family="Georgia,serif" font-size="9" fill="#0f2240">ne peut jamais &#234;tre une justification suffisante.</text>
+  <text x="84" y="656" font-family="Georgia,serif" font-size="9"
+        fill="#febd10" font-style="italic">Nommer le risque. Demander qui assume la d&#233;cision finale.</text>
+
+  <rect x="72" y="672" width="676" height="34" fill="#febd10" rx="2"/>
+  <text x="410" y="686" font-family="Georgia,serif" font-size="10"
+        fill="#0f2240" text-anchor="middle" font-style="italic">
+    La posture AIgile : savoir quand dire &#171; merci, mais je vais r&#233;fl&#233;chir moi-m&#234;me &#187; &#224; un output qui para&#238;t parfait.
+  </text>
+
+</svg>

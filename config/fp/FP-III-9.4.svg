@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  </defs>
+
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <g transform="translate(27,900) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold"
+          text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+  <g transform="translate(27,60)">
+    <polygon points="0,-18 14,0 0,18 -14,0" fill="#0f2240" opacity="0.85"/>
+    <text font-family="Georgia,serif" font-size="7" fill="#febd10" text-anchor="middle" dy="2.5">S</text>
+  </g>
+  <rect x="54" y="0" width="740" height="80" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb"
+        letter-spacing="1">R&#201;F&#201;RENCE &gt; PRINCIPES</text>
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="23" font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-9.4</text>
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="22" fill="#0f2240"
+        font-weight="bold">Les 10 principes AIgile</text>
+  <text x="72" y="76" font-family="Georgia,serif" font-size="10" fill="#febd10"
+        font-style="italic">Traduction praticienne : ce que chaque principe change concr&#232;tement pour un SM.</text>
+  <rect x="54" y="80" width="740" height="72" fill="#febd10"/>
+  <line x1="239" y1="88" x2="239" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="424" y1="88" x2="424" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="609" y1="88" x2="609" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <text x="72"  y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="257" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="442" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUAND L&#39;UTILISER</text>
+  <text x="627" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="72"  y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">SM / CA / PO</text>
+  <text x="257" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">10 principes op&#233;rationnels</text>
+  <text x="442" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Lors de l&#39;adoption ou d&#39;un blocage</text>
+  <text x="627" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Ancrer les valeurs dans le quotidien</text>
+  <line x1="54" y1="1072" x2="794" y2="1072" stroke="#febd10" stroke-width="1"/>
+  <text x="72"  y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 9 : AIgile Manifesto</text>
+  <text x="630" y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">Le Syst&#232;me S.A.L.I.M.</text>
+  <rect x="370" y="1076" width="54" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10"
+        text-anchor="middle" font-weight="bold">9.4</text>
+
+  <rect x="72" y="162" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="162" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="176" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P1</text>
+  <text x="108" y="176" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">L&#39;IA est un outil au service de l&#39;&#233;quipe</text>
+  <text x="82" y="198" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Si l&#39;&#233;quipe s&#39;adapte &#224; l&#39;outil : quelq</text>
+  <text x="82" y="212" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">ue chose s&#39;est invers&#233;.</text>
+
+  <rect x="72" y="240" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="240" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="254" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P2</text>
+  <text x="108" y="254" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">La valeur m&#233;tier prime sur la perf. algorithmique</text>
+  <text x="82" y="276" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Un mod&#232;le plus performant qui n&#39;am&#233;liore pas l</text>
+  <text x="82" y="290" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">a valeur livr&#233;e n&#39;est pas un progr&#232;s.</text>
+
+  <rect x="72" y="318" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="318" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="332" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P3</text>
+  <text x="108" y="332" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">Le jugement humain reste la ressource critique</text>
+  <text x="82" y="354" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">L&#39;IA r&#233;duit le co&#251;t de la 1&#232;re version. E</text>
+  <text x="82" y="368" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">lle augmente le co&#251;t du jugement.</text>
+
+  <rect x="72" y="396" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="396" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="410" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P4</text>
+  <text x="108" y="410" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">La transparence sur l&#39;IA est une responsabilit&#233; professionnelle</text>
+  <text x="82" y="432" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Utiliser l&#39;IA sans le mentionner quand c&#39;est pertine</text>
+  <text x="82" y="446" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">nt : une forme de manque de clart&#233;.</text>
+
+  <rect x="72" y="474" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="474" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="488" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P5</text>
+  <text x="108" y="488" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">L&#39;empirisme Scrum s&#39;applique aussi aux outils IA</text>
+  <text x="82" y="510" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Transparence, inspection, adaptation : les 3 piliers Scrum v</text>
+  <text x="82" y="524" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">alent pour l&#39;IA.</text>
+
+  <rect x="418" y="162" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="418" y="162" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="428" y="176" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P6</text>
+  <text x="454" y="176" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">La vie priv&#233;e et la s&#233;curit&#233; des donn&#233;es sont non n&#233;gociables</text>
+  <text x="428" y="198" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Avant le 1er prompt avec des donn&#233;es d&#39;&#233;quipe </text>
+  <text x="428" y="212" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">: conna&#238;tre la politique de r&#233;tention.</text>
+
+  <rect x="418" y="240" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="418" y="240" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="428" y="254" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P7</text>
+  <text x="454" y="254" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">L&#39;IA amplifie les forces ET les faiblesses existantes</text>
+  <text x="428" y="276" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Un Daily encore rapport de statut : l&#39;IA g&#233;n&#233;r</text>
+  <text x="428" y="290" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">era de meilleurs rapports de statut.</text>
+
+  <rect x="418" y="318" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="418" y="318" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="428" y="332" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P8</text>
+  <text x="454" y="332" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">Le d&#233;veloppement des comp&#233;tences humaines reste prioritaire</text>
+  <text x="428" y="354" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Si un seul membre ma&#238;trise l&#39;IA : rotation des prom</text>
+  <text x="428" y="368" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">pts en r&#233;tro, pas d&#233;l&#233;gation permanente.</text>
+
+  <rect x="418" y="396" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="418" y="396" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="428" y="410" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P9</text>
+  <text x="454" y="410" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">L&#39;IA doit am&#233;liorer le bien-&#234;tre, pas accro&#238;tre la pression</text>
+  <text x="428" y="432" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Un outil IA qui cr&#233;e l&#39;attente de livrer plus vite </text>
+  <text x="428" y="446" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">sans + de ressources : probl&#232;me organisationnel.</text>
+
+  <rect x="418" y="474" width="330" height="72" fill="#fafaf7" rx="2"/>
+  <rect x="418" y="474" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="428" y="488" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold">P10</text>
+  <text x="454" y="488" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold">L&#39;&#233;thique de l&#39;IA est une responsabilit&#233; collective</text>
+  <text x="428" y="510" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Un biais dans un output IA se nomme en r&#233;tro. Pas dans </text>
+  <text x="428" y="524" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">un ticket. L&#39;&#233;thique IA se parle.</text>
+
+  <rect x="72" y="560" width="676" height="44" fill="#0f2240" rx="2"/>
+  <text x="410" y="576" font-family="Georgia,serif" font-size="10"
+        fill="#febd10" text-anchor="middle" font-style="italic">R&#232;gle d&#39;or</text>
+  <text x="410" y="592" font-family="Georgia,serif" font-size="9"
+        fill="#ffffff" text-anchor="middle">
+    Les 10 principes complets avec exemples terrain sont disponibles sur aigile.lu
+  </text>
+
+</svg>

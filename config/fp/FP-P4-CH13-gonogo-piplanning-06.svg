@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="794px" height="1123px" viewBox="0 0 794 1123"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  <image id="_sep_v"  width="1px"   height="50px" xlink:href="data:image/png;base64,SEP_V_BASE64_ICI"/>
+  <image id="_sep_h"  width="686px" height="1px"  xlink:href="data:image/png;base64,SEP_H_BASE64_ICI"/>
+  <image id="_sep_h2" width="686px" height="1px"  xlink:href="data:image/png;base64,SEP_H2_BASE64_ICI"/>
+  <image id="_logo"   width="139px" height="44px" xlink:href="data:image/png;base64,LOGO_BASE64_ICI"/>
+</defs>
+
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+<g><use xlink:href="#_logo" x="0" y="0" width="139px" height="44px"
+        transform="matrix(0,-1.002428,1.002604,0,5.867447,155.566358)"/></g>
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;fill:#bbb;">FACILITATION &gt; PR&#201;PARATION</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="706" y="23" style="font-family:&#x27;Helvetica&#x27;;font-size:9.5px;fill:#0f2240;">IV-13.6</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58" style="font-family:&#x27;Georgia&#x27;,serif;font-size:24px;fill:#0f2240;">PI Planning : GO / NO-GO</text>
+<text x="72" y="72" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:11px;font-style:italic;fill:#febd10;">Checklist de pr&#233;paration avant le Jour 1</text>
+
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<clipPath id="_c1"><rect x="238.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c1)"><use xlink:href="#_sep_v" x="238.7" y="86" width="1px" height="50px"/></g>
+<clipPath id="_c2"><rect x="423.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c2)"><use xlink:href="#_sep_v" x="423.7" y="86" width="1px" height="50px"/></g>
+<clipPath id="_c3"><rect x="608.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c3)"><use xlink:href="#_sep_v" x="608.7" y="86" width="1px" height="50px"/></g>
+<text x="72" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">RTE / SM / PO</text>
+<text x="252" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">V&#233;rifier que tout est pr&#234;t</text>
+<text x="252" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">avant de lancer le PI Planning</text>
+<text x="437" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L&#x27;UTILISER</text>
+<text x="437" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">5 jours avant le PI Planning.</text>
+<text x="437" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Pas le matin du Jour 1.</text>
+<text x="622" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">PI Planning qui produit</text>
+<text x="622" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">des plans r&#233;els d&#232;s le Jour 1</text>
+
+<!-- EN-TÊTE TABLEAU -->
+<rect x="66" y="158" width="662" height="26" style="fill:#0f2240;"/>
+<text x="80"  y="175" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#fff;">CRIT&#200;RE</text>
+<text x="440" y="175" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#fff;">GO</text>
+<text x="490" y="175" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#fff;">NO GO</text>
+<text x="545" y="175" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#fff;">PRIORIT&#201;</text>
+<text x="614" y="175" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#fff;">SI NO-GO : ACTION</text>
+
+<!-- Ligne 1 -->
+<rect x="66" y="184" width="662" height="52" style="fill:#fff;"/>
+<text x="80" y="199" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#febd10;">01</text>
+<text x="105" y="199" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#0f2240;">Backlog ART prioris&#233;</text>
+<text x="105" y="213" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">Le backlog est tri&#233;, estim&#233; et visible</text>
+<text x="105" y="225" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">par toutes les &#233;quipes avant J1 matin.</text>
+<text x="445" y="210" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#2a7a2a;text-anchor:middle;">&#x25CB;</text>
+<text x="500" y="210" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#cc3333;text-anchor:middle;">&#x25CF;</text>
+<text x="555" y="210" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-weight:bold;fill:#cc3333;text-anchor:middle;">BLOQUANT</text>
+<text x="622" y="204" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">Reporter le PI Planning</text>
+<text x="622" y="218" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">ou travailler le backlog</text>
+<text x="622" y="232" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">en urgence.</text>
+<rect x="66" y="236" width="662" height="1" style="fill:#e0e0e0;"/>
+
+<!-- Ligne 2 -->
+<rect x="66" y="237" width="662" height="52" style="fill:#fafaf7;"/>
+<text x="80" y="252" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#febd10;">02</text>
+<text x="105" y="252" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#0f2240;">Vision produit pr&#233;par&#233;e</text>
+<text x="105" y="266" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">Business Owner a pr&#233;par&#233; la pr&#233;sentation</text>
+<text x="105" y="278" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">vision produit pour J1 matin (3h).</text>
+<text x="445" y="263" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#2a7a2a;text-anchor:middle;">&#x25CB;</text>
+<text x="500" y="263" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#cc3333;text-anchor:middle;">&#x25CF;</text>
+<text x="555" y="263" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-weight:bold;fill:#cc3333;text-anchor:middle;">BLOQUANT</text>
+<text x="622" y="257" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">RTE brief le BO sur</text>
+<text x="622" y="271" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">le format attendu.</text>
+<rect x="66" y="289" width="662" height="1" style="fill:#e0e0e0;"/>
+
+<!-- Ligne 3 -->
+<rect x="66" y="290" width="662" height="52" style="fill:#fff;"/>
+<text x="80" y="305" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#febd10;">03</text>
+<text x="105" y="305" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#0f2240;">Architecte Syst&#232;me disponible</text>
+<text x="105" y="319" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">Pr&#233;sent J1 matin pour les orientations</text>
+<text x="105" y="331" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">techniques et les d&#233;pendances d&#x27;archi.</text>
+<text x="445" y="316" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#2a7a2a;text-anchor:middle;">&#x25CB;</text>
+<text x="500" y="316" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#cc3333;text-anchor:middle;">&#x25CF;</text>
+<text x="555" y="316" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-weight:bold;fill:#e07000;text-anchor:middle;">MAJEUR</text>
+<text x="622" y="310" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">Pr&#233;voir suppl&#233;ant</text>
+<text x="622" y="324" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">ou async avant J1.</text>
+<rect x="66" y="342" width="662" height="1" style="fill:#e0e0e0;"/>
+
+<!-- Ligne 4 -->
+<rect x="66" y="343" width="662" height="52" style="fill:#fafaf7;"/>
+<text x="80" y="358" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#febd10;">04</text>
+<text x="105" y="358" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#0f2240;">&#201;quipes brief&#233;es sur le format</text>
+<text x="105" y="372" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">Chaque SM a expliqu&#233; le format PI Planning</text>
+<text x="105" y="384" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">&#224; son &#233;quipe. Pas de d&#233;couverte le Jour 1.</text>
+<text x="445" y="369" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#2a7a2a;text-anchor:middle;">&#x25CB;</text>
+<text x="500" y="369" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#cc3333;text-anchor:middle;">&#x25CF;</text>
+<text x="555" y="369" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-weight:bold;fill:#e07000;text-anchor:middle;">MAJEUR</text>
+<text x="622" y="363" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">Session pr&#233;paratoire</text>
+<text x="622" y="377" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">30 min par &#233;quipe</text>
+<text x="622" y="391" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">avant J1.</text>
+<rect x="66" y="395" width="662" height="1" style="fill:#e0e0e0;"/>
+
+<!-- Ligne 5 -->
+<rect x="66" y="396" width="662" height="52" style="fill:#fff;"/>
+<text x="80" y="411" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#febd10;">05</text>
+<text x="105" y="411" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#0f2240;">Logistique valid&#233;e</text>
+<text x="105" y="425" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">Salle / lien distanciel. Post-its ou outil digital.</text>
+<text x="105" y="437" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">Affichage programme visible par tous.</text>
+<text x="445" y="422" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#2a7a2a;text-anchor:middle;">&#x25CB;</text>
+<text x="500" y="422" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#cc3333;text-anchor:middle;">&#x25CF;</text>
+<text x="555" y="422" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-weight:bold;fill:#febd10;text-anchor:middle;">MINEUR</text>
+<text x="622" y="416" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">Faisable le matin</text>
+<text x="622" y="430" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">du J1. Ne pas bloquer</text>
+<text x="622" y="444" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">le PI Planning.</text>
+<rect x="66" y="448" width="662" height="1" style="fill:#e0e0e0;"/>
+
+<!-- Ligne 6 -->
+<rect x="66" y="449" width="662" height="52" style="fill:#fafaf7;"/>
+<text x="80" y="464" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#febd10;">06</text>
+<text x="105" y="464" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#0f2240;">Sc&#233;nario SAFe maturit&#233; Scrum valid&#233;</text>
+<text x="105" y="478" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">Chaque &#233;quipe produit un increment Done</text>
+<text x="105" y="490" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;">&#224; la fin de chaque sprint. Pas "presque Done".</text>
+<text x="445" y="475" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#2a7a2a;text-anchor:middle;">&#x25CB;</text>
+<text x="500" y="475" style="font-family:&#x27;Helvetica&#x27;;font-size:14px;fill:#cc3333;text-anchor:middle;">&#x25CF;</text>
+<text x="555" y="475" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-weight:bold;fill:#cc3333;text-anchor:middle;">BLOQUANT</text>
+<text x="622" y="469" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">SAFe ne r&#233;pare pas</text>
+<text x="622" y="483" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">Scrum. Attendre 1</text>
+<text x="622" y="497" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;">trimestre si No-Go.</text>
+
+<!-- ZONE DECISION -->
+<rect x="66" y="514" width="662" height="24" style="fill:#0f2240;"/><text x="80" y="530" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#fff;">D&#201;CISION GO / NO-GO</text>
+
+<rect x="66" y="538" width="323" height="90" style="fill:#f0fff0;rx:3px;"/>
+<text x="80" y="556" style="font-family:&#x27;Helvetica&#x27;;font-size:10px;font-weight:bold;fill:#2a7a2a;">GO : PI Planning peut d&#233;marrer</text>
+<text x="80" y="574" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">Crit&#232;res 01, 02, 06 : GO</text>
+<text x="80" y="590" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">Crit&#232;res 03, 04 : GO ou plan B valid&#233;</text>
+<text x="80" y="606" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">Crit&#232;re 05 : flexible si facilitation OK</text>
+<text x="80" y="622" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8px;font-style:italic;fill:#2a7a2a;">Date retenue. Toute l&#x27;&#233;quipe disponible.</text>
+
+<rect x="405" y="538" width="323" height="90" style="fill:#fff8f8;rx:3px;"/>
+<text x="418" y="556" style="font-family:&#x27;Helvetica&#x27;;font-size:10px;font-weight:bold;fill:#cc3333;">NO-GO : Reporter ou adapter</text>
+<text x="418" y="574" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">01 ou 02 en No-Go : reporter min. 1 semaine.</text>
+<text x="418" y="590" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">06 en No-Go : PI Planning dans 1 trimestre.</text>
+<text x="418" y="606" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">Option : mini-PI 4h si PME moins de 30 pers.</text>
+<text x="418" y="622" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8px;font-style:italic;fill:#cc3333;">Communiquer la d&#233;cision 48h avant.</text>
+
+<!-- RÈGLE FINALE -->
+<rect x="66" y="640" width="662" height="52" style="fill:#0f2240;rx:4px;"/>
+<text x="397" y="659" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;fill:#febd10;text-anchor:middle;">La moiti&#233; des PI Planning rat&#233;s le sont</text>
+<text x="397" y="675" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;font-weight:bold;fill:#fff;text-anchor:middle;">&#224; cause d&#x27;une pr&#233;paration insuffisante.</text>
+<text x="397" y="691" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:10px;font-style:italic;fill:#febd10;text-anchor:middle;">Cette fiche se remplit le vendredi avant. Pas le lundi matin.</text>
+
+
+<rect x="66" y="704" width="662" height="24" style="fill:#f5f5f5;"/>
+<text x="80" y="720" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;fill:#bbb;letter-spacing:1px;">NOTES TERRAIN</text>
+<rect x="66" y="728" width="662" height="274" style="fill:#fafaf7;"/>
+<line x1="80" y1="734" x2="714" y2="734" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="754" x2="714" y2="754" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="774" x2="714" y2="774" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="794" x2="714" y2="794" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="814" x2="714" y2="814" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="834" x2="714" y2="834" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="854" x2="714" y2="854" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="874" x2="714" y2="874" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="894" x2="714" y2="894" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="914" x2="714" y2="914" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="934" x2="714" y2="934" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="954" x2="714" y2="954" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="974" x2="714" y2="974" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="396" y="1088" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;fill:#febd10;text-anchor:middle;">13</text>
+<text x="72" y="1089" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. - Chapitre 13</text>
+<text x="677" y="1089" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+
+<!-- FOND BLANC -->
+<rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+
+<!-- BANDE LATERALE GOLD -->
+<rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+
+<!-- TEXTE VERTICAL "LE SYSTEME S.A.L.I.M." -->
+<text transform="translate(13,900) rotate(-90)"
+      font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240"
+      letter-spacing="2">LE SYST&#200;ME S.A.L.I.M.</text>
+
+<!-- LOGO SALIM (cercles concentricques stylises) -->
+<g transform="translate(8,60)">
+  <circle cx="18" cy="18" r="16" fill="none" stroke="#0f2240" stroke-width="2"/>
+  <circle cx="18" cy="18" r="11" fill="none" stroke="#0f2240" stroke-width="1.5"/>
+  <circle cx="18" cy="18" r="6"  fill="none" stroke="#0f2240" stroke-width="1"/>
+  <circle cx="18" cy="18" r="2"  fill="#0f2240"/>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="72" fill="#ffffff"/>
+<text x="72" y="28" font-family="Helvetica,Arial,sans-serif" font-size="8.5" fill="#bbbbbb">M&#201;MO R&#201;F&#201;RENCE . PILOTAGE IA</text>
+<!-- Badge FP gold -->
+<rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+<text x="733" y="23" font-family="Helvetica,Arial,sans-serif" font-size="9.5" fill="#0f2240" text-anchor="middle" font-weight="bold">FP V-16.2</text>
+<!-- Filet gold -->
+<line x1="72" y1="36" x2="766" y2="36" stroke="#febd10" stroke-width="1"/>
+<!-- Titre -->
+<text x="72" y="58" font-family="Georgia,serif" font-size="26" fill="#0f2240" font-weight="bold">DORA &#224; l'&#232;re IA : ce que tu surveilles</text>
+<text x="72" y="71" font-family="EB Garamond,Georgia,serif" font-size="11" font-style="italic" fill="#febd10">L'IA am&#233;liore la vitesse, pas automatiquement la fiabilit&#233;.</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" fill="#febd10"/>
+<!-- Separateurs verticaux -->
+<line x1="239" y1="86" x2="239" y2="136" stroke="#ffffff" stroke-width="0.6" opacity="0.5"/>
+<line x1="424" y1="86" x2="424" y2="136" stroke="#ffffff" stroke-width="0.6" opacity="0.5"/>
+<line x1="609" y1="86" x2="609" y2="136" stroke="#ffffff" stroke-width="0.6" opacity="0.5"/>
+<!-- Labels -->
+<text x="72"  y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">POUR QUI</text>
+<text x="252" y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">QUOI</text>
+<text x="437" y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">QUAND L'UTILISER</text>
+<text x="622" y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">VALEUR APPORT&#201;E</text>
+<!-- Valeurs -->
+<text x="72"  y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">MG / SM / DC</text>
+<text x="252" y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">4 m&#233;triques DORA : impact IA positif et n&#233;gatif</text>
+<text x="437" y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">D&#232;s le premier mois d'usage IA intensif</text>
+<text x="622" y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">Sortir du reporting v&#233;locit&#233; seul</text>
+
+<rect x="66" y="154" width="662" height="22" fill="#0f2240"/>
+<text x="76"  y="170" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff">M&#201;TRIQUE</text>
+<text x="220" y="170" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff">CE QUE L'IA FAIT</text>
+<text x="450" y="170" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff">SIGNAL D'ALERTE</text>
+<rect x="66" y="178" width="662" height="44" fill="#ffffff" stroke="#e0e0e0" stroke-width="0.5"/><text x="76" y="194" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Deployment</text><text x="76" y="207" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Frequency</text><text x="220" y="194" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Acc&#233;l&#232;re le code, plus de</text><text x="220" y="207" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">d&#233;ploiements possibles.</text><text x="450" y="194" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">DF monte ET reviews baissent :</text><text x="450" y="207" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#cc3333">le CFR suivra sous 3 sprints.</text><rect x="66" y="222" width="662" height="44" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.5"/><text x="76" y="238" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Lead Time</text><text x="76" y="251" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">for Changes</text><text x="220" y="238" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">R&#233;duit le temps de</text><text x="220" y="251" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">r&#233;daction et de test.</text><text x="450" y="238" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">LTC baisse ET bugs prod augmentent :</text><text x="450" y="251" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#cc3333">la vitesse est illusoire.</text><rect x="66" y="266" width="662" height="44" fill="#ffffff" stroke="#e0e0e0" stroke-width="0.5"/><text x="76" y="282" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Change Failure</text><text x="76" y="295" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Rate</text><text x="220" y="282" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Peut g&#233;n&#233;rer des tests</text><text x="220" y="295" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">plus complets.</text><text x="450" y="282" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">Tests g&#233;n&#233;r&#233;s sans &#234;tre compris :</text><text x="450" y="295" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#cc3333">ne couvrent pas les vrais cas limites.</text><rect x="66" y="310" width="662" height="44" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.5"/><text x="76" y="326" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Mean Time</text><text x="76" y="339" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">to Recovery</text><text x="220" y="326" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Peu impact&#233; directement</text><text x="220" y="339" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">par l'IA.</text><text x="450" y="326" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">Code non compris : diagnostic</text><text x="450" y="339" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#cc3333">d'incident plus lent.</text><rect x="66" y="366" width="662" height="36" rx="4" fill="#0f2240"/><text x="397" y="381" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#febd10" text-anchor="middle">PRINCIPE CL&#201;</text><text x="397" y="395" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#ffffff" text-anchor="middle">Surveiller CFR et MTTR en parall&#232;le de DF et LTC pour &#233;viter l'acc&#233;l&#233;ration aveugle.</text>
+<rect x="66" y="414" width="320" height="22" rx="3" fill="#0f2240"/>
+<text x="76" y="429" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#ffffff" letter-spacing="0.5">3 KPIs &#192; TRACKER CE SPRINT</text>
+<rect x="66" y="436" width="320" height="108" rx="0" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="406" y="414" width="322" height="22" rx="3" fill="#0f2240"/>
+<text x="416" y="429" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#ffffff" letter-spacing="0.5">R&#201;PONSE POUR TA DIRECTION</text>
+<rect x="406" y="436" width="322" height="108" rx="0" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.8"/><text x="76" y="449" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Ratio DF/CFR :</text>
+<text x="76" y="461" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Si CFR monte avec DF = alerte qualit&#233; IA.</text>
+<text x="76" y="473" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333"></text>
+<text x="76" y="485" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Taux discussion Sprint Planning :</text>
+<text x="76" y="497" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Cible : plus de 50 % de discussion r&#233;elle</text>
+<text x="76" y="509" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">vs validation passive d'outputs IA.</text>
+<text x="76" y="521" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333"></text>
+<text x="76" y="533" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">T&#234;te-&#224;-t&#234;te senior sp&#233;cifique IA :</text>
+<text x="76" y="545" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Au moins 1 par trimestre.</text>
+<text x="416" y="449" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Formulation directe :</text>
+<text x="416" y="461" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333"></text>
+<text x="416" y="473" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">'La v&#233;locit&#233; a mont&#233; de X %.</text>
+<text x="416" y="485" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Le CFR a boug&#233; de Y %.</text>
+<text x="416" y="497" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Je surveille le delta depuis 3 sprints.</text>
+<text x="416" y="509" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">Je te reviens dans 2 sprints</text>
+<text x="416" y="521" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">avec une lecture.'</text>
+<text x="416" y="533" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333"></text>
+<text x="416" y="545" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#333333">C'est un suivi de qualit&#233;, pas une excuse.</text>
+<rect x="66" y="556" width="662" height="44" rx="4" fill="#febd10"/><text x="397" y="573" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240" text-anchor="middle">R&#200;GLE PRIORITAIRE</text><text x="397" y="587" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240" text-anchor="middle">Si CFR monte pendant que DF monte : ralentir et r&#233;viser la DoD imm&#233;diatement.</text>
+<!-- FOOTER -->
+<line x1="66" y1="1068" x2="752" y2="1068" stroke="#febd10" stroke-width="0.8"/>
+<!-- Badge numero navy -->
+<rect x="368" y="1074" width="58" height="20" rx="10" fill="#0f2240"/>
+<text x="397" y="1088" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10" text-anchor="middle" font-weight="bold">V-16.2</text>
+<text x="72"  y="1089" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 16</text>
+<text x="677" y="1089" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+
+  <!-- FOND + BANDE GOLD -->
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+
+  <!-- TEXTE VERTICAL BANDE -->
+  <g transform="translate(27,1103) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" font-weight="700"
+          fill="#0f2240" text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+
+  <!-- HEADER BLANC -->
+  <rect x="54" y="0" width="740" height="74" fill="#ffffff"/>
+  <text x="72" y="18"
+        font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb">PRATIQUE IA &gt; R&#200;GLES D'USAGE</text>
+
+  <!-- BADGE FP -->
+  <rect x="686" y="7" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="22" text-anchor="middle"
+        font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240">FP III-10.1</text>
+
+  <!-- FILET GOLD HEADER -->
+  <line x1="72" y1="27" x2="766" y2="27" stroke="#febd10" stroke-width="1"/>
+
+  <!-- TITRE PRINCIPAL -->
+  <text x="72" y="54"
+        font-family="Georgia,serif" font-size="26" font-weight="700" fill="#0f2240">Les 3 r&#232;gles d'or : IA dans le Sprint Planning</text>
+
+  <!-- SOUS-TITRE ITALIC -->
+  <text x="72" y="70"
+        font-family="Georgia,serif" font-size="11" font-style="italic" fill="#febd10">L'IA pr&#233;pare le terrain. L'&#233;quipe b&#226;tit la maison. Ce que l'IA ne peut pas faire : d&#233;cider.</text>
+
+  <!-- BLOC 4 CHAMPS GOLD -->
+  <rect x="54" y="78" width="740" height="66" fill="#febd10"/>
+
+  <!-- SEPARATEURS VERTICAUX SIMUL&#201;S -->
+  <line x1="239" y1="86" x2="239" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="424" y1="86" x2="424" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="609" y1="86" x2="609" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+
+  <text x="72" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">POUR QUI</text>
+  <text x="72" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">SM / PO / CA</text>
+
+  <text x="252" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">QUOI</text>
+  <text x="252" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">Les 3 r&#232;gles pour utiliser l'IA sans perdre l'intelligence collective</text>
+
+  <text x="437" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">QUAND L'UTILISER</text>
+  <text x="437" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">Avant d'introduire l'IA dans n'importe quelle c&#233;r&#233;monie Scrum</text>
+
+  <text x="622" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="622" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">&#201;viter que l'IA remplace la r&#233;flexion collective et cr&#233;e une dette de compr&#233;hension</text>
+
+  <!-- REGLE 1 -->
+  <rect x="66" y="152" width="660" height="26" fill="#0f2240" rx="3"/>
+  <text x="82" y="169" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">01</text>
+  <text x="110" y="169" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#ffffff">Ne jamais utiliser l'output IA directement</text>
+
+  <rect x="66" y="178" width="660" height="100" fill="#fafaf7" rx="2"/>
+  <text x="82" y="197" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#0f2240">Sympt&#244;me :</text>
+  <text x="82" y="212" font-family="Georgia,serif" font-size="9"
+        font-style="italic" fill="#555555">
+    &#171; L'IA a g&#233;n&#233;r&#233; les crit&#232;res d'acceptation. On les garde tels quels. &#187;
+  </text>
+
+  <text x="82" y="232" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#0f2240">Le pi&#232;ge :</text>
+  <text x="82" y="248" font-family="Georgia,serif" font-size="9" fill="#333333">
+    Un output IA non relu est une dette de compr&#233;hension diff&#233;r&#233;e. L'&#233;quipe n'a pas lu,
+  </text>
+  <text x="82" y="262" font-family="Georgia,serif" font-size="9" fill="#333333">
+    elle n'a pas discut&#233;, elle n'a pas construit le sens commun.
+  </text>
+
+  <text x="82" y="280" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#2a6e2a">La sortie :</text>
+  <text x="82" y="296" font-family="Georgia,serif" font-size="9" fill="#333333">
+    Traite chaque output IA comme un draft. Le travail de l'&#233;quipe : lire, critiquer, d&#233;cider
+  </text>
+  <text x="82" y="310" font-family="Georgia,serif" font-size="9" fill="#333333">
+    ce qui reste et ce qui change. C'est ce moment de friction qui cr&#233;e la compr&#233;hension partag&#233;e.
+  </text>
+
+  <!-- REGLE 2 -->
+  <rect x="66" y="292" width="660" height="26" fill="#0f2240" rx="3"/>
+  <text x="82" y="309" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">02</text>
+  <text x="110" y="309" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#ffffff">Donner du contexte, pas juste une t&#226;che</text>
+
+  <rect x="66" y="318" width="660" height="100" fill="#fafaf7" rx="2"/>
+  <text x="82" y="337" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#0f2240">Sympt&#244;me :</text>
+  <text x="82" y="352" font-family="Georgia,serif" font-size="9"
+        font-style="italic" fill="#555555">
+    &#171; G&#233;n&#232;re des crit&#232;res d'acceptation pour une story de paiement en ligne. &#187;
+  </text>
+
+  <text x="82" y="372" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#0f2240">Le pi&#232;ge :</text>
+  <text x="82" y="388" font-family="Georgia,serif" font-size="9" fill="#333333">
+    Sans contexte, l'IA produit des crit&#232;res g&#233;n&#233;riques. Ce n'est pas utile : c'est du remplissage.
+  </text>
+
+  <text x="82" y="408" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#2a6e2a">La sortie :</text>
+  <text x="82" y="424" font-family="Georgia,serif" font-size="9" fill="#333333">
+    Inclus dans chaque prompt : contexte produit, contraintes techniques, D&#233;finition of Done,
+  </text>
+  <text x="82" y="438" font-family="Georgia,serif" font-size="9" fill="#333333">
+    persona cible. Plus le contexte est pr&#233;cis, plus l'output est actionnable.
+  </text>
+
+  <!-- REGLE 3 -->
+  <rect x="66" y="432" width="660" height="26" fill="#0f2240" rx="3"/>
+  <text x="82" y="449" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">03</text>
+  <text x="110" y="449" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#ffffff">L'IA pr&#233;pare, l'&#233;quipe d&#233;cide</text>
+
+  <rect x="66" y="458" width="660" height="100" fill="#fafaf7" rx="2"/>
+  <text x="82" y="477" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#0f2240">Sympt&#244;me :</text>
+  <text x="82" y="492" font-family="Georgia,serif" font-size="9"
+        font-style="italic" fill="#555555">
+    &#171; On utilise l'IA pour acc&#233;l&#233;rer le planning. On gagne 45 minutes. &#187;
+  </text>
+
+  <text x="82" y="512" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#0f2240">Le pi&#232;ge :</text>
+  <text x="82" y="528" font-family="Georgia,serif" font-size="9" fill="#333333">
+    Gagner 45 minutes en remplissant le backlog avec l'IA et perdre 2 sprints parce
+  </text>
+  <text x="82" y="542" font-family="Georgia,serif" font-size="9" fill="#333333">
+    que les stories n'&#233;taient pas comprises. Ce calcul n'est pas en faveur de l'acc&#233;l&#233;ration.
+  </text>
+
+  <text x="82" y="562" font-family="Helvetica,sans-serif" font-size="8.5"
+        font-weight="700" fill="#2a6e2a">La sortie :</text>
+  <text x="82" y="578" font-family="Georgia,serif" font-size="9" fill="#333333">
+    Utilise l'IA en amont de la Partie 1 du Planning. Pendant la Partie 2 (d&#233;composition
+  </text>
+  <text x="82" y="592" font-family="Georgia,serif" font-size="9" fill="#333333">
+    technique), l'IA peut &#234;tre utilis&#233;e ponctuellement si l'output est lu et discut&#233;.
+  </text>
+
+  <!-- TABLEAU IA/HUMAIN -->
+  <rect x="66" y="614" width="660" height="28" fill="#0f2240" rx="3"/>
+  <text x="260" y="632" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#ffffff">L'IA PR&#201;PARE</text>
+  <text x="560" y="632" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#ffffff">L'HUMAIN D&#201;CIDE</text>
+
+  <!-- Lignes tableau alternées -->
+
+  <rect x="66" y="642" width="330" height="34" fill="#fafaf7"/>
+  <rect x="396" y="642" width="330" height="34" fill="#fafaf7"/>
+  <line x1="396" y1="642" x2="396" y2="676" stroke="#e0e0e0" stroke-width="0.8"/>
+  <text x="82" y="656" font-family="Georgia,serif" font-size="8.5" fill="#333333">R&#233;diger une premi&#232;re version de user story</text>
+  <text x="82" y="670" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#febd10">P1 Reformulation INVEST</text>
+  <text x="412" y="656" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Comprendre le contexte organisationnel non document&#233;</text>
+
+  <rect x="66" y="676" width="330" height="34" fill="#ffffff"/>
+  <rect x="396" y="676" width="330" height="34" fill="#ffffff"/>
+  <line x1="396" y1="676" x2="396" y2="710" stroke="#e0e0e0" stroke-width="0.8"/>
+  <text x="82" y="690" font-family="Georgia,serif" font-size="8.5" fill="#333333">G&#233;n&#233;rer des crit&#232;res d'acceptation Gherkin</text>
+  <text x="82" y="704" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#febd10">P2 Crit&#232;res</text>
+  <text x="412" y="690" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Juger si une story est vraiment pr&#234;te pour le sprint</text>
+
+  <rect x="66" y="710" width="330" height="34" fill="#fafaf7"/>
+  <rect x="396" y="710" width="330" height="34" fill="#fafaf7"/>
+  <line x1="396" y1="710" x2="396" y2="744" stroke="#e0e0e0" stroke-width="0.8"/>
+  <text x="82" y="724" font-family="Georgia,serif" font-size="8.5" fill="#333333">Identifier des risques techniques</text>
+  <text x="82" y="738" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#febd10">P3 Risk Scanner</text>
+  <text x="412" y="724" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Sentir si l'&#233;quipe est &#224; l'aise avec l'engagement</text>
+
+  <rect x="66" y="744" width="330" height="34" fill="#ffffff"/>
+  <rect x="396" y="744" width="330" height="34" fill="#ffffff"/>
+  <line x1="396" y1="744" x2="396" y2="778" stroke="#e0e0e0" stroke-width="0.8"/>
+  <text x="82" y="758" font-family="Georgia,serif" font-size="8.5" fill="#333333">Reformuler des stories vagues en INVEST</text>
+  <text x="82" y="772" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#febd10">P1 + P4</text>
+  <text x="412" y="758" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Arbitrer entre valeur business et faisabilit&#233; technique</text>
+
+  <rect x="66" y="778" width="330" height="34" fill="#fafaf7"/>
+  <rect x="396" y="778" width="330" height="34" fill="#fafaf7"/>
+  <line x1="396" y1="778" x2="396" y2="812" stroke="#e0e0e0" stroke-width="0.8"/>
+  <text x="82" y="792" font-family="Georgia,serif" font-size="8.5" fill="#333333">Sugg&#233;rer des questions &#224; poser au PO</text>
+  <text x="82" y="806" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#febd10">P3 + P11</text>
+  <text x="412" y="792" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">D&#233;cider du Sprint Goal : intelligence collective</text>
+
+  <!-- KPI CIBLE -->
+  <rect x="66" y="822" width="660" height="54" fill="#0f2240" rx="4"/>
+  <text x="396" y="842" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#febd10">KPI DE SUIVI : signal de sant&#233; de l'adoption</text>
+  <text x="396" y="860" text-anchor="middle" font-family="Georgia,serif"
+        font-size="9" font-style="italic" fill="#ffffff">
+    Questions pos&#233;es au PO pendant le sprint : au moins autant qu'avant l'IA.
+  </text>
+  <text x="396" y="876" text-anchor="middle" font-family="Georgia,serif"
+        font-size="8.5" fill="#bbbbbb">
+    Si ce chiffre baisse, l'IA a remplac&#233; la r&#233;flexion. Pas acc&#233;l&#233;r&#233;.
+  </text>
+
+  <!-- FOOTER -->
+  <line x1="66" y1="1068" x2="752" y2="1068" stroke="#febd10" stroke-width="0.8"/>
+  <rect x="388" y="1074" width="58" height="20" rx="10" fill="#0f2240"/>
+  <text x="417" y="1088" text-anchor="middle"
+        font-family="Helvetica,sans-serif" font-size="9" fill="#febd10">III-10.1</text>
+  <text x="72" y="1089"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. p.226-229</text>
+  <text x="677" y="1089"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">aigile.lu</text>
+
+</svg>

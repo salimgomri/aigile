@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+  </defs>
+
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <text transform="rotate(-90,27,560)" x="-290" y="32"
+        font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240" letter-spacing="2">
+    LE SYST&#200;ME S.A.L.I.M.
+  </text>
+
+  <!-- HEADER -->
+  <rect x="54" y="0" width="740" height="78" fill="#ffffff"/>
+  <text x="72" y="24" font-family="Helvetica,Arial,sans-serif" font-size="8.5" fill="#bbbbbb" letter-spacing="1">
+    LIVRABLE &gt; RAPPORT MANAGER
+  </text>
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="22" font-family="Helvetica,Arial,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-12.3</text>
+  <line x1="72" y1="32" x2="748" y2="32" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="24" fill="#0f2240" font-weight="bold">
+    Export PDF une page A4 : structure type
+  </text>
+  <text x="72" y="74" font-family="EB Garamond,Georgia,serif" font-size="11"
+        font-style="italic" fill="#febd10">
+    Un manager qui re&#231;oit une page lira tout. Trois pages ? Il lit la premi&#232;re.
+  </text>
+
+  <!-- BLOC 4 CHAMPS GOLD -->
+  <rect x="54" y="78" width="740" height="64" fill="#febd10"/>
+  <text x="72" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="72" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">SM &#183; MG &#183; DC</text>
+  <line x1="232" y1="84" x2="232" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="248" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="248" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Rapport sprint 1 page pour le management</text>
+  <line x1="432" y1="84" x2="432" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="448" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">QUAND L'UTILISER</text>
+  <text x="448" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Avant chaque Sprint Review &#183; R&#233;union pilotage</text>
+  <line x1="622" y1="84" x2="622" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="636" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="636" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Objectif : moins de 15 min de pr&#233;paration</text>
+
+  <text x="72" y="128" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">FORMAT</text>
+  <text x="72" y="138" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Paysage A4 recommand&#233; pour les 6 cadrans &#183; Disponible sur aigile.lu/dashboardmanager</text>
+
+  <!-- STRUCTURE PDF VISUELLE -->
+  <rect x="54" y="148" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="161" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">STRUCTURE DU PDF &#8203; UNE PAGE</text>
+
+  <!-- EN-TETE du PDF -->
+  <rect x="72" y="172" width="704" height="36" fill="#0f2240" rx="2"/>
+  <text x="90" y="186" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#febd10" font-weight="bold">EN-T&#202;TE</text>
+  <text x="90" y="200" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#ffffff">
+    Equipe &#183; Sprint n&#176; &#183; Date &#183; P&#233;riode couverte
+  </text>
+
+  <!-- Bloc 1 : 6 cadrans -->
+  <rect x="72" y="214" width="704" height="44" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="214" width="8" height="44" fill="#febd10" rx="2"/>
+  <text x="90" y="230" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">BLOC 1</text>
+  <text x="90" y="244" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    6 cadrans RAG avec valeur actuelle et fl&#232;che de tendance
+  </text>
+  <text x="90" y="256" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">
+    Icônes impression N&#38;B : vert + coche &#183; ambre + triangle &#183; rouge + croix
+  </text>
+
+  <!-- Bloc 2 : Velocite -->
+  <rect x="72" y="264" width="704" height="36" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="264" width="8" height="36" fill="#febd10" rx="2"/>
+  <text x="90" y="280" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">BLOC 2</text>
+  <text x="90" y="294" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    Graphique de v&#233;locit&#233; sur 6 sprints (sparkline)
+  </text>
+
+  <!-- Bloc 3 : OKR -->
+  <rect x="72" y="306" width="704" height="36" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="306" width="8" height="36" fill="#febd10" rx="2"/>
+  <text x="90" y="322" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">BLOC 3</text>
+  <text x="90" y="336" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    OKR Check-in : 3 questions (avanc&#233; / frein / ajustement)
+  </text>
+
+  <!-- Bloc 4 : Narrative IA -->
+  <rect x="72" y="348" width="704" height="44" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="348" width="8" height="44" fill="#0f2240" rx="2"/>
+  <text x="90" y="364" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">BLOC 4</text>
+  <text x="90" y="378" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    Narrative IA : 3 paragraphes, 200 mots maximum
+  </text>
+  <text x="90" y="390" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">
+    G&#233;n&#233;r&#233; par le Prompt Dashboard (FP III-12.1) &#183; &#224; relire avant envoi
+  </text>
+
+  <!-- Pied de page du PDF -->
+  <rect x="72" y="398" width="704" height="30" fill="#0f2240" opacity="0.7" rx="2"/>
+  <text x="90" y="412" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#febd10" font-weight="bold">PIED DE PAGE</text>
+  <text x="90" y="423" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#ffffff">
+    Lien vers dashboard complet sur aigile.lu
+  </text>
+
+  <!-- CHECK-LIST LUNDI -->
+  <rect x="54" y="436" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="449" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">CHECK-LIST D&#200;S LUNDI : 5 ACTIONS</text>
+
+  <rect x="54" y="452" width="740" height="160" fill="#fafaf7"/>
+
+  <!-- actions -->
+  <text x="72" y="472" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10" font-weight="bold">1.</text>
+  <text x="92" y="472" font-family="EB Garamond,Georgia,serif" font-size="10" fill="#0f2240">
+    D&#233;finis les seuils RAG avec ton management : 30 minutes, une fois.
+  </text>
+
+  <text x="72" y="492" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10" font-weight="bold">2.</text>
+  <text x="92" y="492" font-family="EB Garamond,Georgia,serif" font-size="10" fill="#0f2240">
+    Pr&#233;pare un premier dashboard manuel pour le Sprint Review : sans IA, juste les 6 cadrans.
+  </text>
+
+  <text x="72" y="512" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10" font-weight="bold">3.</text>
+  <text x="92" y="512" font-family="EB Garamond,Georgia,serif" font-size="10" fill="#0f2240">
+    Teste le Prompt Dashboard avec les m&#233;triques de ton dernier sprint.
+  </text>
+
+  <text x="72" y="532" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10" font-weight="bold">4.</text>
+  <text x="92" y="532" font-family="EB Garamond,Georgia,serif" font-size="10" fill="#0f2240">
+    Si le r&#233;sultat est utilisable, int&#232;gre-le dans ton process de pr&#233;paration des Sprint Reviews.
+  </text>
+
+  <text x="72" y="552" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10" font-weight="bold">5.</text>
+  <text x="92" y="552" font-family="EB Garamond,Georgia,serif" font-size="10" fill="#0f2240">
+    Valide avec ton management le canal et le moment de r&#233;ception du PDF.
+  </text>
+  <text x="92" y="568" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    Sans ce protocole, le livrable le plus solide risque de ne jamais &#234;tre lu.
+  </text>
+  <text x="92" y="582" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    Options : email avant la Sprint Review &#183; pr&#233;sentation en pilotage &#183; portail interne
+  </text>
+
+  <!-- KPIs -->
+  <rect x="54" y="618" width="740" height="16" fill="#febd10"/>
+  <text x="72" y="631" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#0f2240"
+        font-weight="bold">KPIs DE CE CHAPITRE</text>
+
+  <rect x="54" y="634" width="740" height="110" fill="#fafaf7"/>
+
+  <text x="72" y="652" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">
+    Temps de pr&#233;paration :
+  </text>
+  <text x="230" y="652" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    objectif inf&#233;rieur &#224; 15 minutes par sprint (vs 2 &#224; 3 heures sans outil)
+  </text>
+
+  <text x="72" y="670" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">
+    Taux de lecture :
+  </text>
+  <text x="230" y="670" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    &#224; mesurer sur 3 sprints &#183; demande si le manager a lu
+  </text>
+
+  <text x="72" y="688" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">
+    Cadrans en Vert :
+  </text>
+  <text x="230" y="688" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    cible 4/6 minimum sur 3 sprints cons&#233;cutifs
+  </text>
+
+  <text x="72" y="706" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">
+    Narrative IA sans correction :
+  </text>
+  <text x="280" y="706" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    % de fois o&#249; l'output est utilis&#233; tel quel vs modifi&#233;
+  </text>
+  <text x="280" y="720" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    Indicateur de maturit&#233; du prompt
+  </text>
+  <text x="72" y="736" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    Cible : score d&#233;croissant de corrections sur 6 sprints &#183; Revois le prompt si tu descends sous 50 %
+  </text>
+
+  <!-- FOOTER -->
+  <line x1="54" y1="1083" x2="794" y2="1083" stroke="#febd10" stroke-width="1"/>
+  <rect x="372" y="1076" width="50" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10"
+        text-anchor="middle" font-weight="bold">III-12</text>
+  <text x="72" y="1097" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb">
+    SOURCE : Le Syst&#232;me S.A.L.I.M. &#183; Chapitre 12 &#183; aigile.lu/dashboardmanager
+  </text>
+  <text x="748" y="1097" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb"
+        text-anchor="end">Le Syst&#232;me S.A.L.I.M.</text>
+
+</svg>

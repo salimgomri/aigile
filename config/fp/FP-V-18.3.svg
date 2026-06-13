@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  <image id="_logo"  width="2072px" height="656px"  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIsAAAAsCAYAAABVAEupAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAOJ0lEQVR4nO2ceZQU1RXGf73M9MAAMwMjwyAiYRHcMEQBZVxA0SCCILgvKOAGKBpxiUbiGkyiBgcSE0giStwVcQ8BDIoxYuKGC26o4K7BoBiNIIt/fK+s6ppX1dU93TOMZ75z6vT061f1tvvu/e59tyZG7ugE9Af6AO2BFFAEJMzvm4BvgP8DHwAvAM8A7wFb6tFuMxoJsSzrtwT2B441f88D/gqsyXBfR+Ag4FAkTEvMtQIJVDO+RyhCi/06cATZC5kfHYDpwEvARKAaiNfzmfVFCdAd2A3oQuP3p0miApmQkQV6fhvgAWSietE4ixRDWm6L57qiEfrRpNEfeBwob4C22gDHoUU7qQHa86Ir6YKyBVjfwH3IF4rNVY6oQiK8enQkQ34bDJwADAG+zPK5JcCuQE9kYkqBjcBHwGvAcmCd7551wC3AfGBv4GHgSeBKCk+IfxRQ3gt4tcBt54qOQBnQDXgbaAG8Yz6/REISAyqBz9BarAH2Ad4EXqTuGoQiiHt0By4FTiOaoBQDxwDD0Y58H/Gbj02HvkHmpTWwDdAD2NYM5HVkhp5AAuUgiQR2PPA0UAt8HXVgWaIMWAT09ZTNBs5g6yHgrZAGTAGbkYe5Afg0h2fFgN5IaM5Bc/t5Lp2KoYmrjlC3IzANuAs4EWibZVtJoB9wAXArWqAjkEnyYpRpYzwSzELgONLN0MACtRMVMaAKba6j0NxuY6lXZT47o/nMdn6SSAudQg4m6zIyT1QCGAc8BOwRUCeGYjH7AWMQYZwBzDLXDOByZOr2Qx5IBTABmaDpQI1vAOOA+4EDsxpRMLYDfmz6sZZ0Ydlo+jgKeUipPLUZBQPRRjzSfI+huShGfK4F0vwxpBliwFjEU85CAnSKqX+I+YziwVYiwYyEFLAww4NLgL8AZwb8XoUE4O/AUuA8YHfkftva6wtMARYjj6gWCU8P4JfAs2jSKs09CeASJDRdM/Q1CEngBqTO/cQ26FoeMIZ8IIXGcQ0ipUWILyWAOea3PsiUl5jycvPdr4X9iJlrNhLAjhH6E2lzXIG4RBDiiFv0s/yWQoNdDvwwQztJNClt0KArzFWGeM1hwDJkU49FgcBXkUaqQINPIc02He20bDCA6ELivY7Isp1MKEFzMQtxkhhwHyKtrdAG2RPYHphpPi9AEfMJaC5mmvueN/eMNt9LAtocjIStIqRfjoAFmrSWiIwG2a0Y8DekJfzoBnxiPsPiJMOQEKxBGuwq4FTgaGSqLgJuA1aZ591ifpsHvGXqzAWeQoE90E5ZgQQsKn5ObsIyMYs2wlCGNGdP5Bh0Qhp2mLn6I28yibvDo2pQZ+OMRWs5zHJvHGmPMCQRH7XiB8BPQm4+EHlH/oYPBe5BwmZDC+B24EEk1dVkVucxpHW6AgcDf0ZnSi8hl+9J4HpkonZBE3osMn3bZXg2wI3kJixTIjw7DKWId3VGnOIstKhdkBZJkce4CJrH7kg4xlh+LyOz0FxgKxyL1JgNbYCV1F3kQUgQgrTJaORZ9SPazqhAi7+nuac7riosRebjUmA1IqBOvGCBuacT8DukscIwl9yE5ZoIY7ChHfBHYDIikIebsZVQ/6OTqNgBmbEelt+uJVhId8L00dvRudilD2AEircs9pS1Q0R3JPL3/ZiMzNI56ATajwQissPRTvsGBY8+Ab7CJW/VuLb9XWSC/o0EYxRwvKmbQkIzDZmoScjc/MvS9nzT78Uo3tA+YNwO3jPtPYEChlHg2PyrUAzjEfOcjyhcvCgTUsi8PUN6oLMl0mzvBNx3HnC1t8A2qQ4espT9AhFPG0YiM2FD3Pz+MNqpvYm+u3ohIbgdeUPT0AHnGegUewPSOH8ydecAUxFpdtDW1NmCPLr7Cdcm/wUeNX9/EKGPMcQ/ZgB/IDi00JiYZCkbR/ixThphfjOgUiV1BSkO3BlQvxgJgk2tlSB1fDX5OTDsiIT2abQwY5Bgr0Ha7CKkfRbiemgjcAVhMiLUYcLyBjKlW1Bujg0xNNEHI89mLOFHKVsDOljKugTUjSNH47svbwdU3A3tEi/2An4aUP90RDZteBBNaCGQAs5FntRsxF0+R9pmFPKoLgTuwBWEfriCEHQtQqZkCzKPXhQhIZmAAnuZQgZbE46xlA0NqZ+mWV4OqFSDFsGLM5EXZMNC7FI7HDg5pDP5QgyR4V+jc6oFSGhWoSMJJxD3NVrs1YQLi8NT/JrlIOQpHIVc3e8Dqgg2RVO9X2y8BOSBnO8ruxh5QjY8gZ2DrMSNwjYUShFneBQR6PW4QjANjSFTFHczcACKMW1CmYGHoQDdjuTX1W1IbE9dPtWFEFPk5Q3PBVT6n3mwF2sJDzP7JzCGTF2m9Mt840vEZwYCOyNtA2409hYyk+sY0h6b0BhWopPyh4FXsHt6TQHvobnxYjPwRUD9NFK8N/a8DhvBraGutnFwO9pxXsRQ2kKhzlaiogRXY6wjXKN4r7uRgGxBXldDxUYKiRGWsj4oJGJDGmepQnklNizwfU8gobBhCIqt+HEfCvA0JspxTctruG8aeK85lrKngA/N3+sJjlY3FbTDvnF7h9xzgvdLHJG9UkvFo6l7JjQTRVtteIC6uS3tkIAVKh8lClois/EFMoleDuNcQy1l/0Qn32tRUK0xx5APjMQeugjioSVYNsggFFX1ox2y1d4GuqCAlk0lD0DxCz93mYLiIo1ljuLoeMDREF9Rl8z2pK6w3IY2yzIyH5Zu7QjKVwlLyB+N5iUNcXS6a1vMSdSNI5yK3eSAYi23UleYTkOh74YUmBjKMluMGy/pgHJavELxMYr2+oXlfOA3aH62Qdq3PU2LuxQTnMrhhBvC7rViBJ5onQdJZKa87m8CBb8GB3RgKDoZ9k9qd3S+c1lIB/OFgei0egNa+OW4nlwN6ULxjClf6Svvh8xua+AfaNyd0OQPa4Ax1BcJ3Ew7G84Iubc19sPH77AIpQf4UWV+89qvFArhjw94Vk+kvk8nXX0XI7O3EHkbYeQqW+wG3IwOxtbjxlJmkp4BFkMcxBGKpaZ8iafsFdPvVuhQsxppF4fwdTbPvCGP/c8HEmjuuxCcT+0IfJiGzBiVrkYJ0rbUur0RUfWqrSQ6h5lN+qGdAyefYgEyQ/4F64MCffej2MdYlF8TBUW4qZnzEBndgLTDW4jMbkQheRvewBWMWlP2mKfsV566KaQV90VjHoqbNVhsyi429aL2P99oj6xDFeG5Kt1RiCOMf6XwKIYwiRpiGp1I+nE2SCNMBM5G8RMHg1FCz1y0cJstjR+PJnk1cC96ic37/G6IZO+BBr7RPGcDisImzHPiuAT6a+R9tUSh/RQS2m7m3uNRFNeGl3Fd+l7Ipb4JN11jKnp3yYv9UBpjEr2KcSTyAL3HAUeipLDxSPNWovSLfCOBFv1dlKC2EI3/PwH1y5A26UtwqARkvh8ni6DjGETsbELVE4W+/e5WAuWRzEfnJ0GnrzugpJtH0I4+DOVatA1orwjXFOyMDiQvQUJ5L0qKugRphQdR9HYpmY8YvFn9TqTam6MbZl5OMn0qQuP8PRq/P7BVAvzMjOtU3LySBNkR/Tha7K7IhByHNkWUw9m2SEgmR2hjSBZ9SsPRKD/ENqgilLdyPXUTiIrRrnwW7extCVZ5SZQ9dhPasS8gz+Uu5Lbeg4TqRfP7rSj/ohsyi3chzTHF1PkMnRRH8Va8Z0NO5HmCp+zeDPf3QmbTa36vROMPM0UD0PzNQEJznXnGGHPf/iiivhcShn3Mb53IQDh9aIuE9VzCk7RB1KKMaKmpgdgdLUJQ2mUlMitnY3fPdkQk93nks7cme9fZyTxrg96FWYII7Bik3d5E6QevEO0FOQfeWEuZKbvWUzY94nNGmL55x++kiZ5IutksNOJIqPZFWjhKbk0Rmlcb58wa5SjnJeg4Po5MywtI09iEpgQJTi2KabyKEqFGoR3ayjwniQjaniitYS4Kza9G2XU7o4W9AnGm0SgkfzbZC+EqJBRrPWWDcIXllCyeFUN5Pi19ZcXINE1AWqFQ5LcNmksn+SqqcKbwhfPzASfB6B6CX1VNoIWfjg4ggzqRQBqpB/KGDkGmZSJys49BO2NX5P6VI2GahGI0MxExnWOuTjmOyfF8nvf1zYnLDMzxuYNQn/2bpsSU74IIaV9E+J3/nBUVZcg0dUBBw1bY84jC4Ji/SMcXuUYgd0Id/BARy6B/T9EOBYOGI/K4DMVpniY4RdFBHLl3NWjB2iITswh5LKcjznId0ip+zysqrkVR6DtJD4WvMf2vRrGYXFCB4jCbUS7v+5Y6SSRQJUgzxJFm2mjufRG550tRLGoF4hSvozl5O8s+OS+gDUS8MPKL//UJV8dQUtDJaPFq0YQEoQUadB/kSTnBID/pdc5oNiF3cAXa9SvNfeNQUOxm0t82yBVHobjRfKTCHXyMCJ8T/q8PnLcvByCu9Tm5C3euaI00dDHa3C81cPvfoQZNdi3yTvJ5KluNTNKNKBk66KQ7V1yIhGGhr/wzFNALyu+oD85C46qhsIeSpcjUHI44YDbEv+AoRS7rErQIe6BORtVgccRjeiMP4g70luFI8u9JxFDmnBP0+63v91VIiB7D/bcW+UYVMkO1pj+7o3HmutkcM9bfPDvTy3ZbDUpRaH8ZMid3o2DdGETo9kdcZhw6UJyH3N/nUMg87AX9fKAScYhPUZzGjyLkra2j4c59ypHQzDLtTzWfB5jyzuazIxKKfRAxnmU+L6eAJ+ENdcQeJ52ftECD+wrX6/DmlDQUnP8W4LTth9PvzQG/Fxpx03YSacAiREid786nU68ZzWhGM5oaeg2b1pSyvZrRiPgWxEVMjtz7Yr8AAAAASUVORK5CYII="/>
+  <image id="_sep_v" width="1px"    height="50px"   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAyCAYAAACd+7GKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAFElEQVQImWPgV3IwZmJgYGAYaQQAzx0BB70bHKAAAAAASUVORK5CYII="/>
+  <image id="_sep_h" width="686px"  height="1px"    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAq4AAAABCAYAAAAfKiwUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIElEQVRIiWPkV3KQYxgFo2AUjIJRMApGwSgYBaNgkAMAEZgAkSyEtuEAAAAASUVORK5CYII="/>
+</defs>
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;stroke:none;stroke-width:0px;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;stroke:none;stroke-width:0px;"/>
+<g><use xlink:href="#_logo" x="0" y="0" width="2072px" height="656px" transform="matrix(0,-1.002428,1.002604,0,5.867447,155.566358)"/></g>
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)"><text x="-36.025px" y="920px" style="font-family:'Georgia', serif;font-size:11px;fill:#0f2240;">L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px 26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px 68.29px 72.906px 76.201px 86.73px" y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">E SYST&#200;ME S.A.L.I.M.</tspan></text></g>
+<rect x="54" y="0" width="740" height="74" style="fill:#fff;stroke:none;stroke-width:0px;"/>
+<text x="72" y="26" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;fill:#bbb;letter-spacing:0.5px;">R&#201;F&#201;RENCE &gt; CHANGE MANAGEMENT</text>
+<rect x="686" y="10" width="96" height="22" rx="11" style="fill:#febd10;"/>
+<text x="692" y="25" style="font-family:'Helvetica','Arial',sans-serif;font-size:9.5px;fill:#0f2240;letter-spacing:0px;font-weight:bold;">FP V-18.3</text>
+<line x1="72" y1="34" x2="766" y2="34" stroke="#febd10" stroke-width="1"/>
+<text x="72" y="57" style="font-family:'EB Garamond','Georgia',serif;font-size:26px;fill:#0f2240;font-weight:bold;">Les 4 profils face &#224; l&#8217;IA</text>
+<text x="72" y="71" style="font-family:'EB Garamond','Georgia',serif;font-size:10.5px;fill:#febd10;font-style:italic;">D&#8217;apr&#232;s E. Rogers, Diffusion of Innovations, 1962. Adapt&#233; au contexte IA.</text><rect x="54" y="78" width="740" height="64" style="fill:#febd10;stroke:none;stroke-width:0px;"/>
+<text x="72" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">DC / MG / CA / SM</text>
+<line x1="258" y1="84" x2="258" y2="136" stroke="#0f2240" stroke-width="0.4"/>
+<text x="264" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="264" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">Identifier et activer chaque profil</text>
+<line x1="450" y1="84" x2="450" y2="136" stroke="#0f2240" stroke-width="0.4"/>
+<text x="456" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">QUAND</text>
+<text x="456" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">D&#232;s l&#8217;annonce du d&#233;ploiement IA</text>
+<line x1="638" y1="84" x2="638" y2="136" stroke="#0f2240" stroke-width="0.4"/>
+<text x="644" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">VALEUR</text>
+<text x="644" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">Adapter sa strat&#233;gie &#224; chaque profil</text>
+
+<!-- EN-TETE TABLEAU -->
+<rect x="54" y="150" width="740" height="20" style="fill:#0f2240;"/>
+<text x="72" y="163" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#fff;letter-spacing:1px;">PROFIL</text>
+<text x="200" y="163" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#fff;letter-spacing:1px;">COMPORTEMENT OBSERVABLE</text>
+<text x="445" y="163" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#febd10;letter-spacing:1px;">TA STRAT&#201;GIE</text>
+<text x="652" y="163" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#fff;letter-spacing:1px;">SIGNAL D&#8217;ALERTE</text>
+
+<!-- PROFIL 1 : PROMOTEURS -->
+<rect x="54" y="170" width="740" height="80" style="fill:#fafaf7;"/>
+<rect x="54" y="170" width="4" height="80" style="fill:#febd10;"/>
+<line x1="54" y1="250" x2="794" y2="250" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="188" style="font-family:'Helvetica','Arial',sans-serif;font-size:8.5px;font-weight:bold;fill:#febd10;">PROMOTEURS</text>
+<text x="72" y="202" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#0f2240;font-weight:bold;">ACTIFS</text>
+<text x="72" y="216" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">15&#8211;20 %</text>
+<text x="72" y="228" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">(indicatif)</text>
+<text x="200" y="188" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Testaient l&#8217;IA avant ton annonce. Avancent seuls, montrent l&#8217;exemple.</text>
+<text x="200" y="202" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Posent les questions que les autres n&#8217;osent pas encore poser.</text>
+<rect x="442" y="175" width="188" height="68" rx="3" style="fill:#febd10;opacity:0.15;"/>
+<text x="452" y="192" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">Activer comme relais visibles.</text>
+<text x="452" y="206" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Pas pour les laisser avancer</text>
+<text x="452" y="220" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">seuls : pour en faire des</text>
+<text x="452" y="234" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">exemples visibles pour les 60 %.</text>
+<text x="652" y="188" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Isol&#233; des autres :</text>
+<text x="652" y="202" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">risque de fracture</text>
+<text x="652" y="216" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">d&#8217;adoption visible.</text>
+
+<!-- PROFIL 2 : MAJORITE -->
+<rect x="54" y="250" width="740" height="80" style="fill:#fff;"/>
+<rect x="54" y="250" width="4" height="80" style="fill:#febd10;"/>
+<line x1="54" y1="330" x2="794" y2="330" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="268" style="font-family:'Helvetica','Arial',sans-serif;font-size:8.5px;font-weight:bold;fill:#febd10;">MAJORIT&#201;</text>
+<text x="72" y="282" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#0f2240;font-weight:bold;">PRAGMATIQUE</text>
+<text x="72" y="296" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">60 %</text>
+<text x="72" y="308" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">(indicatif)</text>
+<text x="200" y="268" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Attendent de voir. N&#8217;agissent pas sur injonction. Bougent en voyant leurs pairs r&#233;ussir.</text>
+<text x="200" y="282" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Ne posent pas de questions en r&#233;union. La contagion les fait bouger, pas le discours.</text>
+<rect x="442" y="255" width="188" height="68" rx="3" style="fill:#febd10;opacity:0.15;"/>
+<text x="452" y="272" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">Visibilise les succ&#232;s des promoteurs.</text>
+<text x="452" y="286" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">C&#8217;est la contagion qui fait</text>
+<text x="452" y="300" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">bouger ce profil. Pas le</text>
+<text x="452" y="314" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">discours. Les r&#233;sultats visibles.</text>
+<text x="652" y="268" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Reste passif si aucun</text>
+<text x="652" y="282" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">cas de succ&#232;s visible</text>
+<text x="652" y="296" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">dans les 4 semaines.</text>
+
+<!-- PROFIL 3 : RESISTANTS -->
+<rect x="54" y="330" width="740" height="84" style="fill:#fafaf7;"/>
+<rect x="54" y="330" width="4" height="84" style="fill:#febd10;"/>
+<line x1="54" y1="414" x2="794" y2="414" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="348" style="font-family:'Helvetica','Arial',sans-serif;font-size:8.5px;font-weight:bold;fill:#febd10;">R&#201;SISTANTS</text>
+<text x="72" y="362" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#0f2240;font-weight:bold;">SILENCIEUX</text>
+<text x="72" y="376" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">15&#8211;20 %</text>
+<text x="72" y="388" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">(indicatif)</text>
+<text x="200" y="348" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Ont hoch&#233; la t&#234;te en r&#233;union. Leurs pratiques n&#8217;ont pas boug&#233;.</text>
+<text x="200" y="362" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">C&#8217;est ton risque principal : invisible, co&#251;teux, durable.</text>
+<text x="200" y="378" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Signal terrain : ratio stories solo &gt; 60 % sur 3 sprints cons&#233;cutifs.</text>
+<rect x="442" y="335" width="188" height="72" rx="3" style="fill:#febd10;opacity:0.15;"/>
+<text x="452" y="352" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">T&#234;te-&#224;-t&#234;te individuel.</text>
+<text x="452" y="366" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Question d&#8217;ouverture :</text>
+<text x="452" y="380" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;font-style:italic;fill:#0f2240;">"Qu&#8217;est-ce qui te freinerait pour</text>
+<text x="452" y="394" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;font-style:italic;fill:#0f2240;">utiliser l&#8217;IA sur ta prochaine t&#226;che ?"</text>
+<text x="652" y="348" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Ne pas communiquer</text>
+<text x="652" y="362" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">en masse. Le t&#234;te-&#224;-</text>
+<text x="652" y="376" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">t&#234;te seul fonctionne.</text>
+
+<!-- PROFIL 4 : OPPOSANTS -->
+<rect x="54" y="414" width="740" height="68" style="fill:#fff;"/>
+<rect x="54" y="414" width="4" height="68" style="fill:#febd10;"/>
+<line x1="54" y1="482" x2="794" y2="482" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="432" style="font-family:'Helvetica','Arial',sans-serif;font-size:8.5px;font-weight:bold;fill:#febd10;">OPPOSANTS</text>
+<text x="72" y="446" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#0f2240;font-weight:bold;">D&#201;CLAR&#201;S</text>
+<text x="72" y="460" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">minorit&#233;</text>
+<text x="200" y="432" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Visibles, parfois bruyants, mais g&#233;rables.</text>
+<text x="200" y="446" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Nomment souvent des risques r&#233;els que personne d&#8217;autre ne dit.</text>
+<rect x="442" y="419" width="188" height="56" rx="3" style="fill:#febd10;opacity:0.15;"/>
+<text x="452" y="436" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">Les &#233;couter vraiment.</text>
+<text x="452" y="450" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Ils identifient des risques r&#233;els.</text>
+<text x="452" y="464" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#333;">Ne pas les neutraliser.</text>
+<text x="652" y="432" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">G&#233;rables si &#233;cout&#233;s.</text>
+<text x="652" y="446" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Risqu&#233;s si ignor&#233;s.</text>
+
+<!-- 3 ERREURS -->
+<rect x="54" y="490" width="740" height="20" style="fill:#0f2240;"/>
+<text x="72" y="503" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#febd10;letter-spacing:1px;">LES 3 ERREURS QUE FONT LES DIRIGEANTS</text>
+
+<rect x="54" y="510" width="238" height="96" style="fill:#fafaf7;"/>
+<rect x="54" y="510" width="4" height="96" style="fill:#febd10;"/>
+<text x="72" y="527" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#febd10;">ERREUR 1</text>
+<text x="72" y="541" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">D&#233;ployer sans d&#233;geler</text>
+<text x="72" y="557" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">Lewin : sans Unfreeze, l&#8217;IA</text>
+<text x="72" y="571" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">automatise le process bancal.</text>
+<text x="72" y="585" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">Juste plus vite.</text>
+<text x="72" y="599" style="font-family:'EB Garamond','Georgia',serif;font-size:7.5px;fill:#aaa;font-style:italic;">Lewin : Unfreeze / Change / Refreeze</text>
+
+<rect x="292" y="510" width="252" height="96" style="fill:#fff;"/>
+<rect x="292" y="510" width="4" height="96" style="fill:#febd10;"/>
+<text x="308" y="527" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#febd10;">ERREUR 2</text>
+<text x="308" y="541" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">Former aux outils, pas &#224; la posture</text>
+<text x="308" y="557" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">Prompter : 2 jours. Maintenir</text>
+<text x="308" y="571" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">son jugement face &#224; l&#8217;IA : des mois.</text>
+<text x="308" y="585" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">K sans A (ADKAR) ne sert &#224; rien.</text>
+<text x="308" y="599" style="font-family:'EB Garamond','Georgia',serif;font-size:7.5px;fill:#aaa;font-style:italic;">ADKAR (Prosci)</text>
+
+<rect x="544" y="510" width="250" height="96" style="fill:#fafaf7;"/>
+<rect x="544" y="510" width="4" height="96" style="fill:#febd10;"/>
+<text x="560" y="527" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#febd10;">ERREUR 3</text>
+<text x="560" y="541" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">Laisser chaque &#233;quipe seule</text>
+<text x="560" y="557" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">3 mois plus tard : 3 cultures IA</text>
+<text x="560" y="571" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">dans la m&#234;me organisation.</text>
+<text x="560" y="585" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">La contagion se pilote.</text>
+<text x="560" y="599" style="font-family:'EB Garamond','Georgia',serif;font-size:7.5px;fill:#aaa;font-style:italic;">Kotter : rendre les victoires visibles</text>
+
+<!-- NOTE BRIDGES -->
+<rect x="54" y="618" width="740" height="40" rx="4" style="fill:#0f2240;opacity:0.06;"/>
+<rect x="54" y="618" width="4" height="40" style="fill:#febd10;"/>
+<text x="72" y="633" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">CHANGEMENT vs TRANSITION (William Bridges)</text>
+<text x="72" y="647" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">Le changement est l&#8217;&#233;v&#233;nement externe (l&#8217;outil qui arrive). La transition est le processus interne par lequel les &#233;quipes l&#226;chent leurs anciens rep&#232;res.</text>
+<text x="72" y="655" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;"> Tu peux annoncer le changement en une heure. La transition prend des mois. Pilote les deux.</text>
+
+<line x1="72" y1="1076" x2="766" y2="1076" stroke="#febd10" stroke-width="1"/>
+<rect x="375" y="1064" width="44" height="24" rx="12" style="fill:#0f2240;"/>
+<text x="383" y="1080" style="font-family:'Helvetica','Arial',sans-serif;font-size:9px;fill:#febd10;font-weight:bold;">V-18</text>
+<text x="72" y="1089" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8211; Chapitre 18</text>
+<text x="650" y="1089" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

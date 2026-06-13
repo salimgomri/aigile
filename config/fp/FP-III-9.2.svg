@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  </defs>
+
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <g transform="translate(27,900) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold"
+          text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+  <g transform="translate(27,60)">
+    <polygon points="0,-18 14,0 0,18 -14,0" fill="#0f2240" opacity="0.85"/>
+    <text font-family="Georgia,serif" font-size="7" fill="#febd10" text-anchor="middle" dy="2.5">S</text>
+  </g>
+  <rect x="54" y="0" width="740" height="80" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb"
+        letter-spacing="1">R&#201;F&#201;RENCE &gt; MANIFESTO</text>
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="23" font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-9.2</text>
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="22" fill="#0f2240"
+        font-weight="bold">Les 4 valeurs AIgile</text>
+  <text x="72" y="76" font-family="Georgia,serif" font-size="10" fill="#febd10"
+        font-style="italic">Un cadre de valeurs pour int&#233;grer l&#39;IA sans perdre le jugement humain.</text>
+  <rect x="54" y="80" width="740" height="72" fill="#febd10"/>
+  <line x1="239" y1="88" x2="239" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="424" y1="88" x2="424" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="609" y1="88" x2="609" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <text x="72"  y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="257" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="442" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUAND L&#39;UTILISER</text>
+  <text x="627" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="72"  y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">SM / PO / CA / MG / DC</text>
+  <text x="257" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">4 valeurs + 4 garde-fous</text>
+  <text x="442" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Avant tout d&#233;ploiement IA</text>
+  <text x="627" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Poser le cadre, pas les outils</text>
+  <line x1="54" y1="1072" x2="794" y2="1072" stroke="#febd10" stroke-width="1"/>
+  <text x="72"  y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 9 : AIgile Manifesto</text>
+  <text x="630" y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">Le Syst&#232;me S.A.L.I.M.</text>
+  <rect x="370" y="1076" width="54" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10"
+        text-anchor="middle" font-weight="bold">9.2</text>
+
+  <rect x="72" y="162" width="337" height="310" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="162" width="337" height="36" fill="#0f2240" rx="2"/>
+  <text x="84" y="178" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold" letter-spacing="1">VALEUR 1</text>
+  <text x="84" y="191" font-family="Georgia,serif" font-size="13"
+        fill="#ffffff" font-weight="bold">Collaboration humain-IA</text>
+  <text x="84" y="214" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-style="italic">plut&#244;t qu&#39;automatisation aveugle</text>
+  <line x1="84" y1="222" x2="397" y2="222" stroke="#febd10" stroke-width="0.8"/>
+  <text x="84" y="238" font-family="Georgia,serif" font-size="9" fill="#0f2240">L&#39;IA g&#233;n&#232;re, l&#39;humain d&#233;cide. Chaque output IA est un point de d&#233;part,</text>
+  <text x="84" y="252" font-family="Georgia,serif" font-size="9" fill="#0f2240">pas un point d&#39;arriv&#233;e.</text>
+  <line x1="84" y1="267" x2="397" y2="267" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="84" y="274" width="313" height="82" fill="#ffffff" rx="2"/>
+  <text x="92" y="288" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#cc3333" font-weight="bold">GARDE-FOU</text>
+  <text x="92" y="304" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">GARDE-FOU : accepter un output IA sans lecture critique =</text>
+  <text x="92" y="318" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">faire confiance &#224; la fluence du texte plut&#244;t qu&#39;au terrain.</text>
+
+  <rect x="421" y="162" width="337" height="310" fill="#fafaf7" rx="2"/>
+  <rect x="421" y="162" width="337" height="36" fill="#0f2240" rx="2"/>
+  <text x="433" y="178" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold" letter-spacing="1">VALEUR 2</text>
+  <text x="433" y="191" font-family="Georgia,serif" font-size="13"
+        fill="#ffffff" font-weight="bold">Jugement humain augment&#233;</text>
+  <text x="433" y="214" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-style="italic">plut&#244;t que d&#233;l&#233;gation totale &#224; l&#39;IA</text>
+  <line x1="433" y1="222" x2="746" y2="222" stroke="#febd10" stroke-width="0.8"/>
+  <text x="433" y="238" font-family="Georgia,serif" font-size="9" fill="#0f2240">L&#39;IA peut analyser 1000 r&#233;tros. Elle ne sent pas la tension dans la salle.</text>
+  <text x="433" y="252" font-family="Georgia,serif" font-size="9" fill="#0f2240">Le jugement du SM reste la ressource critique.</text>
+  <line x1="433" y1="267" x2="746" y2="267" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="433" y="274" width="313" height="82" fill="#ffffff" rx="2"/>
+  <text x="441" y="288" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#cc3333" font-weight="bold">GARDE-FOU</text>
+  <text x="441" y="304" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">GARDE-FOU : arr&#234;ter de d&#233;velopper son propre jugement</text>
+  <text x="441" y="318" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">parce que l&#39;IA semble plus rapide = atrophie du sens critique.</text>
+
+  <rect x="72" y="490" width="337" height="310" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="490" width="337" height="36" fill="#0f2240" rx="2"/>
+  <text x="84" y="506" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold" letter-spacing="1">VALEUR 3</text>
+  <text x="84" y="519" font-family="Georgia,serif" font-size="13"
+        fill="#ffffff" font-weight="bold">Transparence algorithmique</text>
+  <text x="84" y="542" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-style="italic">plut&#244;t qu&#39;opacit&#233; des mod&#232;les</text>
+  <line x1="84" y1="550" x2="397" y2="550" stroke="#febd10" stroke-width="0.8"/>
+  <text x="84" y="566" font-family="Georgia,serif" font-size="9" fill="#0f2240">L&#39;&#233;quipe sait quand l&#39;IA est dans la boucle.</text>
+  <text x="84" y="580" font-family="Georgia,serif" font-size="9" fill="#0f2240">La transparence n&#39;est pas un aveu de faiblesse : c&#39;est une condition de confiance.</text>
+  <line x1="84" y1="595" x2="397" y2="595" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="84" y="602" width="313" height="82" fill="#ffffff" rx="2"/>
+  <text x="92" y="616" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#cc3333" font-weight="bold">GARDE-FOU</text>
+  <text x="92" y="632" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">GARDE-FOU : pr&#233;senter un output IA comme son propre travail</text>
+  <text x="92" y="646" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">sans le signaler, ou utiliser un outil sans conna&#238;tre ses biais.</text>
+
+  <rect x="421" y="490" width="337" height="310" fill="#fafaf7" rx="2"/>
+  <rect x="421" y="490" width="337" height="36" fill="#0f2240" rx="2"/>
+  <text x="433" y="506" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#febd10" font-weight="bold" letter-spacing="1">VALEUR 4</text>
+  <text x="433" y="519" font-family="Georgia,serif" font-size="13"
+        fill="#ffffff" font-weight="bold">Responsabilit&#233; humaine</text>
+  <text x="433" y="542" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-style="italic">plut&#244;t que d&#233;l&#233;gation de la d&#233;cision</text>
+  <line x1="433" y1="550" x2="746" y2="550" stroke="#febd10" stroke-width="0.8"/>
+  <text x="433" y="566" font-family="Georgia,serif" font-size="9" fill="#0f2240">L&#39;IA peut recommander. La d&#233;cision reste humaine.</text>
+  <text x="433" y="580" font-family="Georgia,serif" font-size="9" fill="#0f2240">La responsabilit&#233; ne peut pas &#234;tre externalis&#233;e &#224; un mod&#232;le.</text>
+  <line x1="433" y1="595" x2="746" y2="595" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="433" y="602" width="313" height="82" fill="#ffffff" rx="2"/>
+  <text x="441" y="616" font-family="Helvetica,sans-serif" font-size="7.5"
+        fill="#cc3333" font-weight="bold">GARDE-FOU</text>
+  <text x="441" y="632" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">GARDE-FOU : &#171; l&#39;IA a dit que &#187; comme justification suffisante.</text>
+  <text x="441" y="646" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Dans un contexte professionnel, &#231;a ne l&#39;est jamais.</text>
+
+  <rect x="72" y="816" width="676" height="44" fill="#0f2240" rx="2"/>
+  <text x="410" y="832" font-family="Georgia,serif" font-size="11" fill="#febd10"
+        text-anchor="middle" font-style="italic">Les 4 valeurs en une ligne</text>
+  <text x="410" y="852" font-family="Georgia,serif" font-size="10" fill="#ffffff"
+        text-anchor="middle">
+    G&#233;n&#232;re avec l&#39;IA. D&#233;cide avec ton jugement. Sois transparent sur l&#39;usage. Assume la responsabilit&#233;.
+  </text>
+
+  <!-- NOTE FILIATION -->
+  <rect x="72" y="872" width="676" height="50" fill="#ffffff" stroke="#febd10" stroke-width="1" rx="2"/>
+  <text x="82" y="888" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb"
+        letter-spacing="0.5">NOTE</text>
+  <text x="82" y="902" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">
+    L&#39;AIgile Manifesto est une initiative de Salim Gomri (mai 2025, aigile.lu).
+  </text>
+  <text x="82" y="914" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">
+    Ce n&#39;est pas une extension officielle de l&#39;Agile Manifesto de 2001. Les 10 principes complets sur aigile.lu.
+  </text>
+
+</svg>

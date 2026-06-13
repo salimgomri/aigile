@@ -19,7 +19,7 @@ function readMigration(name: string) {
 async function main() {
   const pool = new Pool({ connectionString: getDatabaseUrl() })
   try {
-    for (const name of ['042_salim_qa.sql', '043_salim_qa_lab_rename.sql']) {
+    for (const name of ['042_salim_qa.sql', '043_salim_qa_lab_rename.sql', '044_salim_qa_split_unlocks.sql']) {
       await pool.query(readMigration(name))
       console.log(`${name}: OK`)
     }

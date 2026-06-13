@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 794 1123" width="794" height="1123"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>FP IV-14.7 Roadmap horizon glissant</title>
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+  </defs>
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <g transform="translate(27,80)">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#0f2240" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#0f2240" stroke-width="1.2"/>
+    <circle cx="0" cy="0" r="8"  fill="none" stroke="#0f2240" stroke-width="1"/>
+    <circle cx="0" cy="0" r="3"  fill="#0f2240"/>
+    <ellipse cx="0" cy="-30" rx="5" ry="6" fill="#0f2240"/>
+    <line x1="0" y1="-24" x2="0" y2="-10" stroke="#0f2240" stroke-width="2.5"/>
+    <line x1="-8" y1="-20" x2="8" y2="-20" stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="-6" y2="2"  stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="6"  y2="2"  stroke="#0f2240" stroke-width="2"/>
+  </g>
+  <text transform="translate(17,1050) rotate(-90)"
+        font-family="Georgia,serif" font-size="10" font-weight="bold"
+        fill="#0f2240" letter-spacing="2">LE SYST&#200;ME S.A.L.I.M.</text>
+  <rect x="54" y="0" width="740" height="75" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#bbbbbb" letter-spacing="1">RELATION MANAGER > ROADMAP</text>
+  <rect x="695" y="8" width="90" height="22" rx="11" fill="#febd10"/>
+  <text x="740" y="23" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">FP IV-14.7</text>
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="#0f2240">Roadmap horizon glissant</text>
+  <text x="72" y="74" font-family="Georgia,serif" font-size="10" font-style="italic" fill="#febd10">3 colonnes, 3 niveaux de confiance. Z&#233;ro jargon agile dans le document partag&#233;.</text>
+  <rect x="54" y="78" width="740" height="68" fill="#febd10"/>
+  <text x="72" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">POUR QUI</text>
+  <text x="72" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">PO, SM</text>
+  <line x1="252" y1="85" x2="252" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="257" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUOI</text>
+  <text x="257" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Partager la</text>
+  <text x="257" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">visibilit&#233;</text>
+  <text x="257" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">trimestrielle au manager</text>
+  <line x1="437" y1="85" x2="437" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="442" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUAND L&#39;UTILISER</text>
+  <text x="442" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Mise &#224; jour en 5 min</text>
+  <text x="442" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">apr&#232;s chaque Sprint</text>
+  <text x="442" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Review, envoy&#233;e avec</text>
+  <line x1="622" y1="85" x2="622" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="627" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">VALEUR APPORT&#201;E</text>
+  <text x="627" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Le manager arr&#234;te de</text>
+  <text x="627" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">demander un planning ferme</text>
+  <text x="627" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">sur 6 mois.</text>
+
+  <rect x="72" y="162" width="676" height="20" rx="2" fill="#0f2240"/>
+  <text x="82" y="176" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="0.8">QUI PRODUIT CE DOCUMENT</text>
+
+  <rect x="72" y="184" width="676" height="40" fill="#fafaf7" rx="2"/>
+  <circle cx="86" cy="196" r="3" fill="#febd10"/>
+  <text x="96" y="200" font-family="Georgia,serif" font-size="9" fill="#0f2240">PO : produit les 3 colonnes depuis le backlog et les d&#233;cisions business.</text>
+  <circle cx="86" cy="212" r="3" fill="#febd10"/>
+  <text x="96" y="216" font-family="Georgia,serif" font-size="9" fill="#0f2240">SM : contribue le volet capacit&#233; (v&#233;locit&#233; historique) et les d&#233;pendances bloquantes.</text>
+  <rect x="72" y="234" width="676" height="20" rx="2" fill="#0f2240"/>
+  <text x="82" y="248" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="0.8">STRUCTURE : 3 HORIZONS DE CONFIANCE</text>
+
+  <rect x="76" y="256" width="218" height="320" fill="#fafaf7" rx="4"/>
+  <rect x="76" y="256" width="218" height="36" fill="#febd10" rx="4"/>
+  <rect x="76" y="280" width="218" height="12" fill="#febd10"/>
+  <text x="185" y="271" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#0f2240" letter-spacing="0.5">CE QU&#8217;ON A CONFIRM&#201;</text>
+  <text x="185" y="284" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#0f2240" opacity="0.85">90 % ou plus de confiance</text>
+  <text x="185" y="306" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="7.5" font-weight="bold" fill="#0f2240" opacity="0.6">Horizon 1 : 0-3 mois</text>
+  <circle cx="90" cy="322" r="3" fill="#febd10"/>
+  <text x="100" y="326" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Sprint Goals</text>
+  <text x="100" y="338" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">valid&#233;s</text>
+  <circle cx="90" cy="350" r="3" fill="#febd10"/>
+  <text x="100" y="354" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Engagements pris</text>
+  <text x="100" y="366" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">aupr&#232;s du</text>
+  <circle cx="90" cy="378" r="3" fill="#febd10"/>
+  <text x="100" y="382" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">PI Objectives</text>
+  <text x="100" y="394" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">act&#233;s</text>
+  <text x="86" y="418" font-family="Helvetica,Arial,sans-serif" font-size="7" fill="#bbbbbb" letter-spacing="0.5">À REMPLIR PAR LE PO</text>
+  <line x1="86" y1="428" x2="284" y2="428" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="86" y1="450" x2="284" y2="450" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="86" y1="472" x2="284" y2="472" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="86" y1="494" x2="284" y2="494" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="86" y1="516" x2="284" y2="516" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="86" y1="538" x2="284" y2="538" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <rect x="298" y="256" width="218" height="320" fill="#fafaf7" rx="4"/>
+  <rect x="298" y="256" width="218" height="36" fill="#0f2240" rx="4"/>
+  <rect x="298" y="280" width="218" height="12" fill="#0f2240"/>
+  <text x="407" y="271" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="0.5">CE QU&#8217;ON PR&#201;VOIT</text>
+  <text x="407" y="284" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff" opacity="0.85">60-80 % de confiance</text>
+  <text x="407" y="306" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="7.5" font-weight="bold" fill="#0f2240" opacity="0.6">Horizon 2 : 3-6 mois</text>
+  <circle cx="312" cy="322" r="3" fill="#febd10"/>
+  <text x="322" y="326" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">&#201;pics</text>
+  <text x="322" y="338" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">identifi&#233;s,</text>
+  <circle cx="312" cy="350" r="3" fill="#febd10"/>
+  <text x="322" y="354" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Non encore</text>
+  <text x="322" y="366" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">planifi&#233;s en</text>
+  <circle cx="312" cy="378" r="3" fill="#febd10"/>
+  <text x="322" y="382" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Sous r&#233;serve de</text>
+  <text x="322" y="394" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">capacit&#233; et</text>
+  <text x="308" y="418" font-family="Helvetica,Arial,sans-serif" font-size="7" fill="#bbbbbb" letter-spacing="0.5">À REMPLIR PAR LE PO</text>
+  <line x1="308" y1="428" x2="506" y2="428" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="308" y1="450" x2="506" y2="450" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="308" y1="472" x2="506" y2="472" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="308" y1="494" x2="506" y2="494" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="308" y1="516" x2="506" y2="516" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="308" y1="538" x2="506" y2="538" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <rect x="520" y="256" width="218" height="320" fill="#fafaf7" rx="4"/>
+  <rect x="520" y="256" width="218" height="36" fill="#4a4a4a" rx="4"/>
+  <rect x="520" y="280" width="218" height="12" fill="#4a4a4a"/>
+  <text x="629" y="271" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="0.5">CE QU&#8217;ON EXPLORE</text>
+  <text x="629" y="284" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff" opacity="0.85">Direction valid&#233;e, p&#233;rim&#232;tre ouvert</text>
+  <text x="629" y="306" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="7.5" font-weight="bold" fill="#0f2240" opacity="0.6">Horizon 3 : 6-9 mois</text>
+  <circle cx="534" cy="322" r="3" fill="#febd10"/>
+  <text x="544" y="326" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">D&#233;cisions</text>
+  <text x="544" y="338" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">business prises</text>
+  <circle cx="534" cy="350" r="3" fill="#febd10"/>
+  <text x="544" y="354" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">P&#233;rim&#232;tre</text>
+  <text x="544" y="366" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">encore ouvert</text>
+  <circle cx="534" cy="378" r="3" fill="#febd10"/>
+  <text x="544" y="382" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Ne pas confondre avec</text>
+  <text x="544" y="394" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">du vide</text>
+  <text x="530" y="418" font-family="Helvetica,Arial,sans-serif" font-size="7" fill="#bbbbbb" letter-spacing="0.5">À REMPLIR PAR LE PO</text>
+  <line x1="530" y1="428" x2="728" y2="428" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="530" y1="450" x2="728" y2="450" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="530" y1="472" x2="728" y2="472" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="530" y1="494" x2="728" y2="494" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="530" y1="516" x2="728" y2="516" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="530" y1="538" x2="728" y2="538" stroke="#e0e0e0" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <rect x="72" y="590" width="676" height="20" rx="2" fill="#0f2240"/>
+  <text x="82" y="604" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#ffffff" letter-spacing="0.8">VOCABULAIRE PARTAG&#201; AVEC LE MANAGER</text>
+
+  <rect x="72" y="612" width="676" height="50" fill="#ffffff" rx="2"/>
+  <text x="82" y="628" font-family="Georgia,serif" font-size="8.5" font-weight="bold" fill="#0f2240">PAS de jargon agile dans le document envoy&#233; au manager.</text>
+  <text x="82" y="642" font-family="Georgia,serif" font-size="8.5" font-weight="normal" fill="#0f2240">Colonne 1 : "Ce qu&#8217;on a confirm&#233;"  Colonne 2 : "Ce qu&#8217;on pr&#233;voit"  Colonne 3 : "Ce qu&#8217;on explore"</text>
+  <text x="82" y="656" font-family="Georgia,serif" font-size="8.5" font-weight="normal" fill="#0f2240">Envoy&#233; avec le dashboard, pas en r&#233;union d&#233;di&#233;e.</text>
+  <line x1="72" y1="1078" x2="748" y2="1078" stroke="#febd10" stroke-width="1"/>
+  <rect x="372" y="1083" width="50" height="18" rx="9" fill="#0f2240"/>
+  <text x="397" y="1095" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#febd10">IV-14.7</text>
+  <text x="72" y="1095" font-family="Helvetica,Arial,sans-serif" font-size="7" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+  <text x="748" y="1095" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="7" fill="#bbbbbb">Chapitre 14 · Partie 4</text>
+</svg>

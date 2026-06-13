@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import { auth } from '@/lib/auth'
-import { canReadFullAnswer, canUnlockAnswer } from '@/lib/salim-qa/access'
-import { getUnlockedQuestionIds, logSalimQaActivity } from '@/lib/salim-qa/activity'
+import { canReadAnswer, canReadFiche, canUnlockWithCredits } from '@/lib/salim-qa/access'
+import { getUnlockStatesByUser, logSalimQaActivity } from '@/lib/salim-qa/activity'
 import { filterSalimQaQuestions, getSalimQaFacets } from '@/lib/salim-qa/loader'
 import { publicFicheMeta } from '@/lib/salim-qa/fiches-security'
 import { countFicheAssets } from '@/lib/salim-qa/fiches'
@@ -11,7 +11,8 @@ import type { SalimQaQuestionPublic } from '@/lib/salim-qa/types'
 import { getCreditStatus } from '@/lib/credits/manager'
 import { CREDIT_ACTIONS } from '@/lib/credits/actions'
 
-const COST = CREDIT_ACTIONS.salim_qa_answer.cost
+const ANSWER_COST = CREDIT_ACTIONS.salim_qa_answer.cost
+const BUNDLE_COST = CREDIT_ACTIONS.salim_qa_bundle.cost
 
 export async function GET(request: Request) {
   try {
@@ -43,7 +44,7 @@ export async function GET(request: Request) {
       }
     }
 
-    const unlocked = userId ? await getUnlockedQuestionIds(userId) : new Set<string>()
+    const unlockMap = userId ? await getUnlockStatesByUser(userId) : new Map()
     const { items, total } = filterSalimQaQuestions({
       terms,
       role,
@@ -66,14 +67,17 @@ export async function GET(request: Request) {
     }
 
     const questions: SalimQaQuestionPublic[] = items.map((item) => {
-      const isUnlocked = unlocked.has(item.id)
-      const canReadFull = canReadFullAnswer(access, isUnlocked)
+      const unlock = unlockMap.get(item.id) ?? { answer: false, fiche: false }
+      const ficheCount = countFicheAssets(item)
+      const hasViewableFiche = ficheCount > 0
       const ficheMeta = publicFicheMeta(
         item.ficheLiees,
         item.schemasLies,
         item.ficheDestineeA,
-        countFicheAssets(item)
+        ficheCount
       )
+      const readAnswer = canReadAnswer(access, unlock)
+      const readFiche = canReadFiche(access, unlock, hasViewableFiche)
       return {
         id: item.id,
         role: item.role,
@@ -81,9 +85,11 @@ export async function GET(request: Request) {
         douleur: item.douleur,
         dimensions: item.dimensions,
         answerPreview: previewAnswer(item.reponse),
-        isUnlocked,
-        canReadFull,
-        answerFull: canReadFull ? item.reponse : undefined,
+        isAnswerUnlocked: unlock.answer,
+        isFicheUnlocked: unlock.fiche,
+        canReadAnswer: readAnswer,
+        canReadFiche: readFiche,
+        answerFull: readAnswer ? item.reponse : undefined,
         chapter: item.chapter,
         chapterTitle: item.chapterTitle,
         partie: item.partie,
@@ -107,8 +113,10 @@ export async function GET(request: Request) {
         isLoggedIn: !!userId,
         creditsRemaining: access?.creditsRemaining ?? null,
         isUnlimited: access?.isUnlimited ?? false,
-        hasEntitlement: canUnlockAnswer(access, COST),
-        cost: COST,
+        hasEntitlement: canUnlockWithCredits(access, ANSWER_COST),
+        costAnswer: ANSWER_COST,
+        costFiche: CREDIT_ACTIONS.salim_qa_fiche.cost,
+        costBundle: BUNDLE_COST,
       },
     })
   } catch (e) {

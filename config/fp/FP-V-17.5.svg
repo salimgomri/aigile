@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+
+<rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+<rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+
+<rect x="6" y="60" width="42" height="42" rx="4" fill="#0f2240"/>
+<text x="27" y="87" font-family="Georgia,serif" font-size="9" fill="#febd10"
+      text-anchor="middle" font-weight="bold">S</text>
+
+<g transform="translate(27,900) rotate(-90)">
+  <text font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold"
+        text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+</g>
+
+<!-- HEADER -->
+<rect x="54" y="0" width="740" height="78" fill="#ffffff"/>
+<text x="72" y="22" font-family="Helvetica,Arial,sans-serif" font-size="8.5"
+      fill="#bbbbbb" letter-spacing="1">PILOTAGE &#8250; KPIs IA</text>
+<rect x="686" y="8" width="96" height="22" rx="11" fill="#febd10"/>
+<text x="734" y="23" font-family="Helvetica,Arial,sans-serif" font-size="9.5"
+      fill="#0f2240" text-anchor="middle" font-weight="bold">FP V-17.5</text>
+<line x1="72" y1="30" x2="766" y2="30" stroke="#febd10" stroke-width="1"/>
+<text x="72" y="58" font-family="Georgia,serif" font-size="24" fill="#0f2240"
+      font-weight="bold">Dashboard KPIs managériaux IA</text>
+<text x="72" y="74" font-family="Georgia,serif" font-size="11" fill="#febd10"
+      font-style="italic">Ce qui n&#39;est pas mesur&#233; n&#39;est pas pilot&#233;. Ce qui est mal lu conduit dans le mur.</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="80" width="740" height="62" fill="#febd10"/>
+<line x1="238" y1="88" x2="238" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+<line x1="422" y1="88" x2="422" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+<line x1="606" y1="88" x2="606" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+
+<text x="72" y="100" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#0f2240" font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+<text x="72" y="116" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">Manager, Directeur / DSI</text>
+<text x="72" y="129" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">MG &#8226; DC</text>
+
+<text x="256" y="100" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUOI</text>
+<text x="256" y="116" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">6 KPIs pilotage IA</text>
+<text x="256" y="129" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">avec seuils et interpr&#233;tations</text>
+
+<text x="440" y="100" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUAND L&#39;UTILISER</text>
+<text x="440" y="116" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">Chaque sprint, d&#232;s que</text>
+<text x="440" y="129" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">l&#39;IA est adopt&#233;e dans l&#39;&#233;quipe</text>
+
+<text x="624" y="100" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#0f2240" font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+<text x="624" y="116" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">D&#233;tecter avant l&#39;effondrement.</text>
+<text x="624" y="129" font-family="Georgia,serif" font-size="9" fill="#0f2240"
+      font-style="italic">Piloter, pas juste lire.</text>
+
+<!-- TABLE EN-TETE -->
+<rect x="54" y="150" width="740" height="22" fill="#0f2240"/>
+<text x="130" y="165" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#febd10" text-anchor="middle" font-weight="bold" letter-spacing="0.5">KPI</text>
+<line x1="210" y1="150" x2="210" y2="172" stroke="#febd10" stroke-width="0.5"/>
+<text x="315" y="165" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#febd10" text-anchor="middle" font-weight="bold" letter-spacing="0.5">SEUIL SAIN</text>
+<line x1="420" y1="150" x2="420" y2="172" stroke="#febd10" stroke-width="0.5"/>
+<text x="510" y="165" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#febd10" text-anchor="middle" font-weight="bold" letter-spacing="0.5">ALERTE</text>
+<line x1="600" y1="150" x2="600" y2="172" stroke="#febd10" stroke-width="0.5"/>
+<text x="697" y="165" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#febd10" text-anchor="middle" font-weight="bold" letter-spacing="0.5">ACTION SI ALERTE</text>
+
+<!-- KPI 1 Taux revision -->
+<rect x="54" y="172" width="740" height="58" fill="#f8f8f8"/>
+<line x1="210" y1="172" x2="210" y2="230" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="420" y1="172" x2="420" y2="230" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="600" y1="172" x2="600" y2="230" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="54" y="172" width="5" height="58" fill="#febd10"/>
+<text x="72" y="190" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">01</text>
+<text x="72" y="205" font-family="Georgia,serif" font-size="9" fill="#0f2240">Taux de r&#233;vision</text>
+<text x="72" y="219" font-family="Georgia,serif" font-size="9" fill="#0f2240">outputs IA</text>
+<text x="220" y="196" font-family="Georgia,serif" font-size="9" fill="#0f2240">Modifications</text>
+<text x="220" y="210" font-family="Georgia,serif" font-size="9" fill="#0f2240">visibles sur</text>
+<text x="220" y="224" font-family="Georgia,serif" font-size="9" fill="#0f2240">outputs int&#233;gr&#233;s</text>
+<text x="430" y="196" font-family="Georgia,serif" font-size="9" fill="#cc3333">Taux proche</text>
+<text x="430" y="210" font-family="Georgia,serif" font-size="9" fill="#cc3333">de 0 &#37;</text>
+<text x="610" y="196" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">L&#39;&#233;quipe ne relit plus.</text>
+<text x="610" y="210" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Pose la question en</text>
+<text x="610" y="224" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Daily cette semaine.</text>
+<line x1="54" y1="230" x2="794" y2="230" stroke="#e0e0e0" stroke-width="0.8"/>
+
+<!-- KPI 2 Ratio DF/CFR -->
+<rect x="54" y="230" width="740" height="58" fill="#ffffff"/>
+<line x1="210" y1="230" x2="210" y2="288" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="420" y1="230" x2="420" y2="288" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="600" y1="230" x2="600" y2="288" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="54" y="230" width="5" height="58" fill="#febd10"/>
+<text x="72" y="248" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">02</text>
+<text x="72" y="263" font-family="Georgia,serif" font-size="9" fill="#0f2240">Ratio DF / CFR</text>
+<text x="72" y="277" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb" font-style="italic">Deploy Freq / Change Fail Rate</text>
+<text x="220" y="254" font-family="Georgia,serif" font-size="9" fill="#0f2240">DF et CFR</text>
+<text x="220" y="268" font-family="Georgia,serif" font-size="9" fill="#0f2240">&#233;voluent dans</text>
+<text x="220" y="282" font-family="Georgia,serif" font-size="9" fill="#0f2240">le m&#234;me sens</text>
+<text x="430" y="254" font-family="Georgia,serif" font-size="9" fill="#cc3333">CFR monte</text>
+<text x="430" y="268" font-family="Georgia,serif" font-size="9" fill="#cc3333">plus vite que DF</text>
+<text x="610" y="254" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Alerte qualit&#233;.</text>
+<text x="610" y="268" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Regarder les d&#233;cisions</text>
+<text x="610" y="282" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">tech non questionn&#233;es.</text>
+<line x1="54" y1="288" x2="794" y2="288" stroke="#e0e0e0" stroke-width="0.8"/>
+
+<!-- KPI 3 Discussion Sprint Planning -->
+<rect x="54" y="288" width="740" height="58" fill="#f8f8f8"/>
+<line x1="210" y1="288" x2="210" y2="346" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="420" y1="288" x2="420" y2="346" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="600" y1="288" x2="600" y2="346" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="54" y="288" width="5" height="58" fill="#febd10"/>
+<text x="72" y="306" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">03</text>
+<text x="72" y="321" font-family="Georgia,serif" font-size="9" fill="#0f2240">Taux discussion</text>
+<text x="72" y="335" font-family="Georgia,serif" font-size="9" fill="#0f2240">r&#233;elle Planning</text>
+<text x="220" y="306" font-family="Georgia,serif" font-size="9" fill="#0f2240">Sup&#233;rieur</text>
+<text x="220" y="320" font-family="Georgia,serif" font-size="9" fill="#0f2240">&#224; 50 &#37;</text>
+<text x="430" y="306" font-family="Georgia,serif" font-size="9" fill="#cc3333">Moins de 50 &#37;</text>
+<text x="430" y="320" font-family="Georgia,serif" font-size="9" fill="#cc3333">de discussion</text>
+<text x="430" y="334" font-family="Georgia,serif" font-size="9" fill="#cc3333">r&#233;elle</text>
+<text x="610" y="306" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Action sprint suivant.</text>
+<text x="610" y="320" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Demande au SM le</text>
+<text x="610" y="334" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">ratio de la semaine.</text>
+<line x1="54" y1="346" x2="794" y2="346" stroke="#e0e0e0" stroke-width="0.8"/>
+
+<!-- KPI 4 Stories solo vs collab -->
+<rect x="54" y="346" width="740" height="58" fill="#ffffff"/>
+<line x1="210" y1="346" x2="210" y2="404" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="420" y1="346" x2="420" y2="404" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="600" y1="346" x2="600" y2="404" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="54" y="346" width="5" height="58" fill="#febd10"/>
+<text x="72" y="364" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">04</text>
+<text x="72" y="379" font-family="Georgia,serif" font-size="9" fill="#0f2240">Stories solo</text>
+<text x="72" y="393" font-family="Georgia,serif" font-size="9" fill="#0f2240">vs collaboration</text>
+<text x="220" y="364" font-family="Georgia,serif" font-size="9" fill="#0f2240">R&#233;partition</text>
+<text x="220" y="378" font-family="Georgia,serif" font-size="9" fill="#0f2240">&#233;quilibr&#233;e</text>
+<text x="220" y="392" font-family="Georgia,serif" font-size="9" fill="#0f2240">entre devs</text>
+<text x="430" y="364" font-family="Georgia,serif" font-size="9" fill="#cc3333">1 dev = 60 &#37;</text>
+<text x="430" y="378" font-family="Georgia,serif" font-size="9" fill="#cc3333">du code sur</text>
+<text x="430" y="392" font-family="Georgia,serif" font-size="9" fill="#cc3333">3 sprints cons.</text>
+<text x="610" y="364" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Asym&#233;trie adoption.</text>
+<text x="610" y="378" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Visible depuis</text>
+<text x="610" y="392" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">l&#39;outil de suivi.</text>
+<line x1="54" y1="404" x2="794" y2="404" stroke="#e0e0e0" stroke-width="0.8"/>
+
+<!-- KPI 5 Tete-a-tete seniors -->
+<rect x="54" y="404" width="740" height="58" fill="#f8f8f8"/>
+<line x1="210" y1="404" x2="210" y2="462" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="420" y1="404" x2="420" y2="462" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="600" y1="404" x2="600" y2="462" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="54" y="404" width="5" height="58" fill="#febd10"/>
+<text x="72" y="422" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">05</text>
+<text x="72" y="437" font-family="Georgia,serif" font-size="9" fill="#0f2240">T&#234;te-&#224;-t&#234;te</text>
+<text x="72" y="451" font-family="Georgia,serif" font-size="9" fill="#0f2240">seniors / trimestre</text>
+<text x="220" y="422" font-family="Georgia,serif" font-size="9" fill="#0f2240">Au moins 1</text>
+<text x="220" y="436" font-family="Georgia,serif" font-size="9" fill="#0f2240">par senior</text>
+<text x="220" y="450" font-family="Georgia,serif" font-size="9" fill="#0f2240">par trimestre</text>
+<text x="430" y="422" font-family="Georgia,serif" font-size="9" fill="#cc3333">0 entretien</text>
+<text x="430" y="436" font-family="Georgia,serif" font-size="9" fill="#cc3333">sur la perception</text>
+<text x="430" y="450" font-family="Georgia,serif" font-size="9" fill="#cc3333">du r&#244;le</text>
+<text x="610" y="422" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Planifier cette semaine.</text>
+<text x="610" y="436" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Question : &#171;&#160;Comment</text>
+<text x="610" y="450" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">tu te sens dans ton r&#244;le ?&#160;&#187;</text>
+<line x1="54" y1="462" x2="794" y2="462" stroke="#e0e0e0" stroke-width="0.8"/>
+
+<!-- KPI 6 IA Policy -->
+<rect x="54" y="462" width="740" height="58" fill="#ffffff"/>
+<line x1="210" y1="462" x2="210" y2="520" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="420" y1="462" x2="420" y2="520" stroke="#e0e0e0" stroke-width="0.8"/>
+<line x1="600" y1="462" x2="600" y2="520" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="54" y="462" width="5" height="58" fill="#febd10"/>
+<text x="72" y="480" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#0f2240" font-weight="bold">06</text>
+<text x="72" y="495" font-family="Georgia,serif" font-size="9" fill="#0f2240">IA Policy</text>
+<text x="72" y="509" font-family="Georgia,serif" font-size="9" fill="#0f2240">One-Pager</text>
+<text x="220" y="480" font-family="Georgia,serif" font-size="9" fill="#0f2240">R&#233;dig&#233;e,</text>
+<text x="220" y="494" font-family="Georgia,serif" font-size="9" fill="#0f2240">partag&#233;e,</text>
+<text x="220" y="508" font-family="Georgia,serif" font-size="9" fill="#0f2240">r&#233;vis&#233;e 1 fois</text>
+<text x="430" y="480" font-family="Georgia,serif" font-size="9" fill="#cc3333">Non r&#233;dig&#233;e</text>
+<text x="430" y="494" font-family="Georgia,serif" font-size="9" fill="#cc3333">ou non</text>
+<text x="430" y="508" font-family="Georgia,serif" font-size="9" fill="#cc3333">discut&#233;e</text>
+<text x="610" y="480" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Voir FP V-17.3.</text>
+<text x="610" y="494" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">30 minutes en</text>
+<text x="610" y="508" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">&#233;quipe suffisent.</text>
+<line x1="54" y1="520" x2="794" y2="520" stroke="#e0e0e0" stroke-width="0.8"/>
+
+<!-- LEGENDE -->
+<rect x="54" y="530" width="740" height="22" fill="#f8f8f8"/>
+<text x="72" y="545" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#bbbbbb">L&#201;GENDE :</text>
+<rect x="118" y="534" width="10" height="10" fill="#22aa44" rx="2"/>
+<text x="132" y="545" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240">Sain</text>
+<rect x="166" y="534" width="10" height="10" fill="#febd10" rx="2"/>
+<text x="180" y="545" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240">&#192; surveiller</text>
+<rect x="240" y="534" width="10" height="10" fill="#cc3333" rx="2"/>
+<text x="254" y="545" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240">Alerte : agir ce sprint</text>
+
+<!-- ZONE SYNTHESE DECISIONS -->
+<rect x="54" y="562" width="740" height="28" fill="#0f2240" rx="2"/>
+<text x="424" y="580" font-family="Helvetica,Arial,sans-serif" font-size="8"
+      fill="#febd10" text-anchor="middle" font-weight="bold" letter-spacing="1">SYNTH&#200;SE ET D&#201;CISIONS DU SPRINT</text>
+
+<rect x="54" y="590" width="360" height="80" fill="#f8f8f8"/>
+<text x="72" y="608" font-family="Helvetica,Arial,sans-serif" font-size="8"
+      fill="#0f2240" font-weight="bold">KPIs EN ALERTE CE SPRINT</text>
+<line x1="72" y1="618" x2="400" y2="618" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="72" y1="636" x2="400" y2="636" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="72" y1="654" x2="400" y2="654" stroke="#e0e0e0" stroke-width="0.5"/>
+
+<rect x="418" y="590" width="376" height="80" fill="#ffffff"/>
+<text x="436" y="608" font-family="Helvetica,Arial,sans-serif" font-size="8"
+      fill="#0f2240" font-weight="bold">D&#201;CISIONS PRISES</text>
+<line x1="436" y1="618" x2="780" y2="618" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="436" y1="636" x2="780" y2="636" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="436" y1="654" x2="780" y2="654" stroke="#e0e0e0" stroke-width="0.5"/>
+
+<!-- NOTES -->
+<rect x="54" y="680" width="740" height="72" fill="#fafaf7" rx="2"/>
+<rect x="54" y="680" width="740" height="20" fill="#e8e8e8" rx="2"/>
+<text x="72" y="694" font-family="Helvetica,Arial,sans-serif" font-size="8"
+      fill="#0f2240" font-weight="bold" letter-spacing="0.5">NOTES</text>
+<line x1="72" y1="716" x2="780" y2="716" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="72" y1="736" x2="780" y2="736" stroke="#e0e0e0" stroke-width="0.5"/>
+
+<!-- FOOTER -->
+<line x1="54" y1="762" x2="794" y2="762" stroke="#febd10" stroke-width="1"/>
+<rect x="380" y="754" width="48" height="16" rx="8" fill="#0f2240"/>
+<text x="404" y="766" font-family="Helvetica,Arial,sans-serif" font-size="9"
+      fill="#febd10" text-anchor="middle" font-weight="bold">V-17</text>
+<text x="72" y="776" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 17</text>
+<text x="766" y="776" font-family="Helvetica,Arial,sans-serif" font-size="7.5"
+      fill="#bbbbbb" text-anchor="end">Le Syst&#232;me S.A.L.I.M.</text>
+
+</svg>

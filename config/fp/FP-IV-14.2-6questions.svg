@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 794 1123" width="794" height="1123"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>FP IV-14.2 Les 6 questions du manager agile</title>
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+  </defs>
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+
+  <!-- BANDE LATERALE -->
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <!-- LOGO CERCLES CONCENTRIQUE -->
+  <g transform="translate(27,80)">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#0f2240" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#0f2240" stroke-width="1.2"/>
+    <circle cx="0" cy="0" r="8"  fill="none" stroke="#0f2240" stroke-width="1"/>
+    <circle cx="0" cy="0" r="3"  fill="#0f2240"/>
+    <!-- silhouette -->
+    <ellipse cx="0" cy="-30" rx="5" ry="6" fill="#0f2240"/>
+    <line x1="0" y1="-24" x2="0" y2="-10" stroke="#0f2240" stroke-width="2.5"/>
+    <line x1="-8" y1="-20" x2="8" y2="-20" stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="-6" y2="2"  stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="6"  y2="2"  stroke="#0f2240" stroke-width="2"/>
+  </g>
+  <!-- TEXTE VERTICAL -->
+  <text transform="translate(17,1050) rotate(-90)"
+        font-family="Georgia,serif" font-size="10" font-weight="bold"
+        fill="#0f2240" letter-spacing="2">
+    LE SYST&#200;ME S.A.L.I.M.
+  </text>
+  <!-- HEADER -->
+  <rect x="54" y="0" width="740" height="75" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#bbbbbb"
+        letter-spacing="1">RELATION MANAGER > GOUVERNANCE</text>
+  <!-- Badge FP -->
+  <rect x="695" y="8" width="90" height="22" rx="11" fill="#febd10"/>
+  <text x="740" y="23" text-anchor="middle" font-family="Helvetica,Arial,sans-serif"
+        font-size="9" font-weight="bold" fill="#0f2240">FP IV-14.2</text>
+  <!-- Filet gold -->
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <!-- Titre -->
+  <text x="72" y="58" font-family="Georgia,serif" font-size="24" font-weight="bold"
+        fill="#0f2240">Les 6 questions du manager agile</text>
+  <!-- Sous-titre -->
+  <text x="72" y="74" font-family="Georgia,serif" font-size="10" font-style="italic"
+        fill="#febd10">Si ces 6 questions ont des r&#233;ponses claires, la relation fonctionne.</text>
+  <!-- BLOC 4 CHAMPS -->
+  <rect x="54" y="78" width="740" height="68" fill="#febd10"/>
+  <text x="72" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">POUR QUI</text>
+  <text x="72" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">MG, DC</text>
+  <line x1="252" y1="85" x2="252" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="257" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUOI</text>
+  <text x="257" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">V&#233;rifier que le</text>
+  <text x="257" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">manager a acc&#232;s aux 6</text>
+  <text x="257" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">r&#233;ponses cl&#233;s</text>
+  <line x1="437" y1="85" x2="437" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="442" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUAND L&#39;UTILISER</text>
+  <text x="442" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">En d&#233;but de</text>
+  <text x="442" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">collaboration, en Sprint</text>
+  <text x="442" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Review, en 1:1 mensuel</text>
+  <line x1="622" y1="85" x2="622" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="627" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">VALEUR APPORT&#201;E</text>
+  <text x="627" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Supprime les r&#233;unions</text>
+  <text x="627" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">de statut inutiles. Le</text>
+  <text x="627" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">dashboard r&#233;pond</text>
+
+  <rect x="72" y="160" width="676" height="22" fill="#0f2240" rx="2"/>
+  <text x="82" y="175" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#ffffff" letter-spacing="1">N</text>
+  <text x="115" y="175" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#ffffff" letter-spacing="1">QUESTION MANAGER</text>
+  <text x="430" y="175" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#ffffff" letter-spacing="1">SOURCE DE RÉPONSE</text>
+  <text x="625" y="175" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#ffffff" letter-spacing="1">QUAND</text>
+  <rect x="72" y="182" width="676" height="66" fill="#ffffff"/>
+  <line x1="72" y1="248" x2="748" y2="248" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="108" y1="182" x2="108" y2="248" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="420" y1="182" x2="420" y2="248" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="618" y1="182" x2="618" y2="248" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="86" y="220" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#febd10">1</text>
+  <text x="118" y="202" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">Est-ce que l&#8217;&#233;quipe</text>
+  <text x="118" y="217" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">livre ce qu&#8217;elle promet ?</text>
+  <text x="430" y="202" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Dashboard : On Time /</text>
+  <text x="430" y="216" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Team Predictability</text>
+  <text x="628" y="202" font-family="Georgia,serif" font-size="8" fill="#0f2240">Seul</text>
+  <rect x="72" y="248" width="676" height="66" fill="#fafaf7"/>
+  <line x1="72" y1="314" x2="748" y2="314" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="108" y1="248" x2="108" y2="314" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="420" y1="248" x2="420" y2="314" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="618" y1="248" x2="618" y2="314" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="86" y="286" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#febd10">2</text>
+  <text x="118" y="268" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">Est-ce que je suis dans les temps</text>
+  <text x="118" y="283" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">et le budget ?</text>
+  <text x="430" y="268" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Dashboard : On Time + On</text>
+  <text x="430" y="282" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Budget</text>
+  <text x="628" y="268" font-family="Georgia,serif" font-size="8" fill="#0f2240">Seul</text>
+  <rect x="72" y="314" width="676" height="66" fill="#ffffff"/>
+  <line x1="72" y1="380" x2="748" y2="380" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="108" y1="314" x2="108" y2="380" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="420" y1="314" x2="420" y2="380" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="618" y1="314" x2="618" y2="380" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="86" y="352" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#febd10">3</text>
+  <text x="118" y="334" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">Qu&#8217;est-ce qui bloque vraiment</text>
+  <text x="118" y="349" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">l&#8217;&#233;quipe ?</text>
+  <text x="430" y="334" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Check-in Q3 : blocages</text>
+  <text x="430" y="348" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">organisationnels</text>
+  <text x="628" y="334" font-family="Georgia,serif" font-size="8" fill="#0f2240">Sprint Review</text>
+  <text x="628" y="348" font-family="Georgia,serif" font-size="8" fill="#0f2240">(fin de</text>
+  <text x="628" y="362" font-family="Georgia,serif" font-size="8" fill="#0f2240">c&#233;r&#233;monie)</text>
+  <rect x="72" y="380" width="676" height="66" fill="#fafaf7"/>
+  <line x1="72" y1="446" x2="748" y2="446" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="108" y1="380" x2="108" y2="446" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="420" y1="380" x2="420" y2="446" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="618" y1="380" x2="618" y2="446" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="86" y="418" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#febd10">4</text>
+  <text x="118" y="400" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">Comment &#231;a va, les gens ?</text>
+  <text x="430" y="400" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Dashboard : Happiness</text>
+  <text x="430" y="414" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Index / Cadran Bien-&#234;tre</text>
+  <text x="628" y="400" font-family="Georgia,serif" font-size="8" fill="#0f2240">Seul</text>
+  <rect x="72" y="446" width="676" height="66" fill="#ffffff"/>
+  <line x1="72" y1="512" x2="748" y2="512" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="108" y1="446" x2="108" y2="512" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="420" y1="446" x2="420" y2="512" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="618" y1="446" x2="618" y2="512" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="86" y="484" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#febd10">5</text>
+  <text x="118" y="466" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">On avance vers nos OKR ?</text>
+  <text x="430" y="466" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">OKR Check-in /</text>
+  <text x="430" y="480" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Confidence Rate</text>
+  <text x="628" y="466" font-family="Georgia,serif" font-size="8" fill="#0f2240">1:1 mensuel ou</text>
+  <text x="628" y="480" font-family="Georgia,serif" font-size="8" fill="#0f2240">r&#233;union</text>
+  <text x="628" y="494" font-family="Georgia,serif" font-size="8" fill="#0f2240">OKR</text>
+  <rect x="72" y="512" width="676" height="66" fill="#fafaf7"/>
+  <line x1="72" y1="578" x2="748" y2="578" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="108" y1="512" x2="108" y2="578" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="420" y1="512" x2="420" y2="578" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="618" y1="512" x2="618" y2="578" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="86" y="550" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#febd10">6</text>
+  <text x="118" y="532" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">Que dois-je d&#233;cider maintenant</text>
+  <text x="118" y="547" font-family="Georgia,serif" font-size="9" font-weight="bold" fill="#0f2240">?</text>
+  <text x="430" y="532" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">Escalades trac&#233;es</text>
+  <text x="430" y="546" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240">dans le dashboard</text>
+  <text x="628" y="532" font-family="Georgia,serif" font-size="8" fill="#0f2240">Conversation</text>
+  <rect x="72" y="588" width="676" height="32" fill="#0f2240" rx="4"/>
+  <text x="410" y="602" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#febd10" letter-spacing="1">DISCIPLINE</text>
+  <text x="410" y="615" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#ffffff">Ne pas transformer en r&#233;union ce que le dashboard peut r&#233;soudre seul.</text>
+  <!-- FOOTER -->
+  <line x1="72" y1="1078" x2="748" y2="1078" stroke="#febd10" stroke-width="1"/>
+  <rect x="372" y="1083" width="50" height="18" rx="9" fill="#0f2240"/>
+  <text x="397" y="1095" text-anchor="middle" font-family="Helvetica,Arial,sans-serif"
+        font-size="8" font-weight="bold" fill="#febd10">IV-14.2</text>
+  <text x="72" y="1095" font-family="Helvetica,Arial,sans-serif" font-size="7"
+        fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+  <text x="748" y="1095" text-anchor="end" font-family="Helvetica,Arial,sans-serif"
+        font-size="7" fill="#bbbbbb">Chapitre 14 · Partie 4</text>
+</svg>

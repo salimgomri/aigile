@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+
+  <!-- FOND + BANDE GOLD -->
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+
+  <!-- TEXTE VERTICAL BANDE -->
+  <g transform="translate(27,1103) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" font-weight="700"
+          fill="#0f2240" text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+
+  <!-- HEADER BLANC -->
+  <rect x="54" y="0" width="740" height="74" fill="#ffffff"/>
+  <text x="72" y="18"
+        font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb">PILOTAGE &gt; DASHBOARD IA</text>
+
+  <!-- BADGE FP -->
+  <rect x="686" y="7" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="22" text-anchor="middle"
+        font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240">FP III-10.3</text>
+
+  <!-- FILET GOLD HEADER -->
+  <line x1="72" y1="27" x2="766" y2="27" stroke="#febd10" stroke-width="1"/>
+
+  <!-- TITRE PRINCIPAL -->
+  <text x="72" y="54"
+        font-family="Georgia,serif" font-size="26" font-weight="700" fill="#0f2240">Mesurer l'impact IA sur le Sprint Planning</text>
+
+  <!-- SOUS-TITRE ITALIC -->
+  <text x="72" y="70"
+        font-family="Georgia,serif" font-size="11" font-style="italic" fill="#febd10">L'IA ne doit pas faire baisser la qualit&#233; des engagements. Mesure les deux c&#244;t&#233;s.</text>
+
+  <!-- BLOC 4 CHAMPS GOLD -->
+  <rect x="54" y="78" width="740" height="66" fill="#febd10"/>
+
+  <!-- SEPARATEURS VERTICAUX SIMUL&#201;S -->
+  <line x1="239" y1="86" x2="239" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="424" y1="86" x2="424" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="609" y1="86" x2="609" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+
+  <text x="72" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">POUR QUI</text>
+  <text x="72" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">MG / SM / PO</text>
+
+  <text x="252" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">QUOI</text>
+  <text x="252" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">4 KPIs pour distinguer acc&#233;l&#233;ration r&#233;elle et substitution de la r&#233;flexion</text>
+
+  <text x="437" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">QUAND L'UTILISER</text>
+  <text x="437" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">Apr&#232;s 3 sprints d'utilisation de la Prompt Library</text>
+
+  <text x="622" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="622" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">D&#233;tecter si l'IA am&#233;liore le planning ou masque un probl&#232;me de backlog</text>
+
+  <!-- BLOC 1 INDICATEURS -->
+  <rect x="66" y="154" width="660" height="24" fill="#0f2240" rx="3"/>
+  <text x="396" y="170" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#ffffff">INDICATEURS CL&#201;S : 4 KPIs du chapitre 10</text>
+
+  <!-- EN-T&#202;TE TABLEAU -->
+  <rect x="66" y="178" width="660" height="20" fill="#febd10"/>
+  <text x="82" y="192" font-family="Helvetica,sans-serif" font-size="7.5"
+        font-weight="700" fill="#0f2240" letter-spacing="1">#</text>
+  <text x="104" y="192" font-family="Helvetica,sans-serif" font-size="7.5"
+        font-weight="700" fill="#0f2240" letter-spacing="1">INDICATEUR</text>
+  <text x="354" y="192" font-family="Helvetica,sans-serif" font-size="7.5"
+        font-weight="700" fill="#0f2240" letter-spacing="1">CIBLE</text>
+  <text x="454" y="192" font-family="Helvetica,sans-serif" font-size="7.5"
+        font-weight="700" fill="#0f2240" letter-spacing="1">SIGNAL D'ALERTE</text>
+  <text x="634" y="192" font-family="Helvetica,sans-serif" font-size="7.5"
+        font-weight="700" fill="#0f2240" letter-spacing="1">SPRINT</text>
+
+  <rect x="66" y="198" width="660" height="52" fill="#fafaf7"/>
+  <text x="82" y="214" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">01</text>
+  <text x="104" y="214" font-family="Georgia,serif" font-size="9"
+        font-weight="700" fill="#0f2240">R&#233;duction du temps de pr&#233;paration des stories</text>
+  <text x="354" y="214" font-family="Georgia,serif" font-size="8.5"
+        fill="#2a6e2a">Objectif -40% sur 3 sprints</text>
+  <text x="104" y="232" font-family="Georgia,serif" font-size="8"
+        font-style="italic" fill="#cc3333">Baisse du temps SANS baisse du Sprint Goal</text>
+  <text x="634" y="222" font-family="Georgia,serif" font-size="9"
+        fill="#888888">___ / ___</text>
+  <line x1="66" y1="249" x2="726" y2="249" stroke="#e0e0e0" stroke-width="0.6"/>
+
+  <rect x="66" y="250" width="660" height="52" fill="#ffffff"/>
+  <text x="82" y="266" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">02</text>
+  <text x="104" y="266" font-family="Georgia,serif" font-size="9"
+        font-weight="700" fill="#0f2240">Taux d'atteinte du Sprint Goal</text>
+  <text x="354" y="266" font-family="Georgia,serif" font-size="8.5"
+        fill="#2a6e2a">Stable ou en hausse</text>
+  <text x="104" y="284" font-family="Georgia,serif" font-size="8"
+        font-style="italic" fill="#cc3333">D&#233;grade en m&#234;me temps que le temps baisse</text>
+  <text x="634" y="274" font-family="Georgia,serif" font-size="9"
+        fill="#888888">___ %</text>
+  <line x1="66" y1="301" x2="726" y2="301" stroke="#e0e0e0" stroke-width="0.6"/>
+
+  <rect x="66" y="302" width="660" height="52" fill="#fafaf7"/>
+  <text x="82" y="318" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">03</text>
+  <text x="104" y="318" font-family="Georgia,serif" font-size="9"
+        font-weight="700" fill="#0f2240">Stories sans crit&#232;res d'acceptation en d&#233;but de sprint</text>
+  <text x="354" y="318" font-family="Georgia,serif" font-size="8.5"
+        fill="#2a6e2a">Cible z&#233;ro</text>
+  <text x="104" y="336" font-family="Georgia,serif" font-size="8"
+        font-style="italic" fill="#cc3333">Crit&#232;res g&#233;n&#233;r&#233;s par IA non relu&#233;s par l'&#233;quipe</text>
+  <text x="634" y="326" font-family="Georgia,serif" font-size="9"
+        fill="#888888">___ stories</text>
+  <line x1="66" y1="353" x2="726" y2="353" stroke="#e0e0e0" stroke-width="0.6"/>
+
+  <rect x="66" y="354" width="660" height="52" fill="#ffffff"/>
+  <text x="82" y="370" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">04</text>
+  <text x="104" y="370" font-family="Georgia,serif" font-size="9"
+        font-weight="700" fill="#0f2240">Questions pos&#233;es au PO en planification</text>
+  <text x="354" y="370" font-family="Georgia,serif" font-size="8.5"
+        fill="#2a6e2a">Au moins autant qu'avant l'IA</text>
+  <text x="104" y="388" font-family="Georgia,serif" font-size="8"
+        font-style="italic" fill="#cc3333">Ce chiffre baisse : l'IA a remplac&#233; la r&#233;flexion</text>
+  <text x="634" y="378" font-family="Georgia,serif" font-size="9"
+        fill="#888888">___ questions</text>
+  <line x1="66" y1="405" x2="726" y2="405" stroke="#e0e0e0" stroke-width="0.6"/>
+
+  <!-- BLOC TENDANCE + ALERTES -->
+  <rect x="66" y="422" width="322" height="26" fill="#0f2240" rx="3"/>
+  <text x="227" y="439" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#ffffff">TENDANCE GLOBALE</text>
+
+  <rect x="404" y="422" width="322" height="26" fill="#0f2240" rx="3"/>
+  <text x="565" y="439" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#ffffff">ALERTES PRINCIPALES</text>
+
+  <rect x="66" y="448" width="322" height="120" fill="#fafaf7" rx="2"/>
+  <text x="82" y="468" font-family="Georgia,serif" font-size="8.5"
+        fill="#888888">Sprint N-2 : ___</text>
+  <text x="82" y="486" font-family="Georgia,serif" font-size="8.5"
+        fill="#888888">Sprint N-1 : ___</text>
+  <text x="82" y="504" font-family="Georgia,serif" font-size="8.5"
+        fill="#888888">Sprint N   : ___</text>
+  <text x="82" y="526" font-family="Georgia,serif" font-size="8"
+        font-style="italic" fill="#bbbbbb">Coller ici les 4 KPIs par sprint</text>
+  <text x="82" y="540" font-family="Georgia,serif" font-size="8"
+        font-style="italic" fill="#bbbbbb">et comparer l'&#233;volution</text>
+
+  <rect x="404" y="448" width="322" height="120" fill="#fafaf7" rx="2"/>
+  <text x="420" y="468" font-family="Helvetica,sans-serif" font-size="8.5"
+        fill="#cc3333">! </text>
+  <text x="436" y="468" font-family="Georgia,serif" font-size="8.5"
+        fill="#444444">Sprint Goal baisse + temps baisse = danger</text>
+  <text x="420" y="488" font-family="Helvetica,sans-serif" font-size="8.5"
+        fill="#cc3333">! </text>
+  <text x="436" y="488" font-family="Georgia,serif" font-size="8.5"
+        fill="#444444">Questions au PO diminuent sprint sur sprint</text>
+  <text x="420" y="508" font-family="Helvetica,sans-serif" font-size="8.5"
+        fill="#cc3333">! </text>
+  <text x="436" y="508" font-family="Georgia,serif" font-size="8.5"
+        fill="#444444">Z&#233;ro output IA rejet&#233; = personne ne lit</text>
+  <text x="420" y="528" font-family="Helvetica,sans-serif" font-size="8.5"
+        fill="#2a6e2a">v </text>
+  <text x="436" y="528" font-family="Georgia,serif" font-size="8.5"
+        fill="#444444">-40% pr&#233;paration + Sprint Goal stable = succes</text>
+
+  <!-- BLOC D&#201;CISION -->
+  <rect x="66" y="584" width="660" height="26" fill="#0f2240" rx="3"/>
+  <text x="396" y="601" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#ffffff">D&#201;CISIONS SELON R&#201;SULTAT</text>
+
+  <rect x="66" y="610" width="210" height="80" fill="#fafaf7" rx="2"/>
+  <text x="171" y="628" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="8.5" font-weight="700" fill="#2a6e2a">CONTINUER</text>
+  <text x="82" y="644" font-family="Georgia,serif" font-size="8" fill="#444444">
+    4 KPIs stables ou en hausse.
+  </text>
+  <text x="82" y="658" font-family="Georgia,serif" font-size="8" fill="#444444">
+    Ajouter un prompt par sprint.
+  </text>
+
+  <rect x="284" y="610" width="210" height="80" fill="#fafaf7" rx="2"/>
+  <text x="389" y="628" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="8.5" font-weight="700" fill="#febd10">AJUSTER</text>
+  <text x="300" y="644" font-family="Georgia,serif" font-size="8" fill="#444444">
+    1 ou 2 KPIs en baisse.
+  </text>
+  <text x="300" y="658" font-family="Georgia,serif" font-size="8" fill="#444444">
+    R&#233;duire les prompts, renforcer la friction.
+  </text>
+
+  <rect x="502" y="610" width="224" height="80" fill="#fafaf7" rx="2"/>
+  <text x="614" y="628" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="8.5" font-weight="700" fill="#cc3333">STOPPER</text>
+  <text x="518" y="644" font-family="Georgia,serif" font-size="8" fill="#444444">
+    Sprint Goal baisse + questions PO
+  </text>
+  <text x="518" y="658" font-family="Georgia,serif" font-size="8" fill="#444444">
+    baissent. Sprint sans IA pour diagnostic.
+  </text>
+
+  <!-- FOOTER -->
+  <line x1="66" y1="1068" x2="752" y2="1068" stroke="#febd10" stroke-width="0.8"/>
+  <rect x="388" y="1074" width="58" height="20" rx="10" fill="#0f2240"/>
+  <text x="417" y="1088" text-anchor="middle"
+        font-family="Helvetica,sans-serif" font-size="9" fill="#febd10">III-10.3</text>
+  <text x="72" y="1089"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. p.239</text>
+  <text x="677" y="1089"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">aigile.lu</text>
+
+</svg>

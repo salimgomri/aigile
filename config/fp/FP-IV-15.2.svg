@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+
+<!-- FOND -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#ffffff;"/>
+
+<!-- BANDE LATÉRALE GOLD -->
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO PLACEHOLDER (remplacer par image réelle dans Affinity) -->
+<rect x="7" y="20" width="40" height="120" rx="4"
+      style="fill:#0f2240;opacity:0.15;stroke:#0f2240;stroke-width:0.5px;"/>
+<text x="27" y="60" text-anchor="middle" transform="rotate(-90,27,80)"
+      style="font-family:'Georgia',serif;font-size:7px;fill:#0f2240;">LOGO</text>
+
+<!-- TEXTE VERTICAL -->
+<g transform="translate(27,900) rotate(-90)">
+  <text x="0" y="0"
+        style="font-family:'Georgia',serif;font-size:11px;font-weight:bold;fill:#0f2240;">
+    LE SYST&#200;ME S.A.L.I.M.</text>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="76" style="fill:#ffffff;"/>
+<text x="72" y="22"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbbbbb;">R&#201;F&#201;RENCE > S&#201;CURIT&#201; PSYCHOLOGIQUE</text>
+<!-- Badge FP -->
+<rect x="686" y="8" width="94" height="22" rx="11" style="fill:#febd10;"/>
+<text x="733" y="22" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9.5px;font-weight:bold;fill:#0f2240;">FP IV-15.2</text>
+<!-- Filet gold -->
+<line x1="72" y1="30" x2="780" y2="30" style="stroke:#febd10;stroke-width:1px;"/>
+<!-- Titre -->
+<text x="72" y="56"
+      style="font-family:'Georgia',serif;font-size:24px;font-weight:bold;fill:#0f2240;">Construire la S&#233;curit&#233; Psychologique</text>
+<!-- Sous-titre -->
+<text x="72" y="72"
+      style="font-family:'Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">4 niveaux Clark &#183; 6 gestes SM &#183; Progression cumul&#233;e</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="72" style="fill:#febd10;"/>
+
+<!-- POUR QUI label + rôles -->
+<text x="72" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">POUR QUI</text>
+<rect x="72" y="88" width="28" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="86" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">SM</text>
+<rect x="106" y="88" width="28" height="14" rx="3" style="fill:#bbbbbb;"/>
+<text x="120" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">PO</text>
+<rect x="140" y="88" width="28" height="14" rx="3" style="fill:#bbbbbb;"/>
+<text x="154" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">DEV</text>
+<rect x="174" y="88" width="28" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="188" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">CA</text>
+<rect x="208" y="88" width="28" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="222" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">MG</text>
+<rect x="242" y="88" width="28" height="14" rx="3" style="fill:#bbbbbb;"/>
+<text x="256" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">DC</text>
+
+
+<!-- Séparateur vertical -->
+<line x1="262" y1="82" x2="262" y2="144" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+
+<!-- QUOI -->
+<text x="276" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">QUOI</text>
+<foreignObject x="276" y="92" width="178" height="52">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;font-style:italic;
+              color:#0f2240;opacity:0.8;margin:0;line-height:1.35;">Cadre de progression par niveaux (Clark) et gestes concrets pour construire la s&#233;curit&#233; psychologique sans la forcer.</p>
+  </body>
+</foreignObject>
+
+<!-- Séparateur vertical -->
+<line x1="466" y1="82" x2="466" y2="144" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+
+<!-- QUAND L'UTILISER -->
+<text x="480" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">QUAND L'UTILISER</text>
+<foreignObject x="480" y="92" width="138" height="52">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;font-style:italic;
+              color:#0f2240;opacity:0.8;margin:0;line-height:1.35;">Au d&#233;but d'une mission, apr&#232;s un incident, ou quand les r&#233;tros sont lisses.</p>
+  </body>
+</foreignObject>
+
+<!-- Séparateur vertical -->
+<line x1="628" y1="82" x2="628" y2="144" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+
+<!-- VALEUR APPORTÉE -->
+<text x="642" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">VALEUR APPORT&#201;E</text>
+<foreignObject x="642" y="92" width="126" height="52">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;font-style:italic;
+              color:#0f2240;opacity:0.8;margin:0;line-height:1.35;">Savoir quel geste appliquer selon le niveau r&#233;el de l'&#233;quipe. Progression terrain, pas th&#233;orie.</p>
+  </body>
+</foreignObject>
+
+<!-- Filet bas header -->
+<line x1="54" y1="150" x2="794" y2="150" style="stroke:#febd10;stroke-width:1.5px;"/>
+
+<!-- TITRE SECTION 1 -->
+<rect x="54" y="158" width="740" height="22" style="fill:#0f2240;"/>
+<text x="424" y="173" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#ffffff;">LES 4 NIVEAUX DE S&#201;CURIT&#201; PSYCHOLOGIQUE (CLARK, 2020)</text>
+
+<!-- Note progression -->
+<rect x="54" y="180" width="740" height="18" style="fill:#fafaf7;"/>
+<text x="424" y="192" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:8.5px;font-style:italic;fill:#0f2240;">Progression cumul&#233;e : chaque niveau suppose le pr&#233;c&#233;dent atteint. Sans N1, les niveaux 2, 3, 4 restent inaccessibles.</text>
+
+<rect x="54" y="198" width="185" height="160" style="fill:#1a3560;"/>
+<text x="146" y="218" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">N1</text>
+<text x="146" y="232" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:9.5px;font-weight:bold;fill:#ffffff;">Inclusion Safety</text>
+<text x="146" y="246" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:8.5px;font-style:italic;fill:#febd10;">S&#233;curit&#233; d'appartenance</text>
+<line x1="68" y1="252" x2="225" y2="252"
+      style="stroke:#febd10;stroke-width:0.5px;opacity:0.5;"/>
+<foreignObject x="64" y="256" width="165" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8.5px;color:#ffffff;margin:0;line-height:1.4;">On peut &#234;tre soi-m&#234;me sans risque d'exclusion.</p>
+  </body>
+</foreignObject>
+<text x="68" y="328"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#febd10;">SIGNAL :</text>
+<foreignObject x="64" y="332" width="165" height="24">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8px;font-style:italic;color:#ffffff;opacity:0.85;margin:0;">Les gens s'expriment librement.</p>
+  </body>
+</foreignObject>
+
+<rect x="239" y="198" width="185" height="160" style="fill:#0f2240;"/>
+<text x="331" y="218" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">N2</text>
+<text x="331" y="232" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:9.5px;font-weight:bold;fill:#ffffff;">Learner Safety</text>
+<text x="331" y="246" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:8.5px;font-style:italic;fill:#febd10;">S&#233;curit&#233; d'apprentissage</text>
+<line x1="253" y1="252" x2="410" y2="252"
+      style="stroke:#febd10;stroke-width:0.5px;opacity:0.5;"/>
+<foreignObject x="249" y="256" width="165" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8.5px;color:#ffffff;margin:0;line-height:1.4;">On peut poser des questions, admettre ne pas savoir.</p>
+  </body>
+</foreignObject>
+<text x="253" y="328"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#febd10;">SIGNAL :</text>
+<foreignObject x="249" y="332" width="165" height="24">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8px;font-style:italic;color:#ffffff;opacity:0.85;margin:0;">Erreurs vues comme apprentissage.</p>
+  </body>
+</foreignObject>
+
+<rect x="424" y="198" width="185" height="160" style="fill:#1a3560;"/>
+<text x="516" y="218" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">N3</text>
+<text x="516" y="232" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:9.5px;font-weight:bold;fill:#ffffff;">Contributor Safety</text>
+<text x="516" y="246" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:8.5px;font-style:italic;fill:#febd10;">S&#233;curit&#233; de contribution</text>
+<line x1="438" y1="252" x2="595" y2="252"
+      style="stroke:#febd10;stroke-width:0.5px;opacity:0.5;"/>
+<foreignObject x="434" y="256" width="165" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8.5px;color:#ffffff;margin:0;line-height:1.4;">On peut proposer des id&#233;es sans risque de moquerie.</p>
+  </body>
+</foreignObject>
+<text x="438" y="328"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#febd10;">SIGNAL :</text>
+<foreignObject x="434" y="332" width="165" height="24">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8px;font-style:italic;color:#ffffff;opacity:0.85;margin:0;">Initiatives prises spontan&#233;ment.</p>
+  </body>
+</foreignObject>
+
+<rect x="609" y="198" width="185" height="160" style="fill:#0a1b33;"/>
+<text x="701" y="218" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">N4</text>
+<text x="701" y="232" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:9.5px;font-weight:bold;fill:#ffffff;">Challenger Safety</text>
+<text x="701" y="246" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:8.5px;font-style:italic;fill:#febd10;">S&#233;curit&#233; du d&#233;saccord</text>
+<line x1="623" y1="252" x2="780" y2="252"
+      style="stroke:#febd10;stroke-width:0.5px;opacity:0.5;"/>
+<foreignObject x="619" y="256" width="165" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8.5px;color:#ffffff;margin:0;line-height:1.4;">On peut remettre en question le statu quo.</p>
+  </body>
+</foreignObject>
+<text x="623" y="328"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#febd10;">SIGNAL :</text>
+<foreignObject x="619" y="332" width="165" height="24">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:8px;font-style:italic;color:#ffffff;opacity:0.85;margin:0;">D&#233;saccord exprim&#233; + groupe ne punit pas.</p>
+  </body>
+</foreignObject>
+
+<!-- TITRE SECTION 2 -->
+<rect x="54" y="366" width="740" height="22" style="fill:#0f2240;"/>
+<text x="424" y="381" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#ffffff;">6 GESTES QUI CONSTRUISENT LA S&#201;CURIT&#201; PSYCHOLOGIQUE</text>
+
+<rect x="54" y="396" width="370" height="95" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="72" y="416"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#febd10;">01</text>
+<rect x="92" y="404" width="110" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="147" y="414" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Learner Safety (N2)</text>
+<foreignObject x="68" y="424" width="346" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;color:#0f2240;margin:0;line-height:1.4;">Pose une question dont tu ne connais pas la r&#233;ponse, en r&#233;trospective.</p>
+  </body>
+</foreignObject>
+
+<rect x="424" y="396" width="370" height="95" style="fill:#ffffff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="442" y="416"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#febd10;">02</text>
+<rect x="462" y="404" width="110" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="517" y="414" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Inclusion Safety (N1)</text>
+<foreignObject x="438" y="424" width="346" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;color:#0f2240;margin:0;line-height:1.4;">Reconnais une erreur de facilitation que tu as faite sur le sprint pass&#233;.</p>
+  </body>
+</foreignObject>
+
+<rect x="54" y="496" width="370" height="95" style="fill:#ffffff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="72" y="516"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#febd10;">03</text>
+<rect x="92" y="504" width="110" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="147" y="514" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Contributor Safety (N3)</text>
+<foreignObject x="68" y="524" width="346" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;color:#0f2240;margin:0;line-height:1.4;">Quand quelqu'un propose une id&#233;e impopulaire, retiens les r&#233;actions 30 secondes.</p>
+  </body>
+</foreignObject>
+
+<rect x="424" y="496" width="370" height="95" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="442" y="516"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#febd10;">04</text>
+<rect x="462" y="504" width="110" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="517" y="514" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Challenger Safety (N4)</text>
+<foreignObject x="438" y="524" width="346" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;color:#0f2240;margin:0;line-height:1.4;">Apr&#232;s une r&#233;tro difficile : &#171; Y a-t-il des sujets qu'on n'a pas os&#233; aborder ? &#187;</p>
+  </body>
+</foreignObject>
+
+<rect x="54" y="596" width="370" height="95" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="72" y="616"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#febd10;">05</text>
+<rect x="92" y="604" width="110" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="147" y="614" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Challenger Safety (N4)</text>
+<foreignObject x="68" y="624" width="346" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;color:#0f2240;margin:0;line-height:1.4;">Si quelqu'un est puni implicitement pour avoir soulev&#233; un probl&#232;me, nomme-le.</p>
+  </body>
+</foreignObject>
+
+<rect x="424" y="596" width="370" height="95" style="fill:#ffffff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="442" y="616"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#febd10;">06</text>
+<rect x="462" y="604" width="110" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="517" y="614" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Tous niveaux</text>
+<foreignObject x="438" y="624" width="346" height="60">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;color:#0f2240;margin:0;line-height:1.4;">Une fois par sprint : identifie une situation o&#249; tu aurais pu mod&#233;liser et tu ne l'as pas fait.</p>
+  </body>
+</foreignObject>
+
+<!-- NOTE BAS -->
+<rect x="54" y="696" width="740" height="30" style="fill:#febd10;opacity:0.15;"/>
+<text x="424" y="716" text-anchor="middle"
+      style="font-family:'Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;">La s&#233;curit&#233; se construit par accumulation de moments o&#249; quelqu'un a pris un risque interpersonnel et o&#249; rien de n&#233;gatif ne s'est pass&#233;.</text>
+
+<!-- RÈGLE CLEF -->
+<rect x="54" y="734" width="740" height="22" style="fill:#0f2240;"/>
+<text x="424" y="749" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#ffffff;">RÈGLE : JAMAIS DE MESURE CORRÉL&#201;E &#192; UNE &#201;VALUATION INDIVIDUELLE</text>
+
+<!-- 3 rappels clés -->
+<rect x="54" y="756" width="240" height="80" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="174" y="772" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#0f2240;">SI SCORE BAS</text>
+<text x="72" y="790" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Intervenir sur le contexte,</text>
+<text x="72" y="804" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">pas sur les pratiques.</text>
+<text x="72" y="818" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Score bas # manager mauvais.</text>
+
+<rect x="300" y="756" width="240" height="80" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="420" y="772" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#0f2240;">SI &#201;QUIPE EN STORMING</text>
+<text x="316" y="790" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Ne pas lancer de r&#233;tro.</text>
+<text x="316" y="804" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Nommer les tensions en</text>
+<text x="316" y="818" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">one-to-one d'abord.</text>
+
+<rect x="546" y="756" width="248" height="80" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="670" y="772" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#0f2240;">SI INCIDENT GRAVE</text>
+<text x="562" y="790" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Mesure ponctuelle hors</text>
+<text x="562" y="804" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">cycle accept&#233;e.</text>
+<text x="562" y="818" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Signal d'entr&#233;e, pas verdict.</text>
+
+<!-- FOOTER -->
+<line x1="54" y1="1080" x2="794" y2="1080" style="stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="1092"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. | Chapitre 15 | p.317-325</text>
+<rect x="372" y="1080" width="46" height="20" rx="10" style="fill:#0f2240;"/>
+<text x="395" y="1094" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">IV-15.2</text>
+<text x="720" y="1092"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

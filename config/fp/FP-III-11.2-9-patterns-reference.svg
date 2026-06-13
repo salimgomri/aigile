@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+
+<!-- FOND + BANDE -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO PLACEHOLDER (remplacer avec cat1.svg asset) -->
+<rect x="4" y="50" width="46" height="100" rx="3" style="fill:#0f2240;opacity:0.3;"/>
+<text x="27" y="108" style="font-family:Georgia,serif;font-size:7px;fill:#0f2240;text-anchor:middle;">LOGO</text>
+
+<!-- TEXTE VERTICAL -->
+<g transform="translate(27, 750) rotate(-90)">
+  <text style="font-family:Georgia,serif;font-size:11px;fill:#0f2240;letter-spacing:2px;">LE SYST&#200;ME S.A.L.I.M.</text>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="78" style="fill:#fff;"/>
+<text x="72" y="22" style="font-family:Helvetica,sans-serif;font-size:8.5px;fill:#bbb;">R&#201;TRO IA > R&#201;F&#201;RENCE</text>
+<rect x="680" y="8" width="98" height="22" rx="11" style="fill:#febd10;"/>
+<text x="690" y="23" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#0f2240;">FP III-11.2</text>
+<line x1="72" y1="30" x2="766" y2="30" style="stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="54" style="font-family:Georgia,serif;font-size:24px;fill:#0f2240;">Les 9 patterns de dysfonctionnement</text>
+<text x="72" y="70" style="font-family:Georgia,serif;font-size:11px;font-style:italic;fill:#febd10;">Symptômes visibles, cause racine, signal d'amélioration par pattern.</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<line x1="239" y1="86" x2="239" y2="136" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+<line x1="424" y1="86" x2="424" y2="136" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+<line x1="609" y1="86" x2="609" y2="136" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+
+<text x="72" y="98" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="115" style="font-family:Georgia,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.85;">SM / CA</text>
+
+<text x="252" y="98" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="115" style="font-family:Georgia,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.85;">Référence complète des 9 patterns + état sain P10</text>
+
+<text x="437" y="98" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L'UTILISER</text>
+<text x="437" y="115" style="font-family:Georgia,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.85;">Pendant la préparation de la rétro, après le diagnostic Q8</text>
+
+<text x="622" y="98" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="115" style="font-family:Georgia,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.85;">Intervention ciblée sur le pattern primaire, pas sur les symptômes</text>
+
+<rect x="66" y="155" width="686" height="22" style="fill:#0f2240;"/>
+<text x="74" y="170" style="font-family:Helvetica,sans-serif;font-size:8px;fill:#fff;">PATTERN</text>
+<text x="150" y="170" style="font-family:Helvetica,sans-serif;font-size:8px;fill:#fff;">SYMPT&#212;MES VISIBLES</text>
+<text x="340" y="170" style="font-family:Helvetica,sans-serif;font-size:8px;fill:#fff;">CAUSE RACINE</text>
+<text x="530" y="170" style="font-family:Helvetica,sans-serif;font-size:8px;fill:#fff;">SIGNAL D'AM&#201;LIORATION</text>
+
+<rect x="66" y="177" width="686" height="82" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="197" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P1</text>
+<text x="74" y="211" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Sécurité psycholog</text>
+<text x="74" y="223" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">ique basse</text>
+<text x="150" y="197" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Silence en rétro.</text>
+<text x="150" y="209" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Réponses vagues. Personne ne soulève les vrais problèmes.</text>
+<text x="340" y="197" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">L'équipe a appris que</text>
+<text x="340" y="209" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">parler coûte plus cher que se taire.</text>
+<text x="530" y="197" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Quelqu'un dit en rétro ce</text>
+<text x="530" y="209" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">qu'il n'aurait jamais dit 6 mois plus tôt.</text>
+
+<rect x="66" y="259" width="686" height="82" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="279" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P2</text>
+<text x="74" y="293" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Perte de sens / di</text>
+<text x="74" y="305" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">rection floue</text>
+<text x="150" y="279" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">&#171;Pourquoi on fait ça</text>
+<text x="150" y="291" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">?&#187; revient souvent. Cérémonies déconnectées.</text>
+<text x="340" y="279" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Sprint Goals absents ou</text>
+<text x="340" y="291" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">si vagues qu'ils n'orientent rien.</text>
+<text x="530" y="279" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">L'équipe questionne</text>
+<text x="530" y="291" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">elle-même le Sprint Goal avant de le valider.</text>
+
+<rect x="66" y="341" width="686" height="82" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="361" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P3</text>
+<text x="74" y="375" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Impuissance appris</text>
+<text x="74" y="387" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">e</text>
+<text x="150" y="361" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">L'équipe propose, rien ne</text>
+<text x="150" y="373" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">change. Actions rétro rarement réalisées.</text>
+<text x="340" y="361" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Décisions d'équipe</text>
+<text x="340" y="373" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">régulièrement annulées ou ignorées par le management.</text>
+<text x="530" y="361" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">L'équipe réalise une action</text>
+<text x="530" y="373" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">qu'elle croyait hors de son contrôle.</text>
+
+<rect x="66" y="423" width="686" height="82" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="443" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P4</text>
+<text x="74" y="457" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Absence de cohésio</text>
+<text x="74" y="469" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">n</text>
+<text x="150" y="443" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Peu d'entraide. Travail</text>
+<text x="150" y="455" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">en silos. Personne ne sait ce que font les autres.</text>
+<text x="340" y="443" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Collection d'individus en</text>
+<text x="340" y="455" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">parallèle. Incentives individuels > réussite collective.</text>
+<text x="530" y="443" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Quelqu'un prend une tâche</text>
+<text x="530" y="455" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">qui n'est pas &#171;la sienne&#187; pour débloquer un collègue.</text>
+
+<rect x="66" y="505" width="686" height="82" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="525" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P5</text>
+<text x="74" y="539" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Surcharge insouten</text>
+<text x="74" y="551" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">able</text>
+<text x="150" y="525" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">WIP élevé. Vélocité en</text>
+<text x="150" y="537" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">dents de scie. Burnout latent ou déclaré.</text>
+<text x="340" y="525" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Capacité chroniquement</text>
+<text x="340" y="537" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">sous-estimée. DoD sacrifiée sous pression.</text>
+<text x="530" y="525" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">L'équipe dit non à une</text>
+<text x="530" y="537" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">demande du PO en s'appuyant sur des données.</text>
+
+<rect x="66" y="587" width="686" height="82" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="607" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P6</text>
+<text x="74" y="621" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Scrum Théâtre</text>
+<text x="74" y="633" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;"></text>
+<text x="150" y="607" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Cérémonies &#171;pour la</text>
+<text x="150" y="619" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">forme&#187;. Daily = reporting. Personne n'y croit.</text>
+<text x="340" y="607" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Scrum imposé sans</text>
+<text x="340" y="619" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">adhésion. Cérémonies ont perdu leur intention.</text>
+<text x="530" y="607" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">L'équipe modifie elle-même</text>
+<text x="530" y="619" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">le format d'une cérémonie pour qu'elle lui soit utile.</text>
+
+<rect x="66" y="669" width="686" height="82" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="689" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P7</text>
+<text x="74" y="703" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Facilitation défai</text>
+<text x="74" y="715" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">llante</text>
+<text x="150" y="689" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">SM parle plus que</text>
+<text x="150" y="701" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">l'équipe. Rétro en monologue. Mêmes personnes dominent.</text>
+<text x="340" y="689" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Facilitateur comble le</text>
+<text x="340" y="701" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">silence par réflexe. Confond son rôle avec celui d'expert.</text>
+<text x="530" y="689" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">SM sort d'une rétro de 60</text>
+<text x="530" y="701" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">min en ayant parlé moins de 10 minutes.</text>
+
+<rect x="66" y="751" width="686" height="82" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="771" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P8</text>
+<text x="74" y="785" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Conflit ouvert / t</text>
+<text x="74" y="797" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">oxicité</text>
+<text x="150" y="771" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Tensions nommées.</text>
+<text x="150" y="783" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Attaques ad hominem. Certains évitent de se parler.</text>
+<text x="340" y="771" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Conflit non résolu ignoré</text>
+<text x="340" y="783" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">trop longtemps. Rétro devient champ de bataille.</text>
+<text x="530" y="771" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Les deux personnes en</text>
+<text x="530" y="783" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">tension travaillent ensemble sans que le SM l'organise.</text>
+
+<rect x="66" y="833" width="686" height="82" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="74" y="853" style="font-family:Helvetica,sans-serif;font-size:9.5px;fill:#febd10;font-weight:bold;">P9</text>
+<text x="74" y="867" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">Dette technique ca</text>
+<text x="74" y="879" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#0f2240;">chée</text>
+<text x="150" y="853" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Bugs récurrents. Vélocité</text>
+<text x="150" y="865" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">qui baisse sprint après sprint.</text>
+<text x="340" y="853" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Pression delivery rend</text>
+<text x="340" y="865" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">invisible le coût de la dette. DoD ne couvre pas les critères réels.</text>
+<text x="530" y="853" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">Le PO inclut lui-même des</text>
+<text x="530" y="865" style="font-family:Georgia,serif;font-size:8px;font-style:italic;fill:#0f2240;">items de réduction de dette dans le Sprint Backlog.</text>
+
+<rect x="66" y="923" width="686" height="48" style="fill:#0f2240;"/>
+<text x="82" y="939" style="font-family:Helvetica,sans-serif;font-size:9px;fill:#febd10;font-weight:bold;">P10 : L'&#201;TAT SAIN . CE VERS QUOI ON TEND</text>
+<text x="82" y="955" style="font-family:Georgia,serif;font-size:8.5px;font-style:italic;fill:#fff;">Une équipe qui nomme ses problèmes sans peur, cherche les causes sans chercher des coupables,</text>
+<text x="82" y="967" style="font-family:Georgia,serif;font-size:8.5px;font-style:italic;fill:#fff;">et décide ensemble des ajustements. Les gens parlent. Les actions se font. La rétro évolue.</text>
+
+<!-- FOOTER -->
+<line x1="66" y1="1068" x2="752" y2="1068" style="stroke:#febd10;stroke-width:0.8px;"/>
+<rect x="368" y="1074" width="58" height="20" rx="10" style="fill:#0f2240;"/>
+<text x="397" y="1088" style="font-family:Helvetica,sans-serif;font-size:9px;fill:#febd10;text-anchor:middle;">11</text>
+<text x="72" y="1089" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+<text x="677" y="1089" style="font-family:Helvetica,sans-serif;font-size:7.5px;fill:#bbb;">Chapitre 11 . Partie 3</text>
+
+</svg>

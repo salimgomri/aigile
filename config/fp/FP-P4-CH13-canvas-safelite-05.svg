@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="794px" height="1123px" viewBox="0 0 794 1123"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  <image id="_sep_v"  width="1px"   height="50px" xlink:href="data:image/png;base64,SEP_V_BASE64_ICI"/>
+  <image id="_sep_h"  width="686px" height="1px"  xlink:href="data:image/png;base64,SEP_H_BASE64_ICI"/>
+  <image id="_sep_h2" width="686px" height="1px"  xlink:href="data:image/png;base64,SEP_H2_BASE64_ICI"/>
+  <image id="_logo"   width="139px" height="44px" xlink:href="data:image/png;base64,LOGO_BASE64_ICI"/>
+</defs>
+
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+<g><use xlink:href="#_logo" x="0" y="0" width="139px" height="44px"
+        transform="matrix(0,-1.002428,1.002604,0,5.867447,155.566358)"/></g>
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;fill:#bbb;">STRAT&#201;GIE &gt; CADRAGE FRAMEWORK</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="706" y="23" style="font-family:&#x27;Helvetica&#x27;;font-size:9.5px;fill:#0f2240;">IV-13.5</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58" style="font-family:&#x27;Georgia&#x27;,serif;font-size:24px;fill:#0f2240;">SAFe lite PME : ce qu&#x27;on garde</text>
+<text x="72" y="72" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:11px;font-style:italic;fill:#febd10;">Choisir le bon framework avant de d&#233;cider</text>
+
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<clipPath id="_c1"><rect x="238.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c1)"><use xlink:href="#_sep_v" x="238.7" y="86" width="1px" height="50px"/></g>
+<clipPath id="_c2"><rect x="423.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c2)"><use xlink:href="#_sep_v" x="423.7" y="86" width="1px" height="50px"/></g>
+<clipPath id="_c3"><rect x="608.7" y="86" width="0.6" height="50"/></clipPath>
+<g clip-path="url(#_c3)"><use xlink:href="#_sep_v" x="608.7" y="86" width="1px" height="50px"/></g>
+<text x="72" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">CA / MG / SM</text>
+<text x="252" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">S&#233;lectionner et adapter</text>
+<text x="252" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">le bon framework par taille</text>
+<text x="437" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L&#x27;UTILISER</text>
+<text x="437" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">D&#233;cision de transformation,</text>
+<text x="437" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">pr&#233;-PI Planning</text>
+<text x="622" y="97" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="109" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Z&#233;ro sur-dimensionnement,</text>
+<text x="622" y="121" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">z&#233;ro bureaucratie inutile</text>
+
+<!-- GUIDE SELECTION 3 COLONNES -->
+<rect x="66" y="158" width="662" height="24" style="fill:#0f2240;"/><text x="80" y="174" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#fff;">GUIDE DE S&#201;LECTION PAR TAILLE ET STRUCTURE PRODUIT</text>
+
+<!-- Col 1 : moins de 3 equipes -->
+<rect x="66" y="182" width="210" height="180" style="fill:#fafaf7;rx:2px;"/>
+<rect x="66" y="182" width="210" height="28" style="fill:#2a7a2a;rx:2px;"/>
+<text x="171" y="200" style="font-family:&#x27;Helvetica&#x27;;font-size:9.5px;font-weight:bold;fill:#fff;text-anchor:middle;">Moins de 3 &#233;quipes</text>
+<text x="171" y="224" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:11px;font-weight:bold;fill:#2a7a2a;text-anchor:middle;">Scrum + OKR</text>
+<text x="171" y="242" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;text-anchor:middle;">SAFe surdimensionn&#233;.</text>
+<text x="171" y="256" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;text-anchor:middle;">Sprint + cadence OKR</text>
+<text x="171" y="270" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;text-anchor:middle;">mensuelle. Z&#233;ro PI Planning.</text>
+<rect x="80" y="282" width="182" height="1" style="fill:#e0e0e0;"/>
+<text x="80" y="298" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;letter-spacing:1px;">SURCHARGE SI SAFe</text>
+<text x="80" y="312" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#cc3333;">Garantie sans b&#233;n&#233;fice.</text>
+<text x="80" y="326" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#cc3333;">Ne pas appliquer.</text>
+<text x="80" y="348" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;letter-spacing:1px;">&#201;QUIPES CONCERN&#201;ES</text>
+<text x="80" y="358" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#0f2240;">Startups, petites PME,</text>
+<text x="80" y="371" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#0f2240;">1 ou 2 squads produit.</text>
+
+<!-- Col 2 : 3 a 9 equipes -->
+<rect x="292" y="182" width="210" height="180" style="fill:#fafaf7;rx:2px;"/>
+<rect x="292" y="182" width="210" height="28" style="fill:#febd10;rx:2px;"/>
+<text x="397" y="200" style="font-family:&#x27;Helvetica&#x27;;font-size:9.5px;font-weight:bold;fill:#0f2240;text-anchor:middle;">3 &#224; 9 &#233;quipes</text>
+<text x="397" y="224" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:11px;font-weight:bold;fill:#0f2240;text-anchor:middle;">LeSS ou Nexus</text>
+<text x="397" y="242" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;text-anchor:middle;">1 produit, 1 backlog.</text>
+<text x="397" y="256" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;text-anchor:middle;">LeSS : z&#233;ro r&#244;le suppl.,</text>
+<text x="397" y="270" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;text-anchor:middle;">Nexus : Nexus Integration Team.</text>
+<rect x="306" y="282" width="182" height="1" style="fill:#e0e0e0;"/>
+<text x="306" y="298" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;letter-spacing:1px;">TEST CL&#201;</text>
+<text x="306" y="312" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#2a7a2a;">1 produit = 1 backlog commun ?</text>
+<text x="306" y="326" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#2a7a2a;">Oui : LeSS ou Nexus.</text>
+<text x="306" y="348" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;letter-spacing:1px;">&#201;QUIPES CONCERN&#201;ES</text>
+<text x="306" y="358" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#0f2240;">PME 30-80 personnes,</text>
+<text x="306" y="371" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#0f2240;">produit unique &#233;volutif.</text>
+
+<!-- Col 3 : 9+ equipes -->
+<rect x="518" y="182" width="210" height="180" style="fill:#fafaf7;rx:2px;"/>
+<rect x="518" y="182" width="210" height="28" style="fill:#0f2240;rx:2px;"/>
+<text x="623" y="200" style="font-family:&#x27;Helvetica&#x27;;font-size:9.5px;font-weight:bold;fill:#febd10;text-anchor:middle;">9+ &#233;quipes</text>
+<text x="623" y="224" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:11px;font-weight:bold;fill:#0f2240;text-anchor:middle;">SAFe Essential</text>
+<text x="623" y="242" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#555;text-anchor:middle;">P&#233;rim&#232;tres multiples.</text>
+<text x="623" y="256" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;text-anchor:middle;">ART complet, PI Planning</text>
+<text x="623" y="270" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;fill:#555;text-anchor:middle;">2 jours, RTE d&#233;di&#233;.</text>
+<rect x="532" y="282" width="182" height="1" style="fill:#e0e0e0;"/>
+<text x="532" y="298" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;letter-spacing:1px;">TEST CL&#201;</text>
+<text x="532" y="312" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#0f2240;">Backlogs fragment&#233;s</text>
+<text x="532" y="326" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:8.5px;font-style:italic;fill:#0f2240;">par &#233;quipe ? SAFe lite.</text>
+<text x="532" y="348" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;letter-spacing:1px;">&#201;QUIPES CONCERN&#201;ES</text>
+<text x="532" y="358" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#0f2240;">Grandes organisations,</text>
+<text x="532" y="371" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#0f2240;">DSI, multi-produits.</text>
+
+<!-- TABLEAU PME ADAPTE -->
+<rect x="66" y="376" width="662" height="24" style="fill:#0f2240;"/><text x="80" y="392" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#fff;">ADAPTATION SAFe LITE PME : CE QU&#x27;ON GARDE, SIMPLIFIE, SUPPRIME</text>
+
+<!-- En-tête tableau -->
+<rect x="66" y="400" width="662" height="22" style="fill:#e0e0e0;"/>
+<text x="130" y="415" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#0f2240;text-anchor:middle;">&#201;L&#201;MENT SAFe</text>
+<text x="340" y="415" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#0f2240;text-anchor:middle;">PME &lt; 30 PERSONNES</text>
+<text x="570" y="415" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#0f2240;text-anchor:middle;">PME 30 &#224; 80 PERSONNES</text>
+<line x1="226" y1="400" x2="226" y2="660" style="stroke:#e0e0e0;stroke-width:1px;"/>
+<line x1="452" y1="400" x2="452" y2="660" style="stroke:#e0e0e0;stroke-width:1px;"/>
+
+<!-- Ligne 1 -->
+<rect x="66" y="422" width="662" height="30" style="fill:#fff;"/>
+<text x="80" y="441" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9.5px;fill:#0f2240;">ART complet</text>
+<text x="240" y="437" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#cc3333;text-anchor:middle;">Non n&#233;cessaire</text>
+<text x="466" y="437" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#febd10;text-anchor:middle;">Optionnel</text>
+<rect x="66" y="452" width="662" height="1" style="fill:#f0f0f0;"/>
+
+<!-- Ligne 2 -->
+<rect x="66" y="453" width="662" height="30" style="fill:#fafaf7;"/>
+<text x="80" y="472" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9.5px;fill:#0f2240;">PI Planning 2 jours</text>
+<text x="240" y="468" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#febd10;text-anchor:middle;">Mini-PI 4h</text>
+<text x="466" y="468" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#2a7a2a;text-anchor:middle;">Format complet recommand&#233;</text>
+<rect x="66" y="483" width="662" height="1" style="fill:#f0f0f0;"/>
+
+<!-- Ligne 3 -->
+<rect x="66" y="484" width="662" height="30" style="fill:#fff;"/>
+<text x="80" y="503" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9.5px;fill:#0f2240;">Release Train Engineer</text>
+<text x="240" y="499" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#febd10;text-anchor:middle;">SM senior absorbe</text>
+<text x="466" y="499" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#febd10;text-anchor:middle;">RTE d&#233;di&#233; si 5+ &#233;quipes</text>
+<rect x="66" y="514" width="662" height="1" style="fill:#f0f0f0;"/>
+
+<!-- Ligne 4 -->
+<rect x="66" y="515" width="662" height="30" style="fill:#fafaf7;"/>
+<text x="80" y="534" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9.5px;fill:#0f2240;">Team Objectives</text>
+<text x="240" y="530" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#2a7a2a;text-anchor:middle;">Min. 3 par &#233;quipe</text>
+<text x="466" y="530" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#2a7a2a;text-anchor:middle;">Min. 3 par &#233;quipe</text>
+<rect x="66" y="545" width="662" height="1" style="fill:#f0f0f0;"/>
+
+<!-- Ligne 5 -->
+<rect x="66" y="546" width="662" height="30" style="fill:#fff;"/>
+<text x="80" y="565" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9.5px;fill:#0f2240;">Cadence PI + Confidence Vote</text>
+<text x="240" y="561" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#2a7a2a;text-anchor:middle;">Oui, sans exception</text>
+<text x="466" y="561" style="font-family:&#x27;Helvetica&#x27;;font-size:9px;font-weight:bold;fill:#2a7a2a;text-anchor:middle;">Oui, sans exception</text>
+<rect x="66" y="576" width="662" height="1" style="fill:#f0f0f0;"/>
+
+<!-- Ligne 6 -->
+<rect x="66" y="577" width="662" height="30" style="fill:#fafaf7;"/>
+<text x="80" y="596" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9.5px;fill:#0f2240;">System Team + 7 comp. SAFe</text>
+<text x="240" y="592" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#cc3333;text-anchor:middle;">Supprimer</text>
+<text x="466" y="592" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#cc3333;text-anchor:middle;">Supprimer si inutile</text>
+<rect x="66" y="607" width="662" height="1" style="fill:#f0f0f0;"/>
+
+<!-- Ligne 7 -->
+<rect x="66" y="608" width="662" height="30" style="fill:#fff;"/>
+<text x="80" y="627" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9.5px;fill:#0f2240;">Scrum of Scrums</text>
+<text x="240" y="623" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#2a7a2a;text-anchor:middle;">Oui, 15 min</text>
+<text x="466" y="623" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;font-style:italic;fill:#2a7a2a;text-anchor:middle;">Oui, 15 min</text>
+
+<!-- AVERTISSEMENT NOTE POSITIONNEMENT -->
+<rect x="66" y="650" width="662" height="46" style="fill:#fff8e1;rx:3px;"/>
+<text x="80" y="666" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;font-weight:bold;fill:#e07000;">NOTE DE POSITIONNEMENT</text>
+<text x="80" y="682" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">Ce cadre SAFe lite ne respecte pas la sp&#233;cification SAFe officielle et ne permet pas</text>
+<text x="80" y="696" style="font-family:&#x27;EB Garamond&#x27;,&#x27;Georgia&#x27;,serif;font-size:9px;fill:#555;">d&#x27;obtenir une certification SAFe. Utilise-le en connaissance de cause.</text>
+
+<!-- RÈGLE FINALE -->
+<rect x="66" y="708" width="662" height="40" style="fill:#0f2240;rx:4px;"/>
+<text x="397" y="725" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;fill:#febd10;text-anchor:middle;">Le crit&#232;re d&#233;terminant n&#x27;est pas la taille.</text>
+<text x="397" y="741" style="font-family:&#x27;Georgia&#x27;,serif;font-size:11px;font-weight:bold;fill:#fff;text-anchor:middle;">C&#x27;est la structure du produit et du backlog.</text>
+
+
+<rect x="66" y="760" width="662" height="24" style="fill:#f5f5f5;"/>
+<text x="80" y="776" style="font-family:&#x27;Helvetica&#x27;;font-size:8px;fill:#bbb;letter-spacing:1px;">NOTES TERRAIN</text>
+<rect x="66" y="784" width="662" height="274" style="fill:#fafaf7;"/>
+<line x1="80" y1="790" x2="714" y2="790" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="810" x2="714" y2="810" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="830" x2="714" y2="830" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="850" x2="714" y2="850" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="870" x2="714" y2="870" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="890" x2="714" y2="890" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="910" x2="714" y2="910" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="930" x2="714" y2="930" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="950" x2="714" y2="950" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="970" x2="714" y2="970" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="990" x2="714" y2="990" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="1010" x2="714" y2="1010" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+<line x1="80" y1="1030" x2="714" y2="1030" style="stroke:#e0e0e0;stroke-width:0.8px;"/>
+
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="396" y="1088" style="font-family:&#x27;Helvetica&#x27;;font-size:8.5px;fill:#febd10;text-anchor:middle;">13</text>
+<text x="72" y="1089" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. - Chapitre 13</text>
+<text x="677" y="1089" style="font-family:&#x27;Helvetica&#x27;;font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

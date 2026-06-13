@@ -2,12 +2,9 @@ import fs from 'fs'
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-import { canReadFullAnswer } from '@/lib/salim-qa/access'
-import { isQuestionUnlocked } from '@/lib/salim-qa/activity'
-import {
-  getFicheSvgForQuestion,
-  isValidSalimQaQuestionId,
-} from '@/lib/salim-qa/fiches'
+import { canReadFiche } from '@/lib/salim-qa/access'
+import { getQuestionUnlockState } from '@/lib/salim-qa/activity'
+import { countFicheAssets, getFicheSvgForQuestion, isValidSalimQaQuestionId } from '@/lib/salim-qa/fiches'
 import { getSalimQaQuestionById } from '@/lib/salim-qa/loader'
 import { getCreditStatus } from '@/lib/credits/manager'
 
@@ -51,8 +48,9 @@ export async function GET(request: Request) {
       isUnlimited: !!status?.isUnlimited,
       isAdmin: !!status?.isAdmin,
     }
-    const isUnlocked = await isQuestionUnlocked(userId, questionId)
-    if (!canReadFullAnswer(access, isUnlocked)) {
+    const hasViewableFiche = countFicheAssets(question) > 0
+    const unlockState = await getQuestionUnlockState(userId, questionId)
+    if (!canReadFiche(access, unlockState, hasViewableFiche)) {
       return emptyFicheResponse()
     }
 

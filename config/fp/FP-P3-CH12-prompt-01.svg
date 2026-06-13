@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+  </defs>
+
+  <!-- FOND -->
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+
+  <!-- BANDE LATERALE GOLD -->
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+
+  <!-- TEXTE VERTICAL "LE SYSTEME S.A.L.I.M." -->
+  <text transform="rotate(-90,27,560)" x="-290" y="32"
+        font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240" letter-spacing="2">
+    LE SYST&#200;ME S.A.L.I.M.
+  </text>
+
+  <!-- ══ HEADER ══ -->
+  <rect x="54" y="0" width="740" height="78" fill="#ffffff"/>
+  <!-- categorie -->
+  <text x="72" y="24" font-family="Helvetica,Arial,sans-serif" font-size="8.5" fill="#bbbbbb" letter-spacing="1">
+    TEMPLATE PROMPT IA
+  </text>
+  <!-- badge FP -->
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="22" font-family="Helvetica,Arial,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-12.1</text>
+  <!-- filet gold -->
+  <line x1="72" y1="32" x2="748" y2="32" stroke="#febd10" stroke-width="1"/>
+  <!-- titre -->
+  <text x="72" y="58" font-family="Georgia,serif" font-size="24" fill="#0f2240" font-weight="bold">
+    Prompt Dashboard : Narrative 6 cadrans
+  </text>
+  <!-- sous-titre -->
+  <text x="72" y="74" font-family="EB Garamond,Georgia,serif" font-size="11"
+        font-style="italic" fill="#febd10">
+    Un prompt structur&#233; avec le contexte des m&#233;triques. V&#233;rifie toujours le r&#233;sultat.
+  </text>
+
+  <!-- ══ BLOC 4 CHAMPS GOLD ══ -->
+  <rect x="54" y="78" width="740" height="64" fill="#febd10"/>
+
+  <!-- POUR QUI -->
+  <text x="72" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="72" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">SM &#183; CA</text>
+
+  <!-- separateur vertical 1 -->
+  <line x1="232" y1="84" x2="232" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- QUOI -->
+  <text x="248" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="248" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">G&#233;n&#233;rer la narrative sprint en 5 min</text>
+
+  <!-- separateur vertical 2 -->
+  <line x1="432" y1="84" x2="432" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- QUAND L'UTILISER -->
+  <text x="448" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">QUAND L'UTILISER</text>
+  <text x="448" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Apr&#232;s chaque Sprint Review</text>
+
+  <!-- separateur vertical 3 -->
+  <line x1="622" y1="84" x2="622" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- VALEUR APPORTEE -->
+  <text x="636" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="636" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">2h de rework &#233;limin&#233; par sprint</text>
+
+  <!-- ligne 2 du bloc gold -->
+  <text x="72" y="128" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">NOTE</text>
+  <text x="72" y="138" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Utilisable tel quel dans 70 % des cas. Les 30 % restants n&#233;cessitent ta correction contextuelle.</text>
+
+  <!-- ══ CORPS : 6 BLOCS PROMPT ══ -->
+
+  <!-- Bloc 1 : CONTEXTE -->
+  <rect x="54" y="148" width="740" height="46" fill="#0f2240" rx="0"/>
+  <text x="72" y="166" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">1. CONTEXTE</text>
+  <text x="72" y="182" font-family="EB Garamond,Georgia,serif" font-size="9.5"
+        font-style="italic" fill="#bbbbbb">
+    Tu es un Scrum Master pr&#233;sentant le bilan de sprint &#224; un manager non technique.
+  </text>
+
+  <!-- Bloc 2 : DONNEES SPRINT -->
+  <rect x="54" y="200" width="740" height="120" fill="#fafaf7" rx="0"/>
+  <rect x="54" y="200" width="740" height="18" fill="#0f2240"/>
+  <text x="72" y="213" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">2. DONN&#201;ES SPRINT &#224; FOURNIR</text>
+
+  <!-- grille donnees -->
+  <!-- ligne entete -->
+  <rect x="54" y="218" width="175" height="16" fill="#0f2240" opacity="0.08"/>
+  <text x="62" y="229" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold">CADRAN</text>
+  <rect x="229" y="218" width="120" height="16" fill="#0f2240" opacity="0.08"/>
+  <text x="237" y="229" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold">VALEUR</text>
+  <rect x="349" y="218" width="120" height="16" fill="#0f2240" opacity="0.08"/>
+  <text x="357" y="229" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold">STATUT RAG</text>
+  <rect x="469" y="218" width="325" height="16" fill="#0f2240" opacity="0.08"/>
+  <text x="477" y="229" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold">SOURCE</text>
+
+  <!-- lignes de donnees -->
+  <line x1="54" y1="234" x2="794" y2="234" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="62" y="245" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">On Time</text>
+  <text x="237" y="245" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[%]</text>
+  <text x="357" y="245" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[R/A/V]</text>
+  <text x="477" y="245" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#bbbbbb">Sprint Review &#183; SM</text>
+
+  <line x1="54" y1="250" x2="794" y2="250" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="62" y="261" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">On Budget</text>
+  <text x="237" y="261" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[tendance]</text>
+  <text x="357" y="261" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[R/A/V]</text>
+  <text x="477" y="261" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#bbbbbb">Outil v&#233;locit&#233; &#183; SM auto</text>
+
+  <line x1="54" y1="266" x2="794" y2="266" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="62" y="277" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">On Scope</text>
+  <text x="237" y="277" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[% DoD]</text>
+  <text x="357" y="277" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[R/A/V]</text>
+  <text x="477" y="277" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#bbbbbb">Sprint Review &#183; PO valide</text>
+
+  <line x1="54" y1="282" x2="794" y2="282" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="62" y="293" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Qualit&#233;</text>
+  <text x="237" y="293" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[CFR %]</text>
+  <text x="357" y="293" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[R/A/V]</text>
+  <text x="477" y="293" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#bbbbbb">Pipeline CI/CD &#183; DORA</text>
+
+  <line x1="54" y1="298" x2="794" y2="298" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="62" y="309" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Maturit&#233; &#233;quipe</text>
+  <text x="237" y="309" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[score/10]</text>
+  <text x="357" y="309" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[R/A/V]</text>
+  <text x="477" y="309" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#bbbbbb">Team Health Check &#183; r&#233;tro</text>
+
+  <line x1="54" y1="314" x2="794" y2="314" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="62" y="325" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Bien-&#234;tre</text>
+  <text x="237" y="325" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[HI /5]</text>
+  <text x="357" y="325" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">[R/A/V]</text>
+  <text x="477" y="325" font-family="EB Garamond,Georgia,serif" font-size="8.5" fill="#bbbbbb">Niko-Niko quotidien &#183; Ch.6</text>
+
+  <!-- Bloc 3 : HISTORIQUE -->
+  <rect x="54" y="328" width="740" height="36" fill="#fafaf7"/>
+  <rect x="54" y="328" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="341" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">3. HISTORIQUE 3 SPRINTS</text>
+  <text x="72" y="354" font-family="EB Garamond,Georgia,serif" font-size="9.5" font-style="italic" fill="#bbbbbb">
+    [Tableau des 6 cadrans sur les 3 derniers sprints avec valeurs et statuts RAG]
+  </text>
+
+  <!-- Bloc 4 : OKR CHECK-IN -->
+  <rect x="54" y="370" width="740" height="36" fill="#fafaf7"/>
+  <rect x="54" y="370" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="383" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">4. OKR CHECK-IN</text>
+  <text x="72" y="396" font-family="EB Garamond,Georgia,serif" font-size="9.5" font-style="italic" fill="#bbbbbb">
+    [OKR cible du trimestre + avanc&#233; / frein / ajustement du dernier sprint]
+  </text>
+
+  <!-- Bloc 5 : CONSIGNE GENERATION -->
+  <rect x="54" y="412" width="740" height="86" fill="#fafaf7"/>
+  <rect x="54" y="412" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="425" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">5. CONSIGNE DE G&#201;N&#201;RATION</text>
+  <text x="72" y="444" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    G&#233;n&#232;re une narrative de 3 paragraphes :
+  </text>
+  <text x="82" y="458" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    (1) R&#233;sum&#233; global en 2 phrases.
+  </text>
+  <text x="82" y="471" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    (2) Focus sur chaque cadran en Ambre ou Rouge : cause probable + action recommand&#233;e.
+  </text>
+  <text x="82" y="484" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    (3) Perspective sur la tendance des 3 sprints.
+  </text>
+  <text x="72" y="497" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    Ton : factuel, non alarmiste, orient&#233; action. Maximum 200 mots.
+  </text>
+
+  <!-- Bloc 6 : BONNES PRATIQUES -->
+  <rect x="54" y="504" width="740" height="106" fill="#0f2240"/>
+  <text x="72" y="522" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">6. BONNES PRATIQUES</text>
+  <text x="82" y="539" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#ffffff">
+    &#10003;  Fournis les 6 valeurs + statut RAG avant de lancer le prompt.
+  </text>
+  <text x="82" y="554" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#ffffff">
+    &#10003;  Ajoute l'historique 3 sprints : c'est ce qui permet la comparaison de tendance.
+  </text>
+  <text x="82" y="569" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#ffffff">
+    &#10003;  Lis la narrative avant d'envoyer : les 30 % de corrections sont ton jugement.
+  </text>
+  <text x="82" y="584" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#ffffff">
+    &#10003;  R&#233;vise le prompt si tu corriges la m&#234;me section deux sprints cons&#233;cutifs.
+  </text>
+  <text x="82" y="599" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#ffffff">
+    &#10003;  Le prompt vieillit : revois la section Contexte tous les 3 mois.
+  </text>
+
+  <!-- EXEMPLE -->
+  <rect x="54" y="616" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="629" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">EXEMPLE : SPRINT 34, &#201;QUIPE PHOENIX</text>
+
+  <rect x="54" y="632" width="740" height="106" fill="#fafaf7" rx="0"/>
+  <text x="72" y="650" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">
+    Sprint Goal &#224; 85 % (Ambre) &#183; V&#233;locit&#233; 47 pts stable sur 3 sprints (Vert) &#183; Happiness Index 3,8 (Ambre en progression)
+  </text>
+  <text x="72" y="666" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240" font-weight="bold">
+    Cadran Rouge : Qualit&#233; &#8211; CFR &#224; 18 % pour le 2e sprint cons&#233;cutif.
+  </text>
+  <text x="72" y="681" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">
+    Cause probable : r&#233;duction du temps de test li&#233;e &#224; la surcharge des deux derniers sprints.
+  </text>
+  <text x="72" y="696" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">
+    Action : session dette technique en r&#233;trospective Sprint 35, arbitrage PO sur les stories qualit&#233;.
+  </text>
+  <text x="72" y="712" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    Tendance globale : stabilisation. Bien-&#234;tre remonte apr&#232;s deux sprints difficiles.
+  </text>
+  <text x="72" y="728" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    Vigilance n&#233;cessaire sur la qualit&#233; avant que la dette technique ne devienne un frein structurel.
+  </text>
+
+  <!-- QUAND REVISER -->
+  <rect x="54" y="742" width="740" height="16" fill="#febd10"/>
+  <text x="72" y="755" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#0f2240"
+        font-weight="bold">QUAND R&#201;VISER LE PROMPT</text>
+  <rect x="54" y="758" width="740" height="72" fill="#fafaf7"/>
+  <text x="72" y="774" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    (1) Tu corriges syst&#233;matiquement la m&#234;me section deux sprints de suite.
+  </text>
+  <text x="72" y="789" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    (2) L'&#233;quipe a chang&#233; de composition, p&#233;rim&#232;tre ou stack technique.
+  </text>
+  <text x="72" y="804" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    (3) Le taux de narrative utilis&#233;e sans correction descend sous 50 % sur deux sprints.
+  </text>
+  <text x="72" y="820" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    R&#233;vision : 15 minutes. Mets &#224; jour la section Contexte. Traite-le comme une story backlog.
+  </text>
+
+  <!-- ══ FOOTER ══ -->
+  <line x1="54" y1="1083" x2="794" y2="1083" stroke="#febd10" stroke-width="1"/>
+  <rect x="372" y="1076" width="50" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10"
+        text-anchor="middle" font-weight="bold">III-12</text>
+  <text x="72" y="1097" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb">
+    SOURCE : Le Syst&#232;me S.A.L.I.M. &#183; Chapitre 12 &#183; aigile.lu
+  </text>
+  <text x="748" y="1097" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb"
+        text-anchor="end">Le Syst&#232;me S.A.L.I.M.</text>
+
+</svg>

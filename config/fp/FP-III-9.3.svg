@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  </defs>
+
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <g transform="translate(27,900) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold"
+          text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+  <g transform="translate(27,60)">
+    <polygon points="0,-18 14,0 0,18 -14,0" fill="#0f2240" opacity="0.85"/>
+    <text font-family="Georgia,serif" font-size="7" fill="#febd10" text-anchor="middle" dy="2.5">S</text>
+  </g>
+  <rect x="54" y="0" width="740" height="80" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb"
+        letter-spacing="1">CHECKLIST D&#201;CISION</text>
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="23" font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-9.3</text>
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="22" fill="#0f2240"
+        font-weight="bold">Accord IA en &#233;quipe</text>
+  <text x="72" y="76" font-family="Georgia,serif" font-size="10" fill="#febd10"
+        font-style="italic">V&#233;rifie que l&#39;&#233;quipe est pr&#234;te avant de g&#233;n&#233;raliser l&#39;usage de l&#39;IA.</text>
+  <rect x="54" y="80" width="740" height="72" fill="#febd10"/>
+  <line x1="239" y1="88" x2="239" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="424" y1="88" x2="424" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="609" y1="88" x2="609" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <text x="72"  y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="257" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="442" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUAND L&#39;UTILISER</text>
+  <text x="627" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="72"  y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">SM / CA</text>
+  <text x="257" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Checklist Go/No-Go + 3 questions</text>
+  <text x="442" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Avant 1er d&#233;ploiement IA en sprint</text>
+  <text x="627" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">&#201;viter l&#39;adoption sans cadre</text>
+  <line x1="54" y1="1072" x2="794" y2="1072" stroke="#febd10" stroke-width="1"/>
+  <text x="72"  y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 9 : AIgile Manifesto</text>
+  <text x="630" y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">Le Syst&#232;me S.A.L.I.M.</text>
+  <rect x="370" y="1076" width="54" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10"
+        text-anchor="middle" font-weight="bold">9.3</text>
+
+  <rect x="72" y="162" width="676" height="24" fill="#0f2240"/>
+  <text x="82"  y="178" font-family="Helvetica,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">#</text>
+  <text x="108" y="178" font-family="Helvetica,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">CRIT&#200;RE DE V&#201;RIFICATION</text>
+  <text x="514" y="178" font-family="Helvetica,sans-serif" font-size="8" fill="#febd10" font-weight="bold" text-anchor="middle">GO</text>
+  <text x="564" y="178" font-family="Helvetica,sans-serif" font-size="8" fill="#febd10" font-weight="bold" text-anchor="middle">NO GO</text>
+  <text x="626" y="178" font-family="Helvetica,sans-serif" font-size="8" fill="#ffffff" font-weight="bold" text-anchor="middle">PRIORIT&#201;</text>
+
+  <rect x="72" y="186" width="676" height="52" fill="#ffffff"/>
+  <line x1="72" y1="238" x2="748" y2="238" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="82" y="206" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10" font-weight="bold">01</text>
+  <text x="108" y="204" font-family="Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">L&#39;&#233;quipe conna&#238;t les 4 valeurs AIgile</text>
+  <text x="108" y="218" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb" font-style="italic">Socle du cadre. Sans valeurs, les prompts sont sans boussole.</text>
+  <circle cx="514" cy="212" r="9" fill="none" stroke="#febd10" stroke-width="1.2"/>
+  <circle cx="564" cy="212" r="9" fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <rect x="608" y="202" width="36" height="20" rx="4"
+        fill="#cc3333" opacity="0.8"/>
+  <text x="626" y="215" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" text-anchor="middle" font-weight="bold">H</text>
+    
+  <rect x="72" y="238" width="676" height="52" fill="#fafaf7"/>
+  <line x1="72" y1="290" x2="748" y2="290" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="82" y="258" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10" font-weight="bold">02</text>
+  <text x="108" y="256" font-family="Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">Un accord de transparence IA est en place</text>
+  <text x="108" y="270" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb" font-style="italic">Qui signale quoi, &#224; qui, quand. Doc 1 page sign&#233; collectivement.</text>
+  <circle cx="514" cy="264" r="9" fill="none" stroke="#febd10" stroke-width="1.2"/>
+  <circle cx="564" cy="264" r="9" fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <rect x="608" y="254" width="36" height="20" rx="4"
+        fill="#cc3333" opacity="0.8"/>
+  <text x="626" y="267" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" text-anchor="middle" font-weight="bold">H</text>
+    
+  <rect x="72" y="290" width="676" height="52" fill="#ffffff"/>
+  <line x1="72" y1="342" x2="748" y2="342" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="82" y="310" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10" font-weight="bold">03</text>
+  <text x="108" y="308" font-family="Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">La politique confidentialit&#233; des outils IA est connue</text>
+  <text x="108" y="322" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb" font-style="italic">En contexte bancaire ou regulated : version Enterprise v&#233;rifi&#233;e.</text>
+  <circle cx="514" cy="316" r="9" fill="none" stroke="#febd10" stroke-width="1.2"/>
+  <circle cx="564" cy="316" r="9" fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <rect x="608" y="306" width="36" height="20" rx="4"
+        fill="#cc3333" opacity="0.8"/>
+  <text x="626" y="319" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" text-anchor="middle" font-weight="bold">H</text>
+    
+  <rect x="72" y="342" width="676" height="52" fill="#fafaf7"/>
+  <line x1="72" y1="394" x2="748" y2="394" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="82" y="362" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10" font-weight="bold">04</text>
+  <text x="108" y="360" font-family="Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">L&#39;&#233;quipe a pass&#233; le IA Readiness Check (score /20)</text>
+  <text x="108" y="374" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb" font-style="italic">Score inf. &#224; 12 : adresser avant de g&#233;n&#233;raliser.</text>
+  <circle cx="514" cy="368" r="9" fill="none" stroke="#febd10" stroke-width="1.2"/>
+  <circle cx="564" cy="368" r="9" fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <rect x="608" y="358" width="36" height="20" rx="4"
+        fill="#febd10" opacity="0.8"/>
+  <text x="626" y="371" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" text-anchor="middle" font-weight="bold">M</text>
+    
+  <rect x="72" y="394" width="676" height="52" fill="#ffffff"/>
+  <line x1="72" y1="446" x2="748" y2="446" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="82" y="414" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10" font-weight="bold">05</text>
+  <text x="108" y="412" font-family="Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">Un seul outil IA est int&#233;gr&#233; dans une seule c&#233;r&#233;monie</text>
+  <text x="108" y="426" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb" font-style="italic">Principe empirisme Scrum : tester, inspecter, adapter.</text>
+  <circle cx="514" cy="420" r="9" fill="none" stroke="#febd10" stroke-width="1.2"/>
+  <circle cx="564" cy="420" r="9" fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <rect x="608" y="410" width="36" height="20" rx="4"
+        fill="#febd10" opacity="0.8"/>
+  <text x="626" y="423" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" text-anchor="middle" font-weight="bold">M</text>
+    
+  <rect x="72" y="446" width="676" height="52" fill="#fafaf7"/>
+  <line x1="72" y1="498" x2="748" y2="498" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="82" y="466" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10" font-weight="bold">06</text>
+  <text x="108" y="464" font-family="Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">L&#39;accord sera revu dans moins de 2 mois</text>
+  <text x="108" y="478" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb" font-style="italic">Seuil d&#39;alerte : accord non r&#233;vis&#233; depuis plus de 2 mois.</text>
+  <circle cx="514" cy="472" r="9" fill="none" stroke="#febd10" stroke-width="1.2"/>
+  <circle cx="564" cy="472" r="9" fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <rect x="608" y="462" width="36" height="20" rx="4"
+        fill="#febd10" opacity="0.8"/>
+  <text x="626" y="475" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" text-anchor="middle" font-weight="bold">M</text>
+    
+  <rect x="72" y="510" width="330" height="130" fill="#fafaf7" rx="2"/>
+  <rect x="72" y="510" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="524" font-family="Helvetica,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">D&#201;CISION</text>
+  <rect x="84" y="536" width="12" height="12" rx="2" fill="none" stroke="#2a7a2a" stroke-width="1.5"/>
+  <text x="102" y="547" font-family="Georgia,serif" font-size="9" fill="#0f2240">GO : Tous les crit&#232;res H sont remplis.</text>
+  <rect x="84" y="556" width="12" height="12" rx="2" fill="none" stroke="#cc3333" stroke-width="1.5"/>
+  <text x="102" y="567" font-family="Georgia,serif" font-size="9" fill="#0f2240">NO GO : Adresser les points H avant de</text>
+  <text x="102" y="579" font-family="Georgia,serif" font-size="9" fill="#0f2240">g&#233;n&#233;raliser l&#39;usage IA en sprint.</text>
+  <text x="84" y="598" font-family="Georgia,serif" font-size="9" fill="#bbbbbb" font-style="italic">H = Haute priorit&#233; / M = Moyenne priorit&#233;</text>
+  <text x="84" y="612" font-family="Georgia,serif" font-size="9" fill="#bbbbbb" font-style="italic">Revoir cet accord tous les 2 mois maximum.</text>
+
+  <rect x="418" y="510" width="330" height="130" fill="#fafaf7" rx="2"/>
+  <rect x="418" y="510" width="330" height="20" fill="#0f2240" rx="2"/>
+  <text x="428" y="524" font-family="Helvetica,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">3 QUESTIONS ACCORD IA (30 MIN EN R&#201;TRO)</text>
+  <text x="428" y="542" font-family="Georgia,serif" font-size="9" fill="#febd10" font-weight="bold">1.</text>
+  <text x="444" y="542" font-family="Georgia,serif" font-size="9" fill="#0f2240">Quels usages IA sont transparents dans l&#39;&#233;quipe ?</text>
+  <text x="428" y="560" font-family="Georgia,serif" font-size="9" fill="#febd10" font-weight="bold">2.</text>
+  <text x="444" y="560" font-family="Georgia,serif" font-size="9" fill="#0f2240">Quels outputs IA doivent &#234;tre signal&#233;s avant livraison ?</text>
+  <text x="428" y="578" font-family="Georgia,serif" font-size="9" fill="#febd10" font-weight="bold">3.</text>
+  <text x="444" y="578" font-family="Georgia,serif" font-size="9" fill="#0f2240">Qui est accountable de la d&#233;cision finale ?</text>
+  <line x1="428" y1="592" x2="736" y2="592" stroke="#febd10" stroke-width="0.5"/>
+  <text x="428" y="606" font-family="Georgia,serif" font-size="8.5" fill="#0f2240" font-style="italic">R&#233;sultat : un accord &#233;crit d&#39;une page, valid&#233; par l&#39;&#233;quipe,</text>
+  <text x="428" y="620" font-family="Georgia,serif" font-size="8.5" fill="#0f2240" font-style="italic">affich&#233; au mur. Revoir tous les 2 mois.</text>
+
+</svg>

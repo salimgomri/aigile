@@ -24,8 +24,10 @@ export type SalimQaQuestionPublic = {
   douleur: string
   dimensions: string[]
   answerPreview: string
-  isUnlocked: boolean
-  canReadFull: boolean
+  isAnswerUnlocked: boolean
+  isFicheUnlocked: boolean
+  canReadAnswer: boolean
+  canReadFiche: boolean
   answerFull?: string
   chapter: number
   chapterTitle: string

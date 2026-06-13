@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+  </defs>
+
+  <!-- FOND -->
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <text transform="rotate(-90,27,560)" x="-290" y="32"
+        font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240" letter-spacing="2">
+    LE SYST&#200;ME S.A.L.I.M.
+  </text>
+
+  <!-- HEADER -->
+  <rect x="54" y="0" width="740" height="78" fill="#ffffff"/>
+  <text x="72" y="24" font-family="Helvetica,Arial,sans-serif" font-size="8.5" fill="#bbbbbb" letter-spacing="1">
+    PILOTAGE &gt; DASHBOARD RAG
+  </text>
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="22" font-family="Helvetica,Arial,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-12.2</text>
+  <line x1="72" y1="32" x2="748" y2="32" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="24" fill="#0f2240" font-weight="bold">
+    Dashboard Manager : 6 cadrans RAG
+  </text>
+  <text x="72" y="74" font-family="EB Garamond,Georgia,serif" font-size="11"
+        font-style="italic" fill="#febd10">
+    Traduis tes m&#233;triques Scrum en 6 statuts lisibles en 30 secondes.
+  </text>
+
+  <!-- BLOC 4 CHAMPS GOLD -->
+  <rect x="54" y="78" width="740" height="64" fill="#febd10"/>
+  <text x="72" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="72" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">SM &#183; MG &#183; DC &#183; PO</text>
+  <line x1="232" y1="84" x2="232" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="248" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="248" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">6 indicateurs sprint en Rouge/Ambre/Vert</text>
+  <line x1="432" y1="84" x2="432" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="448" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">QUAND L'UTILISER</text>
+  <text x="448" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Fin de chaque sprint, revue pilotage</text>
+  <line x1="622" y1="84" x2="622" y2="134" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="636" y="94" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="636" y="107" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Pilotage commun sans formation</text>
+
+  <text x="72" y="128" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240"
+        font-weight="bold" letter-spacing="1.5">PRINCIPE</text>
+  <text x="72" y="138" font-family="EB Garamond,Georgia,serif" font-size="9"
+        font-style="italic" fill="#0f2240">Seuils d&#233;finis en accord avec le management en d&#233;but de trimestre. Jamais impos&#233;s par le SM seul.</text>
+
+  <!-- TABLEAU 6 CADRANS -->
+  <!-- header tableau -->
+  <rect x="54" y="148" width="740" height="20" fill="#0f2240"/>
+  <text x="72" y="162" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">CADRAN</text>
+  <text x="210" y="162" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">SOURCE / QUI</text>
+  <text x="390" y="162" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">QUAND</text>
+  <text x="510" y="162" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">SEUILS RAG</text>
+
+  <!-- ligne 1 : On Time -->
+  <rect x="54" y="168" width="740" height="70" fill="#fafaf7"/>
+  <rect x="54" y="168" width="150" height="70" fill="#0f2240" opacity="0.06"/>
+  <text x="72" y="186" font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold">On Time</text>
+  <text x="72" y="200" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">Sprint Goal atteint %</text>
+  <text x="72" y="212" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">Team Predictability</text>
+
+  <text x="210" y="186" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Burnup &#183; Sprint Review</text>
+  <text x="210" y="200" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">SM saisit apr&#232;s la Review</text>
+
+  <text x="390" y="186" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Fin de chaque sprint</text>
+
+  <text x="510" y="182" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#2a7a2a">Vert : 90 %+</text>
+  <text x="510" y="197" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#b8860b">Ambre : 70 &#224; 89 %</text>
+  <text x="510" y="212" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#cc3333">Rouge : sous 70 %</text>
+
+  <line x1="54" y1="238" x2="794" y2="238" stroke="#e0e0e0" stroke-width="0.7"/>
+
+  <!-- ligne 2 : On Budget -->
+  <rect x="54" y="238" width="740" height="60" fill="#ffffff"/>
+  <rect x="54" y="238" width="150" height="60" fill="#0f2240" opacity="0.06"/>
+  <text x="72" y="256" font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold">On Budget</text>
+  <text x="72" y="270" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">V&#233;locit&#233; stable 3 sprints</text>
+
+  <text x="210" y="256" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Outil suivi v&#233;locit&#233; &#183; Ch.5</text>
+  <text x="210" y="270" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">SM, automatisable</text>
+
+  <text x="390" y="256" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Fin sprint, moy. glissante</text>
+
+  <text x="510" y="252" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#2a7a2a">Vert : stable &#177;15 %</text>
+  <text x="510" y="267" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#cc3333">Rouge : rupture 3 sprints+</text>
+
+  <line x1="54" y1="298" x2="794" y2="298" stroke="#e0e0e0" stroke-width="0.7"/>
+
+  <!-- ligne 3 : On Scope -->
+  <rect x="54" y="298" width="740" height="60" fill="#fafaf7"/>
+  <rect x="54" y="298" width="150" height="60" fill="#0f2240" opacity="0.06"/>
+  <text x="72" y="316" font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold">On Scope</text>
+  <text x="72" y="330" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">Stories livr&#233;es, DoD OK</text>
+
+  <text x="210" y="316" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Burnup (courbe scope) &#183; Ch.4</text>
+  <text x="210" y="330" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">PO valide, SM saisit</text>
+
+  <text x="390" y="316" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Sprint Review, en continu</text>
+
+  <text x="510" y="312" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#2a7a2a">Vert : DoD 100 %</text>
+  <text x="510" y="327" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#b8860b">Ambre : compromis document&#233;</text>
+
+  <line x1="54" y1="358" x2="794" y2="358" stroke="#e0e0e0" stroke-width="0.7"/>
+
+  <!-- ligne 4 : Qualite -->
+  <rect x="54" y="358" width="740" height="70" fill="#ffffff"/>
+  <rect x="54" y="358" width="150" height="70" fill="#0f2240" opacity="0.06"/>
+  <text x="72" y="376" font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold">Qualit&#233;</text>
+  <text x="72" y="390" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">DORA : CFR + Deploy Freq.</text>
+
+  <text x="210" y="376" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Pipeline CI/CD &#183; Ch.7</text>
+  <text x="210" y="390" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">Devs + SM (auto si CI)</text>
+  <text x="210" y="404" font-family="EB Garamond,Georgia,serif" font-size="8" font-style="italic" fill="#cc7700">Sans CI/CD : incidents utilisateurs</text>
+
+  <text x="390" y="376" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Continu, recap sprint</text>
+
+  <text x="510" y="372" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#2a7a2a">Vert : CFR inf. 5 %</text>
+  <text x="510" y="387" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#b8860b">Ambre : 5 &#224; 15 %</text>
+  <text x="510" y="402" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#cc3333">Rouge : sup. 15 %</text>
+
+  <line x1="54" y1="428" x2="794" y2="428" stroke="#e0e0e0" stroke-width="0.7"/>
+
+  <!-- ligne 5 : Maturite -->
+  <rect x="54" y="428" width="740" height="70" fill="#fafaf7"/>
+  <rect x="54" y="428" width="150" height="70" fill="#0f2240" opacity="0.06"/>
+  <text x="72" y="446" font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold">Maturit&#233; &#233;quipe</text>
+  <text x="72" y="460" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">Team Health Check 12 dim.</text>
+
+  <text x="210" y="446" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Kniberg &#38; Sund&#233;n &#183; aigile.lu</text>
+  <text x="210" y="460" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">SM facilite, &#233;quipe vote</text>
+
+  <text x="390" y="446" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Toutes les 2 &#224; 3 r&#233;tros</text>
+
+  <text x="510" y="442" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#2a7a2a">Vert : 7+ / 10</text>
+  <text x="510" y="457" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#b8860b">Ambre : 5 &#224; 6</text>
+  <text x="510" y="472" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#cc3333">Rouge : sous 5</text>
+
+  <line x1="54" y1="498" x2="794" y2="498" stroke="#e0e0e0" stroke-width="0.7"/>
+
+  <!-- ligne 6 : Bien-etre -->
+  <rect x="54" y="498" width="740" height="70" fill="#ffffff"/>
+  <rect x="54" y="498" width="150" height="70" fill="#0f2240" opacity="0.06"/>
+  <text x="72" y="516" font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold">Bien-&#234;tre</text>
+  <text x="72" y="530" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">Happiness Index, Niko-Niko</text>
+
+  <text x="210" y="516" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Niko-Niko quotidien &#183; Ch.6</text>
+  <text x="210" y="530" font-family="EB Garamond,Georgia,serif" font-size="8.5" font-style="italic" fill="#bbbbbb">Equipe, SM suit la tendance</text>
+
+  <text x="390" y="516" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">Quotidien, moy. sprint</text>
+
+  <text x="510" y="512" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#2a7a2a">Vert : 4+ / 5</text>
+  <text x="510" y="527" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#b8860b">Ambre : 3 &#224; 3,9</text>
+  <text x="510" y="542" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#cc3333">Rouge : sous 3</text>
+
+  <!-- REGLE RAG ROUGE -->
+  <rect x="54" y="574" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="587" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">R&#200;GLE RAG : CADRAN ROUGE = 3 &#201;L&#201;MENTS OBLIGATOIRES</text>
+  <rect x="54" y="590" width="740" height="56" fill="#fafaf7"/>
+  <text x="72" y="608" font-family="EB Garamond,Georgia,serif" font-size="10.5" fill="#0f2240">
+    (1) Ce qui est observ&#233;
+  </text>
+  <text x="72" y="624" font-family="EB Garamond,Georgia,serif" font-size="10.5" fill="#0f2240">
+    (2) L'hypoth&#232;se sur la cause
+  </text>
+  <text x="72" y="638" font-family="EB Garamond,Georgia,serif" font-size="10.5" fill="#0f2240">
+    (3) L'action propos&#233;e
+  </text>
+  <text x="450" y="608" font-family="EB Garamond,Georgia,serif" font-size="10.5" font-style="italic" fill="#0f2240">
+    Un rouge avec les 3 couches cr&#233;e de la confiance.
+  </text>
+  <text x="450" y="624" font-family="EB Garamond,Georgia,serif" font-size="10.5" font-style="italic" fill="#cc3333">
+    Un rouge seul cr&#233;e de l'anxi&#233;t&#233;.
+  </text>
+
+  <!-- PIEGE -->
+  <rect x="54" y="652" width="740" height="16" fill="#febd10"/>
+  <text x="72" y="665" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#0f2240"
+        font-weight="bold">PI&#200;GE &#192; &#201;VITER : TOUT VERT NE SIGNIFIE PAS TOUT VA BIEN</text>
+  <rect x="54" y="668" width="740" height="52" fill="#fafaf7"/>
+  <text x="72" y="684" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    Un dashboard vert sur tous les cadrans pendant 3 sprints cons&#233;cutifs peut signaler :
+  </text>
+  <text x="82" y="699" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    &#183; Des seuils trop bas (pas assez exigeants)
+  </text>
+  <text x="82" y="713" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240">
+    &#183; Des donn&#233;es collect&#233;es sous pression implicite
+  </text>
+
+  <!-- PROTOCOLE SEUILS -->
+  <rect x="54" y="726" width="740" height="16" fill="#0f2240"/>
+  <text x="72" y="739" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#ffffff"
+        font-weight="bold">CALIBRER LES SEUILS : PROTOCOLE 30 MINUTES</text>
+  <rect x="54" y="742" width="740" height="106" fill="#fafaf7"/>
+  <text x="72" y="760" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">
+    Avant la r&#233;union (48h avant) :
+  </text>
+  <text x="82" y="774" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">
+    Tableau des 6 cadrans + seuils propos&#233;s + source + responsable + fr&#233;quence.
+  </text>
+  <text x="72" y="792" font-family="EB Garamond,Georgia,serif" font-size="9.5" fill="#0f2240" font-weight="bold">
+    En r&#233;union, une question par cadran :
+  </text>
+  <text x="82" y="806" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">
+    "Si ce chiffre descend sous [seuil], est-ce que tu veux &#234;tre alert&#233; ?"
+  </text>
+  <text x="82" y="820" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#bbbbbb">
+    La question sur l'alerte force la r&#233;flexion sur l'action, pas sur la validation d'un nombre abstrait.
+  </text>
+  <text x="72" y="838" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#0f2240">
+    Envoyer un r&#233;capitulatif &#233;crit apr&#232;s la r&#233;union. C'est le r&#233;f&#233;rentiel du trimestre.
+  </text>
+
+  <!-- FOOTER -->
+  <line x1="54" y1="1083" x2="794" y2="1083" stroke="#febd10" stroke-width="1"/>
+  <rect x="372" y="1076" width="50" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10"
+        text-anchor="middle" font-weight="bold">III-12</text>
+  <text x="72" y="1097" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb">
+    SOURCE : Le Syst&#232;me S.A.L.I.M. &#183; Chapitre 12 &#183; aigile.lu
+  </text>
+  <text x="748" y="1097" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb"
+        text-anchor="end">Le Syst&#232;me S.A.L.I.M.</text>
+
+</svg>

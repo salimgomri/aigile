@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 794 1123" width="794" height="1123"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>FP IV-14.4 4 r&#232;gles d&#8217;or + 1:1 mensuel</title>
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+  </defs>
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+
+  <!-- BANDE LATERALE -->
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <!-- LOGO CERCLES CONCENTRIQUE -->
+  <g transform="translate(27,80)">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#0f2240" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#0f2240" stroke-width="1.2"/>
+    <circle cx="0" cy="0" r="8"  fill="none" stroke="#0f2240" stroke-width="1"/>
+    <circle cx="0" cy="0" r="3"  fill="#0f2240"/>
+    <!-- silhouette -->
+    <ellipse cx="0" cy="-30" rx="5" ry="6" fill="#0f2240"/>
+    <line x1="0" y1="-24" x2="0" y2="-10" stroke="#0f2240" stroke-width="2.5"/>
+    <line x1="-8" y1="-20" x2="8" y2="-20" stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="-6" y2="2"  stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="6"  y2="2"  stroke="#0f2240" stroke-width="2"/>
+  </g>
+  <!-- TEXTE VERTICAL -->
+  <text transform="translate(17,1050) rotate(-90)"
+        font-family="Georgia,serif" font-size="10" font-weight="bold"
+        fill="#0f2240" letter-spacing="2">
+    LE SYST&#200;ME S.A.L.I.M.
+  </text>
+  <!-- HEADER -->
+  <rect x="54" y="0" width="740" height="75" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#bbbbbb"
+        letter-spacing="1">RELATION MANAGER > R&#200;GLES</text>
+  <!-- Badge FP -->
+  <rect x="695" y="8" width="90" height="22" rx="11" fill="#febd10"/>
+  <text x="740" y="23" text-anchor="middle" font-family="Helvetica,Arial,sans-serif"
+        font-size="9" font-weight="bold" fill="#0f2240">FP IV-14.4</text>
+  <!-- Filet gold -->
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <!-- Titre -->
+  <text x="72" y="58" font-family="Georgia,serif" font-size="24" font-weight="bold"
+        fill="#0f2240">4 r&#232;gles d&#8217;or + 1:1 mensuel</text>
+  <!-- Sous-titre -->
+  <text x="72" y="74" font-family="Georgia,serif" font-size="10" font-style="italic"
+        fill="#febd10">Les rituels minimaux pour une relation SM-Manager qui fonctionne.</text>
+  <!-- BLOC 4 CHAMPS -->
+  <rect x="54" y="78" width="740" height="68" fill="#febd10"/>
+  <text x="72" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">POUR QUI</text>
+  <text x="72" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">SM, CA</text>
+  <line x1="252" y1="85" x2="252" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="257" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUOI</text>
+  <text x="257" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Instaurer les 4 rituels de</text>
+  <text x="257" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">base de la relation</text>
+  <text x="257" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">manager</text>
+  <line x1="437" y1="85" x2="437" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="442" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUAND L&#39;UTILISER</text>
+  <text x="442" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">D&#232;s le premier</text>
+  <text x="442" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">sprint, puis maintenu en</text>
+  <text x="442" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">continu</text>
+  <line x1="622" y1="85" x2="622" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="627" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">VALEUR APPORT&#201;E</text>
+  <text x="627" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">R&#233;duit les frictions,</text>
+  <text x="627" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">acc&#233;l&#232;re les</text>
+  <text x="627" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">d&#233;cisions,</text>
+
+  <rect x="72" y="162" width="676" height="20" rx="2" fill="#0f2240"/>
+  <text x="82" y="176" font-family="Helvetica,Arial,sans-serif" font-size="8"
+        font-weight="bold" fill="#ffffff" letter-spacing="0.8">LES 4 R&#200;GLES D&#8217;OR</text>
+  <rect x="72" y="186" width="676" height="72" fill="#fafaf7" rx="2"/>
+  <line x1="72" y1="258" x2="748" y2="258" stroke="#e0e0e0" stroke-width="0.5"/>
+  <circle cx="102" cy="222" r="16" fill="#febd10"/>
+  <text x="102" y="227" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" fill="#0f2240">1</text>
+  <text x="130" y="210" font-family="Helvetica,Arial,sans-serif" font-size="9.5" font-weight="bold" fill="#0f2240">R&#233;union OKR de 30 min en d&#233;but de trimestre</text>
+  <text x="130" y="226" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">Aligne l&#8217;&#233;quipe et le manager sur l&#8217;Objectif</text>
+  <text x="130" y="240" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">prioritaire et les R&#233;sultats Cl&#233;s.</text>
+  <rect x="72" y="262" width="676" height="72" fill="#ffffff" rx="2"/>
+  <line x1="72" y1="334" x2="748" y2="334" stroke="#e0e0e0" stroke-width="0.5"/>
+  <circle cx="102" cy="298" r="16" fill="#febd10"/>
+  <text x="102" y="303" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" fill="#0f2240">2</text>
+  <text x="130" y="286" font-family="Helvetica,Arial,sans-serif" font-size="9.5" font-weight="bold" fill="#0f2240">Dashboard &#224; jour 15 min apr&#232;s chaque Sprint Review</text>
+  <text x="130" y="302" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">Le manager ne pose pas de questions : il lit les donn&#233;es. Z&#233;ro</text>
+  <text x="130" y="316" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">email de synth&#232;se.</text>
+  <rect x="72" y="338" width="676" height="72" fill="#fafaf7" rx="2"/>
+  <line x1="72" y1="410" x2="748" y2="410" stroke="#e0e0e0" stroke-width="0.5"/>
+  <circle cx="102" cy="374" r="16" fill="#febd10"/>
+  <text x="102" y="379" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" fill="#0f2240">3</text>
+  <text x="130" y="362" font-family="Helvetica,Arial,sans-serif" font-size="9.5" font-weight="bold" fill="#0f2240">Une escalade document&#233;e par sprint</text>
+  <text x="130" y="378" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">Avec la d&#233;cision demand&#233;e, pas juste le probl&#232;me. Chiffre</text>
+  <text x="130" y="392" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">le co&#251;t si non d&#233;cid&#233;.</text>
+  <rect x="72" y="414" width="676" height="72" fill="#ffffff" rx="2"/>
+  <line x1="72" y1="486" x2="748" y2="486" stroke="#e0e0e0" stroke-width="0.5"/>
+  <circle cx="102" cy="450" r="16" fill="#febd10"/>
+  <text x="102" y="455" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="bold" fill="#0f2240">4</text>
+  <text x="130" y="438" font-family="Helvetica,Arial,sans-serif" font-size="9.5" font-weight="bold" fill="#0f2240">Z&#233;ro surprise</text>
+  <text x="130" y="454" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">Si un Sprint Goal est &#224; risque, le manager sait avant la Sprint</text>
+  <text x="130" y="468" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="#0f2240" opacity="0.8">Review, pas pendant.</text>
+  <rect x="72" y="504" width="676" height="20" rx="2" fill="#0f2240"/>
+  <text x="82" y="518" font-family="Helvetica,Arial,sans-serif" font-size="8"
+        font-weight="bold" fill="#ffffff" letter-spacing="0.8">1:1 MENSUEL SM/MANAGER  AGENDA FIXE EN 3 POINTS</text>
+  <rect x="72" y="528" width="676" height="100" fill="#ffffff" rx="2"/>
+  <rect x="86" y="534" width="16" height="16" rx="3" fill="#febd10"/>
+  <text x="94" y="546" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">1</text>
+  <text x="112" y="546" font-family="Georgia,serif" font-size="9.5" fill="#0f2240">Un obstacle organisationnel que le SM ne peut pas lever seul</text>
+  <rect x="86" y="562" width="16" height="16" rx="3" fill="#febd10"/>
+  <text x="94" y="574" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">2</text>
+  <text x="112" y="574" font-family="Georgia,serif" font-size="9.5" fill="#0f2240">Une d&#233;cision que seul le manager peut prendre</text>
+  <rect x="86" y="590" width="16" height="16" rx="3" fill="#febd10"/>
+  <text x="94" y="602" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">3</text>
+  <text x="112" y="602" font-family="Georgia,serif" font-size="9.5" fill="#0f2240">Un chiffre de progression d&#8217;&#233;quipe</text>
+  <text x="410" y="616" text-anchor="middle" font-family="Georgia,serif" font-size="9" font-style="italic" fill="#febd10">Ce n&#8217;est pas un reporting : c&#8217;est ton levier syst&#233;mique le plus sous-utilis&#233;.</text>
+  <!-- FOOTER -->
+  <line x1="72" y1="1078" x2="748" y2="1078" stroke="#febd10" stroke-width="1"/>
+  <rect x="372" y="1083" width="50" height="18" rx="9" fill="#0f2240"/>
+  <text x="397" y="1095" text-anchor="middle" font-family="Helvetica,Arial,sans-serif"
+        font-size="8" font-weight="bold" fill="#febd10">IV-14.4</text>
+  <text x="72" y="1095" font-family="Helvetica,Arial,sans-serif" font-size="7"
+        fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+  <text x="748" y="1095" text-anchor="end" font-family="Helvetica,Arial,sans-serif"
+        font-size="7" fill="#bbbbbb">Chapitre 14 · Partie 4</text>
+</svg>

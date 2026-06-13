@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+
+<!-- FOND -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#ffffff;"/>
+
+<!-- BANDE LATÉRALE GOLD -->
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO PLACEHOLDER (remplacer par image réelle dans Affinity) -->
+<rect x="7" y="20" width="40" height="120" rx="4"
+      style="fill:#0f2240;opacity:0.15;stroke:#0f2240;stroke-width:0.5px;"/>
+<text x="27" y="60" text-anchor="middle" transform="rotate(-90,27,80)"
+      style="font-family:'Georgia',serif;font-size:7px;fill:#0f2240;">LOGO</text>
+
+<!-- TEXTE VERTICAL -->
+<g transform="translate(27,900) rotate(-90)">
+  <text x="0" y="0"
+        style="font-family:'Georgia',serif;font-size:11px;font-weight:bold;fill:#0f2240;">
+    LE SYST&#200;ME S.A.L.I.M.</text>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="76" style="fill:#ffffff;"/>
+<text x="72" y="22"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbbbbb;">QUESTIONNAIRES > &#201;VALUATION</text>
+<!-- Badge FP -->
+<rect x="686" y="8" width="94" height="22" rx="11" style="fill:#febd10;"/>
+<text x="733" y="22" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9.5px;font-weight:bold;fill:#0f2240;">FP IV-15.1</text>
+<!-- Filet gold -->
+<line x1="72" y1="30" x2="780" y2="30" style="stroke:#febd10;stroke-width:1px;"/>
+<!-- Titre -->
+<text x="72" y="56"
+      style="font-family:'Georgia',serif;font-size:24px;font-weight:bold;fill:#0f2240;">Diagnostic S&#233;curit&#233; Psychologique</text>
+<!-- Sous-titre -->
+<text x="72" y="72"
+      style="font-family:'Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">&#201;chelon Edmondson 7 items &#183; Echelle 1-7 &#183; Trimestriel</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="72" style="fill:#febd10;"/>
+
+<!-- POUR QUI label + rôles -->
+<text x="72" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">POUR QUI</text>
+<rect x="72" y="88" width="28" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="86" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">SM</text>
+<rect x="106" y="88" width="28" height="14" rx="3" style="fill:#bbbbbb;"/>
+<text x="120" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">PO</text>
+<rect x="140" y="88" width="28" height="14" rx="3" style="fill:#bbbbbb;"/>
+<text x="154" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">DEV</text>
+<rect x="174" y="88" width="28" height="14" rx="3" style="fill:#0f2240;"/>
+<text x="188" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">CA</text>
+<rect x="208" y="88" width="28" height="14" rx="3" style="fill:#bbbbbb;"/>
+<text x="222" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">MG</text>
+<rect x="242" y="88" width="28" height="14" rx="3" style="fill:#bbbbbb;"/>
+<text x="256" y="98.5" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">DC</text>
+
+
+<!-- Séparateur vertical -->
+<line x1="262" y1="82" x2="262" y2="144" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+
+<!-- QUOI -->
+<text x="276" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">QUOI</text>
+<foreignObject x="276" y="92" width="178" height="52">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;font-style:italic;
+              color:#0f2240;opacity:0.8;margin:0;line-height:1.35;">Mesurer la s&#233;curit&#233; psychologique d'une &#233;quipe via les 7 items valid&#233;s d'Amy Edmondson (1999).</p>
+  </body>
+</foreignObject>
+
+<!-- Séparateur vertical -->
+<line x1="466" y1="82" x2="466" y2="144" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+
+<!-- QUAND L'UTILISER -->
+<text x="480" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">QUAND L'UTILISER</text>
+<foreignObject x="480" y="92" width="138" height="52">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;font-style:italic;
+              color:#0f2240;opacity:0.8;margin:0;line-height:1.35;">En d&#233;but de mission ou de trimestre. Une fois par trimestre maximum. Apr&#232;s un incident grave si n&#233;cessaire.</p>
+  </body>
+</foreignObject>
+
+<!-- Séparateur vertical -->
+<line x1="628" y1="82" x2="628" y2="144" style="stroke:#0f2240;stroke-width:0.5px;opacity:0.3;"/>
+
+<!-- VALEUR APPORTÉE -->
+<text x="642" y="88"
+      style="font-family:'Helvetica';font-size:7.5px;font-weight:bold;fill:#0f2240;letter-spacing:1.5;">VALEUR APPORT&#201;E</text>
+<foreignObject x="642" y="92" width="126" height="52">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9px;font-style:italic;
+              color:#0f2240;opacity:0.8;margin:0;line-height:1.35;">Obtenir un score objectif avant toute intervention. Ne jamais corr&#233;ler &#224; des &#233;valuations individuelles.</p>
+  </body>
+</foreignObject>
+
+<!-- Filet bas header -->
+<line x1="54" y1="150" x2="794" y2="150" style="stroke:#febd10;stroke-width:1.5px;"/>
+
+<!-- ZONE INTRO -->
+<rect x="54" y="158" width="740" height="30" style="fill:#0f2240;"/>
+<text x="140" y="177" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">OBJECTIF</text>
+<line x1="216" y1="160" x2="216" y2="186" style="stroke:#febd10;stroke-width:0.5px;"/>
+<text x="390" y="177" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">COMMENT UTILISER</text>
+<line x1="564" y1="160" x2="564" y2="186" style="stroke:#febd10;stroke-width:0.5px;"/>
+<text x="679" y="177" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">INTERPR&#201;TATION</text>
+
+<text x="72" y="207"
+      style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Obtenir un score neutre</text>
+<text x="72" y="219"
+      style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">avant toute intervention.</text>
+
+<text x="226" y="198" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">1. Passer anonymement</text>
+<text x="226" y="210" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">2. Inverser Q3 et Q5</text>
+<text x="226" y="222" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">3. Calculer la moyenne</text>
+<text x="226" y="234" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">4. Comparer aux seuils</text>
+
+<text x="574" y="198" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Sup. 5.5 = S&#233;curit&#233; &#233;lev&#233;e</text>
+<text x="574" y="210" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">4 &#224; 5.5 = S&#233;curit&#233; mod&#233;r&#233;e</text>
+<text x="574" y="222" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Inf. 4 = Alerte : agir sur</text>
+<text x="574" y="234" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">le contexte en priorit&#233;</text>
+
+<!-- TABLEAU EN-TÊTE -->
+<rect x="54" y="248" width="740" height="22" style="fill:#0f2240;"/>
+<text x="72" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">#</text>
+<text x="100" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">AFFIRMATION</text>
+<text x="534" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">1</text>
+<text x="558" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">2</text>
+<text x="582" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">3</text>
+<text x="606" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">4</text>
+<text x="630" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">5</text>
+<text x="654" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">6</text>
+<text x="678" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">7</text>
+<text x="710" y="263"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">TYPE</text>
+
+<rect x="54" y="270" width="740" height="90" style="fill:#ffffff;"/>
+<text x="72" y="288"
+      style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">Q1</text>
+<foreignObject x="100" y="274" width="420" height="82">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9.5px;color:#0f2240;margin:0;line-height:1.4;">Si je fais une erreur dans cette &#233;quipe, &#231;a ne m'est pas tenu rigueur.</p>
+  </body>
+</foreignObject>
+<rect x="539" y="298" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="563" y="298" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="587" y="298" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="611" y="298" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="635" y="298" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="659" y="298" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="683" y="298" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="700" y="292" width="74" height="16" rx="3" style="fill:#bbbbbb;"/>
+<text x="737" y="303" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Direct</text>
+<line x1="54" y1="360" x2="794" y2="360" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<rect x="54" y="362" width="740" height="90" style="fill:#fafaf7;"/>
+<text x="72" y="380"
+      style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">Q2</text>
+<foreignObject x="100" y="366" width="420" height="82">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9.5px;color:#0f2240;margin:0;line-height:1.4;">Les membres de cette &#233;quipe peuvent soulever des probl&#232;mes et questions difficiles.</p>
+  </body>
+</foreignObject>
+<rect x="539" y="390" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="563" y="390" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="587" y="390" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="611" y="390" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="635" y="390" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="659" y="390" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="683" y="390" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="700" y="384" width="74" height="16" rx="3" style="fill:#bbbbbb;"/>
+<text x="737" y="395" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Direct</text>
+<line x1="54" y1="452" x2="794" y2="452" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<rect x="54" y="454" width="740" height="90" style="fill:#ffffff;"/>
+<text x="72" y="472"
+      style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">Q3</text>
+<foreignObject x="100" y="458" width="420" height="82">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9.5px;color:#0f2240;margin:0;line-height:1.4;">Les membres de cette &#233;quipe rejettent parfois les autres pour &#234;tre diff&#233;rents.</p>
+  </body>
+</foreignObject>
+<rect x="539" y="482" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="563" y="482" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="587" y="482" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="611" y="482" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="635" y="482" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="659" y="482" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="683" y="482" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="700" y="476" width="74" height="16" rx="3" style="fill:#0f2240;"/>
+<text x="737" y="487" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">INVERS&#201;</text>
+<line x1="54" y1="544" x2="794" y2="544" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<rect x="54" y="546" width="740" height="90" style="fill:#fafaf7;"/>
+<text x="72" y="564"
+      style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">Q4</text>
+<foreignObject x="100" y="550" width="420" height="82">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9.5px;color:#0f2240;margin:0;line-height:1.4;">Il est s&#251;r de prendre un risque dans cette &#233;quipe.</p>
+  </body>
+</foreignObject>
+<rect x="539" y="574" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="563" y="574" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="587" y="574" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="611" y="574" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="635" y="574" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="659" y="574" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="683" y="574" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="700" y="568" width="74" height="16" rx="3" style="fill:#bbbbbb;"/>
+<text x="737" y="579" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Direct</text>
+<line x1="54" y1="636" x2="794" y2="636" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<rect x="54" y="638" width="740" height="90" style="fill:#ffffff;"/>
+<text x="72" y="656"
+      style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">Q5</text>
+<foreignObject x="100" y="642" width="420" height="82">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9.5px;color:#0f2240;margin:0;line-height:1.4;">Il est difficile de demander de l'aide aux autres membres.</p>
+  </body>
+</foreignObject>
+<rect x="539" y="666" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="563" y="666" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="587" y="666" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="611" y="666" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="635" y="666" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="659" y="666" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="683" y="666" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="700" y="660" width="74" height="16" rx="3" style="fill:#0f2240;"/>
+<text x="737" y="671" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">INVERS&#201;</text>
+<line x1="54" y1="728" x2="794" y2="728" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<rect x="54" y="730" width="740" height="90" style="fill:#fafaf7;"/>
+<text x="72" y="748"
+      style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">Q6</text>
+<foreignObject x="100" y="734" width="420" height="82">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9.5px;color:#0f2240;margin:0;line-height:1.4;">Aucun membre n'agirait d&#233;lib&#233;r&#233;ment de mani&#232;re &#224; nuire &#224; mes efforts.</p>
+  </body>
+</foreignObject>
+<rect x="539" y="758" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="563" y="758" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="587" y="758" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="611" y="758" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="635" y="758" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="659" y="758" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="683" y="758" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="700" y="752" width="74" height="16" rx="3" style="fill:#bbbbbb;"/>
+<text x="737" y="763" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Direct</text>
+<line x1="54" y1="820" x2="794" y2="820" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<rect x="54" y="822" width="740" height="90" style="fill:#ffffff;"/>
+<text x="72" y="840"
+      style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">Q7</text>
+<foreignObject x="100" y="826" width="420" height="82">
+  <body xmlns="http://www.w3.org/1999/xhtml">
+    <p style="font-family:Georgia,serif;font-size:9.5px;color:#0f2240;margin:0;line-height:1.4;">Dans cette &#233;quipe, mes comp&#233;tences et talents sp&#233;cifiques sont reconnus et mis &#224; profit.</p>
+  </body>
+</foreignObject>
+<rect x="539" y="850" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="563" y="850" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="587" y="850" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="611" y="850" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="635" y="850" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="659" y="850" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="683" y="850" width="16" height="16" rx="2" style="fill:none;stroke:#bbbbbb;stroke-width:1px;"/>
+<rect x="700" y="844" width="74" height="16" rx="3" style="fill:#bbbbbb;"/>
+<text x="737" y="855" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:7px;font-weight:bold;fill:#ffffff;">Direct</text>
+<line x1="54" y1="912" x2="794" y2="912" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<!-- ZONE CALCUL -->
+<rect x="54" y="914" width="240" height="160" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="54" y="914" width="240" height="22" style="fill:#0f2240;"/>
+<text x="174" y="929" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">CALCUL DU SCORE</text>
+<text x="72" y="954" style="font-family:'Georgia',serif;font-size:9px;fill:#0f2240;">1. Inverser Q3 et Q5 :</text>
+<text x="72" y="970" style="font-family:'Georgia',serif;font-size:9px;fill:#0f2240;">   Score corrig&#233; = 8 - score brut</text>
+<text x="72" y="990" style="font-family:'Georgia',serif;font-size:9px;fill:#0f2240;">2. Additionner les 7 scores</text>
+<text x="72" y="1006" style="font-family:'Georgia',serif;font-size:9px;fill:#0f2240;">3. Diviser par 7</text>
+<text x="72" y="1030" style="font-family:'Georgia',serif;font-size:9px;font-weight:bold;fill:#0f2240;">Score &#233;quipe : ___ / 7</text>
+<text x="72" y="1052" style="font-family:'Georgia',serif;font-size:8px;fill:#bbbbbb;font-style:italic;">Source : Edmondson, 1999</text>
+
+<rect x="300" y="914" width="240" height="160" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="300" y="914" width="240" height="22" style="fill:#0f2240;"/>
+<text x="420" y="929" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">NIVEAU GLOBAL</text>
+<rect x="316" y="944" width="14" height="14" rx="2" style="fill:#2a7a2a;"/>
+<text x="338" y="956" style="font-family:'Georgia',serif;font-size:9px;fill:#0f2240;">Sup&#233;rieur &#224; 5.5 : S&#233;curit&#233; &#233;lev&#233;e</text>
+<rect x="316" y="968" width="14" height="14" rx="2" style="fill:#febd10;"/>
+<text x="338" y="980" style="font-family:'Georgia',serif;font-size:9px;fill:#0f2240;">4 &#224; 5.5 : S&#233;curit&#233; mod&#233;r&#233;e</text>
+<rect x="316" y="992" width="14" height="14" rx="2" style="fill:#cc3333;"/>
+<text x="338" y="1004" style="font-family:'Georgia',serif;font-size:9px;fill:#0f2240;">Inf&#233;rieur &#224; 4 : Alerte</text>
+<text x="316" y="1026" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Un score bas = conditions syst&#232;me,</text>
+<text x="316" y="1040" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">pas jugement individuel.</text>
+
+<rect x="546" y="914" width="248" height="160" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="546" y="914" width="248" height="22" style="fill:#0f2240;"/>
+<text x="670" y="929" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;">ACTIONS SI SCORE BAS</text>
+<text x="562" y="952" style="font-family:'Helvetica';font-size:8.5px;fill:#febd10;">01</text>
+<text x="580" y="952" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Intervenir sur le contexte</text>
+<text x="580" y="964" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">avant les pratiques</text>
+<text x="562" y="982" style="font-family:'Helvetica';font-size:8.5px;fill:#febd10;">02</text>
+<text x="580" y="982" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Identifier les incidents</text>
+<text x="580" y="994" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">qui ont appris le silence</text>
+<text x="562" y="1012" style="font-family:'Helvetica';font-size:8.5px;fill:#febd10;">03</text>
+<text x="580" y="1012" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Appliquer un des 6 gestes</text>
+<text x="580" y="1024" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">SM cette semaine (voir FP IV-15.2)</text>
+<text x="562" y="1042" style="font-family:'Helvetica';font-size:8.5px;fill:#febd10;">04</text>
+<text x="580" y="1042" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">Ne jamais corr&#233;ler &#224; des</text>
+<text x="580" y="1054" style="font-family:'Georgia',serif;font-size:8.5px;fill:#0f2240;">&#233;valuations individuelles</text>
+
+<!-- FOOTER -->
+<line x1="54" y1="1080" x2="794" y2="1080" style="stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="1092"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. | Chapitre 15 | p.318-320</text>
+<rect x="372" y="1080" width="46" height="20" rx="10" style="fill:#0f2240;"/>
+<text x="395" y="1094" text-anchor="middle"
+      style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">IV-15.1</text>
+<text x="720" y="1092"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

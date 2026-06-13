@@ -9,10 +9,11 @@ import { CREDIT_ACTIONS } from '@/lib/credits/actions'
 import { trackEvent } from '@/lib/gtag'
 import UpgradeModal from '@/components/credits/UpgradeModal'
 import {
-  canReadFullAnswer,
-  canUnlockAnswer,
+  canReadAnswer,
+  canUnlockWithCredits,
   hasActiveSubscription,
 } from '@/lib/salim-qa/access'
+import type { SalimQaUnlockScope } from '@/lib/salim-qa/unlock-scope'
 import {
   CIBLE_LABELS,
   DIM_LABELS,
@@ -21,6 +22,7 @@ import {
 } from '@/lib/salim-qa/constants'
 import type { SalimQaFacets, SalimQaQuestionPublic } from '@/lib/salim-qa/types'
 import { SalimQaBuyBookButton, SalimQaPaywallBlock } from './SalimQaBookModal'
+import { SalimQaDetailModal } from './SalimQaDetailModal'
 import { SalimQaFicheStack } from './SalimQaFicheViewer'
 
 const VISITOR_KEY = 'salim_qa_visitor_id'
@@ -123,9 +125,8 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
     return { isLoggedIn, creditsRemaining, isUnlimited, isAdmin }
   }, [session?.user, status, apiAccess])
 
-  /** Accès lecture : priorité au flag serveur (évite race credits au chargement) */
-  const canViewFull = (q: SalimQaQuestionPublic) =>
-    q.canReadFull || canReadFullAnswer(access, q.isUnlocked)
+  /** Accès lecture réponse : priorité au flag serveur */
+  const canViewAnswer = (q: SalimQaQuestionPublic) => q.canReadAnswer || canReadAnswer(access, { answer: q.isAnswerUnlocked, fiche: q.isFicheUnlocked })
 
   const hasFullAccess = hasActiveSubscription(access) || !!status?.isAdmin
 
@@ -194,8 +195,8 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             creditsLeft: (n: number) => `${n} crédit${n > 1 ? 's' : ''}`,
             sheetFor: 'Fiche destinée à',
             sheetTitle: 'Fiche pratique',
-            sheetLocked: 'Fiche disponible après déblocage de la réponse.',
-            sheetMissing: 'Fiche référencée — fichier SVG à ajouter dans config/fp/.',
+            sheetLocked: 'Schéma disponible après déblocage (1 crédit).',
+            noSheet: 'Aucune fiche',
           }
         : {
             boxTitle: 'Q&A Lab',
@@ -250,8 +251,8 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             creditsLeft: (n: number) => `${n} credit${n !== 1 ? 's' : ''}`,
             sheetFor: 'Sheet for',
             sheetTitle: 'Practical sheet',
-            sheetLocked: 'Sheet available after unlocking the answer.',
-            sheetMissing: 'Sheet referenced — add SVG file under config/fp/.',
+            sheetLocked: 'Diagram available after unlock (1 credit).',
+            noSheet: 'No sheet',
           },
     [language, activeSearch]
   )
@@ -342,21 +343,17 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
     setUpgradeOpen(true)
   }
 
-  const handleUnlock = async (questionId: string) => {
+  const handleUnlock = async (questionId: string, scope: SalimQaUnlockScope = 'answer') => {
     if (!access.isLoggedIn) return
-    if (!canUnlockAnswer(access, COST)) {
-      openRecharge()
-      return
-    }
 
     setUnlockingId(questionId)
-    trackEvent('salim_qa_unlock_click', { question_id: questionId })
+    trackEvent('salim_qa_unlock_click', { question_id: questionId, scope })
 
     try {
       const res = await fetch('/api/salim-qa/unlock', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ questionId, visitorId: getVisitorId() }),
+        body: JSON.stringify({ questionId, visitorId: getVisitorId(), scope }),
         credentials: 'same-origin',
       })
       const data = await res.json()
@@ -365,6 +362,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
         trackEvent('salim_qa_unlock_denied', {
           question_id: questionId,
           reason: res.status === 401 ? 'not_authenticated' : 'no_credits',
+          scope,
         })
         if (res.status === 403) openRecharge()
         return
@@ -374,12 +372,19 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
       setQuestions((prev) =>
         prev.map((q) =>
           q.id === questionId
-            ? { ...q, isUnlocked: true, canReadFull: true, answerFull: data.answerFull as string }
+            ? {
+                ...q,
+                isAnswerUnlocked: !!data.isAnswerUnlocked,
+                isFicheUnlocked: !!data.isFicheUnlocked,
+                canReadAnswer: !!data.canReadAnswer,
+                canReadFiche: !!data.canReadFiche,
+                answerFull: data.answerFull ?? q.answerFull,
+              }
             : q
         )
       )
       await refresh()
-      trackEvent('salim_qa_unlock_success', { question_id: questionId })
+      trackEvent('salim_qa_unlock_success', { question_id: questionId, scope })
     } finally {
       setUnlockingId(null)
     }
@@ -434,11 +439,20 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
   }
 
   const renderAnswerBlock = (q: SalimQaQuestionPublic) => {
-    const full = canViewFull(q)
+    const full = canViewAnswer(q)
     const excerpt = !full
 
     if (full && q.answerFull) {
-      return <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6 }}>{q.answerFull}</p>
+      return (
+        <>
+          <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6 }}>{q.answerFull}</p>
+          {q.canReadFiche && q.ficheCount > 0 && (
+            <div style={{ marginTop: 14 }}>
+              <SalimQaFicheStack questionId={q.id} count={q.ficheCount} />
+            </div>
+          )}
+        </>
+      )
     }
 
     return (
@@ -458,12 +472,12 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             language={language}
             hasFiche={q.hasFiche}
             page={q.page}
-            canUnlock={canUnlockAnswer(access, COST)}
+            canUnlock={canUnlockWithCredits(access, COST)}
             cost={COST}
             onBookClick={logBookClick}
             onUnlock={() => {
-              if (canUnlockAnswer(access, COST)) {
-                handleUnlock(q.id)
+              if (canUnlockWithCredits(access, COST)) {
+                handleUnlock(q.id, 'answer')
               } else {
                 openRecharge()
               }
@@ -1016,118 +1030,21 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
       </div>
 
       {detail && (
-        <div className="sq-modal-overlay" onClick={() => setDetailId(null)} role="presentation">
-          <div className="sq-modal" onClick={(e) => e.stopPropagation()} role="dialog">
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                padding: '18px 24px',
-                borderBottom: '1px solid rgba(0,0,0,0.07)',
-                position: 'sticky',
-                top: 0,
-                background: 'rgba(255,255,255,0.92)',
-                backdropFilter: 'blur(10px)',
-              }}
-            >
-              <div style={{ display: 'flex', gap: 9, flexWrap: 'wrap', alignItems: 'center' }}>
-                <span className="sq-role-badge">
-                  <span className="sq-role-code">{detail.role}</span>
-                  {ROLE_LABELS[detail.role]?.[language] ?? detail.role}
-                </span>
-                {detail.cible && (
-                  <span style={{ fontSize: 12, color: '#9A9A93' }}>
-                    {CIBLE_LABELS[detail.cible]?.[language] ?? detail.cible}
-                  </span>
-                )}
-                {detail.statutReponse && (
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11.5 }}>
-                    <span
-                      style={{
-                        width: 7,
-                        height: 7,
-                        borderRadius: 999,
-                        background: STATUT_LABELS[detail.statutReponse]?.color ?? '#9A9A93',
-                      }}
-                    />
-                    {STATUT_LABELS[detail.statutReponse]?.[language] ?? detail.statutReponse}
-                  </span>
-                )}
-              </div>
-              <button type="button" onClick={() => setDetailId(null)} style={{ width: 34, height: 34, border: 'none', borderRadius: 999, background: '#F0F0EC', cursor: 'pointer' }}>
-                ✕
-              </button>
-            </div>
-            <div style={{ padding: '28px 32px 34px' }}>
-              <div className="sq-brand-mono" style={{ fontSize: 11, color: '#B6B6AE', marginBottom: 14 }}>
-                {detail.id} · {String(detailIdx + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-              </div>
-              <h2 style={{ margin: '0 0 18px', fontFamily: 'var(--sq-serif)', fontWeight: 400, fontSize: 'clamp(25px,3.6vw,34px)', lineHeight: 1.14 }}>
-                {highlightText(detail.question, terms)}
-              </h2>
-              <div style={{ background: '#FBFBF8', border: '1px solid rgba(0,0,0,0.07)', borderRadius: 16, padding: 20, marginBottom: 24 }}>
-                <div className="sq-brand-mono" style={{ fontSize: 10, color: '#B6A23A', marginBottom: 8 }}>
-                  {copy.terrain}
-                </div>
-                <p style={{ margin: 0, fontFamily: 'var(--sq-serif)', fontStyle: 'italic', fontSize: 19, lineHeight: 1.45 }}>
-                  « {detail.douleur} »
-                </p>
-              </div>
-              <div className="sq-brand-mono" style={{ fontSize: 11, color: '#B6B6AE', marginBottom: 10 }}>
-                {copy.response}
-              </div>
-              {canViewFull(detail) && detail.answerFull ? (
-                <>
-                  <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.66 }}>{detail.answerFull}</p>
-                  {detail.hasFiche && (
-                    <div
-                      style={{
-                        marginTop: 22,
-                        border: '1px solid rgba(0,0,0,0.1)',
-                        borderRadius: 16,
-                        padding: '16px 18px',
-                        background: '#FBFBF9',
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 10 }}>
-                        <span className="sq-brand-mono" style={{ fontSize: 11 }}>
-                          {copy.sheetTitle}
-                        </span>
-                        {detail.ficheDestineeA.length > 0 && (
-                          <span style={{ fontSize: 11.5, color: '#9A9A93' }}>
-                            {copy.sheetFor}: {detail.ficheDestineeA.join(', ')}
-                          </span>
-                        )}
-                      </div>
-                      {detail.ficheCount > 0 ? (
-                        <SalimQaFicheStack questionId={detail.id} count={detail.ficheCount} />
-                      ) : (
-                        <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: '#6B6B66' }}>
-                          {copy.sheetMissing}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div style={{ marginTop: 4 }}>
-                  {renderAnswerBlock(detail)}
-                </div>
-              )}
-              <div style={{ display: 'flex', alignItems: 'center', marginTop: 26, paddingTop: 18, borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                <button type="button" disabled={detailIdx <= 0} onClick={() => detailIdx > 0 && setDetailId(questions[detailIdx - 1].id)} style={{ opacity: detailIdx <= 0 ? 0.5 : 1, padding: '10px 18px', borderRadius: 11, border: '1px solid rgba(0,0,0,0.12)', background: '#fff', cursor: detailIdx <= 0 ? 'default' : 'pointer' }}>
-                  {copy.prev}
-                </button>
-                <span className="sq-brand-mono" style={{ flex: 1, textAlign: 'center', fontSize: 10.5, color: '#B6B6AE' }}>
-                  p. {detail.page ?? '—'}
-                </span>
-                <button type="button" disabled={detailIdx >= questions.length - 1} onClick={() => detailIdx < questions.length - 1 && setDetailId(questions[detailIdx + 1].id)} style={{ opacity: detailIdx >= questions.length - 1 ? 0.5 : 1, padding: '10px 18px', borderRadius: 11, border: '1px solid rgba(0,0,0,0.12)', background: '#fff', cursor: detailIdx >= questions.length - 1 ? 'default' : 'pointer' }}>
-                  {copy.next}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <SalimQaDetailModal
+          detail={detail}
+          detailIdx={detailIdx}
+          total={questions.length}
+          language={language}
+          access={access}
+          terms={terms}
+          unlocking={unlockingId === detail.id}
+          onClose={() => setDetailId(null)}
+          onUnlock={(scope) => handleUnlock(detail.id, scope)}
+          onRecharge={openRecharge}
+          onPrev={() => detailIdx > 0 && setDetailId(questions[detailIdx - 1].id)}
+          onNext={() => detailIdx < questions.length - 1 && setDetailId(questions[detailIdx + 1].id)}
+          highlightText={highlightText}
+        />
       )}
 
       {upgradeOpen && <UpgradeModal open onClose={() => setUpgradeOpen(false)} />}

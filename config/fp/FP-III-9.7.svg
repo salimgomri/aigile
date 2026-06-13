@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  </defs>
+
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <g transform="translate(27,900) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" fill="#0f2240" font-weight="bold"
+          text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+  <g transform="translate(27,60)">
+    <polygon points="0,-18 14,0 0,18 -14,0" fill="#0f2240" opacity="0.85"/>
+    <text font-family="Georgia,serif" font-size="7" fill="#febd10" text-anchor="middle" dy="2.5">S</text>
+  </g>
+  <rect x="54" y="0" width="740" height="80" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb"
+        letter-spacing="1">CHECKLIST D&#201;CISION &gt; COMP&#201;TENCES IA</text>
+  <rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="23" font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240"
+        text-anchor="middle" font-weight="bold">FP III-9.7</text>
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <text x="72" y="58" font-family="Georgia,serif" font-size="22" fill="#0f2240"
+        font-weight="bold">Guru IA : d&#233;tecter et redistribuer</text>
+  <text x="72" y="76" font-family="Georgia,serif" font-size="10" fill="#febd10"
+        font-style="italic">Quand un seul membre ma&#238;trise l&#39;IA, le principe 8 est viol&#233; collectivement.</text>
+  <rect x="54" y="80" width="740" height="72" fill="#febd10"/>
+  <line x1="239" y1="88" x2="239" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="424" y1="88" x2="424" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="609" y1="88" x2="609" y2="144" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <text x="72"  y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">POUR QUI</text>
+  <text x="257" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUOI</text>
+  <text x="442" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">QUAND L&#39;UTILISER</text>
+  <text x="627" y="98" font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240" font-weight="bold" letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="72"  y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">SM / CA</text>
+  <text x="257" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Signaux + checklist rotation prompts</text>
+  <text x="442" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">D&#232;s qu&#39;un pattern de concentration appara&#238;t</text>
+  <text x="627" y="118" font-family="Georgia,serif" font-size="9" fill="#0f2240" font-style="italic">Distribuer la comp&#233;tence IA</text>
+  <line x1="54" y1="1072" x2="794" y2="1072" stroke="#febd10" stroke-width="1"/>
+  <text x="72"  y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 9 : AIgile Manifesto</text>
+  <text x="630" y="1089" font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">Le Syst&#232;me S.A.L.I.M.</text>
+  <rect x="370" y="1076" width="54" height="20" rx="10" fill="#0f2240"/>
+  <text x="397" y="1090" font-family="Helvetica,sans-serif" font-size="10" fill="#febd10"
+        text-anchor="middle" font-weight="bold">9.7</text>
+
+  
+  <rect x="72" y="162" width="676" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="176" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold" letter-spacing="0.8">SIGNAUX DE D&#201;TECTION DU GURU IA</text>
+
+  <rect x="72" y="182" width="676" height="80" fill="#fafaf7" rx="2"/>
+
+  <rect x="84" y="188" width="8" height="8" rx="2" fill="#febd10"/>
+  <text x="100" y="198" font-family="Georgia,serif" font-size="9" fill="#0f2240">Un seul membre r&#233;pond aux questions IA de toute l&#39;&#233;quipe.</text>
+
+  <rect x="84" y="206" width="8" height="8" rx="2" fill="#febd10"/>
+  <text x="100" y="216" font-family="Georgia,serif" font-size="9" fill="#0f2240">Les autres disent &#171; demande &#224; [pr&#233;nom] &#187; d&#232;s qu&#39;un prompt est n&#233;cessaire.</text>
+
+  <rect x="84" y="224" width="8" height="8" rx="2" fill="#febd10"/>
+  <text x="100" y="234" font-family="Georgia,serif" font-size="9" fill="#0f2240">En r&#233;tro, personne d&#39;autre ne peut expliquer comment l&#39;IA a &#233;t&#233; utilis&#233;e.</text>
+
+  <rect x="84" y="242" width="8" height="8" rx="2" fill="#febd10"/>
+  <text x="100" y="252" font-family="Georgia,serif" font-size="9" fill="#0f2240">Le guru IA est absent : le sprint n&#39;utilise plus l&#39;IA du tout.</text>
+
+  <rect x="84" y="258" width="652" height="4" rx="2" fill="#febd10" opacity="0.4"/>
+  <text x="84" y="272" font-family="Georgia,serif" font-size="8.5" fill="#bbbbbb"
+        font-style="italic">
+    Principe 8 : si un seul membre ma&#238;trise l&#39;IA dans l&#39;&#233;quipe, le principe est viol&#233; collectivement.
+  </text>
+
+  
+  <rect x="72" y="286" width="676" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="300" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold" letter-spacing="0.8">CHECKLIST ROTATION DES PROMPTS</text>
+
+  <rect x="72" y="306" width="676" height="24" fill="#0f2240" rx="2" opacity="0.7"/>
+  <text x="84"  y="322" font-family="Helvetica,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">#</text>
+  <text x="110" y="322" font-family="Helvetica,sans-serif" font-size="8" fill="#ffffff" font-weight="bold">ACTION</text>
+  <text x="560" y="322" font-family="Helvetica,sans-serif" font-size="8" fill="#febd10" font-weight="bold" text-anchor="middle">FAIT CE SPRINT ?</text>
+
+  <rect x="72" y="330" width="676" height="54" fill="#ffffff"/>
+  <line x1="72" y1="384" x2="748" y2="384" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="84" y="352" font-family="Helvetica,sans-serif" font-size="10"
+        fill="#febd10" font-weight="bold">01</text>
+  <text x="110" y="350" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-weight="bold">Identifier qui tient le prompt dans chaque c&#233;r&#233;monie ce sprint</text>
+  <text x="110" y="364" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Rendre visible la concentration avant de la redistribuer.</text>
+  <rect x="536" y="346" width="20" height="20" rx="4"
+        fill="none" stroke="#bbbbbb" stroke-width="1.2"/>
+  <text x="572" y="358" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">OUI</text>
+  <rect x="604" y="346" width="20" height="20" rx="4"
+        fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <text x="638" y="358" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">NON</text>
+
+  <rect x="72" y="384" width="676" height="54" fill="#fafaf7"/>
+  <line x1="72" y1="438" x2="748" y2="438" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="84" y="406" font-family="Helvetica,sans-serif" font-size="10"
+        fill="#febd10" font-weight="bold">02</text>
+  <text x="110" y="404" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-weight="bold">Assigner un &#171; titulaire du prompt &#187; diff&#233;rent la semaine prochaine</text>
+  <text x="110" y="418" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Pas la personne la plus &#224; l&#39;aise. Justement celle qui l&#39;est moins.</text>
+  <rect x="536" y="400" width="20" height="20" rx="4"
+        fill="none" stroke="#bbbbbb" stroke-width="1.2"/>
+  <text x="572" y="412" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">OUI</text>
+  <rect x="604" y="400" width="20" height="20" rx="4"
+        fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <text x="638" y="412" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">NON</text>
+
+  <rect x="72" y="438" width="676" height="54" fill="#ffffff"/>
+  <line x1="72" y1="492" x2="748" y2="492" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="84" y="460" font-family="Helvetica,sans-serif" font-size="10"
+        fill="#febd10" font-weight="bold">03</text>
+  <text x="110" y="458" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-weight="bold">D&#233;briefer en r&#233;tro : qu&#39;a appris le nouveau titulaire ?</text>
+  <text x="110" y="472" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">L&#39;apprentissage se passe dans le faire, pas dans l&#39;observation.</text>
+  <rect x="536" y="454" width="20" height="20" rx="4"
+        fill="none" stroke="#bbbbbb" stroke-width="1.2"/>
+  <text x="572" y="466" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">OUI</text>
+  <rect x="604" y="454" width="20" height="20" rx="4"
+        fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <text x="638" y="466" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">NON</text>
+
+  <rect x="72" y="492" width="676" height="54" fill="#fafaf7"/>
+  <line x1="72" y1="546" x2="748" y2="546" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="84" y="514" font-family="Helvetica,sans-serif" font-size="10"
+        fill="#febd10" font-weight="bold">04</text>
+  <text x="110" y="512" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-weight="bold">Chaque membre peut expliquer 1 prompt qu&#39;il a utilis&#233; ce sprint</text>
+  <text x="110" y="526" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Crit&#232;re de distribution : pas &#171; tout le monde sait tout &#187; mais &#171; chacun a pratiqu&#233; &#187;.</text>
+  <rect x="536" y="508" width="20" height="20" rx="4"
+        fill="none" stroke="#bbbbbb" stroke-width="1.2"/>
+  <text x="572" y="520" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">OUI</text>
+  <rect x="604" y="508" width="20" height="20" rx="4"
+        fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <text x="638" y="520" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">NON</text>
+
+  <rect x="72" y="546" width="676" height="54" fill="#ffffff"/>
+  <line x1="72" y1="600" x2="748" y2="600" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="84" y="568" font-family="Helvetica,sans-serif" font-size="10"
+        fill="#febd10" font-weight="bold">05</text>
+  <text x="110" y="566" font-family="Georgia,serif" font-size="9.5"
+        fill="#0f2240" font-weight="bold">Le guru IA n&#39;est pas exclu : il devient mentor, pas ex&#233;cutant</text>
+  <text x="110" y="580" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">Son r&#244;le &#233;volue : il accompagne la mont&#233;e en comp&#233;tence, pas la d&#233;pendance.</text>
+  <rect x="536" y="562" width="20" height="20" rx="4"
+        fill="none" stroke="#bbbbbb" stroke-width="1.2"/>
+  <text x="572" y="574" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">OUI</text>
+  <rect x="604" y="562" width="20" height="20" rx="4"
+        fill="none" stroke="#cc3333" stroke-width="1.2"/>
+  <text x="638" y="574" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#bbbbbb" text-anchor="middle">NON</text>
+
+  
+  <rect x="72" y="610" width="676" height="20" fill="#0f2240" rx="2"/>
+  <text x="82" y="624" font-family="Helvetica,sans-serif" font-size="8"
+        fill="#ffffff" font-weight="bold" letter-spacing="0.8">CRIT&#200;RE DE SUCC&#200;S</text>
+
+  <rect x="72" y="630" width="676" height="76" fill="#fafaf7" rx="2"/>
+  <text x="84" y="648" font-family="Georgia,serif" font-size="9.5" fill="#0f2240">
+    Chaque membre de l&#39;&#233;quipe est capable d&#39;utiliser au moins un outil IA
+  </text>
+  <text x="84" y="662" font-family="Georgia,serif" font-size="9.5" fill="#0f2240">
+    sur sa t&#226;che principale, sans demander de l&#39;aide au guru IA.
+  </text>
+  <line x1="84" y1="672" x2="736" y2="672" stroke="#febd10" stroke-width="0.6"/>
+  <text x="84" y="686" font-family="Georgia,serif" font-size="8.5"
+        fill="#bbbbbb" font-style="italic">
+    La r&#233;ponse n&#39;est pas une formation obligatoire. C&#39;est une rotation :
+    chaque sprint, quelqu&#39;un d&#39;autre tient le prompt.
+  </text>
+
+  <!-- Règle d'or -->
+  <rect x="72" y="720" width="676" height="32" fill="#0f2240" rx="2"/>
+  <text x="410" y="732" font-family="Georgia,serif" font-size="9"
+        fill="#febd10" text-anchor="middle" font-style="italic">
+    IA et comp&#233;tences humaines ne sont pas antagonistes.
+  </text>
+  <text x="410" y="746" font-family="Georgia,serif" font-size="9"
+        fill="#ffffff" text-anchor="middle">
+    Utilise l&#39;IA pour acc&#233;l&#233;rer, pas pour remplacer le d&#233;veloppement des comp&#233;tences. (Principe 8)
+  </text>
+
+</svg>

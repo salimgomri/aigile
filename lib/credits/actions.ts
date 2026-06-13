@@ -31,6 +31,8 @@ export const CREDIT_ACTIONS = {
   scoring_deliverable: { cost: 2, label: 'Scoring livraison', tool: '/scoring-deliverable' },
   westrum_submit: { cost: 0, label: 'Westrum Culture Survey', tool: '/dashboard/westrum' },
   salim_qa_answer: { cost: 1, label: 'Réponse S.A.L.I.M. Q&A Lab', tool: '/salim-qa' },
+  salim_qa_fiche: { cost: 1, label: 'Fiche S.A.L.I.M. Q&A Lab', tool: '/salim-qa' },
+  salim_qa_bundle: { cost: 2, label: 'Réponse + fiche S.A.L.I.M. Q&A Lab', tool: '/salim-qa' },
 } as const
 
 export type CreditAction = keyof typeof CREDIT_ACTIONS

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+
+  <!-- FOND + BANDE GOLD -->
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+
+  <!-- TEXTE VERTICAL BANDE -->
+  <g transform="translate(27,1103) rotate(-90)">
+    <text font-family="Georgia,serif" font-size="11" font-weight="700"
+          fill="#0f2240" text-anchor="middle">LE SYST&#200;ME S.A.L.I.M.</text>
+  </g>
+
+  <!-- HEADER BLANC -->
+  <rect x="54" y="0" width="740" height="74" fill="#ffffff"/>
+  <text x="72" y="18"
+        font-family="Helvetica,sans-serif" font-size="8.5" fill="#bbbbbb">TEMPLATE PROMPT IA &gt; SPRINT PLANNING</text>
+
+  <!-- BADGE FP -->
+  <rect x="686" y="7" width="94" height="22" rx="11" fill="#febd10"/>
+  <text x="733" y="22" text-anchor="middle"
+        font-family="Helvetica,sans-serif" font-size="9.5" fill="#0f2240">FP III-10.2</text>
+
+  <!-- FILET GOLD HEADER -->
+  <line x1="72" y1="27" x2="766" y2="27" stroke="#febd10" stroke-width="1"/>
+
+  <!-- TITRE PRINCIPAL -->
+  <text x="72" y="54"
+        font-family="Georgia,serif" font-size="26" font-weight="700" fill="#0f2240">P3 : Risk Scanner</text>
+
+  <!-- SOUS-TITRE ITALIC -->
+  <text x="72" y="70"
+        font-family="Georgia,serif" font-size="11" font-style="italic" fill="#febd10">Un prompt structur&#233; est une hypoth&#232;se. V&#233;rifie le r&#233;sultat sur le terrain.</text>
+
+  <!-- BLOC 4 CHAMPS GOLD -->
+  <rect x="54" y="78" width="740" height="66" fill="#febd10"/>
+
+  <!-- SEPARATEURS VERTICAUX SIMUL&#201;S -->
+  <line x1="239" y1="86" x2="239" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="424" y1="86" x2="424" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+  <line x1="609" y1="86" x2="609" y2="136" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+
+  <text x="72" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">POUR QUI</text>
+  <text x="72" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">SM / PO / DEV</text>
+
+  <text x="252" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">QUOI</text>
+  <text x="252" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">Identifier les risques d'une story avant le Sprint Planning</text>
+
+  <text x="437" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">QUAND L'UTILISER</text>
+  <text x="437" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">Seul, avant la r&#233;union, en amont de la Partie 1 du planning</text>
+
+  <text x="622" y="97"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#0f2240"
+        letter-spacing="1.5">VALEUR APPORT&#201;E</text>
+  <text x="622" y="113"
+        font-family="Georgia,serif" font-size="9" font-style="italic"
+        fill="#0f2240" opacity="0.75">Poser les bonnes questions &#224; l'&#233;quipe avant que le planning commence</text>
+
+  <rect x="66" y="154" width="660" height="116" fill="#fafaf7" rx="3"/>
+  <rect x="66" y="154" width="660" height="22" fill="#0f2240" rx="3"/>
+  <rect x="66" y="165" width="660" height="11" fill="#0f2240"/>
+  <text x="82" y="169" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">01</text>
+  <text x="108" y="169" font-family="Helvetica,sans-serif" font-size="9"
+        font-weight="700" fill="#ffffff">CONTEXTE</text>
+  <text x="300" y="169" font-family="Georgia,serif" font-size="8.5"
+        font-style="italic" fill="#aaaaaa">Quel est l'objectif et le contexte pr&#233;cis ?</text>
+  <text x="82" y="188" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Nous utilisons le Risk Scanner pour identifier les risques d'une story avant le Sprint Planning.</text>
+  <text x="82" y="204" font-family="Georgia,serif"
+        font-size="9" fill="#444444">&#201;quipe de [N] d&#233;veloppeurs, sprint de 2 semaines, produit [description].</text>
+
+  <rect x="66" y="276" width="660" height="116" fill="#fafaf7" rx="3"/>
+  <rect x="66" y="276" width="660" height="22" fill="#0f2240" rx="3"/>
+  <rect x="66" y="287" width="660" height="11" fill="#0f2240"/>
+  <text x="82" y="291" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">02</text>
+  <text x="108" y="291" font-family="Helvetica,sans-serif" font-size="9"
+        font-weight="700" fill="#ffffff">T&#194;CHE</text>
+  <text x="300" y="291" font-family="Georgia,serif" font-size="8.5"
+        font-style="italic" fill="#aaaaaa">Quelle t&#226;che doit r&#233;aliser l'IA ?</text>
+  <text x="82" y="310" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Analyse cette user story : [story].</text>
+  <text x="82" y="326" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Identifie : (1) les d&#233;pendances externes probables, (2) les risques techniques</text>
+  <text x="82" y="342" font-family="Georgia,serif"
+        font-size="9" fill="#444444">les plus fr&#233;quents pour ce type de fonctionnalit&#233;, (3) les questions &#224; poser</text>
+  <text x="82" y="358" font-family="Georgia,serif"
+        font-size="9" fill="#444444">au PO avant d'estimer.</text>
+
+  <rect x="66" y="398" width="660" height="116" fill="#fafaf7" rx="3"/>
+  <rect x="66" y="398" width="660" height="22" fill="#0f2240" rx="3"/>
+  <rect x="66" y="409" width="660" height="11" fill="#0f2240"/>
+  <text x="82" y="413" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">03</text>
+  <text x="108" y="413" font-family="Helvetica,sans-serif" font-size="9"
+        font-weight="700" fill="#ffffff">CONTRAINTES</text>
+  <text x="300" y="413" font-family="Georgia,serif" font-size="8.5"
+        font-style="italic" fill="#aaaaaa">Quelles sont les contraintes, r&#232;gles ou limites ?</text>
+  <text x="82" y="432" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Contexte technique : [d&#233;crire l'environnement en 3 lignes].</text>
+  <text x="82" y="448" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Ne g&#233;n&#232;re pas de risques organisationnels ni politiques.</text>
+  <text x="82" y="464" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Limite : les risques g&#233;n&#233;r&#233;s sont statistiques, pas sp&#233;cifiques &#224; notre syst&#232;me.</text>
+
+  <rect x="66" y="520" width="660" height="116" fill="#fafaf7" rx="3"/>
+  <rect x="66" y="520" width="660" height="22" fill="#0f2240" rx="3"/>
+  <rect x="66" y="531" width="660" height="11" fill="#0f2240"/>
+  <text x="82" y="535" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">04</text>
+  <text x="108" y="535" font-family="Helvetica,sans-serif" font-size="9"
+        font-weight="700" fill="#ffffff">FORMAT SOUHAIT&#201;</text>
+  <text x="300" y="535" font-family="Georgia,serif" font-size="8.5"
+        font-style="italic" fill="#aaaaaa">Dans quel format souhaites-tu la r&#233;ponse ?</text>
+  <text x="82" y="554" font-family="Georgia,serif"
+        font-size="9" fill="#444444">3 sections num&#233;rot&#233;es :</text>
+  <text x="82" y="570" font-family="Georgia,serif"
+        font-size="9" fill="#444444">1. D&#233;pendances externes (max 3 items)</text>
+  <text x="82" y="586" font-family="Georgia,serif"
+        font-size="9" fill="#444444">2. Risques techniques (max 5 items)</text>
+  <text x="82" y="602" font-family="Georgia,serif"
+        font-size="9" fill="#444444">3. Questions &#224; poser au PO (max 4 questions)</text>
+
+  <rect x="66" y="642" width="660" height="116" fill="#fafaf7" rx="3"/>
+  <rect x="66" y="642" width="660" height="22" fill="#0f2240" rx="3"/>
+  <rect x="66" y="653" width="660" height="11" fill="#0f2240"/>
+  <text x="82" y="657" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">05</text>
+  <text x="108" y="657" font-family="Helvetica,sans-serif" font-size="9"
+        font-weight="700" fill="#ffffff">UTILISATION DE L'OUTPUT</text>
+  <text x="300" y="657" font-family="Georgia,serif" font-size="8.5"
+        font-style="italic" fill="#aaaaaa">Comment partager avec l'&#233;quipe ?</text>
+  <text x="82" y="676" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Partager comme proposition, pas comme d&#233;cision.</text>
+  <text x="82" y="692" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Observer la discussion. Noter ce qui est gard&#233;, modifi&#233;, rejet&#233;.</text>
+  <text x="82" y="708" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Ce que l'&#233;quipe rejette est aussi une information.</text>
+
+  <rect x="66" y="764" width="660" height="116" fill="#fafaf7" rx="3"/>
+  <rect x="66" y="764" width="660" height="22" fill="#0f2240" rx="3"/>
+  <rect x="66" y="775" width="660" height="11" fill="#0f2240"/>
+  <text x="82" y="779" font-family="Helvetica,sans-serif" font-size="10"
+        font-weight="700" fill="#febd10">06</text>
+  <text x="108" y="779" font-family="Helvetica,sans-serif" font-size="9"
+        font-weight="700" fill="#ffffff">ANCRAGE EMPIRIQUE</text>
+  <text x="300" y="779" font-family="Georgia,serif" font-size="8.5"
+        font-style="italic" fill="#aaaaaa">Sur quelle observation ce prompt est-il bas&#233; ?</text>
+  <text x="82" y="798" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Observ&#233; : les d&#233;pendances non identifi&#233;es avant le planning</text>
+  <text x="82" y="814" font-family="Georgia,serif"
+        font-size="9" fill="#444444">sont la premi&#232;re cause de sprint inachev&#233;.</text>
+  <text x="82" y="830" font-family="Georgia,serif"
+        font-size="9" fill="#444444">Le Risk Scanner ne remplace pas le jugement d'&#233;quipe : il l'anticipe.</text>
+
+  <rect x="66" y="896" width="660" height="88" fill="#0f2240" rx="4"/>
+  <text x="396" y="914" text-anchor="middle" font-family="Helvetica,sans-serif"
+        font-size="9" font-weight="700" fill="#febd10">BONNES PRATIQUES D'USAGE</text>
+  <text x="82" y="932" font-family="Georgia,serif" font-size="9" fill="#ffffff">
+    Utilise le Risk Scanner seul, avant la r&#233;union.
+  </text>
+  <text x="82" y="948" font-family="Georgia,serif" font-size="9" fill="#ffffff">
+    Prends les 3 risques les plus pertinents. Pose-les en question ouverte pendant la Partie 2.
+  </text>
+  <text x="82" y="964" font-family="Georgia,serif" font-size="9" fill="#ffffff">
+    Si rien n'est rejet&#233; par l'&#233;quipe, soit le prompt est excellent, soit personne ne l'a vraiment lu.
+  </text>
+  <text x="82" y="980" font-family="Georgia,serif" font-size="8.5"
+        font-style="italic" fill="#febd10">P13 &#224; P25 disponibles sur aigile.lu</text>
+
+  <!-- FOOTER -->
+  <line x1="66" y1="1068" x2="752" y2="1068" stroke="#febd10" stroke-width="0.8"/>
+  <rect x="388" y="1074" width="58" height="20" rx="10" fill="#0f2240"/>
+  <text x="417" y="1088" text-anchor="middle"
+        font-family="Helvetica,sans-serif" font-size="9" fill="#febd10">III-10.2</text>
+  <text x="72" y="1089"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. p.231</text>
+  <text x="677" y="1089"
+        font-family="Helvetica,sans-serif" font-size="7.5" fill="#bbbbbb">aigile.lu</text>
+
+</svg>

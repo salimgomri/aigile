@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+<rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+<rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+<text transform="translate(13,900) rotate(-90)"
+      font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240"
+      letter-spacing="2">LE SYST&#200;ME S.A.L.I.M.</text>
+<g transform="translate(8,60)">
+  <circle cx="18" cy="18" r="16" fill="none" stroke="#0f2240" stroke-width="2"/>
+  <circle cx="18" cy="18" r="11" fill="none" stroke="#0f2240" stroke-width="1.5"/>
+  <circle cx="18" cy="18" r="6"  fill="none" stroke="#0f2240" stroke-width="1"/>
+  <circle cx="18" cy="18" r="2"  fill="#0f2240"/>
+</g>
+<rect x="54" y="0" width="740" height="72" fill="#ffffff"/>
+<text x="72" y="28" font-family="Helvetica,Arial,sans-serif" font-size="8.5" fill="#bbbbbb">CHECKLIST D&#201;CISION . PAIR PROGRAMMING IA</text>
+<rect x="686" y="8" width="94" height="22" rx="11" fill="#febd10"/>
+<text x="733" y="23" font-family="Helvetica,Arial,sans-serif" font-size="9.5" fill="#0f2240" text-anchor="middle" font-weight="bold">FP V-16.6</text>
+<line x1="72" y1="36" x2="766" y2="36" stroke="#febd10" stroke-width="1"/>
+<text x="72" y="58" font-family="Georgia,serif" font-size="26" fill="#0f2240" font-weight="bold">Pair programming &#224; l'&#232;re IA</text>
+<text x="72" y="71" font-family="EB Garamond,Georgia,serif" font-size="11" font-style="italic" fill="#febd10">Le savoir ne meurt pas avec le sprint. Il circule ou il dispara&#238;t.</text>
+<rect x="54" y="78" width="740" height="66" fill="#febd10"/>
+<line x1="239" y1="86" x2="239" y2="136" stroke="#ffffff" stroke-width="0.6" opacity="0.5"/>
+<line x1="424" y1="86" x2="424" y2="136" stroke="#ffffff" stroke-width="0.6" opacity="0.5"/>
+<line x1="609" y1="86" x2="609" y2="136" stroke="#ffffff" stroke-width="0.6" opacity="0.5"/>
+<text x="72"  y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">POUR QUI</text>
+<text x="252" y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">QUOI</text>
+<text x="437" y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">QUAND L'UTILISER</text>
+<text x="622" y="97" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#0f2240" letter-spacing="1.5" font-weight="bold">VALEUR APPORT&#201;E</text>
+<text x="72"  y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">SM / DEV / CA</text>
+<text x="252" y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">R&#244;les Driver/Navigator IA + 4 signaux dysfonction</text>
+<text x="437" y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">D&#232;s que l'&#233;quipe code avec un outil IA</text>
+<text x="622" y="113" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#0f2240" opacity="0.85">&#201;liminer le bus factor invisible</text>
+<rect x="66" y="154" width="662" height="36" rx="4" fill="#febd10" opacity="0.12" stroke="#febd10" stroke-width="1"/><text x="397" y="170" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240" text-anchor="middle">LE PRINCIPE QUE PERSONNE N'APPLIQUE SPONTAN&#201;MENT</text><text x="397" y="184" font-family="EB Garamond,Georgia,serif" font-size="10" font-style="italic" fill="#0f2240" text-anchor="middle">Le junior drive. Le senior navigue. La diff&#233;rence entre regarder quelqu'un nager et apprendre &#224; nager.</text>
+<rect x="66" y="198" width="320" height="22" rx="3" fill="#0f2240"/>
+<text x="76" y="213" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#ffffff" letter-spacing="0.5">DRIVER : tient le clavier</text>
+<rect x="66" y="220" width="320" height="108" rx="0" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.8"/>
+<rect x="406" y="198" width="322" height="22" rx="3" fill="#0f2240"/>
+<text x="416" y="213" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#ffffff" letter-spacing="0.5">NAVIGATOR : pense au-dessus</text>
+<rect x="406" y="220" width="322" height="108" rx="0" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.8"/><text x="76" y="232" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">&#201;crit le code.</text>
+<text x="76" y="245" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Formule les prompts.</text>
+<text x="76" y="258" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Accepte ou refuse les suggestions IA.</text>
+<text x="76" y="271" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Prend les d&#233;cisions et les assume.</text>
+<text x="76" y="284" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333"></text>
+<text x="76" y="297" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Rotation toutes les 25 &#224; 30 minutes.</text>
+<text x="76" y="310" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Pas 'quand c'est naturel'. Toutes les 25 min.</text>
+<text x="416" y="232" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">V&#233;rifie que l'IA propose ce qu'il faut.</text>
+<text x="416" y="245" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">Pose 2 questions &#224; voix haute :</text>
+<text x="416" y="258" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">  'Ce bout fait bien ce que le ALORS dit ?'</text>
+<text x="416" y="271" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">  'L'IA avait le bon contexte pour &#231;a ?'</text>
+<text x="416" y="284" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333"></text>
+<text x="416" y="297" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">V&#233;rifie que le Driver ne valide pas</text>
+<text x="416" y="310" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#333333">par r&#233;flexe.</text>
+<rect x="66" y="336" width="662" height="34" rx="3" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.8"/><text x="76" y="351" font-family="Helvetica,Arial,sans-serif" font-size="8.5" font-weight="bold" fill="#0f2240">EN REMOTE</text><text x="180" y="351" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#555555">VS Code Live Share ou JetBrains Code With Me. Signal Slack toutes les 25 min. Session : 90 min max (pas 2h).</text><rect x="66" y="380" width="662" height="22" fill="#0f2240"/><text x="397" y="395" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#febd10" text-anchor="middle">LES 4 SIGNAUX QUE &#199;A NE FONCTIONNE PAS</text><rect x="66" y="402" width="662" height="50" fill="#ffffff" stroke="#e0e0e0" stroke-width="0.5"/><rect x="66" y="402" width="5" height="50" fill="#cc3333"/><text x="84" y="422" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="bold" fill="#cc3333">01</text><text x="108" y="422" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Le senior garde toujours le clavier.</text><text x="108" y="437" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">Rotation non respect&#233;e. Le junior d&#233;croche. Intervention SM : timer visible, rappel de la r&#232;gle, pas de n&#233;gociation.</text><rect x="66" y="452" width="662" height="50" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.5"/><rect x="66" y="452" width="5" height="50" fill="#cc3333"/><text x="84" y="472" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="bold" fill="#cc3333">02</text><text x="108" y="472" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">Personne ne parle.</text><text x="108" y="487" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">Driver code en silence, Navigator consulte ses messages. Deux personnes dans la m&#234;me pi&#232;ce qui travaillent s&#233;par&#233;ment. La connaissance ne bouge pas.</text><rect x="66" y="502" width="662" height="50" fill="#ffffff" stroke="#e0e0e0" stroke-width="0.5"/><rect x="66" y="502" width="5" height="50" fill="#e07020"/><text x="84" y="522" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="bold" fill="#e07020">03</text><text x="108" y="522" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">La session d&#233;passe 2 heures sans pause.</text><text x="108" y="537" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">Fatigue cognitive. Ni le Driver ni le Navigator ne voient plus les erreurs. R&#232;gle : 2 heures max, pause 10 min, rotation &#224; la reprise.</text><rect x="66" y="552" width="662" height="50" fill="#f8f8f5" stroke="#e0e0e0" stroke-width="0.5"/><rect x="66" y="552" width="5" height="50" fill="#cc3333"/><text x="84" y="572" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="bold" fill="#cc3333">04</text><text x="108" y="572" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#0f2240">L'IA remplace le dialogue.</text><text x="108" y="587" font-family="EB Garamond,Georgia,serif" font-size="9" font-style="italic" fill="#555555">Driver et Navigator acceptent les suggestions sans les discuter. Le plus fr&#233;quent depuis la g&#233;n&#233;ralisation des outils IA. Le plus difficile &#224; d&#233;tecter de l'ext&#233;rieur.</text><rect x="66" y="610" width="662" height="44" rx="4" fill="#f8f8f5" stroke="#febd10" stroke-width="0.8"/><text x="76" y="625" font-family="Helvetica,Arial,sans-serif" font-size="8.5" font-weight="bold" fill="#0f2240">MOB PROGRAMMING : pour les d&#233;cisions d'architecture</text><text x="76" y="639" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#555555" font-style="italic">Toute l'&#233;quipe, un seul &#233;cran, un seul clavier qui tourne toutes les 15 minutes. L'IA visible pour tous.</text><text x="76" y="651" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#555555" font-style="italic">1 &#224; 2 fois par sprint max. Le savoir circule sans documentation.</text><rect x="66" y="666" width="662" height="36" rx="4" fill="#0f2240"/><text x="397" y="682" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="bold" fill="#febd10" text-anchor="middle">SIGNAL DE SUCC&#200;S</text><text x="397" y="696" font-family="EB Garamond,Georgia,serif" font-size="9" fill="#ffffff" text-anchor="middle">Les devs qui ont pair&#233; peuvent expliquer ce qu'ils ont fait &#224; un 3&#232;me dev sans documentation.</text>
+<line x1="66" y1="1068" x2="752" y2="1068" stroke="#febd10" stroke-width="0.8"/>
+<rect x="368" y="1074" width="58" height="20" rx="10" fill="#0f2240"/>
+<text x="397" y="1088" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#febd10" text-anchor="middle" font-weight="bold">V-16.6</text>
+<text x="72"  y="1089" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 16</text>
+<text x="677" y="1089" font-family="Helvetica,Arial,sans-serif" font-size="7.5" fill="#bbbbbb">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

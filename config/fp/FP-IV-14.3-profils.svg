@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 794 1123" width="794" height="1123"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>FP IV-14.3 Les 4 profils de manager</title>
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+  </defs>
+  <rect x="0" y="0" width="794" height="1123" fill="#ffffff"/>
+
+  <!-- BANDE LATERALE -->
+  <rect x="0" y="0" width="54" height="1123" fill="#febd10"/>
+  <!-- LOGO CERCLES CONCENTRIQUE -->
+  <g transform="translate(27,80)">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#0f2240" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#0f2240" stroke-width="1.2"/>
+    <circle cx="0" cy="0" r="8"  fill="none" stroke="#0f2240" stroke-width="1"/>
+    <circle cx="0" cy="0" r="3"  fill="#0f2240"/>
+    <!-- silhouette -->
+    <ellipse cx="0" cy="-30" rx="5" ry="6" fill="#0f2240"/>
+    <line x1="0" y1="-24" x2="0" y2="-10" stroke="#0f2240" stroke-width="2.5"/>
+    <line x1="-8" y1="-20" x2="8" y2="-20" stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="-6" y2="2"  stroke="#0f2240" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="6"  y2="2"  stroke="#0f2240" stroke-width="2"/>
+  </g>
+  <!-- TEXTE VERTICAL -->
+  <text transform="translate(17,1050) rotate(-90)"
+        font-family="Georgia,serif" font-size="10" font-weight="bold"
+        fill="#0f2240" letter-spacing="2">
+    LE SYST&#200;ME S.A.L.I.M.
+  </text>
+  <!-- HEADER -->
+  <rect x="54" y="0" width="740" height="75" fill="#ffffff"/>
+  <text x="72" y="22" font-family="Helvetica,Arial,sans-serif" font-size="8" fill="#bbbbbb"
+        letter-spacing="1">RELATION MANAGER > PROFILS</text>
+  <!-- Badge FP -->
+  <rect x="695" y="8" width="90" height="22" rx="11" fill="#febd10"/>
+  <text x="740" y="23" text-anchor="middle" font-family="Helvetica,Arial,sans-serif"
+        font-size="9" font-weight="bold" fill="#0f2240">FP IV-14.3</text>
+  <!-- Filet gold -->
+  <line x1="72" y1="30" x2="748" y2="30" stroke="#febd10" stroke-width="1"/>
+  <!-- Titre -->
+  <text x="72" y="58" font-family="Georgia,serif" font-size="24" font-weight="bold"
+        fill="#0f2240">Les 4 profils de manager</text>
+  <!-- Sous-titre -->
+  <text x="72" y="74" font-family="Georgia,serif" font-size="10" font-style="italic"
+        fill="#febd10">Reconna&#238;tre le profil &#233;vite d&#8217;utiliser la mauvaise approche.</text>
+  <!-- BLOC 4 CHAMPS -->
+  <rect x="54" y="78" width="740" height="68" fill="#febd10"/>
+  <text x="72" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">POUR QUI</text>
+  <text x="72" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">SM, CA</text>
+  <line x1="252" y1="85" x2="252" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="257" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUOI</text>
+  <text x="257" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">Identifier le profil et</text>
+  <text x="257" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">choisir l&#8217;approche</text>
+  <text x="257" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">adapt&#233;e</text>
+  <line x1="437" y1="85" x2="437" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="442" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">QUAND L&#39;UTILISER</text>
+  <text x="442" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">D&#232;s le premier sprint</text>
+  <text x="442" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">avec un nouveau manager,</text>
+  <text x="442" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">avant toute escalade</text>
+  <line x1="622" y1="85" x2="622" y2="138" stroke="#0f2240" stroke-width="0.5" opacity="0.3"/>
+  <text x="627" y="96" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#0f2240" letter-spacing="1">VALEUR APPORT&#201;E</text>
+  <text x="627" y="110" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">&#201;vite les conflits</text>
+  <text x="627" y="122" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">inutiles. La bonne</text>
+  <text x="627" y="134" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#0f2240" opacity="0.85">approche d&#233;pend du</text>
+
+  <rect x="72" y="162" width="334" height="192" fill="#fafaf7" rx="4"/>
+  <rect x="72" y="162" width="334" height="26" fill="#0f2240" rx="4"/>
+  <rect x="72" y="176" width="334" height="12" fill="#0f2240"/>
+  <text x="82" y="180" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#febd10">PROFIL 1</text>
+  <text x="239" y="202" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240">Le manager r&#233;sultat-orient&#233;</text>
+  <text x="82" y="220" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">CARACTÉRISTIQUES</text>
+  <circle cx="86" cy="230" r="2.5" fill="#febd10"/>
+  <text x="94" y="234" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Ne s&#8217;int&#233;resse pas au comment.</text>
+  <circle cx="86" cy="243" r="2.5" fill="#febd10"/>
+  <text x="94" y="247" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Veut savoir si &#231;a avance.</text>
+  <circle cx="86" cy="256" r="2.5" fill="#febd10"/>
+  <text x="94" y="260" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Lit le dashboard en 30 secondes.</text>
+  <text x="82" y="272" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">APPROCHE SM</text>
+  <text x="86" y="284" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; M&#233;triques claires, escalades factuelles.</text>
+  <text x="86" y="297" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; D&#233;cisions demand&#233;es explicitement.</text>
+  <text x="86" y="310" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Jamais expliquer Scrum : montrer les r&#233;sultats.</text>
+  <rect x="78" y="326" width="322" height="22" fill="#0f2240" rx="2"/>
+  <text x="84" y="336" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="bold" fill="#febd10">PIÈGE : </text>
+  <text x="124" y="336" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">Chercher sa validation sur les pratiques</text>
+  <text x="84" y="348" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">agiles. Il s&#8217;en fout.</text>
+  <rect x="414" y="162" width="334" height="192" fill="#fafaf7" rx="4"/>
+  <rect x="414" y="162" width="334" height="26" fill="#0f2240" rx="4"/>
+  <rect x="414" y="176" width="334" height="12" fill="#0f2240"/>
+  <text x="424" y="180" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#febd10">PROFIL 2</text>
+  <text x="581" y="202" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240">Le manager process-anxieux</text>
+  <text x="424" y="220" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">CARACTÉRISTIQUES</text>
+  <circle cx="428" cy="230" r="2.5" fill="#febd10"/>
+  <text x="436" y="234" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Vient souvent d&#8217;un monde waterfall.</text>
+  <circle cx="428" cy="243" r="2.5" fill="#febd10"/>
+  <text x="436" y="247" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Demande des plannings longue distance.</text>
+  <circle cx="428" cy="256" r="2.5" fill="#febd10"/>
+  <text x="436" y="260" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">A peur de l&#8217;incertitude.</text>
+  <text x="424" y="272" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">APPROCHE SM</text>
+  <text x="428" y="284" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Roadmap horizon glissant (Roman Pichler).</text>
+  <text x="428" y="297" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Transparence totale sur l&#8217;incertitude.</text>
+  <text x="428" y="310" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Sprint Goal comme ancre de pr&#233;visibilit&#233;.</text>
+  <rect x="420" y="326" width="322" height="22" fill="#0f2240" rx="2"/>
+  <text x="426" y="336" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="bold" fill="#febd10">PIÈGE : </text>
+  <text x="466" y="336" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">Promettre de la certitude pour calmer</text>
+  <text x="426" y="348" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">l&#8217;anxi&#233;t&#233; &#224; court terme.</text>
+  <rect x="72" y="366" width="334" height="192" fill="#fafaf7" rx="4"/>
+  <rect x="72" y="366" width="334" height="26" fill="#0f2240" rx="4"/>
+  <rect x="72" y="380" width="334" height="12" fill="#0f2240"/>
+  <text x="82" y="384" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#febd10">PROFIL 3</text>
+  <text x="239" y="406" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240">Le manager champion agile</text>
+  <text x="82" y="424" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">CARACTÉRISTIQUES</text>
+  <circle cx="86" cy="434" r="2.5" fill="#febd10"/>
+  <text x="94" y="438" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">A une formation ou certification Scrum.</text>
+  <circle cx="86" cy="447" r="2.5" fill="#febd10"/>
+  <text x="94" y="451" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Peut devenir le meilleur sponsor.</text>
+  <circle cx="86" cy="460" r="2.5" fill="#febd10"/>
+  <text x="94" y="464" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Risque de gardien doctrinal.</text>
+  <text x="82" y="476" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">APPROCHE SM</text>
+  <text x="86" y="488" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Co-construire avec lui, pas le subir ni le flatter.</text>
+  <text x="86" y="501" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; L&#8217;impliquer dans la d&#233;finition des KPIs.</text>
+  <text x="86" y="514" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Tenir la fronti&#232;re de r&#244;le avec respect.</text>
+  <rect x="78" y="530" width="322" height="22" fill="#0f2240" rx="2"/>
+  <text x="84" y="540" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="bold" fill="#febd10">PIÈGE : </text>
+  <text x="124" y="540" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">Le laisser faciliter les c&#233;r&#233;monies</text>
+  <text x="84" y="552" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">sous pr&#233;texte qu&#8217;il conna&#238;t</text>
+  <rect x="414" y="366" width="334" height="192" fill="#fafaf7" rx="4"/>
+  <rect x="414" y="366" width="334" height="26" fill="#0f2240" rx="4"/>
+  <rect x="414" y="380" width="334" height="12" fill="#0f2240"/>
+  <text x="424" y="384" font-family="Helvetica,Arial,sans-serif" font-size="8" font-weight="bold" fill="#febd10">PROFIL 4</text>
+  <text x="581" y="406" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#0f2240">Le manager absent</text>
+  <text x="424" y="424" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">CARACTÉRISTIQUES</text>
+  <circle cx="428" cy="434" r="2.5" fill="#febd10"/>
+  <text x="436" y="438" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Ne s&#8217;oppose pas. Il dispara&#238;t.</text>
+  <circle cx="428" cy="447" r="2.5" fill="#febd10"/>
+  <text x="436" y="451" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Pas de r&#233;ponse aux escalades.</text>
+  <circle cx="428" cy="460" r="2.5" fill="#febd10"/>
+  <text x="436" y="464" font-family="Georgia,serif" font-size="8.5" fill="#0f2240">Le profil le plus paralysant.</text>
+  <text x="424" y="476" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#bbbbbb" letter-spacing="1">APPROCHE SM</text>
+  <text x="428" y="488" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Micro-rendez-vous de 10 min, heure fixe.</text>
+  <text x="428" y="501" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Escalades par &#233;crit avec deadline et cons&#233;quence nomm&#233;e.</text>
+  <text x="428" y="514" font-family="Georgia,serif" font-size="8" fill="#0f2240">&#8250; Dashboard en lecture seule, mis &#224; jour auto.</text>
+  <rect x="420" y="530" width="322" height="22" fill="#0f2240" rx="2"/>
+  <text x="426" y="540" font-family="Helvetica,Arial,sans-serif" font-size="6.5" font-weight="bold" fill="#febd10">PIÈGE : </text>
+  <text x="466" y="540" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">Interpr&#233;ter l&#8217;absence comme de la</text>
+  <text x="426" y="552" font-family="Georgia,serif" font-size="7.5" font-style="italic" fill="#ffffff">confiance ou de la d&#233;l&#233;gation.</text>
+  <rect x="72" y="578" width="676" height="30" fill="#0f2240" rx="4"/>
+  <text x="82" y="590" font-family="Helvetica,Arial,sans-serif" font-size="7" font-weight="bold" fill="#febd10" letter-spacing="1">NOTE SAFe</text>
+  <text x="82" y="602" font-family="Georgia,serif" font-size="8" font-style="italic" fill="#ffffff">En contexte SAFe, le SM ne contourne pas le Product Manager. Il travaille avec le PO pour une communication ascendante coh&#233;rente.</text>
+  <!-- FOOTER -->
+  <line x1="72" y1="1078" x2="748" y2="1078" stroke="#febd10" stroke-width="1"/>
+  <rect x="372" y="1083" width="50" height="18" rx="9" fill="#0f2240"/>
+  <text x="397" y="1095" text-anchor="middle" font-family="Helvetica,Arial,sans-serif"
+        font-size="8" font-weight="bold" fill="#febd10">IV-14.3</text>
+  <text x="72" y="1095" font-family="Helvetica,Arial,sans-serif" font-size="7"
+        fill="#bbbbbb">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+  <text x="748" y="1095" text-anchor="end" font-family="Helvetica,Arial,sans-serif"
+        font-size="7" fill="#bbbbbb">Chapitre 14 · Partie 4</text>
+</svg>

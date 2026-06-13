@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+  <image id="_logo"  width="2072px" height="656px"  xlink:href="data:image/png;base64,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"/>
+  <image id="_sep_v" width="1px"    height="50px"   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAyCAYAAACd+7GKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAFElEQVQImWPgV3IwZmJgYGAYaQQAzx0BB70bHKAAAAAASUVORK5CYII="/>
+  <image id="_sep_h" width="686px"  height="1px"    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAq4AAAABCAYAAAAfKiwUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIElEQVRIiWPkV3KQYxgFo2AUjIJRMApGwSgYBaNgkAMAEZgAkSyEtuEAAAAASUVORK5CYII="/>
+</defs>
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;stroke:none;stroke-width:0px;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;stroke:none;stroke-width:0px;"/>
+<g><use xlink:href="#_logo" x="0" y="0" width="2072px" height="656px" transform="matrix(0,-1.002428,1.002604,0,5.867447,155.566358)"/></g>
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)"><text x="-36.025px" y="920px" style="font-family:'Georgia', serif;font-size:11px;fill:#0f2240;">L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px 26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px 68.29px 72.906px 76.201px 86.73px" y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">E SYST&#200;ME S.A.L.I.M.</tspan></text></g>
+<rect x="54" y="0" width="740" height="74" style="fill:#fff;stroke:none;stroke-width:0px;"/>
+<text x="72" y="26" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;fill:#bbb;letter-spacing:0.5px;">&#201;VALUATION &gt; IA READINESS</text>
+<rect x="686" y="10" width="96" height="22" rx="11" style="fill:#febd10;"/>
+<text x="692" y="25" style="font-family:'Helvetica','Arial',sans-serif;font-size:9.5px;fill:#0f2240;letter-spacing:0px;font-weight:bold;">FP V-18.1</text>
+<line x1="72" y1="34" x2="766" y2="34" stroke="#febd10" stroke-width="1"/>
+<text x="72" y="57" style="font-family:'EB Garamond','Georgia',serif;font-size:26px;fill:#0f2240;font-weight:bold;">IA Readiness Check</text>
+<text x="72" y="71" style="font-family:'EB Garamond','Georgia',serif;font-size:10.5px;fill:#febd10;font-style:italic;">Score tes 4 fondations avant de d&#233;ployer l&#8217;IA &#224; l&#8217;&#233;chelle</text><rect x="54" y="78" width="740" height="64" style="fill:#febd10;stroke:none;stroke-width:0px;"/>
+<text x="72" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">DC / MG / CA</text>
+<line x1="258" y1="84" x2="258" y2="136" stroke="#0f2240" stroke-width="0.4"/>
+<text x="264" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="264" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">Scorer ses 4 fondations IA (1&#8211;4 chacune)</text>
+<line x1="450" y1="84" x2="450" y2="136" stroke="#0f2240" stroke-width="0.4"/>
+<text x="456" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">QUAND</text>
+<text x="456" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">Avant tout d&#233;ploiement IA</text>
+<line x1="638" y1="84" x2="638" y2="136" stroke="#0f2240" stroke-width="0.4"/>
+<text x="644" y="93" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#0f2240;letter-spacing:1.5px;">VALEUR</text>
+<text x="644" y="107" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#0f2240;font-style:italic;">Identifier la fondation qui bloque tout</text>
+
+<!-- INTRO NAVY -->
+<rect x="54" y="150" width="740" height="32" style="fill:#0f2240;"/>
+<text x="72" y="162" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#febd10;letter-spacing:1.5px;">OBJECTIF</text>
+<text x="72" y="175" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#fff;font-style:italic;">Savoir o&#249; tu en es avant de d&#233;ployer. Score 1&#8211;4 par fondation. Total sur 16 points.</text>
+<line x1="258" y1="152" x2="258" y2="182" stroke="#febd10" stroke-width="0.4" opacity="0.4"/>
+<text x="266" y="162" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#febd10;letter-spacing:1.5px;">COMMENT</text>
+<text x="266" y="175" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#fff;font-style:italic;">Attribue 1 &#224; 4 &#224; chaque fondation. Commence toujours par la fondation &#224; 1.</text>
+<line x1="530" y1="152" x2="530" y2="182" stroke="#febd10" stroke-width="0.4" opacity="0.4"/>
+<text x="538" y="162" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#febd10;letter-spacing:1.5px;">UTILISATION</text>
+<text x="538" y="175" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#fff;font-style:italic;">Comit&#233; de direction. Atelier coach/DC. Session de cadrage strat&#233;gique.</text>
+
+<!-- EN-TETE TABLEAU -->
+<rect x="54" y="190" width="740" height="20" style="fill:#0f2240;"/>
+<text x="72" y="203" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#fff;letter-spacing:1px;">FONDATION</text>
+<text x="270" y="203" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#fff;letter-spacing:1px;">CE QUE TU OBSERVES SUR LE TERRAIN</text>
+<text x="570" y="203" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#febd10;letter-spacing:1px;">SCORE  1   2   3   4</text>
+
+<!-- CLARTE -->
+<rect x="54" y="210" width="740" height="52" style="fill:#fafaf7;"/>
+<rect x="54" y="210" width="4" height="52" style="fill:#febd10;"/>
+<line x1="54" y1="262" x2="794" y2="262" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="225" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#febd10;">01</text>
+<text x="90" y="225" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#0f2240;">CLART&#201;</text>
+<text x="90" y="239" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 1 : objectifs changeants. &#201;quipes sans vision produit claire.</text>
+<text x="90" y="252" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 2-3 : Sprint Goals partiellement suivis. Score 4 : d&#233;cisions de priorisation comprises de tous.</text>
+<circle cx="580" cy="236" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="576" y="240" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">1</text>
+<circle cx="604" cy="236" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="600" y="240" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">2</text>
+<circle cx="628" cy="236" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="624" y="240" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">3</text>
+<circle cx="652" cy="236" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="648" y="240" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">4</text>
+
+<!-- ROLES -->
+<rect x="54" y="262" width="740" height="52" style="fill:#fff;"/>
+<rect x="54" y="262" width="4" height="52" style="fill:#febd10;"/>
+<line x1="54" y1="314" x2="794" y2="314" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="277" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#febd10;">02</text>
+<text x="90" y="277" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#0f2240;">R&#212;LES</text>
+<text x="90" y="291" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 1 : responsabilit&#233;s floues. Score 2 : r&#244;les d&#233;finis mais non respect&#233;s en pratique.</text>
+<text x="90" y="304" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 3-4 : p&#233;rim&#232;tre de d&#233;cision explicite, accountability claire en cas d&#8217;erreur IA.</text>
+<circle cx="580" cy="288" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="576" y="292" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">1</text>
+<circle cx="604" cy="288" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="600" y="292" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">2</text>
+<circle cx="628" cy="288" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="624" y="292" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">3</text>
+<circle cx="652" cy="288" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="648" y="292" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">4</text>
+
+<!-- GOUVERNANCE -->
+<rect x="54" y="314" width="740" height="52" style="fill:#fafaf7;"/>
+<rect x="54" y="314" width="4" height="52" style="fill:#febd10;"/>
+<line x1="54" y1="366" x2="794" y2="366" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="329" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#febd10;">03</text>
+<text x="90" y="329" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#0f2240;">GOUVERNANCE</text>
+<text x="90" y="343" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 1 : rien de formalis&#233;. Score 2 : intuitions non partag&#233;es.</text>
+<text x="90" y="356" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 3-4 : ligne IA/humain trac&#233;e, explicit&#233;e, connue de tous, r&#233;visible.</text>
+<circle cx="580" cy="340" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="576" y="344" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">1</text>
+<circle cx="604" cy="340" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="600" y="344" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">2</text>
+<circle cx="628" cy="340" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="624" y="344" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">3</text>
+<circle cx="652" cy="340" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="648" y="344" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">4</text>
+
+<!-- APPRENTISSAGE -->
+<rect x="54" y="366" width="740" height="52" style="fill:#fff;"/>
+<rect x="54" y="366" width="4" height="52" style="fill:#febd10;"/>
+<line x1="54" y1="418" x2="794" y2="418" stroke="#e0e0e0" stroke-width="0.8"/>
+<text x="72" y="381" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#febd10;">04</text>
+<text x="90" y="381" style="font-family:'Helvetica','Arial',sans-serif;font-size:8px;font-weight:bold;fill:#0f2240;">APPRENTISSAGE</text>
+<text x="90" y="395" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 1 : pas d&#8217;espace formel, erreurs g&#233;r&#233;es en silence.</text>
+<text x="90" y="408" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Score 3-4 : rituel r&#233;gulier d&#8217;inspection des pratiques IA. S&#233;curit&#233; psychologique mesur&#233;e.</text>
+<circle cx="580" cy="392" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="576" y="396" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">1</text>
+<circle cx="604" cy="392" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="600" y="396" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">2</text>
+<circle cx="628" cy="392" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="624" y="396" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">3</text>
+<circle cx="652" cy="392" r="8" style="fill:none;stroke:#febd10;stroke-width:1.2;"/>
+<text x="648" y="396" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">4</text>
+
+<!-- VIGILANCE -->
+<rect x="54" y="424" width="740" height="30" style="fill:#fff3cd;"/>
+<rect x="54" y="424" width="4" height="30" style="fill:#febd10;"/>
+<text x="72" y="437" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">VIGILANCE</text>
+<text x="72" y="449" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">Fondation Apprentissage &#60; 2/4 : signal critique ind&#233;pendant du score global. Intervenir sur la s&#233;curit&#233; psychologique avant d&#8217;acc&#233;l&#233;rer.</text>
+
+<!-- SCORE GLOBAL -->
+<rect x="54" y="462" width="740" height="22" style="fill:#0f2240;"/>
+<text x="72" y="476" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#febd10;letter-spacing:1px;">LECTURE DU SCORE GLOBAL  (4 fondations &#215; 4 = 16 points max)</text>
+
+<rect x="54" y="484" width="240" height="98" style="fill:#fafaf7;"/>
+<rect x="54" y="484" width="4" height="98" style="fill:#febd10;"/>
+<text x="72" y="500" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">SCORE 4&#8211;8 : INSUFFISANT</text>
+<text x="72" y="514" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Commence par la fondation &#224; 1.</text>
+<text x="72" y="526" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">C&#8217;est elle qui contraint</text>
+<text x="72" y="538" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">tout le reste. Diff&#232;re l&#8217;outillage.</text>
+<text x="72" y="552" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Identifie les promoteurs actifs</text>
+<text x="72" y="562" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">dans les 2 premi&#232;res semaines.</text>
+<text x="72" y="575" style="font-family:'Helvetica','Arial',sans-serif;font-size:18px;font-weight:bold;fill:#febd10;">4&#8211;8</text>
+
+<rect x="294" y="484" width="246" height="98" style="fill:#febd10;opacity:0.12;"/>
+<rect x="294" y="484" width="4" height="98" style="fill:#febd10;"/>
+<text x="310" y="500" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">SCORE 9&#8211;12 : PARTIEL</text>
+<text x="310" y="514" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">D&#233;ploiement progressif possible.</text>
+<text x="310" y="526" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Commence par les &#233;quipes</text>
+<text x="310" y="538" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">les plus matures.</text>
+<text x="310" y="552" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Explicite la ligne de</text>
+<text x="310" y="562" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">gouvernance IA en priorit&#233;.</text>
+<text x="310" y="575" style="font-family:'Helvetica','Arial',sans-serif;font-size:18px;font-weight:bold;fill:#febd10;">9&#8211;12</text>
+
+<rect x="540" y="484" width="254" height="98" style="fill:#fafaf7;"/>
+<rect x="540" y="484" width="4" height="98" style="fill:#febd10;"/>
+<text x="556" y="500" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#0f2240;">SCORE 13&#8211;16 : SOLIDE</text>
+<text x="556" y="514" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Acc&#233;l&#232;re. Active les promoteurs.</text>
+<text x="556" y="526" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Rends les victoires visibles.</text>
+<text x="556" y="540" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;font-style:italic;">Tous KPIs simultan&#233;ment.</text>
+<text x="556" y="552" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">Ce n&#8217;est pas une somme.</text>
+<text x="556" y="562" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;fill:#888;font-style:italic;">C&#8217;est un syst&#232;me.</text>
+<text x="556" y="575" style="font-family:'Helvetica','Arial',sans-serif;font-size:18px;font-weight:bold;fill:#febd10;">13&#8211;16</text>
+
+<!-- CASE SCORE TOTAL -->
+<rect x="600" y="446" width="190" height="36" rx="4" style="fill:#0f2240;"/>
+<text x="624" y="460" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;fill:#febd10;letter-spacing:1.5px;">SCORE TOTAL</text>
+<text x="636" y="476" style="font-family:'Georgia',serif;font-size:18px;font-weight:bold;fill:#fff;">___ / 16</text>
+
+<!-- NOTE SYSTEME -->
+<rect x="54" y="592" width="740" height="36" rx="4" style="fill:#0f2240;opacity:0.06;"/>
+<rect x="54" y="592" width="4" height="36" style="fill:#febd10;"/>
+<text x="72" y="607" style="font-family:'Helvetica','Arial',sans-serif;font-size:7px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">RAPPEL CL&#201;</text>
+<text x="72" y="619" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;">Un total h&#233;t&#233;rog&#232;ne (4+4+1+1) n&#8217;est pas le m&#234;me que 10 homog&#232;ne (3+2+3+2). La faiblesse d&#8217;une fondation fragilise les trois autres.</text>
+<text x="72" y="622" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;fill:#555;"> </text>
+
+<!-- KPIS -->
+<rect x="54" y="640" width="740" height="22" style="fill:#0f2240;"/>
+<text x="72" y="654" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;font-weight:bold;fill:#febd10;letter-spacing:1px;">KPIs ASSOCI&#201;S (chapitre 18)</text>
+
+<rect x="54" y="662" width="740" height="76" style="fill:#fafaf7;"/>
+<rect x="54" y="662" width="4" height="76" style="fill:#febd10;"/>
+<text x="72" y="677" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#333;">&#8227;  Score IA Readiness Check document&#233; et partag&#233; avec l&#8217;&#233;quipe de direction.</text>
+<text x="72" y="692" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#333;">&#8227;  Promoteurs actifs identifi&#233;s et activ&#233;s dans les 2 premi&#232;res semaines post-d&#233;ploiement.</text>
+<text x="72" y="707" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#333;">&#8227;  Premier rituel d&#8217;apprentissage IA planifi&#233; dans les 4 semaines.</text>
+<text x="72" y="722" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#333;">&#8227;  Taux d&#8217;adoption r&#233;el mesur&#233; &#224; 30 et 90 jours : usage effectif, pas acc&#232;s &#224; l&#8217;outil.</text>
+
+<!-- CONCLUSION -->
+<rect x="54" y="750" width="740" height="58" rx="4" style="fill:#0f2240;"/>
+<text x="72" y="770" style="font-family:'Georgia',serif;font-size:11px;font-weight:bold;fill:#fff;">L&#8217;IA ne transforme pas une organisation.</text>
+<text x="72" y="787" style="font-family:'Georgia',serif;font-size:11px;font-weight:bold;fill:#febd10;">Elle r&#233;v&#232;le celle que tu as d&#233;j&#224; construite.</text>
+<text x="72" y="802" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#bbb;font-style:italic;">Le Syst&#232;me S.A.L.I.M. &#8212; Chapitre 18, p.371</text>
+
+<line x1="72" y1="1076" x2="766" y2="1076" stroke="#febd10" stroke-width="1"/>
+<rect x="375" y="1064" width="44" height="24" rx="12" style="fill:#0f2240;"/>
+<text x="383" y="1080" style="font-family:'Helvetica','Arial',sans-serif;font-size:9px;fill:#febd10;font-weight:bold;">V-18</text>
+<text x="72" y="1089" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. &#8211; Chapitre 18</text>
+<text x="650" y="1089" style="font-family:'Helvetica','Arial',sans-serif;font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>
