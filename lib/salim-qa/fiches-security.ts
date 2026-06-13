@@ -9,7 +9,8 @@
  *
  * ## Accès client
  * - URL : `/api/salim-qa/fiche?q={question-id}&i=0` (jamais le nom FP-* dans l’URL)
- * - Contrôle : user connecté + (question débloquée OU Pro/Day Pass/admin) → SVG ; sinon 204 vide
+ * - Contrôle : connecté + (question débloquée OU Pro/Day Pass/admin) → SVG ; sinon 204 vide
+ * - Viewer client : fetch + SVG inline + overlay (pas de `<img src>`, pas de clic droit)
  */
 export const FICHES_MUST_NOT_BE_PUBLIC = true as const
 

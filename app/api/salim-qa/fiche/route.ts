@@ -64,8 +64,11 @@ export async function GET(request: Request) {
       status: 200,
       headers: {
         'Content-Type': 'image/svg+xml; charset=utf-8',
+        'Content-Disposition': 'inline',
         'Cache-Control': 'private, no-store',
         'X-Content-Type-Options': 'nosniff',
+        'Cross-Origin-Resource-Policy': 'same-origin',
+        'Referrer-Policy': 'same-origin',
       },
     })
   } catch (e) {

@@ -426,6 +426,64 @@
   background: linear-gradient(180deg, #fffdf2, #fbfbf9);
 }
 
+.sq-fiche-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sq-fiche-viewer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.sq-fiche-viewer--loading {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b6b6ae;
+  font-family: var(--sq-mono);
+  font-size: 12px;
+}
+
+.sq-fiche-viewer__svg {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.sq-fiche-viewer__svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.sq-fiche-viewer__shield {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: default;
+  background: transparent;
+}
+
+@media print {
+  .sq-fiche-viewer,
+  .sq-fiche-stack {
+    display: none !important;
+  }
+}
+
 .sq-bottom-bar {
   position: fixed;
   left: 0;

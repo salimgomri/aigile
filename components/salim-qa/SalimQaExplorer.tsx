@@ -20,8 +20,8 @@ import {
   STATUT_LABELS,
 } from '@/lib/salim-qa/constants'
 import type { SalimQaFacets, SalimQaQuestionPublic } from '@/lib/salim-qa/types'
-import { salimQaFicheUrl } from '@/lib/salim-qa/fiches-security'
 import { SalimQaBuyBookButton, SalimQaPaywallBlock } from './SalimQaBookModal'
+import { SalimQaFicheStack } from './SalimQaFicheViewer'
 
 const VISITOR_KEY = 'salim_qa_visitor_id'
 const LOGIN_REDIRECT = '/login?redirect=%2Fsalim-qa'
@@ -1100,22 +1100,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
                         )}
                       </div>
                       {detail.ficheCount > 0 ? (
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                          {Array.from({ length: detail.ficheCount }, (_, i) => (
-                            <img
-                              key={i}
-                              src={salimQaFicheUrl(detail.id, i)}
-                              alt=""
-                              style={{
-                                width: '100%',
-                                height: 'auto',
-                                borderRadius: 10,
-                                border: '1px solid rgba(0,0,0,0.06)',
-                                background: '#fff',
-                              }}
-                            />
-                          ))}
-                        </div>
+                        <SalimQaFicheStack questionId={detail.id} count={detail.ficheCount} />
                       ) : (
                         <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: '#6B6B66' }}>
                           {copy.sheetMissing}
