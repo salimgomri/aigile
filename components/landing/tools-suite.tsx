@@ -14,7 +14,7 @@ import { useLanguage } from '../language-provider'
 import { trackEvent } from '@/lib/gtag'
 import { translations } from '@/lib/translations'
 import type { PublicFeatureFlag } from '@/lib/feature-flags'
-import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package, HeartPulse } from 'lucide-react'
+import { Brain, Smile, BarChart3, Target, Layout, Users, ArrowRight, Sparkles, Package, HeartPulse, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import { EarlyAccessRequestModal } from '@/components/landing/EarlyAccessRequestModal'
 import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
@@ -86,6 +86,7 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
 
   const sm = flags.skill_matrix
   const westrum = flags.westrum
+  const salimQa = flags.salim_qa
   const skillTitle =
     sm && (language === 'fr' ? sm.label_fr : sm.label_en)
       ? language === 'fr'
@@ -163,6 +164,26 @@ export default function ToolsSuiteSection({ children }: { children?: ReactNode }
       featured: false,
       href: '/dashboard/westrum',
       available: westrum?.is_live ?? true,
+    },
+    {
+      key: 'salim_qa',
+      icon: BookOpen,
+      title:
+        salimQa && (language === 'fr' ? salimQa.label_fr : salimQa.label_en)
+          ? language === 'fr'
+            ? salimQa.label_fr
+            : salimQa.label_en
+          : t['tools-salim-qa'],
+      description:
+        salimQa
+          ? (language === 'fr'
+              ? salimQa.teaser_fr || salimQa.label_fr
+              : salimQa.teaser_en || salimQa.label_en) ||
+            t['tools-salim-qa-desc']
+          : t['tools-salim-qa-desc'],
+      featured: false,
+      href: '/salim-qa',
+      available: salimQa?.is_live ?? true,
     },
     {
       key: 'skill_matrix',

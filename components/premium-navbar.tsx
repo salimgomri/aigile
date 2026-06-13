@@ -54,6 +54,11 @@ export default function PremiumNavbar() {
       label: t['tools-westrum'],
       match: (p: string) => p.startsWith('/dashboard/westrum'),
     },
+    {
+      href: '/salim-qa',
+      label: t['tools-salim-qa'],
+      match: (p: string) => p.startsWith('/salim-qa'),
+    },
     { href: '/start-scrum', label: t['tools-start-journey'], match: (p: string) => p.startsWith('/start-scrum') || p.startsWith('/parcours') },
   ]
 

@@ -12,7 +12,7 @@ import { translations } from '@/lib/translations'
 import { isDashboardManagerNewBadgeActive, isWestrumNewBadgeActive } from '@/lib/tool-new-badge'
 import { getHeroBookSlideBody } from '@/lib/salim-experience'
 
-const HERO_SLIDE_COUNT = 5
+const HERO_SLIDE_COUNT = 6
 
 const dmSerif = DM_Serif_Display({
   weight: '400',
@@ -340,6 +340,45 @@ function WestrumMockup({ lang }: { lang: 'fr' | 'en' }) {
   )
 }
 
+function SalimQaLabMockup({ lang }: { lang: 'fr' | 'en' }) {
+  const title = lang === 'fr' ? 'S.A.L.I.M. Q&A Lab' : 'S.A.L.I.M. Q&A Lab'
+  const sub = lang === 'fr' ? 'Bibliothèque · livre' : 'Library · book'
+  const q = lang === 'fr' ? 'Comment escalader après 3 rétros sans progrès ?' : 'How to escalate after 3 retros with no progress?'
+  const excerpt = lang === 'fr' ? 'Regle des 3 retros : si le meme pattern...' : 'Rule of 3 retros: if the same pattern...'
+  return (
+    <div
+      className="relative w-full max-w-[380px] rounded-2xl p-5"
+      style={{
+        background: 'var(--aigile-card)',
+        border: '1px solid var(--aigile-border)',
+        fontFamily: 'var(--font-hero-syne), sans-serif',
+      }}
+    >
+      <div
+        className="absolute left-0 right-0 top-0 h-0.5 rounded-t-2xl"
+        style={{ background: 'linear-gradient(90deg, #FEDB10, transparent)' }}
+      />
+      <div className="mb-3 flex items-center justify-between border-b border-white/[0.06] pb-3">
+        <span className="text-sm font-semibold text-[var(--aigile-white)]">{title}</span>
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-[var(--aigile-muted)]">{sub}</span>
+      </div>
+      <div className="mb-3 rounded-lg border border-white/[0.08] bg-white/[0.04] px-3 py-2 text-[12px] text-[var(--aigile-white)]">
+        🔍 {q}
+      </div>
+      <div className="rounded-md bg-white/[0.04] px-3 py-3 text-[12px] leading-relaxed text-[var(--aigile-muted)]">
+        {excerpt}
+        <span style={{ color: GOLD }}> …</span>
+      </div>
+      <div className="mt-3 flex items-center justify-between text-[11px]">
+        <span className="font-semibold text-[var(--aigile-muted)]">SM · Ch. 11</span>
+        <span className="rounded-full px-2 py-0.5 font-bold" style={{ background: GOLD_DIM, color: GOLD }}>
+          1 crédit
+        </span>
+      </div>
+    </div>
+  )
+}
+
 function RetroMockup({ lang }: { lang: 'fr' | 'en' }) {
   const rows =
     lang === 'fr'
@@ -514,6 +553,16 @@ export default function LandingHero() {
           primary: 'Passer le questionnaire →',
           ghost: 'En savoir plus ›',
         },
+        s6: {
+          badge: 'Nouveau',
+          badgeNew: true,
+          eyebrow: 'S.A.L.I.M. · Bibliothèque',
+          title: 'S.A.L.I.M. Q&A Lab',
+          body:
+            'Toutes les questions du livre, à portée de mot. Recherche, filtres par rôle et chapitre. Réponse complète à débloquer — 1 crédit.',
+          primary: 'Explorer le Q&A Lab →',
+          ghost: 'Voir la suite ›',
+        },
       }
     }
     return {
@@ -559,6 +608,16 @@ export default function LandingHero() {
         body:
           'Six Likert questions to map your organization’s culture — pathological, bureaucratic, or generative. Recommended cadence: once per quarter.',
         primary: 'Take the survey →',
+        ghost: 'Learn more ›',
+      },
+      s6: {
+        badge: 'New',
+        badgeNew: true,
+        eyebrow: 'S.A.L.I.M. · Library',
+        title: 'S.A.L.I.M. Q&A Lab',
+        body:
+          'Every question from the book, one search away. Filter by role and chapter. Unlock full answers — 1 credit each.',
+        primary: 'Open Q&A Lab →',
         ghost: 'Learn more ›',
       },
     }
@@ -721,7 +780,7 @@ export default function LandingHero() {
           >
             {/* Slide 1 — Book */}
             <div
-              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/6 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -855,7 +914,7 @@ export default function LandingHero() {
 
             {/* Slide 2 — Retro */}
             <div
-              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/6 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -952,7 +1011,7 @@ export default function LandingHero() {
 
             {/* Slide 3 — Scoring */}
             <div
-              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/6 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -1178,7 +1237,7 @@ export default function LandingHero() {
 
             {/* Slide 4 — Dashboard Manager */}
             <div
-              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/6 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -1295,7 +1354,7 @@ export default function LandingHero() {
 
             {/* Slide 5 — Westrum Culture Survey */}
             <div
-              className="box-border flex w-1/5 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              className="box-border flex w-1/6 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
               style={{ background: 'var(--aigile-black)' }}
             >
               <div
@@ -1405,6 +1464,110 @@ export default function LandingHero() {
                     aria-hidden
                   >
                     {language === 'fr' ? '6 questions · 2 min' : '6 questions · 2 min'}
+                  </span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Slide 6 — S.A.L.I.M. Q&A Lab */}
+            <div
+              className="box-border flex w-1/6 shrink-0 flex-col md:min-h-[580px] md:flex-row md:items-stretch"
+              style={{ background: 'var(--aigile-black)' }}
+            >
+              <div
+                key={`s5-${slide === 5}`}
+                className="flex flex-1 flex-col justify-center gap-5 px-6 py-12 md:px-12 lg:px-16"
+              >
+                <div
+                  className={reducedMotion ? '' : 'landing-hero-stagger'}
+                  style={{ animationDelay: staggerDelays[0] }}
+                >
+                  <span
+                    className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide"
+                    style={{
+                      background: 'rgba(254, 219, 16, 0.15)',
+                      color: GOLD,
+                      border: '1px solid rgba(254, 219, 16, 0.4)',
+                    }}
+                  >
+                    <PulseDot reducedMotion={reducedMotion} />
+                    {copy.s6.badge}
+                  </span>
+                </div>
+                <p
+                  className={reducedMotion ? '' : 'landing-hero-stagger text-sm'}
+                  style={{ color: 'var(--aigile-muted)', animationDelay: staggerDelays[1] }}
+                >
+                  {copy.s6.eyebrow}
+                </p>
+                <h1
+                  className={reducedMotion ? '' : 'landing-hero-stagger'}
+                  style={{
+                    fontFamily: 'var(--font-hero-dm), Georgia, serif',
+                    fontSize: 'clamp(2rem, 5vw, 52px)',
+                    lineHeight: 1.08,
+                    color: 'var(--aigile-white)',
+                    animationDelay: staggerDelays[2],
+                  }}
+                >
+                  {copy.s6.title}
+                </h1>
+                <p
+                  className={reducedMotion ? '' : 'landing-hero-stagger max-w-xl text-[15px] leading-relaxed'}
+                  style={{ color: 'rgba(240,237,230,0.85)', animationDelay: staggerDelays[3] }}
+                >
+                  {copy.s6.body}
+                </p>
+                <p
+                  className="text-[13px] font-semibold leading-snug"
+                  style={{ color: GOLD, fontFamily: 'var(--font-hero-syne), sans-serif' }}
+                >
+                  {langFr
+                    ? '170+ questions · aperçu gratuit · 1 crédit par réponse'
+                    : '170+ questions · free preview · 1 credit per answer'}
+                </p>
+                <div
+                  className={reducedMotion ? '' : 'landing-hero-stagger flex flex-col gap-3 sm:flex-row sm:items-center'}
+                  style={{ animationDelay: staggerDelays[4] }}
+                >
+                  <Link
+                    href="/salim-qa"
+                    onClick={() => trackEvent('hero_salim_qa', { slide: 'salim_qa' })}
+                    className="landing-hero-cta-micro inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-[15px] font-bold"
+                    style={{
+                      background: GOLD,
+                      color: NAVY_CTA,
+                    }}
+                  >
+                    {copy.s6.primary}
+                  </Link>
+                  <Link
+                    href="/#tools"
+                    className="text-[14px] font-semibold transition hover:text-[var(--aigile-white)]"
+                    style={{ color: 'var(--aigile-muted)' }}
+                    onClick={() => trackEvent('hero_salim_qa_ghost', { slide: 'salim_qa' })}
+                  >
+                    {copy.s6.ghost}
+                  </Link>
+                </div>
+              </div>
+              <div className="flex flex-1 items-center justify-center px-6 py-10 md:px-10">
+                <Link
+                  href="/salim-qa"
+                  className="group relative block w-full max-w-[420px]"
+                  onClick={() => trackEvent('hero_salim_qa', { slide: 'salim_qa', source: 'hero_visual' })}
+                >
+                  <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#FEDB10]/25 to-transparent opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className={reducedMotion ? '' : 'landing-hero-visual-breathe'}>
+                    <div className="relative origin-center transition-transform duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.14]">
+                      <SalimQaLabMockup lang={language === 'fr' ? 'fr' : 'en'} />
+                    </div>
+                  </div>
+                  <span
+                    className="mt-3 block text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--aigile-muted)] transition-colors group-hover:text-[#FEDB10]/90"
+                    aria-hidden
+                  >
+                    {language === 'fr' ? 'Q&A Lab · livre' : 'Q&A Lab · book'}
                   </span>
                 </Link>
               </div>

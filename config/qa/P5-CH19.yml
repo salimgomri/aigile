@@ -1,0 +1,404 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 19
+# chapter-extractor v6.1
+
+meta:
+  partie: 5
+  nom_partie: "Le praticien de demain"
+  chapitre: 19
+  titre: "AIgile comme posture"
+  date_extraction: "2026-06-06"
+  page_debut: 368
+  page_fin: 379
+  statut_global: valide
+
+questions:
+
+  # =====================
+  # CIBLE : PRATICIEN_AGILE — role SM
+  # =====================
+
+  - id: "P5-CH19-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Mon équipe utilise l'IA partout depuis 3 sprints. La vélocité monte mais les seniors parlent de moins en moins en Planning. Comment je détecte ce signal avant qu'il devienne irréversible, qui doit intervenir, et qu'est-ce que je nomme concrètement en rétro pour que l'équipe comprenne ce qui se passe ?"
+    reponse: "Le chapitre nomme ce signal 'décrochage sans le savoir' : Juniors livrent plus vite, comprennent moins. Le SM AIgile observe la dynamique, pas juste la vélocité. L'accord d'équipe IA est l'outil pour nommer ce que personne n'ose : quand signale-t-on l'usage IA, comment on préserve l'alignement collectif en estimation. Ce n'est pas une policy imposée, c'est co-construit par l'équipe. En rétro : poser la question 'Est-ce que notre estimation collective a encore du sens quand l'IA pré-formule nos stories ?'"
+    douleur_terrain: "Le SM voit les métriques progresser et ressent une gêne qu'il ne sait pas nommer. L'IA est silencieuse dans les dashboards. Visible à 3 mois."
+    source_expert: null
+    page: 369
+    extrait: null
+    fiche_liee: "FP-P5-CH19-checklist-01"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: "Introduire l'accord d'équipe IA dans la prochaine rétro sous forme de 5 questions co-construites."
+    schemas_lies: []
+
+  - id: "P5-CH19-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "L'estimation collective prend 40 minutes et mon manager dit que c'est un gâchis qu'on peut compresser avec l'IA. Comment je lui explique que ces 40 minutes ne sont pas du temps perdu, qui porte cet argument, et quelle valeur mesurable je lui donne pour qu'il ne revienne pas à la charge ?"
+    reponse: "Le chapitre est explicite : 40 minutes d'estimation collective, ce n'est pas du gâchis. C'est là que l'équipe s'aligne vraiment, que les malentendus sur la story remontent, que l'intelligence collective se construit. Quand l'IA compresse ce temps à 10 minutes, l'alignement collectif disparait. Le SM protège délibérément cette friction productive. Argument au manager : la vélocité monte à court terme, mais les incidents de compréhension augmentent à 60-90 jours."
+    douleur_terrain: "Manager lit 'Planning 10 minutes au lieu de 40' comme un gain d'efficacité. Le SM voit que l'équipe aligne de moins en moins avant de livrer."
+    source_expert: null
+    page: 369
+    extrait: null
+    fiche_liee: "FP-P5-CH19-checklist-01"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH19-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    question: "J'ai toujours préparé mes rétros, mes reviews et mes rapports manuellement. Avec l'IA je peux récupérer 5 à 6 heures par sprint. Vers quoi est-ce que je déplace ce temps, comment je le justifie à mon organisation, et quelle valeur concrète je produis qui ne produisais pas avant ?"
+    reponse: "Le chapitre distingue heures récupérées et heures déplacées. Ce bloc de 5-8h par sprint descend à 1h30-2h avec une pratique AIgile structurée. Ces heures ne sont pas libérées : elles sont déplacées vers le travail relationnel, la lecture de la dynamique d'équipe, la détection des signaux faibles. Ce que l'IA ne peut pas faire. Valeur concrète : lire le silence d'une Daily, savoir quand un Sprint Goal 'atteint à 90%' cache un accord tacite pour éviter le vrai problème."
+    douleur_terrain: "Le SM ressent qu'il 'délègue à l'IA' des tâches qu'il faisait avec soin. Culpabilité ou, à l'inverse, enthousiasme non canalisé qui le déconnecte de l'équipe."
+    source_expert: null
+    page: 377
+    extrait: null
+    fiche_liee: "FP-P5-CH19-prompt-02"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: "Tenir un journal des 'actes que seul moi peux faire' sur 3 sprints. Observer si l'IA a augmenté ou réduit ce temps."
+    schemas_lies: []
+
+  - id: "P5-CH19-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: "Donald Schon"
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Comment je développe concrètement une pratique réflexive sur mon usage de l'IA, qui me challenge si je dérive, et quelle différence ça fait pour mon équipe si je fais ça sérieusement plutôt que juste 'd'utiliser l'IA' ?"
+    reponse: "Schön (1983) distingue réflexion-en-action (pendant l'acte) et réflexion-sur-l'action (après). Le SM AIgile observe l'impact de l'IA sur la dynamique de son équipe, ajuste, nomme ce qu'il voit. Ce n'est pas passif. Question réflexive centrale : est-ce que l'outil que j'utilise renforce ou affaiblit l'intelligence collective de mon équipe ? Le protocole de supervision pair à pair (90 minutes) est l'outil proposé pour se challenger sans manager."
+    douleur_terrain: "Le SM adopte l'IA par accumulation de pratiques sans jamais évaluer l'impact sur l'équipe. Aucun pair ne lui pose la question difficile."
+    source_expert: "Schon, The Reflective Practitioner, 1983"
+    page: 369
+    extrait: null
+    fiche_liee: "FP-P5-CH19-prompt-02"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # =====================
+  # CIBLE : PRATICIEN_AGILE — role PO
+  # =====================
+
+  - id: "P5-CH19-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "L'IA pré-rédige mes stories maintenant. Mon équipe les accepte sans les challenger comme avant. Qui valide que la story a du sens, à quel moment dans le sprint, et comment je réintroduis le débat sans ralentir la cadence ?"
+    reponse: "Le chapitre nomme ce point dans l'accord d'équipe IA : 'L'IA pré-rédige : qui valide ?' C'est une question à trancher collectivement, pas individuellement. La réponse dépend de l'accord d'équipe : le PO garde la responsabilité du 'pourquoi' même si l'IA formule le 'comment'. La DoD peut être réécrite pour inclure une étape de validation humaine des stories pré-rédigées par IA avant qu'elles entrent en sprint."
+    douleur_terrain: "Le PO gagne du temps sur la rédaction mais perd la conversation de clarification avec l'équipe. Stories mieux rédigées, moins comprises."
+    source_expert: null
+    page: 369
+    extrait: null
+    fiche_liee: "FP-P5-CH19-checklist-01"
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Inclure dans l'accord d'équipe IA une règle explicite sur la validation des stories pré-rédigées."
+    schemas_lies: []
+
+  - id: "P5-CH19-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: "Je veux utiliser l'IA pour analyser le feedback des parties prenantes et prioriser mon backlog plus vite. Quelles sont les limites que l'IA ne voit pas, comment je construis un prompt qui garde le contrôle de la décision côté humain, et quelle valeur je perds si je délègue trop ?"
+    reponse: "Le chapitre pose la règle des 5 composantes du prompt professionnel (Rôle, Contexte, Tâche, Format, Validation). La composante Validation est le garde-fou humain : 'Je relirai cet output à la lumière de ce que je sais de l'équipe. Ce plan est un point de départ.' Pour le PO, la priorisation basée sur l'analyse IA reste une proposition. La décision de priorisation intègre des dimensions que l'IA ne voit pas : tension stakeholders, dette relationnelle, contexte politique."
+    douleur_terrain: "Le PO utilise l'IA pour aller plus vite mais n'a pas formalisé où s'arrête l'IA et où commence son jugement."
+    source_expert: null
+    page: 378
+    extrait: null
+    fiche_liee: "FP-P5-CH19-prompt-02"
+    fiche_destinee_a: [PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # =====================
+  # CIBLE : PRATICIEN_AGILE — role DEV
+  # =====================
+
+  - id: "P5-CH19-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je livre plus vite avec Cursor mais je comprends de moins en moins l'architecture que je construis. Quand est-ce que ça devient un risque réel, qui est accountable si le code IA génère une erreur que je n'ai pas vue, et comment je justifie de prendre plus de temps sur l'analyse sans perdre ma crédibilité ?"
+    reponse: "Le chapitre est direct : quand l'IA génère du code, le goulot n'est plus dans le développement, il est dans l'analyse qui précède. Un développeur qui donne une description vague obtient du code vague : syntaxiquement correct, structurellement cohérent, fonctionnellement à côté. Le rôle bascule : le dev analyse, modélise, challenge la spec, puis pilote l'IA. Ce n'est pas un retour en arrière. Sur la responsabilité : le chapitre 19 (section manager) pose la question explicitement, sans réponse normative. La DoD doit inclure la traçabilité des décisions architecturales."
+    douleur_terrain: "Le dev qui va vite avec l'IA est félicité. Celui qui prend du temps pour analyser avant de prompter parait lent. L'organisation récompense le mauvais signal."
+    source_expert: null
+    page: 379
+    extrait: null
+    fiche_liee: "FP-P5-CH19-checklist-01"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Formaliser les 4 questions à répondre avant qu'une story entre en développement IA. Les intégrer dans la définition du Ready."
+    schemas_lies: []
+
+  - id: "P5-CH19-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: "Comment je construis un prompt professionnel pour une tâche de développement complexe, quelle composante échoue en premier, et quelle valeur concrète je gagne par rapport à une description vague ?"
+    reponse: "Les 5 composantes du prompt professionnel : Rôle (contexte d'expertise à l'IA), Contexte (situation réelle), Tâche (action attendue précisément), Format (cadre le format de l'output), Validation (garde-fou humain). La composante qui échoue en premier : le Contexte. Le dev décrit la feature demandée mais pas les briques impactées, le schéma de données, les effets de bord sur l'architecture existante. L'IA avance quand même. Gain concret : 10 à 15 prompts maîtrisés couvrent la majorité des situations récurrentes."
+    douleur_terrain: "Le dev envoie une description fonctionnelle et s'étonne que le code ne s'intègre pas. Il corrige à la main. Il répète. Il ne prompt pas mieux."
+    source_expert: null
+    page: 378
+    extrait: null
+    fiche_liee: "FP-P5-CH19-prompt-02"
+    fiche_destinee_a: [DEV]
+    statut_reponse: confirmee
+    action_recommandee: "Protocole : identifier 1 tâche répétitive > 30 min, écrire le prompt avec les 5 composantes, tester sur un cas réel, affiner le Contexte, sauvegarder."
+    schemas_lies: []
+
+  # =====================
+  # CIBLE : PRATICIEN_AGILE — role CA
+  # =====================
+
+  - id: "P5-CH19-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: "Donald Schon"
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'accompagne 3 équipes en transformation IA. Comment je diagnostique si un SM est en posture AIgile ou juste en adoption d'outils, qui me demande ce diagnostic, et quelle intervention je propose si le SM confond les deux ?"
+    reponse: "Le chapitre donne un test simple : 'Avant d'introduire un outil IA dans ta pratique, poses-toi la question du Pourquoi. Si la réponse est parce que tout le monde le fait, c'est l'absence de posture.' Le SM en posture AIgile observe l'impact de l'IA sur la dynamique de son équipe (Schön, praticien réflexif). Le SM en adoption d'outils accumule des prompts sans évaluer l'effet sur l'équipe. Intervention coach : proposer le protocole de supervision pair à pair 90 minutes pour créer un espace de réflexion-sur-l'action."
+    douleur_terrain: "Le SM enthousiaste accumule des outils IA visibles et impressionnants. Le coach perçoit que l'équipe s'est dépossédée de ses décisions sans le voir."
+    source_expert: "Schon, The Reflective Practitioner, 1983"
+    page: 376
+    extrait: null
+    fiche_liee: "FP-P5-CH19-prompt-02"
+    fiche_destinee_a: [CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH19-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Comment j'installe un accord d'équipe IA dans une organisation qui n'a jamais formalisé ses pratiques IA, qui co-construit ce document, et comment je le distingue d'une policy top-down que l'équipe ne respectera pas ?"
+    reponse: "Le chapitre distingue explicitement l'accord d'équipe IA d'une IA policy imposée. L'accord est co-construit par l'équipe elle-même autour de 5 questions : quand signale-t-on l'usage IA, quels outils avec quelles données, DoD réécrite pour inclure l'IA, qui valide quand l'IA pré-rédige, comment on préserve l'alignement collectif en estimation. Le coach facilite cette conversation, il ne rédige pas le document à la place de l'équipe."
+    douleur_terrain: "La direction a publié une 'charte IA' que personne n'a lue. Le coach doit recréer une appropriation sans désavouer la direction."
+    source_expert: null
+    page: 369
+    extrait: null
+    fiche_liee: "FP-P5-CH19-checklist-01"
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Utiliser la rétro comme espace de co-construction de l'accord d'équipe IA. Format : 1h, 5 questions, vote par fist-of-five."
+    schemas_lies: []
+
+  # =====================
+  # CIBLE : PRATICIEN_AGILE — role RTE
+  # =====================
+
+  - id: "P5-CH19-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'ai 5 équipes dans mon ART qui adoptent l'IA à des rythmes différents. Certaines ont un accord d'équipe IA, d'autres non. Comment je gère cette hétérogénéité sans imposer un standard qui tuerait l'adoption, et quelle valeur je perds si chaque équipe fait à sa façon ?"
+    reponse: "Le chapitre ne traite pas directement le contexte multi-équipes : c'est un trou identifié. Ce qu'il apporte : le SM AIgile utilise l'IA comme outil de préparation, jamais de substitution. La Prompt Library est proposée à l'équipe, pas imposée. Ces principes sont transposables à l'ART : le RTE peut faciliter un atelier inter-équipes pour partager les accords d'équipe IA existants et identifier les éléments communs à formaliser au niveau ART sans imposer. Le risque de l'hétérogénéité : une équipe qui a supprimé l'estimation collective crée des problèmes de dépendances non détectées avec les équipes voisines."
+    douleur_terrain: "Le RTE voit des équipes aller vite et d'autres résister. Il craint d'imposer ou de laisser faire. Ni l'un ni l'autre ne fait avancer l'adoption."
+    source_expert: null
+    page: 369
+    extrait: "trou identifié : chapitre centré SM, peu de contenu RTE/multi-équipes"
+    fiche_liee: "FP-P5-CH19-checklist-01"
+    fiche_destinee_a: [RTE]
+    statut_reponse: trou
+    action_recommandee: "Trou à combler : ajouter une note pratique sur la gouvernance IA au niveau ART dans ce chapitre ou renvoyer vers le chapitre SAFe."
+    schemas_lies: []
+
+  # =====================
+  # CIBLE : MANAGER — role MG
+  # =====================
+
+  - id: "P5-CH19-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Ma direction me demande de déployer l'IA sur toutes les équipes ce trimestre. La vélocité monte mais je vois des signaux qui m'inquiètent sans pouvoir les nommer. Comment je ralentis l'accélération sans passer pour un frein, qui m'aide à lire ces signaux, et quelle donnée je remonte à ma direction ?"
+    reponse: "Le chapitre pose la distinction entre fondations insuffisantes (score 4-8) et fondations solides (score 13-16). Le manager peut utiliser le IA Readiness Check (4 fondations : Clarté, Rôles, Gouvernance, Apprentissage) pour nommer les zones de fragilité. Argument à la direction : 'Un score sur la sécurité psychologique inférieur à 2 sur 4 est un signal critique indépendant du score global. Même si le total est dans la zone AIgile, cette question seule justifie une intervention sur la sécurité avant d'accélérer.' Le SM est présenté comme le capteur humain à activer."
+    douleur_terrain: "Le manager est pris entre la pression d'accélération de la direction et son intuition que quelque chose cloche dans les équipes. Il n'a pas de langage pour nommer ce qu'il voit."
+    source_expert: null
+    page: 372
+    extrait: null
+    fiche_liee: "FP-P5-CH19-readiness-03"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: "Faire passer le IA Readiness Check avant tout déploiement. Partager le score avec l'équipe de direction."
+    schemas_lies: []
+
+  - id: "P5-CH19-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "Mon équipe de développement utilise l'IA pour générer du code. Un développeur a livré une feature basée sur du code généré qu'il n'a pas relu entièrement. Il y a eu un incident en prod. Qui est responsable, comment je clarifie ça sans créer de peur et quelles règles je pose pour la suite ?"
+    reponse: "Le chapitre pose la question sans donner de réponse normative : 'Quand un développeur s'appuie sur du code généré qu'il n'a pas relu : qui porte le risque ?' La réponse passe par la gouvernance IA dans la DoD : usages autonomes (OK sans validation, ex : génération de tests), assistés (validation avant livraison, ex : documentation), sensibles (validation humaine + traçabilité, ex : décisions d'architecture). Un incident sur du code non relu relève de la catégorie 'assisté' qui aurait dû inclure une validation avant livraison. Le manager clarifie la règle, il ne cherche pas un coupable."
+    douleur_terrain: "L'incident en prod crée une panique autour de l'IA. Soit on surcontrôle tout, soit on ignore. Les deux sont des erreurs."
+    source_expert: null
+    page: 370
+    extrait: null
+    fiche_liee: "FP-P5-CH19-checklist-01"
+    fiche_destinee_a: [MG, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Intégrer la catégorisation autonome/assisté/sensible dans la DoD de chaque équipe dans les 4 semaines suivant l'incident."
+    schemas_lies: []
+
+  - id: "P5-CH19-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: "Mon Scrum Master me dit que son rôle change avec l'IA mais il ne sait pas l'expliquer à ma direction. Comment je lui donne un vocabulaire pour défendre ce changement, et quelle valeur concrète mon SM AIgile produit que mon ancien SM ne produisait pas ?"
+    reponse: "Le chapitre donne la phrase clé : 'Je suis augmenté parce que je décide comment utiliser l'IA. Je ne suis pas remplacé parce que je lis ce que l'IA ne voit pas.' Valeur concrète du SM AIgile : détecter que le silence d'une Daily est de la résignation, pas de la concentration. Transformer une rétro qui dérive en conversation qui atterrit. Lire l'impact de l'IA sur la dynamique d'équipe avant que ça devienne un problème de métriques. Ce travail est fondamentalement relationnel. L'IA ne le fait pas."
+    douleur_terrain: "Le manager ne sait pas défendre le budget SM face à une direction qui dit 'l'IA fait le travail du SM maintenant'."
+    source_expert: null
+    page: 377
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # =====================
+  # CIBLE : DECIDEUR — role DC
+  # =====================
+
+  - id: "P5-CH19-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: "Deloitte State of AI 2026"
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'ai déployé l'IA dans 4 départements ce trimestre. Je vois des gains de productivité mais aussi des tensions et des incidents que je n'anticipe pas. Comment je sais si mes fondations IA sont solides ou fragiles, qui me donne ce diagnostic, et qu'est-ce que je dois décider en priorité ?"
+    reponse: "Le chapitre répond directement. Le IA Readiness Check : 4 fondations (Clarté, Rôles, Gouvernance, Apprentissage), score 1 à 4 par fondation. Score 4-8 : fondations insuffisantes, commencer par la fondation à 1. Score 9-12 : déploiement progressif, commencer par les équipes les plus matures. Score 13-16 : accélérer. Ce que le chapitre ajoute : un total hétérogène (4+4+1+1) n'est pas le même qu'un 10 homogène (3+2+3+2). Toujours commencer par la fondation à 1. Référence : Deloitte State of AI 2026, seulement 1 dirigeant sur 5 dispose d'un modèle mature de gouvernance des agents IA autonomes."
+    douleur_terrain: "Le décideur n'a pas de référentiel pour évaluer sa maturité IA. Il pilote à la vélocité et aux incidents. Les deux signaux sont en retard."
+    source_expert: "Deloitte | State of AI in the Enterprise | January 2026"
+    page: 373
+    extrait: null
+    fiche_liee: "FP-P5-CH19-readiness-03"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: "Passer le IA Readiness Check avec l'équipe de direction. Documenter le score. Partager avec les SM des équipes concernées."
+    schemas_lies: []
+
+  - id: "P5-CH19-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand]
+    question: "Je dois décider ce que l'IA peut faire seule dans mon organisation et ce qui reste humain. C'est un choix politique que je ne peux pas déléguer à la DSI. Quels sont les 3 décisions que je ne peux pas déléguer, à qui je les confie pour les opérationnaliser, et quel est le risque si je ne les prends pas avant le prochain trimestre ?"
+    reponse: "Le chapitre structure ces 3 décisions non-délégables : Décision 1 (tracer la ligne IA autonome vs humain : choix de valeurs et responsabilité), Décision 2 (clarifier les rôles dans le nouveau contexte : qui est responsable quand l'IA produit une erreur), Décision 3 (installer une culture d'apprentissage continu : le change IA n'est pas un projet, c'est une capacité d'adaptation). Risque de l'absence de décision : 80% des organisations déploient de l'IA agentique sans avoir défini qui supervise, qui valide, qui répond quand quelque chose se passe mal (Deloitte 2026)."
+    douleur_terrain: "Le DSI attend une décision de gouvernance que le CODIR n'a pas prise. La DSI déploie avec les mains liées ou prend elle-même des décisions de valeurs qui n'ont pas à lui appartenir."
+    source_expert: "Deloitte | State of AI in the Enterprise | January 2026"
+    page: 370
+    extrait: null
+    fiche_liee: "FP-P5-CH19-readiness-03"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: "Inscrire les 3 décisions à l'agenda CODIR du prochain trimestre. Deadline avant déploiement IA agentique."
+    schemas_lies: []
+
+  - id: "P5-CH19-DC-03"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: "Mon équipe de direction me dit que l'IA transforme notre organisation. Je vois surtout qu'elle révèle les failles qu'on n'avait pas résolues. Comment je sais si l'accélération IA est un avantage ou un risque pour moi, et quelle est la mesure que je lis pour décider ?"
+    reponse: "Le chapitre donne la formulation la plus forte du livre sur ce point : 'L'IA ne transforme pas une organisation. Elle révèle celle que tu as déjà construite. Si les fondations tiennent, l'accélération est un avantage. Si elles manquent, l'accélération est un risque.' La mesure à lire : le score IA Readiness sur les 4 fondations, et en particulier le score de sécurité psychologique (Q3 inférieur à 2 sur 4 est un signal critique indépendant du score global)."
+    douleur_terrain: "Le décideur confond accélération IA et transformation organisationnelle. Il accélère ce qui existait, y compris les dysfonctionnements."
+    source_expert: null
+    page: 375
+    extrait: "L'IA ne transforme pas une organisation. Elle révèle celle que tu as déjà construite."
+    fiche_liee: "FP-P5-CH19-readiness-03"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+
+trous:
+  - id: "T01"
+    role: RTE
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment le RTE gouverne l'adoption IA a l'echelle de l'ART sans homogeneiser par le bas ni laisser chaque equipe faire a sa facon ?"
+    statut: comble
+    reponse_proposee: "Si tu accompagnes un ART, l'heterogeneite des accords d'equipe IA entre equipes cree des problemes de dependances non vus. Une equipe qui a supprime l'estimation collective ne voit pas l'impact sur l'equipe voisine. Le RTE facilite un atelier inter-equipes pour partager les accords existants et identifier les elements communs a formaliser sans imposer."
+    emplacement: "Fin de chapitre, apres les KPIs, ou renvoi vers ch.13"
+    action: "Ajouter note pratique ou renvoi ch.13 - valide C12 variante RTE"
+
+  - id: "T02"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Que se passe-t-il quand un membre de l'equipe refuse l'accord d'equipe IA ou contourne les regles ?"
+    statut: comble
+    reponse_proposee: "Un accord d'equipe IA n'est pas un contrat. Si quelqu'un contourne une regle, ca ne veut pas dire qu'il est de mauvaise foi. Ca veut dire que la regle n'etait pas assez claire ou pas assez partagee. La retro suivante est le bon endroit pour ouvrir ca. Sans accusation. Avec curiosite."
+    emplacement: "Page 369, apres 'Different d'une IA policy imposee : co-construit par l'equipe.'"
+    action: "Correction C12 - integrer dans Affinity"
+
+  - id: "T03"
+    role: DC
+    cible: DECIDEUR
+    question_manquante: "Vers quoi evolue concretement le role de SM dans 3 a 5 ans ?"
+    statut: a_confirmer
+    reponse_proposee: "Section presente dans les pages 380+ non fournies. Confirmer la presence avant de marquer comme comble."
+    emplacement: "Pages 380+ (hors extrait fourni)"
+    action: "Verifier dans le PDF complet du chapitre 19"
+
+
+  - id: "T04"
+    role: DEV
+    cible: PRATICIEN_AGILE
+    question_manquante: "Le dev de demain code-t-il encore ou supervise-t-il l'IA qui code ? Le junior ne sait pas si apprendre a coder a encore du sens."
+    douleur_terrain: "Le dev junior voit l'IA generer du code et se demande quelle est sa valeur ajoutee. La question de la projection professionnelle a 3-5 ans est absente du chapitre dans l'extrait fourni."
+    statut: a_confirmer
+    reponse_provisoire: "Les deux. Et surtout : la question est mal posee. Ce n'est pas coder ou superviser. C'est qu'est-ce que tu fais que l'IA ne peut pas faire ? La reponse : comprendre l'architecture, detecter que le code genere est syntaxiquement correct et fonctionnellement a cote, decider qu'on ne deploie pas. Le junior qui attend qu'on lui dise que coder a encore du sens a deja la reponse. Ce qui compte maintenant : comprendre ce que tu construis, pas juste le construire vite."
+    source_master: "SALIM_QA_MASTER_v3 EP-DEV-01"
+    emplacement: "Pages 380+ (hors extrait fourni)"
+    action: "Verifier presence dans PDF complet. Si absent : signal de trou editorial important — le DEV est une cible du livre et cette question est la plus frequente chez les juniors."
+
+
+stats:
+  questions_totales: 15
+  par_role:
+    SM: 4
+    PO: 2
+    DEV: 2
+    CA: 2
+    RTE: 1
+    MG: 3
+    DC: 3
+  par_statut:
+    provisoire: 0
+    confirmee: 14
+    trou: 1
+  couverture_dimensions:
+    qui: 11
+    quoi: 15
+    comment: 12
+    pourquoi: 13
+    quand: 9
+    valeur: 12
+  schemas_lies: 0
+  fiches_pratiques: 3
+  trous_enrichis_depuis_master: 2
+  questions_master_evaluees: 8
+  questions_master_rejetees: 6
+  fiches_ids:
+    - FP-P5-CH19-checklist-01
+    - FP-P5-CH19-prompt-02
+    - FP-P5-CH19-readiness-03

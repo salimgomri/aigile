@@ -1,0 +1,547 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 16
+# chapter-extractor v6.1
+
+meta:
+  partie: 5
+  nom_partie: "Le praticien de demain"
+  chapitre: 16
+  titre: "L'IA : ma place en tant qu'equipe"
+  date_extraction: "2026-06-11"
+  page_debut: 332
+  page_fin: 354
+  statut_global: valide
+  version_finale: "chp16-4.pdf"
+  corrections_panel: 8_sur_8_GO
+  corrections_residuelles:
+    - "p.339 : eviter -> eviter (accent)"
+    - "p.339 : story a 3 -> story a 3 (accent)"
+    - "p.347 : session a 90 -> session a 90 (accent)"
+    - "p.347 : creneau -> creneau (accent)"
+
+questions:
+
+  # === DYNAMIQUES INVISIBLES ===
+
+  - id: "P5-CH16-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Mon equipe utilise l'IA depuis 3 sprints, la velocite a monte de 30 % et tout le monde dit que ca va bien en retro. Pourtant quelque chose me semble different dans la dynamique. Comment est-ce que je detecte concretement que des signaux negatifs s'accumulent sous les bonnes metriques, et quand est-ce que j'interviens avant que ce soit visible en DORA ?"
+    reponse: "Trois dynamiques apparaissent presque toujours dans cet ordre : la depreciation silencieuse des seniors (moins d'initiative, moins de questions en retro, moins de participation aux decisions d'architecture), la confiance artificielle des juniors (livrent plus vite, comprennent moins), et l'asymetrie d'adoption (inegalites de productivite percue, tensions latentes). Le signal seniors ne se voit pas dans la velocite. Il se voit dans le Happiness Index : cherche la divergence entre satisfaction generale et satisfaction sur 'ma contribution a eu de l'impact ce sprint'. Quand l'une monte et l'autre descend, tu as un signal senior en retrait. Les DORA Metrics captent ce signal 3 a 5 sprints plus tard. Interviens avant."
+    douleur_terrain: "La facilite du 'tout va bien' masque une erosion lente de la cohesion et de la comprehension collective. Le SM qui ne lit pas le Happiness Index en profondeur rate ce signal pendant des semaines."
+    source_expert: null
+    page: 334
+    extrait: null
+    fiche_liee: "FP-P5-CH16-checklist-detection-01"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: "Ajouter une question specifique dans le Happiness Index : 'Ma contribution a eu de l'impact ce sprint' (echelle 1-5). Suivre la divergence sprint par sprint."
+    schemas_lies: ["SVG-P5-CH16-01"]
+
+  - id: "P5-CH16-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Un de mes seniors parle de moins en moins pendant le Sprint Planning depuis que l'IA pre-machique les stories. Il ne se plaint pas, il se retire. Comment est-ce que je nomme ca en retro sans que ca devienne une accusation contre l'IA ou contre lui, et quelle formulation concrète peut ouvrir la conversation sans cristalliser les positions ?"
+    reponse: "Le signal se nomme comme une donnee d'equipe, pas comme une plainte. Exemple de formulation : 'depuis que l'IA est dans nos sprints, j'ai l'impression de moins contribuer sur les decisions qui comptent. Est-ce que d'autres le ressentent ?' C'est le senior qui ouvre la conversation, pas le SM. Le SM peut creer le contexte en retro en posant une question ouverte au groupe : 'Dans les 3 derniers sprints, y a-t-il eu des moments ou vous auriez pu contribuer differemment si l'IA n'avait pas ete la ?' Les reponses donnent le signal que les metriques ne voient pas."
+    douleur_terrain: "Les seniors ne se plaignent pas. Ils se retirent. Si personne ne nomme ce retrait comme un probleme d'equipe, il devient une norme."
+    source_expert: null
+    page: 335
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH16-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "Je suis developpeur junior. Avec l'IA je livre deux fois plus de features qu'avant. Mon manager est content, mon SM est content. Mais je realise que je valide des outputs sans comprendre pourquoi ca fonctionne. Dans 12 mois, quand l'outil change ou tombe en panne, est-ce que j'aurai les fondamentaux pour continuer seul, et comment est-ce que je construis ce filet maintenant sans ralentir l'equipe ?"
+    reponse: "Non : si tu apprends seulement a valider des outputs, tu n'as pas les fondamentaux. La solution n'est pas de refuser l'IA. C'est de forcer ta comprehension avant chaque usage. Le nouveau format d'estimation aide : le Planning Poker ne porte plus sur l'effort mais sur le niveau de comprehension partagee. Si tu votes 3 (zones d'ombre subsistantes), la discussion s'ouvre. C'est la que tu apprends. En pair programming, demande a driver plutot qu'a naviguer : quand tu tiens le clavier, tu es oblige de formuler les prompts, de prendre les decisions, de les assumer. Le senior navigue et corrige sans prendre la main. C'est la difference entre regarder quelqu'un nager et apprendre a nager."
+    douleur_terrain: "Le junior qui livre vite est felicite. Personne ne lui dit que sa dette de comprehension s'accumule. Il le decouvre 12 mois plus tard quand l'IA change et qu'il ne sait pas continuer seul."
+    source_expert: null
+    page: 336
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: "En pair programming : negocier de driver plutot que de naviguer, meme si c'est moins rapide au depart."
+    schemas_lies: []
+
+  - id: "P5-CH16-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Ma DSI veut un reporting mensuel sur l'usage de l'IA dans mes equipes. Je vois que la velocite monte mais je ne sais pas si c'est durable ou si ca cache des problemes. Quelles metriques est-ce que je surveille, dans quel ordre, et comment est-ce que je traduis ca en un rapport credible pour ma direction sans mentir sur les risques ?"
+    reponse: "Le ratio DF/CFR est le premier indicateur : si le Change Failure Rate augmente plus vite que la Deployment Frequency, c'est une alerte qualite IA. Le taux de discussion reelle en Sprint Planning (cible superieure a 50 % versus validation passive d'outputs) dit si l'equipe comprend ce qu'elle fait ou si elle accepte les livrables pre-machiques sans questionner. La reponse factuelle pour ta direction : 'La velocite a monte de X %. Le CFR a bouge de Y %. Je surveille le delta depuis 3 sprints. Je te reviens dans 2 sprints avec une lecture.' C'est une reponse factuelle, pas une excuse."
+    douleur_terrain: "Le manager qui reporte uniquement la velocite rassure sa direction sur un numero qui peut cacher une degradation de la qualite technique a 3-5 sprints de distance."
+    source_expert: null
+    page: 333
+    extrait: null
+    fiche_liee: "FP-P5-CH16-memo-reference-01"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: "Tracker DF et CFR en parallele des le premier mois d'usage IA intensif."
+    schemas_lies: ["SVG-P5-CH16-02"]
+
+  - id: "P5-CH16-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Certains membres de mon equipe utilisent l'IA en cachette parce qu'il n'y a pas de politique officielle. Ceux qui l'utilisent livrent deux fois plus de stories. Ceux qui ne l'utilisent pas sont percus comme moins performants. Des tensions latentes apparaissent sans que personne n'en parle en Daily. Comment est-ce que je cree un cadre qui resout cette asymetrie sans pointer du doigt les uns ou les autres ?"
+    reponse: "L'accord d'equipe IA est la reponse. Ce n'est pas une politique descendante. C'est un accord que l'equipe redige elle-meme en une retrospective de 60 minutes. Il repondre aux 6 questions que tout le monde se pose sans les poser a voix haute : quels outils sont autorises, comment signale-t-on un output IA, qui est responsable si ca bugue, comment integre-t-on un nouvel outil, comment preservon-nous les competences de l'equipe, comment detectons-nous les faux positifs IA. Une fois stabilise, il est partage avec la direction IT pour alignement. C'est une politique vecue, pas descendue."
+    douleur_terrain: "L'asymetrie d'adoption sans accord cree des inegalites de productivite percue. Le developpeur qui utilise l'IA en cachette livre deux fois plus de stories. Personne n'ose en parler en Daily."
+    source_expert: null
+    page: 337
+    extrait: null
+    fiche_liee: "FP-P5-CH16-checklist-decision-01"
+    fiche_destinee_a: [MG, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Planifier la retro accord d'equipe IA. Avant de la lancer : demander a chaque membre d'ecrire anonymement une reponse a Q3 : 'Qui est responsable quand l'IA introduit un bug ?' Les reponses divergentes sont le diagnostic."
+    schemas_lies: []
+
+  # === DEFINITION OF DONE ===
+
+  - id: "P5-CH16-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Notre DoD a ete ecrite avant qu'on utilise l'IA. Le code reviewe par un pair est coche, les tests unitaires passent a 100 %, mais les tests ont ete generes par l'IA et personne n'a verifie leur pertinence. Est-ce que notre story est vraiment Done, et comment est-ce qu'on adapte notre DoD pour couvrir les risques que l'IA introduit sans creer une usine a gaz ?"
+    reponse: "La regle pratique du chapitre : si l'equipe utilise l'IA pour produire un livrable, elle doit pouvoir expliquer ce livrable sans l'aide de l'IA. Si elle ne peut pas, la story n'est pas Done : elle est simulee. Le tableau du chapitre donne les questions a poser pour chaque critere classique. Pour les tests : les tests ont-ils ete ecrits par l'equipe ou generes par l'IA ? Quelqu'un a-t-il verifie leur pertinence ? Pour la review de code : a-t-on relu le code genere par l'IA avec le meme niveau d'attention que le code ecrit a la main ? L'exercice de refonte DoD en retro prend 45 minutes : liste les criteres, pose la question pour chacun, ajoute un critere de validation humaine pour chaque risque identifie, vote sur les 3 prioritaires a renforcer ce sprint."
+    douleur_terrain: "Les equipes cochent leur DoD avec des livrables IA qu'elles ne comprennent pas. La story est declaree Done. Le bug en production arrive 2 sprints plus tard sur un cas limite que l'IA avait ignore et que personne n'avait verifie."
+    source_expert: null
+    page: 338
+    extrait: null
+    fiche_liee: "FP-P5-CH16-checklist-decision-02"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Revoie ta DoD ce sprint. Pour chaque critere : est-ce que l'IA pourrait satisfaire ca sans que l'equipe comprenne vraiment ? Ajoute un critere de validation humaine pour chaque risque identifie."
+    schemas_lies: ["SVG-P5-CH16-03"]
+
+  - id: "P5-CH16-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, comment, quand]
+    question: "Je dois faciliter la refonte de notre DoD pour l'ere IA en retrospective. Je n'ai pas 2 heures a y passer. Comment est-ce que je structure cet exercice en 45 minutes pour que l'equipe identifie les vrais risques IA dans nos criteres actuels, et quel signal me dit que la session a marche ?"
+    reponse: "L'exercice se fait en fin de retro en 4 etapes : (1) Lister les criteres DoD actuels sur un tableau, 10 minutes. (2) Pour chaque critere, poser la question 'Est-ce que l'IA pourrait satisfaire ce critere sans que l'equipe le comprenne vraiment ?' 15 minutes. (3) Pour chaque critere a risque, ajouter un critere de validation humaine explicite. Exemple : 'Le developpeur qui soumet la PR peut expliquer oralement pourquoi ce code fait ce qu'il fait, sans relire le code genere.' 15 minutes. (4) Vote sur les 3 criteres prioritaires a renforcer ce sprint. 5 minutes. Signal de succes : l'equipe identifie au moins 2 criteres qu'elle n'aurait jamais questionnes avant l'IA."
+    douleur_terrain: "Le SM qui annonce 'on va revoir la DoD' sans format structure voit la session deraper en debat general sur l'IA. Les 45 minutes passent, rien n'est decide."
+    source_expert: null
+    page: 339
+    extrait: null
+    fiche_liee: "FP-P5-CH16-checklist-decision-02"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # === ESTIMATION COLLECTIVE ===
+
+  - id: "P5-CH16-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Mon equipe a abandonne le Planning Poker parce que l'IA genere deja les stories avec des estimations. La conversation d'estimation a disparaissait, mais c'est precisement la qu'on detectait les malentendus et construisait l'alignement. Comment est-ce que je restaure la valeur du desaccord productif sans revenir en arriere sur l'usage de l'IA ?"
+    reponse: "La reponse n'est pas de supprimer l'IA du Sprint Planning. C'est de changer le role de l'estimation. Le nouveau format : avant le Sprint Planning, l'IA genere une premiere version des stories et criteres. Le Planning Poker ne porte pas sur l'effort, il porte sur le niveau de meme modele mental sur la story. 1 = tout le monde comprend exactement la meme chose. 3 = des zones d'ombre subsistent et doivent etre discutees. 8+ = la story n'est pas prete, la discussion doit avoir lieu avant le sprint. Le SM anime : il lit la story, l'equipe vote, pas de discussion avant le vote. La discussion s'ouvre seulement si les votes divergent. Ce changement preserve la valeur de l'estimation : la conversation, pas le chiffre."
+    douleur_terrain: "Quand l'IA pre-mache les stories, l'equipe recoit un livrable et l'accepte. La conversation qui forcait la comprehension avant l'engagement disparait. La dette de comprehension s'accumule en silence."
+    source_expert: "Mike Cohn (Planning Poker origine)"
+    page: 340
+    extrait: null
+    fiche_liee: "FP-P5-CH16-memo-reference-02"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: "Au prochain Sprint Planning, changer la question d'estimation : pas 'combien de temps' mais 'quel est notre niveau de comprehension partagee ?'"
+    schemas_lies: []
+
+  - id: "P5-CH16-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: "Je genere mes user stories avec l'IA. Les criteres d'acceptance sont produits en quelques secondes. L'equipe les accepte sans discussion. Je livre plus vite, la prioritisation est facilitee. Mais si personne dans l'equipe ne comprend ce qu'elle valide, qu'est-ce que ca change pour la qualite reelle du produit que je suis cense piloter ?"
+    reponse: "Si les criteres ont ete generes sans discussion, l'equipe comprend peut-etre ce qu'elle valide formellement, mais pas pourquoi ces criteres ont ete choisis plutot que d'autres. La DoD IA pose explicitement la question : 'Les criteres ont-ils ete generes par l'IA sans discussion ? L'equipe comprend-elle ce qu'elle valide ?' C'est le PO qui doit s'assurer que les criteres ont ete discutes, pas juste acceptes. La rule pratique du chapitre : si l'equipe ne peut pas expliquer le livrable sans l'IA, la story est simulee. Ce n'est pas un probleme de vitesse. C'est un probleme de qualite de la comprehension collective."
+    douleur_terrain: "Le PO qui valide a vitesse IA sans s'assurer de la comprehension de l'equipe cree une dette de sens. La feature est livree. Elle ne correspond pas a ce que les stakeholders attendaient vraiment. Le PO le decouvre en Sprint Review."
+    source_expert: null
+    page: 338
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # === SIGNAUX DORA ===
+
+  - id: "P5-CH16-SM-05"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    question: "Depuis que mon equipe utilise l'IA intensivement, la Deployment Frequency a explose. Mon manager est ravi. Mais je vois que le Change Failure Rate monte en meme temps. Comment est-ce que j'explique ce paradoxe a mon manager sans passer pour quelqu'un qui ralentit la machine, et quel seuil d'alerte me force a intervenir ?"
+    reponse: "Le paradoxe DF en hausse + CFR en hausse est le premier signal d'alerte d'une equipe qui deploie plus vite qu'elle ne comprend. La regle pratique : surveille le CFR en priorite dans les 3 premiers mois d'usage intensif de l'IA. Si le CFR monte pendant que la DF monte, l'equipe va plus vite dans la mauvaise direction. C'est le signal pour ralentir et reviser la DoD. Pour ton manager : la reponse factuelle est 'La velocite a monte de X %. Le CFR a bouge de Y %. Je surveille le delta depuis 3 sprints. Je te reviens dans 2 sprints avec une lecture.' Ce n'est pas une excuse. C'est un suivi de qualite."
+    douleur_terrain: "Le manager qui ne regarde que la DF est aveugle sur la qualite. L'equipe deploie plus souvent mais deploie des bugs. Le MTTR monte. Quelqu'un decouvre le probleme en production."
+    source_expert: "Dave Farley (DORA)"
+    page: 342
+    extrait: null
+    fiche_liee: "FP-P5-CH16-memo-reference-01"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: "Regarder les 3 derniers sprints : la DF a-t-elle augmente ? Le CFR a-t-il bouge dans le meme sens ou en sens inverse ? Ce delta dit tout."
+    schemas_lies: ["SVG-P5-CH16-02"]
+
+  - id: "P5-CH16-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: "J'ai autorise et finance l'adoption de l'IA dans mes equipes de developpement. La velocite est en hausse, tout le monde est satisfait. Comment est-ce que je sais si cette hausse de velocite est reelle et durable, ou si elle masque une degradation de la qualite qui va se repercuter sur mes couts de maintenance dans 6 mois ?"
+    reponse: "Le signal fiable n'est pas la velocite. C'est le ratio DF/CFR. Si le Change Failure Rate augmente plus vite que la Deployment Frequency, la qualite se degrade pendant que la vitesse monte. L'IA ameliore la vitesse, pas automatiquement la fiabilite. Les metriques a surveiller en parallele : CFR et MTTR en parallele de DF et Lead Time for Changes. Principe : l'IA peut generer des tests plus complets, mais si les tests sont generes sans etre compris, ils ne couvrent pas les vrais cas limites. La dette technique invisible se manifeste quand quelqu'un doit toucher un module que personne ne comprend vraiment."
+    douleur_terrain: "Le decideur qui reporte uniquement la velocite a sa direction de tutelle valide une transformation sans signal d'alerte qualite. Le probleme se manifeste 6 mois plus tard comme une hausse des incidents en production."
+    source_expert: null
+    page: 342
+    extrait: null
+    fiche_liee: "FP-P5-CH16-memo-reference-01"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P5-CH16-02"]
+
+  # === PAIR PROGRAMMING ===
+
+  - id: "P5-CH16-SM-06"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Mon equipe utilise l'IA en solo pour coder. Chaque dev produit plus vite. Mais le bus factor monte : le dev qui connait le module de paiement est le seul a comprendre ce qu'il a construit avec Copilot. Quand il prend des vacances le sprint deraille. Comment est-ce que je reintroduis le pair programming sans que l'equipe le vive comme un ralentissement impose ?"
+    reponse: "La reponse au manager est directe et chiffree : une story faite seul qui genere 3 jours de bugfix coute plus cher que deux personnes qui la font proprement du premier coup. Ce n'est pas une position philosophique. Le SM ne decide pas quand faire du pair : il identifie avec le Tech Lead les stories qui meritent un binome (code critique, nouveau module, onboarding d'un dev recent, premiere story dans une zone inconnue). Il planifie les binomes (senior avec junior sur les zones a risque, deux devs de meme niveau sur les decisions d'architecture), varie les binomes d'un sprint a l'autre pour que la connaissance se distribue dans l'equipe, et protege les sessions des interruptions. Signal de succes : les devs qui ont paire peuvent expliquer ce qu'ils ont fait a un troisieme dev sans documentation."
+    douleur_terrain: "Quand un developpeur code avec Copilot ou Cursor, il produit plus vite mais il produit seul. Le code sort, la connaissance reste dans une seule tete. Parfois dans la tete de personne : il a accepte les suggestions de l'IA sans vraiment comprendre ce qu'il integrait."
+    source_expert: "Kent Beck (XP Pair Programming)"
+    page: 343
+    extrait: null
+    fiche_liee: "FP-P5-CH16-checklist-detection-01"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: "Identifier avec le Tech Lead les 2-3 stories du prochain sprint qui meritent un binome. Planifier la rotation."
+    schemas_lies: []
+
+  - id: "P5-CH16-DEV-03"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "En pair programming avec l'IA dans le binome, je suis souvent le Navigator. Je regarde le Driver interagir avec Copilot et j'accepte les suggestions avec lui sans les questionner vraiment. Quel est mon vrai role de Navigator quand l'IA est dans la session, et comment est-ce que je contribue plutot que de doubler passivement le Driver ?"
+    reponse: "Le Navigator change de mission quand l'IA est dans le binome. Il ne regarde plus seulement le code. Il verifie que ce que l'IA propose est juste, que le Driver ne l'accepte pas par reflexe, et que le code genere correspond aux criteres d'acceptation de la story. Deux questions clefs du Navigator : 'Attends, est-ce que ce bout fait bien ce que le ALORS dit ?' et 'Est-ce que l'IA avait le bon contexte pour generer ca ?' (si le Driver a colle un fichier de 400 lignes dans le prompt, la suggestion est coherente avec ce fichier, pas forcement avec le reste du systeme). Seul face a l'IA, un developpeur accepte une grande partie des suggestions sans les lire vraiment. En pair, ce reflexe tombe parce que le Navigator est la."
+    douleur_terrain: "Le Navigator qui consulte ses messages pendant que le Driver code est deux personnes dans la meme piece qui travaillent separement. La connaissance ne bouge pas. C'est la surveillance deguisee en collaboration."
+    source_expert: null
+    page: 346
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Pendant la prochaine session pair : noter combien de suggestions IA le Driver accepte sans discussion. Ce nombre est ton diagnostic."
+    schemas_lies: []
+
+  - id: "P5-CH16-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'accompagne plusieurs equipes qui adoptent l'IA. Dans certaines, le pair programming s'est vide de sens : les deux devs acceptent les suggestions IA sans se parler, les sessions depassent 2 heures, le senior prend toujours le clavier. Comment est-ce que je diagnostique un pair programming IA dysfonctionnel et quels sont les 4 signaux qui me disent que la session ne produit rien d'utile ?"
+    reponse: "Les 4 signaux que ca ne fonctionne pas : (1) Le senior prend toujours le clavier, la rotation n'est pas respectee, le junior regarde et decroche progressivement. Intervention directe : un timer visible sur l'ecran, rappel de la regle, pas de negociation. (2) Personne ne parle. Le Driver code en silence, le Navigator consulte ses messages. Ce sont deux personnes dans la meme piece qui travaillent separement. (3) Les sessions depassent 2 heures sans pause. La fatigue cognitive produit des erreurs que ni le Driver ni le Navigator ne voient plus. Maximum 2 heures, pause de 10 minutes, rotation a la reprise. (4) L'IA remplace le dialogue. Driver et Navigator acceptent les suggestions sans les discuter. Les deux s'en remettent a l'outil et se taisent. C'est le piege le plus frequent et le plus difficile a detecter de l'exterieur."
+    douleur_terrain: "Le pair programming IA dysfonctionnel est invisible de l'exterieur. Les deux devs sont dans la meme piece, l'IA produit du code, les tests passent. Personne ne voit que la connaissance ne circule pas."
+    source_expert: null
+    page: 347
+    extrait: null
+    fiche_liee: "FP-P5-CH16-checklist-detection-01"
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH16-SM-07"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Quand est-ce que j'utilise le mob programming plutot que le pair programming, et comment est-ce que le mob fonctionne quand l'IA est dans la session ?"
+    reponse: "Le mob programming s'utilise pour les decisions d'architecture : quand toute l'equipe doit s'aligner sur une decision structurante. Pas pour aller plus vite. Pour que tout le monde comprenne la meme chose au meme moment. Format : toute l'equipe sur un seul ecran, un seul clavier qui tourne toutes les 15 minutes. Avec l'IA dans le mob, l'outil est visible pour tous : tout le monde voit les prompts formules, les suggestions recues, les decisions prises et pourquoi. Le savoir circule sans qu'il y ait besoin de le documenter apres. Frequence : une ou deux fois par sprint maximum. Une session de mob sur une decision d'architecture vaut trois semaines de documentation que personne ne lira jamais."
+    douleur_terrain: "L'equipe prend des decisions d'architecture via des PRs commentees que personne ne lit vraiment. La connaissance reste fragmentee. La mob session est perçue comme du temps perdu alors qu'elle evite des semaines de confusion."
+    source_expert: null
+    page: 347
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # === ACCORD D'EQUIPE IA ===
+
+  - id: "P5-CH16-SM-08"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je veux faciliter la creation d'un accord d'equipe IA en retrospective. Je n'ai jamais fait ca avant. Quelles sont les 6 questions a poser, dans quel ordre, combien de temps j'alloue a chaque question, et quel est le signal que l'accord est vivant et pas une affiche oubliee ?"
+    reponse: "L'accord d'equipe IA se redige en une retro de 60 minutes avec 6 questions a 10 minutes chacune : Q1 (outils autorises, categories de donnees a proteger), Q2 (comment signaler un output IA dans le code/doc/criteres), Q3 (qui est responsable quand un output IA introduit un bug), Q4 (comment on decide collectivement d'integrer un nouvel outil IA), Q5 (comment on s'assure que les competences ne s'atrophient pas), Q6 (comment on detecte les outputs IA qui semblent corrects mais ne le sont pas). L'accord est redige en live, affiche dans l'espace d'equipe, revise tous les 2 mois. Signal de succes : l'accord est conteste au moins une fois dans les 30 jours. Ca veut dire qu'il est vivant. Avant de lancer la retro : demander a chaque membre d'ecrire anonymement une reponse a Q3. Les reponses divergentes sont le diagnostic."
+    douleur_terrain: "L'accord d'equipe IA est l'artefact qui manque dans presque toutes les equipes. Les questions que tout le monde se pose sans les poser a voix haute deviennent des tensions latentes, des malentendus, des reproches implicites."
+    source_expert: null
+    page: 349
+    extrait: null
+    fiche_liee: "FP-P5-CH16-checklist-decision-01"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: "Planifier la retro accord d'equipe IA. Avant de la lancer, demander a chaque membre d'ecrire anonymement une reponse a Q3."
+    schemas_lies: []
+
+  - id: "P5-CH16-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi]
+    question: "Mon equipe a produit un accord d'equipe IA. Ma direction IT m'a envoye une politique de securite IA qui est en contradiction partielle avec certains points de l'accord. Comment est-ce que je gere la tension entre ce que l'equipe a decide par en bas et ce que la direction descend par en haut ?"
+    reponse: "L'accord d'equipe IA ne remplace pas une politique IT ou une directive juridique. Il la complete par en bas. Une fois stabilise, il est partage avec la direction IT pour alignement. Si tu supervises plusieurs equipes, utilise-le comme base : demande a chaque equipe de rediger le sien en 60 minutes, collecte les convergences sur Q1, Q3 et Q6, et construis ta politique maison a partir de ce qui revient dans toutes les equipes. C'est une politique vecue, pas descendue. C'est un point d'entree, pas un point final."
+    douleur_terrain: "La politique IT IA descendue sans consultation des equipes est ignoree ou contournee. L'accord equipe construit par en bas est applicable des le lendemain mais fragile sans validation IT. Le manager est le pivot entre les deux."
+    source_expert: null
+    page: 340
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH16-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: "Je dirige plusieurs equipes Scrum qui adoptent l'IA. Certaines ont produit un accord d'equipe IA, d'autres pas. Comment est-ce que je construis une gouvernance IA coherente sur l'ensemble de mes equipes sans imposer un cadre que personne ne respectera ?"
+    reponse: "La demarche est ascendante. Demander a chaque equipe de rediger son accord d'equipe IA en 60 minutes en retrospective. Collecter les convergences sur Q1 (outils et donnees), Q3 (responsabilite des bugs IA) et Q6 (detection des faux positifs IA). Construire la politique maison a partir de ce qui revient dans toutes les equipes. C'est une politique vecue, pas descendue. Elle s'applique parce que les equipes l'ont construite, pas parce qu'elle a ete imposee. Une fois stabilisee par l'ensemble des equipes, elle est partagee avec la direction IT et juridique pour validation et complement."
+    douleur_terrain: "La politique IA imposee par une DSI sans consultation terrain est contournee en 30 jours. Les equipes continuent leurs pratiques informelles. L'accord equipe construit par les praticiens est applique parce qu'il a ete vecu."
+    source_expert: null
+    page: 340
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # === WORKING AGREEMENT PREREQUIS ===
+
+  - id: "P5-CH16-SM-09"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand]
+    question: "Je veux lancer la session d'accord d'equipe IA mais mon equipe n'a pas de working agreement de base. Est-ce que je peux aller directement a l'accord IA ou est-ce qu'il faut commencer par le socle ?"
+    reponse: "L'accord IA est une extension du socle working agreement. Si le socle n'existe pas (comment on decide, comment on donne du feedback, quand on est disponible), 30 minutes en retro pour ecrire et afficher 5 regles. Ensuite seulement l'accord IA. Sans ce socle, l'accord IA flotte dans le vide. Les questions sur la responsabilite (Q3) et la detection des problemes (Q6) presupposent que l'equipe sait deja comment elle regle ses desaccords en general."
+    douleur_terrain: "Le SM qui lance l'accord IA dans une equipe sans working agreement de base se retrouve a debattre des fondamentaux (qui decide ?) pendant la session IA. Les 60 minutes ne suffisent plus."
+    source_expert: null
+    page: 334
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # === PAIR PROGRAMMING IA ===
+
+  - id: "P5-CH16-SM-10"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: "Kent Beck (XP Pair Programming 1999)"
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Mon equipe produit du code deux fois plus vite avec l'IA mais chaque dev travaille seul. Le bus factor monte. Quand un dev part en vacances, le sprint deraille. Comment est-ce que je reintroduis le pair programming sans que l'equipe le vive comme un ralentissement impose ?"
+    reponse: "L'argument pour le manager est direct : une story faite seul qui genere 3 jours de bugfix coute plus cher que deux personnes qui la font proprement du premier coup. Le SM identifie avec le Tech Lead les stories qui meritent un binome (code critique, nouveau module, onboarding, zone inconnue), planifie les binomes en variant les paires chaque sprint, et protege les sessions des interruptions. Signal de succes : les devs qui ont paire peuvent expliquer ce qu'ils ont fait a un troisieme dev sans documentation."
+    douleur_terrain: "Quand un developpeur code avec Copilot ou Cursor, il produit vite mais seul. Le code sort. La connaissance reste dans une seule tete. Parfois dans aucune tete : il a accepte les suggestions de l'IA sans comprendre ce qu'il integrait."
+    source_expert: "Kent Beck, Extreme Programming Explained (1999)"
+    page: 343
+    extrait: null
+    fiche_liee: "FP V-16.6"
+    fiche_destinee_a: [SM, DEV, CA]
+    statut_reponse: confirmee
+    action_recommandee: "Identifier avec le Tech Lead les 2-3 stories du prochain sprint qui meritent un binome. Planifier la rotation."
+    schemas_lies: []
+
+  - id: "P5-CH16-DEV-03"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "En pair programming avec l'IA dans le binome, je suis souvent Navigator. Je regarde le Driver interagir avec Copilot et on accepte les suggestions sans vraiment les questionner. Quel est mon vrai role de Navigator quand l'IA est dans la session ?"
+    reponse: "Le Navigator change de mission quand l'IA est dans le binome. Il ne regarde plus seulement le code. Il verifie que ce que l'IA propose correspond aux criteres d'acceptance, que le Driver ne l'accepte pas par reflexe. Deux questions a poser a voix haute : 'Attends, est-ce que ce bout fait bien ce que le ALORS dit ?' et 'Est-ce que l'IA avait le bon contexte pour generer ca ?' Si le Driver a colle un fichier de 400 lignes dans le prompt, la suggestion est coherente avec ce fichier, pas forcement avec le reste du systeme."
+    douleur_terrain: "Seul face a l'IA, un developpeur accepte une grande partie des suggestions sans les lire vraiment. En pair, ce reflexe tombe parce que le Navigator est la pour poser la question."
+    source_expert: null
+    page: 346
+    extrait: null
+    fiche_liee: "FP V-16.6"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Pendant la prochaine session pair : noter combien de suggestions IA le Driver accepte sans discussion. Ce nombre est le diagnostic."
+    schemas_lies: []
+
+  - id: "P5-CH16-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'accompagne plusieurs equipes qui adoptent l'IA. Dans certaines, le pair programming s'est vide de sens : les deux devs acceptent les suggestions IA sans se parler, le senior garde toujours le clavier, les sessions depassent 2 heures. Quels sont les 4 signaux concrets qui me disent que la session ne produit rien d'utile ?"
+    reponse: "Les 4 signaux : (1) Le senior garde toujours le clavier, la rotation n'est pas respectee, le junior decroche progressivement. Intervention SM : timer visible, rappel de la regle, pas de negociation. (2) Personne ne parle. Driver code en silence, Navigator consulte ses messages. Deux personnes dans la meme piece qui travaillent separement. (3) La session depasse 2 heures sans pause. Fatigue cognitive, ni le Driver ni le Navigator ne voient plus les erreurs. Regle : 2 heures max, pause 10 min, rotation a la reprise. (4) L'IA remplace le dialogue. Driver et Navigator acceptent les suggestions sans les discuter. Le plus frequent et le plus difficile a detecter de l'exterieur."
+    douleur_terrain: "Le pair programming IA dysfonctionnel est invisible de l'exterieur. Les deux devs sont dans la meme piece, l'IA produit du code, les tests passent. Personne ne voit que la connaissance ne circule pas."
+    source_expert: null
+    page: 347
+    extrait: null
+    fiche_liee: "FP V-16.6"
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH16-SM-11"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: "Quand est-ce que j'utilise le mob programming plutot que le pair programming, et comment est-ce que le mob fonctionne quand l'IA est dans la session ?"
+    reponse: "Le mob pour les decisions qui engagent toute l'equipe : quand toute l'equipe doit s'aligner sur une decision structurante. Pas pour aller plus vite. Pour que tout le monde comprenne la meme chose au meme moment. Toute l'equipe sur un seul ecran, un seul clavier qui tourne toutes les 15 minutes. Avec l'IA dans le mob, les prompts, les suggestions et les decisions sont visibles pour tous. Le savoir circule sans qu'il faille le documenter apres. Maximum 2 heures, pause 10 minutes, une ou deux fois par sprint. Une session de mob sur une decision d'architecture vaut trois semaines de documentation que personne ne lira jamais."
+    douleur_terrain: "L'equipe prend des decisions d'architecture via des PRs commentees que personne ne lit vraiment. La connaissance reste fragmentee. La session mob est percue comme du temps perdu alors qu'elle evite des semaines de confusion."
+    source_expert: null
+    page: 349
+    extrait: null
+    fiche_liee: "FP V-16.6"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # === BUS FACTOR ET TRANSMISSION ===
+
+  - id: "P5-CH16-SM-12"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur, quand]
+    question: "Apres 2 sprints avec des binomes planifies, qu'est-ce qui change concretement dans la dynamique de l'equipe, et comment est-ce que je maintiens ce bus factor bas quand l'IA accelere la production de code ?"
+    reponse: "Apres 2 sprints avec des binomes planifies, les questions en milieu de sprint diminuent. Les devs savent ce que leurs collegues savent. Le depart d'un developpeur cesse d'etre une catastrophe : il laisse derriere lui au moins une personne qui comprend ce qu'il a construit. Le bus factor ne disparait pas. Mais dans un environnement ou l'IA accelere la production de code et rend la connaissance encore plus fragile, maintenir ce bus factor bas est devenu l'une des responsabilites concretes du SM. La transmission ne se fait pas par la documentation. Elle se fait par le travail cote a cote."
+    douleur_terrain: "Le SM qui ne planifie pas les binomes se retrouve avec un bus factor de 1 sur chaque module genere par IA. Personne ne comprend ce que le dev a produit avec Copilot, parfois pas meme le dev lui-meme."
+    source_expert: null
+    page: 350
+    extrait: null
+    fiche_liee: "FP V-16.7"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # === GOUVERNANCE MULTI-EQUIPES ===
+
+  - id: "P5-CH16-DC-03"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Je supervise plusieurs equipes Scrum qui adoptent l'IA. Comment est-ce que je construis une politique IA coherente sur l'ensemble des equipes sans imposer un cadre descendant que personne ne respectera, et comment est-ce que je collecte les bonnes convergences pour batir cette politique ?"
+    reponse: "La demarche est ascendante en 4 etapes : (1) Chaque equipe redige son accord d'equipe IA en 60 minutes en retrospective. (2) Collecter les convergences sur Q1 (outils autorises, donnees protegees), Q3 (responsabilite des bugs IA) et Q6 (detection des faux positifs). (3) Construire la politique maison a partir de ce qui revient dans toutes les equipes. (4) Valider avec la direction IT et juridique. C'est une politique vecue, pas descendue. Elle s'applique parce que les equipes l'ont construite. L'accord d'equipe ne remplace pas une directive juridique. Il la complete par en bas."
+    douleur_terrain: "La politique IA imposee par une DSI sans consultation terrain est contournee en 30 jours. Les equipes continuent leurs pratiques informelles. L'accord equipe construit par les praticiens est applique parce qu'il a ete vecu."
+    source_expert: null
+    page: 352
+    extrait: null
+    fiche_liee: "FP V-16.8"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+trous:
+  - id: "T01"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment gerer le pair programming IA en contexte remote/hybride quand les deux devs ne sont pas dans la meme piece ?"
+    action: "Ajouter un encadre 'En pratique remote' apres la section 6b. Mentionner les outils (VS Code Live Share, JetBrains Code With Me), adapter la rotation (minuteur partagé, signal Slack), et preciser que la session remote se limite a 90 minutes maximum vs 2 heures en presentiel."
+
+  - id: "T02"
+    role: MG
+    cible: MANAGER
+    question_manquante: "Comment detecter en pratique l'asymetrie d'adoption au niveau individuel sans creer un climat de surveillance ?"
+    action: "Ajouter un paragraphe concret dans la section 2c. Proposition : lors des 1-to-1 individuels, poser une seule question ouverte : 'Comment tu utilises l'IA aujourd'hui dans ton travail ?' Les reponses revelent l'adoption sans creer de sentiment de controle. Pas de liste nominative, pas de tracking individuel."
+
+  - id: "T03"
+    role: DEV
+    cible: PRATICIEN_AGILE
+    question_manquante: "Que faire quand l'IA propose du code que tu acceptes mais que tu ne comprends pas, et que tu n'as pas de pair disponible pour questionner ?"
+    action: "Ajouter un encadre 'solo avec l'IA' dans la section 6. Regle simple : si tu ne peux pas expliquer le code genere en une phrase sans le relire, c'est une story a 3 dans le nouveau format d'estimation. Elle doit etre discutee avant validation."
+
+  - id: "T04"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Le Nota Bene page 340 repete deux fois la meme phrase ('Une fois stabilise, partage-le avec ta direction IT pour alignement'). Doublon a corriger."
+    action: "Supprimer la deuxieme occurrence de la phrase repetee dans le Nota Bene page 340."
+
+stats:
+  questions_totales: 24
+  par_role:
+    SM: 12
+    PO: 1
+    DEV: 5
+    CA: 2
+    RTE: 0
+    MG: 3
+    DC: 3
+  par_statut:
+    provisoire: 0
+    confirmee: 24
+    trou: 0
+  couverture_dimensions:
+    qui: 17
+    quoi: 24
+    comment: 19
+    pourquoi: 21
+    quand: 14
+    valeur: 16
+  schemas_lies: 3
+  fiches_pratiques:
+    - id: "FP V-16.1"
+      template: T04
+      titre: "Detecter les signaux invisibles IA"
+      pour: [SM, CA]
+    - id: "FP V-16.2"
+      template: T06
+      titre: "DORA a l'ere IA : ce que tu surveilles"
+      pour: [MG, SM, DC]
+    - id: "FP V-16.3"
+      template: T04
+      titre: "Reecrire la DoD a l'ere IA"
+      pour: [SM, DEV]
+    - id: "FP V-16.4"
+      template: T06
+      titre: "Accord d'equipe IA : 6 questions, 60 minutes"
+      pour: [SM, MG]
+    - id: "FP V-16.5"
+      template: T06
+      titre: "Estimer la comprehension, pas l'effort"
+      pour: [SM, PO]
+    - id: "FP V-16.6"
+      template: T04
+      titre: "Pair programming a l'ere IA"
+      pour: [SM, DEV, CA]
+    - id: "FP V-16.7"
+      template: T06
+      titre: "Bus factor : la responsabilite du SM"
+      pour: [SM, MG]
+    - id: "FP V-16.8"
+      template: T06
+      titre: "Construire une politique IA par en bas"
+      pour: [DC, MG]

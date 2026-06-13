@@ -1,0 +1,646 @@
+# ============================================================
+# SYSTEME S.A.L.I.M.  :  Q&A Chapitre 14
+# Manager agile : allié ou obstacle ?
+# Partie 4  :  SCRUM à l'échelle
+# Pages : 298-311
+# Version : 1.0
+# ============================================================
+
+chapitre:
+  id: "CH14"
+  titre: "Manager agile : allié ou obstacle ?"
+  partie: 4
+  pages: "298-311"
+  auteur: "Salim Gomri"
+  resume: >
+    Le chapitre recadre la relation SM-manager comme un levier d'action,
+    pas un obstacle par défaut. Il donne au SM les outils concrets pour
+    construire ce partenariat : table de traduction langage terrain vers
+    langage business, quatre profils de manager avec approche adaptée,
+    six questions de gouvernance, agenda OKR trimestriel et quatre regles
+    d'or de la relation.
+
+questions:
+
+  # ============================================================
+  # SM  :  Scrum Master
+  # ============================================================
+
+  - id: "CH14-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    question: >
+      Mon manager parle directement aux devs pendant le sprint. Quelle
+      approche concrète je peux utiliser pour nommer le problème sans
+      le braquer ?
+    reponse: >
+      Traduis l'impact en termes business avant la conversation : "Chaque
+      interruption non planifiée coûte N jours sur le Sprint Goal." Utilise
+      la table de traduction SM vers Manager (p.304) pour reformuler.
+      Propose un canal formel pour les demandes urgentes afin de proteger
+      le canal d'auto-organisation de l'équipe.
+    douleur_terrain: >
+      Le manager envoie des messages directs aux devs sur Slack. C'est l'un
+      des patterns les plus fréquents et les plus dévastateurs. Le SM hésite
+      à nommer le problème par peur de paraître défensif ou territorial.
+    page: 304
+    extrait: >
+      Présente tes obstacles dans le langage chiffré du manager : pas
+      "l'équipe a du mal avec les dépendances", mais "chaque dépendance
+      non résolue nous coûte N jours sur 3 sprints". calcule ton N.
+    fiche_liee: "FP-P4-CH14-traduction-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    question: >
+      Je dois informer mon manager que le Sprint Goal est à risque.
+      Quand et comment je le fais sans déclencher une intervention
+      contre-productive ?
+    reponse: >
+      La règle du chapitre est explicite : zéro surprise. Si le Sprint Goal
+      est à risque, le manager doit le savoir avant la Sprint Review, pas
+      pendant. Formule par écrit, avec la decision demandée explicitement.
+      Le dashboard mis à jour 15 minutes après la Sprint Review complète
+      la boucle (règle d'or n°2, p.309).
+    douleur_terrain: >
+      Le SM attend la Sprint Review pour annoncer un Sprint Goal manqué.
+      Le manager découvre en public. La relation de confiance prend un coup
+      qui met plusieurs sprints à se reconstruire.
+    page: 309
+    extrait: >
+      Zéro surprise : si un Sprint Goal est à risque, le manager sait avant
+      la Sprint Review.
+    fiche_liee: "FP-P4-CH14-regles-or-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    question: >
+      Comment structurer un 1:1 mensuel SM/Manager de 30 minutes
+      pour qu'il soit un levier de déblocage et non un rapport de statut ?
+    reponse: >
+      Agenda fixe en 3 points : un obstacle organisationnel que le SM ne
+      peut pas lever seul, une décision que seul le manager peut prendre,
+      un chiffre de progression d'équipe. Ce format distingue le 1:1 du
+      reporting. Il transforme la rencontre en session de décision, pas de
+      compte-rendu.
+    douleur_terrain: >
+      Le SM fait un point hebdo avec le manager qui ressemble à un statut.
+      Le manager questionne la vélocité. Le SM répond en justifiant. Aucun
+      des deux ne prend de décision. La rencontre n'a pas de valeur.
+    page: 309
+    extrait: >
+      Ritualisez un 1:1 SM/Manager de 30 minutes par mois. Agenda fixe
+      en 3 points : (1) un obstacle organisationnel que le SM ne peut pas
+      lever seul, (2) une décision que seul le manager peut prendre,
+      (3) un chiffre de progression d'équipe.
+    fiche_liee: "FP-P4-CH14-regles-or-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    question: >
+      Mon manager ne répond pas aux demandes d'escalade. Il ne s'oppose pas,
+      il disparaît. Quelle est l'approche concrète pour créer une surface
+      de décision avec lui ?
+    reponse: >
+      Profil 4 du chapitre (le manager absent, p.307). Approche : ne pas
+      attendre sa présence. Micro-rendez-vous de dix minutes, heure fixe,
+      un seul sujet préparé. Escalades formulées par écrit avec deadline
+      explicite et conséquence nommée. Dashboard en lecture seule envoyé
+      sans demander de réunion. Documenter les escalades sans réponse :
+      date, contexte, décision attendue.
+    douleur_terrain: >
+      Le SM formule des demandes d'escalade. Le manager ne répond pas.
+      L'équipe attend. Les décisions non prises s'accumulent jusqu'à l'incident.
+      Le SM ne sait pas s'il peut agir seul ou s'il attend un accord formel.
+    page: "307-308"
+    extrait: >
+      Formuler les escalades par écrit avec une deadline de réponse
+      explicite et une conséquence nommée.
+    fiche_liee: "FP-P4-CH14-profils-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-SM-05"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    question: >
+      Mon manager a une certification Scrum et commence à vouloir faciliter
+      les cérémonies. Comment tenir la limite de rôle sans le braquer ?
+    reponse: >
+      Profil 3 du chapitre (le manager champion agile, p.306). Le piège à
+      éviter : lui laisser s'approprier le rôle du SM dans les cérémonies.
+      La limite de rôle : le manager crée les conditions organisationnelles,
+      il ne facilite pas le Daily. Approche : impliquer le manager champion
+      dans la définition des KPIs du dashboard. Un manager qui a participé
+      à calibrer les seuils RAG défend ces seuils auprès de sa hiérarchie.
+      Tenir cette frontière avec respect, pas avec distance.
+    douleur_terrain: >
+      Le manager certifié Scrum intervient dans le Daily pour "aider". L'équipe
+      ne sait plus qui facilite. Le SM perd son autorité fonctionnelle sans
+      qu'aucune règle ne soit formellement violée.
+    page: "306-307"
+    extrait: >
+      Piège à éviter : le laisser s'approprier le rôle du SM dans les
+      cérémonies sous prétexte qu'il connaît Scrum.
+    fiche_liee: "FP-P4-CH14-profils-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-SM-06"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    question: >
+      Je dois convaincre mon manager que la relation de partenariat est de
+      ma responsabilité, pas de la sienne. Quel argument j'utilise ?
+    reponse: >
+      Le chapitre est direct sur ce point (p.300) : cette relation de
+      partenariat, c'est au SM de la construire, pas d'attendre qu'elle arrive.
+      La différence entre allié et obstacle n'est pas la volonté du manager :
+      c'est sa compréhension. Et la compréhension se construit. Cela
+      repositionne le SM en acteur, pas en victime du management.
+    douleur_terrain: >
+      Le SM considère le manager comme un problème à gérer ou à éviter.
+      Il n'investit pas dans la relation et attend que le manager comprenne
+      de lui-même. La relation se dégrade par défaut d'attention, pas de
+      mauvaise volonté.
+    page: 300
+    extrait: >
+      Et cette relation de partenariat, c'est au Scrum Master de la
+      construire, pas d'attendre qu'elle arrive.
+    fiche_liee: null
+    statut_reponse: confirmee
+
+  # ============================================================
+  # PO  :  Product Owner
+  # ============================================================
+
+  - id: "CH14-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    question: >
+      En contexte SAFe, le manager parle des priorités directement au SM
+      en contournant le PO. Comment le PO reprend le contrôle sans créer
+      un conflit ouvert ?
+    reponse: >
+      Le chapitre est explicite sur ce point (p.307, note SAFe) : le SM ne
+      contourne pas le rôle du Product Manager SAFe qui est l'interface
+      principale avec le management pour les arbitrages de priorité. Une
+      relation SM-manager qui court-circuite le PO fragilise la clarté des
+      responsabilités. Le SM travaille avec le PO pour que la communication
+      ascendante soit cohérente.
+    douleur_terrain: >
+      Le manager discute des priorités directement avec le SM. Le PO découvre
+      des décisions en Sprint Planning. La confusion sur qui porte le backlog
+      se retranscrit en conflits de priorité dans l'équipe.
+    page: 307
+    extrait: >
+      Une relation SM-manager qui court-circuite le PO fragilise la clarté
+      des responsabilités.
+    fiche_liee: null
+    statut_reponse: confirmee
+
+  # ============================================================
+  # DEV  :  Product Developer
+  # ============================================================
+
+  - id: "CH14-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: PSYCH_SAFETY
+    question: >
+      Mon manager assiste au Daily et ça change complètement ce que je dis.
+      Qui est responsable de nommer ce problème et comment le formuler ?
+    reponse: >
+      C'est le SM qui porte cette conversation avec le manager (profil à
+      identifier selon les 4 types du chapitre). Le Daily appartient à
+      l'équipe de développement. La présence du manager transforme un outil
+      d'auto-synchronisation en rapport de statut. Le SM formule cela dans
+      le langage du manager : "Le Daily non perturbé produit des équipes
+      qui livrent plus vite. Les données DORA le mesurent."
+    douleur_terrain: >
+      Le dev dit ce que le manager veut entendre, pas ce qui bloque vraiment.
+      Le Daily devient inutile mais personne ne le dit. La sécurité
+      psychologique baisse sprint après sprint.
+    source_expert: >
+      SGEP Psych Safety : managers have disproportionate influence because
+      they control consequences.
+    page: "300-301"
+    extrait: null
+    fiche_liee: null
+    statut_reponse: confirmee
+
+  # ============================================================
+  # CA  :  Coach Agile
+  # ============================================================
+
+  - id: "CH14-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: ADAPTIVE_EXEC
+    question: >
+      Comment coacher un manager qui pense sincèrement aider ses équipes
+      mais les empêche de s'auto-organiser ?
+    reponse: >
+      Le Coach utilise les données (Team Health Check, Happiness Index)
+      comme miroir objectif. La conversation porte sur les effets mesurables,
+      pas les intentions. La table de traduction SM vers Manager (p.304)
+      est utilisée pour cadrer le coaching : présenter les impacts en coûts
+      business, pas en principes agiles.
+    douleur_terrain: >
+      Le manager micromanage avec les meilleures intentions. Le Coach ne
+      peut pas l'attaquer frontalement sans le perdre. Les arguments agiles
+      théoriques ne fonctionnent pas.
+    source_expert: >
+      SGEP Adaptive Executive : executive posture or actions will influence
+      the new behavior of others more than any of their words or directives.
+    page: "300-305"
+    extrait: >
+      La différence, dans la plupart des cas, n'était pas la volonté.
+      C'était la compréhension. Et la compréhension, c'est quelque chose
+      qu'on peut construire.
+    fiche_liee: null
+    statut_reponse: confirmee
+
+  - id: "CH14-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    question: >
+      Quels comportements concrets distinguent un manager allié d'un
+      manager obstacle ? Y a-t-il une grille applicable en coaching ?
+    reponse: >
+      Les 4 profils du chapitre (p.305-307) fournissent cette grille :
+      résultat-orienté (métriques claires, jamais d'explication Scrum),
+      process-anxieux (roadmap horizon glissant, transparence sur
+      l'incertitude), champion agile (co-construire les KPIs, tenir la
+      frontière de rôle), absent (structure, escalades écrites, dashboard
+      en lecture seule). Reconnaître le profil évite d'utiliser la mauvaise
+      approche.
+    douleur_terrain: >
+      Le Coach a besoin d'une grille concrète pour évaluer les managers.
+      "Être agile" est trop abstrait pour changer les comportements.
+    page: "305-307"
+    extrait: >
+      Quatre profils de manager reviennent systématiquement dans les
+      organisations en transformation agile. Les reconnaître ne garantit
+      pas de les convaincre, mais ça évite d'utiliser la mauvaise approche.
+    fiche_liee: "FP-P4-CH14-profils-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-CA-03"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    question: >
+      Comment aider un manager process-anxieux à accepter l'incertitude
+      sans lui promettre des certitudes que Scrum ne peut pas donner ?
+    reponse: >
+      La technique du chapitre (p.306) : proposer une roadmap à horizon
+      glissant (3 mois fermes, 3 mois probables, 3 mois exploratoires),
+      popularisée par Roman Pichler. Ce format respecte la réalité de
+      l'incertitude sans la nier. La transparence honnête sur l'incertitude,
+      répétée sprint après sprint, construit plus de confiance qu'un planning
+      fictif qui sera contredit dans 2 sprints.
+    douleur_terrain: >
+      Le Coach voit le SM promettre des dates pour calmer le manager
+      process-anxieux. Chaque promesse non tenue renforce la méfiance
+      envers l'agilité. Le cycle se répète.
+    page: 306
+    extrait: >
+      Piège à éviter : lui promettre de la certitude pour calmer l'anxiété
+      à court terme. Chaque promesse non tenue renforce la méfiance
+      envers l'agilité.
+    fiche_liee: "FP-P4-CH14-profils-01"
+    statut_reponse: confirmee
+
+  # ============================================================
+  # RTE  :  Release Train Engineer
+  # ============================================================
+
+  - id: "CH14-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: MULTI_TEAM
+    question: >
+      Comment aligner les managers de plusieurs équipes sur les PI Objectives
+      sans recréer du command-and-control déguisé en SAFe ?
+    reponse: >
+      Le RTE facilite des Management Reviews bi-sprints où les managers
+      voient l'avancement ART et prennent des décisions d'escalade. Les
+      6 questions du manager agile (p.302) servent de trame. Ce n'est
+      pas du reporting : c'est de la décision distribuée. Le tableau de
+      traduction SM vers Manager (p.304) aide chaque SM à préparer
+      son manager pour ces Reviews.
+    douleur_terrain: >
+      Le RTE opère dans un environnement où les managers de chaque équipe
+      ont des agendas différents. Les équipes reçoivent des injonctions
+      contradictoires entre PI Planning et réalité sprint.
+    page: "302-304"
+    extrait: null
+    fiche_liee: "FP-P4-CH14-traduction-01"
+    statut_reponse: confirmee
+
+  # ============================================================
+  # MG  :  Manager intermédiaire
+  # ============================================================
+
+  - id: "CH14-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: ADAPTIVE_EXEC
+    question: >
+      Quelles sont les 6 questions concrètes auxquelles je dois pouvoir
+      répondre pour prouver que je travaille efficacement avec mes
+      équipes Scrum ?
+    reponse: >
+      Les 6 questions du chapitre (p.302-303) : est-ce que l'équipe livre
+      ce qu'elle promet ? Est-ce que je suis dans les temps et le budget ?
+      Qu'est-ce qui bloque vraiment l'équipe ? Comment ça va les gens ?
+      On avance vers nos OKR ? Que dois-je décider maintenant ? Chaque
+      question a une source de réponse et un moment défini (seul via
+      dashboard, Sprint Review, ou 1:1 mensuel).
+    douleur_terrain: >
+      Le manager assiste à des Sprint Reviews sans savoir quelles questions
+      poser. Il parle de vélocité et de planning. Il repart avec des chiffres
+      qui ne l'aident pas à prendre de décision.
+    page: "302-303"
+    extrait: >
+      Un manager qui travaille avec des équipes Scrum doit pouvoir répondre
+      à 6 questions. Si ces 6 questions ont des réponses claires, la relation
+      fonctionne. Si l'une d'elles reste floue, c'est là que les frictions
+      apparaissent.
+    fiche_liee: "FP-P4-CH14-6questions-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: PSYCH_SAFETY
+    question: >
+      Quand je réagis fort face à une erreur de mon équipe, quelle est
+      la durée réelle de l'impact sur leur comportement ?
+    reponse: >
+      L'impact est durable et asymétrique. La sécurité psychologique met
+      longtemps à se construire et peu de temps à se détruire. Une seule
+      réaction punitive peut invalider des mois de confiance. L'équipe va
+      cacher les problèmes suivants par peur de la même réaction.
+      Le Project Aristotle (Google, 2015) identifie la sécurité
+      psychologique comme facteur n°1 de performance d'équipe, devant
+      les compétences individuelles.
+    douleur_terrain: >
+      Le manager réagit fort face à un raté visible. L'équipe cache les
+      problèmes pendant 3 sprints. Le Daily ne remonte plus rien.
+      Le manager croit que tout va bien.
+    source_expert: >
+      SGEP Psych Safety : when the consequences are punitive, psychological
+      safety decreases regardless of declared values.
+    page: "301-302"
+    extrait: null
+    fiche_liee: null
+    statut_reponse: confirmee
+
+  - id: "CH14-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    question: >
+      Comment mesurer mon propre impact positif ou négatif sur la
+      performance de mes équipes Scrum sans demander un audit externe ?
+    reponse: >
+      Le Happiness Index et le Team Health Check sont les deux outils
+      de feedback indirect sur l'impact managérial visibles dans le
+      Dashboard Manager. Le signal d'engagement le plus fiable n'est
+      pas de demander au manager s'il lit le dashboard : c'est d'observer
+      s'il pose des questions basées sur les données en Sprint Review
+      (KPI du chapitre, p.311).
+    douleur_terrain: >
+      Le manager est rarement inclus dans les boucles de feedback Scrum.
+      Il n'a aucun miroir sur l'impact de ses comportements. Il découvre
+      le turn-over comme une surprise alors que le Happiness Index le
+      signalait depuis 2 mois.
+    page: "302-303"
+    extrait: null
+    fiche_liee: "FP-P4-CH14-6questions-01"
+    statut_reponse: confirmee
+
+  - id: "CH14-MG-04"
+    cible: MANAGER
+    role: MG
+    expert: null
+    question: >
+      Comment structurer en 30 minutes par trimestre l'alignement OKR
+      avec mes équipes Scrum sans que ça se transforme en grand-messe
+      ou en séance de reporting ?
+    reponse: >
+      L'agenda type du chapitre (p.310) : 0-5 min revue trimestre précédent
+      (3 questions), 5-15 min alignement sur l'Objectif prioritaire,
+      15-25 min définition des 2-3 Résultats Clés (formulés par l'équipe,
+      validés par le manager), 25-30 min accord sur le rythme. Ce qui
+      n'a pas sa place ici : détails techniques, estimations story points,
+      décisions d'architecture.
+    douleur_terrain: >
+      La réunion OKR prend 2 heures, dérive sur les détails techniques
+      et se termine sans décision actée. Le trimestre suivant, les équipes
+      ne se souviennent pas de l'Objectif prioritaire.
+    page: 310
+    extrait: >
+      La boucle OKR avec le management ne nécessite pas de grand-messe
+      trimestrielle. Elle nécessite 30 minutes bien structurées au début
+      du trimestre, et 5 minutes à la fin de chaque Sprint Review ensuite.
+    fiche_liee: "FP-P4-CH14-okr-30min-01"
+    statut_reponse: confirmee
+
+  # ============================================================
+  # DC  :  Décideur / DSI
+  # ============================================================
+
+  - id: "CH14-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    question: >
+      J'ai investi dans des équipes Scrum mais mon organisation reste
+      hiérarchique. Est-ce que les deux systèmes sont compatibles ou est-ce
+      que l'un détruit l'autre ?
+    reponse: >
+      La hiérarchie définit les contraintes et objectifs, Scrum définit
+      comment l'équipe les atteint. Les deux systèmes ne se remplacent pas :
+      ils se complètent si les interfaces sont claires. Le chapitre 14
+      définit précisément ces interfaces : les 6 questions du manager,
+      les 4 règles d'or, la boucle OKR 30 minutes.
+    douleur_terrain: >
+      Le DSI vit une contradiction permanente entre sa structure pyramidale
+      et ses équipes Scrum qui s'auto-organisent. Il craint que l'agilité
+      ne désorganise la gouvernance.
+    page: "300-311"
+    extrait: null
+    fiche_liee: null
+    statut_reponse: confirmee
+
+  - id: "CH14-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    question: >
+      Quels sont les 3 arguments chiffrés sourcés que je peux utiliser
+      devant mon comité de direction pour défendre l'investissement
+      dans Scrum et la relation management-équipes ?
+    reponse: >
+      Trois arguments du chapitre (p.301-302) : 1. DORA 2024 mesure un
+      écart de déploiement de 182 fois entre les équipes élite et les équipes
+      à faible performance. Les élites déploient plusieurs fois par jour avec
+      un taux d'échec inférieur à 5%. 2. Project Aristotle (Google, 2015) :
+      la sécurité psychologique est le facteur n°1 de performance d'équipe.
+      Le remplacement d'un développeur coûte entre 6 et 9 mois de salaire.
+      3. Selon le 18e State of Agile Report (Digital.ai, 2025), 52% des
+      organisations ne connectent pas leur delivery aux résultats business.
+      Le Système S.A.L.I.M. est précisément conçu pour combler cet écart.
+    douleur_terrain: >
+      Le DSI défend le budget transformation devant un CFO ou un DG qui
+      demande des preuves de ROI. Les arguments qualitatifs agiles ne
+      suffisent pas.
+    page: "301-302"
+    extrait: >
+      52 % des organisations n'arrivent pas à connecter leur delivery aux
+      résultats business (18e State of Agile Report, Digital.ai, 2025).
+    fiche_liee: null
+    statut_reponse: confirmee
+
+# ============================================================
+# TROUS IDENTIFIES
+# ============================================================
+
+trous:
+
+  - id: "CH14-TROU-01"
+    sujet: "Aucune question sur la communication avec le PO pendant la Sprint Review"
+    impact: >
+      Le chapitre précise que le PO mène la Sprint Review. Mais aucune
+      question ne traite comment le SM prépare le PO à présenter devant
+      un manager résultat-orienté ou process-anxieux.
+    action: "Ajouter CH14-PO-02 lors de la prochaine révision du YAML"
+
+  - id: "CH14-TROU-02"
+    sujet: "Le chapitre mentionne le tableau de suivi des décisions comme outil de visibilité"
+    impact: >
+      L'outil n'est pas décrit dans ce chapitre. La question sur comment
+      construire ce tableau est absente. Renvoie vers ch.8 sans détailler.
+    action: "Vérifier si ch.8 couvre ce point. Sinon, noter comme trou structurel."
+
+  - id: "CH14-TROU-03"
+    sujet: "Roadmap horizon glissant de Roman Pichler : aucune question sur sa mise en oeuvre"
+    impact: >
+      Outil cité p.306 pour le manager process-anxieux mais aucune question
+      ne guide sa mise en pratique (qui la produit, quel outil, quel rythme
+      de mise à jour).
+    action: "Ajouter une question SM ou CA sur la mise en oeuvre de cet outil"
+
+# ============================================================
+# STATS
+# ============================================================
+
+stats:
+  total_questions: 14
+  par_role:
+    SM: 6
+    PO: 1
+    DEV: 1
+    CA: 3
+    RTE: 1
+    MG: 4
+    DC: 2
+  par_cible:
+    PRATICIEN_AGILE: 8
+    MANAGER: 4
+    DECIDEUR: 2
+  dimensions_couvertes: [Qui, Quoi, Comment, Pourquoi, Quand, Quelle_valeur]
+  trous: 3
+  fiches_produites:
+    - id: "IV-14.1"
+      fichier: "FP-IV-14.1-traduction.svg"
+      titre: "Table de traduction SM / Manager"
+      template: T06
+      roles: [SM, CA]
+      statut: livre
+
+    - id: "IV-14.2"
+      fichier: "FP-IV-14.2-6questions.svg"
+      titre: "Les 6 questions du manager agile"
+      template: T06
+      roles: [MG, DC]
+      statut: livre
+
+    - id: "IV-14.3"
+      fichier: "FP-IV-14.3-profils.svg"
+      titre: "Les 4 profils de manager"
+      template: T06
+      roles: [SM, CA]
+      statut: livre
+
+    - id: "IV-14.4"
+      fichier: "FP-IV-14.4-regles-or.svg"
+      titre: "4 regles d'or + 1:1 mensuel"
+      template: T04
+      roles: [SM, CA]
+      statut: livre
+
+    - id: "IV-14.5"
+      fichier: "FP-IV-14.5-okr-30min.svg"
+      titre: "Agenda OKR 30 minutes"
+      template: T07
+      roles: [SM, MG]
+      statut: livre
+
+    - id: "IV-14.6"
+      fichier: "FP-IV-14.6-suivi-decisions.svg"
+      titre: "Tableau de suivi des decisions"
+      template: T03
+      roles: [SM]
+      statut: livre
+      source_contenu: >
+        Insertion TROU-02 p.309 : tableau 5 colonnes ouvert des le sprint 1,
+        visible par la hierarchie du manager.
+
+    - id: "IV-14.7"
+      fichier: "FP-IV-14.7-roadmap-glissant.svg"
+      titre: "Roadmap horizon glissant"
+      template: T07
+      roles: [PO, SM]
+      statut: livre
+      source_contenu: >
+        Insertion TROU-03 p.306 : 3 colonnes de confiance decroissante,
+        vocabulaire manager sans jargon agile, mise a jour 5 min apres Sprint Review.
+
+    - id: "IV-14.8"
+      fichier: "FP-IV-14.8-arguments-scrum.svg"
+      titre: "Arguments sources pour defendre Scrum"
+      template: T06
+      roles: [SM, CA, MG]
+      statut: livre
+      source_contenu: >
+        p.301-302 : 3 arguments chiffres (DORA 2024, Project Aristotle Google 2015,
+        18e State of Agile Digital.ai 2025). Cible decideurs sceptiques.
+
+  total_fiches: 8
+  fiches_par_template:
+    T03: 1
+    T04: 1
+    T06: 4
+    T07: 2
+  fiches_par_role:
+    SM: 6
+    PO: 1
+    CA: 3
+    MG: 3
+    DC: 1

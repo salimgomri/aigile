@@ -1,0 +1,367 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 13
+# chapter-extractor v6.1
+
+meta:
+  partie: 4
+  nom_partie: "SCRUM a l'echelle"
+  chapitre: 13
+  titre: "SAFe sans se perdre"
+  date_extraction: "2026-06-12"
+  page_debut: 280
+  page_fin: 294
+  statut_global: en_cours
+
+questions:
+
+  - id: "P4-CH13-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Mon manager vient d'annoncer qu'on passe a SAFe avec nos 3 equipes. Je sais deja que c'est surdimensionne. Comment je le lui dis sans passer pour quelqu'un qui bloque la transformation, et quelle alternative concrete je lui propose ?"
+    reponse: "SAFe est concu pour des ARTs de 50 a 125 personnes. En dessous de 3 equipes, la surcharge ceremonie est garantie sans benefice d'alignement reel. Tu proposes un cadre alternatif : avec 3 equipes, LeSS ou Nexus couvrent les besoins. Si la decision SAFe est deja prise au niveau organisationnel, l'objectif n'est pas de le demonter mais d'en adopter uniquement les elements a valeur : Team Objectives, cadence PI, Scrum of Scrums. Tu nommes explicitement les ceremonies inutiles et tu les supprimes avec accord de ta direction."
+    douleur_terrain: "Le SM est seul face a une decision top-down. Il sait que ca va creer de la friction mais n'a pas l'autorite formelle pour bloquer."
+    source_expert: null
+    page: 283
+    extrait: null
+    fiche_liee: "FP-P4-CH13-canvas-safelite-05"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: "Preparer un guide de selection par taille d'equipe pour la conversation avec le management"
+    schemas_lies: []
+
+  - id: "P4-CH13-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je suis SM dans un ART de 5 equipes. Mon equipe depend d'une livraison de l'equipe platform pour le sprint 4. Je l'ai identifie en sprint 2. C'est trop tard pour faire quoi et c'est encore tenable pour faire quoi ?"
+    reponse: "La regle N-2 s'applique : si ton equipe a besoin d'une livraison au sprint N, cette livraison doit etre dans le backlog de l'autre equipe au sprint N-2 minimum. En sprint 2 pour une dependance sprint 4, tu es exactement a la limite : c'est encore adressable mais c'est un risque actif, pas de la planification. La conversation doit avoir lieu immediatement au Scrum of Scrums suivant : proprietaire + delai + statut visible. Dans les contextes a forte complexite technique ou dependances croisees multiples, N-3 est plus prudent."
+    douleur_terrain: "Le SM decouvre la dependance trop tard et ne sait pas si le PI est encore sauvable."
+    source_expert: null
+    page: 284
+    extrait: null
+    fiche_liee: "FP-P4-CH13-checklist-dependances-01"
+    fiche_destinee_a: [SM, RTE]
+    statut_reponse: confirmee
+    action_recommandee: "Documenter chaque dependance : proprietaire + delai + statut avant le prochain sprint"
+    schemas_lies: ["SVG-P4-CH13-01"]
+
+  - id: "P4-CH13-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, quand, valeur]
+    question: "Pendant le Confidence Vote de fin de PI Planning, tout le monde vote 4 ou 5 par politesse. Je sais que c'est faux. Qu'est-ce que je fais concretement avant de cloturer la seance ?"
+    reponse: "Tu interviens avant la cloture. Tu demandes a chaque equipe de justifier son score en une phrase. Si aucune reserve n'est exprimee sur un PI ambitieux, c'est un signal de dysfonctionnement, pas de maturite. Tu fais ce tour equipe par equipe. Les cas a discuter remontent avant la pleniere. Un ART qui demarre sur un consensus force produit exactement le resultat inverse."
+    douleur_terrain: "Le vote de confiance devient un rituel de politesse. Le SM ne sait pas comment le casser sans casser la seance."
+    source_expert: null
+    page: 286
+    extrait: null
+    fiche_liee: "FP-P4-CH13-gonogo-piplanning-06"
+    fiche_destinee_a: [SM, RTE]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Mon equipe formule ses Team Objectives comme des stories a livrer. Le PO liste les features du sprint. Comment je leur explique que ca ne constitue pas un Team Objective et quelle reformulation je leur propose sur le terrain ?"
+    reponse: "La distinction est dans la formulation : en termes de resultats business, pas de stories livrees. Livrer 23 story points sur le module de paiement n'est pas un Team Objective. Permettre au client de finaliser un achat sans intervention support l'est. La reformulation n'est pas cosmetique : elle change le perimetre de decision en sprint. Pour chaque feature du backlog, tu poses la question : quel est le changement observable pour l'utilisateur ou le business ? La reponse a cette question est le Team Objective."
+    douleur_terrain: "L'equipe confond plan d'execution et engagement sur la valeur. Le SM n'a pas de formulation simple pour expliquer la difference."
+    source_expert: null
+    page: 287
+    extrait: null
+    fiche_liee: "FP-P4-CH13-memo-teamobjectives-02"
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-SM-05"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "On a mis en place SAFe il y a 6 mois sur 2 equipes. Le PI Planning se fait mais ne change rien aux plans. Les equipes repartent avec les memes priorites qu'avant la seance. Quel diagnostic je pose et par quoi je commence pour sortir du cargo cult ?"
+    reponse: "Le signe le plus fiable du cargo cult SAFe : le PI Planning ne change rien aux plans des equipes. Trois symptomes cles a verifier : PI Planning sans vraie priorisation business (le backlog ART n'est pas priorise avant la seance), Team Objectives copies du backlog technique (pas de valeur business formulee), Confidence Vote ou tout le monde vote 5 par politesse. Si les trois sont presents, SAFe est devenu un rituel de conformite. Tu commences par les Team Objectives : reformuler en valeur business avant le prochain PI Planning. C'est le levier le plus rapide et le plus visible."
+    douleur_terrain: "Le SM voit que ca ne sert a rien mais n'a pas le vocabulaire pour nommer le probleme ni le levier pour le sortir."
+    source_expert: null
+    page: 292
+    extrait: null
+    fiche_liee: ["FP-P4-CH13-dashboard-kpis-03", "FP-P4-CH13-memo-teamobjectives-02"]
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: "Reformuler les Sprint Goals en termes de valeur business des le prochain sprint"
+    schemas_lies: []
+
+  - id: "P4-CH13-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "C'est mon premier PI Planning avec 5 equipes qui ne se sont jamais coordonnees. Comment je structure les 2 jours pour que les equipes repartent avec des plans realistes et des dependances identifiees, et quelle est ma mesure de succes a la cloture ?"
+    reponse: "L'agenda des 2 jours est structure en 6 blocs : Jour 1 matin vision produit en pleniere (3h, Business Owner + Architecte), Jour 1 apres-midi breakouts equipes sprint planning + Team Objectives draft (4h, chaque equipe SM+PO), Jour 1 soir draft plan review 3 minutes par equipe en pleniere (1h, anime par RTE). Jour 2 matin ajustements post-draft et resolution dependances inter-equipes (2h), Management Review et Problem Solving en parallele (2h, risques systemiques). Jour 2 apres-midi ROAMing des risques + Confidence Vote fist-of-five (2h, cloture). La mesure de succes a la cloture : Confidence Vote superieur ou egal a 3.5/5 avec reserves reelles exprimees, et 70% des dependances identifiees avant la fin de la seance."
+    douleur_terrain: "Le RTE ne sait pas comment eviter que les 2 jours deviennent une reunion de statut ou que les equipes partent sans avoir adresse leurs dependances croisees."
+    source_expert: null
+    page: 285
+    extrait: null
+    fiche_liee: ["FP-P4-CH13-checklist-dependances-01", "FP-P4-CH13-agenda-piplanning-04"]
+    fiche_destinee_a: [RTE, SM]
+    statut_reponse: confirmee
+    action_recommandee: "Se faire coacher par une personne ayant deja vecu plusieurs PI avant le premier PI Planning"
+    schemas_lies: ["SVG-P4-CH13-02"]
+
+  - id: "P4-CH13-RTE-02"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Comment je distingue un risque qui doit aller en ROAMing d'un risque qui doit bloquer le Confidence Vote, et quel traitement je donne a chaque categorie ROAM en fin de PI Planning ?"
+    reponse: "ROAM est l'outil de traitement des risques non resolus au Confidence Vote. Quatre categories : Resolved (le risque est resolu avant la fin du PI Planning), Owned (une personne nommee en prend la responsabilite), Accepted (le risque est accepte en connaissance de cause, l'equipe choisit de ne pas le traiter), Mitigated (un plan de mitigation est defini et trace). Un risque qui bloque le Confidence Vote sous 3.5/5 doit ouvrir une discussion avant de relancer un vote. Si la discussion ne le resout pas, il entre dans ROAM avec un proprietaire explicite. Sans proprietaire nomme, le risque reste non gere quelle que soit sa categorie ROAM."
+    douleur_terrain: "Le RTE ne sait pas arbitrer entre ce qui bloque le vote et ce qui peut etre ROAMe. La seance deraille ou les risques sont entasses dans ROAM sans traitement reel."
+    source_expert: null
+    page: 287
+    extrait: null
+    fiche_liee: "FP-P4-CH13-checklist-dependances-01"
+    fiche_destinee_a: [RTE, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-RTE-03"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je suis SM senior qui absorbe le role de RTE dans une PME de 25 personnes avec 3 equipes. Quelles responsabilites du RTE je ne peux pas deleguer ou ignorer, et comment je sais que je suis en surcharge ?"
+    reponse: "Le RTE porte trois responsabilites non delegables : facilitation du PI Planning (logistique et animation), Scrum of Scrums inter-equipes (visibilite sur les dependances et blocages), et sante de l'ART au niveau programme (flux, metriques, risques systemiques). Ces responsabilites doivent etre explicitement assignees meme sans titre. Tu es en surcharge quand les dependances inter-equipes ne sont plus tracees entre deux sprints, ou quand le Scrum of Scrums se transforme en reunion de statut sans action. En dessous de 5 equipes dans une PME, le role peut etre absorbe. Au-dela, un RTE dedie est plus prudent."
+    douleur_terrain: "Le SM senior ne sait pas ou s'arrete son role d'equipe et ou commence le role RTE. Il gere les deux mais ne couvre pas tout."
+    source_expert: null
+    page: 290
+    extrait: null
+    fiche_liee: "FP-P4-CH13-canvas-safelite-05"
+    fiche_destinee_a: [RTE, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Comment je formule un Team Objective avec mon equipe qui soit suffisamment oriente valeur business pour le Product Manager ART, et suffisamment concret pour que l'equipe sache ce qu'elle s'engage a faire ?"
+    reponse: "La formulation d'un Team Objective oriente valeur repose sur une question simple : quel changement observable pour l'utilisateur ou le business est produit par ce travail ? Reduire le temps de connexion utilisateur de 40% est un Team Objective. Implementer les 3 APIs de l'equipe platform ne l'est pas. Chaque Team Objective recoit une valeur business estimee de 1 a 10 par le Product Manager de l'ART. En fin de PI, le pourcentage de valeur livree est calcule sur cette base, pas sur le pourcentage de stories terminees. Le stretch objective permet de nommer une ambition sans l'engager fermement : si la capacite le permet apres sprint 3, sans contraindre le PI."
+    douleur_terrain: "Le PO est pris entre le backlog technique de l'equipe et les objectifs strategiques du Product Manager ART. Il ne sait pas comment traduire l'un en l'autre."
+    source_expert: null
+    page: 287
+    extrait: null
+    fiche_liee: "FP-P4-CH13-memo-teamobjectives-02"
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Une organisation a 4 equipes et veut passer a SAFe. Comment je la conseille pour choisir entre SAFe, LeSS et Nexus, et quel critere est determinant au-dela de la taille ?"
+    reponse: "Le critere determinant au-dela de la taille est la structure du produit et du backlog. Un seul produit avec un seul backlog commun : LeSS ou Nexus sont a privilegier. Plusieurs perimetres produits ou un backlog fragmente par equipe : SAFe lite structure mieux cette realite meme a faible echelle. Pour 2 a 5 equipes sur un seul produit, explorer LeSS ou Nexus avant SAFe. Pour 5 equipes et plus avec perimetres multiples, SAFe lite apporte la structure necessaire. Appliquer SAFe a moins de 3 equipes produit une surcharge garantie sans benefice d'alignement."
+    douleur_terrain: "Le CA est en face d'un management qui a deja decide SAFe sans analyse du contexte. Il doit proposer une alternative credible ou adapter SAFe sans le demonter."
+    source_expert: null
+    page: 289
+    extrait: null
+    fiche_liee: "FP-P4-CH13-canvas-safelite-05"
+    fiche_destinee_a: [CA, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Une PME de 40 personnes avec 4 equipes veut garder la logique PI sans l'infrastructure SAFe complete. Qu'est-ce que je conserve obligatoirement, qu'est-ce que je supprime sans risque, et quelle est la version minimale qui reste operationnelle ?"
+    reponse: "La version minimale operationnelle repose sur trois elements non negociables : cadence commune (toutes les equipes sur le meme rythme PI), objectifs partages (Team Objectives, minimum 3 par equipe), identification des dependances (Scrum of Scrums, trace systematique). Ces trois elements peuvent etre implementes avec un PI de 10 semaines, sans Release Train Engineer dedie, sans System Team, sans les 7 competences SAFe. Pour les structures de moins de 30 personnes, un mini-PI de 4 heures remplace les 2 jours de PI Planning complet. La cadence PI et le Confidence Vote restent, sans exception."
+    douleur_terrain: "Le coach ne sait pas ou tracer la ligne entre ce qui est essentiel et ce qui est bureaucratie additive dans SAFe."
+    source_expert: null
+    page: 290
+    extrait: null
+    fiche_liee: "FP-P4-CH13-canvas-safelite-05"
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P4-CH13-03"]
+
+  - id: "P4-CH13-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Mon equipe technique me dit que 2 jours de PI Planning c'est du temps perdu. Comment je justifie ce cout a ma direction et comment je sais si le PI Planning a vraiment servi ou si c'est devenu une ceremonie ?"
+    reponse: "Le retour systematique des equipes qui ont vecu un PI Planning serieusement facilite : les 2 jours d'alignement initial evitent 3 a 4 semaines de reajustements en cours de PI. La mesure concrete d'un PI Planning efficace est le taux de dependances identifiees avant les sprints : cible superieure a 70% identifiees en PI Planning vs decouvertes en sprint. Si tu decouvres plus en sprint qu'au PI Planning, la cadence ne sert pas a grand-chose. Second indicateur : la duree PI Planning effective vs planifiee, indicateur de maturite de facilitation. Si le PI Planning ne change rien aux plans des equipes, il n'a servi a rien."
+    douleur_terrain: "Le manager doit defendre un cout visible (2 jours mobilises) face a des benefices diffus et difficiles a chiffrer sans mesure en place."
+    source_expert: null
+    page: 285
+    extrait: null
+    fiche_liee: "FP-P4-CH13-gonogo-piplanning-06"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Je manage 3 equipes Scrum dans un contexte SAFe. Comment je lis en un coup d'oeil la situation PI de mes equipes sans assister a toutes les ceremonies, et quelle information je dois avoir dans mon dashboard pour prendre une decision d'arbitrage ?"
+    reponse: "Dans un contexte ART avec Check-in OKR adapte, le manager reçoit une visibilite sur deux dimensions simultanement : la progression sprint de l'equipe ET la progression PI de l'ART. Le score de confiance OKR (1 a 5) se decline en Confidence Rate OKR sur les Key Results strategiques et en Confidence Rate PI Objectives sur les engagements de l'increment en cours. Les deux coexistent dans le dashboard. Le delai de mise a jour est de 15 minutes apres la Sprint Review. Ces deux informations combinees permettent une prise de decision plus rapide sur les arbitrages ressources et priorites."
+    douleur_terrain: "Le manager passe trop de temps a collecter l'information dans plusieurs outils et ceremonies. Il n'a pas de vue synthetique actionnable."
+    source_expert: null
+    page: 293
+    extrait: null
+    fiche_liee: "FP-P4-CH13-dashboard-kpis-03"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "En fin de PI, j'ai 65% de Business Value livree sur mes Team Objectives. C'est un probleme ou un resultat acceptable, et comment je l'interprete avant mon prochain comite de direction ?"
+    reponse: "65% est en dessous du seuil de reference : la cible terrain sur plusieurs ARTs est superieure a 80% de Business Value du PI. En dessous de 80%, la cadence PI ne produit pas l'alignement business attendu. SAFe ne fixe pas de seuil officiel, ce seuil est issu de la pratique terrain. A 65%, deux diagnostics sont possibles : soit le PI Planning a ete trop ambitieux (Team Objectives surestimes), soit des dependances non identifiees ont bloque des livraisons en cours de PI. Le taux de dependances identifiees en PI Planning vs decouvertes en sprint (cible 70%) est l'indicateur complementaire pour isoler la cause."
+    douleur_terrain: "Le manager ne sait pas si 65% est une performance normale ou un signal d'alerte. Il n'a pas de reference pour calibrer son interpretation."
+    source_expert: null
+    page: 293
+    extrait: null
+    fiche_liee: "FP-P4-CH13-dashboard-kpis-03"
+    fiche_destinee_a: [MG, DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "J'ai decide de deployer SAFe sur 3 equipes il y a 9 mois. Mon DRH me dit que ca marche, mon DSI me dit que ca ralentit. Quels indicateurs me permettent de trancher objectivement et sur quoi je dois agir en priorite ?"
+    reponse: "Trois KPIs structurants pour evaluer la maturite SAFe : taux de Business Value livree en fin de PI (cible superieure a 80%), taux de dependances identifiees en PI Planning vs decouvertes en sprint (cible superieure a 70%), et Confidence Vote PI au lancement (cible superieure ou egale a 3.5/5). Si les trois sont sous seuil simultanement, le deploiement SAFe n'a pas encore produit de coordination reelle. Si le Confidence Vote est toujours a 5 par politesse, c'est un signal de dysfonctionnement prioritaire a corriger. Le contexte de 3 equipes est techniquement sous le perimetre SAFe complet (50-125 personnes) : evaluer si LeSS ou Nexus seraient plus adaptes."
+    douleur_terrain: "Le decideur a investi sur une promesse d'alignement et ne sait pas si le deploiement produit des resultats reels ou un theater agile couteux."
+    source_expert: null
+    page: 293
+    extrait: null
+    fiche_liee: "FP-P4-CH13-dashboard-kpis-03"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH13-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: "Mon DAF me demande pourquoi on investit dans SAFe alors qu'on est 35 personnes en 4 equipes. J'ai besoin d'un argument ROI defend able en comite de direction sans jargon agile."
+    reponse: "L'argument ROI de SAFe lite tient en deux points chiffrables : reduction des reajustements en cours de PI (les 2 jours de PI Planning evitent 3 a 4 semaines de remise a plat inter-equipes selon le retour systematique des organisations qui l'ont vecu), et reduction des blocages en cascade par dependances non tracees. Le 18eme State of Agile Digital.ai 2025 identifie SAFe comme le framework le plus utilise a grande echelle. La version adaptee PME (SAFe lite) reduit l'infrastructure sans sacrifier la logique d'alignement. Le critere de succes chiffrable : pourcentage de Business Value livree en fin de PI, cible superieure a 80%."
+    douleur_terrain: "Le decideur doit defendre un investissement en langage financier face a un interlocuteur qui ne voit que le cout des ceremonies et des certifications."
+    source_expert: "18eme State of Agile | Digital.ai | 2025"
+    page: 283
+    extrait: null
+    fiche_liee: "FP-P4-CH13-canvas-safelite-05"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+trous:
+
+  - id: "T01"
+    role: DEV
+    cible: PRATICIEN_AGILE
+    question_manquante: "En tant que DEV dans un ART, comment je signale une dependance technique vers une autre equipe quand mon PO ne la voit pas et que le PI Planning est dans 3 jours ?"
+    action: "Ajouter un encadre pratique sur le processus de remontee des dependances techniques par les DEV vers le SM avant le PI Planning. Emplacement : apres la regle des dependances, page 285."
+
+  - id: "T02"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment je facilite un Scrum of Scrums qui durait 45 minutes et qui n'aboutissait a aucune action, pour le rendre operationnel en 15 minutes ?"
+    action: "Le Scrum of Scrums est mentionne comme outil de coordination mais son format operationnel n'est pas detaille. Ajouter un format en 3 questions : bloquant / proprietaire / delai. Emplacement : section 2, page 283."
+
+  - id: "T03"
+    role: CA
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment je diagnostique si une organisation est vraiment prete pour SAFe sur le plan de la maturite Scrum de base, avant de lancer le premier PI Planning ?"
+    action: "Le chapitre aborde le surdimensionnement mais pas le prerequis de maturite Scrum. Ajouter un critere de readiness minimal : chaque equipe doit maitriser les ceremonies Scrum de base avant d'ajouter la couche PI. Emplacement : apres la note de cadrage, page 283."
+
+stats:
+  questions_totales: 16
+  par_role:
+    SM: 5
+    PO: 1
+    DEV: 0
+    CA: 2
+    RTE: 3
+    MG: 3
+    DC: 2
+  par_statut:
+    provisoire: 0
+    confirmee: 16
+    trou: 3
+  couverture_dimensions:
+    qui: 12
+    quoi: 16
+    comment: 14
+    pourquoi: 13
+    quand: 9
+    valeur: 15
+  schemas_lies: 3
+  fiches_pratiques:
+    total: 6
+    fp01:
+      id: "IV-13.1"
+      fichier: "FP-P4-CH13-checklist-dependances-01.svg"
+      titre: "Dependances inter-equipes : regle N-2"
+      template: T04
+      pour: [SM, RTE]
+    fp02:
+      id: "IV-13.2"
+      fichier: "FP-P4-CH13-memo-teamobjectives-02.svg"
+      titre: "Team Objectives : reformulation valeur"
+      template: T06
+      pour: [SM, PO]
+    fp03:
+      id: "IV-13.3"
+      fichier: "FP-P4-CH13-dashboard-kpis-03.svg"
+      titre: "KPIs de maturite SAFe"
+      template: T03
+      pour: [MG, DC]
+    fp04:
+      id: "IV-13.4"
+      fichier: "FP-P4-CH13-agenda-piplanning-04.svg"
+      titre: "Agenda PI Planning : les 2 jours"
+      template: T04
+      pour: [RTE, SM]
+    fp05:
+      id: "IV-13.5"
+      fichier: "FP-P4-CH13-canvas-safelite-05.svg"
+      titre: "SAFe lite PME : ce qu on garde"
+      template: T02
+      pour: [CA, MG, SM]
+    fp06:
+      id: "IV-13.6"
+      fichier: "FP-P4-CH13-gonogo-piplanning-06.svg"
+      titre: "PI Planning : GO / NO-GO preparation"
+      template: T04
+      pour: [RTE, SM, PO]

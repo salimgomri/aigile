@@ -1,0 +1,354 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 15
+# chapter-extractor v6.1
+
+meta:
+  partie: 4
+  nom_partie: "Scrum à l'échelle"
+  chapitre: 15
+  titre: "Culture avant pratique"
+  date_extraction: "2026-06-11"
+  page_debut: 314
+  page_fin: 326
+  statut_global: valide
+
+questions:
+
+  - id: "P4-CH15-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: "Amy Edmondson"
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Mon équipe respecte Scrum à la lettre, livre régulièrement, et pourtant quelque chose bloque. Les rétros sont lisses, personne ne soulève les vrais problèmes. Comment je détecte que je suis face à un problème de sécurité psychologique et pas juste d'engagement, qui porte ce diagnostic, et quelle est la première action concrète ?"
+    reponse: "Le signal est dans les rétros : quand tout le monde dit que ça va bien et que le SM sait que ce n'est pas vrai, c'est le plafond invisible. Passer le questionnaire Edmondson 7 items de façon anonyme en fin de rétro (une fois par trimestre max). Un score moyen inférieur à 4/7 requiert une intervention sur le contexte avant tout travail sur les pratiques. Le SM porte ce diagnostic. L'action immédiate : modéliser le comportement souhaité : être le premier à dire je ne sais pas, à reconnaître une erreur de facilitation, à nommer un problème systémique en rétro."
+    douleur_terrain: "Le SM voit la dérive mais ne sait pas la nommer. Il continue à améliorer les pratiques sur un sol qui ne porte pas."
+    source_expert: "Edmondson, Psychological Safety Scale, 1999 / The Fearless Organization, 2018"
+    page: 316
+    extrait: "Le plafond invisible. Il ne se voit pas dans la vélocité. Il ne se voit pas dans le Happiness Index."
+    fiche_liee: "FP-IV-15.1"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P4-CH15-01"]
+
+  - id: "P4-CH15-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: "Timothy R. Clark"
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je veux construire la sécurité psychologique dans mon équipe mais je ne sais pas par quel bout commencer. Les 4 niveaux de Clark me donnent un cadre mais comment je sais à quel niveau on est, qui décide de l'intervention, et quelle est la séquence minimale pour progresser d'un niveau à l'autre sans forcer ?"
+    reponse: "La progression est cumulée : chaque niveau suppose le précédent atteint. Sans Inclusion Safety (niveau 1), les niveaux 2, 3, 4 restent inaccessibles durablement. Diagnostiquer le niveau via les signaux comportementaux : N1 = les gens s'expriment librement, N2 = erreurs vues comme apprentissage, N3 = initiatives prises spontanément, N4 = désaccords exprimés sans crainte. Le niveau 4 est le marqueur le plus fiable. La progression passe par l'accumulation de moments où quelqu'un a pris un risque interpersonnel et où rien de négatif ne s'est passé."
+    douleur_terrain: "Le SM fait des ateliers de confiance mais rien ne change. Il opère au mauvais niveau et ne mesure pas le bon signal."
+    source_expert: "Timothy R. Clark, The 4 Stages of Psychological Safety, 2020"
+    page: 317
+    extrait: null
+    fiche_liee: "FP-IV-15.2"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P4-CH15-02"]
+
+  - id: "P4-CH15-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Mon équipe est en Storming depuis 2 sprints. J'ai prévu une rétro sur les tensions. Comment je sais si c'est le bon moment pour une rétro, ou si ça va amplifier les conflits plutôt que les résoudre, et quelle est l'alternative si le timing est mauvais ?"
+    reponse: "En Storming, les pratiques agiles amplifient les tensions au lieu de les résoudre : une rétro sur une équipe en conflit non résolu produit plus de bruit que de signal. Identifier le stade Tuckman avant de choisir l'intervention. En Storming, le rôle SM est de nommer les tensions, pas de les faciliter collectivement. Nommer explicitement le conflit sur les rôles en one-to-one avant de revenir en collectif."
+    douleur_terrain: "Le SM force des rétros dans un contexte où la parole n'est pas sûre. Il obtient des post-its neutres et une équipe encore plus fermée."
+    source_expert: null
+    page: 321
+    extrait: "En Storming, les pratiques agiles amplifient les tensions au lieu de les résoudre"
+    fiche_liee: "FP-IV-15.5"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "La sécurité psychologique de mon équipe vient d'être détruite par un seul incident : le manager a moqué une erreur en public lors du Sprint Review. Je suis SM. Qui intervient, comment, et dans quel délai pour limiter les dégâts avant que l'équipe ne referme définitivement ?"
+    reponse: "La sécurité psychologique est fragile. Elle peut être détruite en un incident. Le SM nomme explicitement ce qui s'est passé : si quelqu'un est puni implicitement pour avoir soulevé un problème, le SM le nomme. La restauration passe par l'accumulation de nouveaux moments sûrs, pas par une déclaration. La relation manager est la condition organisationnelle première : sans management qui protège l'espace d'erreur, les rituels de confiance restent superficiels. Le SM peut alerter le manager en one-to-one sur l'impact de l'incident avant le sprint suivant."
+    douleur_terrain: "Le SM ne sait pas si intervenir ou attendre. Le silence après l'incident est interprété comme une validation."
+    source_expert: null
+    page: 324
+    extrait: null
+    fiche_liee: "FP-IV-15.4"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-SM-05"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, quand, valeur]
+    question: "Mon équipe oscille entre niveau 3 et niveau 2 depuis plusieurs mois selon les événements. Un nouveau PO vient d'arriver et on est retombé au niveau 2. C'est normal selon le modèle mais comment j'explique ça à mon manager qui interprète ça comme un recul dû à mes pratiques de facilitation ?"
+    reponse: "La plupart des équipes oscillent entre niveaux 2 et 4. Un changement de PO fait souvent reculer au niveau 2. Ce mouvement est normal et non-linéaire. L'objectif n'est pas d'atteindre le niveau 4 et d'y rester en permanence, mais de comprendre à quel niveau on est aujourd'hui, quelle est la tendance sur les 3 derniers mois, et ce qui facilite ou bloque la progression. Communiquer au manager sur la tendance 3 mois, pas sur le niveau instantané."
+    douleur_terrain: "Le SM est évalué sur un instantané. Il perd en crédibilité sur quelque chose qui est par nature non-linéaire."
+    source_expert: null
+    page: 321
+    extrait: null
+    fiche_liee: "FP-IV-15.3"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "Lors du Sprint Review, mon manager a critiqué publiquement l'estimation d'une story comme une défaillance. Depuis, l'équipe estime de façon conservatrice pour éviter d'être exposée. En tant que PO, qui est accountable de ce problème, et comment je le nomme sans opposer le SM, moi et le manager ?"
+    reponse: "Un Sprint Review où une erreur d'estimation est traitée comme une défaillance détruit la sécurité psychologique. Le PO porte la vision et le périmètre, pas la pression sur les estimations. Le SM porte la protection de l'espace de travail. La conversation avec le manager doit nommer l'impact comportemental observé (estimations conservatrices, vélocité artificielle) sans attaquer l'intention. Le Sprint Review est un espace d'apprentissage, pas un espace de performance individuelle."
+    douleur_terrain: "Le PO voit la vélocité gonfler artificiellement et ne peut pas challenger les chiffres sans exposer l'équipe."
+    source_expert: null
+    page: 324
+    extrait: null
+    fiche_liee: "FP-IV-15.4"
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "Je suis DEV. Quand je signale un problème technique en rétro, j'ai l'impression que ça n'est pas entendu et que ça me revient implicitement comme une plainte. Comment je sais si j'opère dans une culture pathologique ou bureaucratique, et quelle est la différence concrète pour moi dans mon quotidien ?"
+    reponse: "Dans une culture pathologique : l'information est cachée, les erreurs sont punies, les messagers ne sont pas les bienvenus. Dans une culture bureaucratique : les responsabilités sont cloisonnées, l'information suit des canaux officiels lentement. Dans une culture générative : l'information circule librement vers qui en a besoin, les défaillances conduisent à l'enquête, pas à la punition. Le signal pour le DEV : si soulever un problème en rétro lui revient comme une critique personnelle, la culture n'est pas générative."
+    douleur_terrain: "Le DEV se tait pour se protéger. Les problèmes techniques remontent trop tard et coûtent plus cher à corriger."
+    source_expert: "Ron Westrum, 1988 / DORA 2024"
+    page: 322
+    extrait: null
+    fiche_liee: "FP-IV-15.3"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: "Magdalena Plaskonka"
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je suis coach agile en mission dans une organisation. Le score Edmondson de l'équipe est à 3.2/7. Le manager dit que c'est un problème d'équipe. Comment j'utilise ce score pour faire comprendre que c'est un signal système et non un verdict individuel, qui doit lire ce résultat, et quelle est la bonne séquence d'intervention ?"
+    reponse: "Un score bas ne dit pas que le manager est mauvais ou que l'équipe est défaillante. Il dit qu'il existe des conditions, organisationnelles, relationnelles, historiques, qui rendent risqué de parler ouvertement. Utiliser le score comme miroir système, pas comme jugement individuel. La séquence : présenter le score en nommant les conditions (pas les personnes), identifier les incidents qui ont appris à l'équipe qu'il valait mieux se taire, proposer une intervention sur le contexte avant tout travail de pratiques. Le manager doit lire ce résultat : c'est lui qui contrôle les conditions."
+    douleur_terrain: "Le coach est coincé entre un score qui accable le manager et une équipe qui ne peut pas parler. Il n'a pas le langage pour dépersonnaliser le problème."
+    source_expert: "Edmondson, 1999 / Clark, 2020"
+    page: 320
+    extrait: "Un score de sécurité psychologique bas ne dit pas que le manager est mauvais"
+    fiche_liee: "FP-IV-15.2"
+    fiche_destinee_a: [CA, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'interviens dans une organisation avec 4 équipes. Je veux comparer leurs cultures pour identifier où commencer. Le modèle Westrum avec le survey DORA donne un score par équipe. Comment j'utilise ces scores pour prioriser mes interventions sans que les équipes les plus faibles se sentent stigmatisées ?"
+    reponse: "Le score Westrum (cible : supérieur à 5.5/7 sur les 6 dimensions) mesure le type de culture : pathologique (inférieur à 3/7), bureaucratique (3 à 5/7), générative (supérieur à 5.5/7). Observer si la progression du score Edmondson coïncide avec une amélioration DORA sur 2 trimestres : c'est le signal que l'intervention culturelle a un effet mesurable sur la livraison. Pour prioriser sans stigmatiser : présenter les scores comme un état des conditions, pas un classement des équipes."
+    douleur_terrain: "Le coach n'a pas de critère de priorisation objectif. Il intervient là où c'est le plus visible, pas là où c'est le plus nécessaire."
+    source_expert: "DORA 2024 / Westrum, 2004"
+    page: 322
+    extrait: null
+    fiche_liee: "FP-IV-15.3"
+    fiche_destinee_a: [CA, DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Le SM m'a montré le score Edmondson de l'équipe : 3.8/7. Je dois en faire quelque chose mais je ne sais pas quoi exactement. Qui est accountable de ce score, comment je l'explique à ma direction sans passer pour un manager qui a un problème d'équipe, et quelle est la première action que je dois prendre avant la prochaine rétro ?"
+    reponse: "Un score inférieur à 4/7 requiert une intervention sur le contexte avant tout travail de pratiques. Le manager est accountable des conditions, pas des résultats individuels. Ne jamais corréler ce score à des évaluations individuelles : c'est un signal collectif. La première action pour le manager : choisir un incident récent où quelqu'un de l'équipe a fait une erreur visible et analyser comment il a réagi devant les autres. C'est là que la sécurité psychologique s'est construite ou détruite. Pour la direction : nommer le score comme indicateur de risque livraison, pas de confort."
+    douleur_terrain: "Le manager reçoit le score et ne sait pas si c'est de sa faute, si c'est grave, et ce qu'il doit dire à sa direction."
+    source_expert: null
+    page: 325
+    extrait: null
+    fiche_liee: "FP-IV-15.1"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "J'ai 2 équipes. L'une est en niveau 4 de maturité depuis 6 mois et l'autre stagne en niveau 2 depuis un an. Je dois présenter une initiative d'amélioration à ma direction. Comment j'utilise les niveaux de maturité pour argumenter un investissement ciblé sans dévaloriser l'équipe en difficulté ?"
+    reponse: "L'objectif des 5 niveaux de maturité n'est pas d'atteindre le niveau 4 et d'y rester en permanence, mais de comprendre où on est aujourd'hui et quelle est la tendance sur 3 mois. Pour le manager : l'argument investissement repose sur la tendance (progression, stabilisation, régression) et sur les facteurs de blocage identifiés, pas sur le niveau lui-même. En présentant à la direction : niveau de maturité actuel + tendance 3 mois + facteur principal de blocage = décision d'investissement justifiée."
+    douleur_terrain: "Le manager n'a pas de langage pour parler de maturité d'équipe à sa direction sans que ça ressemble à un bilan RH."
+    source_expert: null
+    page: 320
+    extrait: null
+    FP-IV-15.3"e_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P4-CH15-03"]
+
+  - id: "P4-CH15-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: "Ron Westrum"
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Je suis DSI. Mon directeur de la transformation me parle de culture générative et de sécurité psychologique. Je dois décider si je finance un programme sur ce sujet ou pas. Comment je sais si la culture de mon organisation est un frein réel à la performance de livraison, qui me prouve le lien entre culture et résultats, et quel est le ROI minimum attendu ?"
+    reponse: "Le rapport DORA 2024 confirme que les équipes opérant dans une culture générative ont des scores DORA significativement meilleurs que celles dans une culture pathologique, toutes autres choses étant égales. La culture n'est pas un prérequis théorique : c'est un facteur causal mesuré. Le signal pour le DSI : faire passer le Westrum Culture Survey sur aigile.lu à son périmètre. Le résultat dira plus que le dashboard de vélocité. Un ART bien coordonné avec un management aligné dans un contexte culturel pathologique n'ira pas loin."
+    douleur_terrain: "Le DSI entend parler de culture depuis des années mais n'a jamais eu de donnée mesurable qui justifie un investissement devant son board."
+    source_expert: "DORA 2024 / Westrum, 2004"
+    page: 325
+    extrait: null
+    fiche_liee: "FP-IV-15.6"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "J'ai investi sur la coordination inter-équipes (SAFe, PI Planning) et sur l'alignement management (OKR, dashboards). Les résultats ne sont pas à la hauteur. Mon coach me dit que la culture est le troisième socle manquant. Comment j'évalue si c'est un diagnostic valide ou une façon de me vendre une nouvelle prestation ?"
+    reponse: "Les trois dimensions de la Partie 4 sont interdépendantes : coordination inter-équipes, relation manager, culture (sécurité psychologique, maturité, Westrum). Un ART bien coordonné avec un management aligné dans un contexte culturel pathologique n'ira pas loin. Une culture générative dans une organisation sans cadence commune non plus. C'est la combinaison des trois qui crée les conditions de la performance durable. Le test pour valider le diagnostic : passer le Westrum Culture Survey et comparer avec les scores DORA actuels. Si les scores DORA sont faibles ET le Westrum est en zone pathologique ou bureaucratique, le diagnostic est fondé."
+    douleur_terrain: "Le DSI a déjà payé deux fois pour des programmes qui ne tenaient pas leurs promesses. Il n'a pas de critère objectif pour valider un nouveau diagnostic."
+    source_expert: null
+    page: 325
+    extrait: null
+    fiche_liee: "FP-IV-15.6"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+trous:
+  - id: "T01"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment le SM mesure-t-il sa propre contribution a la securite psychologique sur un sprint donne ?"
+    statut: resolu
+    action: "Ajoute dans les 6 gestes (geste 6) : auto-reflexion SM une fois par sprint."
+    question_id_cree: "P4-CH15-SM-06"
+
+  - id: "T02"
+    role: PO
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment le PO contribue activement a la construction des niveaux 3 et 4 de Clark ?"
+    statut: resolu
+    action: "Note pour les PO integree en section 4 du chapitre. Question P4-CH15-PO-02 creee."
+    question_id_cree: "P4-CH15-PO-02"
+
+  - id: "T03"
+    role: RTE
+    cible: PRATICIEN_AGILE
+    question_manquante: "Securite psychologique a l'echelle ART entre equipes."
+    statut: hors_scope
+    action: "Hors scope chapitre 15. Sujet pour chapitres SAFe. Pas d'ajout."
+    question_id_cree: null
+
+  - id: "T04"
+    role: MG
+    cible: MANAGER
+    question_manquante: "Mesure hors cycle apres incident grave : doit-on attendre le prochain trimestre ?"
+    statut: resolu
+    action: "Texte ajoute dans section 3 apres encadre Recommandation pratique. Question P4-CH15-MG-03 creee."
+    question_id_cree: "P4-CH15-MG-03"
+
+nouvelles_questions:
+  - id: "P4-CH15-SM-06"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Je fais les 5 gestes de securite psychologique depuis 2 sprints. Je ne sais pas si j'avance ou si je plafonne. Comment j'evalue ma propre contribution a la securite de l'equipe sans attendre le prochain score Edmondson, et quel est le signal concret que mon comportement change quelque chose ?"
+    reponse: "Le geste 6 est le seul qui se retourne vers soi : une fois par sprint, identifier une situation ou tu aurais pu modeliser le comportement souhaite et tu ne l'as pas fait. Pas pour te juger. Pour voir si le pattern se repete. Le signal que ca change quelque chose : quelqu'un d'autre commence a prendre des risques interpersonnels apres toi. Un DEV qui admet ne pas savoir en Daily. Un PO qui reconnait une mauvaise priorite en Sprint Review. La modelisation SM est contagieuse si elle est coherente."
+    douleur_terrain: "Le SM fait des gestes isolement mais ne sait pas si c'est lui qui cree le mouvement ou si l'equipe avance independamment de lui."
+    source_expert: null
+    page: 325
+    extrait: null
+    fiche_liee: "FP-IV-15.2"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: "Timothy R. Clark"
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Je suis PO. En Sprint Planning, un DEV remet en question une decision de backlog que j'ai prise. C'est la troisieme fois ce sprint. Je dois reagir devant toute l'equipe. Comment je reponds pour que ce moment construise le Contributor Safety plutot que de le detruire, et qu'est-ce que je ne dois surtout pas faire ?"
+    reponse: "La reaction du PO face au desaccord d'un DEV sur une priorite est l'un des signaux les plus visibles du niveau 3 (Contributor Safety). Ce qu'il faut faire : accueillir le desaccord devant l'equipe, demander a comprendre le raisonnement avant de defendre la decision, puis expliquer le contexte qui a determine la priorite. Ce qu'il ne faut pas faire : defendre la decision immediatement, couper court, ou signaler non verbalement que la question n'est pas bienvenue. Le PO qui accueille le desaccord visible construit la permission collective de contribuer. Celui qui le recadre la detruit."
+    douleur_terrain: "Le PO sent qu'il perd en autorite s'il cede trop facilement. Il confond accueil du desaccord et abandon de la decision."
+    source_expert: "Timothy R. Clark, The 4 Stages of Psychological Safety, 2020"
+    page: 322
+    extrait: null
+    fiche_liee: "FP-IV-15.2"
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P4-CH15-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "On vient de vivre un incident grave dans mon equipe : j'ai sanctionne publiquement une erreur d'estimation en Sprint Review. Le score Edmondson du trimestre dernier etait 4.8/7. Je n'ai pas de nouvelle mesure prevue avant 2 mois. Dois-je attendre ou puis-je mesurer maintenant, et si oui comment ?"
+    reponse: "Le delai trimestriel est une recommandation pour l'usage courant. Apres un incident grave (conflit public, erreur sanctionnee devant l'equipe, changement de manager brutal), une mesure ponctuelle hors cycle est legitime. L'utiliser comme signal d'entree pour une conversation, pas comme verdict a presenter en reunion. Dans ce cas precis : mesurer anonymement dans les 2 semaines suivant l'incident, partager uniquement le score agrege avec l'equipe, nommer l'incident dans la conversation qui suit, et laisser l'equipe identifier ce dont elle a besoin."
+    douleur_terrain: "Le manager a cree le probleme sans le savoir et ne sait pas si attendre aggrave ou si mesurer maintenant est intrusif."
+    source_expert: null
+    page: 321
+    extrait: null
+    fiche_liee: "FP-IV-15.1"
+    fiche_destinee_a: [MG, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+stats:
+  questions_totales: 16
+  par_role:
+    SM: 6
+    PO: 2
+    DEV: 1
+    CA: 2
+    RTE: 0
+    MG: 3
+    DC: 2
+  par_statut:
+    provisoire: 0
+    confirmee: 16
+    trou: 0
+  trous_resolus: 3
+  trous_hors_scope: 1
+  couverture_dimensions:
+    qui: 14
+    quoi: 16
+    comment: 11
+    pourquoi: 16
+    quand: 10
+    valeur: 14
+  schemas_lies: 3
+  fiches_pratiques: 6
+  fiches_detail:
+    FP-IV-15.1: "Diagnostic Edmondson 7 items (T01) | SM, CA"
+    FP-IV-15.2: "4 niveaux Clark + 6 gestes SM (T06) | SM, CA, MG"
+    FP-IV-15.3: "Dashboard Culture Equipe (T03) | MG, DC, SM"
+    FP-IV-15.4: "Protocole Apres Incident Culturel (T04) | MG, SM"
+    FP-IV-15.5: "Canvas Dois-je lancer cette retro (T02) | SM, CA"
+    FP-IV-15.6: "Synthese Culture pour le Decideur (T07) | DC, MG"
+  questions_sans_fiche: 0

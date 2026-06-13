@@ -1,0 +1,363 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 17
+# chapter-extractor v6.1
+
+meta:
+  partie: 5
+  nom_partie: "Le praticien de demain"
+  chapitre: 17
+  titre: "L'IA : ma place en tant que manager"
+  date_extraction: "2026-06-11"
+  page_debut: 354
+  page_fin: 364
+  statut_global: en_cours
+
+questions:
+
+  # ── SM ──────────────────────────────────────────────────────
+
+  - id: "P5-CH17-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Mon manager regarde le tableau de bord depuis que l'équipe utilise l'IA : tout est vert, il est satisfait. Moi je vois des signaux qui ne remontent pas dans les métriques. Comment je lui amène ça sans passer pour quelqu'un qui sabote la bonne nouvelle ?"
+    reponse: "Les métriques classiques ont un lag de 2 à 4 sprints. Avec l'IA ce lag est plus court et plus dangereux : une équipe peut livrer parfaitement 6 sprints et s'effondrer au sprint 7 non pas parce qu'un problème est apparu, mais parce qu'un problème s'est accumulé. Prépare un point mensuel de 15 minutes hors cérémonie avec ton manager : apporte-lui ce que les chiffres ne montrent pas encore. C'est toi qui ouvres la porte."
+    douleur_terrain: "Le SM voit le silence en Review, les rétros sans tension, les questions techniques qui disparaissent. Le manager voit une vélocité en hausse et un CFR stable. Ces deux lectures coexistent et c'est le SM qui doit réconcilier les deux sans casser la confiance."
+    source_expert: null
+    page: 360
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [SM]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Vélocité en hausse, questions en Daily qui disparaissent. Est-ce un progrès ou un signal d'alarme, et comment je fais la différence en Sprint ?"
+    reponse: "Vélocité en hausse + diminution des questions en Daily = risque de perte d'alignement, pas de progrès. Poser cette question à un membre de l'équipe cette semaine : 'Est-ce que tu comprends vraiment ce que tu as livré lors du dernier sprint ?' La réponse dira plus que n'importe quel tableau de bord."
+    douleur_terrain: "Le SM confond silence et maturité. Une équipe qui ne questionne plus n'est pas une équipe efficace : c'est une équipe qui a décroché mentalement de ce qu'elle livre."
+    source_expert: null
+    page: 361
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [SM]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Je suis SM et je lis ce chapitre pour préparer une conversation avec mon manager sur les signaux de burnout IA. Comment je lui amène ces signaux sans qu'il les perçoive comme une critique de son pilotage ?"
+    reponse: "Les mêmes signaux s'appliquent au SM qu'au manager. Apporte-les toi-même à la table, ne les attends pas. Formuler les signaux comme des observations terrain, pas comme des critiques de la méthode de pilotage : 'Voici ce que j'observe depuis 3 sprints. Je veux qu'on en parle avant que ça devienne structurel.'"
+    douleur_terrain: "Le SM hésite à remonter des signaux négatifs à son manager quand les métriques sont vertes. Il craint d'être perçu comme un frein ou comme quelqu'un qui invente des problèmes."
+    source_expert: null
+    page: 360
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  # ── DEV ─────────────────────────────────────────────────────
+
+  - id: "P5-CH17-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "En tant que dev, le taux de révision de mes outputs IA tombe à zéro parce que je fais confiance aux suggestions. Mon manager voit ça comme de l'efficacité. Pourquoi est-ce un signal d'alarme et qui doit le nommer ?"
+    reponse: "Un taux de révision proche de 0% est un signal d'alarme : soit le prompt est parfait (rare), soit l'équipe ne relit plus. Le KPI managérial IA est précisément ce ratio : combien de propositions IA ont été modifiées avant intégration vs acceptées telles quelles. C'est le SM qui doit nommer ce signal au manager, mais c'est le dev qui en porte les conséquences en production."
+    douleur_terrain: "Le dev adopte le mode 'accepter tout' parce que ça va plus vite et que personne ne lui demande de réviser. La dette cognitive s'accumule silencieusement."
+    source_expert: null
+    page: 357
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  # ── CA ──────────────────────────────────────────────────────
+
+  - id: "P5-CH17-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Je coache un manager qui se félicite des métriques IA de son équipe. La table de traduction SM/Manager du chapitre 14 ne suffit plus. Quelle nouvelle lecture dois-je lui apprendre à faire, et comment je structure cette conversation de coaching ?"
+    reponse: "La table de traduction doit être mise à jour pour l'ère IA. Le même chiffre ne dit plus la même chose : vélocité +30% ne signifie pas que l'équipe comprend ce qu'elle livre. CFR stable peut masquer une dégradation relative si le nombre de déploiements a aussi augmenté. Le coach structure la conversation autour de 3 questions : 'Qu'est-ce que ce chiffre ne mesure pas ?' + 'Quel signal humain est-il associé ?' + 'Quel serait le signe avant-coureur d'un problème dans 2 trimestres ?'"
+    douleur_terrain: "Le manager agile formé avant l'IA a des réflexes de lecture des métriques qui ne sont plus valides. Le coach doit désapprendre avant de réapprendre."
+    source_expert: null
+    page: 356
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [CA, MG]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  # ── MG ──────────────────────────────────────────────────────
+
+  - id: "P5-CH17-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Ma direction me dit que l'IA multiplie la capacité de l'équipe et que je peux donc doubler les objectifs du trimestre. Comment je réponds sans passer pour quelqu'un qui freine la transformation IA, et quels arguments concrets je prépare avant cette réunion ?"
+    reponse: "L'IA accélère certaines tâches mécaniques, répétitives, à faible incertitude. Elle n'accélère pas le jugement, la compréhension des besoins clients, la résolution de problèmes complexes, la construction de la confiance. Or c'est précisément sur ces dimensions non-mécaniques que la valeur business est créée. Script : 'L'IA accélère une partie significative de nos tâches mécaniques. Le pourcentage restant pour la compréhension client, décisions d'architecture, résolution de conflits : prend le même temps. Augmenter le volume sans augmenter la capacité humaine ne ferait qu'accélérer les erreurs.'"
+    douleur_terrain: "Le manager agile est coincé entre une direction qui voit l'IA comme un multiplicateur de capacité et une équipe qui signale une surcharge cognitive. Il doit tenir les deux bouts sans capituler sur aucun."
+    source_expert: null
+    page: 358
+    extrait: null
+    fiche_liee: "FP-V-17.4"
+    fiche_destinee_a: [MG]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Mon Happiness Index est à 3.8/5 de moyenne. Ma direction dit que l'équipe est en bonne forme. Moi je ne suis pas sûr. Comment je lis ce chiffre autrement à l'ère de l'IA ?"
+    reponse: "Regarder les scores individuels, pas la moyenne. Une moyenne 3.8 peut cacher un senior à 2 et trois juniors à 4.5. A l'ère de l'IA, le Happiness Index homogène (scores tous proches) est lui-même un signal : possible conformisme déclaré. L'équipe répond ce qu'elle pense qu'on veut entendre. Le départ soudain d'un senior sans signal préalable est le signal le plus coûteux et le moins anticipé."
+    douleur_terrain: "Le manager utilise la moyenne pour rassurer sa direction. Mais la moyenne efface exactement les cas critiques qu'il devrait détecter."
+    source_expert: null
+    page: 357
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [MG]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je n'ai pas de politique IA dans mon équipe. Ma direction n'a rien décidé. Est-ce que j'attends ou est-ce que je prends l'initiative, et si oui comment ?"
+    reponse: "Prendre l'initiative sans attendre la DSI. Une IA policy locale se rédige en 30 minutes : une politique d'équipe, pas d'entreprise. 6 rubriques : Périmètre (outils autorisés), Traçabilité (comment signaler un output IA intégré), Responsabilité (qui valide, qui est accountable en prod), Confidentialité (données hors prompt : noms clients, infos financières, code sous NDA), Révision (toutes les 2 rétros), Format (1 page A4, affiché, signé collectivement). L'absence de cadre ne protège pas le manager, elle l'expose."
+    douleur_terrain: "Le manager attend une décision d'entreprise qui ne vient pas. Entre-temps son équipe utilise l'IA sans règle du jeu, et c'est lui qui répond si un output IA introduit une erreur en production."
+    source_expert: null
+    page: 361
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [MG]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-MG-04"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Ma direction demande des données sur la productivité IA. J'ai les chiffres. Comment je les présente de façon honnête sans sous-vendre ce qu'on a accompli et sans sur-promettre sur ce que l'IA va faire ?"
+    reponse: "Présenter les données factuelles : +30% vélocité, CFR stable, Lead Time en baisse. Puis ouvrir immédiatement la question de ce que ces données ne montrent pas encore : l'impact sur la qualité des décisions techniques dans 2 trimestres. Si la direction perçoit la question retournée comme une esquive, reformuler : 'Je vous propose qu'on définisse ensemble les indicateurs de qualité technique qu'on veut suivre sur les 2 prochains trimestres. J'ai une première ébauche.' Arriver préparé."
+    douleur_terrain: "Le manager a des bonnes nouvelles à annoncer mais sait qu'elles sont incomplètes. Il craint que parler des limites des données soit perçu comme de la modestie mal placée."
+    source_expert: null
+    page: 359
+    extrait: null
+    fiche_liee: "FP-V-17.4 / FP-V-17.5"
+    fiche_destinee_a: [MG]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-MG-05"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Je détecte des signaux de burnout IA dans mon équipe. Quelle est la différence avec le burnout classique du chapitre 6, comment je réagis, et avec qui ?"
+    reponse: "Le burnout IA coexiste avec une productivité élevée : c'est ce qui le rend invisible. L'équipe livre beaucoup mais ses membres ont mentalement décroché de ce qu'ils livrent. 5 signaux spécifiques IA : silence en Sprint Review, rétros sans tension, Happiness Index homogène, questions techniques rarissimes, turnover soudain d'un senior sans signal préalable. La correction ne se fait pas en rétrospective. Elle se fait en tête-à-tête : avec le senior qui s'est tu, avec le dev dont le Happiness Index est en dessous de la moyenne depuis 3 sprints."
+    douleur_terrain: "Le manager confond productivité et santé d'équipe. Une équipe en burnout IA peut avoir un tableau de bord vert pendant 6 sprints et s'effondrer au sprint 7."
+    source_expert: null
+    page: 359
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [MG, SM]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  # ── DC ──────────────────────────────────────────────────────
+
+  - id: "P5-CH17-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'évalue mes managers sur leur posture IA. Quels signaux concrets me permettent de savoir si un manager pilote réellement l'IA ou s'il se contente de lire les métriques vertes ?"
+    reponse: "3 indicateurs de gouvernance locale active : (1) l'IA policy one-pager existe, a été partagé et révisé au moins une fois, (2) le manager a mené un tête-à-tête individuel avec chaque senior de son équipe sur la perception de leur rôle à l'ère de l'IA, (3) le ratio DF/CFR est suivi : si le CFR augmente plus vite que la DF, c'est une alerte qualité. Le mode de vérification du deuxième indicateur : une question directe en entretien trimestriel manager/DSI suffit. La réponse ne va pas dans un dashboard. Elle s'entend."
+    douleur_terrain: "Le DSI voit les tableaux de bord verts et ne sait pas si c'est le reflet d'une vraie maîtrise IA ou d'un optimisme de présentation. Il n'a pas de grille pour distinguer les deux."
+    source_expert: null
+    page: 364
+    extrait: null
+    fiche_liee: "FP-V-17.5"
+    fiche_destinee_a: [DC]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: "Mon organisation n'a pas encore de politique IA d'entreprise. Est-ce que j'attends ou est-ce que j'autorise mes managers à prendre des initiatives locales, et avec quelles limites ?"
+    reponse: "Autoriser les IA policies locales sans attendre la politique d'entreprise. Une IA policy locale couvre le périmètre d'une équipe, pas de l'organisation. Elle est complémentaire : quand la politique d'entreprise arrivera, les policies locales seront intégrées, pas remplacées. La différence avec l'accord d'équipe IA du chapitre 16 : la policy est un cadre de gouvernance et de responsabilité. L'accord est un engagement collectif de pratique. Les deux sont nécessaires."
+    douleur_terrain: "Le DSI hésite entre laisser faire et risquer l'incohérence, ou attendre et laisser ses équipes opérer sans cadre. L'absence de cadre n'est pas neutre : elle expose le manager, pas l'organisation."
+    source_expert: null
+    page: 362
+    extrait: null
+    fiche_liee: "FP-V-17.3"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P5-CH17-DC-03"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "Je pense que l'IA devrait permettre à mes équipes de doubler leur capacité de livraison. Mon manager agile me répond que c'est plus nuancé. Qui a raison, et comment je différencie ce qui est accélérable de ce qui ne l'est pas ?"
+    reponse: "L'IA accélère les tâches mécaniques, répétitives, à faible incertitude. Elle n'accélère pas le jugement, la compréhension des besoins clients, la résolution de problèmes complexes, la construction de confiance dans une équipe. Un manager qui peut répondre avec des données et des nuances vaut mieux qu'un manager qui dit oui et livre dans le mur. La question n'est pas 'est-ce que l'IA multiplie la capacité ?' mais 'quelle part de la capacité est mécanisable, et qu'est-ce qu'on fait du temps récupéré ?'"
+    douleur_terrain: "Le DSI a vu des demos impressionnantes de l'IA et a conclu à une multiplication directe. La réalité terrain est que la part mécanique varie énormément selon les équipes et les contextes."
+    source_expert: null
+    page: 358
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: provisoire
+    action_recommandee: null
+    schemas_lies: []
+
+  # ── QUESTIONS ISSUES DES TROUS (T01/T02/T03) ────────────────
+
+  - id: "P5-CH17-MG-06"
+    cible: MANAGER
+    role: MG
+    expert: MIKE_COHN
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Ma direction demande combien de temps l'IA fait réellement gagner à mon équipe. Je dis 'une partie significative des tâches mécaniques' mais elle veut un chiffre. Comment je le produis sans sortir un chiffre inventé ?"
+    reponse: "Une mesure sur 1 sprint suffit. Demande à chaque membre de noter le temps gagné grâce à l'IA sur des tâches qu'il aurait faites seul de toute façon. Une estimation par sprint, pas une mesure au chronomètre. Ce chiffre te donne un ordre de grandeur honnête à présenter. Il a aussi un effet secondaire utile : il force l'équipe à prendre conscience de ce qu'elle délègue réellement à l'IA, ce qui prépare la conversation sur la qualité des révisions."
+    douleur_terrain: "Le manager argumente avec 'une partie de nos tâches' mais ne peut pas chiffrer. La direction entend une esquive. Un seul sprint de mesure transforme une intuition en donnée terrain."
+    source_expert: "Mike Cohn : la mesure empirique d'une seule itération vaut plus que dix réunions d'estimation. Même principe appliqué à la part mécanique."
+    page: 358
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: "Ajouter encadré En pratique p.358 section 3 apres le premier script Direction/Reponse, avant le deuxieme bloc concurrents"
+    schemas_lies: []
+
+  - id: "P5-CH17-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: JEFF_SUTHERLAND
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "Mes Sprint Goals sont atteints à 100% depuis que l'équipe utilise l'IA pour les formuler. Mon manager est ravi. Moi je ne suis pas sûr que ce soit un signe de santé. Comment je détecte si l'atteinte mesure la valeur ou juste la conformité à ce que l'IA a formulé ?"
+    reponse: "Un Sprint Goal atteint à 100% plusieurs sprints de suite peut signifier deux choses opposées : soit l'équipe est en excellente forme, soit l'IA a appris à formuler des goals atteignables plutôt qu'ambitieux. Le test est simple : en Planning, poser la question directe 'Si on formulait ce goal sans l'IA ce matin, on dirait quoi ?' Si l'équipe ne répond pas spontanément, c'est le signal. La valeur d'un Sprint Goal n'est pas dans son atteinte, elle est dans la tension qu'il crée entre ce que l'équipe peut faire et ce que le client attend vraiment. Quand cette tension disparaît, le goal mesure la conformité à l'IA, pas la valeur."
+    douleur_terrain: "Le SM voit 100% d'atteinte et hésite à sonner l'alarme. La réussite visible le paralyse. Il ne sait pas distinguer l'équipe performante de l'équipe qui a optimisé le mauvais indicateur."
+    source_expert: "Jeff Sutherland : le Sprint Goal est le pilier Inspection de l'empirisme Scrum. Si l'IA calibre le goal pour qu'il soit atteignable plutot qu'ambitieux, on a casse l'inspection. L'équipe inspecte sa conformité à l'IA, pas sa valeur livrée."
+    page: 357
+    extrait: null
+    fiche_liee: "FP-P5-CH17"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: "Ajouter paragraphe p.357 section 2 apres le tableau de traduction, avant l'encadre En pratique KPI taux de revision"
+    schemas_lies: []
+
+  - id: "P5-CH17-DC-04"
+    cible: DECIDEUR
+    role: DC
+    expert: MIKE_COHN
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: "J'autorise mes managers à rédiger des IA policies locales en attendant notre politique d'entreprise. Quand la politique globale arrivera, est-ce que les policies locales deviennent obsolètes ou est-ce qu'elles restent utiles ?"
+    reponse: "Les policies locales ne deviennent pas obsolètes. Elles se recentrent. La politique d'entreprise prend en charge le périmètre global (outils autorisés au niveau du SI), la conformité légale (RGPD, contrats fournisseurs IA, assurances) et les standards de sécurité. La policy locale conserve la traçabilité, la responsabilité au niveau équipe, et le rythme de révision en rétrospective. En pratique, les décisions prises localement sur 6 mois donnent à la DSI des données terrain pour construire la politique globale. Une policy locale bien construite est un sous-ensemble de la politique d'entreprise, pas un doublon."
+    douleur_terrain: "Le DSI hésite à lancer les policies locales parce qu'il craint de créer un bazar qu'il devra défaire. La réalité est inverse : les policies locales réduisent le risque pendant la période d'attente et alimentent la réflexion sur la politique globale."
+    source_expert: "Mike Cohn : principe de subsidiarité agile. Les décisions se prennent au niveau le plus bas qui a l'information. La policy locale couvre ce que l'équipe contrôle. La politique d'entreprise couvre ce qui dépasse l'équipe."
+    page: 362
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: "Ajouter paragraphe p.362 section 5 apres le paragraphe sur la difference policy/accord d'equipe IA chapitre 16, avant saut vers section 6"
+    schemas_lies: []
+
+trous:
+  - id: "T01"
+    role: MG
+    cible: MANAGER
+    question_manquante: "Comment mesurer concrètement la part mécanique vs non-mécanique du travail de mon équipe pour avoir un chiffre à présenter à la direction ?"
+    action: "RESOLU : question P5-CH17-MG-06 ajoutee + encadre En pratique a inserer p.358"
+
+  - id: "T02"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Le Sprint Goal est formulé par l'IA et atteint à 100%. Comment le SM détecte-t-il que l'atteinte mesure la conformité à l'IA et non la valeur réelle livrée ?"
+    action: "RESOLU : question P5-CH17-SM-04 ajoutee + paragraphe a inserer p.357"
+
+  - id: "T03"
+    role: DC
+    cible: DECIDEUR
+    question_manquante: "Quand une IA policy locale entre en conflit avec une future politique d'entreprise, qui décide et comment la transition se fait-elle ?"
+    action: "RESOLU : question P5-CH17-DC-04 ajoutee + paragraphe a inserer p.362"
+
+stats:
+  questions_totales: 16
+  par_role:
+    SM: 4
+    PO: 0
+    DEV: 1
+    CA: 1
+    RTE: 0
+    MG: 6
+    DC: 4
+  par_statut:
+    provisoire: 13
+    confirmee: 3
+    trou: 0
+  fiches_pratiques:
+    total: 5
+    liste:
+      - id: "FP-V-17.1"
+        nom: "Table de traduction métriques IA"
+        template: T06
+        roles: [MG, CA]
+      - id: "FP-V-17.2"
+        nom: "Détection burnout IA"
+        template: T04
+        roles: [MG, SM]
+      - id: "FP-V-17.3"
+        nom: "IA Policy One-Pager"
+        template: T06
+        roles: [MG, DC]
+      - id: "FP-V-17.4"
+        nom: "Négocier la capacité IA avec la direction"
+        template: T06
+        roles: [MG]
+      - id: "FP-V-17.5"
+        nom: "Dashboard KPIs managériaux IA"
+        template: T03
+        roles: [MG, DC]
+  couverture_dimensions:
+    qui: 13
+    quoi: 16
+    comment: 13
+    pourquoi: 16
+    quand: 12
+    valeur: 11
+  schemas_lies: 0

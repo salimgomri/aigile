@@ -1,0 +1,1179 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 9 - Version finale validee
+# chapter-extractor v6.1 - Recheck complet + panel experts 9/10 + humanizer
+# Sources : premiere extraction + master v3 CH09 + recheck angles manquants
+# Date creation : 2026-06-13 | Date validation : 2026-06-13
+# Regle absolue : zero tiret long dans tout ce fichier
+# Statut : VALIDE - Panel unanime 9/10 Round 1 - 7 FP generees
+
+meta:
+  partie: 3
+  nom_partie: "L'IA dans la boucle"
+  chapitre: 9
+  titre: "AIgile Manifesto"
+  date_extraction: "2026-06-13"
+  date_validation: "2026-06-13"
+  page_debut: 206
+  page_fin: 221
+  pages_finales: 206-223
+  statut_global: valide
+  panel_validation: "unanime 9/10 Round 1"
+  note_recheck: >
+    Version consolidee : 12 questions premiere passe + 10 questions master v3
+    + 8 nouvelles questions recheck = 22 questions actives + 8 trous documentes.
+    Corrections C1-C6 integrees. Humanizer passe. 7 FP generees (SVG).
+    5 trous avec texte pret Affinity. 3 trous LinkedIn ou autre chapitre.
+
+  fiches_pratiques:
+    - id: "FP-III-9.1"
+      titre: "IA Readiness Check"
+      template: T01
+      destinataires: [SM, CA]
+      fichier: "FP-III-9.1.svg"
+    - id: "FP-III-9.2"
+      titre: "Les 4 valeurs AIgile"
+      template: T06
+      destinataires: [SM, PO, CA, MG, DC]
+      fichier: "FP-III-9.2.svg"
+    - id: "FP-III-9.3"
+      titre: "Accord IA en equipe"
+      template: T04
+      destinataires: [SM, CA]
+      fichier: "FP-III-9.3.svg"
+    - id: "FP-III-9.4"
+      titre: "Les 10 principes AIgile"
+      template: T06
+      destinataires: [SM, CA, PO]
+      fichier: "FP-III-9.4.svg"
+    - id: "FP-III-9.5"
+      titre: "Maturite IA : signaux pour le manager"
+      template: T06
+      destinataires: [MG, DC]
+      fichier: "FP-III-9.5.svg"
+    - id: "FP-III-9.6"
+      titre: "Filtre de decision AIgile"
+      template: T04
+      destinataires: [SM]
+      fichier: "FP-III-9.6.svg"
+    - id: "FP-III-9.7"
+      titre: "Guru IA : detecter et redistribuer"
+      template: T04
+      destinataires: [SM, CA]
+      fichier: "FP-III-9.7.svg"
+
+questions:
+
+  # ============================================================
+  # BLOC SM (5 questions)
+  # ============================================================
+
+  - id: "P3-CH09-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Mon manager vient de demander que toute l'equipe utilise ChatGPT pour accelerer
+      les ceremonies. Je suis SM. Qui decide du cadre d'usage, comment je pose les
+      4 valeurs AIgile sans passer pour un frein a l'innovation, et quel est le
+      premier geste concret que je fais avant le prochain sprint ?
+    reponse: >
+      Le SM n'est pas le frein : il est le garant du cadre. Les 4 valeurs AIgile
+      donnent la structure. Le premier geste : proposer un IA Readiness Check en
+      retrospective (30 min) avant toute generalisation. Ce n'est pas un audit :
+      c'est un point de depart de discussion. Resultat : un accord ecrit d'une page,
+      valide par l'equipe, affiche au mur.
+    douleur_terrain: >
+      Le SM se retrouve ecrase entre la pression du manager qui veut aller vite et
+      l'equipe qui utilise deja l'IA en ordre disperse sans aucun cadre de valeurs.
+    source_expert: null
+    page: 217
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A"]
+
+  - id: "P3-CH09-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: >
+      Un developpeur de mon equipe accepte sans relecture le code genere par Copilot.
+      Comment je nomme ce risque sans pointer la personne, a quel moment dans le sprint
+      je l'adresse, et quelle valeur AIgile est concernee ?
+    reponse: >
+      Le principe 3 nomme le risque : le jugement humain reste la ressource critique.
+      Le bon moment : la retrospective, pas le Daily. La formulation : "On a un accord
+      sur ce qu'on fait avant de merger du code genere par IA ?" Pas de personne visee.
+      Le systeme est en cause, pas l'individu.
+    douleur_terrain: >
+      Le SM voit le code IA accepte en masse mais ne sait pas comment soulever le sujet
+      sans mettre quelqu'un en difficulte devant l'equipe.
+    source_expert: null
+    page: 220
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A", "L"]
+
+  - id: "P3-CH09-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Comment j'utilise le IA Readiness Check en pratique, a quel moment du sprint je
+      le pose, et comment j'interprete un score bas a la question 3 sans tirer la
+      mauvaise conclusion ?
+    reponse: >
+      Le check se pose en debut de retrospective lors de la premiere conversation sur
+      l'IA. Les questions 1, 2, 4 se completent seul avant la retro. Les questions 3
+      et 5 s'ouvrent en discussion avec l'equipe. Un score bas a la question 3 n'est
+      pas forcement un signal de maturite IA insuffisante : c'est peut-etre un signal
+      de securite psychologique basse. Verifier avec le questionnaire Edmondson avant
+      de conclure.
+    douleur_terrain: >
+      Le SM lance le check, voit un score bas sur la question 3 et conclut que l'equipe
+      n'est pas prete pour l'IA, alors que le vrai probleme est la securite psychologique.
+    source_expert: null
+    page: 219
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P3-CH09-01"]
+    themes_salim: ["S", "A", "M"]
+
+  - id: "P3-CH09-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: >
+      Quelle est la difference entre un usage IA cosmetique en Scrum et un usage
+      vraiment augmente ? Comment je sais de quel cote se trouve mon equipe cette semaine ?
+    reponse: >
+      Cosmetique : generer un compte-rendu de retro qu'on aurait ecrit a la main de
+      toute facon. Augmente : utiliser l'IA pour detecter un pattern de dysfonctionnement
+      et adapter la facilitation en consequence. Le test : est-ce que l'output IA change
+      une decision que l'equipe n'aurait pas prise seule ? Si non, c'est de l'acceleration,
+      pas de l'augmentation. Les deux ont de la valeur, mais la confusion entre les deux
+      empeche de progresser.
+    douleur_terrain: >
+      La majorite des equipes utilisent l'IA pour faire plus vite ce qu'elles faisaient
+      deja, sans remettre en cause leurs pratiques. Le SM pense que l'equipe est "dans
+      l'IA" alors qu'elle a juste remplace Word par ChatGPT.
+    source_expert: null
+    page: 213
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A"]
+
+  - id: "P3-CH09-SM-05"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: AI_SCRUM
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    question: >
+      Un membre de mon equipe est devenu le "guru IA" et les autres se desinvestissent
+      de l'IA. Comment je redistribue la competence sans creer de conflit, et pourquoi
+      le principe 8 de l'AIgile Manifesto est directement concerne ?
+    reponse: >
+      TROU. Ce risque de concentration des competences IA n'est pas traite dans le
+      chapitre 9. Le principe 8 (le developpement des competences humaines reste
+      prioritaire) s'applique : si une seule personne maitrise l'IA dans l'equipe,
+      le principe est viole collectivement. La reponse operationnelle : rotation des
+      prompts et partage en retro, pas delegation permanente. Le trou merite une
+      insertion ou une fiche pratique.
+    douleur_terrain: >
+      Le guru IA devient une dependance critique. Quand il part, l'equipe perd toutes
+      ses pratiques IA d'un coup et ne sait meme pas par ou recommencer.
+    source_expert: >
+      AI and Scrum 2026 : "If one team member becomes the AI guru and others disengage,
+      encourage knowledge sharing."
+    page: 216
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: trou
+    action_recommandee: "Inserer apres Principe 8 (p.216). Voir trou T05."
+    schemas_lies: []
+    themes_salim: ["A", "I"]
+
+  # ============================================================
+  # BLOC PO (2 questions)
+  # ============================================================
+
+  - id: "P3-CH09-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      J'utilise ChatGPT pour generer des user stories. Mon SM me demande si c'est
+      transparent vis-a-vis de l'equipe. Quelle valeur AIgile s'applique, comment je
+      formule l'accord d'equipe, et qu'est-ce que ca change dans mon travail de PO ?
+    reponse: >
+      La valeur 3 s'applique : transparence algorithmique plutot qu'opacite des modeles.
+      L'equipe doit savoir quand l'IA est dans la boucle. La valeur 4 complete : le
+      jugement humain reste sur l'output. Les stories generees sont une proposition de
+      depart. L'accord d'equipe (30 min en retro) formalise : quels outputs IA doivent
+      etre signales avant livraison, et qui est accountable de la decision finale.
+    douleur_terrain: >
+      Le PO utilise l'IA pour accelerer la redaction des stories mais n'a pas pose la
+      question de la transparence avec l'equipe. Le sujet sort au mauvais moment,
+      en plein sprint.
+    source_expert: null
+    page: 213
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A"]
+
+  - id: "P3-CH09-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: AI_SCRUM
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: >
+      L'IA accelere tellement les livraisons que je n'arrive plus a valider la valeur
+      produite avant le prochain sprint. Est-ce un probleme d'outil, un probleme de
+      processus, et que dit l'AIgile Manifesto sur ce risque ?
+    reponse: >
+      TROU. Le PO comme goulot d'etranglement a l'ere IA n'est pas developpe dans le
+      chapitre 9. La valeur 4 (responsabilite humaine plutot que delegation de la
+      decision) s'applique : si le PO n'a pas le temps de valider, la responsabilite
+      de la valeur n'est plus tenue par un humain. Ce n'est pas un probleme d'outil :
+      c'est un signal organisationnel. La reponse operationnelle n'est pas dans ce
+      chapitre.
+    douleur_terrain: >
+      L'equipe livre des features en quelques heures. Le PO ne peut pas valider la
+      valeur a ce rythme. Il dit oui par defaut, ce qui est exactement ce que l'AIgile
+      Manifesto cherche a eviter.
+    source_expert: >
+      AI and Scrum 2026 : "Teams found the AI could create features faster than the
+      organization could validate their desirability."
+    page: null
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO]
+    statut_reponse: trou
+    action_recommandee: "Contenu LinkedIn angle PO. Trou T06."
+    schemas_lies: []
+    themes_salim: ["A", "L", "M"]
+
+  # ============================================================
+  # BLOC DEV (3 questions)
+  # ============================================================
+
+  - id: "P3-CH09-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: >
+      En tant que dev, je ne sais pas si je dois signaler chaque fois que j'utilise
+      Copilot pour ecrire du code. Qui decide ce perimetre, pourquoi c'est important,
+      et quel risque je prends en ne le signalant pas ?
+    reponse: >
+      La valeur 2 de l'AIgile Manifesto dit que la transparence sur l'usage IA est une
+      responsabilite professionnelle. La repartition entre ce qu'on signale et ce qu'on
+      n'a pas besoin de signaler se decide en equipe, pas unilateralement. L'accord IA
+      d'une page signe collectivement est la reponse operationnelle. Utiliser l'IA sans
+      le mentionner quand c'est pertinent est une forme de manque de clarte vis-a-vis
+      de l'equipe.
+    douleur_terrain: >
+      Le dev ne sait pas si utiliser Copilot pour 80 % d'une fonction est a signaler.
+      Il garde ca pour lui par defaut, ce qui cree une asymetrie d'information dans
+      l'equipe.
+    source_expert: null
+    page: 215
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A", "L"]
+
+  - id: "P3-CH09-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: >
+      Si l'IA fait de plus en plus de code a ma place, est-ce que je perds mes
+      competences ? Que dit l'AIgile Manifesto sur ce risque, et comment je dois
+      utiliser l'IA pour que mes competences progressent plutot que de s'atrophier ?
+    reponse: >
+      Le principe 8 est explicite : le developpement des competences humaines reste
+      prioritaire. Si l'IA fait tout le travail de redaction, l'equipe perd la
+      competence de rediger. L'usage sain : utiliser l'IA pour accelerer, pas pour
+      remplacer l'apprentissage. Concretement : utiliser l'IA pour analyser ses propres
+      erreurs, pas pour les eviter. La competence de lire un output et de decider si
+      c'est juste devient plus precieuse, pas moins.
+    douleur_terrain: >
+      Le dev junior delegue entierement la redaction du code a Copilot et ne comprend
+      plus ce qu'il merge. Le senior le voit mais ne sait pas comment nommer ca sans
+      passer pour antimoderne.
+    source_expert: null
+    page: 216
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "I"]
+
+  - id: "P3-CH09-DEV-03"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: AI_SCRUM
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    question: >
+      L'IA genere du code qui semble correct mais accumule de la dette technique
+      invisible. Comment je detecte ce piege avant que la DoD ne soit plus tenable,
+      et pourquoi ce risque est pire avec l'IA qu'avec un collegue ?
+    reponse: >
+      L'IA favorise les ajouts (generation) sur les ameliorations (refactoring). Elle
+      produit du code fonctionnel qui manque de coherence structurelle a l'echelle. Le
+      dev doit explicitement demander du refactoring a l'IA et maintenir le meme niveau
+      d'exigence qu'il appliquerait a une code review d'un collegue. Le principe 3
+      s'applique : le jugement humain reste la ressource critique. Si le dev ne comprend
+      pas le code genere ligne par ligne, il ne peut pas en assumer la responsabilite
+      en prod.
+    douleur_terrain: >
+      L'equipe qui adopte l'IA code plus vite mais refactore moins. La dette s'accumule
+      en silence. Le SM ne la voit pas parce que la velocite est stable.
+    source_expert: >
+      AI and Scrum 2026 : "Code duplication increased from ~8% to ~12% as AI coding
+      assistance became more common. Refactoring activity dropped sharply."
+    page: 215
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["L", "A"]
+
+  # ============================================================
+  # BLOC CA (3 questions)
+  # ============================================================
+
+  - id: "P3-CH09-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Je coach une equipe qui utilise l'IA partout sans cadre de valeurs. Quel outil
+      du chapitre 9 je pose en premier, comment j'interprete les resultats pour
+      distinguer un probleme IA d'un probleme de culture d'equipe, et quelle
+      intervention je propose apres ?
+    reponse: >
+      Le IA Readiness Check (5 questions, score /20) est le point d'entree. Score
+      inferieur a 12 : adresser avant de generaliser l'usage IA en sprint. Attention :
+      un score bas a la question 3 peut signaler une securite psychologique basse.
+      Verifier avec le questionnaire Edmondson. L'intervention : accord IA en 1
+      retrospective (30 min), 3 questions : usages transparents, outputs a signaler,
+      accountability de la decision. Resultat : une page signee, affichee au mur.
+    douleur_terrain: >
+      Le coach arrive dans une equipe ou tout le monde utilise l'IA differemment,
+      certains s'en vantent, d'autres le cachent, et le SM ne sait pas par ou commencer.
+    source_expert: null
+    page: 218
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P3-CH09-01"]
+    themes_salim: ["S", "A", "M"]
+
+  - id: "P3-CH09-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: >
+      Un client me demande pourquoi l'AIgile Manifesto de Salim Gomri et non simplement
+      l'Agile Manifesto de 2001. Comment j'explique la difference, ce que l'un apporte
+      que l'autre ne peut pas, et ce que l'AIgile Manifesto n'est pas ?
+    reponse: >
+      L'Agile Manifesto est incomplet, pas faux. Il a ete ecrit avant l'IA generative.
+      Il ne dit rien sur ce qui change quand ChatGPT redige les stories ou Copilot
+      genere le code. L'AIgile Manifesto n'est pas une extension officielle. Il ne parle
+      pas au nom des 17 signataires de 2001. C'est une initiative de Salim Gomri,
+      praticien agile, publiee en mai 2025 sur aigile.lu. Il n'est pas contre l'IA :
+      il pose les conditions pour que l'IA augmente les equipes plutot que de les
+      remplacer.
+    douleur_terrain: >
+      Le CA ne sait pas comment expliquer le positionnement de l'AIgile Manifesto sans
+      que ca semble concurrentiel ou pretentieux face a l'original.
+    source_expert: null
+    page: 211
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A"]
+
+  - id: "P3-CH09-CA-03"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: AI_SCRUM
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Je vois ma direction deployer des outils IA sur des equipes dont le Daily est
+      encore un rapport de statut et le backlog un monstre informe. Comment j'explique
+      que l'IA va amplifier le probleme plutot que le resoudre, et sur quel principe
+      de l'AIgile Manifesto je m'appuie ?
+    reponse: >
+      Le principe 7 est explicite : l'IA amplifie les forces et les faiblesses
+      existantes. Une equipe avec un bon PO et un Sprint Goal clair produira de bien
+      meilleures stories assistees par IA qu'une equipe confuse. L'IA n'est pas un
+      correcteur de dysfonctionnements organisationnels. La formulation pour le manager :
+      "Si le Scrum n'est pas solide, l'IA va accelerer les symptomes, pas les resoudre.
+      On stabilise d'abord, on amplifie ensuite."
+    douleur_terrain: >
+      Le coach voit sa direction acheter des licences IA pour des equipes dont les
+      retrospectives ne produisent aucune action concrete depuis 6 mois.
+    source_expert: >
+      AI and Scrum 2026 : "If your Scrum practice lacks direction or quality discipline,
+      AI will amplify the dysfunction."
+    page: 216
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A"]
+
+  # ============================================================
+  # BLOC RTE (1 question)
+  # ============================================================
+
+  - id: "P3-CH09-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Je coordonne 4 equipes Scrum. Chacune utilise l'IA differemment : des outils
+      differents, des niveaux de transparence differents, des accords internes qui ne
+      sont pas alignes. Quel cadre je pose au niveau ART, et comment l'AIgile Manifesto
+      s'applique a plusieurs equipes en meme temps ?
+    reponse: >
+      TROU. Le chapitre 9 ne traite pas l'usage de l'AIgile Manifesto au niveau
+      multi-equipes ou ART. Les 4 valeurs s'appliquent a chaque equipe individuellement.
+      L'accord de transparence IA peut etre homogeneise au niveau ART via le PI Planning :
+      session dediee sur les accords IA inter-equipes, surtout sur la confidentialite
+      des donnees (principe 6) et les outputs qui traversent les equipes. Ce contenu
+      n'est pas dans le livre.
+    douleur_terrain: >
+      Le RTE voit 4 equipes avec 4 politiques IA implicites. Quand un output IA d'une
+      equipe devient l'input d'une autre, personne ne sait si c'est transparent ou non.
+    source_expert: null
+    page: null
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [RTE]
+    statut_reponse: trou
+    action_recommandee: "A integrer dans Ch.13 ou en encart Ch.9 section 3. Voir trou T07."
+    schemas_lies: []
+    themes_salim: ["S", "A", "I"]
+
+  # ============================================================
+  # BLOC MG (3 questions)
+  # ============================================================
+
+  - id: "P3-CH09-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Je manage 2 equipes Scrum et je veux qu'elles utilisent l'IA pour livrer plus
+      vite. Comment je mets ca en place sans imposer une politique qui detruise la
+      dynamique d'equipe, quel accord je dois attendre avant de generaliser, et comment
+      je sais si l'adoption est saine ?
+    reponse: >
+      La valeur 3 de l'AIgile Manifesto est explicite : accord d'equipe avant
+      deploiement. Pas de politique IA imposee de l'exterieur. Le signal d'une adoption
+      saine : l'equipe a un accord ecrit sur les usages transparents, signe
+      collectivement. Le signal d'une adoption problematique : l'equipe utilise l'IA
+      mais ne sait pas signaler les outputs avant livraison. Le IA Readiness Check
+      (5 questions, score /20) donne une photo de la maturite avant de generaliser.
+    douleur_terrain: >
+      Le manager impose ChatGPT pour tout et l'equipe l'utilise de facon desordonnee,
+      cachee, ou refuse par principe, sans que personne n'ose en parler ouvertement.
+    source_expert: null
+    page: 213
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "M"]
+
+  - id: "P3-CH09-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: >
+      Mon equipe utilise l'IA pour generer les stories, le code, les syntheses de retro.
+      Comment je sais si elle garde le jugement humain sur ces outputs ou si elle delegue
+      trop, sans avoir a lire les outputs moi-meme ?
+    reponse: >
+      La valeur 4 definit le risque : la delegation de la decision, c'est quand "l'IA
+      a dit que" devient une justification suffisante. Dans un contexte professionnel,
+      ca ne l'est jamais. Les signaux concrets a surveiller : les stories sont-elles
+      relues et validees par le PO avant d'entrer en sprint ? Les decisions de
+      priorisation sont-elles argumentees par l'equipe ou simplement passees via un
+      output IA ? L'accord d'equipe sur la transparence IA est-il connu de tous ?
+    douleur_terrain: >
+      Le manager voit des livraisons plus rapides mais a le sentiment que personne ne
+      pense vraiment. Il ne sait pas si c'est une bonne ou une mauvaise chose.
+    source_expert: null
+    page: 214
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "M"]
+
+  - id: "P3-CH09-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: >
+      Comment j'evite de faire partie des managers qui adoptent l'IA sans impact
+      business reel ? Qu'est-ce qui distingue une adoption cosmetique d'une
+      transformation reelle, et quel premier signal concret je cherche chez mes equipes ?
+    reponse: >
+      Le piege : traiter l'adoption IA comme une acquisition d'outils. La transformation
+      reelle : l'IA change une decision que l'equipe n'aurait pas prise seule. Le premier
+      signal concret : l'equipe a un accord IA ecrit et sait expliquer pourquoi elle
+      utilise tel outil dans telle ceremonie. Sans ca, c'est de l'image, pas de la
+      transformation. La valeur 1 de l'AIgile Manifesto donne la boussole : l'IA sert
+      l'humain, jamais l'inverse. Si les equipes s'adaptent a l'outil plutot que l'outil
+      s'adapte a l'equipe, quelque chose s'est inverse.
+    douleur_terrain: >
+      Le manager subit la pression de montrer des initiatives IA. Il deploie des outils
+      et appelle ca une transformation. Ses equipes utilisent ChatGPT pour faire les
+      memes choses qu'avant, juste plus vite.
+    source_expert: null
+    page: 213
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "M"]
+
+  # ============================================================
+  # BLOC DC (3 questions)
+  # ============================================================
+
+  - id: "P3-CH09-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      En tant que DSI, j'ai donne le feu vert pour l'adoption IA dans toutes les
+      equipes agiles. Six mois plus tard, comment je sais si l'adoption est mature ou
+      si mes equipes perdent en jugement critique ce qu'elles gagnent en vitesse ?
+    reponse: >
+      L'AIgile Manifesto donne deux KPIs binaires mesurables : les 4 valeurs sont-elles
+      connues de chaque equipe ? L'accord de transparence IA a-t-il ete signe
+      collectivement ? Un troisieme signal : l'accord n'a pas ete revise depuis plus de
+      2 mois. C'est le seuil d'alerte defini dans les KPIs du chapitre. Ces indicateurs
+      ne mesurent pas la performance : ils mesurent la maturite du cadre.
+    douleur_terrain: >
+      Le DSI a mis le budget et donne les outils. Il n'a aucun moyen de savoir si les
+      equipes utilisent l'IA de facon reflechie ou de facon aveugle.
+    source_expert: null
+    page: 221
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "M"]
+
+  - id: "P3-CH09-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [quoi, pourquoi, valeur]
+    question: >
+      Le Scrum Guide Expansion Pack de juin 2025 et l'AIgile Manifesto de mai 2025 :
+      est-ce la meme chose ? Quelle est la difference de portee, d'auteur, de statut,
+      et pourquoi l'un ne remplace pas l'autre pour mes equipes ?
+    reponse: >
+      Ce sont deux textes distincts qui convergent sur un principe central : la
+      supervision humaine est non negociable dans l'usage de l'IA. Le SGEP est un
+      compagnon du Scrum Guide 2020 porte par Jeff Sutherland, John Coleman et Ralph
+      Jocham. L'AIgile Manifesto est une initiative de Salim Gomri, independante de tout
+      framework, publiee sur aigile.lu en mai 2025. L'AIgile Manifesto pose des valeurs
+      applicables a toute equipe agile, quelle que soit sa methode. Les deux peuvent
+      coexister.
+    douleur_terrain: >
+      Le DSI confond les deux textes ou pense que l'un rend l'autre inutile. Il ne
+      comprend pas pourquoi son SM fait reference aux deux dans le meme sprint.
+    source_expert: null
+    page: 210
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A"]
+
+  - id: "P3-CH09-DC-03"
+    cible: DECIDEUR
+    role: DC
+    expert: AI_SCRUM
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: >
+      Mes circuits d'approbation sont hebdomadaires ou bi-hebdomadaires. L'IA accelere
+      les livraisons de mes equipes a la journee. Est-ce que je dois revoir mes processus
+      de gouvernance, qui porte cette decision, et quel risque si je ne fais rien ?
+    reponse: >
+      TROU. La remise en cause des processus d'approbation manageraux face a l'acceleration
+      IA n'est pas traitee dans le chapitre 9. La valeur 4 (responsabilite humaine plutot
+      que delegation de la decision) implique que si les circuits d'approbation ne suivent
+      pas le rythme de livraison, la responsabilite humaine devient nominale. Quelqu'un
+      signe sans avoir vu. Ce n'est pas un probleme d'outil : c'est un probleme de
+      gouvernance. La reponse n'est pas dans ce chapitre.
+    douleur_terrain: >
+      L'IA permet de livrer du code en heures. Mais le circuit de validation passe par
+      3 comites avant mise en prod. Le gain de vitesse est annule et l'equipe perd
+      confiance dans l'interet de l'IA.
+    source_expert: >
+      AI and Scrum 2026 : "Traditional bureaucracy or stage-gates will become bottlenecks
+      when AI accelerates delivery from weeks to days."
+    page: null
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: trou
+    action_recommandee: "Contenu LinkedIn fort angle DC. Voir trou T08."
+    schemas_lies: []
+    themes_salim: ["A", "M", "L"]
+
+  # ============================================================
+  # QUESTIONS COMPLEMENTAIRES (recheck exhaustivite cibles)
+  # ============================================================
+
+  - id: "P3-CH09-SM-06"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: AI_SCRUM
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: >
+      Est-ce que mon role de Scrum Master va disparaitre avec l'IA ? Je vois des
+      outils qui proposent d'automatiser les retros, les plannings, les dailys.
+      Qu'est-ce que l'AIgile Manifesto dit sur ce sujet et qu'est-ce que je garde
+      absolument ?
+    reponse: >
+      L'AIgile Manifesto est explicite : l'IA augmente le SM, elle ne le remplace pas.
+      Ce que l'IA ne peut pas faire : lire la salle, nommer ce qui se passe vraiment,
+      sentir la tension quand un developpeur hesite avant de parler. Le SM AIgile
+      n'est pas celui qui utilise le plus d'outils IA. C'est celui qui utilise l'IA
+      avec le plus de discernement et qui aide son equipe a faire de meme.
+    douleur_terrain: >
+      La peur de la disparition du role SM est reelle, surtout chez les praticiens
+      de moins de 5 ans d'experience qui voient les demos d'outils IA de facilitation.
+    source_expert: >
+      AI and Scrum 2026 : "Scrum Masters will play a key role in facilitating the
+      effective use of AI while preserving healthy team dynamics."
+    page: 219
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A"]
+
+  - id: "P3-CH09-SM-07"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Comment je tiens les KPIs du chapitre 9 dans le temps : accord IA signe,
+      Readiness Check revu, transparence active ? Concretement, ou est-ce que je
+      les mets, qui les voit, et quel est le signal d'alerte que je surveille ?
+    reponse: >
+      Trois KPIs binaires du chapitre : les 4 valeurs AIgile connues de l'equipe,
+      l'accord de transparence IA signe collectivement, la politique de confidentialite
+      des outils IA connue de tous. Le seuil d'alerte : accord non revise depuis
+      plus de 2 mois. L'emplacement : document d'une page affiche dans l'espace
+      d'equipe, pas dans Confluence. Le signal a surveiller : la date de la derniere
+      revision de l'accord.
+    douleur_terrain: >
+      Le SM cree l'accord IA en retro, l'affiche, puis personne ne le revoit.
+      Six mois plus tard l'equipe utilise 4 nouveaux outils IA non couverts par
+      l'accord et le document est devenu decoratif.
+    source_expert: null
+    page: 221
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A", "M"]
+
+  - id: "P3-CH09-PO-03"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Comment j'adapte ma Definition of Ready quand les user stories sont generees
+      par IA ? Est-ce que les criteres changent, qui valide l'output IA avant que
+      la story entre en sprint, et qu'est-ce que ca change pour le Refinement ?
+    reponse: >
+      La valeur 4 de l'AIgile Manifesto s'applique : l'output IA est une proposition,
+      pas un livrable. La DoR doit explicitement inclure : la story a ete relue et
+      validee par le PO (pas juste generee), les criteres d'acceptance sont ecrits par
+      un humain, le contexte metier est verifiable sans le prompt. Le Refinement
+      change : il ne sert plus a ecrire les stories mais a inspecter et valider celles
+      que l'IA a produites. Le PO reste accountable de la valeur, pas l'outil.
+    douleur_terrain: >
+      Le PO laisse les stories generees par IA entrer en sprint sans relecture serieuse
+      parce qu'elles "ont l'air bien formulees". Les stories sont INVEST sur la forme
+      mais creux sur le fond metier.
+    source_expert: null
+    page: 213
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A", "L"]
+
+  - id: "P3-CH09-PO-04"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: >
+      Comment je distingue la valeur reelle d'une story generee par IA de la valeur
+      percue ? L'IA produit des stories bien formulees qui peuvent masquer un vide
+      metier. Quel garde-fou concret j'applique avant de prioriser ?
+    reponse: >
+      Le principe 2 de l'AIgile Manifesto donne le test : un output IA bien formule
+      qui n'ameliore pas la valeur livree au client n'est pas un progres. La question
+      a poser sur chaque story IA : "si cette story n'existait pas, quel utilisateur
+      en souffrirait, de quelle facon ?" Si la reponse est vague, la story n'est pas
+      prete. La fluence du texte genere est un biais : une phrase bien construite
+      semble plus utile qu'elle ne l'est.
+    douleur_terrain: >
+      Le PO se retrouve avec un backlog de 40 stories generees par IA, toutes INVEST,
+      toutes bien formulees, et personne ne sait laquelle livrer en premier parce que
+      la valeur metier n'a pas ete posee avant le prompt.
+    source_expert: null
+    page: 215
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "L", "M"]
+
+  - id: "P3-CH09-DEV-04"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Comment j'applique le principe 5 (empirisme Scrum aux outils IA) concretement
+      en sprint ? Comment je teste un outil IA sur une seule tache, j'inspecte le
+      resultat, et je decide si j'elargis ou j'arrete ?
+    reponse: >
+      Le principe 5 dit : transparence, inspection, adaptation s'appliquent directement
+      aux outils IA. En pratique : un outil IA, une tache, un sprint. A la retro,
+      une seule question : est-ce que ca a change une decision que j'aurais pas prise
+      seul ? Si oui : documenter pourquoi et elargir au sprint suivant. Si non :
+      garder le principe, changer l'outil ou le moment d'usage. L'erreur classique :
+      adopter 3 outils IA en meme temps et ne plus savoir lequel a apporte quoi.
+    douleur_terrain: >
+      Le dev adopte GitHub Copilot, Claude et un outil de review automatique en meme
+      sprint. Il ne peut pas inspecter l'impact de chacun separement et finit par
+      tous les garder par inertie ou tous les abandonner par frustration.
+    source_expert: null
+    page: 216
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A", "I"]
+
+  - id: "P3-CH09-CA-04"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: AI_SCRUM
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Comment je diagnostique si l'adoption IA dans une equipe amplifie une fragilite
+      Scrum existante plutot que de l'ameliorer ? Quels signaux systémiques je cherche
+      et comment j'interviens sans etre percu comme un frein a l'innovation ?
+    reponse: >
+      Le principe 7 est le diagnostic : l'IA amplifie les forces ET les faiblesses.
+      Les signaux d'amplification de fragilite : la velocite augmente mais le taux de
+      bugs aussi, le Daily reste un rapport de statut mais l'IA en genere de meilleurs,
+      le backlog grossit mais la valeur livree stagne. La formulation pour intervenir
+      sans bloquer : "L'IA accelere ce qu'on fait. La question est : est-ce qu'on
+      veut accelerer ca ?" Pas de jugement sur l'outil. Une question sur la direction.
+    douleur_terrain: >
+      Le coach voit une equipe qui livre plus vite grace a l'IA mais accumule de la
+      dette technique invisible et dont les ceremonies restent dysfonctionnelles.
+      Il ne sait pas comment nommer ca sans passer pour antimoderne.
+    source_expert: >
+      AI and Scrum 2026 : "If your Scrum practice lacks direction or quality
+      discipline, AI will amplify the dysfunction."
+    page: 216
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["S", "A", "M"]
+
+  - id: "P3-CH09-RTE-02"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Comment j'integre la conversation IA dans le PI Planning ? A quel moment
+      du planning je pose la question des accords IA inter-equipes, qui la facilite,
+      et quel livrable concret j'en attends a la fin des 2 jours ?
+    reponse: >
+      TROU. Le chapitre 9 ne traite pas le PI Planning comme moment d'alignement IA.
+      L'application logique de la valeur 3 (accord d'equipe avant deploiement) au
+      niveau ART : une session dediee dans le PI Planning pour harmoniser les accords IA
+      inter-equipes. Facilitation : RTE ou CA. Livrable attendu : un accord ART sur
+      la confidentialite des donnees qui traversent les equipes et les outputs IA
+      partages. Ce contenu n'est pas dans le chapitre 9.
+    douleur_terrain: >
+      En PI Planning, chaque equipe a ses outils IA et ses regles tacites. Quand une
+      equipe livre un output IA a une autre comme input, personne ne sait si c'est
+      transparent ou non. Le RTE ne sait pas comment poser cette question sans
+      ralentir le planning.
+    source_expert: null
+    page: null
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [RTE]
+    statut_reponse: trou
+    action_recommandee: "A integrer dans Ch.13 SAFe ou encart Ch.9 section 3."
+    schemas_lies: []
+    themes_salim: ["S", "A", "I"]
+
+  - id: "P3-CH09-DC-04"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: >
+      Quel est le risque concret de ne pas avoir de cadre de valeurs IA dans mes
+      equipes agiles ? Comment je le formule pour mon comite de direction, et quel
+      argument je mets en avant pour justifier d'investir du temps sur l'AIgile
+      Manifesto plutot que d'aller directement aux outils ?
+    reponse: >
+      Sans cadre de valeurs, trois risques concrets nommables en comite : premier
+      risque, un incident de confidentialite (donnees d'equipe dans un outil IA sans
+      politique de retention connue), deuxieme risque, une decision strategique prise
+      sur la foi d'un output IA non revu, troisieme risque, une dependance a un seul
+      membre de l'equipe qui maitrise les outils. L'argument pour le comite :
+      les outils IA changent tous les 6 mois, les valeurs ont vocation a durer.
+      Investir 30 minutes en retro sur l'accord IA protege les 6 mois suivants.
+    douleur_terrain: >
+      Le DSI arrive en comite de direction avec des slides sur les gains de productivite
+      IA mais ne peut pas repondre a la question du DG : "et si un dev envoie le code
+      source dans ChatGPT ?" Le sujet confidentiel n'a pas ete adresse.
+    source_expert: null
+    page: 221
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "M"]
+
+  - id: "P3-CH09-DC-05"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Quelle est la difference entre une politique IA d'entreprise decidee au niveau
+      DSI et un accord IA d'equipe decide en retrospective ? Qui decide quoi a quel
+      niveau, et comment les deux coexistent sans se bloquer ?
+    reponse: >
+      La valeur 3 de l'AIgile Manifesto pose le principe : pas de politique IA imposee
+      de l'exterieur. La politique DSI fixe le cadre : outils autorises, confidentialite,
+      version Enterprise obligatoire. L'accord d'equipe fixe l'usage : quand signaler,
+      qui valide, comment on teste. Les deux ne sont pas en conflit si la politique DSI
+      definit les contraintes et laisse l'equipe decider des pratiques a l'interieur
+      de ces contraintes. Le risque : la politique DSI descend jusqu'aux prompts,
+      ce qui tue l'autonomie de l'equipe et donc l'adoption.
+    douleur_terrain: >
+      La DSI publie une politique IA de 12 pages que personne ne lit. Les equipes
+      continuent d'utiliser leurs outils habituels sans accord collectif. La politique
+      existe sur le papier, l'usage reel est invisible.
+    source_expert: null
+    page: 213
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+    themes_salim: ["A", "M"]
+
+# ============================================================
+# TROUS IDENTIFIES (8 trous)
+# ============================================================
+
+trous:
+
+  - id: "T01"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Quelle formulation concrete le SM utilise quand son manager dit "utilise l'IA
+      pour tout" et qu'il veut poser un cadre sans passer pour quelqu'un qui freine ?
+    page_insertion: 220
+    apres: >
+      "C'est celui qui utilise l'IA avec le plus de discernement : et qui aide son
+      equipe a faire de meme."
+    avant: >
+      "Encadre En pratique : La posture AIgile, c'est savoir quand dire..."
+    texte_propose: >
+      Quand ton manager te dit "utilise l'IA pour tout, on doit aller plus vite",
+      tu n'as pas a choisir entre obeir et resister. La reponse AIgile : "D'accord.
+      On organise une session de 30 minutes avec l'equipe pour poser l'accord sur ce
+      qu'on fait et ce qu'on signale. Comme ca tout le monde est aligne et on avance
+      sur une base solide." Ce n'est pas un frein. C'est la condition pour que
+      l'acceleration tienne.
+
+  - id: "T02"
+    role: DEV
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Comment le DEV garde le controle de son jugement quand l'IA genere 60 % ou plus
+      du code en sprint ?
+    page_insertion: 215
+    apres: >
+      "La competence de lire un output et de decider si c'est juste devient plus
+      precieuse, pas moins."
+    avant: >
+      "Principe 4 : La transparence sur l'usage de l'IA est une responsabilite
+      professionnelle"
+    texte_propose: >
+      En pratique : quand Copilot genere une fonction, pose-toi trois questions avant
+      de merger. Est-ce que je comprends ce que ce code fait ligne par ligne ? Est-ce
+      que je peux l'expliquer a un pair sans lire le prompt ? Est-ce que je peux en
+      assumer la responsabilite si ca casse en prod ? Si la reponse est non a l'une
+      des trois, le code n'est pas pret. Ce n'est pas une regle de lenteur. C'est une
+      regle de discernement.
+
+  - id: "T03"
+    role: MG
+    cible: MANAGER
+    question_manquante: >
+      Comment le manager distingue une equipe qui utilise l'IA de facon reflechie
+      d'une equipe qui l'utilise de facon aveugle, sans lire lui-meme les outputs IA ?
+    page_insertion: 221
+    apres: >
+      "Politique de confidentialite des outils IA utilises : connue de tous."
+    avant: >
+      "Le chapitre 10 entre dans le concret : la Prompt Library AIgile en action."
+    texte_propose: >
+      Comment tu sais si ton equipe utilise l'IA de facon reflechie ou de facon aveugle ?
+      Trois signaux a surveiller sans lire les outputs toi-meme. Premier signal : le SM
+      est capable d'expliquer en deux minutes quels outils IA sont dans la boucle et sur
+      quelles ceremonies. Deuxieme signal : l'accord IA existe et a ete relu il y a moins
+      de deux mois. Troisieme signal : l'equipe dit non a des outputs IA sans que personne
+      ne s'en etonne. Si ces trois signaux sont au vert, l'IA est dans la boucle de facon
+      consciente.
+
+  - id: "T04"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Les 10 principes sont exposes sans un seul exemple concret de situation reelle.
+      Un SM ne peut pas retenir 10 principes sans ancrage terrain.
+    page_insertion: 217
+    apres: >
+      "Encadre En pratique : Organisez un accord IA en 1 retrospective (30 min)"
+    avant: >
+      "Section 4 : L'IA Readiness Check"
+    texte_propose: >
+      Option recommandee : creer la fiche pratique FP-P3-CH09 avec les 10 principes
+      et 1 exemple terrain par principe. Option alternative : note de renvoi en bas de
+      section 3 : "Les 10 principes complets avec exemples terrain sont disponibles sur
+      aigile.lu. Pour chaque principe, une situation concrete, un signal d'alerte et
+      une formulation prete a utiliser en equipe."
+
+  - id: "T05"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Que fait le SM quand un seul membre de l'equipe maitrise l'IA et que les autres
+      se desinvestissent ? (Guru IA)
+    page_insertion: 216
+    apres: >
+      "Si l'IA fait tout le travail de redaction, l'equipe perd la competence de rediger."
+    avant: >
+      "Principe 9 : L'IA doit ameliorer le bien-etre de l'equipe, pas accroitre la
+      pression"
+    texte_propose: >
+      Attention au guru IA : quand une seule personne maitrise les outils IA dans
+      l'equipe, le principe 8 est viole collectivement. La reponse : rotation des prompts
+      en retro, pas delegation permanente. Chaque membre de l'equipe doit etre capable
+      d'utiliser au moins un outil IA sur sa tache principale.
+    source_externe: >
+      AI and Scrum 2026 : "If one team member becomes the AI guru and others disengage,
+      encourage knowledge sharing."
+
+  - id: "T06"
+    role: PO
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Le PO comme goulot d'etranglement quand l'IA accelere les livraisons au-dela
+      de sa capacite de validation.
+    page_insertion: null
+    apres: null
+    avant: null
+    texte_propose: null
+    action: "Contenu LinkedIn fort angle PO. Non traite dans le chapitre 9."
+
+  - id: "T07"
+    role: RTE
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Comment l'AIgile Manifesto s'applique au niveau multi-equipes ou ART quand
+      chaque equipe a des accords IA differents ?
+    page_insertion: null
+    apres: null
+    avant: null
+    texte_propose: null
+    action: >
+      A integrer dans Ch.13 ou en encart Ch.9 section 3. Angle : homogeneisation
+      accord IA au niveau ART via PI Planning.
+
+  - id: "T08"
+    role: DC
+    cible: DECIDEUR
+    question_manquante: >
+      Goulots d'approbation manageraux face a l'acceleration IA : qui decide de les
+      revoir et quand ?
+    page_insertion: null
+    apres: null
+    avant: null
+    texte_propose: null
+    action: "Contenu LinkedIn fort angle DC. Potentiellement Ch.16 ou Ch.17."
+
+# ============================================================
+# STATS
+# ============================================================
+
+stats:
+  questions_totales: 29
+  par_role:
+    SM: 7
+    PO: 4
+    DEV: 4
+    CA: 4
+    RTE: 2
+    MG: 3
+    DC: 5
+  par_statut:
+    provisoire: 0
+    confirmee: 24
+    trou: 5
+  trous_identifies: 8
+  trous_avec_texte_pret: 5
+  trous_linkedin_ou_autre_chapitre: 3
+  couverture_dimensions:
+    qui: 16
+    quoi: 29
+    comment: 15
+    pourquoi: 29
+    quand: 11
+    valeur: 18
+  couverture_themes_salim:
+    S: 14
+    A: 29
+    L: 7
+    I: 5
+    M: 13
+  schemas_lies: 1
+  fiches_pratiques: 7
+  fiches_detail:
+    - "FP-III-9.1 : IA Readiness Check (T01) > SM CA"
+    - "FP-III-9.2 : Les 4 valeurs AIgile (T06) > SM PO CA MG DC"
+    - "FP-III-9.3 : Accord IA en equipe (T04) > SM CA"
+    - "FP-III-9.4 : Les 10 principes AIgile (T06) > SM CA PO"
+    - "FP-III-9.5 : Maturite IA signaux manager (T06) > MG DC"
+    - "FP-III-9.6 : Filtre de decision AIgile (T04) > SM"
+    - "FP-III-9.7 : Guru IA detection rotation (T04) > SM CA"
+  corrections_affinity:
+    - "C1 p.215 : En pratique P1 insere"
+    - "C2 p.212 : Note filiation tableau insere"
+    - "C3 p.216 : En pratique P6 confidentialite insere"
+    - "C4 p.220 : Formulation SM face manager inseree"
+    - "C5 p.221 : 3 signaux manager inseres"
+    - "C6 p.221 : Seuil organisation insere"
+    - "P2-P9 : En pratique inseres (hors P3 P10 deja presents)"
+    - "P10 : renomme En equipe pour eviter doublon"
+  roles_non_couverts: []
+  zero_tiret_long: true
+  zero_statistique_inventee: true
+  tutoiement: true
+  note: >
+    Toutes les cibles exhaustivement couvertes. RTE 2 questions dont 1 trou.
+    PO 4 questions. DC 5 questions. 9 questions ajoutees au recheck exhaustivite.
+    Zero tiret long verifie Python. Panel unanime 9/10 Round 1.
+    Chapitre valide pour integration Affinity Publisher.

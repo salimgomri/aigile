@@ -1,0 +1,329 @@
+chapitre: 12
+partie: 3
+titre: "IA & Métriques"
+pages: "264-277"
+themes_cles:
+  - Dashboard Manager 6 cadrans
+  - Logique RAG (Rouge/Ambre/Vert)
+  - Narrative automatique par IA
+  - Export PDF une page A4
+  - Scoring Deliverable
+  - Gouvernance des données dashboard
+
+fiches_pratiques:
+  - id: FP-P3-CH12-prompt-01
+    numero: III-12.1
+    template: T05
+    titre: "Prompt Dashboard : Narrative 6 cadrans"
+    pour_qui: [SM, CA]
+    questions_couvertes: [CH12-Q01, CH12-Q04]
+    trous_integres: [TROU-CH12-03]
+
+  - id: FP-P3-CH12-dashboard-02
+    numero: III-12.2
+    template: T03
+    titre: "Dashboard Manager : 6 cadrans RAG"
+    pour_qui: [SM, MG, DC, PO]
+    questions_couvertes: [CH12-Q02, CH12-Q03, CH12-Q05, CH12-Q07]
+    trous_integres: [TROU-CH12-01]
+
+  - id: FP-P3-CH12-rapport-03
+    numero: III-12.3
+    template: T06
+    titre: "Export PDF une page A4 : structure type"
+    pour_qui: [SM, MG, DC]
+    questions_couvertes: [CH12-Q06, CH12-Q10]
+    trous_integres: []
+
+  - id: FP-P3-CH12-scoring-04
+    numero: III-12.4
+    template: T01
+    titre: "Scoring Deliverable : évaluer la solidité d'une story"
+    pour_qui: [SM, PO, CA, DC]
+    questions_couvertes: [CH12-Q09, CH12-Q11]
+    trous_integres: []
+
+  - id: FP-P3-CH12-gouvernance-05
+    numero: III-12.5
+    template: T04
+    titre: "Gouvernance des données dashboard : 3 décisions"
+    pour_qui: [SM, DC, CA]
+    questions_couvertes: [CH12-Q08]
+    trous_integres: [TROU-CH12-02]
+
+questions:
+
+  - id: CH12-Q01
+    question: >
+      Tu prépares ton rapport manager depuis 2 heures chaque fin de sprint. Copier les chiffres,
+      rédiger la synthèse, envoyer un email que personne ne lit. Comment l'IA peut-elle éliminer
+      ce rework mécanique sans que tu perdes le contrôle sur ce que tu communiques ?
+    role: SM
+    cible: PRATICIEN_AGILE
+    dimensions: [Quoi, Comment, Pourquoi, Quelle_valeur]
+    douleur_terrain: >
+      Le SM passe 2 à 3 heures par sprint sur un reporting que le management lit rarement.
+      Données dispersées, narrative à reconstruire, historique perdu dans des emails archivés.
+    reponse: >
+      Le problème n'est pas la compétence : c'est l'architecture. Les métriques sont dans des outils
+      différents, la narrative doit être reconstruite à chaque fois. Le chapitre propose un flux en
+      4 étapes : données (vélocité + DORA + Niko-Niko + OKR) vers IA (Prompt P25) vers narrative
+      RAG par cadran vers export PDF une page A4. L'IA génère la narrative de chaque cadran en moins
+      de 5 minutes. Ce qu'elle ne fait pas : décider ce qui est acceptable, choisir ce qu'on cache
+      ou met en avant. Le jugement reste humain.
+    fiche_destinee_a: FP-P3-CH12-prompt-01
+    pages_source: "265-266"
+
+  - id: CH12-Q02
+    question: >
+      Ton management veut un tableau de bord sprint mais chaque manager lit les métriques
+      différemment. Comment le Dashboard 6 cadrans RAG crée-t-il un langage commun lisible
+      en 30 secondes, sans formation préalable ?
+    role: SM
+    cible: MANAGER
+    dimensions: [Quoi, Comment, Pourquoi, Quand, Quelle_valeur]
+    douleur_terrain: >
+      Les managers ont des cultures et formations différentes. Un même chiffre de vélocité
+      est interprété de façon opposée selon le contexte. Les réunions de pilotage durent
+      trop longtemps parce que personne ne lit les données de la même façon.
+    reponse: >
+      RAG (Rouge/Ambre/Vert) est le langage de reporting le plus universel dans les organisations.
+      Chaque manager le comprend sans formation, quelle que soit sa culture ou son secteur.
+      Le dashboard traduit toutes les métriques Scrum en 6 statuts RAG : On Time, On Budget,
+      On Scope, Qualité, Maturité équipe, Bien-être. Chaque cadran a une source précise, un
+      responsable de saisie, un moment de mise à jour et des seuils configurables. Les seuils
+      doivent être définis en accord avec le management en début de trimestre, pas imposés
+      par le SM seul. Un seuil sans accord préalable n'a aucune valeur de communication.
+    fiche_destinee_a: FP-P3-CH12-dashboard-02
+    pages_source: "267-268"
+
+  - id: CH12-Q03
+    question: >
+      Le management t'a demandé des seuils RAG pour les 6 cadrans. Tu sors ceux du chapitre
+      comme point de départ. Sur quels benchmarks sont-ils basés et pourquoi tu ne peux pas
+      les appliquer tels quels sans une conversation préalable ?
+    role: SM
+    cible: PRATICIEN_AGILE
+    dimensions: [Quoi, Pourquoi, Quand, Quelle_valeur]
+    douleur_terrain: >
+      Le SM applique des seuils théoriques sans validation management. Résultat : le premier
+      rouge déclenche une réunion d'urgence parce que le manager n'avait pas compris ce que
+      "rouge" signifiait dans ce contexte.
+    reponse: >
+      Les seuils proposés dans le tableau RAG sont des points de départ praticables, alignés
+      sur les benchmarks DORA 2023 pour la Qualité (élite performers : CFR inférieur à 5 %)
+      et sur l'expérience terrain de l'auteur pour On Time et Maturité. Ils doivent être adaptés
+      au contexte dès le premier trimestre. La règle absolue : les seuils sont définis en accord
+      avec le management en début de trimestre, jamais imposés par le SM seul. Un seuil sans
+      accord préalable n'a aucune valeur de communication. La check-list dès lundi : 30 minutes,
+      une fois, avec le manager direct.
+    fiche_destinee_a: FP-P3-CH12-dashboard-02
+    pages_source: "267-268"
+
+  - id: CH12-Q04
+    question: >
+      Tu as tes 6 cadrans alimentés. Tu ouvres le Prompt Dashboard. L'IA produit une narrative.
+      Dans quels cas tu peux l'utiliser telle quelle, et dans quels cas tu dois intervenir ?
+      Comment savoir faire la différence ?
+    role: SM
+    cible: PRATICIEN_AGILE
+    dimensions: [Quoi, Comment, Pourquoi, Quelle_valeur]
+    douleur_terrain: >
+      Le SM utilise la narrative IA sans la relire. Elle contient une interprétation fausse
+      d'un incident organisationnel que l'IA ne connaissait pas. Le manager pose des questions
+      et le SM n'a pas les réponses.
+    reponse: >
+      Le Prompt Dashboard produit une narrative utilisable en l'état dans 70 % des cas.
+      Dans les 30 % restants, des corrections de contexte sont nécessaires : un incident
+      non documenté, une décision organisationnelle que l'IA ne connaît pas. C'est le 30 %
+      que tu ne peux pas déléguer. Le prompt génère 3 paragraphes : résumé global en 2 phrases,
+      focus sur chaque cadran en Ambre ou Rouge avec cause probable et action recommandée,
+      perspective sur la tendance des 3 sprints. Ton : factuel, non alarmiste, orienté action.
+      Maximum 200 mots.
+    fiche_destinee_a: FP-P3-CH12-prompt-01
+    pages_source: "270-271"
+
+  - id: CH12-Q05
+    question: >
+      Quand un cadran passe au rouge, tu le signales au management. Mais un rouge seul sans
+      explication crée de l'anxiété. Quelle est la règle exacte des 3 couches, et pourquoi
+      c'est la différence entre de la confiance et de la panique ?
+    role: SM
+    cible: MANAGER
+    dimensions: [Quoi, Comment, Pourquoi, Quelle_valeur]
+    douleur_terrain: >
+      Le SM signale un rouge sans contexte. Le manager escalade immédiatement. L'équipe
+      passe 3 heures en réunion d'urgence pour expliquer quelque chose qui avait déjà une
+      solution en cours. La relation SM-manager se détériore.
+    reponse: >
+      Règle RAG de présentation : quand un cadran passe au rouge, présenter systématiquement
+      3 éléments : (1) ce qui est observé, (2) l'hypothèse sur la cause, (3) l'action proposée.
+      Jamais de rouge sans ces 3 couches. Un rouge avec les 3 couches crée de la confiance.
+      Un rouge seul crée de l'anxiété. L'exemple Sprint 34 Equipe Phoenix illustre la règle :
+      CFR à 18 % (Rouge), cause probable la réduction du temps de test liée à la surcharge,
+      action recommandée session de dette technique en rétrospective Sprint 35.
+    fiche_destinee_a: FP-P3-CH12-dashboard-02
+    pages_source: "273, 270-271"
+
+  - id: CH12-Q06
+    question: >
+      Ton manager reçoit 3 pages de rapport chaque sprint. Il lit la première, parfois la
+      deuxième, jamais la troisième. Comment le PDF une page A4 résout structurellement
+      ce problème, et qu'est-ce qu'il contient exactement ?
+    role: SM
+    cible: MANAGER
+    dimensions: [Quoi, Comment, Pourquoi, Quelle_valeur]
+    douleur_terrain: >
+      Les rapports longs ne sont pas lus. Le SM passe du temps à produire un document
+      que le management parcourt en diagonale. La décision clé est enfouie en page 2.
+    reponse: >
+      La contrainte une page est délibérée et forte. Elle force la synthèse. Un manager qui
+      reçoit une page lira tout. Structure type : en-tête (équipe, sprint, date, période),
+      Bloc 1 (6 cadrans RAG avec valeur actuelle et flèche de tendance), Bloc 2 (graphique
+      de vélocité sur 6 sprints sparkline), Bloc 3 (OKR Check-in : 3 questions avancé/frein/
+      ajustement), Bloc 4 (narrative IA 3 paragraphes 200 mots maximum), pied de page
+      (lien vers dashboard complet sur aigile.lu). Format paysage A4 recommandé : la lisibilité
+      des 6 cadrans est meilleure qu'en portrait. Les couleurs RAG sont accompagnées d'icônes
+      pour l'impression N&B : vert + coche, ambre + triangle d'alerte, rouge + croix.
+    fiche_destinee_a: FP-P3-CH12-rapport-03
+    pages_source: "271-272"
+
+  - id: CH12-Q07
+    question: >
+      Tous tes cadrans sont verts depuis 3 sprints consécutifs. Le management est content,
+      tu es content. Mais tu as un doute. Pourquoi un dashboard 100 % vert sur 3 sprints
+      n'est pas forcément un signal de santé, et qu'est-ce que tu vérifies en premier ?
+    role: SM
+    cible: PRATICIEN_AGILE
+    dimensions: [Quoi, Pourquoi, Quand, Quelle_valeur]
+    douleur_terrain: >
+      Le SM confond "tout est vert" avec "tout va bien". Les seuils sont trop bas. Ou pire :
+      les données sont collectées sous pression implicite et reflètent ce que l'équipe pense
+      que le manager veut voir.
+    reponse: >
+      Un dashboard vert sur tous les cadrans pendant 3 sprints consécutifs n'est pas
+      nécessairement un signal de santé. C'est parfois le signe que les seuils sont trop
+      bas ou que les données sont collectées sous pression implicite. Reste vigilant et
+      revois au besoin les seuils avec ton management si tous tes cadrans restent verts
+      trop longtemps. Les deux questions à poser : les seuils ont-ils été calibrés avec
+      le management en début de trimestre ? Y a-t-il une pression implicite sur l'équipe
+      pour reporter positivement ?
+    fiche_destinee_a: FP-P3-CH12-dashboard-02
+    pages_source: "272"
+
+  - id: CH12-Q08
+    question: >
+      Tu veux déployer le dashboard sur aigile.lu mais ton DPO te demande une analyse
+      d'impact. Quelles sont les 3 décisions de gouvernance des données à prendre avant
+      de déployer, et qui décide quoi ?
+    role: SM
+    cible: DECIDEUR
+    dimensions: [Quoi, Comment, Pourquoi, Qui, Quelle_valeur]
+    douleur_terrain: >
+      Le SM déploie un outil SaaS avec des données d'équipe sensibles (bien-être, Niko-Niko)
+      sans avoir validé avec le DPO. L'outil est suspendu 3 mois après le déploiement.
+    reponse: >
+      3 décisions à prendre avant de déployer. (1) Hébergement : les métriques du dashboard
+      sont-elles stockées dans ton SI ou sur un outil SaaS externe ? Si SaaS, valide avec
+      ton DPO. (2) Accès : les données pré-rétrospective ne sont jamais accessibles au
+      management. Documente cette règle. (3) Rétention : définis une durée d'archivage
+      (recommandation : 12 sprints, soit environ 6 mois) et un protocole de suppression
+      pour les données sensibles de bien-être.
+    fiche_destinee_a: FP-P3-CH12-gouvernance-05
+    pages_source: "273"
+
+  - id: CH12-Q09
+    question: >
+      Le Scoring Deliverable affiche une moyenne d'environ 30 sur 100 en beta. Ton manager
+      voit ce chiffre et pense que l'équipe est mauvaise. Comment tu lui expliques que 30/100
+      n'est pas une note de performance mais un niveau de départ ?
+    role: SM
+    cible: MANAGER
+    dimensions: [Quoi, Pourquoi, Quelle_valeur]
+    douleur_terrain: >
+      Le manager interprète le score comme une évaluation de performance de l'équipe.
+      Conséquence : l'équipe cesse d'utiliser l'outil honnêtement pour ne pas être jugée.
+    reponse: >
+      Le Scoring Deliverable mesure la solidité d'un livrable sur 9 dimensions (clarté,
+      testabilité, indépendance, DoD, valeur business, gestion des risques, dépendances,
+      dette technique, traçabilité). Le score va de 0 à 100. En beta, la moyenne observée
+      est d'environ 30 sur 100. Ce chiffre n'est pas une performance à optimiser : c'est
+      un niveau de départ. Il révèle l'ampleur du travail de structuration qui reste à faire.
+      Le message au manager : un score de 30 ne dit pas que l'équipe est mauvaise, il dit
+      que les livrables ont un potentiel d'amélioration structurelle. C'est un outil de
+      diagnostic, pas d'évaluation.
+    fiche_destinee_a: FP-P3-CH12-scoring-04
+    pages_source: "273-274"
+
+  - id: CH12-Q10
+    question: >
+      Tu as produit un dashboard propre. Le manager ne l'a pas lu depuis 3 sprints. Le problème
+      n'est pas la qualité du livrable. Quelle est la dernière action de la check-list "dès lundi"
+      que la plupart des SM oublient, et pourquoi elle conditionne tout le reste ?
+    role: SM
+    cible: PRATICIEN_AGILE
+    dimensions: [Quoi, Pourquoi, Quand, Quelle_valeur]
+    douleur_terrain: >
+      Le SM produit un rapport solide mais ne valide jamais le canal et le moment de réception
+      avec le management. Le PDF arrive par email 5 minutes avant la Sprint Review. Personne
+      ne l'a lu. La réunion recommence à zéro.
+    reponse: >
+      La 5e action de la check-list : valide avec ton management le canal et le moment de
+      réception du PDF. Trois options : email avant la Sprint Review, présentation en réunion
+      de pilotage, ou portail interne. Sans ce protocole, le livrable le plus solide risque
+      de ne jamais être lu. Cette action conditionne toutes les autres : un dashboard non
+      lu ne sert à rien, peu importe la qualité de la narrative IA ou la précision des seuils RAG.
+    fiche_destinee_a: FP-P3-CH12-rapport-03
+    pages_source: "274"
+
+  - id: CH12-Q11
+    question: >
+      En tant que DSI, tu pilotes 4 équipes Scrum. Tu veux un seul indicateur pour savoir si
+      les livrables de chaque équipe sont solides structurellement, pas juste "livrés à temps".
+      Qu'est-ce que le Scoring Deliverable t'apporte que les métriques DORA ne donnent pas ?
+    role: DC
+    cible: DECIDEUR
+    dimensions: [Quoi, Pourquoi, Quelle_valeur]
+    douleur_terrain: >
+      Le DSI a des métriques DORA et vélocité mais ne sait pas si les livrables sont réellement
+      solides. Des équipes avec une bonne vélocité livrent des User Stories mal structurées
+      qui créent de la dette technique invisible.
+    reponse: >
+      Le Scoring Deliverable est un indicateur transversal qui mesure la solidité structurelle
+      d'un livrable sur 9 dimensions : clarté, testabilité, indépendance, DoD, valeur business,
+      gestion des risques, dépendances, dette technique, traçabilité. Il complète le dashboard
+      6 cadrans. Les métriques DORA mesurent la performance du pipeline de livraison (fréquence,
+      lead time, MTTR, CFR). Le Scoring Deliverable mesure la qualité structurelle du contenu
+      livré. Un score faible visible tôt permet d'intervenir avant que la dette technique ne
+      devienne un frein structurel. Disponible sur aigile.lu.
+    fiche_destinee_a: FP-P3-CH12-scoring-04
+    pages_source: "273-274"
+
+trous:
+  - id: TROU-CH12-01
+    description: >
+      Le chapitre ne précise pas comment le SM anime concrètement la conversation de calibration
+      des seuils RAG avec le management. Il dit "définis les seuils avec le management" mais ne
+      donne pas le protocole de cette réunion de 30 minutes.
+    impact: SM en difficulté pour organiser cette conversation sans sembler "vendre" des seuils qui
+      l'arrangent.
+    statut: COMBLE
+    fiche_integration: FP-P3-CH12-dashboard-02
+
+  - id: TROU-CH12-02
+    description: >
+      Le chapitre ne traite pas le cas où le SM n'a pas accès au pipeline CI/CD pour les métriques
+      DORA. C'est un cas très fréquent dans les organisations avec une infra centralisée DSI.
+    impact: Le SM bloqué sur le cadran Qualité ne sait pas comment alimenter ce cadran
+      sans accès direct.
+    statut: COMBLE
+    fiche_integration: FP-P3-CH12-gouvernance-05
+
+  - id: TROU-CH12-03
+    description: >
+      Il n'y a pas de guidance sur la fréquence de révision du prompt Dashboard. Un prompt calibré
+      en sprint 1 peut devenir inadapté en sprint 15 si le contexte de l'équipe a changé.
+    impact: Le SM utilise un prompt obsolète qui produit des narratives décalées par rapport
+      à la réalité de l'équipe.
+    statut: COMBLE
+    fiche_integration: FP-P3-CH12-prompt-01

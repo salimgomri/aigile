@@ -1,0 +1,234 @@
+# ============================================================
+# CHAPITRE 18 — L'IA : la place dans l'organisation
+# ============================================================
+
+  - id: "CH18"
+    titre: "Chapitre 18 — L'IA : la place dans l'organisation"
+    partie: 5
+    questions:
+
+      - id: "P5-CH18-SM-01"
+        cible: PRATICIEN_AGILE
+        role: SM
+        expert: null
+        dimensions: [qui, quoi, pourquoi, quand, valeur]
+        question: "Le déploiement IA dans mon organisation change quoi dans mes cérémonies, quand est-ce que je dois agir, et comment je mesure si ça dérape ?"
+        reponse: "L'IA révèle ce qui était déjà défaillant. Si le Sprint Planning était passif avant, il devient encore plus passif avec l'IA. Le SM surveille le taux de discussion réelle : cible supérieure à 50 % vs validation passive d'outputs IA. Signal d'alarme : en dessous de 50 % deux sprints de suite."
+        douleur_terrain: "Le SM voit ses cérémonies se vider de substance quand l'équipe valide les outputs IA sans les challenger. Personne ne le nomme parce que la production a l'air d'augmenter."
+        source_expert: null
+        page: 357
+        extrait: null
+        fiche_liee: "FP-V-18.1"
+        fiche_destinee_a: [SM]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-SM-02"
+        cible: PRATICIEN_AGILE
+        role: SM
+        expert: null
+        dimensions: [qui, quoi, comment, pourquoi, valeur]
+        question: "Comment je détecte un résistant silencieux à l'IA dans mon équipe avant que ça devienne un problème de livraison visible, et quelle action je prends en premier ?"
+        reponse: "Ratio de stories complétées en solo vs en collaboration : si un seul dev pousse 60 % du code du sprint sur 3 sprints consécutifs, l'asymétrie d'adoption est probable. Ce signal est visible depuis l'outil de suivi sans accès aux cérémonies. Première action : tête-à-tête individuel, une seule question d'ouverture."
+        douleur_terrain: "Le SM voit une adoption IA déclarée en réunion mais aucun changement de pratique réel. Il ne peut pas objectiver la résistance silencieuse et se retrouve à gérer une crise 3 mois plus tard."
+        source_expert: null
+        page: 358
+        extrait: null
+        fiche_liee: "FP-V-18.3"
+        fiche_destinee_a: [SM, MG]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-DEV-01"
+        cible: PRATICIEN_AGILE
+        role: DEV
+        expert: null
+        dimensions: [qui, quoi, pourquoi, valeur]
+        question: "L'IA va-t-elle rendre ma valeur de dev invisible ou la révéler, et comment je sais de quel côté je suis ?"
+        reponse: "Le chapitre l'illustre depuis le terrain bancaire : les devs qui comprenaient vraiment l'intention métier derrière leurs tickets ont vu leur valeur exploser avec l'IA. Ceux qui exécutaient mécaniquement ont eu peur. La question n'est pas l'outil, c'est ce que tu apportes au-delà de l'exécution. Si tu sais pourquoi tu codes ce que tu codes, l'IA te libère du comment."
+        douleur_terrain: "Le dev senior fait le même travail depuis 5 ans. Avec l'IA, la partie mécanique de son travail disparaît. Il ne sait pas ce qui reste de précieux dans ce qu'il fait."
+        source_expert: null
+        page: 363
+        extrait: null
+        fiche_liee: null
+        fiche_destinee_a: [DEV]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-PO-01"
+        cible: PRATICIEN_AGILE
+        role: PO
+        expert: null
+        dimensions: [qui, quoi, pourquoi, valeur]
+        question: "La fondation Clarté du chapitre 18 me concerne-t-elle directement en tant que PO, et qu'est-ce que ça change concrètement si elle manque quand l'IA arrive ?"
+        reponse: "Oui, directement. Clarté signifie que les équipes savent ce qu'elles produisent et pourquoi. C'est l'accountability du PO sur la direction produit. Sans vision produit explicite, l'IA accélère la production de la mauvaise chose. Le PO sans Sprint Goal clair aggrave l'effet avec l'IA : plus vite dans la mauvaise direction."
+        douleur_terrain: "Le PO pense que la fondation Clarté est un problème de management ou de SM. Il découvre 3 sprints après le déploiement IA que son backlog flou a généré deux fois plus de features inutiles."
+        source_expert: null
+        page: 360
+        extrait: "Sans clarté, l'IA accélère la production de la mauvaise chose."
+        fiche_liee: "FP-V-18.1"
+        fiche_destinee_a: [PO]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-CA-01"
+        cible: PRATICIEN_AGILE
+        role: CA
+        expert: null
+        dimensions: [qui, quoi, comment, pourquoi, valeur]
+        question: "Comment j'aide un dirigeant à comprendre pourquoi son annonce IA n'a pas suffi, sans qu'il prenne ça comme une critique de sa décision ?"
+        reponse: "Bridges : le changement est l'événement externe (l'outil qui arrive), la transition est le processus interne par lequel les équipes lâchent leurs anciens repères. Annoncer le changement prend une heure. La transition prend des mois. Le Coach nomme la distinction changement/transition dès le premier échange avec le dirigeant, avant que la résistance ne soit interprétée comme un échec."
+        douleur_terrain: "Le Coach est appelé 3 mois après le déploiement quand la résistance est déjà installée et que le dirigeant cherche qui a échoué. Il doit recentrer sans accabler."
+        source_expert: "William Bridges, Transitions: Making Sense of Life's Changes. Changement = événement externe. Transition = processus interne par lequel les équipes lâchent leurs anciens repères."
+        page: 363
+        extrait: null
+        fiche_liee: "FP-V-18.3"
+        fiche_destinee_a: [CA]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-CA-02"
+        cible: PRATICIEN_AGILE
+        role: CA
+        expert: null
+        dimensions: [qui, quoi, comment, quand, valeur]
+        question: "Quelle question je pose à un résistant silencieux à l'IA pour ouvrir la résistance sans la confronter, et à quel moment je la pose ?"
+        reponse: "Question terrain du chapitre : 'Qu'est-ce qui te freinerait pour utiliser l'IA sur ta prochaine tâche ?' Cette formulation nomme le frein avant de le corriger. Elle invite sans confronter. Elle se pose en tête-à-tête individuel, pas en réunion, pas après un incident."
+        douleur_terrain: "Le Coach organise des formations de masse sur l'IA. Les résistants silencieux assistent, hochent la tête, et ne changent rien. La communication de masse ne fonctionne pas sur ce profil."
+        source_expert: null
+        page: 364
+        extrait: "Cette question ouvre la résistance sans la confronter. Elle nomme le frein avant que tu le corriges."
+        fiche_liee: "FP-V-18.3"
+        fiche_destinee_a: [CA, SM]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-MG-01"
+        cible: MANAGER
+        role: MG
+        expert: null
+        dimensions: [qui, quoi, comment, pourquoi, valeur]
+        question: "Comment je sais si mon équipe adopte vraiment l'IA ou fait semblant, quels indicateurs je regarde, et à quelle fréquence ?"
+        reponse: "4 KPIs du chapitre : (1) ratio DF/CFR, si le CFR monte plus vite que la DF c'est une alerte qualité. (2) Ratio stories solo vs collaboration : asymétrie à 60 % du code sur 3 sprints = signal. (3) Taux de discussion réelle en Sprint Planning, cible supérieure à 50 %. (4) Tête-à-tête senior : au moins 1 par trimestre sur la perception du rôle à l'ère de l'IA."
+        douleur_terrain: "Le manager reçoit des tableaux de bord d'adoption positifs mais le CFR augmente. Il ne sait pas si c'est l'IA qui dégrade la qualité ou un autre facteur."
+        source_expert: null
+        page: 358
+        extrait: null
+        fiche_liee: "FP-V-18.1"
+        fiche_destinee_a: [MG]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-MG-02"
+        cible: MANAGER
+        role: MG
+        expert: null
+        dimensions: [qui, quoi, comment, pourquoi, quand]
+        question: "Je dois construire une IA policy pour mon équipe : je la fais seul, avec l'équipe, ou dans quel ordre, et quelle est la condition pour qu'elle soit réellement appliquée ?"
+        reponse: "Rédiger en solo d'abord pour poser le cadre, puis soumettre à l'équipe en rétrospective pour amendements. 30 minutes en équipe suffisent. L'important est le débat, pas la perfection. La condition d'application : elle est discutée, pas décrétée. Une policy non discutée n'est pas appliquée. Une policy trop longue n'est pas lue."
+        douleur_terrain: "Le manager publie une IA policy rédigée seul ou par la DSI. Personne ne la lit. 2 mois plus tard, les pratiques sont incohérentes et personne ne sait que la policy existe."
+        source_expert: null
+        page: 357
+        extrait: "Une policy non discutée n'est pas appliquée. Une policy trop longue n'est pas lue."
+        fiche_liee: "FP-V-18.2"
+        fiche_destinee_a: [MG, SM]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-DC-01"
+        cible: DECIDEUR
+        role: DC
+        expert: null
+        dimensions: [qui, quoi, pourquoi, valeur]
+        question: "Quelles sont les 3 décisions IA que je ne peux pas déléguer, pourquoi elles me reviennent à moi personnellement, et qu'est-ce qui se passe si je ne les prends pas ?"
+        reponse: "Décision 1 : tracer la ligne IA/humain, ce que l'IA décide seule vs ce qui reste humain. C'est un choix de valeurs, pas un choix technique. Décision 2 : clarifier les rôles IA, quand l'IA produit une erreur client, qui est accountable ? Décision 3 : installer l'apprentissage continu. Pas un projet. Une capacité d'adaptation permanente. Si tu délègues ces 3 décisions : 3 mois plus tard tu as 3 cultures IA dans la même organisation."
+        douleur_terrain: "Le DSI délègue la gouvernance IA à la DSI technique ou aux équipes. Il pense avoir traité le sujet. 3 mois plus tard les risques sont invisibles et les équipes ont inventé chacune leurs propres règles."
+        source_expert: null
+        page: 366
+        extrait: null
+        fiche_liee: "FP-V-18.2"
+        fiche_destinee_a: [DC]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-DC-02"
+        cible: DECIDEUR
+        role: DC
+        expert: null
+        dimensions: [qui, quoi, pourquoi, valeur]
+        question: "1 dirigeant sur 5 a une gouvernance mature des agents IA selon Deloitte 2026. Comment je sais si je suis dans les 20 % ou dans les 80 % ?"
+        reponse: "Les 80 % déploient sans avoir défini qui supervise, valide, et répond quand ça se passe mal. Le test : est-ce que tu peux nommer aujourd'hui (1) qui supervise les agents IA en production, (2) qui valide leurs outputs avant impact client, (3) qui répond en cas d'incident IA ? Si une réponse est floue : tu es dans les 80 %."
+        douleur_terrain: "Le DSI pense avoir une gouvernance IA parce qu'il a une policy IT générale. La gouvernance des agents IA est un périmètre distinct : supervision continue, validation humaine, accountability en cas d'incident."
+        source_expert: "Deloitte, State of AI in the Enterprise — The untapped edge, January 2026"
+        page: 366
+        extrait: null
+        fiche_liee: "FP-V-18.2"
+        fiche_destinee_a: [DC]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+      - id: "P5-CH18-DC-03"
+        cible: DECIDEUR
+        role: DC
+        expert: null
+        dimensions: [qui, quoi, comment, pourquoi, quand]
+        question: "Si 2 des 4 fondations pré-déploiement IA manquent dans mon organisation, quelle est la décision à prendre et pourquoi déployer quand même est une erreur stratégique ?"
+        reponse: "Différer l'outillage. Déployer avant les fondations revient à accélérer dans la mauvaise direction. Les 4 questions de la checklist : (1) tes équipes savent-elles ce qu'elles construisent ? (2) les rôles IA sont-ils clairs dans la pratique ? (3) sais-tu qui est accountable de la gouvernance des données IA ? (4) l'apprentissage est-il tracé ? 2 non ou plus : différer."
+        douleur_terrain: "Le dirigeant pense que les fondations se construiront en parallèle du déploiement. Six mois plus tard les pratiques sont incohérentes, certains managers doutent du ROI, et les fondations ne sont toujours pas là."
+        source_expert: null
+        page: 362
+        extrait: "Si 2 réponses ou plus sont non, différez l'outillage."
+        fiche_liee: "FP-V-18.1"
+        fiche_destinee_a: [DC, MG]
+        schemas_lies: []
+        statut_reponse: provisoire
+        action_recommandee: null
+
+    trous:
+
+      - id: "T-CH18-01"
+        role: PO
+        cible: PRATICIEN_AGILE
+        question_manquante: "Quel est le rôle spécifique du PO dans la définition du périmètre IA sur les données produit et le backlog ?"
+        action: "Enrichissement Ch18 section IA policy, ou renvoi Ch10 (Prompt Library) sur confidentialité données produit"
+
+      - id: "T-CH18-02"
+        role: RTE
+        cible: PRATICIEN_AGILE
+        question_manquante: "Comment la gouvernance IA organisationnelle décrite dans ce chapitre s'articule-t-elle avec le niveau ART en contexte SAFe ?"
+        action: "Lien Ch13 (scaling) ou enrichissement Ch18 avec paragraphe gouvernance IA multi-équipes"
+
+    stats:
+      questions_totales: 11
+      par_role:
+        SM: 2
+        PO: 1
+        DEV: 1
+        CA: 2
+        RTE: 0
+        MG: 2
+        DC: 3
+      par_statut:
+        provisoire: 11
+        confirmee: 0
+        trou: 0
+      trous_identifies: 2
+      fiches_pratiques: [FP-V-18.1, FP-V-18.2, FP-V-18.3]
+      schemas_lies: []
+      couverture_dimensions:
+        qui: 11
+        quoi: 11
+        comment: 6
+        pourquoi: 9
+        quand: 4
+        valeur: 7

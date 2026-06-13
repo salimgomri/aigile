@@ -1,0 +1,639 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 11
+# chapter-extractor v6.1
+# Chapitre : Retro IA : diagnostiquer avant de faciliter
+# Note : trous du master v3 combles par les experts
+
+meta:
+  partie: 3
+  nom_partie: "L'IA dans la boucle"
+  chapitre: 11
+  titre: "Retro IA : diagnostiquer avant de faciliter"
+  date_extraction: "2026-06-12"
+  page_debut: 244
+  page_fin: 262
+  statut_global: valide
+
+questions:
+
+  # ============================================================
+  # ROLE : SM / PRATICIEN_AGILE
+  # ============================================================
+
+  - id: "P3-CH11-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Mon equipe manque toujours de souffle en retro. Meme format, memes personnes qui parlent,
+      memes non-dits. Comment je detecte AVANT la seance quel dysfonctionnement domine,
+      et qui fait ce diagnostic : moi seul ou avec l'equipe ?
+    reponse: >
+      Le diagnostic est fait par le SM seul, avant la retro, en 3 minutes sur 8 questions.
+      Pas l'equipe : parce que le SM observe ce que l'equipe ne dit pas (la personne silencieuse depuis 2 sprints,
+      la tension non nommee, la joie forcee au daily). Ce diagnostic est une hypothese de travail,
+      pas un verdict. L'equipe peut l'invalider des les premieres minutes. C'est une information,
+      pas un echec. L'outil aigile.lu/retro traite les reponses et identifie le pattern primaire parmi les 9 patterns.
+    douleur_terrain: >
+      Le SM applique le meme format quelle que soit la situation. 4L/1W sur une equipe en impuissance apprise (P3),
+      c'est contre-productif. Un format Starfish sur une equipe sans direction (P2) ne produit rien.
+    source_expert: >
+      Esther Derby & Diana Larsen | Agile Retrospectives Making Good Teams Great | 2006 :
+      "Set the Stage before any data gathering."
+    page: 245
+    extrait: null
+    fiche_liee: "FP-III-11.1-diagnostic-retro"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P3-CH11-01"]
+
+  - id: "P3-CH11-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Je suis SM depuis 3 ans. Je connais les formats Derby. Pourquoi la structure en 5 phases
+      reste incontournable meme quand je change le format selon le pattern detecte ?
+    reponse: >
+      Les 5 phases Derby (Set the Stage, Gather Data, Generate Insights, Decide What to Do, Close)
+      ne sont pas un format. C'est une architecture. Elles definissent l'ordre dans lequel
+      une equipe peut entrer dans une conversation difficile, en extraire quelque chose d'utile,
+      et en sortir avec un engagement reel. Les 9 patterns changent le contenu de chaque phase,
+      pas la structure. Sur P1 (securite basse) : le Set the Stage est anonymise et allonge.
+      Sur P5 (surcharge) : le Gather Data porte sur le WIP reel. Sur P6 (Scrum Theatre) :
+      le Generate Insights pose la question de l'intention. Le cadre tient. C'est le curseur qui bouge.
+    douleur_terrain: >
+      Le SM en formation saute le Set the Stage pour "gagner du temps". L'equipe entre dans
+      le Gather Data froide, sur la defensive, et produit des donnees de surface.
+    source_expert: >
+      Esther Derby & Diana Larsen | Agile Retrospectives Making Good Teams Great | 2006
+    page: 247
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      J'ai anime la meme retro sur le meme pattern depuis 3 sprints consecutifs et rien ne change.
+      A quel moment est-ce que j'arrete de refaciliter et qu'est-ce que j'escalade, a qui, et comment ?
+    reponse: >
+      Regle des 3 retros : si le meme pattern revient 3 sprints consecutifs sans amelioration
+      mesurable, le probleme n'est pas dans l'equipe, il est dans le contexte organisationnel.
+      Ne refacilite pas une 4eme fois. Escale signifie nommer formellement le blocage au manager direct
+      de l'equipe, avec donnees et contexte documentes. Si aucun changement apres 2 sprints supplementaires :
+      remonte au sponsor agile ou aux RH selon la nature du blocage. Ce n'est pas une defaite pour le SM.
+      C'est le bon canal. Le signal d'escalade est simple : 3 sprints sans aucun signal d'amelioration
+      pour le pattern detecte.
+    douleur_terrain: >
+      Le SM refacilite indefiniment en esperant un resultat different. Il epuise son credit
+      sans jamais nommer le blocage organisationnel a qui peut agir dessus.
+    source_expert: null
+    page: 256
+    extrait: null
+    fiche_liee: "FP-III-11.3-regle-3-retros-escalade"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Comment mesurer que ma retro a eu un impact reel sans monter un dashboard de KPIs ?
+    reponse: >
+      Chaque pattern a un signal d'amelioration concret et observable. P1 : quelqu'un dit
+      en retro quelque chose qu'il n'aurait jamais dit 6 mois plus tot. P3 : l'equipe realise
+      une action qui touche a quelque chose qu'elle croyait hors de son controle.
+      P6 : l'equipe commence a modifier elle-meme le format d'une ceremonie pour qu'elle lui soit utile.
+      Ces signaux sont qualitatifs mais observables. Documente-les en 2 lignes apres chaque retro.
+      3 sprints sans aucun signal : c'est ton declencheur d'escalade, pas un sujet de reformulation.
+    douleur_terrain: >
+      Le SM ne sait pas si ses retros ameliorent quoi que ce soit. Il n'a ni signal clair ni seuil de decision.
+      Il continue par habitude, pas par conviction.
+    source_expert: null
+    page: 256
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-SM-05"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Mon equipe cumule plusieurs patterns en meme temps (signe visible de tension + silence + ceremonies inutiles).
+      Comment je choisis lequel adresser en retro sans disperser l'energie ?
+    reponse: >
+      Les patterns sont rarement purs. La majorite des equipes cumulent 2 ou 3 patterns simultanement.
+      Regle d'intervention : adresse le pattern primaire en retro. Nomme les patterns secondaires
+      comme contexte au management ou dans ton analyse de la situation organisationnelle.
+      Tenter d'adresser plusieurs patterns en meme temps dans une seule retro disperse l'energie
+      sans produire de changement durable. L'outil aigile.lu/retro identifie le pattern primaire
+      et les patterns secondaires a partir des 8 questions.
+    douleur_terrain: >
+      Le SM detecte plusieurs problemes et veut tout adresser en une heure. La retro part dans tous
+      les sens, ne produit rien d'actionnable, et l'equipe ressort plus fatiguee qu'avant.
+    source_expert: null
+    page: 248
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P3-CH11-01"]
+
+  - id: "P3-CH11-SM-06"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      P7 me concerne directement : je parle trop en retro. Comment je mesure ca,
+      comment je me corriger, et est-ce que je peux le detecter seul ?
+    reponse: >
+      P7 est le seul pattern difficile a detecter seul. Il faut se faire observer par un pair.
+      Signal concret : le SM sort d'une retro de 60 minutes en ayant parle moins de 10 minutes.
+      Format recommande : Lean Coffee avec time-boxing strict. Regle du facilitateur :
+      une question pour dix mots de l'equipe. Utilise le silence comme outil : attends 7 secondes
+      avant de relancer. La cause racine : le facilitateur comble le silence par reflexe,
+      empechant l'equipe de trouver ses propres reponses. Il confond son role avec celui d'expert
+      et propose des solutions au lieu de poser des questions.
+    douleur_terrain: >
+      Le SM certifie sort de chaque retro convaincu qu'il a bien facilite. L'equipe, elle, n'a
+      rien decide par elle-meme. La retro tourne en monologue ou en debat entre 2 personnes.
+    source_expert: null
+    page: 253
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-SM-07"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Il y a un conflit ouvert entre 2 membres de mon equipe (P8). Est-ce que je dois
+      les faire parler en retro pour "crever l'abces" ou au contraire separer la resolution
+      du conflit de la retro collective ?
+    reponse: >
+      Separe absolument. Si le conflit est entre 2 personnes specifiques : mediation bilaterale
+      d'abord, pas en groupe. Le SM n'intervient pas en mediation bilaterale. Il cree les
+      conditions de securite en groupe, et escalade vers RH ou coach externe pour la resolution
+      du conflit individuel. Pas "si necessaire" : des que le conflit est interpersonnel.
+      Les SMs qui essaient d'abord aggravent souvent le probleme en prenant involontairement
+      parti. Avant toute intervention, le SM verifie sa propre neutralite. S'il a une relation
+      de confiance asymetrique avec l'un des deux membres, il fait appel a un tiers.
+    douleur_terrain: >
+      Le SM bien intentionne tente une mediation en seance. Un des deux membres se sent expose
+      devant le groupe. La tension monte, la confiance dans le SM chute, et le conflit empire.
+    source_expert: null
+    page: 254
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ============================================================
+  # ROLE : DEV / PRATICIEN_AGILE
+  # ============================================================
+
+  - id: "P3-CH11-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Je me tais en retro parce que la derniere fois que j'ai souleve un probleme, rien n'a change.
+      Est-ce que ce pattern est reconnu dans ce livre et est-ce qu'il existe un format retro
+      qui peut reellement changer ca ?
+    reponse: >
+      Oui. C'est le pattern P3 (Impuissance apprise), formalise par Martin Seligman (Helplessness, 1975).
+      Tu n'es pas passif : tu as appris que parler ne change rien. C'est la reaction rationnelle
+      a un systeme qui ignore les decisions d'equipe. Le format recommande est "What's in our control ?" :
+      on separe ce que l'equipe controle completement, ce qu'elle peut influencer, et ce qui lui echappe.
+      100% des actions portent sur la premiere colonne. Signal d'amelioration : l'equipe realise
+      une action qui touche a quelque chose qu'elle croyait hors de son controle.
+    douleur_terrain: >
+      Le dev en P3 a propose des ameliorations pendant 6 mois. Aucune n'a ete mise en oeuvre.
+      Il a conclu que les retros sont du theatre. C'est le symptome le plus grave d'une equipe en souffrance.
+    source_expert: >
+      Martin Seligman | Helplessness | 1975
+    page: 250
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      La dette technique de mon equipe est invisible pour tout le monde sauf nous.
+      La retro peut-elle vraiment servir a la rendre visible et a obtenir du temps pour la resorber ?
+    reponse: >
+      C'est precisement le pattern P9 (Dette technique cachee). La cause racine : la pression
+      du delivery a rendu invisible le cout croissant de la dette. L'equipe n'a pas de langage
+      commun avec le management pour parler de qualite. Le format recommande est "Tableau de bord technique" :
+      visualiser la dette en mappant les zones du code qui causent le plus d'incidents,
+      puis decider collectivement quoi arreter de faire pour avoir le temps de reparer.
+      Signal d'amelioration : le PO inclut lui-meme des items de reduction de dette dans le Sprint Backlog
+      sans que l'equipe le lui demande.
+    douleur_terrain: >
+      L'equipe parle de "rembourser la dette" depuis 6 mois sans jamais le faire. La velocite baisse sprint
+      apres sprint. Personne n'a les mots pour expliquer pourquoi a quelqu'un qui ne lit pas le code.
+    source_expert: null
+    page: 255
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV, SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ============================================================
+  # ROLE : PO / PRATICIEN_AGILE
+  # ============================================================
+
+  - id: "P3-CH11-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Mon equipe n'a pas de Sprint Goal clair depuis 4 sprints. Les ceremonies se font
+      mais personne n'y croit. Quel pattern est-ce et comment en sortir ?
+    reponse: >
+      C'est le pattern P2 (Perte de sens / direction floue). Le lien entre le travail quotidien
+      et la strategie produit est invisible. Les Sprint Goals sont absents ou si vagues
+      qu'ils n'orientent rien. Format recommande : North Star Retro. Activite centrale :
+      relier chaque item du Sprint Backlog a un objectif lisible. Questions cles :
+      "Qu'est-ce qui a du sens ?" / "Qu'est-ce qui n'en a pas ?".
+      Signal d'amelioration : l'equipe commence a questionner elle-meme le Sprint Goal
+      avant de le valider. Ce signal designe aussi un probleme de role PO : si le Product Owner
+      est peu present ou ne donne pas de cap clair, ce pattern reviendra systematiquement.
+    douleur_terrain: >
+      Les developpeurs executent sans comprendre pourquoi. "Pourquoi on fait ca ?" revient
+      a chaque sprint sans reponse claire. Les ceremonies semblent deconnectees du reel.
+    source_expert: null
+    page: 250
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Les actions de retro de mon equipe finissent toujours en "on va mieux communiquer".
+      Rien de concret, rien de mesurable. L'IA peut-elle generer des actions inscriptibles
+      au Sprint Backlog ?
+    reponse: >
+      Oui. Le plan personnalise genere par aigile.lu/retro inclut des actions inscriptibles
+      au Sprint Backlog, pas des intentions vagues. La condition : les 8 questions de diagnostic
+      doivent decrire precisement la situation reelle, pas une version idealisee.
+      L'IA genere une hypothese de structure a partir du pattern detecte. Le SM ajuste.
+      L'outil ne voit pas ta salle, n'entend pas les silences, ne percoit pas la tension entre membres.
+      Il genere un plan adapte. Toi, tu l'appliques avec ton jugement de facilitateur.
+    douleur_terrain: >
+      Le PO voit les actions de retro notees dans Confluence et jamais realisees. Il doute
+      de l'utilite de l'exercice. Les retros consomment 1h par sprint sans ROI visible.
+    source_expert: null
+    page: 259
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ============================================================
+  # ROLE : CA / PRATICIEN_AGILE
+  # ============================================================
+
+  - id: "P3-CH11-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      J'entre dans une mission de coaching. Comment utiliser les 9 patterns pour structurer
+      un diagnostic d'equipe en 2 retros observees plutot que de passer 3 mois a tater le terrain ?
+    reponse: >
+      Les 9 patterns donnent un cadre d'observation immediat. En 2 retros observees, le Coach
+      peut identifier le pattern dominant et orienter les 3 premiers mois sur ce pattern precis
+      plutot que sur un plan generique. La grille : silence en retro = P1, "pourquoi on fait ca" =
+      P2, actions jamais realisees = P3 ou P6, SM qui parle plus que l'equipe = P7, tension visible
+      entre membres = P8, bugs recurrents et velocite en baisse = P9. Les patterns sont rarement purs.
+      Identifier le pattern primaire et les 1 ou 2 secondaires donne un plan de coaching structure.
+    douleur_terrain: >
+      Le Coach arrive dans une mission sans grille de diagnostic. Il passe 2 mois en observation
+      avant de poser un diagnostic clair. L'organisation perd confiance et le contrat se raccourcit.
+    source_expert: null
+    page: 248
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P3-CH11-01"]
+
+  - id: "P3-CH11-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      La cause racine d'un pattern peut etre organisationnelle (culture manageriale, structure matricielle).
+      Comment le Coach distingue ce qu'il peut traiter en retro de ce qui necessite une intervention systemique ?
+    reponse: >
+      Certains patterns ont une cause organisationnelle. Identifier P1 (securite psychologique basse) est utile.
+      Mais si la cause racine est une culture manageriale toxique, le format de retro ne suffira pas.
+      Le SM est un miroir, pas un chirurgien. Regle des 3 retros : si le meme pattern revient
+      3 sprints consecutifs sans amelioration mesurable, le probleme est dans le contexte organisationnel.
+      Le Coach escalade vers le sponsor agile ou les RH. Ce n'est pas un echec. C'est le bon canal.
+    douleur_terrain: >
+      Le Coach tente de traiter un probleme systemique avec des formats retro. Il s'epuise
+      sur des symptomes sans acceder aux causes. L'organisation reste bloquee et le Coach perd sa credibilite.
+    source_expert: null
+    page: 247
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ============================================================
+  # ROLE : MG / MANAGER
+  # ============================================================
+
+  - id: "P3-CH11-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Mon equipe utilise la Retro IA. J'ai envie d'acceder aux donnees pour comprendre
+      ce qui se passe vraiment. Est-ce une bonne idee et quel est le risque si je le fais ?
+    reponse: >
+      Non. Les donnees de retro restent dans l'equipe. Le SM reste proprietaire de son diagnostic.
+      Si l'equipe sait que le management accede au verbatim des echanges, la retro devient theatrale
+      instantanement. C'est le pattern P6 (Scrum Theatre) introduit par le management lui-meme.
+      Ce que le manager peut legitimement recevoir : un signal agrege (pattern detecte, niveau de sante
+      d'equipe, tendance sur 3 sprints). Pas le detail des conversations.
+      La confidentialite des donnees saisies dans aigile.lu/retro est explicitement posee dans le chapitre.
+    douleur_terrain: >
+      Le manager bien intentionne demande a voir les retros pour "mieux soutenir l'equipe".
+      L'equipe le sait. Elle filtre ce qu'elle dit. La qualite des retros chute. Le manager
+      obtient l'inverse de ce qu'il cherchait.
+    source_expert: null
+    page: 260
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: >
+      Mon equipe est en P3 (Impuissance apprise). Ses decisions sont annulees ou ignorees
+      depuis des mois. Le probleme vient probablement de moi. Qu'est-ce que ce livre attend de moi
+      concretement, pas en theorie ?
+    reponse: >
+      Le chapitre nomme explicitement cette situation. Un SM qui diagnostique P3 dans ton equipe
+      ne te pointe pas du doigt : il te donne l'opportunite d'agir avant que le probleme
+      devienne visible par tous. 3 actions concretes attendues : 1) rendre visibles 2 ou 3 decisions
+      d'equipe realisees ce sprint, 2) ne pas annuler une decision d'equipe sans explication explicite,
+      3) inscrire au moins 1 action d'equipe en backlog avant la fin du sprint suivant.
+      Ce ne sont pas des conseils RH. Ce sont les conditions minimales pour que P3 commence a reculer.
+    douleur_terrain: >
+      Le manager sait que son equipe est demotivee. Il ne fait pas le lien entre ses propres annulations
+      de decisions et l'impuissance apprise qu'il observe. La retro seule ne peut pas resoudre ca.
+    source_expert: null
+    page: 260
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Mon equipe est en P5 : WIP eleve, Happiness Index en chute, burnout potentiel.
+      Quelle est ma responsabilite directe et quel signal me dit que c'est moi la cause racine ?
+    reponse: >
+      P5 (Surcharge insoutenable) a souvent une cause manageriale directe : la capacite de l'equipe
+      est chroniquement sous-estimee ou deliberement ignoree. Le Definition of Done est sacrifie
+      sous la pression. La dette technique ou humaine s'accumule en silence jusqu'a l'incident.
+      Signal que tu es la cause : l'equipe accepte toutes les demandes sans jamais dire non.
+      Ce n'est pas de la bonne volonte. C'est de la peur ou de l'impuissance. Le format Retro Oxygene
+      ne resoudra pas ce probleme si tu continues a ajouter de la charge sans discuter de la capacite.
+      La retro peut nommer la situation. C'est toi qui dois agir sur la charge.
+    douleur_terrain: >
+      Le manager voit la velocite baisser et interprete ca comme un probleme de performance d'equipe.
+      Il ajoute de la pression. L'equipe s'effondre. Le manager comprend trop tard que c'etait
+      un probleme de capacite, pas de competence.
+    source_expert: >
+      Christina Maslach | Burnout The Cost of Caring | 1981
+    page: 252
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ============================================================
+  # ROLE : DC / DECIDEUR
+  # ============================================================
+
+  - id: "P3-CH11-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      J'ai investi dans une transformation agile sur 3 equipes depuis 18 mois.
+      Comment je sais si les retrospectives produisent quelque chose de reel
+      et pas juste du "bien-etre au travail" sans impact mesurable ?
+    reponse: >
+      Le KPI concret du chapitre : taux de realisation des actions de retro superieur a 70%
+      sur 3 sprints glissants. En dessous de ce seuil sur 3 sprints consecutifs : signal a
+      investiguer, pas a corriger en retro. C'est un indicateur systeme, pas un indicateur
+      de performance individuelle. Deuxieme indicateur : score du questionnaire diagnostic,
+      suivi au fil des sprints comme indicateur de sante d'equipe. Si le pattern primaire
+      ne change pas apres 6 sprints d'intervention : le probleme est organisationnel,
+      pas dans l'equipe.
+    douleur_terrain: >
+      Le Directeur demande un rapport sur l'agilite de ses equipes. Il recoit des statistiques
+      de participation aux ceremonies. Ces donnees ne disent rien sur la sante reelle des equipes
+      ni sur l'impact de la transformation.
+    source_expert: null
+    page: 260
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P3-CH11-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: >
+      Ce chapitre dit que certains patterns ont une cause organisationnelle et que le SM
+      ne peut pas les resoudre seul. Qui doit agir et quel est mon role de decideur
+      quand la cause racine, c'est la culture managiale de mon organisation ?
+    reponse: >
+      Le SM est un miroir, pas un chirurgien. Il peut nommer le probleme. Il ne peut pas
+      changer une culture manageriale sans ton autorite. Quand le SM escalade apres 3 retros
+      sans amelioration (P1, P3, P5 a cause organisationnelle), il remonte vers le sponsor
+      agile ou les RH. C'est toi, ou quelqu'un qui te reporte. Ta responsabilite concrete :
+      creer les conditions d'un changement reel (autorite donnee aux equipes,
+      decisions respectees, capacite protegee) ou accepter que la transformation reste cosmetique.
+    douleur_terrain: >
+      Le Directeur a mandate une transformation agile. Les SMs facilitent. Les patterns
+      persistants reviennent trimestre apres trimestre. Personne n'ose nommer que la cause
+      est dans la culture du comite de direction lui-meme.
+    source_expert: null
+    page: 247
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# ============================================================
+# TROUS IDENTIFIES (depuis SALIM_QA_MASTER_v3 + lecture PDF)
+# ============================================================
+
+trous:
+
+  - id: "T01"
+    statut: ouvert
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Les 3 types d'echecs d'Edmondson (Basic, Complex, Intelligent) sont-ils integres
+      dans la Retro IA pour affiner le traitement de P1 ?
+    action: >
+      Cette taxonomie enrichirait naturellement P1. Enrichissement possible en Retro IA
+      ou fiche complementaire. Source : Amy Edmondson | Psychological Safety and Learning
+      Behavior in Work Teams | 1999. Texte propose a inserer apres la fiche P1, page 249 :
+      "Une precision issue du terrain : tous les silences en retro ne viennent pas de la meme cause.
+      Amy Edmondson distingue 3 types d'echecs. Les echecs basiques (non-respect d'une procedure connue),
+      les echecs complexes (systeme interdependant qui s'emballe), et les echecs intelligents
+      (experimentation a haut risque dans un territoire inconnu). Diagnostiquer P1 sans distinguer
+      ces 3 types, c'est risquer d'appliquer la meme solution a des situations qui n'en ont pas
+      la meme cause racine. L'outil Retro IA integre cette distinction dans la generation du plan."
+
+  - id: "T02"
+    statut: resolu
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Le questionnaire parle de 7 questions en certains endroits et de 8 questions dans la
+      description principale. Quelle est la vraie valeur et pourquoi ce chiffre varie ?
+    action: >
+      Incoherence interne a corriger avant impression. Le chapitre indique 8 questions
+      dans la section 2 (p.245) et dans les KPIs (p.260). Le sous-titre et le master v3 mentionnaient 7.
+      Valeur officielle retenue : 8 questions. Verifier coherence dans tous les textes marketing et la plateforme aigile.lu/retro.
+
+  - id: "T03"
+    statut: resolu
+    role: MG
+    cible: MANAGER
+    question_manquante: >
+      Comment le manager presente les resultats d'un pattern P5 a sa propre direction
+      sans etre percu comme "incapable de gerer son equipe" ?
+    action: >
+      Angle manquant pour le manager intermediaire. Texte propose a inserer dans la "Note pour les managers" p.260 :
+      "Si tu identifies P5 dans ton equipe, la conversation avec ta direction n'est pas
+      'mon equipe est epuisee'. C'est 'nous avons accepte plus de charge que notre capacite reelle
+      depuis N sprints. Voici les donnees. Voici le cout si on continue. Voici ce qu'on doit
+      retirer du backlog pour stabiliser.' C'est une conversation de gestion de capacite,
+      pas une discussion RH."
+
+  - id: "T04"
+    statut: resolu
+    role: CA
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Existe-t-il une sequence recommandee pour utiliser les 9 patterns dans une formation
+      de SM debutant, ou le chapitre s'adresse-t-il uniquement aux SMs experimentes ?
+    action: >
+      Le chapitre ne traite pas cet angle. Recommandation : ajouter 1 paragraphe en introduction
+      signalant que le questionnaire peut etre utilise par un SM debutant des son premier sprint
+      comme grille d'observation, sans necessiter de maitrise de tous les patterns.
+
+# ============================================================
+# STATS
+# ============================================================
+
+stats:
+  questions_totales: 17
+  par_role:
+    SM: 7
+    PO: 2
+    DEV: 2
+    CA: 2
+    RTE: 0
+    MG: 3
+    DC: 2
+  par_statut:
+    provisoire: 0
+    confirmee: 17
+    trou: 0
+  trous_identifies: 1
+  couverture_dimensions:
+    qui: 15
+    quoi: 17
+    comment: 14
+    pourquoi: 17
+    quand: 11
+    valeur: 17
+  schemas_lies: 2
