@@ -21,10 +21,7 @@ import {
   STATUT_LABELS,
 } from '@/lib/salim-qa/constants'
 import type { SalimQaFacets, SalimQaQuestionPublic } from '@/lib/salim-qa/types'
-import type { Product } from '@/lib/payments/catalog'
-import { SalimQaBookModal, SalimQaPaywallBlock } from './SalimQaBookModal'
-import CheckoutSheet from '@/components/checkout/CheckoutSheet'
-import { formatBookPrice } from '@/lib/book-config'
+import { SalimQaBuyBookButton, SalimQaPaywallBlock } from './SalimQaBookModal'
 
 const VISITOR_KEY = 'salim_qa_visitor_id'
 const LOGIN_REDIRECT = '/login?redirect=%2Fsalim-qa'
@@ -87,10 +84,9 @@ function highlightText(text: string, terms: string[]) {
 
 type SalimQaExplorerProps = {
   language: 'fr' | 'en'
-  bookProduct: Product | null
 }
 
-export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps) {
+export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
   const { data: session } = useSession()
   const { status, refresh } = useCredits()
 
@@ -111,7 +107,6 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
   const [detailId, setDetailId] = useState<string | null>(null)
   const [featuredId, setFeaturedId] = useState<string | null>(null)
-  const [bookOpen, setBookOpen] = useState(false)
   const [upgradeOpen, setUpgradeOpen] = useState(false)
   const [unlockingId, setUnlockingId] = useState<string | null>(null)
   const [apiAccess, setApiAccess] = useState<AccessInfo | null>(null)
@@ -330,11 +325,7 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
     return () => io.disconnect()
   }, [offset, total, loading, loadingMore, fetchPage])
 
-  const openBook = () => {
-    logActivity('book_click')
-    trackEvent('salim_qa_book_click', { source: 'salim_qa' })
-    setBookOpen(true)
-  }
+  const logBookClick = () => logActivity('book_click')
 
   const openRecharge = () => {
     logActivity('recharge_click')
@@ -460,7 +451,7 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
             page={q.page}
             canUnlock={canUnlockAnswer(access, COST)}
             cost={COST}
-            onBuyBook={openBook}
+            onBookClick={logBookClick}
             onUnlock={() => {
               if (canUnlockAnswer(access, COST)) {
                 handleUnlock(q.id)
@@ -522,9 +513,7 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
                 {copy.creditsLeft(access.creditsRemaining ?? 0)}
               </span>
             ) : null}
-            <button type="button" className="sq-btn-gold" onClick={openBook}>
-              {copy.buyBook}
-            </button>
+            <SalimQaBuyBookButton language={language} trackSource="salim_qa_header" onClick={logBookClick} />
           </div>
         </div>
       </header>
@@ -745,9 +734,13 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
                 >
                   {copy.seeQ}
                 </button>
-                <button type="button" className="sq-btn-gold-lg" style={{ flex: 1, minWidth: 140 }} onClick={openBook}>
-                  <span style={{ position: 'relative' }}>{copy.buyBook}</span>
-                </button>
+                <SalimQaBuyBookButton
+                  language={language}
+                  variant="gold-lg"
+                  trackSource="salim_qa_featured"
+                  style={{ flex: 1, minWidth: 140 }}
+                  onClick={logBookClick}
+                />
               </div>
             </div>
           </div>
@@ -1004,24 +997,12 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
             </div>
           </div>
           <span style={{ flex: 1 }} />
-          {bookProduct ? (
-            <CheckoutSheet
-              product={bookProduct}
-              checkoutSource="salim_qa"
-              trigger={
-                <button type="button" className="sq-btn-gold-lg" onClick={() => trackEvent('salim_qa_book_click', { source: 'bottom_bar' })}>
-                  <span style={{ position: 'relative' }}>
-                    {copy.buyFull}
-                    {bookProduct.amount ? ` · ${formatBookPrice(bookProduct.amount)}` : ''}
-                  </span>
-                </button>
-              }
-            />
-          ) : (
-            <button type="button" className="sq-btn-gold-lg" onClick={openBook}>
-              {copy.buyFull}
-            </button>
-          )}
+          <SalimQaBuyBookButton
+            language={language}
+            variant="gold-lg"
+            trackSource="salim_qa_bottom_bar"
+            onClick={logBookClick}
+          />
         </div>
       </div>
 
@@ -1134,7 +1115,6 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
         </div>
       )}
 
-      <SalimQaBookModal open={bookOpen} onClose={() => setBookOpen(false)} book={bookProduct} language={language} />
       {upgradeOpen && <UpgradeModal open onClose={() => setUpgradeOpen(false)} />}
     </div>
   )

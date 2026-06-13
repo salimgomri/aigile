@@ -5,7 +5,6 @@ import ToolAccessDenied from '@/components/feature-flag/ToolAccessDenied'
 import { SalimQaExplorer } from '@/components/salim-qa/SalimQaExplorer'
 import { getFeatureFlag } from '@/lib/feature-flags'
 import { canAccessTool, shouldShowComingSoon } from '@/lib/tool-access'
-import { getCurrentBookProduct } from '@/lib/payments/catalog'
 import { Hanken_Grotesk, Instrument_Serif, JetBrains_Mono } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -63,11 +62,9 @@ export default async function SalimQaPage() {
     )
   }
 
-  const bookProduct = getCurrentBookProduct()
-
   return (
     <main className={`${hanken.variable} ${instrument.variable} ${jetbrains.variable}`}>
-      <SalimQaExplorer language={lang} bookProduct={bookProduct} />
+      <SalimQaExplorer language={lang} />
     </main>
   )
 }
