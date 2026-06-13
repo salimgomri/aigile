@@ -10,7 +10,7 @@ export type SalimQaQuestion = {
   partie: number
   partieName: string
   cible?: string
-  ficheLiee?: string | null
+  ficheLiees: string[]
   ficheDestineeA: string[]
   schemasLies: string[]
   statutReponse?: string
@@ -32,9 +32,9 @@ export type SalimQaQuestionPublic = {
   partie: number
   partieName: string
   cible?: string
-  ficheLiee?: string | null
-  ficheDestineeA: string[]
   hasFiche: boolean
+  ficheCount: number
+  ficheDestineeA: string[]
   statutReponse?: string
   page?: string | number | null
 }

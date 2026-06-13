@@ -5,6 +5,7 @@ import { canReadFullAnswer, canUnlockAnswer } from '@/lib/salim-qa/access'
 import { getUnlockedQuestionIds, logSalimQaActivity } from '@/lib/salim-qa/activity'
 import { filterSalimQaQuestions, getSalimQaFacets } from '@/lib/salim-qa/loader'
 import { publicFicheMeta } from '@/lib/salim-qa/fiches-security'
+import { countFicheAssets } from '@/lib/salim-qa/fiches'
 import { previewAnswer } from '@/lib/salim-qa/preview'
 import type { SalimQaQuestionPublic } from '@/lib/salim-qa/types'
 import { getCreditStatus } from '@/lib/credits/manager'
@@ -66,7 +67,12 @@ export async function GET(request: Request) {
     const questions: SalimQaQuestionPublic[] = items.map((item) => {
       const isUnlocked = unlocked.has(item.id)
       const canReadFull = canReadFullAnswer(access, isUnlocked)
-      const ficheMeta = publicFicheMeta(item.ficheLiee, item.ficheDestineeA)
+      const ficheMeta = publicFicheMeta(
+        item.ficheLiees,
+        item.schemasLies,
+        item.ficheDestineeA,
+        countFicheAssets(item)
+      )
       return {
         id: item.id,
         role: item.role,
@@ -82,9 +88,9 @@ export async function GET(request: Request) {
         partie: item.partie,
         partieName: item.partieName,
         cible: item.cible,
-        ficheLiee: ficheMeta.ficheLiee,
         ficheDestineeA: ficheMeta.ficheDestineeA,
-        hasFiche: ficheMeta.hasFiche || item.schemasLies.length > 0,
+        hasFiche: ficheMeta.hasFiche,
+        ficheCount: ficheMeta.ficheCount,
         statutReponse: item.statutReponse,
         page: item.page,
       }

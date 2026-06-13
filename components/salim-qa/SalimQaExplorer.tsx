@@ -21,6 +21,7 @@ import {
   STATUT_LABELS,
 } from '@/lib/salim-qa/constants'
 import type { SalimQaFacets, SalimQaQuestionPublic } from '@/lib/salim-qa/types'
+import { salimQaFicheUrl } from '@/lib/salim-qa/fiches-security'
 import { SalimQaBuyBookButton, SalimQaPaywallBlock } from './SalimQaBookModal'
 
 const VISITOR_KEY = 'salim_qa_visitor_id'
@@ -188,7 +189,8 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             adminBadge: 'Accès illimité (Admin)',
             creditsLeft: (n: number) => `${n} crédit${n > 1 ? 's' : ''}`,
             sheetFor: 'Fiche destinée à',
-            sheetLocked: 'Fiche et schéma disponibles dans le livre — pas de téléchargement en ligne.',
+            sheetTitle: 'Fiche pratique',
+            sheetLocked: 'Fiche disponible après déblocage de la réponse.',
           }
         : {
             boxTitle: 'Q&A Lab',
@@ -242,7 +244,8 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             adminBadge: 'Unlimited access (Admin)',
             creditsLeft: (n: number) => `${n} credit${n !== 1 ? 's' : ''}`,
             sheetFor: 'Sheet for',
-            sheetLocked: 'Sheet and diagram available in the book — no online download.',
+            sheetTitle: 'Practical sheet',
+            sheetLocked: 'Sheet available after unlocking the answer.',
           },
     [language, activeSearch]
   )
@@ -1070,7 +1073,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
               {canReadFullAnswer(access, detail.isUnlocked) && detail.answerFull ? (
                 <>
                   <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.66 }}>{detail.answerFull}</p>
-                  {detail.hasFiche && detail.ficheLiee && (
+                  {detail.hasFiche && (
                     <div
                       style={{
                         marginTop: 22,
@@ -1082,15 +1085,36 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 10 }}>
                         <span className="sq-brand-mono" style={{ fontSize: 11 }}>
-                          {detail.ficheLiee}
+                          {copy.sheetTitle}
                         </span>
-                        <span style={{ fontSize: 11.5, color: '#9A9A93' }}>
-                          {copy.sheetFor}: {detail.ficheDestineeA.join(', ') || '—'}
-                        </span>
+                        {detail.ficheDestineeA.length > 0 && (
+                          <span style={{ fontSize: 11.5, color: '#9A9A93' }}>
+                            {copy.sheetFor}: {detail.ficheDestineeA.join(', ')}
+                          </span>
+                        )}
                       </div>
-                      <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: '#6B6B66' }}>
-                        🔒 {copy.sheetLocked}
-                      </p>
+                      {canReadFullAnswer(access, detail.isUnlocked) && detail.ficheCount > 0 ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                          {Array.from({ length: detail.ficheCount }, (_, i) => (
+                            <img
+                              key={i}
+                              src={salimQaFicheUrl(detail.id, i)}
+                              alt=""
+                              style={{
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: 10,
+                                border: '1px solid rgba(0,0,0,0.06)',
+                                background: '#fff',
+                              }}
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: '#6B6B66' }}>
+                          🔒 {copy.sheetLocked}
+                        </p>
+                      )}
                     </div>
                   )}
                 </>

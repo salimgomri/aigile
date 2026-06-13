@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { parse } from 'yaml'
 import type { SalimQaQuestion } from './types'
+import { parseFicheLiee } from './fiches'
 
 const QA_DIR = path.join(process.cwd(), 'config', 'qa')
 
@@ -24,7 +25,7 @@ function parseChapterFromId(id: string): number {
 }
 
 function hasFiche(q: SalimQaQuestion): boolean {
-  return !!(q.ficheLiee || q.schemasLies.length > 0)
+  return q.ficheLiees.length > 0 || q.schemasLies.length > 0
 }
 
 export function loadAllSalimQaQuestions(): SalimQaQuestion[] {
@@ -68,7 +69,7 @@ export function loadAllSalimQaQuestions(): SalimQaQuestion[] {
       partie: meta.partie ?? 0,
       partieName: meta.nom_partie ?? '',
       cible: typeof q.cible === 'string' ? q.cible : undefined,
-      ficheLiee: typeof q.fiche_liee === 'string' ? q.fiche_liee : null,
+      ficheLiees: parseFicheLiee(q.fiche_liee),
       ficheDestineeA: ficheFor,
       schemasLies: schemas,
       statutReponse: typeof q.statut_reponse === 'string' ? q.statut_reponse : undefined,
@@ -197,7 +198,7 @@ export function filterSalimQaQuestions(opts: {
   if (activeTerms.length > 0 && activeTerms.join('').length >= 3) {
     filtered = filtered.filter((q) => {
       const haystack = norm(
-        [q.question, q.douleur, q.chapterTitle, q.role, q.ficheLiee ?? ''].join(' ')
+        [q.question, q.douleur, q.chapterTitle, q.role, ...q.ficheLiees].join(' ')
       )
       return activeTerms.every((t) => haystack.includes(norm(t)))
     })
