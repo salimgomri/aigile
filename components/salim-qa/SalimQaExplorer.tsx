@@ -127,6 +127,8 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
     return { isLoggedIn, creditsRemaining, isUnlimited }
   }, [session?.user, status, apiAccess])
 
+  const hasFullAccess = hasActiveSubscription(access) || !!status?.isAdmin
+
   const terms = useMemo(() => {
     const t = [...chips]
     const d = draft.trim()
@@ -147,9 +149,6 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
             searchPh: 'Rechercher dans les questions…',
             minChars: '3 car. min',
             suggested: 'Questions suggérées',
-            preview: 'aperçu',
-            excerpt: 'Extrait',
-            full: 'Réponse complète',
             buyBook: 'Acheter le livre',
             explore: 'Question à explorer',
             random: 'Au hasard',
@@ -191,6 +190,8 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
                 : `${n} questions du livre · classées par rôle, thème et dimension`,
             statusMin: 'Saisissez au moins 3 caractères pour lancer la recherche',
             proBadge: 'Accès illimité (Pro)',
+            adminBadge: 'Accès illimité (Admin)',
+            creditsLeft: (n: number) => `${n} crédit${n > 1 ? 's' : ''}`,
             sheetFor: 'Fiche destinée à',
             sheetLocked: 'Fiche et schéma disponibles dans le livre — pas de téléchargement en ligne.',
           }
@@ -202,9 +203,6 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
             searchPh: 'Search questions…',
             minChars: '3 char. min',
             suggested: 'Suggested questions',
-            preview: 'preview',
-            excerpt: 'Excerpt',
-            full: 'Full answer',
             buyBook: 'Buy the book',
             explore: 'Question to explore',
             random: 'Random',
@@ -246,6 +244,8 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
                 : `${n} book questions · by role, theme and dimension`,
             statusMin: 'Type at least 3 characters to search',
             proBadge: 'Unlimited access (Pro)',
+            adminBadge: 'Unlimited access (Admin)',
+            creditsLeft: (n: number) => `${n} credit${n !== 1 ? 's' : ''}`,
             sheetFor: 'Sheet for',
             sheetLocked: 'Sheet and diagram available in the book — no online download.',
           },
@@ -458,16 +458,10 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
             language={language}
             hasFiche={q.hasFiche}
             page={q.page}
-            showRecharge={access.isLoggedIn && !hasActiveSubscription(access)}
-            unlockLabel={
-              canUnlockAnswer(access, COST)
-                ? copy.unlock
-                : language === 'fr'
-                  ? 'Recharger des crédits'
-                  : 'Top up credits'
-            }
+            canUnlock={canUnlockAnswer(access, COST)}
+            cost={COST}
             onBuyBook={openBook}
-            onRecharge={() => {
+            onUnlock={() => {
               if (canUnlockAnswer(access, COST)) {
                 handleUnlock(q.id)
               } else {
@@ -479,8 +473,6 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
       </>
     )
   }
-
-  const showExcerptMode = !hasActiveSubscription(access) && (!access.isLoggedIn || (access.creditsRemaining ?? 0) < COST)
 
   return (
     <div className="salim-qb pb-28">
@@ -495,19 +487,41 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
             <span style={{ fontSize: 13, fontWeight: 600, color: '#6B6B66' }}>{copy.boxTitle}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span className="sq-brand-mono" style={{ fontSize: 10, color: '#B6B6AE' }}>
-                {copy.preview}
+            {status?.isAdmin ? (
+              <span
+                className="sq-brand-mono"
+                style={{
+                  fontSize: 10,
+                  fontWeight: 600,
+                  color: '#6B5A10',
+                  background: 'rgba(254,219,16,0.22)',
+                  border: '1px solid rgba(254,219,16,0.45)',
+                  borderRadius: 999,
+                  padding: '5px 10px',
+                }}
+              >
+                {copy.adminBadge}
               </span>
-              <div className="sq-seg" aria-label="Mode d'aperçu">
-                <button type="button" className={showExcerptMode ? 'active' : ''} aria-pressed={showExcerptMode}>
-                  {copy.excerpt}
-                </button>
-                <button type="button" className={!showExcerptMode ? 'active' : ''} aria-pressed={!showExcerptMode}>
-                  {copy.full}
-                </button>
-              </div>
-            </div>
+            ) : hasFullAccess ? (
+              <span
+                className="sq-brand-mono"
+                style={{
+                  fontSize: 10,
+                  fontWeight: 600,
+                  color: '#6B5A10',
+                  background: 'rgba(254,219,16,0.22)',
+                  border: '1px solid rgba(254,219,16,0.45)',
+                  borderRadius: 999,
+                  padding: '5px 10px',
+                }}
+              >
+                {copy.proBadge}
+              </span>
+            ) : access.isLoggedIn ? (
+              <span className="sq-brand-mono" style={{ fontSize: 11, color: '#6B6B66' }}>
+                {copy.creditsLeft(access.creditsRemaining ?? 0)}
+              </span>
+            ) : null}
             <button type="button" className="sq-btn-gold" onClick={openBook}>
               {copy.buyBook}
             </button>
@@ -1100,19 +1114,8 @@ export function SalimQaExplorer({ language, bookProduct }: SalimQaExplorerProps)
                   )}
                 </>
               ) : (
-                <div>
-                  <p style={{ margin: '0 0 4px', fontSize: 16.5, lineHeight: 1.66 }}>{detail.answerPreview}</p>
-                  <div style={{ marginTop: 20, textAlign: 'center' }} className="sq-paywall">
-                    <div className="sq-brand-mono" style={{ fontSize: 11, color: '#9A8A2E', marginBottom: 10 }}>
-                      {copy.inBook}
-                    </div>
-                    <div style={{ fontFamily: 'var(--sq-serif)', fontSize: 26, lineHeight: 1.2, marginBottom: 8 }}>
-                      {language === 'fr'
-                        ? 'La solution complète est développée dans le livre.'
-                        : 'The full solution is developed in the book.'}
-                    </div>
-                    {renderAnswerBlock(detail)}
-                  </div>
+                <div style={{ marginTop: 4 }}>
+                  {renderAnswerBlock(detail)}
                 </div>
               )}
               <div style={{ display: 'flex', alignItems: 'center', marginTop: 26, paddingTop: 18, borderTop: '1px solid rgba(0,0,0,0.07)' }}>

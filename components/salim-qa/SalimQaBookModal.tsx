@@ -199,62 +199,67 @@ export function SalimQaBookModal({ open, onClose, book, language }: SalimQaBookM
 /** Bloc paywall réutilisable dans cartes / modal détail */
 export function SalimQaPaywallBlock({
   onBuyBook,
-  onRecharge,
+  onUnlock,
   language,
   hasFiche,
   page,
-  showRecharge,
-  unlockLabel,
+  canUnlock,
+  cost = 1,
 }: {
   onBuyBook: () => void
-  onRecharge: () => void
+  onUnlock: () => void
   language: 'fr' | 'en'
   hasFiche?: boolean
   page?: string | number | null
-  showRecharge?: boolean
-  unlockLabel?: string
+  canUnlock: boolean
+  cost?: number
 }) {
+  const unlockLabel = canUnlock
+    ? language === 'fr'
+      ? `Débloquer la réponse complète (${cost} crédit)`
+      : `Unlock full answer (${cost} credit)`
+    : language === 'fr'
+      ? 'Recharger des crédits'
+      : 'Top up credits'
+
   return (
     <div className="sq-paywall">
       <p style={{ margin: '0 0 12px', fontSize: 13, lineHeight: 1.5, color: '#3A3A36' }}>
         {language === 'fr' ? (
           <>
-            Réponse complète{hasFiche ? ' et fiche (schéma)' : ''} dans <em>Le Système S.A.L.I.M.</em>
+            Aperçu seulement — réponse complète{hasFiche ? ' et fiche (schéma)' : ''} dans{' '}
+            <em>Le Système S.A.L.I.M.</em>
             {page ? ` · page ${page}` : ''}
           </>
         ) : (
           <>
-            Full answer{hasFiche ? ' and sheet (diagram)' : ''} in <em>The S.A.L.I.M. System</em>
+            Preview only — full answer{hasFiche ? ' and sheet (diagram)' : ''} in{' '}
+            <em>The S.A.L.I.M. System</em>
             {page ? ` · page ${page}` : ''}
           </>
         )}
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <button type="button" className="sq-btn-gold w-full" onClick={onBuyBook}>
+        <button type="button" className="sq-btn-gold w-full" onClick={onUnlock}>
+          {unlockLabel}
+        </button>
+        <button
+          type="button"
+          onClick={onBuyBook}
+          style={{
+            width: '100%',
+            padding: 10,
+            border: '1px solid rgba(0,0,0,0.12)',
+            borderRadius: 11,
+            background: '#fff',
+            fontFamily: 'inherit',
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
           {language === 'fr' ? 'Acheter le livre' : 'Buy the book'}
         </button>
-            {showRecharge && (
-              <button
-                type="button"
-                onClick={onRecharge}
-                style={{
-                  width: '100%',
-                  padding: 10,
-                  border: '1px solid rgba(0,0,0,0.12)',
-                  borderRadius: 11,
-                  background: '#fff',
-                  fontFamily: 'inherit',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                }}
-              >
-                {unlockLabel ??
-                  (language === 'fr'
-                    ? 'Recharger des crédits (1 réponse = 1 crédit)'
-                    : 'Top up credits (1 answer = 1 credit)')}
-              </button>
-            )}
       </div>
     </div>
   )
