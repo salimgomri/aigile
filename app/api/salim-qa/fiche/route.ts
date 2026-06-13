@@ -49,6 +49,7 @@ export async function GET(request: Request) {
       isLoggedIn: true,
       creditsRemaining: status?.creditsRemaining ?? 0,
       isUnlimited: !!status?.isUnlimited,
+      isAdmin: !!status?.isAdmin,
     }
     const isUnlocked = await isQuestionUnlocked(userId, questionId)
     if (!canReadFullAnswer(access, isUnlocked)) {

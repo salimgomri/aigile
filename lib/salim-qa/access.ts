@@ -4,6 +4,7 @@ export type SalimQaAccessInput = {
   isLoggedIn: boolean
   creditsRemaining: number | null
   isUnlimited: boolean
+  isAdmin?: boolean
 }
 
 export function hasActiveSubscription(access: SalimQaAccessInput | null): boolean {
@@ -20,11 +21,12 @@ export function canUnlockAnswer(
   return (access.creditsRemaining ?? 0) >= cost
 }
 
-/** Réponse complète visible : déjà débloquée ou abonnement actif */
+/** Réponse complète visible : déjà débloquée, abonnement actif ou admin */
 export function canReadFullAnswer(
   access: SalimQaAccessInput | null,
   isUnlocked: boolean
 ): boolean {
+  if (access?.isAdmin) return true
   if (isUnlocked) return true
   return hasActiveSubscription(access)
 }

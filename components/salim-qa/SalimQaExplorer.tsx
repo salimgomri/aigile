@@ -12,7 +12,6 @@ import {
   canReadFullAnswer,
   canUnlockAnswer,
   hasActiveSubscription,
-  isExcerptMode,
 } from '@/lib/salim-qa/access'
 import {
   CIBLE_LABELS,
@@ -120,8 +119,13 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
     const isLoggedIn = !!session?.user
     const creditsRemaining = status?.creditsRemaining ?? apiAccess?.creditsRemaining ?? null
     const isUnlimited = !!status?.isUnlimited || !!apiAccess?.isUnlimited
-    return { isLoggedIn, creditsRemaining, isUnlimited }
+    const isAdmin = !!status?.isAdmin
+    return { isLoggedIn, creditsRemaining, isUnlimited, isAdmin }
   }, [session?.user, status, apiAccess])
+
+  /** Accès lecture : priorité au flag serveur (évite race credits au chargement) */
+  const canViewFull = (q: SalimQaQuestionPublic) =>
+    q.canReadFull || canReadFullAnswer(access, q.isUnlocked)
 
   const hasFullAccess = hasActiveSubscription(access) || !!status?.isAdmin
 
@@ -191,6 +195,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             sheetFor: 'Fiche destinée à',
             sheetTitle: 'Fiche pratique',
             sheetLocked: 'Fiche disponible après déblocage de la réponse.',
+            sheetMissing: 'Fiche référencée — fichier SVG à ajouter dans config/fp/.',
           }
         : {
             boxTitle: 'Q&A Lab',
@@ -246,6 +251,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             sheetFor: 'Sheet for',
             sheetTitle: 'Practical sheet',
             sheetLocked: 'Sheet available after unlocking the answer.',
+            sheetMissing: 'Sheet referenced — add SVG file under config/fp/.',
           },
     [language, activeSearch]
   )
@@ -428,8 +434,8 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
   }
 
   const renderAnswerBlock = (q: SalimQaQuestionPublic) => {
-    const excerpt = isExcerptMode(access, q.isUnlocked)
-    const full = canReadFullAnswer(access, q.isUnlocked)
+    const full = canViewFull(q)
+    const excerpt = !full
 
     if (full && q.answerFull) {
       return <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6 }}>{q.answerFull}</p>
@@ -1070,7 +1076,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
               <div className="sq-brand-mono" style={{ fontSize: 11, color: '#B6B6AE', marginBottom: 10 }}>
                 {copy.response}
               </div>
-              {canReadFullAnswer(access, detail.isUnlocked) && detail.answerFull ? (
+              {canViewFull(detail) && detail.answerFull ? (
                 <>
                   <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.66 }}>{detail.answerFull}</p>
                   {detail.hasFiche && (
@@ -1093,7 +1099,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
                           </span>
                         )}
                       </div>
-                      {canReadFullAnswer(access, detail.isUnlocked) && detail.ficheCount > 0 ? (
+                      {detail.ficheCount > 0 ? (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                           {Array.from({ length: detail.ficheCount }, (_, i) => (
                             <img
@@ -1112,7 +1118,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
                         </div>
                       ) : (
                         <p style={{ margin: 0, fontSize: 13, lineHeight: 1.5, color: '#6B6B66' }}>
-                          🔒 {copy.sheetLocked}
+                          {copy.sheetMissing}
                         </p>
                       )}
                     </div>
