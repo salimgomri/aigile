@@ -23,27 +23,9 @@ export function SalimQaBookFrame({ language, children, onBookClick }: SalimQaBoo
       onMouseLeave={() => setHot(false)}
     >
       <div
-        className="sq-book-frame__edge sq-book-frame__edge--top"
+        className="sq-book-frame__rail sq-book-frame__rail--top"
         onMouseEnter={() => setHot(true)}
-        aria-hidden
-      />
-      <div
-        className="sq-book-frame__edge sq-book-frame__edge--bottom"
-        onMouseEnter={() => setHot(true)}
-        aria-hidden
-      />
-      <div
-        className="sq-book-frame__edge sq-book-frame__edge--left"
-        onMouseEnter={() => setHot(true)}
-        aria-hidden
-      />
-      <div
-        className="sq-book-frame__edge sq-book-frame__edge--right"
-        onMouseEnter={() => setHot(true)}
-        aria-hidden
-      />
-
-      <div className="sq-book-frame__top-band">
+      >
         <span className="sq-book-frame__hint sq-brand-mono">{hint}</span>
         <div className="sq-book-frame__cta" onMouseEnter={() => setHot(true)}>
           <SalimQaBuyBookButton
@@ -55,9 +37,23 @@ export function SalimQaBookFrame({ language, children, onBookClick }: SalimQaBoo
         </div>
       </div>
 
-      <div className="sq-book-frame__inner">{children}</div>
+      <div
+        className="sq-book-frame__rail sq-book-frame__rail--bottom"
+        onMouseEnter={() => setHot(true)}
+        aria-hidden
+      />
+      <div
+        className="sq-book-frame__rail sq-book-frame__rail--left"
+        onMouseEnter={() => setHot(true)}
+        aria-hidden
+      />
+      <div
+        className="sq-book-frame__rail sq-book-frame__rail--right"
+        onMouseEnter={() => setHot(true)}
+        aria-hidden
+      />
 
-      <div className="sq-book-frame__bottom-band" aria-hidden />
+      <div className="sq-book-frame__inner">{children}</div>
     </div>
   )
 }

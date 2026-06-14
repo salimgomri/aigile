@@ -115,7 +115,7 @@ export function SalimQaDetailModal({
 
                   {detail.ficheCount > 0 ? (
                     detail.canReadFiche ? (
-                      <SalimQaFicheStack questionId={detail.id} count={detail.ficheCount} />
+                      <SalimQaFicheStack questionId={detail.id} count={detail.ficheCount} language={language} />
                     ) : (
                       <div className="sq-detail-locked">
                         <div className="sq-detail-locked-icon">◇</div>

@@ -450,7 +450,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
           <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6 }}>{q.answerFull}</p>
           {q.canReadFiche && q.ficheCount > 0 && (
             <div style={{ marginTop: 14 }}>
-              <SalimQaFicheStack questionId={q.id} count={q.ficheCount} />
+              <SalimQaFicheStack questionId={q.id} count={q.ficheCount} language={language} />
             </div>
           )}
         </>

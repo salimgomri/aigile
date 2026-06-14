@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useState, type SyntheticEvent } from 'react'
+import { useCallback, useEffect, useState, type SyntheticEvent } from 'react'
+import { createPortal } from 'react-dom'
 import { salimQaFicheUrl } from '@/lib/salim-qa/fiches-security'
 
 function blockInteraction(e: SyntheticEvent) {
@@ -8,15 +9,80 @@ function blockInteraction(e: SyntheticEvent) {
   e.stopPropagation()
 }
 
+type SalimQaFicheLightboxProps = {
+  svg: string
+  label: string
+  closeLabel: string
+  onClose: () => void
+}
+
+function SalimQaFicheLightbox({ svg, label, closeLabel, onClose }: SalimQaFicheLightboxProps) {
+  const handleKey = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    },
+    [onClose]
+  )
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', handleKey)
+      document.body.style.overflow = prev
+    }
+  }, [handleKey])
+
+  return createPortal(
+    <div className="sq-fiche-lightbox" onClick={onClose} role="presentation">
+      <div
+        className="sq-fiche-lightbox__panel"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={label}
+      >
+        <button type="button" className="sq-fiche-lightbox__close" onClick={onClose} aria-label={closeLabel}>
+          ×
+        </button>
+        <div
+          className="sq-fiche-lightbox__body"
+          onContextMenu={blockInteraction}
+          onDragStart={blockInteraction}
+          onCopy={blockInteraction}
+          onCut={blockInteraction}
+        >
+          <div className="sq-fiche-lightbox__svg" dangerouslySetInnerHTML={{ __html: svg }} />
+          <div
+            className="sq-fiche-lightbox__shield"
+            aria-hidden
+            onClick={onClose}
+            onContextMenu={blockInteraction}
+            onDragStart={blockInteraction}
+          />
+        </div>
+      </div>
+    </div>,
+    document.body
+  )
+}
+
 type SalimQaFicheViewerProps = {
   questionId: string
   index?: number
+  language?: 'fr' | 'en'
 }
 
-/** Affichage inline protégé — pas d’URL en src, pas de clic droit / drag */
-export function SalimQaFicheViewer({ questionId, index = 0 }: SalimQaFicheViewerProps) {
+/** Affichage inline protégé — clic pour agrandir, pas de clic droit / drag */
+export function SalimQaFicheViewer({ questionId, index = 0, language = 'fr' }: SalimQaFicheViewerProps) {
   const [svg, setSvg] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const [open, setOpen] = useState(false)
+
+  const zoomLabel = language === 'fr' ? 'Agrandir le schéma' : 'Enlarge diagram'
+  const lightboxLabel = language === 'fr' ? 'Schéma agrandi' : 'Enlarged diagram'
+  const closeLabel = language === 'fr' ? 'Fermer' : 'Close'
 
   useEffect(() => {
     let cancelled = false
@@ -56,30 +122,46 @@ export function SalimQaFicheViewer({ questionId, index = 0 }: SalimQaFicheViewer
   if (!svg) return null
 
   return (
-    <div
-      className="sq-fiche-viewer"
-      onContextMenu={blockInteraction}
-      onDragStart={blockInteraction}
-      onCopy={blockInteraction}
-      onCut={blockInteraction}
-    >
-      <div className="sq-fiche-viewer__svg" dangerouslySetInnerHTML={{ __html: svg }} />
-      <div
-        className="sq-fiche-viewer__shield"
-        aria-hidden
+    <>
+      <button
+        type="button"
+        className="sq-fiche-viewer sq-fiche-viewer--zoomable"
+        aria-label={zoomLabel}
+        onClick={() => setOpen(true)}
         onContextMenu={blockInteraction}
         onDragStart={blockInteraction}
-      />
-    </div>
+      >
+        <div className="sq-fiche-viewer__svg" dangerouslySetInnerHTML={{ __html: svg }} />
+        <span className="sq-fiche-viewer__zoom-hint sq-brand-mono">
+          {language === 'fr' ? 'Agrandir' : 'Enlarge'}
+        </span>
+      </button>
+      {open && (
+        <SalimQaFicheLightbox
+          svg={svg}
+          label={lightboxLabel}
+          closeLabel={closeLabel}
+          onClose={() => setOpen(false)}
+        />
+      )}
+    </>
   )
 }
 
-export function SalimQaFicheStack({ questionId, count }: { questionId: string; count: number }) {
+export function SalimQaFicheStack({
+  questionId,
+  count,
+  language = 'fr',
+}: {
+  questionId: string
+  count: number
+  language?: 'fr' | 'en'
+}) {
   if (count <= 0) return null
   return (
     <div className="sq-fiche-stack">
       {Array.from({ length: count }, (_, i) => (
-        <SalimQaFicheViewer key={i} questionId={questionId} index={i} />
+        <SalimQaFicheViewer key={i} questionId={questionId} index={i} language={language} />
       ))}
     </div>
   )
