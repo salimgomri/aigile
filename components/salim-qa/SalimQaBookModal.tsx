@@ -6,7 +6,7 @@ import { formatBookPrice, getBookCtaLabel } from '@/lib/book-config'
 import { trackEvent } from '@/lib/gtag'
 import { useBookProduct } from '@/lib/book-product-context'
 
-type BuyBookVariant = 'gold' | 'gold-lg' | 'secondary'
+type BuyBookVariant = 'gold' | 'gold-lg' | 'secondary' | 'landing'
 
 type SalimQaBuyBookButtonProps = {
   language: 'fr' | 'en'
@@ -51,7 +51,13 @@ export function SalimQaBuyBookButton({
   }
 
   const variantClass =
-    variant === 'gold-lg' ? 'sq-btn-gold-lg' : variant === 'gold' ? 'sq-btn-gold' : undefined
+    variant === 'gold-lg'
+      ? 'sq-btn-gold-lg'
+      : variant === 'gold'
+        ? 'sq-btn-gold'
+        : variant === 'landing'
+          ? 'sq-btn-landing'
+          : undefined
 
   const secondaryStyle: CSSProperties =
     variant === 'secondary'

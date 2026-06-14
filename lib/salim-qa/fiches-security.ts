@@ -22,7 +22,7 @@ export function publicFicheMeta(
   ficheCount: number
 ) {
   return {
-    hasFiche: ficheLiees.length > 0 || schemasLies.length > 0,
+    hasFiche: ficheCount > 0,
     ficheCount,
     ficheDestineeA: ficheFor,
   }

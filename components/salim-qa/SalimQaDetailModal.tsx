@@ -46,7 +46,7 @@ export function SalimQaDetailModal({
           response: 'La réponse',
           sheetTitle: 'Fiche pratique',
           sheetFor: 'Fiche destinée à',
-          noSheet: 'No sheet',
+          noSheet: 'Aucune fiche',
           sheetLocked: 'Schéma disponible après déblocage (1 crédit).',
           answerLocked: 'Réponse disponible après déblocage (1 crédit).',
           prev: '← Précédente',

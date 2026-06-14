@@ -22,6 +22,8 @@ import {
 } from '@/lib/salim-qa/constants'
 import type { SalimQaFacets, SalimQaQuestionPublic } from '@/lib/salim-qa/types'
 import { SalimQaBuyBookButton, SalimQaPaywallBlock } from './SalimQaBookModal'
+import { SalimQaAuthBar } from './SalimQaAuthBar'
+import { SalimQaBookFrame } from './SalimQaBookFrame'
 import { SalimQaDetailModal } from './SalimQaDetailModal'
 import { SalimQaFicheStack } from './SalimQaFicheViewer'
 
@@ -489,6 +491,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
   }
 
   return (
+    <SalimQaBookFrame language={language} onBookClick={logBookClick}>
     <div className="salim-qb pb-28">
       <header className="sq-header">
         <div className="sq-header-inner">
@@ -501,41 +504,12 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
             <span style={{ fontSize: 13, fontWeight: 600, color: '#6B6B66' }}>{copy.boxTitle}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-            {status?.isAdmin ? (
-              <span
-                className="sq-brand-mono"
-                style={{
-                  fontSize: 10,
-                  fontWeight: 600,
-                  color: '#6B5A10',
-                  background: 'rgba(254,219,16,0.22)',
-                  border: '1px solid rgba(254,219,16,0.45)',
-                  borderRadius: 999,
-                  padding: '5px 10px',
-                }}
-              >
-                {copy.adminBadge}
-              </span>
-            ) : hasFullAccess ? (
-              <span
-                className="sq-brand-mono"
-                style={{
-                  fontSize: 10,
-                  fontWeight: 600,
-                  color: '#6B5A10',
-                  background: 'rgba(254,219,16,0.22)',
-                  border: '1px solid rgba(254,219,16,0.45)',
-                  borderRadius: 999,
-                  padding: '5px 10px',
-                }}
-              >
-                {copy.proBadge}
-              </span>
-            ) : access.isLoggedIn ? (
-              <span className="sq-brand-mono" style={{ fontSize: 11, color: '#6B6B66' }}>
-                {copy.creditsLeft(access.creditsRemaining ?? 0)}
-              </span>
-            ) : null}
+            <SalimQaAuthBar
+              language={language}
+              creditsRemaining={access.creditsRemaining}
+              isAdmin={!!status?.isAdmin}
+              hasFullAccess={hasFullAccess}
+            />
             <SalimQaBuyBookButton language={language} trackSource="salim_qa_header" onClick={logBookClick} />
           </div>
         </div>
@@ -1049,5 +1023,6 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
 
       {upgradeOpen && <UpgradeModal open onClose={() => setUpgradeOpen(false)} />}
     </div>
+    </SalimQaBookFrame>
   )
 }

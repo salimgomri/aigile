@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { parse } from 'yaml'
 import type { SalimQaQuestion } from './types'
-import { parseFicheLiee } from './fiches'
+import { parseFicheLiee, countFicheAssets } from './fiches'
 
 const QA_DIR = path.join(process.cwd(), 'config', 'qa')
 
@@ -20,12 +20,55 @@ function norm(s: string): string {
 }
 
 function parseChapterFromId(id: string): number {
-  const m = id.match(/P(\d+)-CH(\d+)/)
-  return m ? Number.parseInt(m[2], 10) : 0
+  const m = id.match(/(?:P\d+-)?CH(\d+)/i)
+  return m ? Number.parseInt(m[1], 10) : 0
+}
+
+function metaFromDoc(doc: Record<string, unknown>): {
+  partie?: number
+  nom_partie?: string
+  chapitre?: number
+  titre?: string
+} {
+  if (doc.meta && typeof doc.meta === 'object') {
+    return doc.meta as {
+      partie?: number
+      nom_partie?: string
+      chapitre?: number
+      titre?: string
+    }
+  }
+
+  const meta: {
+    partie?: number
+    nom_partie?: string
+    chapitre?: number
+    titre?: string
+  } = {}
+
+  if (typeof doc.partie === 'number') meta.partie = doc.partie
+  if (typeof doc.nom_partie === 'string') meta.nom_partie = doc.nom_partie
+  if (typeof doc.titre === 'string') meta.titre = doc.titre
+
+  const ch = doc.chapitre
+  if (typeof ch === 'number') {
+    meta.chapitre = ch
+  } else if (ch && typeof ch === 'object') {
+    const block = ch as Record<string, unknown>
+    if (typeof block.partie === 'number') meta.partie = block.partie
+    if (typeof block.nom_partie === 'string') meta.nom_partie = block.nom_partie
+    if (typeof block.titre === 'string') meta.titre = block.titre
+    if (typeof block.id === 'string') {
+      const m = block.id.match(/CH(\d+)/i)
+      if (m) meta.chapitre = Number.parseInt(m[1], 10)
+    }
+  }
+
+  return meta
 }
 
 function hasFiche(q: SalimQaQuestion): boolean {
-  return q.ficheLiees.length > 0 || q.schemasLies.length > 0
+  return countFicheAssets(q) > 0
 }
 
 export function loadAllSalimQaQuestions(): SalimQaQuestion[] {
@@ -107,18 +150,11 @@ export function loadAllSalimQaQuestions(): SalimQaQuestion[] {
         continue
       }
 
-      const doc = data as {
-        meta?: {
-          partie?: number
-          nom_partie?: string
-          chapitre?: number
-          titre?: string
-        }
-        questions?: Array<Record<string, unknown>>
-      }
+      if (!data || typeof data !== 'object') continue
 
-      const meta = doc.meta ?? {}
-      for (const q of doc.questions ?? []) {
+      const doc = data as Record<string, unknown>
+      const meta = metaFromDoc(doc)
+      for (const q of (doc.questions as Array<Record<string, unknown>>) ?? []) {
         pushQuestion(q, meta)
       }
     } catch (err) {
