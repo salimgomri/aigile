@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
-import { SalimQaBuyBookButton } from './SalimQaBookModal'
+import Image from 'next/image'
+import { SalimQaBookPitch } from './SalimQaBookPitch'
 
 type SalimQaBookFrameProps = {
   language: 'fr' | 'en'
@@ -27,15 +28,22 @@ export function SalimQaBookFrame({ language, children, onBookClick }: SalimQaBoo
         onMouseEnter={() => setHot(true)}
       >
         <span className="sq-book-frame__hint sq-brand-mono">{hint}</span>
-        <div className="sq-book-frame__cta" onMouseEnter={() => setHot(true)}>
-          <SalimQaBuyBookButton
+      </div>
+
+      {hot && (
+        <div
+          className="sq-book-pitch-drop"
+          onMouseEnter={() => setHot(true)}
+          onMouseLeave={() => setHot(false)}
+        >
+          <SalimQaBookPitch
             language={language}
-            variant="landing"
+            layout="strip"
             trackSource="salim_qa_frame"
             onClick={onBookClick}
           />
         </div>
-      </div>
+      )}
 
       <div
         className="sq-book-frame__rail sq-book-frame__rail--bottom"
@@ -55,5 +63,27 @@ export function SalimQaBookFrame({ language, children, onBookClick }: SalimQaBoo
 
       <div className="sq-book-frame__inner">{children}</div>
     </div>
+  )
+}
+
+type SalimQaBookHeaderTriggerProps = {
+  language: 'fr' | 'en'
+  onClick: () => void
+}
+
+export function SalimQaBookHeaderTrigger({ language, onClick }: SalimQaBookHeaderTriggerProps) {
+  const label = language === 'fr' ? 'Le livre source' : 'Source book'
+  const sub = language === 'fr' ? 'Couverture · teaser · commande' : 'Cover · teaser · order'
+
+  return (
+    <button type="button" className="sq-book-header-trigger" onClick={onClick}>
+      <span className="sq-book-header-trigger__cover">
+        <Image src="/images/book-cover.jpg" alt="" width={28} height={38} />
+      </span>
+      <span className="sq-book-header-trigger__copy">
+        <span className="sq-book-header-trigger__label">{label}</span>
+        <span className="sq-book-header-trigger__sub sq-brand-mono">{sub}</span>
+      </span>
+    </button>
   )
 }

@@ -21,9 +21,10 @@ import {
   STATUT_LABELS,
 } from '@/lib/salim-qa/constants'
 import type { SalimQaFacets, SalimQaQuestionPublic } from '@/lib/salim-qa/types'
-import { SalimQaBuyBookButton, SalimQaPaywallBlock } from './SalimQaBookModal'
+import { SalimQaPaywallBlock } from './SalimQaBookModal'
 import { SalimQaAuthBar } from './SalimQaAuthBar'
-import { SalimQaBookFrame } from './SalimQaBookFrame'
+import { SalimQaBookFrame, SalimQaBookHeaderTrigger } from './SalimQaBookFrame'
+import { SalimQaBookOfferModal, SalimQaBookPitch } from './SalimQaBookPitch'
 import { SalimQaDetailModal } from './SalimQaDetailModal'
 import { SalimQaFicheStack } from './SalimQaFicheViewer'
 
@@ -112,6 +113,7 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
   const [detailId, setDetailId] = useState<string | null>(null)
   const [featuredId, setFeaturedId] = useState<string | null>(null)
   const [upgradeOpen, setUpgradeOpen] = useState(false)
+  const [bookOfferOpen, setBookOfferOpen] = useState(false)
   const [unlockingId, setUnlockingId] = useState<string | null>(null)
   const [apiAccess, setApiAccess] = useState<AccessInfo | null>(null)
 
@@ -510,7 +512,13 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
               isAdmin={!!status?.isAdmin}
               hasFullAccess={hasFullAccess}
             />
-            <SalimQaBuyBookButton language={language} trackSource="salim_qa_header" onClick={logBookClick} />
+            <SalimQaBookHeaderTrigger
+              language={language}
+              onClick={() => {
+                logBookClick()
+                setBookOfferOpen(true)
+              }}
+            />
           </div>
         </div>
       </header>
@@ -731,13 +739,16 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
                 >
                   {copy.seeQ}
                 </button>
-                <SalimQaBuyBookButton
-                  language={language}
-                  variant="gold-lg"
-                  trackSource="salim_qa_featured"
-                  style={{ flex: 1, minWidth: 140 }}
-                  onClick={logBookClick}
-                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    logBookClick()
+                    setBookOfferOpen(true)
+                  }}
+                  className="sq-featured-book-btn"
+                >
+                  {language === 'fr' ? 'Découvrir le livre source →' : 'Discover the source book →'}
+                </button>
               </div>
             </div>
           </div>
@@ -971,37 +982,23 @@ export function SalimQaExplorer({ language }: SalimQaExplorerProps) {
       </main>
 
       <div className="sq-bottom-bar">
-        <div className="sq-bottom-inner">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
-            <div
-              style={{
-                width: 32,
-                height: 44,
-                borderRadius: 3,
-                background: 'linear-gradient(140deg,#FEDB10,#e6c40a)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'var(--sq-serif)',
-                fontSize: 15,
-              }}
-            >
-              S
-            </div>
-            <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 13.5, fontWeight: 600, color: '#fff' }}>{copy.bottomTitle}</div>
-              <div style={{ fontSize: 11.5, color: '#9C9C95' }}>{copy.bottomSub}</div>
-            </div>
-          </div>
-          <span style={{ flex: 1 }} />
-          <SalimQaBuyBookButton
+        <div className="sq-bottom-inner sq-bottom-inner--pitch">
+          <SalimQaBookPitch
             language={language}
-            variant="gold-lg"
+            layout="bar"
             trackSource="salim_qa_bottom_bar"
             onClick={logBookClick}
           />
         </div>
       </div>
+
+      <SalimQaBookOfferModal
+        open={bookOfferOpen}
+        language={language}
+        trackSource="salim_qa_modal"
+        onClose={() => setBookOfferOpen(false)}
+        onBookClick={logBookClick}
+      />
 
       {detail && (
         <SalimQaDetailModal

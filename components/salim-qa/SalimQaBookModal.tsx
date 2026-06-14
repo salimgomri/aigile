@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type CSSProperties } from 'react'
 import CheckoutSheet from '@/components/checkout/CheckoutSheet'
+import { SalimQaBookPitch } from './SalimQaBookPitch'
 import { formatBookPrice, getBookCtaLabel } from '@/lib/book-config'
 import { trackEvent } from '@/lib/gtag'
 import { useBookProduct } from '@/lib/book-product-context'
@@ -157,14 +158,13 @@ export function SalimQaPaywallBlock({
           </>
         )}
       </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         <button type="button" className="sq-btn-gold w-full" onClick={onUnlock}>
           {unlockLabel}
         </button>
-        <SalimQaBuyBookButton
+        <SalimQaBookPitch
           language={language}
-          variant="secondary"
-          fullWidth
+          layout="mini"
           trackSource="salim_qa_paywall"
           onClick={onBookClick}
         />
