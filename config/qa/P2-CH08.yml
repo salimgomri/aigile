@@ -1,0 +1,943 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 8
+# chapter-extractor v6.1
+
+meta:
+  partie: 2
+  nom_partie: "Mesurer ce qui compte"
+  chapitre: 8
+  titre: "La Boucle OKR Vivante"
+  sous_titre: "Cascade Sprint vers Manager vers Organisation"
+  label: "PIVOT"
+  date_extraction: "2026-06-13"
+  page_debut: 176
+  page_fin: 203
+  statut_global: en_cours
+
+questions:
+
+# BLOC 1 : Le probleme structurel
+
+  - id: "P2-CH08-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    themes_salim: [S, A, M]
+    question: >
+      Mon manager attend un bilan OKR en fin de Sprint Review et je dois
+      improviser a partir de mes donnees Scrum. Comment mettre fin a ce
+      rework subi de 2 heures par sprint ?
+    reponse: >
+      Le rework provient de l'absence de lien structure entre les donnees Sprint
+      (velocite, DORA, Niko-Niko) et le langage OKR du manager. La Boucle OKR
+      Vivante connecte ces deux systemes via un Check-in 5 questions en fin de
+      Sprint Review et un Dashboard 6 cadrans accessible en temps reel. Le SM
+      saisit les donnees au fil de l'eau, pas en session de rattrapage. Quinze
+      minutes apres la Review, le manager se connecte et lit un RAG sans que le
+      SM ait produit un seul slide.
+    douleur_terrain: >
+      Le SM consolide velocite, Niko-Niko et DORA a la main chaque fin de sprint
+      pour repondre a "on en est ou sur les six cadrans ?". Ce rework subi ne
+      s'accumule pas, ne se compare pas dans le temps, et recommence a zero au
+      sprint suivant.
+    source_expert: null
+    page: "178-179"
+    extrait: null
+    fiche_liee: "FP-P2-CH08-checklist-decision-01"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, quand]
+    themes_salim: [S, M]
+    question: >
+      Qui pose les 5 questions du Check-in, qui y repond, et a quel moment
+      exact de la ceremonie ?
+    reponse: >
+      Le Check-in a lieu en fin de Sprint Review, pas dans un meeting separe.
+      Repartition des roles : la Dev Team repond a Q1 (Sprint Goal atteint,
+      Oui / Partiel / Non). Le PO repond a Q2 (scope creep). Le SM repond a
+      Q3 (blocage organisationnel hors equipe). Le PO et le SM renseignent
+      ensemble Q4 (score de confiance OKR 1 a 5). Le SM repond seul a Q5
+      (risque identifie pour le sprint suivant, en post-review). La Dev Team
+      n'a qu'une seule question : deliberement, pour minimiser sa charge
+      administrative.
+    douleur_terrain: >
+      Le SM pose 5 questions en desordre, l'equipe repond tout le monde en
+      meme temps, et les reponses ne vont dans aucun outil. Le protocole
+      exact evite cette confusion.
+    source_expert: null
+    page: "183-185"
+    extrait: null
+    fiche_liee: "FP-P2-CH08-checklist-decision-01"
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, comment, quand, valeur]
+    themes_salim: [A, M]
+    question: >
+      Le manager ne se connecte jamais au dashboard apres la Review. Comment
+      installer cette habitude sans le relancer manuellement a chaque sprint ?
+    reponse: >
+      Communiquer la deadline une seule fois : "le dashboard est a jour 15 min
+      apres la Review." Pas a chaque sprint. Le SM ne relance pas. L'autonomie
+      de connexion du manager s'installe apres 2 a 3 mois, rarement avant, et
+      seulement si le manager ne gere pas trop d'equipes en meme temps. Pour
+      les managers multi-equipes : centraliser les cadrans de toutes les equipes
+      dans la meme vue.
+    douleur_terrain: >
+      Le SM envoie un lien par email apres chaque Review. Le manager clique
+      une fois sur deux. L'historique ne s'accumule pas. Le tableau de bord
+      devient un artefact sans lecteur.
+    source_expert: null
+    page: "194"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    themes_salim: [S, A]
+    question: >
+      Un blocage organisationnel est remonte en Q3 et le manager ne repond
+      pas. Combien de temps j'attends avant d'agir ?
+    reponse: >
+      Garde-fou a mettre en place avant de demarrer la Boucle : si une decision
+      manager reste sans reponse apres 5 jours ouvres, le SM formule une
+      decision par defaut et la documente dans l'outil : "Sans reponse du
+      manager, l'equipe a applique la decision X." Ce moment est visible dans
+      le dashboard. C'est une protection, pas une sanction. Documenter dans
+      l'outil rend l'absence de reponse visible, ce qui cree une pression
+      naturelle sans confrontation directe.
+    douleur_terrain: >
+      Le SM remonte un blocage. Le manager ne repond pas. Le SM relance.
+      Silence. Le sprint suivant demarre avec le meme blocage non resolu.
+      L'equipe perd confiance dans le systeme de remontee.
+    source_expert: null
+    page: "195"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-05"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, quand, valeur]
+    themes_salim: [S, M]
+    question: >
+      Mon equipe n'a pas de pipeline CI/CD. Est-ce que la Boucle OKR Vivante
+      est quand meme applicable ?
+    reponse: >
+      Oui. Version terrain minimale : 3 cadrans seulement. On Time (Sprint Goal
+      atteint), Bien-etre (Niko-Niko manuel), Blocages (Q3 oral). Les 3 autres
+      cadrans arrivent quand l'infrastructure le permet. La roadmap de
+      deploiement propose 4 phases sur 7 sprints : commencer avec Q1 uniquement
+      en Sprints 1-2, puis monter graduellement.
+    douleur_terrain: >
+      Le SM pense que le Dashboard 6 cadrans necessite des outils sophistiques.
+      Il reporte l'adoption indefiniment. En attendant, le rework ad hoc
+      continue.
+    source_expert: null
+    page: "195-196"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-06"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [M, I]
+    question: >
+      La Team Predictability est a 65 %. Est-ce une alerte ou est-ce
+      acceptable ?
+    reponse: >
+      Les seuils RAG sont des points de depart, pas des verdicts. Vert : 80 %
+      et plus. Ambre : 60-79 %. Rouge : sous 60 %. Mais une equipe junior a
+      65 % en progression constante sur 6 sprints vaut mieux qu'une equipe
+      senior a 90 % qui plafonne. C'est la tendance sur 6 sprints qui parle,
+      pas le chiffre isole d'un sprint.
+    douleur_terrain: >
+      Le manager voit 65 % et declare l'equipe en difficulte. Le SM n'a pas
+      d'outil pour contextualiser ce chiffre avec la courbe de progression.
+    source_expert: null
+    page: "190"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 2 : Les 3 erreurs OKR classiques
+
+  - id: "P2-CH08-SM-07"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, pourquoi, valeur]
+    themes_salim: [S]
+    question: >
+      Mon equipe a un Sprint Goal qui consiste a "livrer le module de
+      facturation". Le management appelle ca un Key Result. Est-ce correct ?
+    reponse: >
+      Non. C'est l'Erreur 1 : confondre Key Result et tache Sprint. Quand un
+      Key Result est une tache, il devient un engagement de livraison deguise
+      en objectif. L'equipe perd la flexibilite d'adapter le "comment" en cours
+      de route. Un vrai Key Result mesure un resultat : "Porter le taux de
+      conversion de 61 % a 75 %" est un Key Result. Le module est peut-etre le
+      moyen d'y arriver. Ou pas. C'est l'equipe qui decide.
+    douleur_terrain: >
+      Le SM voit ses Sprint Goals rediges en taches de livraison. Il ne sait
+      pas comment requalifier ca sans mettre le management en opposition.
+    source_expert: "Christina Wodtke, Radical Focus : ce que l'equipe livre n'est pas ce que le client ressent."
+    page: "180-181"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-08"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: DEAN_LEFFINGWELL
+    dimensions: [quoi, pourquoi, quand, valeur]
+    themes_salim: [I, M]
+    question: >
+      Les OKR de l'organisation sont revus en fin de trimestre. Entre les deux,
+      personne n'en parle. Qu'est-ce que ca coute concretement ?
+    reponse: >
+      Douze semaines sans signal de progression, c'est six sprints de deux
+      semaines perdus. Dean Leffingwell identifie ce probleme dans SAFe : sans
+      point de synchronisation frequent, les OKR Portfolio et les realites
+      terrain divergent a chaque PI. La sortie : le Check-in integre en fin de
+      Sprint Review. Un signal toutes les deux semaines, pas une reunion de plus.
+    douleur_terrain: >
+      Le SM sait que les OKR trimestriels ne correspondent plus au terrain depuis
+      6 semaines, mais personne n'a defini quand et comment les reajuster.
+    source_expert: "Dean Leffingwell, SAFe : sans synchronisation frequente, les OKR Portfolio divergent des realites terrain a chaque PI."
+    page: "181-182"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 3 : Dashboard 6 cadrans
+
+  - id: "P2-CH08-SM-09"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi]
+    themes_salim: [M]
+    question: >
+      Le cadran On Budget necessite les donnees de cout que je n'ai pas acces.
+      Que faire ?
+    reponse: >
+      C'est le seul cadran que le SM ne pilote pas seul : c'est le manager ou
+      le budget holder qui le met a jour. Si ce partage n'est pas possible,
+      utiliser un indicateur proxy : le nombre de sprints dans les delais sur
+      les 3 derniers mois. En regie jours-homme : un sprint a 80 % de capacite
+      reelle vs 100 % planifiee dit deja beaucoup. Le SM fournit la donnee
+      brute, le manager complete le cadran.
+    douleur_terrain: >
+      Le SM n'a acces ni aux couts ni aux donnees budgetaires. Il ne peut pas
+      alimenter le cadran On Budget sans creer un probleme de gouvernance.
+    source_expert: null
+    page: "186-189"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-10"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, valeur]
+    themes_salim: [M]
+    question: >
+      Le score de confiance OKR (1 a 5) : comment je calibre l'echelle avec
+      le PO pour que ce ne soit pas subjectif ?
+    reponse: >
+      Trois ancres de calibration : 1 = tres peu confiants (le blocage actuel
+      met directement l'Objective a risque), 3 = sur la bonne voie mais des
+      risques existent, 5 = tres confiants (aucun obstacle majeur). Un score
+      a 2 genere dans l'application une narrative du type : "L'equipe exprime
+      une faible confiance dans l'atteinte de l'Objective. Action recommandee :
+      revue de priorite backlog en lien avec les Key Results."
+    douleur_terrain: >
+      Le SM et le PO donnent des scores differents parce qu'ils n'ont pas la
+      meme definition du "2". La calibration se fait une seule fois, en debut
+      de mise en place.
+    source_expert: null
+    page: "185"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-11"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, pourquoi]
+    themes_salim: [M, S]
+    question: >
+      Le Happiness Index est visible dans le dashboard manager. Est-ce que
+      j'expose des donnees individuelles ?
+    reponse: >
+      Non. Regle explicite : le Happiness Index dans le dashboard manager ne
+      presente que la moyenne d'equipe sur le sprint, jamais les scores
+      individuels. La regle est validee avec l'equipe avant activation de ce
+      cadran. Si l'equipe refuse, le cadran n'est pas active.
+    douleur_terrain: >
+      Le SM active le cadran Bien-etre sans prevenir l'equipe. Un membre realise
+      que son score individuel Niko-Niko est visible par le manager. La
+      confiance est detruite.
+    source_expert: null
+    page: "190"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 4 : Burn-up
+
+  - id: "P2-CH08-SM-12"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: MIKE_COHN
+    dimensions: [quoi, pourquoi, valeur]
+    themes_salim: [L, M]
+    question: >
+      Mon manager prefere le burndown parce qu'il voit "ce qu'il reste a
+      faire". Comment lui expliquer que le burn-up est plus fiable ?
+    reponse: >
+      Le burndown donne une fausse impression de controle quand le scope est
+      instable. Mike Cohn dans Succeeding with Agile : un burndown stable dans
+      un contexte de scope instable est plus dangereux qu'une mauvaise nouvelle
+      explicite, parce qu'il empeche la conversation d'avoir lieu. Le burn-up
+      trace deux courbes (scope total et points cumules valides) et rend le
+      scope creep immediatement visible.
+    douleur_terrain: >
+      Le SM sait que le scope a gonfle de 20 % depuis le S1 mais le burndown
+      descend normalement. Le manager croit que tout va bien. La conversation
+      sur la date n'a pas lieu.
+    source_expert: "Mike Cohn, Succeeding with Agile : un burndown stable dans un contexte de scope instable est plus dangereux qu'une mauvaise nouvelle explicite."
+    page: "191-192"
+    extrait: null
+    fiche_liee: "FP-P2-CH08-reference-02"
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-13"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, quand, pourquoi]
+    themes_salim: [L, I]
+    question: >
+      A partir de quel sprint est-il pertinent de produire le burn-up ?
+    reponse: >
+      Pas avant le S1 : le gabarit d'estimation n'est pas encore calibre et la
+      velocite fluctue. Pour les equipes sans historique, attendre S3 ou S4
+      quand la velocite se stabilise et que le gabarit est rode. Certaines
+      equipes estiment des le Sprint 1 avec de bons resultats quand le contexte
+      est connu et l'equipe se connait deja.
+    douleur_terrain: >
+      Le SM produit un burn-up au Sprint 1 avec une velocite hypothetique. Le
+      cone de confiance est si large qu'il ne sert a rien. Le management perd
+      confiance dans l'outil.
+    source_expert: null
+    page: "193-194"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-SM-14"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, valeur]
+    themes_salim: [L, M]
+    question: >
+      Comment lire le burn-up pour repondre au manager sur la date de livraison
+      du MVP sans donner une fausse promesse ?
+    reponse: >
+      Lecture avec scope fixe : tracer la ligne horizontale au niveau du MVP en
+      points. Elle coupe les trois courbes de projection (Max, Avg, Min).
+      Projeter chaque intersection verticalement sur l'axe X. On obtient une
+      fourchette de dates. La reponse au management : "entre S8 et S9, selon la
+      velocite des prochains sprints." C'est une reponse honnete, tracable,
+      avec deux bornes exploitables.
+    douleur_terrain: >
+      Le SM donne une date unique au manager. La date passe, le scope n'est pas
+      livre. La credibilite du SM s'effondre alors que le probleme etait une
+      question de methode de lecture, pas de performance d'equipe.
+    source_expert: null
+    page: "193"
+    extrait: null
+    fiche_liee: "FP-P2-CH08-reference-02"
+    fiche_destinee_a: [SM, PO, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 5 : PO
+
+  - id: "P2-CH08-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: CHRISTINA_WODTKE
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [S, L]
+    question: >
+      Comment reformuler les Key Results de mon equipe pour qu'ils mesurent
+      un resultat et non une livraison ?
+    reponse: >
+      Christina Wodtke dans Radical Focus : ce que l'equipe livre n'est pas ce
+      que le client ressent. Test simple : le Key Result change-t-il si l'equipe
+      livre le module par un autre moyen ? Si oui, c'est un resultat. Si non,
+      c'est une tache deguisee. Formule de bascule : remplacer "livrer X" par
+      "porter [metrique] de Y a Z d'ici fin de trimestre".
+    douleur_terrain: >
+      Le PO croit avoir des OKR valides parce qu'il a rempli le template. Mais
+      chaque Key Result est une tache deguisee. L'equipe ne peut pas piloter
+      sa priorite de sprint sur ces Key Results.
+    source_expert: "Christina Wodtke, Radical Focus : ce que l'equipe livre n'est pas ce que le client ressent."
+    page: "180-181"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, quand, pourquoi]
+    themes_salim: [S, I]
+    question: >
+      La regle de derivation OKR-Sprint : comment je verifie que chaque Sprint
+      Goal est bien relie a un Key Result avant de lancer le Sprint Planning ?
+    reponse: >
+      Regle documentee dans le chapitre : chaque Sprint Goal doit repondre a
+      "En quoi ce sprint contribue-t-il a un Key Result ?". Si la reponse est
+      "on ne sait pas", le sprint n'a pas d'alignement strategique. Reparer
+      avant de demarrer le sprint, pas apres. Le PO est accountable de cette
+      verification, pas le SM.
+    douleur_terrain: >
+      Le PO demarre le Sprint Planning sans avoir verifie le lien OKR. A mi-
+      trimestre, le management realise que les 6 derniers sprints n'ont pas
+      avance les Key Results.
+    source_expert: null
+    page: "190"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-PO-03"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [quoi, pourquoi, valeur]
+    themes_salim: [S, L]
+    question: >
+      Le PO se dit "les OKR c'est pas mon role, c'est le management qui les
+      fixe". Est-ce juste ?
+    reponse: >
+      Non. Les Key Results eclairent directement les priorites du backlog. Un
+      PO qui comprend les OKR de l'organisation decide mieux ce qui entre dans
+      le sprint suivant. C'est son meilleur outil de priorisation : il peut
+      defendre ses choix de backlog avec un argument strategique, pas seulement
+      fonctionnel.
+    douleur_terrain: >
+      Le PO priorise sous pression des stakeholders sans argument strategique.
+      Il cede au stakeholder le plus bruyant au lieu de piloter par les OKR.
+    source_expert: null
+    page: "197"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 6 : DEV
+
+  - id: "P2-CH08-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, quand]
+    themes_salim: [S, M]
+    question: >
+      Quelle est ma contribution exacte dans le Check-in OKR en fin de Sprint
+      Review ? Dois-je me prononcer sur les OKR de l'organisation ?
+    reponse: >
+      Une seule question pour la Dev Team : "Le Sprint Goal a-t-il ete atteint ?"
+      (Oui / Partiel / Non). Quinze secondes. La reponse alimente directement
+      le cadran On Time du dashboard. Pas de prononce sur les OKR de
+      l'organisation : c'est delibere. Le SM et le PO portent les questions OKR.
+      La Dev Team est protegee de la charge administrative.
+    douleur_terrain: >
+      Le dev se sent questionne sur des sujets strategiques qu'il ne maitrise
+      pas. Il repond vaguement pour ne pas se tromper. Le Check-in devient une
+      source de mal-etre.
+    source_expert: null
+    page: "183-185"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [L, M]
+    question: >
+      Mon manager utilise la velocite de l'equipe pour promettre des dates
+      au comite de direction. Comment le burn-up me protege de cette situation ?
+    reponse: >
+      Le burn-up donne une fourchette de dates avec trois scenarios de velocite
+      (Max, Avg, Min). La reponse au management devient "entre S8 et S9 selon
+      la velocite des prochains sprints", pas une date unique. Le cone de
+      confiance se retrecit sprint apres sprint : au Sprint 8, il ne reste plus
+      qu'un ou deux sprints d'ecart. Si le manager prend la date Max comme
+      engagement, le burn-up montre immediatement que c'est le scenario le plus
+      optimiste.
+    douleur_terrain: >
+      Le dev donne une estimation en Sprint Planning. Le manager la transforme
+      en date de livraison gravee dans le marbre. Deux sprints plus tard, le
+      scope a gonfle de 15 % et le dev est tenu responsable du retard.
+    source_expert: null
+    page: "191-193"
+    extrait: null
+    fiche_liee: "FP-P2-CH08-reference-02"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-DEV-03"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, pourquoi, quand]
+    themes_salim: [M, I]
+    question: >
+      Le score de confiance OKR que le SM et le PO renseignent : en quoi
+      ca me concerne en tant que dev ?
+    reponse: >
+      Un score bas (1 ou 2) genere une recommandation d'action sur les priorites
+      backlog. Si le Key Result menace est lie a une couche technique (performance,
+      securite, fiabilite), le dev est directement implique dans la decision de
+      replanification. Le score bas est un signal que le prochain Sprint Planning
+      va etre impacte. Mieux vaut le savoir maintenant que de decouvrir le
+      changement de priorite en debut de sprint.
+    douleur_terrain: >
+      Le dev decouvre en Sprint Planning que les priorites ont change sans
+      explication strategique. Il refait son estimation sur des stories qu'il
+      ne comprend pas encore. La session dure 4 heures au lieu de 2.
+    source_expert: null
+    page: "185"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 7 : CA
+
+  - id: "P2-CH08-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [quoi, comment, pourquoi]
+    themes_salim: [M, A]
+    question: >
+      Comment diagnostiquer si la Boucle OKR Vivante est reelle ou si c'est
+      un theatre de reporting ?
+    reponse: >
+      Deux signaux de theatre : (1) le score de confiance OKR est toujours a 4
+      ou 5 sprint apres sprint sans variation ; (2) les cadrans sont verts en
+      permanence meme quand le terrain dit le contraire. Si la culture
+      organisationnelle punit les equipes qui remontent des signaux negatifs,
+      le Check-in devient un exercice de communication positive. Le modele ne
+      resout pas ce probleme : il necessite un manager qui accepte que les
+      donnees remontantes puissent changer ses priorites.
+    douleur_terrain: >
+      Le Coach voit les cadrans verts semaine apres semaine. Mais il sait que
+      l'equipe est en difficulte. La boucle tourne mais elle ne dit pas la verite.
+    source_expert: null
+    page: "198-199"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [quoi, comment, quand]
+    themes_salim: [A, I]
+    question: >
+      Comment accompagner le passage de la Boucle OKR Vivante a la variante
+      SAFe pour un Agile Release Train ?
+    reponse: >
+      Trois adaptations dans un ART : (1) la question sur le blocage devient
+      "Dependance inter-equipes non resolue ?" ; (2) le score de confiance OKR
+      devient Confidence Rate PI Objectives ; (3) le rythme de Check-in s'aligne
+      sur le PI Planning. Le chapitre 13 couvre cette adaptation en detail.
+    douleur_terrain: >
+      Le Coach introduit la Boucle OKR dans un contexte SAFe et se retrouve
+      avec deux rythmes incompatibles : le sprint bimensuel et le PI trimestriel.
+    source_expert: null
+    page: "186"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA, RTE]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-CA-03"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, comment, quand, valeur]
+    themes_salim: [S, I]
+    question: >
+      Comment accompagner une equipe qui refuse la Boucle OKR Vivante en
+      disant "encore un truc a remplir" ?
+    reponse: >
+      La resistance vient d'une experience passee avec des outils de reporting
+      qui n'ont jamais change quoi que ce soit. La reponse n'est pas de
+      convaincre mais de demonstrer : deployer d'abord uniquement Q1 (Sprint
+      Goal atteint, 15 secondes, une question fermee). Deux sprints plus tard,
+      montrer qu'un blocage remonte en Q3 et est reellement debloque par le
+      manager. Ce signal change tout : "nos remontees changent quelque chose."
+    douleur_terrain: >
+      Le Coach introduit le Check-in. L'equipe repond "on a deja trois ceremonies,
+      c'est trop". Le Coach n'a pas d'argument terrain parce qu'il n'a pas
+      commence par la version minimale.
+    source_expert: null
+    page: "196"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 8 : RTE
+
+  - id: "P2-CH08-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: DEAN_LEFFINGWELL
+    dimensions: [qui, quoi, comment, quand, valeur]
+    themes_salim: [I, M]
+    question: >
+      Comment utiliser la Boucle OKR Vivante pour maintenir l'alignement
+      entre 3 equipes sur un meme PI Objective sans attendre la fin du PI ?
+    reponse: >
+      La cascade bidirectionnelle est le mecanisme : chaque equipe remonte ses
+      blocages via Q3 et son score de confiance via Q4. Le RTE consolide ces
+      signaux sprint par sprint et intervient avant que la divergence ne devienne
+      structurelle. Dean Leffingwell identifie ce gap dans SAFe : sans point de
+      synchronisation frequent, les OKR Portfolio et les realites terrain
+      divergent a chaque PI.
+    douleur_terrain: >
+      Le RTE attend le PI Review pour decouvrir que deux equipes ont pris des
+      directions divergentes depuis 6 semaines. La correction prend un PI complet.
+    source_expert: "Dean Leffingwell, SAFe : sans synchronisation frequente, OKR Portfolio et realites terrain divergent a chaque PI."
+    page: "181-182"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [RTE]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 9 : MG
+
+  - id: "P2-CH08-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, quand]
+    themes_salim: [A, M]
+    question: >
+      Dois-je assister a la Sprint Review pour voir le dashboard OKR ?
+    reponse: >
+      Non. Le manager n'assiste pas au Check-in : il se connecte au dashboard
+      quand il veut, apres la Review. Regle d'or : le dashboard est a jour
+      15 minutes apres la Sprint Review. Pas un email. Pas un PDF en attente.
+      Un acces en temps reel, disponible depuis n'importe quel appareil.
+    douleur_terrain: >
+      Le manager pense qu'il doit assister a la Sprint Review pour obtenir les
+      donnees. Il y va, prend 15 minutes de retard, pose une question, et repart.
+      L'equipe vit ca comme une intrusion.
+    source_expert: null
+    page: "183"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, comment, valeur]
+    themes_salim: [M]
+    question: >
+      Comment je lis le Dashboard 6 cadrans en moins de 30 secondes pour
+      decider si j'ai besoin d'intervenir ?
+    reponse: >
+      Lecture RAG en trois etapes : (1) Scanner les 6 couleurs. Tout vert :
+      aucune intervention requise. (2) Un ambre ou un rouge : ouvrir le cadran
+      en detail, lire la narrative generee. (3) Rouge avec flag blocage
+      organisationnel actif : annoter directement dans l'application (decision,
+      deblocage, date). Chaque annotation est attachee au sprint et visible par
+      l'equipe au sprint suivant.
+    douleur_terrain: >
+      Le manager ouvre le dashboard et ne sait pas quoi regarder en premier.
+      Il lit tout, passe 10 minutes, et ne prend toujours pas de decision.
+    source_expert: null
+    page: "186"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, pourquoi, comment]
+    themes_salim: [S]
+    question: >
+      Le SM me dit que la cascade OKR est trop descendante et que les equipes
+      subissent les OKR sans les influencer. Est-ce un vrai probleme et comment
+      le corriger ?
+    reponse: >
+      Oui, c'est l'Erreur 2 : cascade top-down pure. Les equipes apprennent a
+      cocher les cases sans que les OKR influencent reellement leurs decisions.
+      La Boucle OKR Vivante est bidirectionnelle : les equipes remontent signaux,
+      blocages, risques ; le manager ajuste ses priorites et annote dans l'outil.
+      Si le manager n'ajuste jamais ses priorites suite aux remontees, la boucle
+      devient descendante de facto.
+    douleur_terrain: >
+      Le manager croit avoir mis en place une boucle bidirectionnelle parce qu'il
+      lit le dashboard. Mais il n'a jamais modifie une priorite suite a une
+      remontee d'equipe.
+    source_expert: null
+    page: "181"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-MG-04"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, comment, valeur]
+    themes_salim: [M]
+    question: >
+      Comment calculer le cout par sprint pour alimenter le cadran On Budget
+      si mon organisation travaille en regie jours-homme ?
+    reponse: >
+      Multiplier le nombre de jours consommes par le taux journalier moyen.
+      Exemple : 8 personnes x 10 jours x 550 euros/jour = 44 000 euros par
+      sprint. Le budget planifie correspond a la capacite nominale. Le budget
+      reel integre les absences, les jours non facturables, les incidents.
+      Seuil d'alerte : depassement superieur a 10 % sur deux sprints consecutifs.
+    douleur_terrain: >
+      Le manager n'a pas de reference pour calculer le cout sprint. Il utilise
+      des approximations qui varient chaque sprint. La comparaison dans le temps
+      devient impossible.
+    source_expert: null
+    page: "189"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+# BLOC 10 : DC
+
+  - id: "P2-CH08-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: JOHN_DOERR
+    dimensions: [quoi, pourquoi, comment, valeur]
+    themes_salim: [S, I]
+    question: >
+      J'ai deploye les OKR dans toute l'organisation il y a 6 mois. Les equipes
+      les affichent en janvier et les oublient en fevrier. Pourquoi et comment
+      reparer ca sans tout recommencer ?
+    reponse: >
+      C'est le symptome de l'Erreur 3 : revue trimestrielle deconnectee du
+      rythme Sprint. Pas de boucle = pas de signal = OKR decores sur les murs
+      en janvier, oublies en fevrier. La reparation ne necessite pas de repartir
+      de zero : ajouter le Check-in 5 questions en fin de Sprint Review dans
+      chaque equipe. John Doerr dans Measure What Matters : les OKR ne sont
+      pas un outil de reporting, ce sont un outil d'alignement. La boucle de
+      retour frequente est ce qui les maintient vivants.
+    douleur_terrain: >
+      Le DSI a investi dans un seminaire OKR, des coaches, des outils. En mars,
+      personne ne sait plus quels sont les Key Results du trimestre.
+    source_expert: "John Doerr, Measure What Matters : les OKR ne sont pas un outil de reporting, ce sont un outil d'alignement."
+    page: "180-182"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH08-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, pourquoi, valeur]
+    themes_salim: [S, A]
+    question: >
+      Le modele de cascade bidirectionnelle necessite que le manager prenne des
+      decisions dans l'outil apres chaque Review. Si le manager ne joue pas le
+      jeu, le systeme s'effondre ?
+    reponse: >
+      Oui, c'est la limite documentee. Ce qui conditionne tout : un manager qui
+      accepte que les donnees remontantes puissent changer ses priorites, et une
+      equipe qui croit que ses signaux seront entendus. Ces deux conditions
+      relevent de la securite psychologique et de la culture organisationnelle
+      (chapitre 15). Le garde-fou des 5 jours ouvres cree une pression naturelle :
+      si la decision n'est pas annotee, l'equipe documente et agit. Ce moment
+      est visible dans le dashboard.
+    douleur_terrain: >
+      Le DSI a deploye la Boucle OKR Vivante. Les managers lisent les dashboards
+      mais n'annotent jamais. L'equipe remonte des blocages depuis 3 sprints.
+      La boucle devient une illusion d'ecoute.
+    source_expert: null
+    page: "198-199"
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+trous:
+  - id: "T01"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: >
+      Comment adapter le Check-in OKR si l'equipe travaille en sprints
+      d'une semaine plutot que deux semaines ?
+    action: >
+      Ajouter une note ou encadre : regrouper les Check-ins en bimensuel ou
+      adapter le garde-fou a 3 jours ouvres pour les equipes en sprint 1 semaine.
+
+  - id: "T02"
+    role: MG
+    cible: MANAGER
+    question_manquante: >
+      Comment piloter plusieurs equipes avec le Dashboard 6 cadrans sans
+      passer plus de 30 minutes par semaine ?
+    action: >
+      Ajouter un schema ou section "Vue portfolio" : une ligne par equipe,
+      6 RAG par ligne. Peut renvoyer vers le chapitre 13 si la vue ART y
+      est traitee.
+
+stats:
+  questions_totales: 30
+  par_role:
+    SM: 14
+    PO: 3
+    DEV: 3
+    CA: 3
+    RTE: 1
+    MG: 4
+    DC: 2
+  par_statut:
+    provisoire: 0
+    confirmee: 30
+    trou: 0
+  couverture_dimensions:
+    qui: 16
+    quoi: 23
+    comment: 15
+    pourquoi: 14
+    quand: 12
+    valeur: 14
+  couverture_themes_salim:
+    S: 14
+    A: 7
+    L: 6
+    I: 9
+    M: 19
+  schemas_lies: 0

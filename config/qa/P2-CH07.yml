@@ -1,0 +1,357 @@
+# Le Système S.A.L.I.M. : Q&A Chapitre 7
+# chapter-extractor v6.1
+
+meta:
+  partie: 2
+  nom_partie: "Mesurer ce qui compte"
+  chapitre: 7
+  titre: "DORA Metrics : l'ingénierie qui compte"
+  date_extraction: "2026-06-14"
+  page_debut: 160
+  page_fin: 173
+  statut_global: valide
+
+questions:
+
+  - id: "P2-CH07-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    themes_salim: ["S", "M"]
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "Les DORA Metrics me concernent-elles si je ne suis pas développeur, et comment je m'en sers sans passer pour quelqu'un qui joue les ingénieurs ?"
+    reponse: "Oui, mais autrement que les devs. Tu n'es pas l'ingénieur, tu es le facilitateur (page 169). Le chapitre propose trois questions ouvertes a poser en rétrospective, quinze minutes en debut de cérémonie : qu'est-ce qui empêche de déployer plus souvent, qu'est-ce qui prend le plus de temps quand un bug arrive en prod, et quel pourcentage des déploiements se passe sans stress (page 170). Ton rôle : faire émerger les frictions, pas les corriger toi-même."
+    douleur_terrain: "Le SM non-tech évite le sujet DORA de peur de devoir répondre à des questions techniques qu'il ne maîtrise pas."
+    source_expert: null
+    page: 169
+    extrait: "En tant que Scrum Master, tu n'es pas responsable de l'implementation des pratiques DevOps. [...] Mais tu es responsable de créer les conditions dans lesquelles ces ameliorations peuvent avoir lieu."
+    fiche_liee: "FP-P2-CH07-memo-reference-01"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-01"]
+
+  - id: "P2-CH07-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    themes_salim: ["A", "M"]
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: "Comment intégrer les DORA dans le Dashboard Manager sans créer une bureaucratie de mesure ni demander a l'équipe de remplir un tableau de plus ?"
+    reponse: "Le cadran Qualité du Dashboard 6 cadrans (Chapitre 8) s'alimente du CFR comme métrique principale et du taux de bugs entrants en tendance comme indicateur secondaire (page 171). La mesure est cote CI/CD, pas manuelle. Démarre par une seule DORA, la Deployment Frequency, avec un compteur simple, post-it sur le tableau ou champ dans le CI. Après 3 sprints tu as une baseline, puis ajoute le Lead Time for Changes (page 164). Ne pas mesurer les 4 simultanément : l'effort de collecte noie le signal."
+    douleur_terrain: "Dès qu'on parle de métriques engineering, le premier réflexe est un tableau Excel qui prend 2h à remplir chaque sprint."
+    source_expert: null
+    page: 164
+    extrait: "Démarrez par une seule DORA : la Deployment Frequency. [...] Ne pas mesurer les 4 simultanément : l'effort de collecte noie le signal."
+    fiche_liee: "FP-P2-CH07-memo-reference-01"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH07-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: DAVE_FARLEY
+    themes_salim: ["M"]
+    dimensions: [quoi, comment, pourquoi, valeur]
+    question: "Quelles sont les 4 métriques DORA, pourquoi ces 4 précisément et pas d'autres, et comment je situe mon équipe sur les niveaux Elite/High/Medium/Low ?"
+    reponse: "Deployment Frequency (cadence de livraison), Lead Time for Changes (temps entre le premier commit et la prod), Change Failure Rate (pourcentage de déploiements causant un incident) et Mean Time to Recovery (temps de rétablissement après incident). Ces 4 métriques se sont révélées systématiquement corrélées a la performance organisationnelle dans les recherches DORA : ni la taille de l'équipe, ni le langage, ni le framework agile (page 163). Les niveaux Elite de référence : DF plusieurs fois par jour, LT moins d'1 heure, CFR 0-5%, MTTR moins d'1 heure (page 172). Note : ces seuils sont basés sur le rapport State of DevOps 2019, les editions 2023-2024 ont légèrement relevé certains seuils Elite (page 163)."
+    douleur_terrain: "Le dev entend parler de DORA en reunion mais ne comprend pas pourquoi ces 4 métriques précisément, et confond souvent vitesse de livraison et qualité."
+    source_expert: "Nicole Forsgren, Jez Humble, Gene Kim, Accelerate, 2018"
+    page: 163
+    extrait: "Résultat : quatre métriques se sont révélées systématiquement corrélées a la performance organisationnelle. Pas la taille de l'équipe. Pas le langage de programmation. Pas le framework agile utilise. Ces quatre métriques-là."
+    fiche_liee: "FP-P2-CH07-memo-reference-01"
+    fiche_destinee_a: [DEV, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-01"]
+
+  - id: "P2-CH07-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: DAVE_FARLEY
+    themes_salim: ["L", "M"]
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    question: "Mon équipe casse souvent la prod et le Change Failure Rate est dans le rouge. Par où je commence pour l'améliorer, et comment je sais que c'est vraiment un problème de CFR et pas juste un mauvais sprint ?"
+    reponse: "Lis toujours le CFR en combinaison avec la Deployment Frequency (page 166). Si la DF est basse et le CFR bas, c'est souvent une illusion de qualité : l'équipe déploie si rarement qu'elle a le temps de tout tester manuellement (page 166 et tableau page 167, profil DF basse + CFR bas). Si la DF est haute et le CFR haute, l'équipe déploie souvent mais casse beaucoup : tests insuffisants, et la réponse est d'aller plus lentement pour aller plus vite (page 167). Niveau Elite du CFR : 0 a 5%. Au-delà de 15%, le pipeline est instable (page 166)."
+    douleur_terrain: "Le dev voit que son équipe casse souvent la prod mais isole le CFR sans le croiser avec la fréquence de déploiement, et tire la mauvaise conclusion."
+    source_expert: null
+    page: 167
+    extrait: "DF haute + CFR haute : L'équipe déploie souvent mais casse beaucoup. Tests insuffisants. Aller plus lentement pour aller plus vite."
+    fiche_liee: "FP-P2-CH07-checklist-decision-01"
+    fiche_destinee_a: [DEV, CA, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-02"]
+
+  - id: "P2-CH07-DEV-03"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: DAVE_FARLEY
+    themes_salim: ["I", "M"]
+    dimensions: [qui, quoi, comment, quand]
+    question: "Comment je mesure le Lead Time for Changes si mon équipe n'a pas de pipeline CI/CD sophistique, sans attendre 6 mois d'outillage avant de commencer ?"
+    reponse: "TROU PARTIEL. Le chapitre explique ce que mesure le Lead Time, du commit a la prod (page 164), et fournit le tableau de niveaux (Elite moins d'1h, Low plus de 1 mois, page 164). Mais il ne décrit pas de méthode de mesure manuelle pour une équipe sans CI/CD. Le chapitre recommande de démarrer par la Deployment Frequency avant le Lead Time (page 164, encart En pratique), ce qui répond indirectement : commence par compter les déploiements a la main avant de t'attaquer au Lead Time."
+    douleur_terrain: "Le dev travaille dans une organisation peu mature DevOps. Les DORA lui semblent inaccessibles sans infrastructure technique avancée, et il abandonne avant d'essayer."
+    source_expert: null
+    page: 164
+    extrait: "Démarrez par une seule DORA : la Deployment Frequency. Installez un compteur simple (post-it sur le tableau ou champ dans ton CI). Après 3 sprints, tu as une baseline."
+    fiche_liee: null
+    fiche_destinee_a: [DEV]
+    statut_reponse: trou
+    action_recommandee: "Ajouter un encart En pratique sous la section Lead Time for Changes (page 164-165) : méthode de mesure manuelle (horodatage premier commit vs date de mise en prod, même via un tableur), avant d'introduire un outillage CI/CD dédié."
+    schemas_lies: []
+
+  - id: "P2-CH07-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: LISA_CRISPIN
+    themes_salim: ["S", "M"]
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Les DORA doivent-elles figurer dans ma Sprint Review, et si oui comment je les présente sans avoir l'air d'usurper le rôle du SM ou des devs ?"
+    reponse: "Le cadran Qualité du Dashboard (Chapitre 8) peut être présenté en Review comme signal d'ingénierie : tu rends les DORA visibles aux stakeholders sans les interpreter toi-même (page 171, indicateur secondaire = taux de bugs entrants en tendance). Attention au piège identifié page 171 : ne confonds pas nombre de bugs traités et qualité réelle. Une équipe qui traite vingt bugs par sprint n'est pas une équipe de qualité, elle produit beaucoup de défauts. L'indicateur valide est le taux de bugs entrants, en baisse sur cinq sprints."
+    douleur_terrain: "Le PO présente des features livrées en Review mais ignore complètement l'état de santé technique du produit, jusqu'au jour où un incident majeur arrive et personne n'avait vu venir la dégradation."
+    source_expert: "Forsgren, Humble, Kim, Accelerate : ce qui compte, c'est la réduction du flux de défauts, pas la vitesse de traitement."
+    page: 171
+    extrait: "Il existe un indicateur complémentaire valide : le taux de bugs entrants par sprint, pas les bugs traités, les bugs détectés. Si le nombre de nouveaux bugs détectés diminue sur cinq sprints, la qualité s'améliore structurellement."
+    fiche_liee: "FP-P2-CH07-memo-reference-01"
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH07-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    themes_salim: ["S", "M"]
+    dimensions: [qui, quoi, comment, quand, valeur]
+    question: "Si le cadran Qualité passe au rouge pendant ma Sprint Review et qu'un stakeholder me demande pourquoi, est-ce à moi de répondre ou je renvoie au SM ?"
+    reponse: "Tu présentes le chiffre, tu ne l'expliques pas techniquement : ça reste le rôle du SM et de l'équipe (page 169, le SM est facilitateur, pas l'ingénieur, et page 171 le cadran Qualité s'alimente du CFR et du MTTR cote DORA). En Review, applique la même logique que la règle RAG du Ch.12 : observation (le chiffre est rouge), hypothèse de cause si l'équipe l'a déjà partagée en rétrospective, et renvoi vers l'équipe pour le plan d'action. Tu n'inventes pas de cause technique devant les stakeholders."
+    douleur_terrain: "Le PO se retrouve seul face à un stakeholder qui pointe un indicateur rouge en Review, improvise une explication technique fausse, et l'équipe doit ensuite se justifier sur une cause qu'elle n'a jamais formulée."
+    source_expert: null
+    page: 171
+    extrait: "Quand tu présentes le dashboard (Chapitre 8), le cadran Qualité s'alimente des DORA : en particulier du CFR et du MTTR."
+    fiche_liee: "FP-P2-CH07-memo-reference-01"
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH07-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: DAVE_FARLEY
+    themes_salim: ["M"]
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "J'arrive dans une nouvelle équipe et je dois diagnostiquer rapidement sa maturité technique. Comment les 4 métriques DORA m'aident à orienter mon coaching sans passer des semaines à analyser le code ?"
+    reponse: "Le tableau de lecture combinee (page 167) donne un diagnostic instantane. DF basse + MTTR long : déploiements rares et douloureux, chaque incident est une crise, priorité a l'automatisation et a la reduction de la taille des changements. LT long + DF basse : pipeline engorge, cherche les handoffs et validations manuelles qui bloquent le flux. Tous niveaux Elite : équipe mature DevOps, ton rôle devient de faire partager ses pratiques aux autres équipes. Ce diagnostic se construit en une conversation avec les devs (page 170), pas en audit de code."
+    douleur_terrain: "Le Coach arrive dans une équipe dont les DORA sont dans le rouge, sans grille de lecture il passe des semaines à chercher la cause au mauvais endroit (process plutôt que technique, ou inversement)."
+    source_expert: null
+    page: 167
+    extrait: "DF basse + MTTR long : Deploiements rares et douloureux. Chaque incident est une crise. Priorité : automatiser, reduire la taille des changements."
+    fiche_liee: "FP-P2-CH07-checklist-decision-01"
+    fiche_destinee_a: [CA, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-02"]
+
+  - id: "P2-CH07-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: DAVE_FARLEY
+    themes_salim: ["M"]
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Comment je différencie une équipe qui maquille ses DORA (gaming des métriques) d'une équipe qui n'a simplement jamais mesuré et dont les chiffres sont encore approximatifs ?"
+    reponse: "Le tableau page 167 donne un test de cohérence. Une équipe qui affiche DF basse et CFR bas présente le profil 'illusion de qualité' : elle déploie si rarement qu'elle a le temps de tout tester à la main (page 166-167). Si une équipe te donne un CFR excellent mais une DF très faible et qu'elle ne peut pas expliquer comment elle mesure le CFR concrètement, c'est le signal à creuser : soit le chiffre n'est pas mesuré du tout, soit il est gonflé. Une équipe qui n'a jamais mesuré le dira spontanément et ses chiffres seront flous ou absents, pas faussement parfaits."
+    douleur_terrain: "Le Coach base son plan sur des DORA présentés comme excellents par l'équipe, découvre 2 mois plus tard que personne ne les mesurait réellement, et a construit son diagnostic sur du vide."
+    source_expert: null
+    page: 167
+    extrait: "DF basse + CFR bas : Profil fréquent dans les grandes organisations : tout est testé manuellement. Illusion de qualité. Vrai risque : Lead Time et réactivité en cas d'incident."
+    fiche_liee: "FP-P2-CH07-checklist-decision-01"
+    fiche_destinee_a: [CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-02"]
+
+  - id: "P2-CH07-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: DAVE_FARLEY
+    themes_salim: ["I", "M"]
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Quand plusieurs équipes d'un ART ont des DORA très différents, comment je m'en sers pour prioriser où je concentre l'effort d'amélioration au niveau train, sans que ça devienne un classement compétitif entre équipes ?"
+    reponse: "TROU. Le chapitre traite les DORA au niveau d'une équipe unique. Il ne dit rien sur l'agrégation ou la comparaison entre plusieurs équipes d'un même Agile Release Train, ni sur le risque de transformer le tableau de lecture (page 167) en classement qui mettrait les équipes en concurrence plutôt qu'en apprentissage partagé. Le seul indice transposable : pour les équipes 'Tous niveaux Elite', le rôle devient de partager les pratiques avec les autres équipes (page 167), ce qui suggère une logique de diffusion plutôt que de classement."
+    douleur_terrain: "Le RTE reçoit les dashboards qualité de 6 équipes et la direction lui demande un classement. Sans cadrage, cela crée de la compétition malsaine et des équipes qui maquillent leurs chiffres."
+    source_expert: null
+    page: 167
+    extrait: "Tous niveaux Elite : Équipe mature DevOps. Maintenir et partager les pratiques avec les autres équipes."
+    fiche_liee: null
+    fiche_destinee_a: [RTE]
+    statut_reponse: trou
+    action_recommandee: "Ajouter un paragraphe en fin de section 5 (après page 172) ou un encart spécifique Partie 4 (scaling) : DORA au niveau ART, logique de diffusion des pratiques (équipes Elite comme mentors) plutôt que classement, et risque de gaming des métriques en contexte multi-équipes."
+    schemas_lies: []
+
+  - id: "P2-CH07-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    themes_salim: ["L", "M"]
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Comment je distingue un problème de processus Scrum d'un problème d'engineering grâce aux DORA, et comment je traduis ça en langage business pour ma propre direction ?"
+    reponse: "Grille de lecture page 167 : CFR élevé + Deployment Frequency basse pointe vers un problème technique, pas organisationnel. Pour traduire en business, utilise le calcul du coût d'incident (page 170-171) : MTTR supérieur à 1 jour multiplié par le nombre d'heures, le nombre de personnes mobilisées et le taux journalier. Exemple chiffré : MTTR de 8h, 3 devs + 1 SM mobilisés, taux de 50 euros/h, coût direct de 1600 euros, plus le coût indirect (support client, risque SLA) (page 171). Un MTTR chiffré en euros ouvre des portes que les termes techniques ferment (page 170)."
+    douleur_terrain: "Le manager confond lenteur de livraison (problème de process, Sprint Planning ou priorisation) et fragilité du code (problème engineering, dette technique). Les deux ont des solutions complètement différentes et le manager applique le mauvais remède."
+    source_expert: null
+    page: 171
+    extrait: "MTTR = 8h. Équipe mobilisée : 3 devs + 1 SM. Taux journalier moyen : 400 euros. Coût direct : 8h x 4 personnes x 50 euros/h = 1600 euros. Plus le coût indirect (support client, risque SLA)."
+    fiche_liee: "FP-P2-CH07-memo-reference-02"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-02"]
+
+  - id: "P2-CH07-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    themes_salim: ["I", "M"]
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    question: "Mon équipe livre 45 points par sprint et le Happiness Index est correct. Tout va bien sur le papier, alors pourquoi ma direction me parle de problèmes en production que je ne vois pas dans mes chiffres de vélocité ?"
+    reponse: "C'est exactement le scénario d'ouverture du chapitre (page 162-163) : 45 points livrés, Sprint Goal atteint, Happiness Index correct, mais 1 déploiement par mois, chaque mise en prod mobilise toute l'équipe une demi-journée, et les bugs critiques prennent plusieurs jours à corriger. La vélocité ne dit rien du pipeline technique. Les problèmes sont dans le pipeline, dans la façon dont le code passe de l'équipe à la production, et coûtent cher en stress, confiance client et dette technique accumulée (page 162). Les DORA mesurent précisément ce que la vélocité et le Happiness Index ne voient pas."
+    douleur_terrain: "Le manager rassure sa direction avec des chiffres de vélocité stables, puis se fait reprocher des incidents en production qu'aucun de ses indicateurs ne signalait. Il perd en crédibilité parce qu'il regardait le mauvais cadran."
+    source_expert: null
+    page: 162
+    extrait: "45 points livrés. Happiness Index correct. Mais : 1 déploiement/mois. Chaque mise en prod = demi-journée d'équipe. La vélocité ne dit rien du pipeline technique."
+    fiche_liee: "FP-P2-CH07-memo-reference-01"
+    fiche_destinee_a: [MG, DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-01"]
+
+  - id: "P2-CH07-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    themes_salim: ["L", "M"]
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Mon équipe me dit qu'elle ne peut pas améliorer son Change Failure Rate sans 'plus de temps pour les tests'. Comment je distingue une vraie demande d'investissement d'un prétexte pour ralentir ?"
+    reponse: "Croise la demande avec le tableau page 167 et la section dette technique (page 168). Si le CFR est réellement élevé (au-delà de 15%, niveau Low, page 166) et que les signaux de dette sont présents (MTTR qui s'allonge, lead time qui croît sans raison, stories qui rebondissent, page 168-169), la demande est légitime : c'est de la dette technique à traiter dans le Product Backlog, avec urgence documentée et coût de non-traitement (page 169). Si au contraire le CFR est déjà bas et la DF aussi, tu es peut-être dans le profil 'illusion de qualité' (page 167) : l'équipe teste déjà tout manuellement, et ajouter du temps de test ne résoudra pas le vrai problème, qui est le Lead Time et la réactivité en cas d'incident."
+    douleur_terrain: "Le manager accorde un sprint complet 'pour les tests' sans vérifier si le CFR justifiait vraiment cet investissement, et le problème réel (Lead Time, ou absence de mesure) reste intact."
+    source_expert: null
+    page: 168
+    extrait: "Lead time qui croît sans raison apparente. Quand une story simple prend 3 fois plus de temps qu'elle ne devrait, l'équipe a probablement contourné des zones qu'elle n'osait pas toucher."
+    fiche_liee: "FP-P2-CH07-checklist-decision-01"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH07-02"]
+
+  - id: "P2-CH07-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: LISA_CRISPIN
+    themes_salim: ["S", "M"]
+    dimensions: [qui, quoi, pourquoi, valeur]
+    question: "La qualité technique est-elle la responsabilité du testeur ou de toute l'équipe Scrum, et est-ce que recruter plus de QA va résoudre nos problèmes de CFR ?"
+    reponse: "Toute l'équipe. La qualité est intégrée à chaque sprint, pas validée en fin de cycle, et le chapitre relie les DORA à la DoD. Recruter un QA supplémentaire ne règle pas un CFR élevé si la cause est l'absence de tests automatisés ou de CI/CD (page 168, signaux à surveiller). La dette technique ne prévient pas : elle devient visible quand le CFR monte, que le MTTR s'allonge, et que le lead time pour une modification simple passe de 2 heures à 3 jours (page 168)."
+    douleur_terrain: "Le DSI pense que recruter un QA va régler les problèmes de qualité. Ce n'est pas le bon modèle en Scrum, et l'investissement ne produit pas l'amélioration attendue sur les DORA."
+    source_expert: null
+    page: 168
+    extrait: "La dette technique ne prévient pas. Elle devient visible quand le change failure rate monte, que le MTTR s'allonge, et que le lead time pour une modification simple passe de 2 heures à 3 jours."
+    fiche_liee: "FP-P2-CH07-memo-reference-02"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH07-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    themes_salim: ["I", "M"]
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    question: "J'ai investi dans une transformation agile sur plusieurs équipes. Comment je sais si le pipeline technique se dégrade avant que ça devienne une crise visible, et à quel seuil dois-je m'alarmer ?"
+    reponse: "Jeff Sutherland documente que quand la dette technique dépasse 20% de la capacité de l'équipe, la vélocité ne baisse pas progressivement, elle s'effondre, et chaque modification déclenche des effets de bord imprévus (page 168). Les signaux à surveiller avant ce point de bascule (page 168-169) : Change Failure Rate en hausse, MTTR qui s'allonge, lead time qui croît sans raison apparente, et stories qui rebondissent (une story Done qui revient en sprint à cause d'un bug en prod). Si plus de 15% des stories fermées rouvrent, le DoD (Definition of Done, vu au Chapitre 3) est insuffisant ou le code est trop risqué à modifier (page 169). La dette technique doit être visible dans le Product Backlog, estimée, priorisée, avec une urgence documentée et un coût de non-traitement (page 169)."
+    douleur_terrain: "Le DSI découvre la dégradation du pipeline au moment où un incident majeur éclate, alors que les signaux étaient visibles plusieurs sprints avant dans les DORA, mais personne ne les avait rendus visibles à la direction."
+    source_expert: "Jeff Sutherland"
+    page: 168
+    extrait: "Jeff Sutherland l'a documenté : quand la dette dépasse 20% de la capacité de l'équipe, la vélocité ne baisse pas progressivement. Elle s'effondre. Chaque modification déclenche des effets de bord que personne n'avait prévus."
+    fiche_liee: "FP-P2-CH07-memo-reference-02"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH07-DC-03"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    themes_salim: ["M"]
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    question: "Si je compare deux équipes, l'une avec un Scoring Deliverable élevé mais des DORA dans le rouge, l'autre avec des DORA au niveau Elite mais un Scoring Deliverable faible, laquelle est en meilleure santé réelle ?"
+    reponse: "TROU PARTIEL. Le chapitre ne traite pas cette comparaison directement, mais pose les bases pour y répondre. Les DORA mesurent la santé du pipeline technique (page 161-162) : une équipe avec des DORA dans le rouge accumule de la dette qui finira par s'effondrer (seuil des 20%, page 168), même si elle livre bien aujourd'hui. Une équipe avec des DORA Elite mais un Scoring Deliverable faible livre un produit fragile en surface (valeur, documentation, feedback utilisateur, cf. Ch.12) sur un pipeline solide : le risque est plus facile à corriger, car le moteur technique fonctionne. Aucune des deux n'est en bonne santé : les deux dashboards se complètent, ils ne se substituent pas l'un à l'autre."
+    douleur_terrain: "Le DSI pilote 5 équipes avec un seul indicateur consolidé et classe l'équipe au Scoring élevé comme 'la meilleure', sans voir qu'elle accumule une dette technique qui va coûter beaucoup plus cher dans 2 trimestres que le retard de l'autre équipe."
+    source_expert: null
+    page: 168
+    extrait: "La dette technique ne prévient pas. Elle devient visible quand le change failure rate monte, que le MTTR s'allonge, et que le lead time pour une modification simple passe de 2 heures à 3 jours."
+    fiche_liee: "FP-P2-CH07-memo-reference-02"
+    fiche_destinee_a: [DC]
+    statut_reponse: confirmee
+    action_recommandee: "Resolu. Paragraphe Pour le DSI integre page 173-174 (apres le paragraphe RTE, avant la transition finale) et bloc 6 dedie ajoute a FP-P2-CH07-memo-reference-02."
+    schemas_lies: []
+
+trous:
+
+  - id: "T01"
+    role: DEV
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment mesurer le Lead Time for Changes à la main, sans pipeline CI/CD, pour une équipe qui débute ?"
+    action: "Ajouter un encart En pratique sous la section b. Lead Time for Changes (page 164-165) : méthode manuelle (date du premier commit ou ticket en cours, vs date de mise en prod, suivi sur tableur pendant 3 sprints)."
+
+  - id: "T02"
+    role: RTE
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment lire les DORA au niveau d'un ART multi-équipes sans créer de classement compétitif entre équipes ?"
+    action: "Ajouter un paragraphe en fin de section 5 (après page 172) ou renvoyer vers un futur chapitre Partie 4 : DORA en contexte scaling, logique de diffusion plutot que classement, risque de gaming en multi-équipes."
+
+  - id: "T03"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Que fait le SM concretement si les devs repondent 'rien, c'est juste comme ça chez nous' aux 3 questions ouvertes de rétrospective (page 170) ?"
+    action: "Ajouter une ligne de suite dans l'encart En pratique page 170 : si pas de friction nommée, reposer la question dans 2 sprints, ou utiliser le tableau de profils combinés (page 167) comme support visuel pour relancer la discussion."
+
+  - id: "T04"
+    role: DC
+    cible: DECIDEUR
+    question_manquante: "Comment lire ensemble le Scoring Deliverable (Ch.12) et les DORA (Ch.7) quand ils donnent des signaux contradictoires sur deux équipes différentes ?"
+    action: "RESOLU. Paragraphe Pour le DSI integre page 173-174, et bloc 6 dedie (DORA rouge / Scoring eleve vs DORA Elite / Scoring faible, deux colonnes comparatives) ajoute a FP-P2-CH07-memo-reference-02."
+
+stats:
+  questions_totales: 16
+  par_role:
+    SM: 2
+    PO: 2
+    DEV: 3
+    CA: 2
+    RTE: 1
+    MG: 3
+    DC: 3
+  par_statut:
+    provisoire: 0
+    confirmee: 14
+    trou: 2
+  couverture_dimensions:
+    qui: 12
+    quoi: 16
+    comment: 11
+    pourquoi: 14
+    quand: 5
+    valeur: 15
+  couverture_themes_salim:
+    S: 4
+    A: 1
+    L: 3
+    I: 4
+    M: 16
+  schemas_lies: 4
