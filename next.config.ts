@@ -7,19 +7,15 @@ import { fileURLToPath } from 'url'
 const projectRoot = path.dirname(fileURLToPath(import.meta.url))
 
 /**
- * Sortie build Next.js : par défaut `.next` dans le repo.
- * Si `NEXT_DIST_DIR` est défini (ex. dans `.env.local`), il prime.
- * Sinon, dépôt sur le volume T9 (`/Volumes/T9/aigile/...`) → build dans un dossier voisin sur le même volume :
- * `/Volumes/T9/aigile-next-build` (évite de mélanger avec la racine du repo, tout reste sur T9).
+ * Sortie build Next.js : `.next` dans le repo (fiable pour `next build` / `next start`).
+ * Un distDir hors repo (ex. ../aigile-next-build sur T9) casse la résolution des modules
+ * (vendor-chunks, react/jsx-runtime) en production.
+ * Override : NEXT_DIST_DIR dans .env.local si besoin.
  */
 function resolveDistDir(): string {
-  if (process.env.NEXT_DIST_DIR?.trim()) {
-    return path.resolve(projectRoot, process.env.NEXT_DIST_DIR.trim())
-  }
-  const onT9 =
-    projectRoot.startsWith('/Volumes/T9/') && fs.existsSync('/Volumes/T9')
-  if (onT9) {
-    return path.resolve(projectRoot, '..', 'aigile-next-build')
+  const envDir = process.env.NEXT_DIST_DIR?.trim()
+  if (envDir) {
+    return envDir
   }
   return '.next'
 }

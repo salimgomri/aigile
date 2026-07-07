@@ -31,10 +31,8 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "../aigile-next-build/types/**/*.ts",
     ".next/types/**/*.ts",
-    "next-env.d.ts",
-    "/Volumes/T9/aigile-next-build/types/**/*.ts"
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules"

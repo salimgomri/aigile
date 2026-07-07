@@ -21,6 +21,9 @@ export default function FloatingBottomBar() {
 
   if (pathname?.startsWith('/admin')) return null
 
+  // Nouvelle homepage : nav + sticky CTA dédiés (pas la barre globale orange/LinkedIn).
+  if (pathname === '/') return null
+
   const isSalimLanding = pathname?.startsWith('/salim')
 
   const btnClass =
