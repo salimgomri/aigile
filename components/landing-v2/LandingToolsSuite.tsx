@@ -11,7 +11,6 @@ import {
   Layout,
   Package,
   Smile,
-  Sparkles,
   Target,
   Users,
 } from 'lucide-react'
@@ -32,6 +31,7 @@ type ToolItem = {
   href: string
   available: boolean
   interactive: boolean
+  wide?: boolean
 }
 
 export function LandingToolsSuite() {
@@ -124,11 +124,12 @@ export function LandingToolsSuite() {
       title: t['tools-dashboard-manager'],
       description:
         language === 'fr'
-          ? 'Cockpit manager — 6 cadrans RAG, vélocité, OKR, narrative P25'
-          : 'Manager cockpit — 6 RAG dials, velocity, OKRs, P25 narrative',
+          ? 'Cockpit manager · 6 cadrans RAG, vélocité, OKR, narrative P25'
+          : 'Manager cockpit · 6 RAG dials, velocity, OKRs, P25 narrative',
       href: '/dashboard-manager',
       available: true,
       interactive: true,
+      wide: true,
     },
     {
       key: 'westrum',
@@ -151,12 +152,7 @@ export function LandingToolsSuite() {
             ? salimQa.label_fr
             : salimQa.label_en
           : t['tools-salim-qa'],
-      description:
-        salimQa
-          ? (language === 'fr'
-              ? salimQa.teaser_fr || salimQa.label_fr
-              : salimQa.teaser_en || salimQa.label_en) || t['tools-salim-qa-desc']
-          : t['tools-salim-qa-desc'],
+      description: t['tools-salim-qa-desc'],
       href: '/salim-qa',
       available: salimQa?.is_live ?? true,
       interactive: true,
@@ -199,6 +195,9 @@ export function LandingToolsSuite() {
     },
   ].sort((a, b) => Number(b.available) - Number(a.available))
 
+  const liveTools = moreTools.filter((tool) => tool.available && tool.interactive)
+  const roadmapTools = moreTools.filter((tool) => !tool.available || !tool.interactive)
+
   const statusLabel = (tool: ToolItem) => {
     if (!tool.interactive) {
       return language === 'fr' ? 'Bientôt' : 'Coming soon'
@@ -213,23 +212,24 @@ export function LandingToolsSuite() {
     <section id="tools" className="ld-tools-suite">
       <div className="ld-shell">
         <header className="ld-tools-suite__head">
-          <span className="ld-tools-suite__eyebrow">
-            <Sparkles size={14} aria-hidden />
-            {language === 'fr' ? 'Suite Professionnelle' : 'Professional Suite'}
-          </span>
-          <h2>{t['tools-title']}</h2>
-          <p>{t['tools-subtitle']}</p>
+          <span className="ld-kicker">{language === 'fr' ? 'Suite professionnelle' : 'Professional suite'}</span>
+          <h2 className="ld-section-title ld-tools-suite__title">{t['tools-title']}</h2>
+          <p className="ld-tools-suite__lead">{t['tools-subtitle']}</p>
         </header>
 
         <div className="ld-tools-suite__flagships">
-          <article className="ld-tools-flagship">
-            <span className="ld-tools-flagship__tag">
-              <Brain size={15} aria-hidden />
-              {language === 'fr' ? 'Outil phare' : 'Flagship'}
-            </span>
+          <article className="ld-tools-feature ld-tools-feature--retro">
+            <div className="ld-tools-feature__head">
+              <span className="ld-tools-feature__index" aria-hidden>
+                01
+              </span>
+              <span className="ld-tools-feature__icon" aria-hidden>
+                <Brain size={22} strokeWidth={1.75} />
+              </span>
+            </div>
             <h3>{t['tools-retro-title']}</h3>
             <p>{t['tools-retro-desc']}</p>
-            <div className="ld-tools-flagship__actions">
+            <div className="ld-tools-feature__actions">
               <Link
                 href="/retro"
                 className="ld-btn ld-btn--gold ld-btn--tool"
@@ -238,20 +238,25 @@ export function LandingToolsSuite() {
                 {t['tools-cta']}
                 <ArrowRight size={16} aria-hidden />
               </Link>
-              <Link href="/parcours" className="ld-btn ld-btn--outline ld-btn--tool">
-                {language === 'fr' ? 'Parcours' : 'Journey'}
+              <Link href="/parcours" className="ld-tools-feature__link">
+                {language === 'fr' ? 'Voir le parcours' : 'View journey'}
+                <ArrowRight size={14} aria-hidden />
               </Link>
             </div>
           </article>
 
-          <article className="ld-tools-flagship">
-            <span className="ld-tools-flagship__tag">
-              <Package size={15} aria-hidden />
-              {language === 'fr' ? 'Outil phare' : 'Flagship'}
-            </span>
+          <article className="ld-tools-feature ld-tools-feature--scoring">
+            <div className="ld-tools-feature__head">
+              <span className="ld-tools-feature__index" aria-hidden>
+                02
+              </span>
+              <span className="ld-tools-feature__icon" aria-hidden>
+                <Package size={22} strokeWidth={1.75} />
+              </span>
+            </div>
             <h3>{scoringTitle}</h3>
             <p>{scoringDesc}</p>
-            <div className="ld-tools-flagship__actions ld-tools-flagship__actions--single">
+            <div className="ld-tools-feature__actions ld-tools-feature__actions--single">
               {scoringDirectCta ? (
                 <Link
                   href="/scoring-deliverable"
@@ -262,13 +267,13 @@ export function LandingToolsSuite() {
                   <ArrowRight size={16} aria-hidden />
                 </Link>
               ) : scoringAccessLoading ? (
-                <div className="ld-tools-flagship__loading" aria-busy aria-label={language === 'fr' ? 'Vérification…' : 'Checking…'} />
+                <div className="ld-tools-feature__loading" aria-busy aria-label={language === 'fr' ? 'Vérification…' : 'Checking…'} />
               ) : (
                 <>
                   {sd?.is_live && scoringInviteOnly && scoringAuthenticated === false ? (
                     <Link
                       href={'/login?redirect=' + encodeURIComponent('/scoring-deliverable')}
-                      className="ld-btn ld-btn--outline ld-btn--tool"
+                      className="ld-tools-feature__link"
                     >
                       {t['tools-scoring-sign-in-invited']}
                     </Link>
@@ -289,21 +294,29 @@ export function LandingToolsSuite() {
           </article>
         </div>
 
-        <p className="ld-tools-suite__more-label">
-          {language === 'fr' ? 'Autres outils' : 'More tools'}
-        </p>
+        <div className="ld-tools-suite__catalog">
+          <div className="ld-tools-suite__catalog-head">
+            <h3 className="ld-tools-suite__catalog-title">
+              {language === 'fr' ? 'Outils disponibles' : 'Available tools'}
+            </h3>
+            <p>
+              {language === 'fr'
+                ? 'Accédez directement aux modules de la suite.'
+                : 'Jump straight into each module of the suite.'}
+            </p>
+          </div>
 
-        <div className="ld-tools-suite__grid">
-          {moreTools.map((tool) => {
-            const Icon = tool.icon
-            const card = (
-              <div
-                className={`ld-tools-card ${tool.interactive ? 'ld-tools-card--live' : 'ld-tools-card--soon'} ${!tool.available && tool.interactive ? 'ld-tools-card--preview' : ''}`}
-              >
-                <span className="ld-tools-card__icon">
-                  <Icon size={20} strokeWidth={2} aria-hidden />
-                </span>
-                <div className="ld-tools-card__body">
+          <div className="ld-tools-tiles">
+            {liveTools.map((tool) => {
+              const Icon = tool.icon
+              const inner = (
+                <>
+                  <div className="ld-tools-tile__top">
+                    <span className="ld-tools-tile__icon">
+                      <Icon size={20} strokeWidth={1.75} aria-hidden />
+                    </span>
+                    <span className="ld-tools-tile__live" aria-hidden />
+                  </div>
                   <h4>
                     {tool.title}
                     {tool.key === 'dashboard' ? (
@@ -312,27 +325,72 @@ export function LandingToolsSuite() {
                     {tool.key === 'westrum' ? <WestrumNewBadge language={language === 'fr' ? 'fr' : 'en'} /> : null}
                   </h4>
                   <p>{tool.description}</p>
-                  <span className="ld-tools-card__status">{statusLabel(tool)}</span>
-                </div>
-              </div>
-            )
+                  <span className="ld-tools-tile__cta">
+                    {language === 'fr' ? 'Ouvrir' : 'Open'}
+                    <ArrowRight size={14} aria-hidden />
+                  </span>
+                </>
+              )
 
-            if (tool.interactive && tool.href !== '#') {
               return (
                 <Link
                   key={tool.key}
                   href={tool.href}
-                  className="ld-tools-card-link"
+                  className={`ld-tools-tile${tool.wide ? ' ld-tools-tile--wide' : ''}`}
                   onClick={() => trackEvent('tools_suite_click', { tool: tool.key, source: 'landing_home' })}
                 >
-                  {card}
+                  {inner}
                 </Link>
               )
-            }
-
-            return <div key={tool.key}>{card}</div>
-          })}
+            })}
+          </div>
         </div>
+
+        {roadmapTools.length > 0 ? (
+          <div className="ld-tools-suite__roadmap">
+            <div className="ld-tools-suite__catalog-head">
+              <h3 className="ld-tools-suite__catalog-title">
+                {language === 'fr' ? 'En préparation' : 'On the roadmap'}
+              </h3>
+            </div>
+            <div className="ld-tools-roadmap">
+              {roadmapTools.map((tool) => {
+                const Icon = tool.icon
+                const content = (
+                  <>
+                    <span className="ld-tools-roadmap__icon" aria-hidden>
+                      <Icon size={18} strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <strong>{tool.title}</strong>
+                      <span>{tool.description}</span>
+                    </div>
+                    <em>{statusLabel(tool)}</em>
+                  </>
+                )
+
+                if (tool.interactive && tool.href !== '#') {
+                  return (
+                    <Link
+                      key={tool.key}
+                      href={tool.href}
+                      className="ld-tools-roadmap__item ld-tools-roadmap__item--link"
+                      onClick={() => trackEvent('tools_suite_click', { tool: tool.key, source: 'landing_home' })}
+                    >
+                      {content}
+                    </Link>
+                  )
+                }
+
+                return (
+                  <div key={tool.key} className="ld-tools-roadmap__item">
+                    {content}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <EarlyAccessRequestModal

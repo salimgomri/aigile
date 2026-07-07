@@ -49,7 +49,7 @@ export function SystemSalimLanding() {
         <div className="ld-hero__inner">
           <div className="ld-hero__visual" aria-hidden>
             <Image
-              src="/images/system-salim-hero.png"
+              src="/images/system-salim-hero-detoure.png"
               alt=""
               width={1086}
               height={1448}

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: 'Lead better. Deliver more. Together.',
     type: 'website',
     url: 'https://aigile.lu',
-    images: [{ url: 'https://aigile.lu/images/system-salim-hero.png' }],
+    images: [{ url: 'https://aigile.lu/images/system-salim-hero-detoure.png' }],
   },
   alternates: { canonical: 'https://aigile.lu/' },
 }
