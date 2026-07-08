@@ -2,43 +2,38 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { useSession } from '@/lib/auth-client'
-import { useLanguage } from '@/components/language-provider'
-import { useCredits } from '@/lib/credits/CreditContext'
-import PremiumNavbar from '@/components/premium-navbar'
-import PremiumFooter from '@/components/landing/premium-footer'
 import {
-  Brain,
-  ArrowRight,
-  Layout,
-  LayoutDashboard,
-  Smile,
   BarChart3,
-  Package,
+  BookOpen,
+  Brain,
   ClipboardCheck,
   Flag,
   KeyRound,
+  Layout,
+  LayoutDashboard,
+  Package,
   RefreshCw,
-  Users,
+  Smile,
   Target,
-  BookOpen,
+  Users,
 } from 'lucide-react'
+import { useSession } from '@/lib/auth-client'
+import { useLanguage } from '@/components/language-provider'
+import { useCredits } from '@/lib/credits/CreditContext'
 import { AdminIntelligenceToolCard } from '@/components/admin/admin-intelligence-tool-card'
+import { DashboardHubNavbar } from '@/components/dashboard/DashboardHubNavbar'
+import { DashboardToolTile } from '@/components/dashboard/DashboardToolTile'
 import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
-
-function toolCardClass(active: boolean) {
-  return active
-    ? 'group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200'
-    : 'group flex items-center gap-4 p-6 bg-card/50 border border-border rounded-2xl opacity-60 cursor-not-allowed'
-}
+import { translations } from '@/lib/translations'
 
 export default function DashboardPage() {
   const { data: session, isPending } = useSession()
   const { status } = useCredits()
   const router = useRouter()
   const { language } = useLanguage()
+  const t = translations[language]
   const isAdmin = status?.isAdmin
+  const fr = language === 'fr'
 
   useEffect(() => {
     if (!isPending && !session) {
@@ -47,338 +42,216 @@ export default function DashboardPage() {
   }, [session, isPending, router])
 
   if (isPending) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-pulse text-muted-foreground">
-          {language === 'fr' ? 'Chargement...' : 'Loading...'}
-        </div>
-      </div>
-    )
+    return <div className="db-hub__loading">{fr ? 'Chargement…' : 'Loading…'}</div>
   }
 
   if (!session) {
     return null
   }
 
-  const userName = isAdmin ? 'Admin' : (session.user.name || session.user.email?.split('@')[0] || session.user.email)
+  const userName = isAdmin ? 'Admin' : session.user.name || session.user.email?.split('@')[0] || session.user.email
+  const openLabel = fr ? 'Ouvrir' : 'Open'
+  const soonLabel = fr ? 'Bientôt' : 'Coming soon'
 
   return (
-    <main className="min-h-screen bg-background">
-      <PremiumNavbar />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-4xl font-bold text-foreground mb-2">
-          {language === 'fr' ? 'Bonjour' : 'Hello'}, {userName}
-        </h1>
-        <p className="text-muted-foreground mb-10">
-          {language === 'fr'
-            ? 'Accédez à vos outils Agile augmentés'
-            : 'Access your AI-augmented Agile tools'}
-        </p>
+    <div className="ld-page db-hub">
+      <DashboardHubNavbar />
 
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
-          {language === 'fr' ? 'Outils' : 'Tools'}
-        </p>
-        <div className="grid gap-6 md:grid-cols-2 mb-12">
-          <Link
-            href="/retro"
-            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-          >
-            <div className="w-14 h-14 rounded-xl bg-aigile-gold/20 flex items-center justify-center group-hover:bg-aigile-gold/30 transition-colors">
-              <Brain className="w-7 h-7 text-aigile-gold" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-semibold text-foreground">
-                {language === 'fr' ? 'Outil Rétro IA' : 'AI Retro Tool'}
-              </h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                {language === 'fr'
-                  ? 'Générez des rétrospectives personnalisées'
-                  : 'Generate personalized retrospectives'}
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-          </Link>
+      <div className="ld-shell db-hub__main">
+        <header className="db-hub__hero">
+          <span className="ld-kicker">{fr ? 'Espace membre' : 'Member space'}</span>
+          <h1>
+            {fr ? 'Bonjour' : 'Hello'}, {userName}
+          </h1>
+          <p>{fr ? 'Accédez à vos outils Agile augmentés.' : 'Access your AI-augmented Agile tools.'}</p>
+        </header>
 
-          <Link
-            href="/dashboard-manager"
-            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-          >
-            <div className="w-14 h-14 rounded-xl bg-emerald-500/15 flex items-center justify-center group-hover:bg-emerald-500/25 transition-colors">
-              <LayoutDashboard className="w-7 h-7 text-emerald-400" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-semibold text-foreground flex flex-wrap items-center gap-2">
-                Dashboard Manager
-                <DashboardManagerNewBadge language={language === 'fr' ? 'fr' : 'en'} />
-              </h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                {language === 'fr'
-                  ? 'Cockpit sprint S.A.L.I.M. — cadrans RAG, OKR, narrative IA'
-                  : 'S.A.L.I.M. sprint cockpit — RAG dials, OKRs, AI narrative'}
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-          </Link>
-
-          <Link
-            href="/scoring-deliverable"
-            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-          >
-            <div className="w-14 h-14 rounded-xl bg-orange-500/15 flex items-center justify-center group-hover:bg-orange-500/25 transition-colors">
-              <ClipboardCheck className="w-7 h-7 text-orange-400" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-semibold text-foreground">
-                {language === 'fr' ? 'Scoring livraison' : 'Delivery Scoring'}
-              </h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                {language === 'fr'
-                  ? 'Évaluez la maturité de vos livrables sur 9 dimensions'
-                  : 'Assess deliverable maturity across nine dimensions'}
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-          </Link>
-
-          <Link
-            href="/salim-qa"
-            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-          >
-            <div className="w-14 h-14 rounded-xl bg-amber-500/15 flex items-center justify-center group-hover:bg-amber-500/25 transition-colors">
-              <BookOpen className="w-7 h-7 text-amber-500" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-semibold text-foreground">S.A.L.I.M. Q&A Lab</h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                {language === 'fr'
-                  ? 'Bibliothèque de questions du livre — recherche, filtres, réponses à débloquer'
-                  : 'Book question library — search, filters, unlock answers'}
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-          </Link>
-
-          <Link
-            href="/dashboard/westrum"
-            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-          >
-            <div className="w-14 h-14 rounded-xl bg-[#138eec]/15 flex items-center justify-center group-hover:bg-[#138eec]/25 transition-colors">
-              <Users className="w-7 h-7 text-[#138eec]" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-semibold text-foreground">
-                {language === 'fr' ? 'Westrum Culture Survey' : 'Westrum Culture Survey'}
-              </h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                {language === 'fr'
-                  ? 'Culture organisationnelle DORA — 6 questions Likert'
-                  : 'DORA organizational culture — 6 Likert questions'}
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-          </Link>
-
-          <Link
-            href="/okr-checkin"
-            className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-          >
-            <div className="w-14 h-14 rounded-xl bg-[#0ba4a0]/15 flex items-center justify-center group-hover:bg-[#0ba4a0]/25 transition-colors">
-              <Target className="w-7 h-7 text-[#0ba4a0]" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-semibold text-foreground">
-                {language === 'fr' ? 'OKR Check-in Sprint' : 'OKR Sprint Check-in'}
-              </h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                {language === 'fr'
-                  ? 'Avancé, frein, ajustement — rituel de Sprint Review'
-                  : 'Advance, blocker, adjustment — Sprint Review ritual'}
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-          </Link>
-
-          {isAdmin ? (
-            <Link href="/niko-niko" className={toolCardClass(true)}>
-              <div className="w-14 h-14 rounded-xl bg-aigile-blue/20 flex items-center justify-center group-hover:bg-aigile-blue/30 transition-colors">
-                <Smile className="w-7 h-7 text-aigile-blue" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold text-foreground">
-                  {language === 'fr' ? 'Niko Niko' : 'Niko Niko'}
-                </h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {language === 'fr'
-                    ? "Suivez les humeurs de l'équipe"
-                    : 'Track team mood and happiness index'}
-                </p>
-              </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-            </Link>
-          ) : (
-            <div className={toolCardClass(false)}>
-              <div className="w-14 h-14 rounded-xl bg-muted flex items-center justify-center">
-                <Smile className="w-7 h-7 text-muted-foreground" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold text-muted-foreground">
-                  {language === 'fr' ? 'Niko Niko' : 'Niko Niko'}
-                </h2>
-                <p className="text-sm text-muted-foreground/80 mt-1">
-                  {language === 'fr'
-                    ? "Suivez les humeurs de l'équipe"
-                    : 'Track team mood and happiness index'}
-                </p>
-                <span className="inline-block mt-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                  {language === 'fr' ? 'Bientôt' : 'Coming soon'}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {isAdmin ? (
-            <Link href="/dora" className={toolCardClass(true)}>
-              <div className="w-14 h-14 rounded-xl bg-aigile-blue/20 flex items-center justify-center group-hover:bg-aigile-blue/30 transition-colors">
-                <BarChart3 className="w-7 h-7 text-aigile-blue" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold text-foreground">DORA</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {language === 'fr'
-                    ? 'Métriques DevOps & recommandations IA'
-                    : 'DevOps metrics & AI recommendations'}
-                </p>
-              </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-            </Link>
-          ) : (
-            <div className={toolCardClass(false)}>
-              <div className="w-14 h-14 rounded-xl bg-muted flex items-center justify-center">
-                <BarChart3 className="w-7 h-7 text-muted-foreground" />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold text-muted-foreground">DORA</h2>
-                <p className="text-sm text-muted-foreground/80 mt-1">
-                  {language === 'fr'
-                    ? 'Métriques DevOps & recommandations IA'
-                    : 'DevOps metrics & AI recommendations'}
-                </p>
-                <span className="inline-block mt-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                  {language === 'fr' ? 'Bientôt' : 'Coming soon'}
-                </span>
-              </div>
-            </div>
-          )}
-
-          <div className="group flex items-center gap-4 p-6 bg-card/50 border border-border rounded-2xl opacity-60 cursor-not-allowed md:col-span-2">
-            <div className="w-14 h-14 rounded-xl bg-muted flex items-center justify-center">
-              <Layout className="w-7 h-7 text-muted-foreground" />
-            </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-semibold text-muted-foreground">
-                {language === 'fr' ? 'Parcours Scrum' : 'Scrum Journey'}
-              </h2>
-              <p className="text-sm text-muted-foreground/80 mt-1">
-                {language === 'fr' ? 'Bientôt disponible' : 'Coming soon'}
-              </p>
-              <span className="inline-block mt-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                {language === 'fr' ? 'Bientôt' : 'Coming soon'}
-              </span>
-            </div>
+        <section className="db-hub__section" aria-labelledby="db-tools-title">
+          <div className="db-hub__section-head">
+            <h2 id="db-tools-title" className="db-hub__section-title">
+              {fr ? 'Outils' : 'Tools'}
+            </h2>
           </div>
-        </div>
+
+          <div className="db-hub__grid">
+            <DashboardToolTile
+              href="/retro"
+              icon={Brain}
+              title={fr ? 'Outil Rétro IA' : 'AI Retro Tool'}
+              description={
+                fr ? 'Générez des rétrospectives personnalisées à partir de 146 activités Retromat.' : 'Generate personalized retros from 146 Retromat activities.'
+              }
+              ctaLabel={openLabel}
+            />
+
+            <DashboardToolTile
+              href="/dashboard-manager"
+              icon={LayoutDashboard}
+              title={
+                <>
+                  Dashboard Manager
+                  <DashboardManagerNewBadge language={fr ? 'fr' : 'en'} />
+                </>
+              }
+              description={
+                fr
+                  ? 'Cockpit sprint S.A.L.I.M. · 6 cadrans RAG, OKR, narrative IA'
+                  : 'S.A.L.I.M. sprint cockpit · 6 RAG dials, OKRs, AI narrative'
+              }
+              ctaLabel={openLabel}
+              wide
+            />
+
+            <DashboardToolTile
+              href="/scoring-deliverable"
+              icon={ClipboardCheck}
+              title={fr ? 'Scoring livraison' : 'Delivery Scoring'}
+              description={
+                fr ? 'Évaluez la maturité de vos livrables sur 9 dimensions.' : 'Assess deliverable maturity across nine dimensions.'
+              }
+              ctaLabel={openLabel}
+            />
+
+            <DashboardToolTile
+              href="/salim-qa"
+              icon={BookOpen}
+              title="S.A.L.I.M. Q&A Lab"
+              description={t['tools-salim-qa-desc']}
+              ctaLabel={openLabel}
+            />
+
+            <DashboardToolTile
+              href="/dashboard/westrum"
+              icon={Users}
+              title="Westrum Culture Survey"
+              description={
+                fr ? 'Culture organisationnelle DORA · 6 questions Likert' : 'DORA organizational culture · 6 Likert questions'
+              }
+              ctaLabel={openLabel}
+            />
+
+            <DashboardToolTile
+              href="/okr-checkin"
+              icon={Target}
+              title={fr ? 'OKR Check-in Sprint' : 'OKR Sprint Check-in'}
+              description={
+                fr ? 'Avancé, frein, ajustement · rituel de Sprint Review' : 'Advance, blocker, adjustment · Sprint Review ritual'
+              }
+              ctaLabel={openLabel}
+            />
+
+            {isAdmin ? (
+              <DashboardToolTile
+                href="/niko-niko"
+                icon={Smile}
+                title="Niko Niko"
+                description={fr ? "Suivez les humeurs de l'équipe." : 'Track team mood and happiness index.'}
+                ctaLabel={openLabel}
+              />
+            ) : (
+              <DashboardToolTile
+                icon={Smile}
+                title="Niko Niko"
+                description={fr ? "Suivez les humeurs de l'équipe." : 'Track team mood and happiness index.'}
+                ctaLabel={openLabel}
+                soonLabel={soonLabel}
+                disabled
+              />
+            )}
+
+            {isAdmin ? (
+              <DashboardToolTile
+                href="/dora"
+                icon={BarChart3}
+                title="DORA"
+                description={fr ? 'Métriques DevOps et recommandations IA.' : 'DevOps metrics and AI recommendations.'}
+                ctaLabel={openLabel}
+              />
+            ) : (
+              <DashboardToolTile
+                icon={BarChart3}
+                title="DORA"
+                description={fr ? 'Métriques DevOps et recommandations IA.' : 'DevOps metrics and AI recommendations.'}
+                ctaLabel={openLabel}
+                soonLabel={soonLabel}
+                disabled
+              />
+            )}
+
+            <DashboardToolTile
+              icon={Layout}
+              title={fr ? 'Parcours Scrum' : 'Scrum Journey'}
+              description={fr ? 'Parcours guidé à travers la suite AIgile.' : 'Guided journey through the AIgile suite.'}
+              ctaLabel={openLabel}
+              soonLabel={soonLabel}
+              disabled
+              wide
+            />
+          </div>
+        </section>
 
         {isAdmin ? (
-          <>
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-              {language === 'fr' ? 'Administration' : 'Administration'}
-            </p>
-            <p className="text-sm text-muted-foreground mb-6">
-              {language === 'fr'
-                ? 'Raccourcis — même session que le tableau admin'
-                : 'Shortcuts — same session as the admin dashboard'}
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              <Link
-                href="/admin/orders"
-                className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-              >
-                <div className="w-14 h-14 rounded-xl bg-aigile-gold/20 flex items-center justify-center group-hover:bg-aigile-gold/30 transition-colors">
-                  <Package className="w-7 h-7 text-aigile-gold" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-xl font-semibold text-foreground">
-                    {language === 'fr' ? 'Commandes' : 'Orders'}
-                  </h2>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {language === 'fr' ? 'Livres, Stripe, expéditions' : 'Books, Stripe, shipping'}
-                  </p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-              </Link>
-
-              <AdminIntelligenceToolCard layout="dashboard" />
-
-              <Link
-                href="/admin/feature-flags"
-                className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-              >
-                <div className="w-14 h-14 rounded-xl bg-violet-500/15 flex items-center justify-center group-hover:bg-violet-500/25 transition-colors">
-                  <Flag className="w-7 h-7 text-violet-400" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-xl font-semibold text-foreground">Feature flags</h2>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {language === 'fr' ? 'Lancement, invite-only, libellés' : 'Launch dates, invite-only, labels'}
-                  </p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-              </Link>
-
-              <Link
-                href="/admin/access"
-                className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-              >
-                <div className="w-14 h-14 rounded-xl bg-teal-500/15 flex items-center justify-center group-hover:bg-teal-500/25 transition-colors">
-                  <KeyRound className="w-7 h-7 text-teal-400" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-xl font-semibold text-foreground">
-                    {language === 'fr' ? 'Accès & promos' : 'Access & promos'}
-                  </h2>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {language === 'fr'
-                      ? 'Invitations outils, promos crédits'
-                      : 'Tool invites, credit promos'}
-                  </p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-              </Link>
-
-              <Link
-                href="/admin/stripe-sync"
-                className="group flex items-center gap-4 p-6 bg-card border border-border rounded-2xl hover:border-aigile-gold/50 hover:shadow-lg transition-all duration-200"
-              >
-                <div className="w-14 h-14 rounded-xl bg-sky-500/15 flex items-center justify-center group-hover:bg-sky-500/25 transition-colors">
-                  <RefreshCw className="w-7 h-7 text-sky-400" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-xl font-semibold text-foreground">
-                    {language === 'fr' ? 'Sync Stripe' : 'Stripe sync'}
-                  </h2>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {language === 'fr'
-                      ? 'Importer les paiements Stripe vers les commandes (sans doublon)'
-                      : 'Backfill Stripe payments into orders (no duplicates)'}
-                  </p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-aigile-gold group-hover:translate-x-1 transition-all" />
-              </Link>
+          <section className="db-hub__section" aria-labelledby="db-admin-title">
+            <div className="db-hub__section-head">
+              <h2 id="db-admin-title" className="db-hub__section-title">
+                {fr ? 'Administration' : 'Administration'}
+              </h2>
+              <p className="db-hub__section-note">
+                {fr ? 'Raccourcis admin · même session' : 'Admin shortcuts · same session'}
+              </p>
             </div>
-          </>
+
+            <div className="db-hub__grid db-hub__grid--admin">
+              <DashboardToolTile
+                href="/admin/orders"
+                icon={Package}
+                title={fr ? 'Commandes' : 'Orders'}
+                description={fr ? 'Livres, Stripe, expéditions' : 'Books, Stripe, shipping'}
+                ctaLabel={openLabel}
+              />
+
+              <AdminIntelligenceToolCard layout="hub" />
+
+              <DashboardToolTile
+                href="/admin/feature-flags"
+                icon={Flag}
+                title="Feature flags"
+                description={fr ? 'Lancement, invite-only, libellés' : 'Launch dates, invite-only, labels'}
+                ctaLabel={openLabel}
+              />
+
+              <DashboardToolTile
+                href="/admin/access"
+                icon={KeyRound}
+                title={fr ? 'Accès & promos' : 'Access & promos'}
+                description={fr ? 'Invitations outils, promos crédits' : 'Tool invites, credit promos'}
+                ctaLabel={openLabel}
+              />
+
+              <DashboardToolTile
+                href="/admin/stripe-sync"
+                icon={RefreshCw}
+                title={fr ? 'Sync Stripe' : 'Stripe sync'}
+                description={
+                  fr
+                    ? 'Importer les paiements Stripe vers les commandes'
+                    : 'Backfill Stripe payments into orders'
+                }
+                ctaLabel={openLabel}
+                wide
+              />
+            </div>
+          </section>
         ) : null}
       </div>
-      <PremiumFooter />
-    </main>
+
+      <footer className="ld-footer">
+        <div className="ld-footer__brand">
+          <span className="ld-logo__mark">A</span>
+          <span className="ld-logo__text">AIGILE.LU</span>
+        </div>
+        <p>{fr ? '© 2026 AIGILE.LU · Malis Edition' : '© 2026 AIGILE.LU · Malis Edition'}</p>
+      </footer>
+    </div>
   )
 }

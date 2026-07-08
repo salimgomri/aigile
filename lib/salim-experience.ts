@@ -50,3 +50,10 @@ export function getHeroBookSlideBody(lang: 'fr' | 'en', years = getSalimYearsExp
   }
   return `The first complete guide to implementing AI-augmented Scrum in your team. ${years} years in the field, distilled into an actionable system.`
 }
+
+export function getAboutBioHtml(lang: 'fr' | 'en', years = getSalimYearsExperience()): string {
+  if (lang === 'fr') {
+    return `Avec <strong>${years} années</strong> d'expérience dans l'accompagnement de la transformation digitale, Salim apporte une vision révolutionnaire à l'industrie : « Les entreprises qui prospèrent ne sont pas les plus « agiles » ou les plus « expertes en IA » : elles sont AIgile. » Son travail fait le pont entre les méthodologies agiles traditionnelles et la réalité augmentée par l'IA des équipes de développement modernes.`
+  }
+  return `With <strong>${years} years</strong> of experience coaching digital transformation, Salim brings a revolutionary insight to the industry: "The companies who thrive aren't the most 'agile' or the most 'AI-savvy': they're AIgile." His work bridges the gap between traditional agile methodologies and the AI-enhanced reality of modern development teams.`
+}

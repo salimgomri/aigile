@@ -6,7 +6,7 @@ import { useLanguage } from '@/components/language-provider'
 import { PulseButton } from '@/components/admin/pulse-button'
 import { useAdminIntelligencePulse } from '@/components/admin/use-admin-intelligence-pulse'
 
-type Layout = 'landing' | 'dashboard'
+type Layout = 'landing' | 'dashboard' | 'hub'
 
 export function AdminIntelligenceToolCard({ layout = 'landing' }: { layout?: Layout }) {
   const { language } = useLanguage()
@@ -17,16 +17,41 @@ export function AdminIntelligenceToolCard({ layout = 'landing' }: { layout?: Lay
   )
 
   if (!loaded) {
-    if (layout === 'dashboard') {
+    if (layout === 'dashboard' || layout === 'hub') {
       return (
         <div
-          className="min-h-[104px] animate-pulse rounded-2xl border border-border bg-muted/20"
+          className={layout === 'hub' ? 'db-tool-tile db-tool-tile--disabled animate-pulse min-h-[160px]' : 'min-h-[104px] animate-pulse rounded-2xl border border-border bg-muted/20'}
           aria-hidden
         />
       )
     }
     return (
       <li className="min-h-[220px] animate-pulse rounded-2xl border border-border bg-muted/20 p-5" aria-hidden />
+    )
+  }
+
+  if (layout === 'hub') {
+    return (
+      <Link href="/admin/intelligence" className="db-intel-tile" onClick={acknowledge}>
+        <PulseButton variant={variant} shimmerLayer={shimmer} className="db-intel-tile__inner">
+          <div className="db-intel-tile__row">
+            <span className="db-tool-tile__icon">
+              <Sparkles size={20} strokeWidth={1.75} aria-hidden />
+            </span>
+            <span className="db-tool-tile__live" aria-hidden />
+          </div>
+          <h2 className="!m-0 text-[17px] font-bold tracking-tight">Intelligence</h2>
+          <p className="!m-0 text-[13.5px] leading-relaxed text-[var(--ld-muted)]">
+            {language === 'fr'
+              ? 'Veille opérationnelle : flux YAML, vitalité, transcripts.'
+              : 'Operational radar: YAML feed, vitality, transcripts.'}
+          </p>
+          <span className="db-tool-tile__cta">
+            {language === 'fr' ? 'Ouvrir' : 'Open'}
+            <ArrowRight size={14} aria-hidden />
+          </span>
+        </PulseButton>
+      </Link>
     )
   }
 

@@ -24,6 +24,7 @@ import {
   Users,
 } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
+import { getAboutBioHtml } from '@/lib/salim-experience'
 import { type TranslationKey } from '@/lib/translations'
 import { useInView } from '@/hooks/use-in-view'
 import { ManifestoNavbar } from './ManifestoNavbar'
@@ -202,7 +203,7 @@ export function ManifestoApp() {
               <h2 className="ld-section-title">{t('about-name')}</h2>
               <p className="mf-about__role">{t('about-role')}</p>
               <p className="mf-about__founding">{t('about-founding')}</p>
-              <div className="mf-about__bio" dangerouslySetInnerHTML={{ __html: t('about-bio') }} />
+              <div className="mf-about__bio" dangerouslySetInnerHTML={{ __html: getAboutBioHtml(language) }} />
             </Reveal>
 
             <Reveal delay={80}>
