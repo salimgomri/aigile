@@ -99,10 +99,12 @@ export function LandingToolsSuite() {
         ? sd.label_fr
         : sd.label_en
       : t['tools-scoring-title']
-  const scoringDesc = sd
-    ? (language === 'fr' ? sd.teaser_fr || sd.label_fr : sd.teaser_en || sd.label_en) ||
-      t['tools-scoring-desc']
-    : t['tools-scoring-desc']
+  const scoringDesc = (() => {
+    const raw = sd
+      ? (language === 'fr' ? sd.teaser_fr || sd.label_fr : sd.teaser_en || sd.label_en) || t['tools-scoring-desc']
+      : t['tools-scoring-desc']
+    return raw.replace(/\s*—\s*/g, ' · ').replace(/\s*–\s*/g, ' · ')
+  })()
 
   const skillTitle =
     sm && (language === 'fr' ? sm.label_fr : sm.label_en)
@@ -137,8 +139,8 @@ export function LandingToolsSuite() {
       title: t['tools-westrum'],
       description:
         language === 'fr'
-          ? 'Questionnaire DORA — culture pathologique, bureaucratique ou générative'
-          : 'DORA survey — pathological, bureaucratic, or generative culture',
+          ? 'Questionnaire DORA · culture pathologique, bureaucratique ou générative'
+          : 'DORA survey · pathological, bureaucratic, or generative culture',
       href: '/dashboard/westrum',
       available: westrum?.is_live ?? true,
       interactive: true,
@@ -218,7 +220,11 @@ export function LandingToolsSuite() {
         </header>
 
         <div className="ld-tools-suite__flagships">
-          <article className="ld-tools-feature ld-tools-feature--retro">
+          <Link
+            href="/retro"
+            className="ld-tools-feature ld-tools-feature--retro ld-tools-feature--link"
+            onClick={() => trackEvent('try_free_click', { source: 'landing_home_tools', value: 9.99, currency: 'EUR' })}
+          >
             <div className="ld-tools-feature__head">
               <span className="ld-tools-feature__index" aria-hidden>
                 01
@@ -229,84 +235,103 @@ export function LandingToolsSuite() {
             </div>
             <h3>{t['tools-retro-title']}</h3>
             <p>{t['tools-retro-desc']}</p>
-            <div className="ld-tools-feature__actions">
-              <Link
-                href="/retro"
-                className="ld-btn ld-btn--gold ld-btn--tool"
-                onClick={() => trackEvent('try_free_click', { source: 'landing_home_tools', value: 9.99, currency: 'EUR' })}
-              >
-                {t['tools-cta']}
-                <ArrowRight size={16} aria-hidden />
-              </Link>
-              <Link href="/parcours" className="ld-tools-feature__link">
-                {language === 'fr' ? 'Voir le parcours' : 'View journey'}
-                <ArrowRight size={14} aria-hidden />
-              </Link>
-            </div>
-          </article>
+            <span className="ld-tools-tile__cta">
+              {t['tools-cta']}
+              <ArrowRight size={14} aria-hidden />
+            </span>
+          </Link>
 
-          <article className="ld-tools-feature ld-tools-feature--scoring">
-            <div className="ld-tools-feature__head">
-              <span className="ld-tools-feature__index" aria-hidden>
-                02
+          {scoringDirectCta ? (
+            <Link
+              href="/scoring-deliverable"
+              className="ld-tools-feature ld-tools-feature--scoring ld-tools-feature--link"
+              onClick={() => trackEvent('tools_suite_click', { tool: 'scoring_deliverable', cta: 'use_tool', source: 'landing_home' })}
+            >
+              <div className="ld-tools-feature__head">
+                <span className="ld-tools-feature__index" aria-hidden>
+                  02
+                </span>
+                <span className="ld-tools-feature__icon" aria-hidden>
+                  <Package size={22} strokeWidth={1.75} />
+                </span>
+              </div>
+              <h3>{scoringTitle}</h3>
+              <p>{scoringDesc}</p>
+              <span className="ld-tools-tile__cta">
+                {t['tools-scoring-cta-use']}
+                <ArrowRight size={14} aria-hidden />
               </span>
-              <span className="ld-tools-feature__icon" aria-hidden>
-                <Package size={22} strokeWidth={1.75} />
+            </Link>
+          ) : scoringAccessLoading ? (
+            <div className="ld-tools-feature ld-tools-feature--scoring" aria-busy aria-label={language === 'fr' ? 'Vérification…' : 'Checking…'}>
+              <div className="ld-tools-feature__head">
+                <span className="ld-tools-feature__index" aria-hidden>
+                  02
+                </span>
+                <span className="ld-tools-feature__icon" aria-hidden>
+                  <Package size={22} strokeWidth={1.75} />
+                </span>
+              </div>
+              <h3>{scoringTitle}</h3>
+              <p>{scoringDesc}</p>
+              <div className="ld-tools-feature__loading" />
+            </div>
+          ) : sd?.is_live && scoringInviteOnly && scoringAuthenticated === false ? (
+            <Link
+              href={'/login?redirect=' + encodeURIComponent('/scoring-deliverable')}
+              className="ld-tools-feature ld-tools-feature--scoring ld-tools-feature--link"
+            >
+              <div className="ld-tools-feature__head">
+                <span className="ld-tools-feature__index" aria-hidden>
+                  02
+                </span>
+                <span className="ld-tools-feature__icon" aria-hidden>
+                  <Package size={22} strokeWidth={1.75} />
+                </span>
+              </div>
+              <h3>{scoringTitle}</h3>
+              <p>{scoringDesc}</p>
+              <span className="ld-tools-tile__cta">
+                {t['tools-scoring-sign-in-invited']}
+                <ArrowRight size={14} aria-hidden />
+              </span>
+            </Link>
+          ) : (
+            <div
+              className="ld-tools-feature ld-tools-feature--scoring ld-tools-feature--link ld-tools-feature--interactive"
+              role="button"
+              tabIndex={0}
+              onClick={() => {
+                setEarlyAccessOpen(true)
+                trackEvent('tools_suite_click', { tool: 'scoring_deliverable', action: 'early_access_modal', source: 'landing_home' })
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setEarlyAccessOpen(true)
+                  trackEvent('tools_suite_click', { tool: 'scoring_deliverable', action: 'early_access_modal', source: 'landing_home' })
+                }
+              }}
+            >
+              <div className="ld-tools-feature__head">
+                <span className="ld-tools-feature__index" aria-hidden>
+                  02
+                </span>
+                <span className="ld-tools-feature__icon" aria-hidden>
+                  <Package size={22} strokeWidth={1.75} />
+                </span>
+              </div>
+              <h3>{scoringTitle}</h3>
+              <p>{scoringDesc}</p>
+              <span className="ld-tools-tile__cta">
+                {t['tools-scoring-request-access']}
+                <ArrowRight size={14} aria-hidden />
               </span>
             </div>
-            <h3>{scoringTitle}</h3>
-            <p>{scoringDesc}</p>
-            <div className="ld-tools-feature__actions ld-tools-feature__actions--single">
-              {scoringDirectCta ? (
-                <Link
-                  href="/scoring-deliverable"
-                  className="ld-btn ld-btn--gold ld-btn--tool"
-                  onClick={() => trackEvent('tools_suite_click', { tool: 'scoring_deliverable', cta: 'use_tool', source: 'landing_home' })}
-                >
-                  {t['tools-scoring-cta-use']}
-                  <ArrowRight size={16} aria-hidden />
-                </Link>
-              ) : scoringAccessLoading ? (
-                <div className="ld-tools-feature__loading" aria-busy aria-label={language === 'fr' ? 'Vérification…' : 'Checking…'} />
-              ) : (
-                <>
-                  {sd?.is_live && scoringInviteOnly && scoringAuthenticated === false ? (
-                    <Link
-                      href={'/login?redirect=' + encodeURIComponent('/scoring-deliverable')}
-                      className="ld-tools-feature__link"
-                    >
-                      {t['tools-scoring-sign-in-invited']}
-                    </Link>
-                  ) : null}
-                  <button
-                    type="button"
-                    className="ld-btn ld-btn--gold ld-btn--tool"
-                    onClick={() => {
-                      setEarlyAccessOpen(true)
-                      trackEvent('tools_suite_click', { tool: 'scoring_deliverable', action: 'early_access_modal', source: 'landing_home' })
-                    }}
-                  >
-                    {t['tools-scoring-request-access']}
-                  </button>
-                </>
-              )}
-            </div>
-          </article>
+          )}
         </div>
 
-        <div className="ld-tools-suite__catalog">
-          <div className="ld-tools-suite__catalog-head">
-            <h3 className="ld-tools-suite__catalog-title">
-              {language === 'fr' ? 'Outils disponibles' : 'Available tools'}
-            </h3>
-            <p>
-              {language === 'fr'
-                ? 'Accédez directement aux modules de la suite.'
-                : 'Jump straight into each module of the suite.'}
-            </p>
-          </div>
-
-          <div className="ld-tools-tiles">
+        <div className="ld-tools-tiles">
             {liveTools.map((tool) => {
               const Icon = tool.icon
               const inner = (
@@ -344,7 +369,6 @@ export function LandingToolsSuite() {
               )
             })}
           </div>
-        </div>
 
         {roadmapTools.length > 0 ? (
           <div className="ld-tools-suite__roadmap">
