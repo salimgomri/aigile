@@ -1,10 +1,10 @@
 'use client'
 
-import { Fragment, useEffect, useState } from 'react'
-import Link from 'next/link'
+import { Fragment, useState } from 'react'
 import { Download } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
 import { trackEvent } from '@/lib/gtag'
+import { FrameworkNavbar } from './FrameworkNavbar'
 import {
   CORE_MESSAGE,
   FRAMEWORK_GUIDE_PDF,
@@ -24,36 +24,6 @@ import { StateDetailPanel } from './StateDetailPanel'
 import { SummaryCard } from './SummaryCard'
 import { WorkflowConnector, WorkflowNode } from './WorkflowNode'
 
-function FrameworkHeader({ subtitle }: { subtitle: string }) {
-  const { language, setLanguage } = useLanguage()
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  return (
-    <header className={`fw-header ${scrolled ? 'fw-header--scrolled' : ''}`}>
-      <Link href="/" className="fw-header__brand">
-        <span className="fw-header__mark">A</span>
-        <span className="fw-header__name">AIGILE</span>
-      </Link>
-      <span className="fw-header__sub">{subtitle}</span>
-      <div className="ld-lang" role="group" aria-label="Language">
-        <button type="button" className={language === 'en' ? 'is-active' : ''} onClick={() => setLanguage('en')}>
-          EN
-        </button>
-        <button type="button" className={language === 'fr' ? 'is-active' : ''} onClick={() => setLanguage('fr')}>
-          FR
-        </button>
-      </div>
-    </header>
-  )
-}
-
 export function FrameworkApp() {
   const { language } = useLanguage()
   const lang = language === 'fr' ? 'fr' : 'en'
@@ -68,10 +38,11 @@ export function FrameworkApp() {
 
   return (
     <div className="fw-page">
-      <FrameworkHeader subtitle={meta.subtitle} />
+      <FrameworkNavbar />
 
       <section className="fw-hero fw-animate">
         <span className="fw-eyebrow">{t.uiEyebrowFramework}</span>
+        <p className="fw-hero__meta">{meta.subtitle}</p>
         <h1>
           <span className="fw-hero__gold">The AIgile</span>
           <br />
@@ -101,7 +72,7 @@ export function FrameworkApp() {
         </div>
       </section>
 
-      <section className="fw-cycle">
+      <section id="fw-cycle" className="fw-cycle">
         <span className="fw-eyebrow">{t.uiEyebrowCycle}</span>
         <h2>{t.uiCycleTitle}</h2>
         <p className="fw-cycle__intro">{t.uiCycleIntro}</p>
@@ -141,7 +112,7 @@ export function FrameworkApp() {
         </div>
       </section>
 
-      <section className="fw-phases">
+      <section id="fw-phases" className="fw-phases">
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <span className="fw-eyebrow">{t.uiEyebrowFramework}</span>
         </div>

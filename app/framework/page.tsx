@@ -1,11 +1,20 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Instrument_Serif, Inter } from 'next/font/google'
 import { FrameworkApp } from '@/components/framework/FrameworkApp'
+import '../landing.css'
 import './framework.css'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+const instrument = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument-serif',
   display: 'swap',
 })
 
@@ -23,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function FrameworkPage() {
   return (
-    <main className={inter.variable}>
+    <main className={`${inter.variable} ${instrument.variable}`}>
       <FrameworkApp />
     </main>
   )
