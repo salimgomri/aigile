@@ -1,7 +1,7 @@
 /** AIgile Framework content — Cadre AIgile v1.4 (FR + EN). */
 
 /** PDF du guide de référence — placer le fichier dans public/downloads/ */
-export const FRAMEWORK_GUIDE_PDF = '/downloads/aigile-framework-guide-v1.4.pdf'
+export const FRAMEWORK_GUIDE_PDF = '/downloads/aigile-framework-guide.pdf'
 
 export const SUMMARY_ICONS = ['triangle-alert', 'compass', 'scale'] as const
 
