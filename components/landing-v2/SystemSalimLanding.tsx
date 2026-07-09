@@ -18,6 +18,7 @@ import {
 } from './LandingBookConversion'
 import { LandingAnalytics } from './LandingAnalytics'
 import { LandingBookPricing } from './LandingBookPricing'
+import { AigileLogo } from '@/components/brand/AigileLogo'
 import { LandingBuyButton } from './LandingBuyButton'
 import { LandingNavbar } from './LandingNavbar'
 import { LandingToolsSuite } from './LandingToolsSuite'
@@ -128,8 +129,7 @@ export function SystemSalimLanding() {
 
       <footer className="ld-footer">
         <div className="ld-footer__brand">
-          <span className="ld-logo__mark">A</span>
-          <span className="ld-logo__text">AIGILE.LU</span>
+          <AigileLogo size="md" />
         </div>
         <p>{t.footerRights}</p>
       </footer>

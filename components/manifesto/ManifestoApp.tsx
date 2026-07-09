@@ -25,10 +25,11 @@ import {
 } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
 import { getAboutBioHtml } from '@/lib/salim-experience'
-import { AigileWordmark } from '@/components/brand/AigileWordmark'
+import { AigileLogo } from '@/components/brand/AigileLogo'
+import { SiteChrome } from '@/components/layout/SiteChrome'
+import { MANIFESTO_SUB_NAV } from '@/lib/navigation/site-nav'
 import { type TranslationKey } from '@/lib/translations'
 import { useInView } from '@/hooks/use-in-view'
-import { ManifestoNavbar } from './ManifestoNavbar'
 
 const valueIcons = [Users, Cog, Handshake, RefreshCw]
 const principleIcons = [TrendingUp, Brain, GitBranch, RotateCcw, Flag, Eye, Clock, Rocket, Network, Target]
@@ -57,8 +58,15 @@ export function ManifestoApp() {
   const { t, language } = useLanguage()
 
   return (
-    <div className="ld-page mf-page">
-      <ManifestoNavbar />
+    <div className="ld-page mf-page ld-page--subnav">
+      <SiteChrome
+        subNav={{
+          contextFr: 'Manifeste',
+          contextEn: 'Manifesto',
+          items: MANIFESTO_SUB_NAV,
+        }}
+        buySource="manifesto_nav"
+      />
 
       <section className="mf-hero">
         <div className="ld-shell mf-hero__inner">
@@ -66,7 +74,7 @@ export function ManifestoApp() {
             <div className="mf-cover-card" aria-hidden>
               <p className="mf-cover-card__eyebrow">{language === 'fr' ? 'Document fondateur' : 'Founding document'}</p>
               <p className="mf-cover-card__title">
-                <AigileWordmark className="mf-cover-card__wordmark" height={40} />
+                <AigileLogo size="md" className="mf-cover-card__wordmark" />
               </p>
               <p className="mf-cover-card__kind">{language === 'fr' ? 'Manifeste' : 'Manifesto'}</p>
               <ul className="mf-cover-card__values">
@@ -83,7 +91,7 @@ export function ManifestoApp() {
           <Reveal className="mf-hero__copy" delay={80}>
             <p className="ld-kicker">{language === 'fr' ? 'Manifeste' : 'Manifesto'}</p>
             <h1 className="mf-hero__title">
-              <AigileWordmark className="mf-hero__wordmark" height={72} />
+              <AigileLogo size="hero" className="mf-hero__wordmark" priority />
               <span className="mf-hero__word">{language === 'fr' ? 'Manifeste' : 'Manifesto'}</span>
             </h1>
             <p className="mf-hero__author">{t('hero-author')}</p>
@@ -243,8 +251,7 @@ export function ManifestoApp() {
 
       <footer className="ld-footer">
         <div className="ld-footer__brand">
-          <span className="ld-logo__mark">A</span>
-          <span className="ld-logo__text">AIGILE.LU</span>
+          <AigileLogo size="md" />
         </div>
         <p>{t('footer-copyright')}</p>
       </footer>

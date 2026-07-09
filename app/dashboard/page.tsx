@@ -21,7 +21,7 @@ import { useSession } from '@/lib/auth-client'
 import { useLanguage } from '@/components/language-provider'
 import { useCredits } from '@/lib/credits/CreditContext'
 import { AdminIntelligenceToolCard } from '@/components/admin/admin-intelligence-tool-card'
-import { DashboardHubNavbar } from '@/components/dashboard/DashboardHubNavbar'
+import { SiteChrome } from '@/components/layout/SiteChrome'
 import { DashboardToolTile } from '@/components/dashboard/DashboardToolTile'
 import { DashboardManagerNewBadge } from '@/components/tools/DashboardManagerNewBadge'
 import { translations } from '@/lib/translations'
@@ -55,7 +55,7 @@ export default function DashboardPage() {
 
   return (
     <div className="ld-page db-hub">
-      <DashboardHubNavbar />
+      <SiteChrome buySource="dashboard_nav" />
 
       <div className="ld-shell db-hub__main">
         <header className="db-hub__hero">

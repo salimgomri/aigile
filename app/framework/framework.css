@@ -173,8 +173,8 @@
 
 .fw-hero__wordmark {
   display: block;
-  height: clamp(48px, 9vw, 72px);
-  width: auto;
+  height: clamp(56px, 10vw, 80px) !important;
+  width: auto !important;
 }
 
 .fw-hero__framework {

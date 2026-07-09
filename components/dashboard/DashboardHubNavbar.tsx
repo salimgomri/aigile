@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { LogOut, Menu, User, X } from 'lucide-react'
+import { AigileLogo } from '@/components/brand/AigileLogo'
 import { useLanguage } from '@/components/language-provider'
 import { translations } from '@/lib/translations'
 import { useSession, signOut } from '@/lib/auth-client'
@@ -45,9 +46,8 @@ export function DashboardHubNavbar() {
     <>
       <header className={`ld-nav ${scrolled ? 'ld-nav--scrolled' : ''}`}>
         <div className="ld-nav__inner">
-          <Link href="/" className="ld-logo" aria-label="AIGILE.LU">
-            <span className="ld-logo__mark">A</span>
-            <span className="ld-logo__text">AIGILE.LU</span>
+          <Link href="/" className="ld-logo" aria-label="AIgile — Accueil">
+            <AigileLogo size="nav" />
           </Link>
 
           <nav className="ld-nav__center" aria-label="Primary">

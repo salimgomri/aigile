@@ -64,8 +64,8 @@
 
 .mf-cover-card__wordmark {
   display: block;
-  height: 40px;
-  width: auto;
+  height: 40px !important;
+  width: auto !important;
 }
 
 .mf-cover-card__mark {
@@ -139,8 +139,8 @@
 
 .mf-hero__wordmark {
   display: block;
-  height: clamp(52px, 9vw, 72px);
-  width: auto;
+  height: clamp(56px, 9vw, 80px) !important;
+  width: auto !important;
 }
 
 .mf-hero__line {

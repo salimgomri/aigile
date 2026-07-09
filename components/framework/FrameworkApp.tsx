@@ -3,10 +3,11 @@
 import { Fragment, useState } from 'react'
 import Image from 'next/image'
 import { Download } from 'lucide-react'
-import { AigileWordmark } from '@/components/brand/AigileWordmark'
+import { AigileLogo } from '@/components/brand/AigileLogo'
 import { useLanguage } from '@/components/language-provider'
 import { trackEvent } from '@/lib/gtag'
-import { FrameworkNavbar } from './FrameworkNavbar'
+import { SiteChrome } from '@/components/layout/SiteChrome'
+import { FRAMEWORK_SUB_NAV } from '@/lib/navigation/site-nav'
 import {
   CORE_MESSAGE,
   FRAMEWORK_GUIDE_PDF_EN,
@@ -51,10 +52,17 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
   const lateralStates = states.filter((s) => s.lateral)
 
   return (
-    <div className="fw-page">
-      <FrameworkNavbar />
+    <div className="fw-page ld-page--subnav">
+      <SiteChrome
+        subNav={{
+          contextFr: 'Framework',
+          contextEn: 'Framework',
+          items: FRAMEWORK_SUB_NAV,
+        }}
+        buySource="framework_nav"
+      />
 
-      <section className="fw-hero fw-animate">
+      <section id="fw-hero" className="fw-hero fw-animate">
         <div className="fw-hero__inner">
           <div className="fw-hero__visual">
             <Image
@@ -82,7 +90,7 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
             <span className="fw-eyebrow">{t.uiEyebrowFramework}</span>
             <p className="fw-hero__meta">{meta.subtitle}</p>
             <h1 className="fw-hero__title">
-              <AigileWordmark className="fw-hero__wordmark" height={72} />
+              <AigileLogo size="hero" className="fw-hero__wordmark" priority />
               <span className="fw-hero__framework">Framework</span>
             </h1>
             <p className="fw-hero__lead">{meta.manifesto}</p>
