@@ -1,0 +1,278 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 1
+# chapter-extractor v6.1
+
+meta:
+  partie: 1
+  nom_partie: "Scrum du terrain"
+  chapitre: 1
+  titre: "Scrum : pari empirique, pas méthodologique"
+  date_extraction: "2026-06-15"
+  date_mise_a_jour: "2026-06-16"
+  page_debut: 47
+  page_fin: 57
+  statut_global: valide
+
+questions:
+  - id: "P1-CH01-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    themes_salim: [S]
+    question: "Mon manager veut comparer la vélocité de nos équipes, mais avant ça, quelle est la vraie différence entre faire Scrum et pratiquer l'empirisme, et comment je teste ça en 10 secondes lundi prochain ?"
+    reponse: "Pose la question du Sprint Goal. Si la réponse est une liste de tâches, l'empirisme n'est pas là, même si toutes les cérémonies sont faites."
+    douleur_terrain: "Le SM coche les cases Scrum (sprints, backlog, cérémonies) mais sent que quelque chose ne tourne pas, sans pouvoir le nommer."
+    source_expert: null
+    page: 47
+    extrait: "Retirez un pilier, vous n'avez plus de Scrum. Vous avez un processus habillé en Scrum."
+    fiche_liee: "FP-I-1.1"
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH01-01"]
+
+  - id: "P1-CH01-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: SGEP
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [S, I]
+    question: "Le chapitre parle de TIA comme socle, mais une fois les 3 piliers en place, comment je fais évoluer mon équipe au-delà du strict respect de TIA, vers une vraie capacité à apprendre de l'imprévu ?"
+    reponse: "TIA est le socle, pas le plafond. Une fois les 3 piliers tenus, la question devient ce qu'on fait de l'imprévu quand il surprend : le traiter comme un bruit à corriger, ou comme une ressource à exploiter."
+    douleur_terrain: "Les SM avancés ont déjà TIA en place mais cherchent la marche suivante, et le chapitre s'arrête au socle."
+    source_expert: "SGEP : Scrum treats emergence not as a risk to be eliminated but as a force to be cultivated."
+    page: 52
+    extrait: "TIA, c'est le socle. Pas le plafond. [...] La marche suivante, c'est de la traiter comme une ressource."
+    fiche_liee: "FP-I-1.2"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, quand, valeur]
+    themes_salim: [S]
+    question: "Si le pilier Transparence est bloqué par la culture du reporting positif de mon organisation, le chapitre dit que ce n'est pas un problème de Scrum, mais concrètement, qui je vais voir et avec quel argument pour faire bouger ça ?"
+    reponse: "Apporter au manager un fait précis et neutre sans attendre qu'il demande comment ça va, en montrant ce que la transparence apporte plutôt que ce qu'elle retire. Répéter sur plusieurs sprints pour que la dynamique change."
+    douleur_terrain: "Le SM repère le vrai problème mais reste seul avec, sans porte d'entrée vers le management."
+    source_expert: null
+    page: 50
+    extrait: "Le premier ennemi de la transparence n'est pas la mauvaise volonté : c'est la culture du reporting positif."
+    fiche_liee: "FP-I-1.3"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [S, M]
+    question: "Le chapitre dit qu'un Sprint Goal de façade est une liste de tâches et qu'un Sprint Goal réel est une hypothèse métier. Mais si mes parties prenantes m'envoient 10 demandes par sprint sans priorité claire, comment je transforme ça en une seule hypothèse métier sans juste en exclure 9 et créer un conflit ?"
+    reponse: "La cause n'est pas le Sprint Goal mais l'absence de critère commun de priorisation. Retravailler la grille (valeur, risque, effort, qui décide en cas d'égalité) avant de retravailler le Sprint Goal."
+    douleur_terrain: "Le PO comprend qu'il doit formuler une hypothèse métier claire, mais le vrai blocage est en amont, sur la priorisation entre parties prenantes."
+    source_expert: null
+    page: 53
+    extrait: "53 % des organisations peinent à prioriser le bon travail et 52 % à mesurer l'impact business."
+    fiche_liee: "FP-I-1.4"
+    fiche_destinee_a: [PO, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: DAVE_FARLEY
+    dimensions: [qui, quoi, pourquoi, valeur]
+    themes_salim: [S, M]
+    question: "Le chapitre dit que la DoD est un contrat de qualité que l'équipe s'impose à elle-même, mais si mon management mesure le nombre de stories livrées et pas la qualité, comment je protège une DoD niveau 3 sans passer pour celui qui freine la vélocité ?"
+    reponse: "Donner au management un chiffre concret à regarder (taux d'incidents en prod, retours en sprint suivant, temps de correction du marqué terminé) avant de muscler la DoD, pour que la conversation porte sur le coût déjà existant plutôt que sur la permission de ralentir."
+    douleur_terrain: "Le dev sait que sa DoD est correcte, mais chaque sprint il est mis en tension entre tenir la DoD et livrer le nombre de stories attendu."
+    source_expert: "Dave Farley : Modern engineering is the practical side of empirical process control."
+    page: 55
+    extrait: "Changer la DoD sans changer ce qu'on mesure, c'est une réforme qui ne tient pas."
+    fiche_liee: "FP-I-1.5"
+    fiche_destinee_a: [DEV, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [S]
+    question: "Le chapitre distingue Scrum de façade et Scrum réel et dit que le passage de l'un à l'autre est progressif sprint après sprint. En tant que coach intervenant sur plusieurs équipes, à quoi je regarde concrètement pour savoir où se situe une équipe sur ce chemin, et lequel des 3 piliers TIA prioriser en premier ?"
+    reponse: "Quand les trois piliers sont faibles en même temps, commencer par la Transparence : sans elle, l'Inspection porte sur des données fausses et l'Adaptation corrige le mauvais problème. L'Adaptation suit presque naturellement une fois les deux premiers piliers tenus."
+    douleur_terrain: "Le CA voit plusieurs équipes à des stades différents et doit décider où investir son temps de coaching en premier."
+    source_expert: null
+    page: 58
+    extrait: "Que tu coaches une équipe depuis l'extérieur ou que tu sois dans l'équipe toi-même, si les trois piliers sont faibles en même temps, ne traite pas les trois à la fois. Commence par la Transparence."
+    fiche_liee: "FP-I-1.6"
+    fiche_destinee_a: [CA, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: MARTIN_HINSHELWOOD
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    themes_salim: [I, M]
+    question: "Le chapitre parle de pari et dit que je ne contrôle pas la livraison, mais ma direction me demande des dates fiables pour le comité. Comment je transforme l'observation de la vélocité sur 3 sprints en un langage que mon DSI accepte à la place d'un plan à 6 mois ?"
+    reponse: "Répondre avec une tendance plutôt qu'un pari : sur les trois derniers sprints, l'équipe a livré entre X et Y points de façon stable, le périmètre restant représente environ Z sprints. C'est vérifiable sprint après sprint, donc plus rigoureux qu'un plan figé jamais tenu."
+    douleur_terrain: "Le manager risque sa crédibilité s'il arrive en comité avec un pari au lieu d'un engagement chiffré, même si le pari est plus honnête que le plan."
+    source_expert: "Martin Hinshelwood"
+    page: 49
+    extrait: "Si tu es manager et que ta direction te demande une date, ne réponds pas avec un pari. Réponds avec une tendance."
+    fiche_liee: "FP-I-1.7"
+    fiche_destinee_a: [MG, DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, quand, valeur]
+    themes_salim: [I]
+    question: "Le chapitre donne 4 questions de fin de chapitre pour diagnostiquer le blocage en 15 minutes. En tant que manager qui supervise sans pratiquer Scrum moi-même, est-ce que je peux poser ces 4 questions directement à mon équipe, ou est-ce que ça va être perçu comme un contrôle déguisé ?"
+    reponse: "Ces quatre questions sont faites pour que l'équipe se les pose à elle-même, pas pour que le manager les pose en réunion comme un contrôle. Proposer plutôt au Scrum Master de les regarder ensemble en 1:1 : ça laisse à l'équipe la possibilité de refuser, ce qui rend la transparence possible."
+    douleur_terrain: "Le manager veut utiliser l'outil de diagnostic du chapitre mais craint que poser ces questions directement à l'équipe ressemble à un audit plutôt qu'à une aide."
+    source_expert: null
+    page: 59
+    extrait: "Dans le premier cas, tu inspectes l'équipe. Dans le second, tu lui proposes un outil qu'elle peut refuser, ce qui, paradoxalement, est exactement ce qui rend la transparence possible."
+    fiche_liee: "FP-I-1.8"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: MARTIN_HINSHELWOOD
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    themes_salim: [M]
+    question: "Le chapitre cite que seulement 15% des organisations ont des leaders exec activement impliqués et que 76% sont sous pression ROI sans soutien exécutif. En tant que DSI, qu'est-ce que je dois concrètement faire différemment dès demain pour ne pas être dans ces 76%, et avec quel risque si je ne change rien ?"
+    reponse: "Le levier le plus simple n'est pas un budget supplémentaire : c'est d'arrêter de demander une date avant le prochain Sprint Review. Cette seule habitude change ce que l'équipe ose montrer."
+    douleur_terrain: "Le DSI lit une statistique qui le concerne directement mais ne sait pas par où commencer pour ne pas rester dans cette majorité sous pression sans soutien."
+    source_expert: "Martin Hinshelwood"
+    page: 50
+    extrait: "Si tu es ce DSI : le levier le plus simple n'est pas un budget supplémentaire. C'est d'arrêter de demander une date avant le prochain Sprint Review."
+    fiche_liee: "FP-I-1.9"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH01-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [S, M]
+    question: "Le chapitre dit qu'une DoD niveau 3 mature inclut déployable en prod à tout moment et que 63% des organisations sont en difficulté pour livrer un logiciel fiable. En tant que décideur, comment je sais à quel niveau de DoD (1, 2 ou 3) sont réellement mes équipes aujourd'hui, sans demander un audit complet ?"
+    reponse: "S'appuyer sur l'échelle à 3 niveaux du chapitre (débutante, confirmée, mature, avec seuil minimum de critères pour chaque) et sur le Dashboard Manager d'aigile.lu, qui agrège cette information équipe par équipe sans que ça ressemble à une inspection."
+    douleur_terrain: "Le DC découvre qu'il existe une échelle de maturité DoD à 3 niveaux mais n'a aucun moyen de savoir où se situent ses équipes sans lancer un audit lourd et perçu comme intrusif."
+    source_expert: null
+    page: 57
+    extrait: "Pour un décideur qui veut une vue d'ensemble sans demander un audit à chaque équipe, c'est exactement ce que le Dashboard Manager d'aigile.lu agrège, équipe par équipe, sans que ça ressemble à une inspection."
+    fiche_liee: "FP-I-1.10"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+trous: []
+
+fiches_pratiques:
+  - id: "FP-I-1.1"
+    titre: "TIA : les 3 piliers à surveiller"
+    pour_qui: [SM, PO, CA]
+    themes_salim: [S]
+    fichier: "FP-I-1.1.svg"
+  - id: "FP-I-1.2"
+    titre: "Au-delà de TIA : cultiver l'émergence"
+    pour_qui: [SM, CA]
+    themes_salim: [S, I]
+    fichier: "FP-I-1.2.svg"
+  - id: "FP-I-1.3"
+    titre: "Parler vrai au management"
+    pour_qui: [SM, MG]
+    themes_salim: [S]
+    fichier: "FP-I-1.3.svg"
+  - id: "FP-I-1.4"
+    titre: "Quand le Sprint Goal révèle un autre problème"
+    pour_qui: [PO, MG]
+    themes_salim: [S, M]
+    fichier: "FP-I-1.4.svg"
+  - id: "FP-I-1.5"
+    titre: "Rendre visible le coût de l'allègement DoD"
+    pour_qui: [DEV, MG]
+    themes_salim: [S, M]
+    fichier: "FP-I-1.5.svg"
+  - id: "FP-I-1.6"
+    titre: "Par où commencer quand TIA est faible"
+    pour_qui: [CA, SM]
+    themes_salim: [S]
+    fichier: "FP-I-1.6.svg"
+  - id: "FP-I-1.7"
+    titre: "Présenter une tendance, pas un pari"
+    pour_qui: [MG, DC]
+    themes_salim: [I, M]
+    fichier: "FP-I-1.7.svg"
+  - id: "FP-I-1.8"
+    titre: "Les 4 questions, sans audit déguisé"
+    pour_qui: [MG]
+    themes_salim: [I]
+    fichier: "FP-I-1.8.svg"
+  - id: "FP-I-1.9"
+    titre: "Le levier DSI, pas le budget"
+    pour_qui: [DC]
+    themes_salim: [M]
+    fichier: "FP-I-1.9.svg"
+  - id: "FP-I-1.10"
+    titre: "À quel niveau DoD sont mes équipes ?"
+    pour_qui: [DC, MG]
+    themes_salim: [S, M]
+    fichier: "FP-I-1.10.svg"
+
+stats:
+  questions_totales: 10
+  par_role:
+    SM: 3
+    PO: 1
+    DEV: 1
+    CA: 1
+    RTE: 0
+    MG: 2
+    DC: 2
+  par_statut:
+    provisoire: 0
+    confirmee: 10
+    trou: 0
+  couverture_dimensions:
+    qui: 9
+    quoi: 10
+    comment: 6
+    pourquoi: 8
+    quand: 5
+    valeur: 10
+  couverture_themes_salim:
+    S: 7
+    A: 0
+    L: 0
+    I: 4
+    M: 6
+  schemas_lies: 1
+  fiches_pratiques: 10

@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+<!-- FOND + BANDE -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO TEXTE (cat1.svg absent ; remplacer par logo SVG en post-prod Affinity) -->
+<text x="27" y="130"
+      style="font-family:'Georgia',serif;font-size:10px;font-weight:bold;
+             fill:#0f2240;writing-mode:tb;"
+      transform="rotate(180,27,130)">S.A.L.I.M.</text>
+
+<!-- TEXTE VERTICAL -->
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:'Georgia',serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbbbbb;">CHECKLIST D&#201;CISION</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23"
+      style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP II-8.1</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58"
+      style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">D&#233;marrer la Boucle OKR Vivante</text>
+<text x="72" y="72"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">V&#233;rifie, d&#233;cide, avance en confiance.</text>
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<line x1="238.7" y1="86" x2="238.7" y2="136" style="stroke:#fff;stroke-width:0.6px;opacity:0.5;"/>
+<line x1="423.7" y1="86" x2="423.7" y2="136" style="stroke:#fff;stroke-width:0.6px;opacity:0.5;"/>
+<line x1="608.7" y1="86" x2="608.7" y2="136" style="stroke:#fff;stroke-width:0.6px;opacity:0.5;"/>
+
+<text x="72" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">SM / PO / CA</text>
+
+<text x="252" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">V&#233;rifier que les conditions sont r&#233;unies pour activer le Check-in OKR</text>
+
+<text x="437" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L'UTILISER</text>
+<text x="437" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Avant le Sprint 1 de la roadmap, ou pour calibrer une phase suivante</text>
+
+<text x="622" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">&#201;vite de sur-outiller avant que les bases ne soient pr&#234;tes</text>
+
+<!-- TABLEAU GO/NO-GO -->
+<text x="72" y="170"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">CRIT&#200;RES &#192; V&#201;RIFIER AVANT DE LANCER LA PHASE 1</text>
+
+<rect x="72" y="184" width="650" height="26" style="fill:#0f2240;"/>
+<text x="84" y="201" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#fff;">#</text>
+<text x="110" y="201" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#fff;">CRIT&#200;RE DE V&#201;RIFICATION</text>
+<text x="540" y="201" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#fff;">GO</text>
+<text x="580" y="201" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#fff;">NO GO</text>
+<text x="640" y="201" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#fff;">PRIORIT&#201;</text>
+
+<rect x="72" y="220" width="650" height="38" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="84" y="233" style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">01</text>
+<text x="110" y="233" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">L'&#233;quipe et le PO acceptent d'ajouter 5 minutes en fin de Sprint Review.</text>
+<text x="110" y="247" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"></text>
+<circle cx="548" cy="239" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.2px;"/>
+<circle cx="588" cy="239" r="6" style="fill:none;stroke:#cc3333;stroke-width:1.2px;"/>
+<text x="640" y="243" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Indispensable</text>
+
+<rect x="72" y="258" width="650" height="38" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="84" y="271" style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">02</text>
+<text x="110" y="271" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">J'ai pr&#233;venu mon manager direct que je vais noter le Sprint Goal atteint </text>
+<text x="110" y="285" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">ou pas, et le partager.</text>
+<circle cx="548" cy="277" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.2px;"/>
+<circle cx="588" cy="277" r="6" style="fill:none;stroke:#cc3333;stroke-width:1.2px;"/>
+<text x="640" y="281" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Indispensable</text>
+
+<rect x="72" y="296" width="650" height="38" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="84" y="309" style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">03</text>
+<text x="110" y="309" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Je sais identifier les OKR actifs de l'organisation (ou je sais qui les demand</text>
+<text x="110" y="323" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">er).</text>
+<circle cx="548" cy="315" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.2px;"/>
+<circle cx="588" cy="315" r="6" style="fill:none;stroke:#cc3333;stroke-width:1.2px;"/>
+<text x="640" y="319" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Important</text>
+
+<rect x="72" y="334" width="650" height="38" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="84" y="347" style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">04</text>
+<text x="110" y="347" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Si pas de CI/CD : je commence avec 3 cadrans (On Time, Bien-&#234;tre, Blocage</text>
+<text x="110" y="361" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">s Q3 oral).</text>
+<circle cx="548" cy="353" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.2px;"/>
+<circle cx="588" cy="353" r="6" style="fill:none;stroke:#cc3333;stroke-width:1.2px;"/>
+<text x="640" y="357" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Important</text>
+
+<rect x="72" y="372" width="650" height="38" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="84" y="385" style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">05</text>
+<text x="110" y="385" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">J'ai un support, m&#234;me simple (Google Sheet), pour noter Q1 d&#232;s la pr</text>
+<text x="110" y="399" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">ochaine review.</text>
+<circle cx="548" cy="391" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.2px;"/>
+<circle cx="588" cy="391" r="6" style="fill:none;stroke:#cc3333;stroke-width:1.2px;"/>
+<text x="640" y="395" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Indispensable</text>
+
+<rect x="72" y="410" width="650" height="38" style="fill:#fff;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<text x="84" y="423" style="font-family:'Helvetica';font-size:10px;font-weight:bold;fill:#febd10;">06</text>
+<text x="110" y="423" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Le manager sait qu'il pourra consulter le dashboard 15 min apr&#232;s la revie</text>
+<text x="110" y="437" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">w, sans assister au Check-in.</text>
+<circle cx="548" cy="429" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.2px;"/>
+<circle cx="588" cy="429" r="6" style="fill:none;stroke:#cc3333;stroke-width:1.2px;"/>
+<text x="640" y="433" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Utile</text>
+
+<!-- ZONE DECISION -->
+<rect x="72" y="464" width="318" height="170" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="404" y="464" width="318" height="170" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<text x="88" y="486" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">D&#201;CISION</text>
+<line x1="88" y1="494" x2="370" y2="494" style="stroke:#febd10;stroke-width:1px;"/>
+
+<rect x="90" y="506" width="12" height="12" style="fill:none;stroke:#2a7a2a;stroke-width:1.2px;"/>
+<text x="110" y="516" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">GO : conditions 01, 02 et 05 remplies.</text>
+<text x="110" y="530" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Tu peux poser Q1 d&#232;s la prochaine</text>
+<text x="110" y="544" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Sprint Review.</text>
+
+<rect x="90" y="564" width="12" height="12" style="fill:none;stroke:#cc3333;stroke-width:1.2px;"/>
+<text x="110" y="574" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">NO GO : si 01 ou 02 manquent.</text>
+<text x="110" y="588" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">R&#233;gler d'abord la conversation avec</text>
+<text x="110" y="602" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">l'&#233;quipe ou ton manager, pas l'outil.</text>
+
+<text x="420" y="486" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">REMARQUES / ACTIONS</text>
+<line x1="420" y1="494" x2="706" y2="494" style="stroke:#febd10;stroke-width:1px;"/>
+
+<text x="420" y="514" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#bbbbbb;">&#192; mener avant la phase 1 :</text>
+<line x1="420" y1="530" x2="706" y2="530" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+<line x1="420" y1="550" x2="706" y2="550" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+<line x1="420" y1="570" x2="706" y2="570" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+<line x1="420" y1="590" x2="706" y2="590" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+<line x1="420" y1="610" x2="706" y2="610" style="stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<!-- ROADMAP RAPIDE -->
+<text x="72" y="664" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">RAPPEL ROADMAP : 4 PHASES, 7 SPRINTS</text>
+<line x1="72" y1="672" x2="722" y2="672" style="stroke:#febd10;stroke-width:1px;"/>
+
+<text x="72" y="692" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"><tspan style="font-weight:bold;">Sprints 1-2</tspan> : Q1 uniquement, &#224; l'oral, en fin de Sprint Review.</text>
+<text x="72" y="710" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"><tspan style="font-weight:bold;">Sprints 3-4</tspan> : lien dashboard envoy&#233; par le SM. Ajout Q2 et Q3. Premier dashboard, m&#234;me Google Sheet.</text>
+<text x="72" y="728" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"><tspan style="font-weight:bold;">Sprints 5-6</tspan> : application Scrum Augment&#233; activ&#233;e. Saisie au fil de l'eau. Rituel de deadline pos&#233;.</text>
+<text x="72" y="746" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"><tspan style="font-weight:bold;">Sprints 7+</tspan> : cascade compl&#232;te. Le manager annote. Les tendances sur 6 sprints deviennent la conversation.</text>
+
+<!-- FOOTER -->
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1088"
+      style="font-family:'Helvetica';font-size:9px;fill:#febd10;">01</text>
+<text x="72" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. : Ch.8</text>
+<text x="677" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

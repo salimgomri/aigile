@@ -1,0 +1,287 @@
+# Le Système S.A.L.I.M. : Q&A Chapitre 5
+# chapter-extractor v6.1
+
+meta:
+  partie: 2
+  nom_partie: "Mesurer ce qui compte"
+  chapitre: 5
+  titre: "Vélocité : mythe, outil, piège"
+  date_extraction: "2026-06-14"
+  page_debut: 130
+  page_fin: 144
+  statut_global: en_cours
+
+questions:
+
+  - id: "P2-CH05-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: MIKE_COHN
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    themes_salim: [M, S]
+    question: "Mon manager veut comparer la vélocité de nos 3 équipes pour identifier la moins productive. Comment je lui explique que c'est la mauvaise mesure sans qu'il pense que je protege mon équipe, et qu'est-ce que je lui propose à la place ?"
+    reponse: "La comparaison inter-équipes n'est jamais communicable, peu importe la formulation de la demande. Mike Cohn met en garde explicitement contre cette pratique : utiliser la vélocité comme outil de comparaison management est l'une des dérives les plus destructrices dans les organisations qui adoptent Scrum à grande échelle. Ce qui est communicable à la place : la tendance sur 3 sprints (stabilité, pas le chiffre brut) et la projection de release en dates, pas en points."
+    douleur_terrain: "Le SM vit cette conversation tous les trimestres. Sans argument chiffre et sans alternative concrète à proposer, il perd souvent et finit par livrer les chiffres bruts."
+    source_expert: "Mike Cohn, Agile Estimating and Planning, 2005"
+    page: 136
+    extrait: "utiliser la vélocité comme outil de comparaison management est l'une des dérives les plus destructrices dans les organisations qui adoptent Scrum à grande échelle"
+    fiche_liee: "FP-P2-CH05-vélocité-communication"
+    fiche_destinee_a: [SM, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH05-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, comment, quand, valeur]
+    themes_salim: [M]
+    question: "Quelle variation de vélocité est normale sur 3 sprints, et a partir de quand est-ce que je dois vraiment m'inquiéter ?"
+    reponse: "Une variation de plus ou moins 15% d'un sprint a l'autre est normale et ne mérite généralement pas qu'on s'y arrête. Ce n'est pas une norme scientifique, c'est un repère terrain de l'auteur sur des vingtaines d'équipes. Le signal d'alerte réel est une baisse progressive sur 4 sprints consecutifs."
+    douleur_terrain: "Le SM ne sait pas quand alerter et quand rassurer. Il surreagit a chaque baisse isolée et finit par perdre toute crédibilité quand il alerte vraiment."
+    source_expert: null
+    page: 138
+    extrait: "Dans mon experience sur des vingtaines d'équipes, une variation inférieure a 15% ne mérite généralement pas qu'on s'y arrête. Ce n'est pas une norme scientifique, c'est un de mes repères terrain."
+    fiche_liee: "FP-P2-CH05-lecture-vélocité"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH05-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: MIKE_COHN
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    themes_salim: [I, S]
+    question: "Mon équipe gonfle les story points pour 'améliorer' sa vélocité depuis quelques sprints. Comment je le recalibre sans que ça ressemble à une accusation en Rétro ?"
+    reponse: "TROU. Le chapitre décrit très précisément le mécanisme (Erreur 3, p.138 : si l'équipe sait qu'elle sera évaluée sur l'atteinte de 50 points, elle va naturellement estimer 5 points ce qui aurait été estimé 3) et le signal distinctif d'une hausse artificielle (inflation des estimations sans amélioration des autres indicateurs, p.139). Mais il ne dit jamais OU et COMMENT recalibrer concrètement une fois le diagnostic posé."
+    douleur_terrain: "L'inflation des points est invisible jusqu'au jour où la prédictibilité s'effondre complètement et que le SM doit expliquer pourquoi une 'bonne' vélocité ne livre plus rien de fiable."
+    source_expert: "Mike Cohn, Agile Estimating and Planning, 2005"
+    page: 138
+    extrait: "Résultat : la vélocité monte, mais la capacité réelle reste la même. Tu mesures mieux le chiffre, pas le travail."
+    fiche_liee: "FP-P2-CH05-recalibrage-points"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: trou
+    action_recommandee: "Avant la section En pratique (p.139), juste après le tableau INDICATEUR/VALEUR/SIGNIFICATION, ajouter un encadre intitulé Comment recalibrer sans accuser. Texte : Si tu suspectes une inflation des estimations, ne traite pas le sujet en Rétrospective frontale, l'équipe se sentirait visée. Recalibre plutôt en Refinement, sur des références concrètes. Reprends trois ou quatre stories déjà livrées au sprint précédent et fais-les réestimer par l'équipe, à l'aveugle, sans rappeler le chiffre d'origine. Si les nouvelles estimations sont plus basses, tu as ta réponse, sans avoir mis personne en cause. L'équipe ajuste naturellement ses futures estimations sur ces nouvelles références, sans annonce ni mea-culpa collectif."
+    schemas_lies: []
+
+  - id: "P2-CH05-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: MIKE_COHN
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [L, M]
+    question: "J'ai un stakeholder qui me demande une date de livraison pour le MVP. Comment je donne une projection crédible sans inventer une date que je vais devoir justifier dans 3 sprints ?"
+    reponse: "La projection de release basée sur la vélocité moyenne est le seul usage de la vélocité que le management comprend et auquel il peut faire confiance. La formulation juste : à ce rythme, le scope promis sera livré entre le Sprint 8 et le Sprint 9. Une fourchette, des dates, pas un chiffre de vélocité brut."
+    douleur_terrain: "Le PO donne une date précise au stakeholder. 3 sprints plus tard la date est dépassée et personne n'a été prévenu en chemin. La confiance du stakeholder s'effondre d'un coup."
+    source_expert: "Mike Cohn, Agile Estimating and Planning, 2005"
+    page: 137
+    extrait: "La formulation juste : À ce rythme, le scope promis sera livré entre le Sprint 8 et le Sprint 9. Pas notre vélocité est de 38 points. Des dates. Une fourchette. Traçable. Honnête. Non contestable."
+    fiche_liee: "FP-P2-CH05-vélocité-communication"
+    fiche_destinee_a: [PO, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH05-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: MIKE_COHN
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    themes_salim: [S]
+    question: "Mon manager regarde mon nombre de points livrés dans son tableau de bord et le mentionne en entretien annuel. Comment je reagis sans passer pour quelqu'un qui se défile ?"
+    reponse: "La vélocité mesure l'équipe, jamais les contributeurs. L'utiliser dans un entretien annuel est une erreur structurelle (Erreur 4, p.140). C'est un fait nommé explicitement dans le chapitre, pas une opinion à défendre seul."
+    douleur_terrain: "Le dev voit son nombre de points livrés affiché dans le tableau de bord du manager. Il commence à jouer le jeu de l'inflation pour se protéger, ce qui détruit la fiabilité de la vélocité pour toute l'équipe."
+    source_expert: "Mike Cohn, Agile Estimating and Planning, 2005"
+    page: 140
+    extrait: "Erreur 4 : Mesurer les contributeurs. Évaluer les individus. La vélocité mesure l'équipe, jamais les contributeurs. L'utiliser dans un entretien annuel est une erreur structurelle."
+    fiche_liee: "FP-P2-CH05-erreurs-vélocité"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P2-CH05-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand]
+    themes_salim: [I, M]
+    question: "Quand je fais du refactoring ou que j'ajoute des tests automatisés, ma vélocité baisse et le manager me questionne. Comment je rends ce travail visible avant que ça devienne un problème ?"
+    reponse: "Quand une équipe renforce sa définition of Done, la vélocité baisse mécaniquement pendant 2 à 4 sprints. Ce n'est pas un signal négatif, c'est l'inverse : l'équipe investit dans la qualité durable. Une équipe qui livre 30 points avec un DoD renforcé livre davantage de valeur réelle qu'une équipe qui affiche 45 points avec un DoD minimal. Si le DoD change, la vélocité change : c'est attendu. TROU partiel : le chapitre dit de documenter le changement de DoD dans le dashboard, mais ne précise pas comment rendre visible le travail de remboursement de dette lui même dans le backlog avant qu'il impacte la vélocité."
+    douleur_terrain: "Le dev qui fait du refactoring voit sa vélocité baisser et se fait questionner. Il arrête le refactoring pour proteger ses chiffres. La dette s'accumule en silence."
+    source_expert: "Ken Schwaber, cité p.141"
+    page: 141
+    extrait: "Si le DoD change, la vélocité change : c'est attendu, pas inquiétant. Documente le changement de DoD dans le dashboard, et le manager comprendra pourquoi le chiffre a bougé."
+    fiche_liee: "FP-P2-CH05-vélocité-dod"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: trou
+    action_recommandee: "Après le paragraphe se terminant par le manager comprendra pourquoi le chiffre a bougé (p.141), avant la section c. Le contexte toujours, ajouter un paragraphe intitulé Côté backlog. Texte : Avant de lancer un sprint consacré au remboursement de dette technique ou au renforcement de la définition of Done, crée une story dédiée et estimée dans le backlog, visible dès le Sprint Planning. La baisse de vélocité qui en résultera n'est alors pas une surprise découverte en Sprint Review : c'est un engagement annoncé à l'avance."
+    schemas_lies: []
+
+  - id: "P2-CH05-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: MIKE_COHN
+    dimensions: [qui, comment, pourquoi, quand, valeur]
+    themes_salim: [M]
+    question: "Mon management est fixé sur la vélocité comme KPI depuis des années. J'explique que c'est la mauvaise mesure, tout le monde acquiesce, et 2 semaines plus tard ils retournent la surveiller. Comment je casse ce cycle ?"
+    reponse: "TROU. Le chapitre donne l'argument théorique complet (vélocité = outil de planification, pas indicateur de performance, p.131 et 136) mais ne propose aucun outil de remplacement concret à présenter au management. La reponse précédente du master (Scoring Deliverable) n'est pas mentionnée dans ce chapitre : aucune occurrence d'aigile.lu ni de Scoring Deliverable dans le texte fourni."
+    douleur_terrain: "Le Coach passe des mois à expliquer que la vélocité n'est pas un KPI. Le management acquiesce puis repart surveiller la vélocité le sprint suivant, parce que personne ne lui a proposé un substitut concret à regarder à la place."
+    source_expert: null
+    page: 137
+    extrait: "Règle de communication : donne des dates, pas des points."
+    fiche_liee: "FP-P2-CH05-vélocité-communication"
+    fiche_destinee_a: [CA, MG]
+    statut_reponse: trou
+    action_recommandee: "Avant L'essentiel à retenir (p.143), ajouter un encadre intitulé Ce que tu proposes au management à la place. Texte : Si ton management reste attaché à un chiffre unique, ne le lui retire pas sans rien lui donner en échange. Propose deux indicateurs simples : la tendance sur trois sprints (stable, en hausse ou en baisse) et le taux d'atteinte du Sprint Goal. Ces deux signaux répondent exactement à la question que le management se pose réellement, à savoir si l'équipe avance, sans les effets pervers d'une comparaison sur un chiffre brut. Le Chapitre 8 détaille comment la Boucle OKR formalise cette traduction."
+    schemas_lies: []
+
+  - id: "P2-CH05-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: MIKE_COHN
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [M]
+    question: "Je veux un indicateur simple pour savoir si mes équipes Scrum sont productives. La vélocité seule me suffit-elle, et si non, qu'est-ce que je regarde à la place ?"
+    reponse: "Non. La vélocité mesure ce que l'équipe a fait, pas ce qu'elle vaut : ni la qualité, ni la valeur business, ni la santé de l'équipe. Le chapitre propose de croiser 4 signaux complémentaires : le taux d'atteinte du Sprint Goal (efficacité de focus, chaque sprint), le Happiness Index (bien-être équipe, signal précurseur de burnout, voir Ch.6), les DORA Metrics (qualité ingénierie, santé technique, voir Ch.7), et le nombre de stories non terminées par sprint (dérive de scope ou surcharge)."
+    douleur_terrain: "Le manager cherche un KPI unique pour ses équipes Scrum. La vélocité est la seule métrique que tout le monde connaît. Mais regardée seule, elle pousse les équipes a optimiser le chiffre plutôt que la valeur livrée."
+    source_expert: "Mike Cohn, Agile Estimating and Planning, 2005"
+    page: 142
+    extrait: "Pour avoir une image complète de la santé d'une équipe, croise-la avec d'autres signaux."
+    fiche_liee: "FP-P2-CH05-tableau-signaux"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P2-CH05-01"]
+
+  - id: "P2-CH05-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: MIKE_COHN
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    themes_salim: [M]
+    question: "Ma direction me demande d'augmenter la vélocité globale de 20% ce trimestre sur les équipes que je supervise. Comment je remonte que c'est la mauvaise demande sans avoir l'air de protéger des équipes peu performantes ?"
+    reponse: "Fixer un objectif de vélocité garantit que les estimations vont gonfler. Si l'équipe sait qu'elle sera évaluée sur l'atteinte d'un chiffre, elle va naturellement estimer plus large ce qui aurait été estimé plus serré. Ce n'est pas de la malhonnêteté, c'est de l'adaptation humaine a un système d'incentive mal conçu. Résultat : la vélocité monte, la capacité réelle reste la même. TROU partiel : le chapitre nomme parfaitement le mécanisme mais ne fournit pas de formulation type pour répondre à la direction."
+    douleur_terrain: "Le DSI reçoit cette injonction de sa direction et la répercute sur les équipes. Il sait que c'est faux mais n'a pas les mots pour remonter contre, et finit par transmettre une pression qu'il sait contre productive."
+    source_expert: "Mike Cohn, Agile Estimating and Planning, 2005"
+    page: 138
+    extrait: "Fixer un objectif de vélocité, c'est garantir que les estimations vont gonfler."
+    fiche_liee: "FP-P2-CH05-vélocité-communication"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: trou
+    action_recommandee: "Dans l'encadre En pratique (p.139), après la phrase Ne comparez jamais la vélocité de deux équipes : toute tentative de normalisation détruit la valeur de la métrique pour les deux., ajouter un paragraphe unique couvrant à la fois le manager et le DSI. Texte : Si cette demande vient de ta propre direction, ne la répercute pas telle quelle sur l'équipe. Propose à la place un engagement sur la stabilité de la vélocité et sur des dates de livraison, c'est ce que ta direction cherche réellement derrière le chiffre. En comité, remplace notre vélocité doit augmenter de X% par nos équipes livrent de manière stable et prévisible, et voici les dates que cette stabilité permet de tenir. Cette correction fusionne et remplace les propositions distinctes Manager intermédiaire et Directeur/DSI du round 1, qui faisaient doublon."
+    schemas_lies: []
+
+trous:
+  - id: "T01"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment recalibrer concrètement une vélocité gonflée sans que ça ressemble à une accusation en Rétro ?"
+    action: "Encadré ajouté avant En pratique p.139, voir P2-CH05-SM-03."
+
+  - id: "T02"
+    role: DEV
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment rendre visible le travail de remboursement de dette dans le backlog avant qu'il impacte la vélocité, et pas seulement documenter après coup ?"
+    action: "Paragraphe ajouté après p.141, voir P2-CH05-DEV-02."
+
+  - id: "T03"
+    role: CA
+    cible: PRATICIEN_AGILE
+    question_manquante: "Quel outil concret proposer au management pour remplacer la vélocité comme KPI de suivi ?"
+    action: "Encadré ajouté avant L'essentiel à retenir p.143, voir P2-CH05-CA-01."
+
+  - id: "T04"
+    role: DC
+    cible: DECIDEUR
+    question_manquante: "Quelle formulation utiliser pour répondre à une direction qui impose un objectif de vélocité chiffre ?"
+    action: "Ligne ajoutée dans l'encadre En pratique p.139, voir P2-CH05-DC-01."
+
+fp_generees:
+  - id: "FP-P2-CH05-vélocité-communication-01"
+    numero: "II-5.1"
+    titre: "Vitesse et discours"
+    template: T06
+    pour_qui: [SM, PO, CA, MG, DC]
+    questions_sources: [P2-CH05-SM-01, P2-CH05-PO-01, P2-CH05-CA-01, P2-CH05-DC-01]
+    cibles_couvertes: [PRATICIEN_AGILE, MANAGER, DECIDEUR]
+    fichier: "FP-P2-CH05-vélocité-communication-01.svg"
+    note: "cat1.svg absent de cette session, logo remplace par placeholder texte a remplacer dans Affinity."
+
+  - id: "FP-P2-CH05-recalibrage-points-01"
+    numero: "II-5.2"
+    titre: "Recalibrer sans accuser"
+    template: T04
+    pour_qui: [SM, CA]
+    questions_sources: [P2-CH05-SM-03]
+    cibles_couvertes: [PRATICIEN_AGILE]
+    fichier: "FP-P2-CH05-recalibrage-points-01.svg"
+    note: "cat1.svg absent de cette session, logo remplace par placeholder texte a remplacer dans Affinity."
+
+  - id: "FP-P2-CH05-tableau-signaux-01"
+    numero: "II-5.3"
+    titre: "Au-dela de la vitesse"
+    template: T03
+    pour_qui: [MG, DC, PO, SM]
+    questions_sources: [P2-CH05-MG-01]
+    cibles_couvertes: [MANAGER, DECIDEUR, PRATICIEN_AGILE]
+    fichier: "FP-P2-CH05-tableau-signaux-01.svg"
+    note: "cat1.svg absent de cette session, logo remplace par placeholder texte a remplacer dans Affinity."
+
+  - id: "FP-P2-CH05-erreurs-vélocité-01"
+    numero: "II-5.4"
+    titre: "Ta vitesse n'est pas toi"
+    template: T06
+    pour_qui: [DEV, SM]
+    questions_sources: [P2-CH05-DEV-01, P2-CH05-DEV-02]
+    cibles_couvertes: [PRATICIEN_AGILE]
+    fichier: "FP-P2-CH05-erreurs-vélocité-01.svg"
+    note: "cat1.svg absent de cette session, logo remplace par placeholder texte a remplacer dans Affinity."
+
+  - id: "FP-P2-CH05-lecture-vélocité-01"
+    numero: "II-5.5"
+    titre: "Faut-il s'inquieter ?"
+    template: T06
+    pour_qui: [SM]
+    questions_sources: [P2-CH05-SM-02]
+    cibles_couvertes: [PRATICIEN_AGILE]
+    fichier: "FP-P2-CH05-lecture-vélocité-01.svg"
+    note: "cat1.svg absent de cette session, logo remplace par placeholder texte a remplacer dans Affinity."
+
+  - id: "FP-P2-CH05-contexte-toujours-01"
+    numero: "II-5.6"
+    titre: "Les 3 questions"
+    template: T06
+    pour_qui: [MG, SM]
+    questions_sources: []
+    cibles_couvertes: [MANAGER, PRATICIEN_AGILE]
+    fichier: "FP-P2-CH05-contexte-toujours-01.svg"
+    note: "Pas de question YAML dediee. Synthetise la section c. Le contexte toujours (p.152) pour combler un besoin terrain manager identifie hors trous formels. cat1.svg absent de cette session, logo remplace par placeholder texte a remplacer dans Affinity."
+
+stats:
+  questions_totales: 9
+  par_role:
+    SM: 3
+    PO: 1
+    DEV: 2
+    CA: 1
+    RTE: 0
+    MG: 1
+    DC: 1
+  par_statut:
+    provisoire: 0
+    confirmee: 5
+    trou: 4
+  couverture_dimensions:
+    qui: 7
+    quoi: 8
+    comment: 5
+    pourquoi: 7
+    quand: 6
+    valeur: 6
+  schemas_lies: 1
+  fiches_pratiques: 6
+  cibles_couvertes_par_fp: [PRATICIEN_AGILE, MANAGER, DECIDEUR]

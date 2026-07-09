@@ -1,0 +1,527 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 4
+# chapter-extractor v6.1
+
+meta:
+  partie: 1
+  nom_partie: "Scrum du terrain"
+  chapitre: 4
+  titre: "Product Backlog vivant : INVEST, Story Mapping, DoD"
+  date_extraction: "2026-06-14"
+  page_debut: 96
+  page_fin: 127
+  statut_global: en_cours
+
+questions:
+
+  # ===== PRATICIEN_AGILE : SM =====
+
+  - id: "P1-CH04-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [S]
+    question: "Comment je facilite un Refinement sans devenir un proxy PO qui finit par écrire les stories à sa place ?"
+    reponse: "Le SM facilite la session et fait avancer le rythme, le PO porte le contenu et le brouillon de critères. INVEST sert de grille partagée pour challenger une story sans décider à la place du PO. Si le SM se retrouve à formuler les criteres lui-même, c'est un signal que le PO arrive sans brouillon."
+    douleur_terrain: "Dans les équipes sans PO fort, le SM finit par écrire les stories lui-même pour que le Refinement avance."
+    source_expert: null
+    page: 104
+    extrait: "Son rôle dans la pratique : apporter un brouillon utilisable avant la session des 3 amigos. Pas un texte finalisé."
+    fiche_liee: "FP-P1-CH04-T06-01"
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH04-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: MIKE_COHN
+    dimensions: [quoi, comment, quand, pourquoi, valeur]
+    themes_salim: [S, L]
+    question: "Mon équipe perd 40 minutes à chaque Sprint Planning sur des stories pas prêtes. Quand est-ce que je dois dire stop et comment je le formule sans braquer le PO ?"
+    reponse: "C'est le symptôme d'une équipe sans Definition of Ready. La règle terrain : si une story génère plus de 2 questions de clarification avant l'estimation en Sprint Planning, elle sort et retourne au Refinement. Ca se dit avant le Sprint Planning, pas pendant : la DoR se construit et s'affiche en amont, elle n'est pas un jugement en séance."
+    douleur_terrain: "J'ai vu cette séquence probablement deux cents fois. La story est mise de côté et le sprint planning perd 40 minutes."
+    source_expert: null
+    page: 117
+    extrait: "J'ai vu cette séquence probablement deux cents fois. C'est le symptôme d'une équipe sans Definition of Ready."
+    fiche_liee: "FP-P1-CH04-T04-02"
+    fiche_destinee_a: [SM, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-03"]
+
+  - id: "P1-CH04-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: MIKE_COHN
+    dimensions: [quoi, comment, quand, valeur, pourquoi]
+    themes_salim: [S]
+    question: "Mon Planning Poker dure deux heures et tourne en débat sans fin sur deux ou trois stories. Comment je structure une session d'estimation pour que ça n'arrive plus ?"
+    reponse: "L'estimation silencieuse en 4 rounds : vider les stories (chacun pose son estimation en silence), reposer les points (60 à 70% des stories convergent directement), discuter les écarts (seuls le plus bas et le plus haut parlent, 2 minutes max), ré-estimer. Le SM prépare le matériel : post-its avec titre et critères d'acceptation, colonnes Fibonacci affichées. Condition non négociable : toutes les stories doivent avoir été affinées en Refinement avant la session."
+    douleur_terrain: "Le biais du premier parleur ancre toutes les estimations suivantes et génère des débats prolongés sur des stories mal comprises."
+    source_expert: "Mike Cohn, Agile Estimating and Planning (2005) : le biais du premier parleur est l'un des défauts structurels les plus fréquents du Planning Poker."
+    page: 114
+    extrait: "C'est de ce diagnostic que j'ai construit, au fil du terrain, une technique que j'appelle l'estimation silencieuse."
+    fiche_liee: "FP-P1-CH04-T04-03"
+    fiche_destinee_a: [SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-04"]
+
+  - id: "P1-CH04-SM-04"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [quoi, quand, comment, pourquoi, valeur]
+    themes_salim: [S, M]
+    question: "Une story arrive en Refinement et l'équipe dit qu'elle ne peut pas l'estimer. Comment je distingue un vrai spike d'une excuse pour ne pas s'engager ?"
+    reponse: "Pose la question avant de forcer un chiffre : sait-on ce qu'il faudrait savoir pour estimer ? Si la réponse est non, c'est un spike, à time-boxer et lancer avant le Sprint Planning. Si la vraie contrainte est le délai et non l'incertitude, le spike n'est pas la bonne réponse : l'équipe décide quand même, assume le risque, et trace la décision."
+    douleur_terrain: "Un spike sans question précise n'en est pas un. Si l'équipe ne peut pas formuler la question en une phrase avant de créer le ticket, le spike n'est pas prêt."
+    source_expert: "Kent Beck, Extreme Programming Explained (2000) ; Ron Jeffries, Essential XP (2001)."
+    page: 120
+    extrait: "Kent Beck disait lui-même que le spike est utile quand tu es limité en connaissance, pas en temps."
+    fiche_liee: "FP-P1-CH04-T04-04"
+    fiche_destinee_a: [SM, PO, DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ===== PRATICIEN_AGILE : PO =====
+
+  - id: "P1-CH04-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: SGEP
+    dimensions: [quoi, pourquoi, qui, valeur]
+    themes_salim: [L, M]
+    question: "Je valide qu'une story est codée et déployée, la DoD est respectée, mais six mois après personne ne se sert de la fonctionnalité. Ma DoD output suffit-elle ou ai-je besoin d'autre chose ?"
+    reponse: "Le chapitre traite la DoD output : code reviewé, testé, déployé, critères d'acceptation vérifiés. Un encadré a été intégré après la section 5 DoD (p.115-116) pour nommer explicitement cette limite : la Definition of Outcome Done, qui porterait sur l'usage réel et la valeur produite après livraison, relève d'un référentiel complémentaire (SGEP) et n'est pas développée ici. Le texte est désormais clair sur la frontière, mais aucune fiche pratique ne couvre encore la DoOD elle-même."
+    douleur_terrain: "Le PO valide que le code est livré mais pas que la valeur attendue est réalisée."
+    source_expert: "SGEP : The Product Owner has the final say on the Definition of Outcome Done."
+    page: 115
+    extrait: "La DoD que tu viens de lire porte sur la sortie : ce qui est livré. Elle ne dit rien sur l'usage réel de ce qui est livré six mois après."
+    fiche_liee: null
+    fiche_destinee_a: [PO]
+    statut_reponse: trou
+    action_recommandee: "Texte intégré (p.115-116). Reste ouvert : produire un contenu (chapitre métriques ou fiche) sur la Definition of Outcome Done elle-même, pas seulement sa frontière avec la DoD."
+    schemas_lies: []
+
+  - id: "P1-CH04-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: JEFF_PATTON
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [S]
+    question: "Mon backlog fait 300 items sans cohérence narrative et je n'arrive pas à expliquer la vision produit en une phrase. Le Story Mapping va-t-il m'aider à prioriser ou juste à visualiser ?"
+    reponse: "Les deux. Le Story Mapping organise les stories sur deux axes, flux d'activités utilisateur et niveau d'enrichissement, et le résultat est une carte du produit, pas une liste de fonctionnalités. Cette carte permet de définir des releases cohérentes en coupant horizontalement, et c'est l'outil le plus concret pour formuler un Product Goal tangible quand la réponse à quel est notre Product Goal reste vague."
+    douleur_terrain: "Le PO jongle entre une vision produit floue et un backlog de 300 items sans cohérence narrative."
+    source_expert: "Jeff Patton, 2014."
+    page: 108
+    extrait: "Il y a un lien direct entre le Story Mapping et le Product Goal : la carte est l'outil le plus concret que je connaisse pour formuler un Product Goal tangible."
+    fiche_liee: "FP-P1-CH04-T06-05"
+    fiche_destinee_a: [PO, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-02"]
+
+  - id: "P1-CH04-PO-03"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: MIKE_COHN
+    dimensions: [quoi, pourquoi, comment, valeur]
+    themes_salim: [S]
+    question: "Mes stories sont indépendantes sur le papier mais dans notre système couplé, la moitié dépend d'une autre. Comment je gère ça quand INVEST me demande l'indépendance ?"
+    reponse: "Le critère I d'INVEST est posé (aucune dépendance bloquante sur une autre). Un paragraphe a été intégré dans la section a Ce qui résiste dans la réalité (p.112) : quand une dépendance technique apparaît sur le Story Map, la noter explicitement comme un risque avec l'équipe ou le composant concerné, et en discuter au Refinement suivant. Le texte nomme désormais le risque, mais ne fournit pas de méthode complète de gestion des dépendances pour un système couplé de longue date."
+    douleur_terrain: "Le PO en entreprise gère des systèmes couplés où les stories sont rarement indépendantes."
+    source_expert: "Mike Cohn."
+    page: 112
+    extrait: "Quand une dépendance technique apparaît sur ton Story Map, ne la laisse pas dans un coin de la carte. Note-la explicitement comme un risque, avec l'équipe ou le composant concerné, et discute-en au Refinement suivant."
+    fiche_liee: null
+    fiche_destinee_a: [PO]
+    statut_reponse: trou
+    action_recommandee: "Texte intégré (p.112). Reste ouvert : fiche pratique PO sur la gestion des dépendances inter-équipes dans un système avec dette technique, voir T03."
+    schemas_lies: []
+
+  - id: "P1-CH04-PO-04"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: MIKE_COHN
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [S, I]
+    question: "J'ai 40 stories prêtes côté critères INVEST mais je dois en choisir 8 pour le prochain sprint. Sur quoi je base l'ordre si ce n'est pas juste l'intuition ?"
+    reponse: "TROU. INVEST aide à savoir si une story est prête mais ne donne pas de méthode de priorisation multi-critères (valeur, risque, effort). Le Story Mapping aide à visualiser et structurer en releases, mais le chapitre ne fournit pas de framework de priorisation explicite au-delà de l'ordre du backlog."
+    douleur_terrain: "Le PO priorise à l'intuition ou sous pression des stakeholders."
+    source_expert: "Mike Cohn."
+    page: null
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [PO]
+    statut_reponse: trou
+    action_recommandee: "Fiche pratique PO : priorisation multi-critères (valeur, risque, effort), à produire en complément du chapitre. Pas d'insertion dans le texte du chapitre lui-même : signaler comme renvoi vers un outil annexe."
+
+  # ===== PRATICIEN_AGILE : DEV =====
+
+  - id: "P1-CH04-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: LISA_CRISPIN
+    dimensions: [quoi, pourquoi, qui, valeur]
+    themes_salim: [L, I]
+    question: "On me dit que la DoD c'est de la bureaucratie qui ralentit le sprint. Est-ce que c'est vraiment ça ou est-ce que ça me protège ?"
+    reponse: "C'est un outil de protection, pas une contrainte. Une DoD avec minimum 8 critères empêche de livrer du code non testé, non déployable, ou non documenté. Elle évolue en 3 niveaux de maturité selon l'ancienneté de l'équipe en Scrum, et elle protège le dev des régressions et de la dette technique qui finit toujours par retomber sur lui."
+    douleur_terrain: "Le dev vit la DoD comme une checklist imposée. Il ne voit pas que c'est lui qui en souffre en premier quand elle est trop courte."
+    source_expert: "Lisa Crispin : The entire Scrum Team is responsible for quality and testing."
+    page: 113
+    extrait: "Évolution de la DoD : 3 niveaux de maturité."
+    fiche_liee: "FP-P1-CH04-T06-06"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-05"]
+
+  - id: "P1-CH04-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: DAVE_FARLEY
+    dimensions: [quoi, comment, pourquoi, qui, valeur]
+    themes_salim: [S]
+    question: "En Refinement, le PO arrive sans rien et je me retrouve à formuler les critères d'acceptation à sa place. Comment je participe sans faire son travail ?"
+    reponse: "Le développeur challenge la faisabilité technique et la décomposition de la story, et dans la session des 3 amigos il vérifie que c'est faisable sans surprise. Il ne rédige pas les critères d'acceptation, c'est la responsabilité du PO qui doit arriver avec un brouillon utilisable. Si ce brouillon n'existe pas, le problème n'est pas le rôle du dev mais la préparation du PO en amont."
+    douleur_terrain: "Dans beaucoup d'équipes, le Refinement devient une session où les devs écrivent les stories parce que le PO n'est pas préparé."
+    source_expert: "Dave Farley."
+    page: 105
+    extrait: "La session des 3 amigos : PO, un développeur, un QA. Avant le sprint. 30 à 45 minutes par story. Le PO apporte son brouillon."
+    fiche_liee: "FP-P1-CH04-T06-01"
+    fiche_destinee_a: [DEV, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH04-DEV-03"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: MIKE_COHN
+    dimensions: [quoi, pourquoi, comment, valeur]
+    themes_salim: [I, M]
+    question: "Je donne une estimation en points et deux sprints plus tard mon manager la traite comme une date de livraison garantie. Comment je m'en protège ?"
+    reponse: "L'estimation en story points via l'estimation silencieuse est une mesure relative qui produit une fourchette, pas un engagement de date. Le format en 4 rounds (vider, reposer, discuter les écarts, ré-estimer) sert à obtenir un jugement collectif sur la taille relative, pas une promesse de delai. Si une story reste en désaccord après deux rounds, elle est trop floue et retourne en refinement, ce n'est pas un échec de l'équipe."
+    douleur_terrain: "Le dev donne un chiffrage, le manager le transforme en date gravée dans le marbre. 2 sprints plus tard le dev est responsable du retard."
+    source_expert: "Mike Cohn : estimation relative = outil de conversation, pas de contrat."
+    page: 114
+    extrait: "Avant d'entrer en Sprint Planning, le backlog doit être estimé. Pas pour satisfaire un manager friand de chiffres."
+    fiche_liee: "FP-P1-CH04-T04-03"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-04"]
+
+  - id: "P1-CH04-DEV-04"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    themes_salim: [S]
+    question: "Le PO me donne un critère d'acceptation flou type alors la performance est correcte. Comment je le renvoie sans bloquer la session des 3 amigos ?"
+    reponse: "Le test du client de 12 ans : si quelqu'un sans bagage technique ne peut pas lire le ALORS et comprendre exactement ce que le produit doit faire, le critère est mal rédigé. Concrètement, alors la performance est correcte devient alors la page se charge en moins de 2 secondes. Si tu ne peux pas écrire un test depuis le critère, il n'est pas prêt, et c'est un signal objectif à renvoyer au PO, pas un jugement personnel."
+    douleur_terrain: "Les critères trop vagues ne veulent rien dire et génèrent des débats d'interprétation en Sprint Review."
+    source_expert: null
+    page: 107
+    extrait: "Les critères trop vagues. Alors la performance est correcte ne veut rien dire."
+    fiche_liee: "FP-P1-CH04-T06-01"
+    fiche_destinee_a: [DEV, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH04-DEV-05"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, comment, pourquoi, valeur]
+    themes_salim: [A]
+    question: "On me demande d'automatiser des tests Selenium à partir des critères GWT avec l'aide d'un LLM. Qu'est-ce que ça change vraiment pour moi ?"
+    reponse: "Le format GWT est du texte structuré, donc automatisable : un scénario GWT propre fourni à un agent IA génère le squelette de test Selenium, ce qui fait passer une tâche de 2 heures à 20 minutes. Le développeur reste responsable de valider, connecter et ajuster les détails spécifiques au contexte. La condition ne change pas : un ALORS vague donne un test vague, un ALORS mesurable donne un test utilisable."
+    douleur_terrain: "Les tests de non-régression arrivent souvent dans une phase séparée, après la livraison, quand il est trop tard pour corriger sans tout casser."
+    source_expert: null
+    page: 106
+    extrait: "Couple ça à un LLM : fournis un scénario GWT propre à un agent IA, il génère le squelette de test Selenium."
+    fiche_liee: "FP-P1-CH04-T05-08"
+    fiche_destinee_a: [DEV, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ===== PRATICIEN_AGILE : CA =====
+
+  - id: "P1-CH04-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: JEFF_PATTON
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [L, M]
+    question: "J'accompagne un PO qui pense son backlog en features sans jamais se demander si elles créent de la valeur. Comment je l'aide à passer d'un backlog de fonctionnalités à un backlog orienté outcomes ?"
+    reponse: "La distinction output/outcome traverse le chapitre, en particulier via le critère V (Valuable) d'INVEST, le plus souvent négligé, et via le Story Mapping qui force à nommer pour qui l'équipe construit et vers quoi elle avance. Le coach utilise le Story Mapping comme outil de diagnostic : quand la réponse à quel est notre Product Goal reste vague, faire un Story Map révèle soit le Product Goal soit les désaccords sur la direction produit, ce qui est tout aussi utile."
+    douleur_terrain: "Le PO pense son backlog en features. Il ne se demande jamais si ces features créent de la valeur mesurable."
+    source_expert: "Jeff Patton."
+    page: 108
+    extrait: "Le fait de tracer les activités utilisateur de bout en bout force l'équipe à nommer pour qui elle construit, et vers quoi elle avance."
+    fiche_liee: "FP-P1-CH04-T06-05"
+    fiche_destinee_a: [CA, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-02"]
+
+  - id: "P1-CH04-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    themes_salim: [S]
+    question: "Une session de Story Mapping que j'anime tourne au conflit ouvert entre parties prenantes sur la direction produit. Est-ce que j'ai raté quelque chose ?"
+    reponse: "Non, c'est un signal attendu. Aligner des parties prenantes aux visions divergentes est la vraie difficulté dès l'étape 1, et révéler des désaccords profonds sur la direction produit qui n'avaient jamais été posés explicitement est une bonne nouvelle sur le fond, même si c'est douloureux sur le moment. Le rôle du coach n'est pas d'éviter ce conflit mais de le rendre productif : l'objectif n'est pas la carte parfaite, c'est une conversation partagée sur la direction produit."
+    douleur_terrain: "L'outil semble simple en quatre étapes mais révèle des tensions organisationnelles que personne n'avait nommées."
+    source_expert: null
+    page: 110
+    extrait: "J'ai vu des sessions de Story Mapping se transformer en champ de bataille organisationnel : non pas parce que l'outil ne fonctionne pas, mais parce qu'il révèle des désaccords profonds sur la direction produit."
+    fiche_liee: "FP-P1-CH04-T06-05"
+    fiche_destinee_a: [CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  # ===== PRATICIEN_AGILE : RTE =====
+
+  - id: "P1-CH04-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [S]
+    question: "En contexte multi-équipes, le terme epic du Story Mapping et le terme epic SAFe ne désignent pas la même chose. Comment je clarifie ça sans bloquer les équipes ?"
+    reponse: "Le chapitre nomme explicitement la divergence : le terme epic est utilisé au sens Patton (grande activité utilisateur) alors qu'en environnement SAFe une epic a une gouvernance différente, et précise que les deux sont compatibles mais que les vocabulaires ne le sont pas toujours. Le texte du chapitre ne donne pas encore de méthode pour faire cohabiter les deux usages (insertion p.109 proposée mais pas confirmée intégrée) : la fiche pratique FP-P1-CH04-T06-05 comble ce manque côté outil terrain en recommandant d'expliciter le sens utilisé en début de session multi-équipes."
+    douleur_terrain: "Le RTE coordonne des équipes qui utilisent le mot epic dans deux sens différents, ce qui crée de la confusion dans le PI Planning."
+    source_expert: null
+    page: 109
+    extrait: "Le terme epic est utilisé ici au sens Patton : grande activité utilisateur. En environnement SAFe, une epic a une gouvernance différente. Les deux sont compatibles, les vocabulaires ne le sont pas toujours."
+    fiche_liee: "FP-P1-CH04-T06-05"
+    fiche_destinee_a: [RTE]
+    statut_reponse: confirmee
+    action_recommandee: "Vérifier que l'insertion p.109 proposée (clarification epic Patton vs SAFe) a bien été intégrée au texte du chapitre. La fiche pratique FP-P1-CH04-T06-05 couvre déjà ce point côté outil."
+
+  # ===== MANAGER =====
+
+  - id: "P1-CH04-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: [M]
+    question: "Comment je sais si le backlog de mon équipe est solide sans avoir à le lire en entier ?"
+    reponse: "INVEST comme grille d'audit rapide : si moins de 80% des stories passent les 6 critères, le backlog est fragile. La DoD sert de second filtre côté livraison. Deux jauges simples qui ne demandent pas de lire 200 stories une par une."
+    douleur_terrain: "Le manager n'a pas le temps de lire 200 user stories. Il a besoin d'une jauge simple en 10 minutes."
+    source_expert: null
+    page: 99
+    extrait: "INVEST : Les 6 critères d'une bonne user story."
+    fiche_liee: "FP-P1-CH04-T06-01"
+    fiche_destinee_a: [MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-01"]
+
+  - id: "P1-CH04-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, pourquoi, quand, valeur, comment]
+    themes_salim: [M, I]
+    question: "Mon équipe a allégé sa Definition of Done le mois dernier sans m'en parler et la vélocité a remonté d'un coup. C'est bon signe ou je dois m'inquiéter ?"
+    reponse: "C'est un signal d'alerte, pas une bonne nouvelle. La DoD doit évoluer en rétrospective, jamais unilatéralement, et ne doit jamais être allégée sans décision consciente et traçabilité explicite de la dette créée. Le repère terrain : DoD allégée sans décision explicite égale dette non tracée égale vélocité qui chute dans 3 à 5 sprints. Une remontée brutale de vélocité après allégement silencieux de la DoD est donc un indicateur à vérifier, pas à célébrer."
+    douleur_terrain: "Le manager voit la vélocité remonter et le présente comme un succès en comité, sans savoir que c'est un signal de dette non tracée."
+    source_expert: null
+    page: 124
+    extrait: "Alerte : DoD allégée sans décision explicite = dette non tracée = vélocité qui chute dans 3-5 sprints."
+    fiche_liee: "FP-P1-CH04-T06-06"
+    fiche_destinee_a: [MG, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-05"]
+
+  - id: "P1-CH04-MG-03"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, pourquoi, comment, valeur]
+    themes_salim: [M]
+    question: "Mon équipe me dit que le backlog est trop gros et qu'il faut prioriser, mais je n'ai aucun repère pour juger si 300 items c'est beaucoup ou normal. Comment je me positionne sans devenir le PO ?"
+    reponse: "Le repère terrain : un backlog sain fait deux à quatre fois la vélocité de l'équipe en points, ce n'est pas une norme issue de la littérature mais une convention praticienne testée. Au-delà, ce n'est pas le ratio en lui-même qui est le problème mais le manque de décision : un backlog de 300 points pour une vélocité de 40 dont la moitié date d'un an signale que personne n'a tranché sur ce qui reste pertinent. Le manager peut poser la question sans trancher à la place du PO : qu'est-ce qui, dans ce backlog, n'est plus pertinent et pourquoi ça reste ?"
+    douleur_terrain: "Le manager voit un backlog qui grossit sans fin et ne sait pas si c'est normal ou un signal d'alerte à faire remonter."
+    source_expert: null
+    page: 122
+    extrait: "Le repère que j'utilise depuis le terrain : deux à quatre fois la vélocité de l'équipe en points."
+    fiche_liee: "FP-P1-CH04-T06-01"
+    fiche_destinee_a: [MG, PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-01"]
+
+  # ===== DECIDEUR =====
+
+  - id: "P1-CH04-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [quoi, pourquoi, comment, qui, valeur]
+    themes_salim: [M, I]
+    question: "J'ai mis trois équipes sous Scrum il y a 18 mois, elles font des cérémonies, mais je ne sais pas si le travail livré correspond à ce qu'on a réellement besoin. Sur quoi je m'appuie pour le savoir sans tout réauditer ?"
+    reponse: "Le chapitre donne deux leviers concrets à demander aux équipes : un INVEST à 6/6 sur les stories qui entrent en sprint, et une DoD à minimum 8 critères vérifiables ET respectés, qui évolue selon 3 niveaux de maturité (débutante, confirmée, mature). Ces deux jauges sont vérifiables sans lire le backlog en entier. Le signal d'alerte le plus parlant pour un DSI : une DoD allégée sans décision explicite, qui produit une dette non tracée et une vélocité qui chute dans 3 à 5 sprints, souvent juste après une remontée de vélocité présentée comme un succès."
+    douleur_terrain: "Le décideur a investi dans une transformation et n'a pas de signal précoce pour distinguer une équipe qui progresse d'une équipe qui a juste appris à faire semblant."
+    source_expert: null
+    page: 124
+    extrait: "INVEST : 6/6 critères respectés avant Sprint Planning. DoD : minimum 8 critères définis, vérifiables ET respectés."
+    fiche_liee: "FP-P1-CH04-T03-07"
+    fiche_complementaire: "FP-P1-CH04-T02-09"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-05"]
+
+  - id: "P1-CH04-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [quoi, pourquoi, quand, valeur, comment]
+    themes_salim: [M, S]
+    question: "Une équipe me demande un sprint entier pour explorer une faisabilité technique avant de s'engager sur le développement. Comment je distingue un investissement légitime d'un sprint perdu ?"
+    reponse: "C'est un spike, et le critère qui tranche est le time-boxing décidé avant de commencer : deux à quatre heures pour une question simple, un jour pour une exploration technique, deux à trois jours maximum pour un prototype. Un spike qui dépasse un sprint signale que la question était trop large et doit être découpée. Le livrable est toujours le même, une page : la réponse à la question posée, ce qui a été exploré, les risques résiduels, la prochaine action. Si l'équipe ne peut pas formuler la question en une phrase avant de créer le ticket, ce n'est pas un spike légitime."
+    douleur_terrain: "Le décideur voit un sprint sans fonctionnalité livrée et ne sait pas s'il s'agit d'un investissement nécessaire ou d'un évitement de l'engagement."
+    source_expert: "Kent Beck, Extreme Programming Explained (2000) ; Ron Jeffries, Essential XP (2001)."
+    page: 120
+    extrait: "Deux à quatre heures pour une question simple. Un jour pour une exploration technique. Deux à trois jours au maximum pour un prototype."
+    fiche_liee: "FP-P1-CH04-T04-04"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH04-DC-03"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [quoi, pourquoi, valeur, qui]
+    themes_salim: [L, M]
+    question: "On me présente des stories soi-disant terminées qui ressemblent surtout a du travail technique interne, sans que je voie le lien avec ce que demandent les clients. Comment je challenge ça sans entrer dans le détail technique ?"
+    reponse: "Le critère à demander : la story exprime-t-elle sa valeur, pas son implémentation. Le chapitre donne un exemple direct : migrer la base de données vers PostgreSQL n'est pas une story valable telle quelle, mais permettre à l'équipe de déployer des releases sans fenêtre de maintenance grâce à la migration PostgreSQL dit pourquoi c'est important. Une story technique peut être légitime, à condition qu'elle réponde à la question pour qui et pourquoi, pas seulement quoi. C'est le critère V (Valuable) d'INVEST, identifié dans le chapitre comme le plus souvent négligé."
+    douleur_terrain: "Le décideur reçoit des comptes-rendus de livraison qu'il ne peut pas relier à une valeur visible pour l'utilisateur ou le business."
+    source_expert: null
+    page: 100
+    extrait: "Une story technique peut être légitime dans un backlog : mais elle doit exprimer sa valeur."
+    fiche_liee: "FP-P1-CH04-T06-01"
+    fiche_destinee_a: [DC, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH04-01"]
+
+trous:
+  - id: "T01"
+    role: PO
+    cible: PRATICIEN_AGILE
+    question_manquante: "Distinction Output Done / Outcome Done (DoD vs DoOD) pour le PO"
+    action: "Intégré : encadré DoD vs DoOD inséré après la section 5 DoD (p.115-116, avant les seuils repères terrain)."
+    statut: integre
+  - id: "T02"
+    role: PO
+    cible: PRATICIEN_AGILE
+    question_manquante: "Gestion des dépendances techniques entre stories qui cassent le critère I d'INVEST"
+    action: "Intégré : paragraphe dépendances inséré dans la section a Ce qui résiste dans la réalité (p.112), avant Commencez là."
+    statut: integre
+  - id: "T03"
+    role: PO
+    cible: PRATICIEN_AGILE
+    question_manquante: "Méthode de priorisation multi-critères (valeur, risque, effort)"
+    action: "Fiche pratique PO priorisation multi-critères, en complément du chapitre. Pas d'insertion dans le texte. Reste à produire."
+    statut: ouvert
+  - id: "T04"
+    role: RTE
+    cible: PRATICIEN_AGILE
+    question_manquante: "Cohabitation des deux sens du mot epic (Patton vs SAFe) en contexte multi-équipes"
+    action: "Intégré : phrase de clarification insérée à la fin de l'étape 1 du Comment faire un Story Mapping (p.110-111). Comblé aussi côté outil par FP-P1-CH04-T06-05."
+    statut: integre
+
+stats:
+  questions_totales: 22
+  par_role:
+    SM: 4
+    PO: 4
+    DEV: 5
+    CA: 2
+    RTE: 1
+    MG: 3
+    DC: 3
+  par_statut:
+    provisoire: 0
+    confirmee: 19
+    trou: 3
+  couverture_dimensions:
+    qui: 10
+    quoi: 22
+    comment: 18
+    pourquoi: 22
+    quand: 6
+    valeur: 22
+  schemas_lies: 5
+
+fiches_pratiques:
+  - id: "FP-P1-CH04-T06-01"
+    titre: "Backlog solide en 3 coups d'oeil"
+    template: T06
+    pour_qui: [SM, PO, DEV, MG, DC]
+    questions_liees: [P1-CH04-SM-01, P1-CH04-DEV-02, P1-CH04-DEV-04, P1-CH04-MG-01, P1-CH04-MG-03, P1-CH04-DC-03]
+  - id: "FP-P1-CH04-T04-02"
+    titre: "Story prête ou pas : DoR en 6 points"
+    template: T04
+    pour_qui: [SM, PO]
+    questions_liees: [P1-CH04-SM-02]
+  - id: "FP-P1-CH04-T04-03"
+    titre: "Estimation silencieuse en 4 rounds"
+    template: T04
+    pour_qui: [SM, DEV]
+    questions_liees: [P1-CH04-SM-03, P1-CH04-DEV-03]
+  - id: "FP-P1-CH04-T04-04"
+    titre: "Spike : le lancer ou pas"
+    template: T04
+    pour_qui: [SM, PO, DEV, DC]
+    questions_liees: [P1-CH04-SM-04, P1-CH04-DC-02]
+  - id: "FP-P1-CH04-T06-05"
+    titre: "Story Mapping : la carte du produit"
+    template: T06
+    pour_qui: [PO, CA, RTE]
+    questions_liees: [P1-CH04-PO-02, P1-CH04-CA-01, P1-CH04-CA-02, P1-CH04-RTE-01]
+    note: "v2 : elargie a RTE (epic Patton vs SAFe) et CA (posture face au conflit)"
+  - id: "FP-P1-CH04-T06-06"
+    titre: "DoD : ton contrat de qualité"
+    template: T06
+    pour_qui: [DEV, SM, MG, DC]
+    questions_liees: [P1-CH04-DEV-01, P1-CH04-MG-02]
+  - id: "FP-P1-CH04-T03-07"
+    titre: "Audit backlog : les 4 signaux DSI"
+    template: T03
+    pour_qui: [DC, MG]
+    questions_liees: [P1-CH04-DC-01]
+  - id: "FP-P1-CH04-T05-08"
+    titre: "GWT vers Selenium avec un LLM"
+    template: T05
+    pour_qui: [DEV, SM]
+    questions_liees: [P1-CH04-DEV-05]
+  - id: "FP-P1-CH04-T02-09"
+    titre: "La transformation produit des résultats ?"
+    template: T02
+    pour_qui: [DC, MG]
+    questions_liees: [P1-CH04-DC-01]
+    note: "Fiche complémentaire à T03-07 pour DC-01, angle comité de pilotage"
+
+stats_fiches:
+  total_fiches: 9
+  questions_couvertes_par_fiche: 17
+  questions_sans_fiche: [P1-CH04-PO-01, P1-CH04-PO-03, P1-CH04-PO-04]
+  note: "PO-01 et PO-03 sont des trous Q&A désormais intégrés au texte du chapitre (p.115-116 et p.112) mais sans fiche dédiée. PO-04 (T03, priorisation multi-critères) reste un trou ouvert sans insertion texte ni fiche."

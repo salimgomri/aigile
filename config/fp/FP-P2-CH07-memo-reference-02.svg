@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+
+<!-- FOND + BANDE -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO PLACEHOLDER (cat1.svg requis) -->
+<rect x="5.9" y="111.6" width="44" height="44" style="fill:none;stroke:#0f2240;stroke-width:0.5px;stroke-dasharray:2,2;"/>
+<text x="27.9" y="136" text-anchor="middle" style="font-family:'Helvetica';font-size:6px;fill:#0f2240;">LOGO</text>
+
+<!-- TEXTE VERTICAL -->
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:'Georgia',serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbb;">DETTE TECHNIQUE &amp; PILOTAGE</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23"
+      style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP II-7.2</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58"
+      style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">Traduire la dette en co&#251;t business</text>
+<text x="72" y="72"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">Du signal technique &#224; l'argument budg&#233;taire</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<rect x="238.7" y="86" width="0.6" height="50" style="fill:#fff;opacity:0.4;"/>
+<rect x="423.7" y="86" width="0.6" height="50" style="fill:#fff;opacity:0.4;"/>
+<rect x="608.7" y="86" width="0.6" height="50" style="fill:#fff;opacity:0.4;"/>
+<text x="72" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">MG / DC</text>
+<text x="252" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Chiffrer un incident et rep&#233;rer la dette avant la crise</text>
+<text x="437" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L'UTILISER</text>
+<text x="437" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Apr&#232;s un incident, en comit&#233; de direction</text>
+<text x="622" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Un argument en euros, pas en jargon technique</text>
+
+<!-- ============================================================ -->
+<!-- LIGNE 1 (pleine largeur) : Bloc 1 - Calcul cout incident -->
+<!-- ============================================================ -->
+<rect x="54" y="160" width="738" height="170" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="54" y="160" width="738" height="22" style="fill:#0f2240;"/>
+<text x="68" y="175" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#fff;">1. CHIFFRER UN INCIDENT (TRADUCTION MTTR)</text>
+
+<text x="68" y="204" style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-weight:bold;fill:#0f2240;">Formule :</text>
+<text x="68" y="224" style="font-family:'EB Garamond','Georgia',serif;font-size:10.5px;fill:#0f2240;">MTTR (en heures) &#215; nombre de personnes mobilis&#233;es &#215; taux horaire = co&#251;t direct visible</text>
+
+<rect x="68" y="244" width="664" height="64" style="fill:#fff;stroke:#febd10;stroke-width:1px;"/>
+<text x="80" y="266" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Exemple : MTTR = 8h. &#201;quipe mobilis&#233;e : 3 devs + 1 SM. Taux horaire moyen : 50 &#8364;/h.</text>
+<text x="80" y="286" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;font-weight:bold;fill:#0f2240;">Co&#251;t direct : 8h &#215; 4 personnes &#215; 50 &#8364;/h = 1 600 &#8364;</text>
+<text x="80" y="303" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#bbb;">Plus le co&#251;t indirect (support client, risque SLA). Refais ce calcul &#224; chaque incident majeur.</text>
+
+<!-- ============================================================ -->
+<!-- LIGNE 2 (2 colonnes) : Bloc 2 + Bloc 3 -->
+<!-- ============================================================ -->
+<rect x="54" y="348" width="362" height="200" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="54" y="348" width="362" height="22" style="fill:#0f2240;"/>
+<text x="68" y="363" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#fff;">2. SIGNAUX DE DETTE &#192; SURVEILLER</text>
+
+<text x="68" y="392" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">&#8226; Change Failure Rate en hausse</text>
+<text x="80" y="406" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Le code devient difficile &#224; modifier.</text>
+
+<text x="68" y="426" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">&#8226; MTTR qui s'allonge</text>
+<text x="80" y="440" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Le syst&#232;me est moins compris par l'&#233;quipe.</text>
+
+<text x="68" y="460" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">&#8226; Lead time qui cro&#238;t sans raison</text>
+<text x="80" y="474" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Une story simple prend 3x plus de temps.</text>
+
+<text x="68" y="494" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">&#8226; Stories qui rebondissent</text>
+<text x="80" y="508" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">&gt; 15 % rouvrent : DoD insuffisant ou code</text>
+<text x="80" y="520" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">trop risqu&#233; &#224; modifier.</text>
+
+<text x="68" y="540" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#bbb;">Jeff Sutherland : au-del&#224; de 20 % de dette,</text>
+
+<rect x="430" y="348" width="362" height="200" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="430" y="348" width="362" height="22" style="fill:#0f2240;"/>
+<text x="444" y="363" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#fff;">3. LE POINT DE BASCULE (SEUIL 20 %)</text>
+
+<text x="444" y="392" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Quand la dette technique d&#233;passe</text>
+<text x="444" y="410" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;font-weight:bold;fill:#0f2240;">20 % de la capacit&#233; de l'&#233;quipe</text>
+<text x="444" y="430" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">la v&#233;locit&#233; ne baisse pas progressivement.</text>
+<text x="444" y="448" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;font-weight:bold;fill:#0f2240;">Elle s'effondre.</text>
+
+<text x="444" y="473" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Chaque modification d&#233;clenche des effets</text>
+<text x="444" y="487" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">de bord que personne n'avait pr&#233;vus.</text>
+
+<text x="444" y="514" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#bbb;">Source : Jeff Sutherland</text>
+<text x="444" y="528" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#bbb;">A ce stade, la conversation avec la</text>
+<text x="444" y="540" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#bbb;">direction est d&#233;j&#224; difficile.</text>
+
+<!-- ============================================================ -->
+<!-- LIGNE 3 (pleine largeur) : Bloc 4 - Comment presenter -->
+<!-- ============================================================ -->
+<rect x="54" y="568" width="738" height="160" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="54" y="568" width="738" height="22" style="fill:#0f2240;"/>
+<text x="68" y="583" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#fff;">4. RENDRE LA DETTE VISIBLE : PAS TECHNIQUEMENT, EN IMPACT BUSINESS</text>
+
+<rect x="68" y="600" width="664" height="55" style="fill:#fff;stroke:#febd10;stroke-width:1px;"/>
+<text x="80" y="620" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">"Notre change failure rate a augment&#233; de 8 % ce trimestre. Deux incidents en</text>
+<text x="80" y="636" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">production ont mobilis&#233; l'&#233;quipe pendant 6 jours. Ces 6 jours n'ont rien livr&#233;."</text>
+
+<rect x="68" y="665" width="664" height="55" style="fill:#fff;stroke:#febd10;stroke-width:1px;"/>
+<text x="80" y="685" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">"Notre lead time sur les stories du module X a doubl&#233; depuis 2 sprints. Chaque</text>
+<text x="80" y="701" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">story qui touche ce module co&#251;te deux fois plus cher qu'elle ne devrait."</text>
+
+<!-- ============================================================ -->
+<!-- LIGNE 4 (pleine largeur, fond creme) : Bloc 5 - Backlog -->
+<!-- ============================================================ -->
+<rect x="54" y="746" width="738" height="120" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="54" y="746" width="738" height="22" style="fill:#0f2240;"/>
+<text x="68" y="761" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#fff;">5. O&#217; VIT LA DETTE TECHNIQUE</text>
+
+<text x="68" y="790" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Dans le Product Backlog. Visible, estim&#233;e, priorisée comme n'importe quelle story.</text>
+<text x="68" y="810" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Pas dans un tableau s&#233;par&#233; que personne ne regarde.</text>
+
+<text x="68" y="838" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#bbb;">Avec une urgence document&#233;e et un co&#251;t de non-traitement estim&#233;.</text>
+
+<!-- ============================================================ -->
+<!-- LIGNE 5 (pleine largeur) : Bloc 6 - Comparer deux equipes -->
+<!-- ============================================================ -->
+<rect x="54" y="884" width="738" height="170" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="54" y="884" width="738" height="22" style="fill:#0f2240;"/>
+<text x="68" y="899" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#fff;">6. POUR LE DSI : COMPARER DEUX &#201;QUIPES (DORA + SCORING DELIVERABLE)</text>
+
+<text x="68" y="924" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;font-weight:bold;fill:#0f2240;">DORA et Scoring Deliverable se compl&#232;tent. Ils ne se substituent pas l'un &#224; l'autre.</text>
+
+<rect x="68" y="938" width="320" height="96" style="fill:#fff;stroke:#febd10;stroke-width:1px;"/>
+<text x="80" y="958" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">DORA rouge, Scoring &#233;lev&#233;</text>
+<text x="80" y="976" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">&#201;quipe accumule une dette qui</text>
+<text x="80" y="990" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">finira par s'effondrer, m&#234;me si</text>
+<text x="80" y="1004" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">elle livre bien aujourd'hui.</text>
+<text x="80" y="1024" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;font-style:italic;fill:#bbb;">Risque masqu&#233; par le score actuel.</text>
+
+<rect x="406" y="938" width="326" height="96" style="fill:#fff;stroke:#febd10;stroke-width:1px;"/>
+<text x="418" y="958" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">DORA Elite, Scoring faible</text>
+<text x="418" y="976" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Moteur technique solide sous un</text>
+<text x="418" y="990" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">produit encore fragile en surface</text>
+<text x="418" y="1004" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">(valeur, feedback, documentation).</text>
+<text x="418" y="1024" style="font-family:'EB Garamond','Georgia',serif;font-size:8.5px;font-style:italic;fill:#bbb;">Risque plus facile &#224; corriger.</text>
+
+<text x="68" y="1048" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;font-weight:bold;fill:#0f2240;">Avant de comparer deux &#233;quipes, regarde toujours les deux dashboards ensemble.</text>
+
+<!-- FOOTER -->
+<path d="M66,1078l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1094c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1098"
+      style="font-family:'Helvetica';font-size:9px;fill:#febd10;">02</text>
+<text x="72" y="1099"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M., Chapitre 7</text>
+<text x="677" y="1099"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+
+</svg>

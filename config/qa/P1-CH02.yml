@@ -1,0 +1,853 @@
+meta:
+  partie: 1
+  nom_partie: Scrum du terrain
+  chapitre: 2
+  titre: Roles vus de l'interieur
+  date_extraction: '2026-06-15'
+  page_debut: 60
+  page_fin: 77
+  statut_global: en_cours
+questions:
+- id: P1-CH02-SM-01
+  cible: PRATICIEN_AGILE
+  role: SM
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Mon manager me reproche de ne pas etre assez visible en reunion. Si je suis sous les 20% de
+    temps en facilitation comme le chapitre le recommande, comment je justifie ce temps invisible sans
+    donner l'impression de ne rien faire ?
+  reponse: 'Tenir un journal d''obstacles hebdomadaire en deux colonnes : obstacles enleves et obstacles
+    rendus visibles. Ce journal devient la preuve terrain de la valeur ajoutee, presentable au manager
+    en quelques minutes.'
+  douleur_terrain: Le SM qui respecte le repere des 20% en facilitation directe se rend invisible aux
+    yeux d'un management qui mesure la valeur par la presence en reunion.
+  source_expert: null
+  page: 66
+  extrait: 'Tiens un journal d''obstacles hebdomadaire en deux colonnes : obstacles enleves et obstacles
+    rendus visibles.'
+  fiche_liee: FP-P1-CH02-journal-obstacles-01
+  fiche_destinee_a:
+  - SM
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - I
+  - M
+- id: P1-CH02-SM-02
+  cible: PRATICIEN_AGILE
+  role: SM
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - quand
+  - valeur
+  question: Pendant une retro, l'equipe touche enfin un sujet sensible et j'ai le reflexe de dire 'je
+    sens qu'on est sur quelque chose d'important, on continue ?'. Pourquoi cette phrase est un probleme
+    et qu'est-ce que je dis a la place ?
+  reponse: 'Cette phrase contient un biais : le SM seme son ressenti avant que l''equipe ait decide quoi
+    que ce soit, et oriente deja la reponse. La phrase neutre est : ''Voulez-vous continuer cette discussion
+    ou passer au prochain sujet ?'' Pas de couleur, pas de jugement, l''equipe arbitre seule.'
+  douleur_terrain: Un SM junior croit laisser le choix a l'equipe alors qu'il vient de le faire a sa place
+    avec un seul mot charge.
+  source_expert: null
+  page: 64
+  extrait: 'La phrase neutre, celle qui laisse vraiment l''equipe decider, est beaucoup plus simple :
+    Voulez-vous continuer cette discussion ou passer au prochain sujet ?'
+  fiche_liee: FP-P1-CH02-phrases-neutres-retro-01
+  fiche_destinee_a:
+  - SM
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-SM-03
+  cible: PRATICIEN_AGILE
+  role: SM
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - quand
+  question: En retro, je dois gerer le temps sans casser l'ambiance. Concretement, comment je fais le
+    decompte sans que ca devienne flicage, et a quel moment precis je coupe quelqu'un qui parle ?
+  reponse: 'Le SM garde le timer pour lui. Ce que l''equipe voit : des pancartes de couleur (verte, orange,
+    rouge), visibles de loin et sans bruit, decompte silencieux. Le SM coupe uniquement quand la personne
+    a fini de parler, jamais a mi-phrase.'
+  douleur_terrain: Couper quelqu'un a mi-phrase detruit en quelques secondes la securite psychologique
+    que l'equipe a mis du temps a construire.
+  source_expert: null
+  page: 65
+  extrait: 'Ce que l''equipe voit : des pancartes de couleur, verte, orange, rouge, visibles de loin et
+    sans bruit. Le decompte se fait en silence.'
+  fiche_liee: FP-P1-CH02-phrases-neutres-retro-01
+  fiche_destinee_a:
+  - SM
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-SM-04
+  cible: PRATICIEN_AGILE
+  role: SM
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Je pense parfois etre un bon facilitateur parce que je 'fais avancer' la retro en parlant
+    beaucoup et en proposant des idees. Comment savoir si en realite j'anime au lieu de faciliter ?
+  reponse: 'Un SM qui parle 30% du temps en retrospective anime, il ne facilite pas. La difference se
+    voit dans les silences : un bon facilitateur les tient, il ne les comble pas.'
+  douleur_terrain: Le SM bavard se sent utile pendant que l'equipe, elle, n'a jamais l'espace pour trouver
+    ses propres reponses.
+  source_expert: null
+  page: 65
+  extrait: 'Un SM qui parle 30 % du temps en retrospective anime. La difference se voit dans les silences
+    : un bon facilitateur les tient, il ne les comble pas.'
+  fiche_liee: FP-P1-CH02-confondre-facilitation-animation-01
+  fiche_destinee_a:
+  - SM
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-SM-05
+  cible: PRATICIEN_AGILE
+  role: SM
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - pourquoi
+  - quand
+  - valeur
+  question: Apres six mois dans le poste, comment je sais si je remplis vraiment mon role de SM ou si
+    je me limite a la facilitation d'equipe sans avoir d'impact plus large ?
+  reponse: 'Le SGEP est explicite : le SM est accountable de la qualite de l''adoption Scrum dans toute
+    l''organisation, pas seulement dans son equipe. Un SM qui n''a aucun impact au-dela de son equipe
+    apres 6 mois n''exerce pas son role complet : il facilite, il n''agit pas.'
+  douleur_terrain: Le SM peut tres bien faire son travail d'equipe pendant des annees sans jamais se demander
+    si son perimetre d'impact aurait du s'elargir.
+  source_expert: SGEP 2026
+  page: 67
+  extrait: Un SM qui n'a aucun impact au-dela de son equipe apres 6 mois n'est pas en train d'exercer
+    son role complet. Il facilite. Il n'agit pas.
+  fiche_liee: null
+  fiche_destinee_a:
+  - SM
+  - CA
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - M
+- id: P1-CH02-SM-06
+  cible: PRATICIEN_AGILE
+  role: SM
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Mon CODIR parle de supprimer les postes de SM parce qu'ils ne 'produisent rien de visible'.
+    Comment je montre ce que j'ai vraiment debloque ce sprint pour ne pas etre la prochaine ligne coupee
+    ?
+  reponse: 65% des organisations subissent une pression a la consolidation ou elimination des roles Agile
+    specifiques. Le SM qui ne demontre pas de valeur mesurable au-dela de la facilitation est en position
+    de vulnerabilite. Le journal d'obstacles (enleves vs rendus visibles) devient la preuve terrain a
+    presenter.
+  douleur_terrain: Un SM qui ne peut pas montrer ce qu'il a debloque ce sprint est indefendable en CODIR,
+    meme s'il fait un excellent travail.
+  source_expert: State of Agile 2025
+  page: 67
+  extrait: 'Le State of Agile 2025 confirme cette tension : 65 % des organisations subissent une pression
+    a la consolidation ou elimination des roles Agile specifiques.'
+  fiche_liee: FP-P1-CH02-journal-obstacles-01
+  fiche_destinee_a:
+  - SM
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - I
+  - M
+- id: P1-CH02-PO-01
+  cible: PRATICIEN_AGILE
+  role: PO
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Je passe mes journees a recueillir des demandes du metier et a les transcrire en stories pour
+    la tech. Est-ce que je suis vraiment PO ou juste un traducteur, et qu'est-ce que ca change concretement
+    ?
+  reponse: Transmettre sans decider et acheminer sans prioriser, c'est le profil du proxy PO, un intermediaire
+    passif. Un vrai PO prend des decisions, dit non, priorise sans consensus permanent et a une vision
+    claire articulee de facon comprehensible par l'equipe.
+  douleur_terrain: 'Le PO proxy a le titre mais pas le pouvoir : il porte la responsabilite du backlog
+    sans avoir l''autorite de le faconner.'
+  source_expert: null
+  page: 68
+  extrait: 'Ce n''est pas un PO. C''est un intermediaire passif : ce que la communaute agile appelle un
+    proxy PO : quelqu''un qui transmet sans decider, qui achemine sans prioriser.'
+  fiche_liee: FP-P1-CH02-po-proxy-vs-decideur-01
+  fiche_destinee_a:
+  - PO
+  - MG
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-PO-02
+  cible: PRATICIEN_AGILE
+  role: PO
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - quand
+  - valeur
+  question: Quelqu'un me demande quel est mon Product Goal et comment on mesure qu'on l'a atteint. Si
+    je ne peux pas repondre en moins de 30 secondes sans dire 'ca depend', qu'est-ce que ca signifie pour
+    mon equipe ?
+  reponse: 'Si la reponse prend plus de 30 secondes ou commence par ''ca depend'', le Product Goal n''est
+    pas clair et l''equipe travaille sans boussole strategique. Un Product Goal bien formule tient en
+    2-3 phrases : qui beneficie, de quoi, pour quel resultat mesurable.'
+  douleur_terrain: Le PO peut prioriser un backlog entier sans jamais avoir formule une destination claire,
+    et personne ne s'en rend compte jusqu'a ce qu'on lui pose la question.
+  source_expert: null
+  page: 69
+  extrait: 'Si la reponse prend plus de 30 secondes, ou commence par ca depend, le Product Goal n''est
+    pas clair : et l''equipe travaille sans boussole strategique.'
+  fiche_liee: FP-P1-CH02-test-product-goal-01
+  fiche_destinee_a:
+  - PO
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - L
+- id: P1-CH02-PO-03
+  cible: PRATICIEN_AGILE
+  role: PO
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: On me demande de 'dire non' a des demandes de la direction, mais je suis middle-manager avec
+    dix parties prenantes hierarchiques et des contraintes contractuelles que je ne peux pas ignorer.
+    Comment je tiens ce role sans m'epuiser sur des conflits que je ne peux pas gagner seul ?
+  reponse: Demander a un PO de dire non sans lui donner l'autorite pour le faire, c'est lui demander de
+    l'heroisme. Le vrai travail n'est pas de former le PO a mieux prioriser, mais de reconstruire avec
+    le management son perimetre de decision, par ecrit, avec les parties prenantes en salle, comme un
+    accord organisationnel.
+  douleur_terrain: 'Seulement 49% des Product Managers peuvent gerer la chaine de delivery complete et
+    mesurer la valeur business/client : l''autre moitie travaille en aveugle, sans donnees, sans autorite
+    ou sans outils.'
+  source_expert: State of Agile 2025
+  page: 69
+  extrait: 'Le State of Agile 2025 met un chiffre precis sur ce probleme : seulement 49 % des Product
+    Managers... peuvent gerer la chaine de delivery complete et mesurer la valeur business/client.'
+  fiche_liee: FP-P1-CH02-perimetre-decision-po-01
+  fiche_destinee_a:
+  - PO
+  - MG
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - M
+- id: P1-CH02-PO-04
+  cible: PRATICIEN_AGILE
+  role: PO
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - quand
+  question: Le SM et moi on se marche dessus en permanence sur la gestion des stakeholders, et personne
+    ne sait vraiment qui doit gerer quoi. Comment on trace cette frontiere sans que ca devienne une bataille
+    de territoire ?
+  reponse: Le PO gere la relation valeur, qui veut quoi et pourquoi. Le SM gere la relation process, comment
+    ces besoins entrent dans l'equipe sans la destabiliser. Cette frontiere se dessine en 20 minutes,
+    en dehors de l'equipe, entre les deux.
+  douleur_terrain: Quand PO et SM se marchent dessus sur les stakeholders, c'est en general parce que
+    personne n'a jamais pris ces 20 minutes pour clarifier qui fait quoi.
+  source_expert: null
+  page: 70
+  extrait: 'Le PO gere la relation valeur : qui veut quoi et pourquoi. Le SM gere la relation process...
+    Ca se fait en 20 minutes, en dehors de l''equipe, entre les deux.'
+  fiche_liee: FP-P1-CH02-frontiere-po-sm-01
+  fiche_destinee_a:
+  - PO
+  - SM
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-DEV-01
+  cible: PRATICIEN_AGILE
+  role: DEV
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Le PO ajoute une story en milieu de sprint et l'equipe l'accepte sans discuter, comme d'habitude.
+    Quelles questions on devrait se poser collectivement avant d'accepter, et qu'est-ce qui distingue
+    une equipe qui questionne d'une equipe qui bloque ?
+  reponse: 'Une equipe mature questionne pour comprendre, pas pour bloquer : quelle est la valeur de cette
+    story dans le contexte du Sprint Goal, peut-on l''absorber sans compromettre l''engagement, et si
+    on allege la DoD, comment on compense sur le sprint suivant.'
+  douleur_terrain: L'equipe qui accepte tout sans negocier et qui ferme les yeux sur la DoD pour livrer
+    dans les temps croit etre flexible, alors qu'elle abandonne sa co-responsabilite sur le Sprint Goal.
+  source_expert: null
+  page: 71
+  extrait: 'Une equipe mature questionne. Pas pour bloquer : pour comprendre. Quelle est la valeur de
+    cette story dans le contexte du Sprint Goal ?'
+  fiche_liee: FP-P1-CH02-questions-equipe-mature-01
+  fiche_destinee_a:
+  - DEV
+  - PO
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - L
+- id: P1-CH02-DEV-02
+  cible: PRATICIEN_AGILE
+  role: DEV
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: La derniere fois que j'ai souleve un probleme de qualite en plein sprint, on m'a fait sentir
+    que je manquais de flexibilite. Pourquoi est-ce que je n'oserai probablement plus le faire, et est-ce
+    que c'est moi le probleme ?
+  reponse: 'La securite psychologique n''est pas un bonus, c''est le prerequis de l''auto-organisation.
+    Sans elle, les Developers font ce qu''on leur dit, et c''est rationnel : un developpeur puni implicitement
+    pour avoir dit non n''osera plus soulever le probleme au sprint suivant.'
+  douleur_terrain: 'Une equipe qui ne questionne jamais n''est pas fiable, elle est docile : elle livre
+    ce qu''on lui demande, pas ce dont le produit a besoin.'
+  source_expert: null
+  page: 71
+  extrait: 'La securite psychologique n''est pas un bonus : c''est le prerequis de l''auto-organisation.
+    Sans elle, les Developers font ce qu''on leur dit. Et c''est rationnel.'
+  fiche_liee: FP-P1-CH02-securite-psy-auto-organisation-01
+  fiche_destinee_a:
+  - DEV
+  - CA
+  - MG
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-DEV-03
+  cible: PRATICIEN_AGILE
+  role: DEV
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Chez nous, c'est le lead dev ou l'architecte qui tranche seul les decisions techniques, et
+    tout le monde appelle ca de l'auto-organisation. Est-ce que c'est vraiment le cas, et comment je le
+    fais remarquer sans froisser personne ?
+  reponse: 'Le SGEP est clair : l''equipe Scrum decide collectivement comment elle travaille. Le lead
+    dev a de l''influence, pas de l''autorite. Si cette nuance n''est pas tenue, ce n''est pas une equipe
+    auto-organisee mais du mini-management technique deguise.'
+  douleur_terrain: Le cas du lead dev ou de l'architecte qui decide seul revient souvent et se cache derriere
+    le vocabulaire de l'auto-organisation, ce qui rend le probleme invisible meme aux yeux de l'equipe
+    concernee.
+  source_expert: SGEP 2026
+  page: 71
+  extrait: 'Le SGEP est clair : l''equipe Scrum decide collectivement comment elle travaille. Le lead
+    dev a de l''influence, pas de l''autorite.'
+  fiche_liee: null
+  fiche_destinee_a:
+  - DEV
+  - CA
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-DEV-04
+  cible: PRATICIEN_AGILE
+  role: DEV
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  question: Le Scrum Guide 2020 a remplace 'equipe de developpement' par 'Developers'. En quoi ca change
+    concretement ma place si je ne suis pas codeur (testeur, UX, analyste) ?
+  reponse: 'Le changement de terminologie reflete une realite importante : Developers designe toutes les
+    personnes qui travaillent a la creation de l''increment, testeurs, UX designers, analystes, ingenieurs.
+    Cette terminologie ouvre la porte a une equipe pluridisciplinaire sans hierarchie implicite entre
+    les metiers.'
+  douleur_terrain: Dans beaucoup d'equipes, les non-codeurs restent percus comme des supports peripheriques
+    alors que le SGEP les place co-responsables du Sprint Goal au meme titre que les ingenieurs.
+  source_expert: null
+  page: 70
+  extrait: Dans ma lecture, ce changement de terminologie ouvre la porte a une equipe pluridisciplinaire
+    sans hierarchie implicite entre les metiers.
+  fiche_liee: null
+  fiche_destinee_a:
+  - DEV
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-CA-01
+  cible: PRATICIEN_AGILE
+  role: CA
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: J'arrive chez un client ou le SM est techniquement brillant mais n'a aucun poids politique,
+    et inversement un autre SM moins rigoureux sur Scrum obtient de meilleurs resultats grace a son reseau.
+    Comment j'aide le premier sans lui dire de devenir politique ?
+  reponse: 'Naviguer entre l''equipe qui a besoin d''un espace protege et le management qui veut visibilite,
+    reporting et garanties, sans devenir l''outil de l''un contre l''autre, est probablement la competence
+    la plus difficile du role et la moins enseignee. Les deux dimensions comptent : competences Scrum
+    et competences politiques (construire des alliances, lire les dynamiques de pouvoir, influencer sans
+    autorite).'
+  douleur_terrain: Le coach voit regulierement des SM brillants techniquement echouer par manque de competences
+    politiques, et des SM moins rigoureux reussir grace a elles, sans que personne ne nomme cette competence
+    manquante comme un axe de coaching legitime.
+  source_expert: null
+  page: 66
+  extrait: J'ai vu des SM brillants techniquement echouer parce qu'ils n'avaient pas les competences politiques
+    pour exister dans leur organisation.
+  fiche_liee: null
+  fiche_destinee_a:
+  - CA
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-CA-02
+  cible: PRATICIEN_AGILE
+  role: CA
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - quand
+  - valeur
+  question: Pendant un audit d'equipe, je vois une dimension du Squad Health Check stable au rouge depuis
+    des mois. Avant de pousser un plan de coaching equipe, qu'est-ce que je dois verifier d'abord ?
+  reponse: 'Avant de chercher a changer l''equipe sur un rouge stable, regarder deux choses : d''abord
+    si ce rouge bouge (tendance), ensuite s''il est lie a une contrainte externe (support de la hierarchie,
+    outillage impose, charge de reunions hors-equipe). Ces causes ne se traitent pas en retrospective
+    : rouge interne, l''equipe peut agir, rouge externe, l''organisation doit agir en escalade.'
+  douleur_terrain: Un coach qui lance un plan de coaching equipe sur un rouge en realite externe va frustrer
+    l'equipe en lui demandant de resoudre un probleme qui ne depend pas d'elle.
+  source_expert: Kniberg et Sunden 2014
+  page: 74
+  extrait: 'Distinguez imperativement : rouge interne (l''equipe peut agir) vs rouge externe (l''organisation
+    doit agir : traiter en escalade, pas en retro).'
+  fiche_liee: FP-P1-CH02-squad-health-check-01
+  fiche_destinee_a:
+  - CA
+  - MG
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - I
+- id: P1-CH02-CA-03
+  cible: PRATICIEN_AGILE
+  role: CA
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Je veux tester l'autorite reelle d'un PO sans creer de tension directe avec lui en seance.
+    Quelle question je pose et comment j'interprete la reponse ?
+  reponse: 'Demander au PO s''il peut refuser une user story demandee par la direction. Si non, le PO
+    n''a pas le perimetre de decision reel. Ce n''est pas un probleme de competence : c''est un probleme
+    organisationnel a nommer et a traiter en dehors de l''equipe.'
+  douleur_terrain: Le coach qui forme le PO a mieux prioriser sans avoir teste son autorite reelle risque
+    de travailler sur le mauvais levier pendant des mois.
+  source_expert: null
+  page: 74
+  extrait: 'Test d''autorite PO : demandez au PO s''il peut refuser une user story demandee par la direction.
+    Si non, le PO n''a pas le perimetre de decision reel.'
+  fiche_liee: FP-P1-CH02-test-autorite-po-01
+  fiche_destinee_a:
+  - CA
+  - MG
+  - DC
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - M
+- id: P1-CH02-RTE-01
+  cible: PRATICIEN_AGILE
+  role: RTE
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  question: Dans mon contexte multi-equipes, est-ce que la frontiere PO/SM decrite pour une seule equipe
+    s'applique pareil entre plusieurs PO et plusieurs SM, ou est-ce que ca devient mon probleme a moi
+    en tant que RTE ?
+  reponse: 'Trou : le chapitre traite la frontiere PO/SM au niveau d''une equipe unique, sans aborder
+    son extension au niveau ART ou multi-equipe.'
+  douleur_terrain: Le RTE arbitre en permanence entre PO de plusieurs equipes et n'a aucun cadre du chapitre
+    pour savoir si ce role d'arbitrage lui revient ou s'il devrait etre resolu en amont entre les PO et
+    SM eux-memes.
+  source_expert: null
+  page: null
+  extrait: null
+  fiche_liee: FP-P1-CH02-squad-health-check-art-rte-01
+  fiche_destinee_a:
+  - RTE
+  statut_reponse: trou
+  action_recommandee: Ajouter un paragraphe ou une note en fin de section frontiere PO/SM precisant comment
+    cette frontiere se recompose a l'echelle ART, ou renvoyer explicitement vers le chapitre scaling.
+  schemas_lies: []
+  themes_salim:
+  - S
+- id: P1-CH02-RTE-02
+  cible: PRATICIEN_AGILE
+  role: RTE
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - valeur
+  question: Le Squad Health Check se fait par equipe tous les deux sprints. En tant que RTE, comment j'agrege
+    ces resultats sur 5 a 8 equipes sans noyer le signal qui m'interesse, a savoir les rouges externes
+    communs a plusieurs equipes ?
+  reponse: 'Trou : le chapitre presente le Squad Health Check au niveau d''une equipe et son integration
+    au dashboard manager (chapitre 8), mais ne traite pas l''agregation multi-equipe au niveau RTE/ART.'
+  douleur_terrain: Le RTE qui veut utiliser le Squad Health Check comme signal d'alerte precoce sur plusieurs
+    equipes n'a aucune methode pour distinguer un rouge isole d'un rouge systemique repete sur l'ART.
+  source_expert: null
+  page: null
+  extrait: null
+  fiche_liee: FP-P1-CH02-squad-health-check-art-rte-01
+  fiche_destinee_a:
+  - RTE
+  statut_reponse: trou
+  action_recommandee: Renvoyer vers le chapitre dashboard manager pour une vue agregee multi-equipes du
+    Squad Health Check, ou ajouter une note courte sur la lecture RTE des rouges externes recurrents.
+  schemas_lies: []
+  themes_salim:
+  - S
+  - I
+- id: P1-CH02-MG-01
+  cible: MANAGER
+  role: MG
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Je veux comparer la vitesse de mes equipes pour identifier celle qui a besoin d'aide, mais
+    je n'ai aucun outil 'officiel' pour ca dans Scrum. Le Squad Health Check, c'est utilisable pour ce
+    genre de comparaison entre equipes ?
+  reponse: 'Non : ce qui compte est la tendance de chaque equipe, pas le score absolu ni la comparaison
+    entre equipes. Une equipe qui passe de rouge a ambre sur la collaboration en deux sprints est plus
+    saine qu''une equipe stable au vert depuis six mois sans mouvement. L''outil est une conversation
+    d''equipe, pas un audit comparatif externe.'
+  douleur_terrain: Le manager qui transforme le Squad Health Check en classement d'equipes detruit la
+    sincerite du vote et la securite psychologique qui permettent au score de signifier quoi que ce soit.
+  source_expert: Kniberg et Sunden 2014
+  page: 73
+  extrait: Ce qui m'interesse n'est pas le score global, ni meme la couleur absolue d'une dimension. C'est
+    la tendance.
+  fiche_liee: FP-P1-CH02-squad-health-check-art-rte-01
+  fiche_destinee_a:
+  - MG
+  - CA
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - I
+  - M
+- id: P1-CH02-MG-02
+  cible: MANAGER
+  role: MG
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: Mon PO me dit qu'il ne peut pas dire non a une demande de la direction sans validation hierarchique.
+    Est-ce un probleme de competence chez lui que je dois traiter en coaching, ou autre chose ?
+  reponse: 'C''est une alerte organisationnelle : un PO qui ne peut pas dire non sans validation hierarchique
+    signale un probleme structurel, pas une competence de role. Le levier du manager est de reconstruire
+    explicitement avec le PO son perimetre de decision, par ecrit, avec les parties prenantes en salle,
+    comme un accord organisationnel et non un episode de formation.'
+  douleur_terrain: Le manager qui envoie son PO en formation priorisation alors que le probleme est un
+    perimetre de decision jamais defini va observer zero changement et conclure, a tort, que le PO n'est
+    pas a la hauteur.
+  source_expert: null
+  page: 72
+  extrait: 'Alerte organisationnelle : PO ne peut pas dire non sans validation hierarchique = probleme
+    structurel, pas de competence de role.'
+  fiche_liee: FP-P1-CH02-perimetre-decision-po-01
+  fiche_destinee_a:
+  - MG
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - M
+- id: P1-CH02-MG-03
+  cible: MANAGER
+  role: MG
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - quand
+  question: Mon SM ne semble jamais 'faire' grand-chose en dehors des ceremonies, et je commence a me
+    demander si son temps est bien utilise. Comment je distingue un bon signal d'un mauvais, sans juste
+    regarder s'il est en reunion ?
+  reponse: 'Un SM qui passe plus de 20% de son temps a faciliter des ceremonies n''exerce probablement
+    pas son vrai role : l''essentiel se passe entre les ceremonies, en conversations informelles, resolution
+    d''obstacles et travail d''influence sur l''organisation. Demander a voir le journal d''obstacles
+    (enleves vs rendus visibles) donne un signal concret de cette activite invisible.'
+  douleur_terrain: 'Le manager qui juge la valeur du SM sur sa presence visible en reunion encourage exactement
+    le mauvais comportement : un SM qui sur-anime pour se rendre visible au lieu de travailler en arriere-plan
+    sur les obstacles reels.'
+  source_expert: null
+  page: 63
+  extrait: Un Scrum Master qui passe plus de 20 % de son temps a faciliter des ceremonies n'est probablement
+    pas en train d'exercer son vrai role.
+  fiche_liee: FP-P1-CH02-journal-obstacles-01
+  fiche_destinee_a:
+  - MG
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - I
+- id: P1-CH02-DC-01
+  cible: DECIDEUR
+  role: DC
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - valeur
+  question: On me presente le Squad Health Check comme un outil de mesure d'equipe. En tant que decideur,
+    est-ce que je peux integrer ses resultats dans un dashboard de pilotage global, ou est-ce que je vais
+    casser l'outil en faisant ca ?
+  reponse: Le resultat peut s'integrer dans le dashboard manager sous la dimension Maturite equipe du
+    cadran RAG, mais a condition de garder la distinction rouge interne (l'equipe peut agir) versus rouge
+    externe (l'organisation doit agir, en escalade et non en retro). Le decideur lit le dashboard pour
+    reperer les rouges externes recurrents qui appellent une decision de sa part, pas pour classer les
+    equipes entre elles.
+  douleur_terrain: Le decideur qui demande un classement d'equipes base sur le Squad Health Check provoque,
+    en aval, un vote moins sincere et donc un outil moins fiable pour lui-meme.
+  source_expert: Kniberg et Sunden 2014
+  page: 74
+  extrait: Integrez le resultat dans ton dashboard manager (chapitre 8) sous la dimension Maturite equipe
+    du cadran RAG.
+  fiche_liee: FP-P1-CH02-squad-health-check-01
+  fiche_destinee_a:
+  - DC
+  - MG
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - M
+- id: P1-CH02-DC-02
+  cible: DECIDEUR
+  role: DC
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - pourquoi
+  - valeur
+  question: J'ai un sponsor qui me presente une transformation agile reussie sur la base de la vitesse
+    de livraison des equipes. Quel test simple je peux poser pour verifier si les PO ont vraiment l'autorite
+    que ca suppose ?
+  reponse: 'Le test d''autorite PO : demander au PO s''il peut refuser une user story demandee par la
+    direction. Si la reponse est non, le PO n''a pas le perimetre de decision reel, et c''est un probleme
+    organisationnel a nommer, pas une question de competence individuelle a corriger.'
+  douleur_terrain: Un decideur qui valide une transformation sur la vitesse seule peut financer pendant
+    des annees une organisation ou les PO restent des proxys, sans jamais avoir pose la question qui aurait
+    revele le probleme.
+  source_expert: null
+  page: 74
+  extrait: 'Test d''autorite PO : demandez au PO s''il peut refuser une user story demandee par la direction.
+    Si non, le PO n''a pas le perimetre de decision reel.'
+  fiche_liee: FP-P1-CH02-test-autorite-po-01
+  fiche_destinee_a:
+  - DC
+  statut_reponse: confirmee
+  action_recommandee: null
+  schemas_lies: []
+  themes_salim:
+  - S
+  - M
+- id: P1-CH02-DC-03
+  cible: DECIDEUR
+  role: DC
+  expert: null
+  dimensions:
+  - qui
+  - quoi
+  - comment
+  - pourquoi
+  - quand
+  question: Le chapitre dit que 65% des organisations consolident ou eliminent les roles agiles specifiques,
+    et que 26% des praticiens font moins de coaching framework en migrant vers de l'hybride. Si je suis
+    en train de reduire mes postes SM, comment je sais si je suis dans la bonne tendance ou si je suis
+    en train de detruire de la valeur que je ne vois pas ?
+  reponse: 'Trou : le chapitre donne les deux statistiques structurelles (consolidation des roles, migration
+    vers l''hybride) mais ne fournit pas de critere de decision pour le decideur qui doit choisir entre
+    reduire un poste SM et investir dans sa montee en impact organisationnel.'
+  douleur_terrain: Le decideur lit deux signaux macro qui pointent dans des directions ambivalentes (les
+    roles se contractent / les roles montent en strategie) sans avoir de grille pour savoir lequel s'applique
+    a sa propre organisation avant de couper un poste.
+  source_expert: 18e State of Agile, State of Agile 2025
+  page: 62
+  extrait: 'Les roles bifurquent : certains montent vers la strategie, d''autres se contractent. Comprendre
+    dans quel sens ton role evolue n''est pas optionnel.'
+  fiche_liee: null
+  fiche_destinee_a:
+  - DC
+  - MG
+  statut_reponse: trou
+  action_recommandee: 'Ajouter un encart decideur avec 2-3 questions de diagnostic (ex : le SM a-t-il
+    un impact documente au-dela de son equipe, existe-t-il un journal d''obstacles) avant toute decision
+    de consolidation de poste.'
+  schemas_lies: []
+  themes_salim:
+  - S
+  - M
+trous:
+- id: T01
+  role: RTE
+  cible: PRATICIEN_AGILE
+  question_manquante: Comment la frontiere PO/SM (gestion stakeholders) decrite au niveau d'une equipe
+    se recompose-t-elle dans un contexte multi-equipes pilote par un RTE ?
+  action: Ajouter une note de fin de section renvoyant vers le chapitre scaling/RTE, ou un paragraphe
+    court adressant explicitement l'echelle ART.
+- id: T02
+  role: RTE
+  cible: PRATICIEN_AGILE
+  question_manquante: Comment agreger les resultats du Squad Health Check sur plusieurs equipes pour un
+    RTE, sans perdre la distinction tendance vs score absolu ?
+  action: Renvoyer explicitement vers le chapitre dashboard manager pour la vue multi-equipes, ou ajouter
+    2-3 phrases sur la lecture RTE des rouges externes recurrents.
+- id: T03
+  role: DC
+  cible: DECIDEUR
+  question_manquante: Quels criteres concrets un decideur doit-il utiliser avant de consolider ou supprimer
+    un poste SM, face aux deux tendances macro (consolidation des roles / montee en strategie) citees
+    en introduction ?
+  action: Ajouter un encart decideur avec une grille de diagnostic courte (2-3 questions) avant decision
+    de consolidation de poste SM, en lien avec le journal d'obstacles deja introduit pour le SM.
+- id: T04
+  role: PO
+  cible: PRATICIEN_AGILE
+  question_manquante: Le chapitre 1 (selon le sommaire visible) mentionne le Scoring Deliverable comme
+    reference transverse du livre. Le chapitre 2 ne fait aucun lien explicite entre le profil PO proxy
+    / PO decideur et une dimension du Scoring Deliverable. Faut-il un pont explicite ?
+  action: Verifier si une dimension du Scoring Deliverable correspond au perimetre de decision PO, et
+    si oui ajouter un renvoi court en fin de section PO.
+stats:
+  questions_totales: 21
+  par_role:
+    SM: 6
+    PO: 4
+    DEV: 4
+    CA: 3
+    RTE: 2
+    MG: 3
+    DC: 3
+  par_statut:
+    provisoire: 0
+    confirmee: 17
+    trou: 4
+  couverture_dimensions:
+    qui: 21
+    quoi: 21
+    comment: 18
+    pourquoi: 17
+    quand: 7
+    valeur: 17
+  schemas_lies: 0

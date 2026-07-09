@@ -48,10 +48,10 @@ export function getBookLandingCopy(lang: BookLandingLang) {
         'Livraison ou retrait en main propre. Paiement sécurisé. Accès immédiat aux outils AIgile pour appliquer le livre dès le prochain sprint.',
       finalCta: 'Acheter maintenant',
       stickyCta: 'Acheter le livre',
-      manifestoTitle: 'Appuyé sur le Manifeste Agile',
-      manifestoQuote:
-        'Nous suivons ces principes : les individus et leurs interactions plus que les processus et les outils.',
-      learnMore: 'En savoir plus',
+      manifestoKicker: 'Document fondateur',
+      manifestoLabel: 'Manifeste',
+      manifestoQuote: 'Découvre dans le document fondateur la genèse AIgile.',
+      learnMore: 'Découvrir',
       footerRights: '© 2026 AIGILE.LU · Malis Edition',
       deliveryNote: 'Prix direct aigile.lu · Livraison ou retrait',
     }
@@ -99,10 +99,10 @@ export function getBookLandingCopy(lang: BookLandingLang) {
       'Shipping or in-person pickup. Secure checkout. Immediate access to AIgile tools to apply the book on your next sprint.',
     finalCta: 'Buy now',
     stickyCta: 'Buy the book',
-    manifestoTitle: 'Backed by the Agile Manifesto',
-    manifestoQuote:
-      'We follow these principles: Individuals and interactions over processes and tools.',
-    learnMore: 'Learn more',
+    manifestoKicker: 'Founding document',
+    manifestoLabel: 'Manifesto',
+    manifestoQuote: 'Discover the genesis of AIgile in our founding document.',
+    learnMore: 'Discover',
     footerRights: '© 2026 AIGILE.LU · Malis Edition',
     deliveryNote: 'Direct price on aigile.lu · Shipping or pickup',
   }

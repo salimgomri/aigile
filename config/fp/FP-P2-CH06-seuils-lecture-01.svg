@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+
+<rect x="0" y="0" width="794" height="1123" style="fill:#ffffff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+<g transform="translate(8,30)">
+      <ellipse cx="19" cy="8" rx="6" ry="6" style="fill:#0f2240;opacity:0.5;"/>
+      <rect x="14" y="14" width="10" height="22" rx="3" style="fill:#0f2240;opacity:0.5;"/>
+      <rect x="9" y="38" width="20" height="3" rx="1.5" style="fill:#0f2240;opacity:0.5;"/>
+    </g>
+<g transform="rotate(-90, 27, 600)">
+      <text x="27" y="600" text-anchor="middle"
+            style="font-family:'Georgia',serif;font-size:11px;font-weight:bold;fill:#0f2240;letter-spacing:2px;">
+        LE SYST&#200;ME S.A.L.I.M.
+      </text>
+    </g>
+<rect x="54" y="0" width="740" height="72" style="fill:#ffffff;"/>
+<text x="72" y="28" style="font-family:'Helvetica';font-size:8.5px;fill:#bbbbbb;">PILOTAGE &gt; DASHBOARD</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+             c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23" style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP II-6.3</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58" style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">Seuils de lecture Happiness Index</text>
+<text x="72" y="72" style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">Lis en tendance, jamais en point isole.</text>
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<rect x="238.7" y="86" width="0.6" height="50" style="fill:#ffffff;opacity:0.5;"/>
+<rect x="423.7" y="86" width="0.6" height="50" style="fill:#ffffff;opacity:0.5;"/>
+<rect x="608.7" y="86" width="0.6" height="50" style="fill:#ffffff;opacity:0.5;"/>
+<text x="72" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">MG, SM</text>
+<text x="252" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Tableau de seuils, interpretation et action associee</text>
+<text x="437" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L&#39;UTILISER</text>
+<text x="437" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">En Sprint Review, dans le cadran Bien-etre du dashboard</text>
+<text x="622" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Decision rapide sans sur-reagir a un point isole</text>
+<rect x="54" y="160" width="740" height="220" style="fill:#ffffff;stroke:#e0e0e0;stroke-width:1px;"/>
+<text x="72" y="184" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">1. SEUILS DE LECTURE, SCORE SUR 3</text>
+<rect x="66" y="190" width="716" height="20" style="fill:#0f2240;"/>
+<text x="72" y="204" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;letter-spacing:1px;">INDICATEUR</text>
+<text x="220" y="204" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;letter-spacing:1px;">VALEUR</text>
+<text x="360" y="204" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#ffffff;letter-spacing:1px;">INTERPR&#201;TATION &amp; ACTION</text>
+<circle cx="78" cy="226" r="5" style="fill:#2a7a2a;"/>
+<text x="84" y="230" style="font-family:'Helvetica';font-size:9.5px;font-weight:bold;fill:#0f2240;">Score cible</text>
+<text x="220" y="230" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">&#8805; 2.5 / 3</text>
+<text x="360" y="230" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Moyenne sprint saine. Maintenir la cadence. Pas d'action corrective.</text>
+<rect x="66" y="238" width="716" height="0.6" style="fill:#e0e0e0;"/>
+<circle cx="78" cy="268" r="5" style="fill:#c9973a;"/>
+<text x="84" y="272" style="font-family:'Helvetica';font-size:9.5px;font-weight:bold;fill:#0f2240;">Seuil d'attention</text>
+<text x="220" y="272" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">&lt; 2.0 / 3</text>
+<text x="360" y="272" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Retrospective ciblee bien-etre. Ouvrir la conversation. Identifier la source.</text>
+<rect x="66" y="280" width="716" height="0.6" style="fill:#e0e0e0;"/>
+<circle cx="78" cy="310" r="5" style="fill:#cc3333;"/>
+<text x="84" y="314" style="font-family:'Helvetica';font-size:9.5px;font-weight:bold;fill:#0f2240;">Seuil critique</text>
+<text x="220" y="314" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">&lt; 1.7 / 3</text>
+<text x="360" y="314" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Action immediate requise. Ne pas attendre la retro. Intervention SM / manager.</text>
+<rect x="66" y="322" width="716" height="0.6" style="fill:#e0e0e0;"/>
+<circle cx="78" cy="352" r="5" style="fill:#0f2240;"/>
+<text x="84" y="356" style="font-family:'Helvetica';font-size:9.5px;font-weight:bold;fill:#0f2240;">Fenetre de lecture</text>
+<text x="220" y="356" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Sprint complet</text>
+<text x="360" y="356" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;fill:#0f2240;">Tendance, pas jour isole. Un lundi noir ne signifie pas une equipe en danger.</text>
+<rect x="66" y="364" width="716" height="0.6" style="fill:#e0e0e0;"/>
+<text x="72" y="372" style="font-family:'EB Garamond','Georgia',serif;font-size:8px;font-style:italic;fill:#bbbbbb;">Source : Niko-Niko Calendar. Happiness Index. Lecture en tendance sur 10 jours minimum.</text>
+<rect x="54" y="400" width="343" height="220" style="fill:#0f2240;"/>
+<text x="72" y="426" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#ffffff;">2. LA S&#201;QUENCE TYPIQUE</text>
+<text x="72" y="450" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Semaines 1-2 : le score baisse</text>
+<text x="72" y="465" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">doucement. Velocite stable. Rien</text>
+<text x="72" y="480" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">de visible dans les livrables.</text>
+<text x="72" y="510" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Semaines 3-4 : score continue</text>
+<text x="72" y="525" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">de baisser. Frictions en ceremonies.</text>
+<text x="72" y="555" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Semaines 5-6 : velocite commence</text>
+<text x="72" y="570" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">a varier. Premieres absences.</text>
+<text x="72" y="600" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Semaines 7+ : departs envisages.</text>
+<text x="72" y="615" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Turnover = 6 a 9 mois de salaire.</text>
+<rect x="411" y="400" width="343" height="220" style="fill:#ffffff;stroke:#e0e0e0;stroke-width:1px;"/>
+<text x="429" y="426" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">3. FORMAT DE REMONT&#201;E</text>
+<circle cx="429" cy="447" r="2" style="fill:#febd10;"/>
+<text x="439" y="450" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Tendance sur 3 sprints</text>
+<circle cx="429" cy="479" r="2" style="fill:#febd10;"/>
+<text x="439" y="482" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Signal vert / jaune / rouge si la</text>
+<circle cx="429" cy="495" r="2" style="fill:#febd10;"/>
+<text x="439" y="498" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">moyenne descend sous le seuil</text>
+<circle cx="429" cy="511" r="2" style="fill:#febd10;"/>
+<text x="439" y="514" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">d'attention (2.0/3)</text>
+<circle cx="429" cy="543" r="2" style="fill:#febd10;"/>
+<text x="439" y="546" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Action attendue sous 15 jours</text>
+<circle cx="429" cy="559" r="2" style="fill:#febd10;"/>
+<text x="439" y="562" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">en cas de jaune ou rouge</text>
+<circle cx="429" cy="591" r="2" style="fill:#febd10;"/>
+<text x="439" y="594" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Jamais de verbatim individuel</text>
+<circle cx="429" cy="623" r="2" style="fill:#febd10;"/>
+<text x="439" y="626" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Jamais un score brut isole</text>
+<rect x="54" y="640" width="740" height="160" style="fill:#febd10;"/>
+<text x="72" y="666" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">4. LE CO&#219;T DE L&#39;INTERVENTION</text>
+<text x="72" y="690" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;font-weight:bold;fill:#0f2240;">Intervenir au niveau 1 coute une conversation. Intervenir au niveau 3 coute une equipe.</text>
+<text x="72" y="722" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">A l'echelle d'un portefeuille de plusieurs equipes, un Niko-Niko qui glisse sur 2 a 3 equipes en meme</text>
+<text x="72" y="738" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">temps, c'est un signal organisationnel, pas un signal d'equipe. Cause commune a chercher :</text>
+<text x="72" y="754" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">reorganisation recente, gel des recrutements, changement de direction, objectifs de fin d'annee</text>
+<text x="72" y="770" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">imposes sans discussion. Ce signal se traite au niveau au-dessus de l'equipe, pas equipe par equipe.</text>
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+             c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1088" style="font-family:'Helvetica';font-size:9px;fill:#febd10;">03</text>
+<text x="72" y="1089" style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+<text x="677" y="1089" style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

@@ -275,7 +275,7 @@ questions:
     source_expert: null
     page: "186-189"
     extrait: null
-    fiche_liee: null
+    fiche_liee: "FP-P2-CH08-dashboard-03"
     fiche_destinee_a: [SM, MG]
     statut_reponse: confirmee
     action_recommandee: null
@@ -304,7 +304,7 @@ questions:
     source_expert: null
     page: "185"
     extrait: null
-    fiche_liee: null
+    fiche_liee: "FP-P2-CH08-dashboard-03"
     fiche_destinee_a: [SM, PO]
     statut_reponse: confirmee
     action_recommandee: null
@@ -331,7 +331,7 @@ questions:
     source_expert: null
     page: "190"
     extrait: null
-    fiche_liee: null
+    fiche_liee: "FP-P2-CH08-dashboard-03"
     fiche_destinee_a: [SM]
     statut_reponse: confirmee
     action_recommandee: null
@@ -764,7 +764,7 @@ questions:
     source_expert: null
     page: "186"
     extrait: null
-    fiche_liee: null
+    fiche_liee: "FP-P2-CH08-dashboard-03"
     fiche_destinee_a: [MG]
     statut_reponse: confirmee
     action_recommandee: null
@@ -822,7 +822,7 @@ questions:
     source_expert: null
     page: "189"
     extrait: null
-    fiche_liee: null
+    fiche_liee: "FP-P2-CH08-dashboard-03"
     fiche_destinee_a: [MG]
     statut_reponse: confirmee
     action_recommandee: null
@@ -913,6 +913,59 @@ trous:
       6 RAG par ligne. Peut renvoyer vers le chapitre 13 si la vue ART y
       est traitee.
 
+fiches_pratiques:
+  - id: "FP-P2-CH08-checklist-decision-01"
+    fp_id: "II-8.1"
+    fichier: "FP-P2-CH08.1-checklist-decision.svg"
+    template: T04
+    titre: "Demarrer la Boucle OKR Vivante"
+    categorie: "CHECKLIST DECISION"
+    pour_qui: [SM, PO, CA]
+    statut: generee
+    logo: "texte (cat1.svg absent, a remplacer en post-prod Affinity)"
+    contenu_source: >
+      Check-in 5 questions (page 183-185) et roadmap de deploiement 4 phases / 7 sprints
+      (page 195-196). Criteres GO/NO-GO bases sur la presence ou non d'un pipeline
+      CI/CD, l'autonomie de connexion du manager, et le mandat du SM.
+
+  - id: "FP-P2-CH08-reference-02"
+    fp_id: "II-8.2"
+    fichier: "FP-P2-CH08.2-reference-burnup.svg"
+    template: T06
+    titre: "Le Burn-up et le cone de confiance"
+    categorie: "REFERENCE OUTIL"
+    pour_qui: [SM, PO, DEV, MG]
+    statut: generee
+    logo: "texte (cat1.svg absent, a remplacer en post-prod Affinity)"
+    contenu_source: >
+      Burn-up 1/2 et 2/2 (pages 187-188), cone de confiance et lecture ALL OF /
+      SOME OF / NONE OF (pages 191-193). Comparaison avec le burndown, citations
+      Mike Cohn.
+
+  - id: "FP-P2-CH08-dashboard-03"
+    fp_id: "II-8.3"
+    fichier: "FP-P2-CH08.3-dashboard.svg"
+    template: T03
+    titre: "Dashboard 6 cadrans"
+    categorie: "PILOTAGE > DASHBOARD"
+    sous_titre: "Visualise la performance, pilote avec clarte."
+    pour_qui: [MG, DC, SM]
+    statut: generee
+    logo: "texte (cat1.svg absent, a remplacer en post-prod Affinity)"
+    quoi: >
+      Les 6 cadrans RAG du Dashboard OKR Vivant et leurs sources de donnees.
+    quand_utiliser: >
+      Quinze minutes apres chaque Sprint Review, ou pour calibrer les seuils RAG
+      avant le premier deploiement.
+    valeur_apportee: >
+      Une vue unique, lisible en 30 secondes, qui remplace le rapport ad hoc.
+    contenu_source: >
+      Tableau des 6 cadrans avec sources et seuils RAG (pages 184, 186, 189-190).
+      Bloc 1 pleine largeur : tableau CADRAN / SOURCE / VERT / AMBRE / ROUGE
+      (On Time, On Budget, On Scope, Qualite, Maturite equipe, Bien-etre).
+      Bloc 2+3 : tendance Team Predictability sur 6 sprints + alertes principales
+      (flag blocage organisationnel, score de confiance OKR sous 3).
+      Bloc 4+5 : synthese narrative generee par cadran + decisions/annotations manager.
 stats:
   questions_totales: 30
   par_role:

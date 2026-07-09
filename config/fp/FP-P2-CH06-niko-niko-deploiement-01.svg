@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+
+<rect x="0" y="0" width="794" height="1123" style="fill:#ffffff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+<g transform="translate(8,30)">
+      <ellipse cx="19" cy="8" rx="6" ry="6" style="fill:#0f2240;opacity:0.5;"/>
+      <rect x="14" y="14" width="10" height="22" rx="3" style="fill:#0f2240;opacity:0.5;"/>
+      <rect x="9" y="38" width="20" height="3" rx="1.5" style="fill:#0f2240;opacity:0.5;"/>
+    </g>
+<g transform="rotate(-90, 27, 600)">
+      <text x="27" y="600" text-anchor="middle"
+            style="font-family:'Georgia',serif;font-size:11px;font-weight:bold;fill:#0f2240;letter-spacing:2px;">
+        LE SYST&#200;ME S.A.L.I.M.
+      </text>
+    </g>
+<rect x="54" y="0" width="740" height="72" style="fill:#ffffff;"/>
+<text x="72" y="28" style="font-family:'Helvetica';font-size:8.5px;fill:#bbbbbb;">OUTILS &gt; SUIVI BIEN-&#202;TRE</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+             c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23" style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP II-6.1</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58" style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">Le Niko-Niko : d&#233;ployer et lire</text>
+<text x="72" y="72" style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">Un signal d&#39;&#233;tat, captur&#233; chaque jour, lu en tendance.</text>
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<rect x="238.7" y="86" width="0.6" height="50" style="fill:#ffffff;opacity:0.5;"/>
+<rect x="423.7" y="86" width="0.6" height="50" style="fill:#ffffff;opacity:0.5;"/>
+<rect x="608.7" y="86" width="0.6" height="50" style="fill:#ffffff;opacity:0.5;"/>
+<text x="72" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">SM, DEV, MG</text>
+<text x="252" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Tableau d&#39;humeur quotidien, 3 niveaux, lu sur le sprint</text>
+<text x="437" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L&#39;UTILISER</text>
+<text x="437" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">D&#232;s la mise en place d&#39;une &#233;quipe ou au premier signal de glissement</text>
+<text x="622" y="97" style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Alerte pr&#233;coce avant la baisse de v&#233;locit&#233;</text>
+<rect x="54" y="160" width="343" height="220" style="fill:#0f2240;"/>
+<text x="72" y="186" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#ffffff;">LE PRINCIPE</text>
+<text x="72" y="210" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Chaque jour, en fin de journee, chaque</text>
+<text x="72" y="225" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">membre choisit un etat parmi trois :</text>
+<text x="72" y="255" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Vert = Bien (score 3)</text>
+<text x="72" y="270" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Jaune = Neutre (score 2)</text>
+<text x="72" y="285" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Rouge = Difficile (score 1)</text>
+<text x="72" y="315" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Ce n'est pas un sondage de satisfaction.</text>
+<text x="72" y="330" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Ce n'est pas une evaluation de</text>
+<text x="72" y="345" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">performance. C'est un signal d'etat,</text>
+<text x="72" y="360" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">agrege sur le sprint, lu en tendance.</text>
+<rect x="411" y="160" width="343" height="220" style="fill:#ffffff;stroke:#e0e0e0;stroke-width:1px;"/>
+<text x="429" y="186" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">LE D&#201;PLOIEMENT</text>
+<circle cx="433" cy="207" r="2" style="fill:#febd10;"/>
+<text x="443" y="210" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">Version physique : tableau noms x jours,</text>
+<circle cx="433" cy="222" r="2" style="fill:#febd10;"/>
+<text x="443" y="225" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">post-its colores (vert/jaune/rouge)</text>
+<circle cx="433" cy="252" r="2" style="fill:#febd10;"/>
+<text x="443" y="255" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">Version digitale : formulaire de fin</text>
+<circle cx="433" cy="267" r="2" style="fill:#febd10;"/>
+<text x="443" y="270" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">d'apres-midi, 10 secondes de saisie,</text>
+<circle cx="433" cy="282" r="2" style="fill:#febd10;"/>
+<text x="443" y="285" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">alimente le cadran Bien-etre</text>
+<circle cx="433" cy="312" r="2" style="fill:#febd10;"/>
+<text x="443" y="315" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">Saisie volontaire : forcer la participation</text>
+<circle cx="433" cy="327" r="2" style="fill:#febd10;"/>
+<text x="443" y="330" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">detruit l'outil</text>
+<circle cx="433" cy="357" r="2" style="fill:#febd10;"/>
+<text x="443" y="360" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">Anonyme les 2 premiers mois. Passe au</text>
+<circle cx="433" cy="372" r="2" style="fill:#febd10;"/>
+<text x="443" y="375" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">nominatif quand la confiance est etablie,</text>
+<circle cx="433" cy="387" r="2" style="fill:#febd10;"/>
+<text x="443" y="390" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">jamais avant.</text>
+<rect x="54" y="400" width="343" height="220" style="fill:#ffffff;stroke:#e0e0e0;stroke-width:1px;"/>
+<text x="72" y="426" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">QUI VOIT QUOI</text>
+<text x="72" y="450" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">01.</text><text x="92" y="450" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">SM</text>
+<text x="72" y="465" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Detail individuel anonymise + agregat</text>
+<text x="72" y="495" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">02.</text><text x="92" y="495" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">MANAGER</text>
+<text x="72" y="510" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Agregat seul, en tendance sur plusieurs</text>
+<text x="72" y="525" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">sprints. Jamais le detail individuel.</text>
+<text x="72" y="555" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#febd10;">03.</text><text x="92" y="555" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">RH</text>
+<text x="72" y="570" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Aucune donnee sans process specifique</text>
+<text x="72" y="585" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">valide par l'equipe</text>
+<text x="72" y="615" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Sous 6 personnes : le SM porte seul la</text>
+<text x="72" y="630" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">donnee, ne la partage pas en chiffre brut.</text>
+<rect x="411" y="400" width="343" height="220" style="fill:#0f2240;"/>
+<text x="429" y="426" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#ffffff;">LES R&#200;GLES DE BASE</text>
+<circle cx="433" cy="447" r="2" style="fill:#febd10;"/>
+<text x="443" y="450" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Les donnees individuelles ne sont</text>
+<circle cx="433" cy="462" r="2" style="fill:#febd10;"/>
+<text x="443" y="465" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">jamais partagees sans consentement</text>
+<circle cx="433" cy="492" r="2" style="fill:#febd10;"/>
+<text x="443" y="495" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Le SM voit l'agregat et ne commente pas</text>
+<circle cx="433" cy="507" r="2" style="fill:#febd10;"/>
+<text x="443" y="510" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">les choix individuels publiquement</text>
+<circle cx="433" cy="537" r="2" style="fill:#febd10;"/>
+<text x="443" y="540" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">L'outil sert a declencher des</text>
+<circle cx="433" cy="552" r="2" style="fill:#febd10;"/>
+<text x="443" y="555" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">conversations. Jamais a surveiller.</text>
+<circle cx="433" cy="582" r="2" style="fill:#febd10;"/>
+<text x="443" y="585" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">Un Niko-Niko stable et eleve peut</text>
+<circle cx="433" cy="597" r="2" style="fill:#febd10;"/>
+<text x="443" y="600" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">signaler l'absence de securite</text>
+<circle cx="433" cy="612" r="2" style="fill:#febd10;"/>
+<text x="443" y="615" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">psychologique plutot que sa presence :</text>
+<circle cx="433" cy="627" r="2" style="fill:#febd10;"/>
+<text x="443" y="630" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">l'equipe se protege, ce n'est pas</text>
+<circle cx="433" cy="642" r="2" style="fill:#febd10;"/>
+<text x="443" y="645" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#ffffff;">du bien-etre reel.</text>
+<rect x="54" y="640" width="700" height="120" style="fill:#febd10;"/>
+<text x="72" y="666" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">R&#200;GLE D&#39;ALERTE</text>
+<text x="72" y="690" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Si le Niko-Niko glisse de 0,5 point ou plus sur 2 sprints consecutifs : planifie un 1:1</text>
+<text x="72" y="706" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">avec chaque membre cette semaine. Pas pour regler, pour ecouter.</text>
+<text x="72" y="738" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Sans action engagee, la velocite chutera dans les 3 a 5 sprints suivants, parfois plus</text>
+<text x="72" y="754" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">tot, rarement jamais. Ce signal precede la rupture de 3 a 5 semaines.</text>
+<rect x="54" y="780" width="700" height="0" style="fill:#fafaf7;"/>
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+             c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1088" style="font-family:'Helvetica';font-size:9px;fill:#febd10;">01</text>
+<text x="72" y="1089" style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+<text x="677" y="1089" style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

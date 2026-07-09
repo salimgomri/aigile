@@ -1,0 +1,165 @@
+<svg viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="Helvetica, Arial, sans-serif"><defs><style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style></defs>
+<!-- FOND + BANDE -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO (recree vectoriel, position equivalente a l'asset cat1.svg) -->
+
+<g transform="translate(8,40)">
+  <ellipse cx="19" cy="34" rx="17" ry="38" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.55;" transform="rotate(8 19 34)"/>
+  <ellipse cx="19" cy="34" rx="12" ry="30" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.4;" transform="rotate(8 19 34)"/>
+  <ellipse cx="19" cy="34" rx="7" ry="22" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.3;" transform="rotate(8 19 34)"/>
+  <circle cx="19" cy="6" r="3.2" style="fill:#0f2240;"/>
+  <path d="M19,9 L19,28 M19,16 L11,24 M19,16 L27,24 M19,28 L13,40 M19,28 L25,40"
+        style="stroke:#0f2240;stroke-width:1.6px;stroke-linecap:round;fill:none;"/>
+</g>
+
+
+<!-- TEXTE VERTICAL -->
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:'Georgia',serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbb;">CHECKLIST D&#201;CISION &gt; SPRINT PLANNING</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23"
+      style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP I-4.2</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58"
+      style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">Story pr&#234;te ou pas : DoR en 6 points</text>
+<text x="72" y="72"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">V&#233;rifie, d&#233;cide, avance en confiance.</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<rect x="238.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<rect x="423.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<rect x="608.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<text x="72" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">SM / PO</text>
+<text x="252" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Checklist Go / No Go pour faire entrer une story en Sprint Planning</text>
+<text x="437" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L'UTILISER</text>
+<text x="437" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">En Refinement, avant l'estimation, jamais pendant le Sprint Planning</text>
+<text x="622" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">&#201;viter de perdre 40 minutes de Sprint Planning sur une story floue</text>
+
+<!-- TABLEAU GO/NO-GO pleine largeur -->
+<text x="72" y="172" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">LES 6 CRIT&#200;RES DE LA DEFINITION OF READY</text>
+<path d="M72,178l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+
+<!-- en-tete tableau -->
+<rect x="72" y="190" width="650" height="24" style="fill:#0f2240;"/>
+<text x="84" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">#</text>
+<text x="110" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">CRIT&#200;RE DE V&#201;RIFICATION</text>
+<text x="540" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">GO &#9675;</text>
+<text x="600" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">NO GO &#9679;</text>
+<text x="665" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">NOTES</text>
+
+<!-- lignes -->
+<g font-family="'EB Garamond','Georgia',serif" font-size="9px" fill="#0f2240">
+<rect x="72" y="214" width="650" height="34" style="fill:#fafaf7;"/>
+<text x="84" y="234">01</text>
+<text x="110" y="230">La story est estim&#233;e</text>
+<text x="110" y="244" style="font-style:italic;opacity:0.65;">Issue de l'estimation silencieuse, pas une promesse de date</text>
+<circle cx="546" cy="232" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.3px;"/>
+<circle cx="608" cy="232" r="3" style="fill:#cc3333;"/>
+
+<rect x="72" y="248" width="650" height="34" style="fill:#fff;"/>
+<text x="84" y="268">02</text>
+<text x="110" y="264">Crit&#232;res d'acceptation &#233;crits et valid&#233;s</text>
+<text x="110" y="278" style="font-style:italic;opacity:0.65;">Par les trois r&#244;les : PO, DEV, QA. Format Etant donn&#233; / Quand / Alors</text>
+<circle cx="546" cy="266" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.3px;"/>
+<circle cx="608" cy="266" r="3" style="fill:#cc3333;"/>
+
+<rect x="72" y="282" width="650" height="34" style="fill:#fafaf7;"/>
+<text x="84" y="302">03</text>
+<text x="110" y="298">D&#233;pendances externes trait&#233;es, pas juste not&#233;es</text>
+<text x="110" y="312" style="font-style:italic;opacity:0.65;">Engagement obtenu de l'&#233;quipe concern&#233;e, pas un post-it sur un probl&#232;me ouvert</text>
+<circle cx="546" cy="300" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.3px;"/>
+<circle cx="608" cy="300" r="3" style="fill:#cc3333;"/>
+
+<rect x="72" y="316" width="650" height="34" style="fill:#fff;"/>
+<text x="84" y="336">04</text>
+<text x="110" y="332">Maquettes ou sp&#233;cifications disponibles</text>
+<text x="110" y="346" style="font-style:italic;opacity:0.65;">Pas parfaites. Juste disponibles</text>
+<circle cx="546" cy="334" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.3px;"/>
+<circle cx="608" cy="334" r="3" style="fill:#cc3333;"/>
+
+<rect x="72" y="350" width="650" height="34" style="fill:#fafaf7;"/>
+<text x="84" y="370">05</text>
+<text x="110" y="366">Story &lt; 50% de la capacit&#233; du sprint</text>
+<text x="110" y="380" style="font-style:italic;opacity:0.65;">Au-del&#224;, elle bloquera la livraison avant d'&#234;tre finie</text>
+<circle cx="546" cy="368" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.3px;"/>
+<circle cx="608" cy="368" r="3" style="fill:#cc3333;"/>
+
+<rect x="72" y="384" width="650" height="34" style="fill:#fff;"/>
+<text x="84" y="404">06</text>
+<text x="110" y="400">PO disponible pour r&#233;pondre pendant le sprint</text>
+<text x="110" y="414" style="font-style:italic;opacity:0.65;">Si flou en d&#233;but de sprint, c'est le PO qui perd le plus</text>
+<circle cx="546" cy="402" r="6" style="fill:none;stroke:#2a7a2a;stroke-width:1.3px;"/>
+<circle cx="608" cy="402" r="3" style="fill:#cc3333;"/>
+</g>
+
+<!-- ZONE DECISION 2 colonnes -->
+<text x="72" y="450" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">D&#201;CISION</text>
+<path d="M72,456l300,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<rect x="72" y="468" width="300" height="120" style="fill:#fafaf7;"/>
+<text x="84" y="490" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">&#9633; GO : 6 crit&#232;res sur 6, ou 5 sur 6 avec</text>
+<text x="84" y="504" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">accord d'&#233;quipe sur le risque restant.</text>
+<text x="84" y="528" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">&#9632; NO GO : moins de 5 sur 6, ou crit&#232;res</text>
+<text x="84" y="542" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">d'acceptation absents. Aucune exception</text>
+<text x="84" y="556" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">sur ce dernier point.</text>
+<text x="84" y="576" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Une bonne DoR se parcourt en moins de 2 min par story.</text>
+
+<text x="424" y="450" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">REMARQUES / ACTIONS</text>
+<path d="M424,456l298,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<rect x="424" y="468" width="298" height="120" style="fill:#fafaf7;"/>
+<text x="436" y="490" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">R&#232;gle des 2 questions : si la story g&#233;n&#232;re</text>
+<text x="436" y="504" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">plus de 2 questions de clarification avant</text>
+<text x="436" y="518" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">l'estimation, elle sort. Retour au Refinement,</text>
+<text x="436" y="532" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">pr&#233;par&#233;e correctement.</text>
+<text x="436" y="556" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Co&#251;t d'une sortie : 40 minutes de capacit&#233;</text>
+<text x="436" y="570" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">d'&#233;quipe perdues. R&#233;gulier = signal sur le</text>
+<text x="436" y="584" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">rythme de Refinement, pas sur le PO.</text>
+
+<!-- bandeau bas fond creme -->
+<rect x="54" y="640" width="740" height="100" style="fill:#fafaf7;"/>
+<text x="72" y="664" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">DoR ET DoD : LES DEUX BOUTS DU M&#202;ME ENGAGEMENT</text>
+<path d="M72,670l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="692" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">La DoD dit quand une story est termin&#233;e. La DoR dit quand elle est pr&#234;te &#224; entrer dans un sprint.</text>
+<text x="72" y="708" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Une story entre dans le sprint uniquement si elle satisfait la DoR : pas parce que le PO insiste,</text>
+<text x="72" y="724" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">pas parce que le sprint a de la place. La DoR reste un guide, pas un tribunal.</text>
+
+<!-- FOOTER -->
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1088"
+      style="font-family:'Helvetica';font-size:9px;fill:#febd10;">02</text>
+<text x="72" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+<text x="677" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

@@ -19,11 +19,12 @@ export const PRIMARY_NAV_ITEMS: PrimaryNavItem[] = [
   { id: 'hero', labelFr: 'Le livre', labelEn: 'The book', sectionId: 'hero' },
   { id: 'inside', labelFr: 'Contenu', labelEn: 'Inside', sectionId: 'inside' },
   { id: 'framework', labelFr: 'Framework', labelEn: 'Framework', href: '/framework' },
+  { id: 'manifesto', labelFr: 'Manifeste', labelEn: 'Manifesto', href: '/manifesto' },
   { id: 'tools', labelFr: 'Outils', labelEn: 'Tools', sectionId: 'tools' },
   { id: 'buy', labelFr: 'Acheter', labelEn: 'Buy', sectionId: 'buy' },
 ]
 
-export const HOME_SCROLL_SECTIONS = ['hero', 'inside', 'framework', 'tools', 'buy'] as const
+export const HOME_SCROLL_SECTIONS = ['hero', 'inside', 'framework', 'tools', 'buy', 'manifesto'] as const
 
 export const FRAMEWORK_SUB_NAV: SubNavItem[] = [
   { id: 'overview', labelFr: "Vue d'ensemble", labelEn: 'Overview', sectionId: 'fw-hero' },
@@ -40,7 +41,7 @@ export const MANIFESTO_SUB_NAV: SubNavItem[] = [
 
 export function getPrimaryNavActiveId(pathname: string, scrollSection: string | null): string | null {
   if (pathname === '/framework') return 'framework'
-  if (pathname === '/manifesto') return null
+  if (pathname === '/manifesto') return 'manifesto'
   if (pathname === '/') return scrollSection
   return null
 }

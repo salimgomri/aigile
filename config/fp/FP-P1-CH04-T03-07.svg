@@ -1,0 +1,167 @@
+<svg viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="Helvetica, Arial, sans-serif"><defs><style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style></defs>
+<!-- FOND + BANDE -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO (recree vectoriel, position equivalente a l'asset cat1.svg) -->
+
+<g transform="translate(8,40)">
+  <ellipse cx="19" cy="34" rx="17" ry="38" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.55;" transform="rotate(8 19 34)"/>
+  <ellipse cx="19" cy="34" rx="12" ry="30" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.4;" transform="rotate(8 19 34)"/>
+  <ellipse cx="19" cy="34" rx="7" ry="22" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.3;" transform="rotate(8 19 34)"/>
+  <circle cx="19" cy="6" r="3.2" style="fill:#0f2240;"/>
+  <path d="M19,9 L19,28 M19,16 L11,24 M19,16 L27,24 M19,28 L13,40 M19,28 L25,40"
+        style="stroke:#0f2240;stroke-width:1.6px;stroke-linecap:round;fill:none;"/>
+</g>
+
+
+<!-- TEXTE VERTICAL -->
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:'Georgia',serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbb;">PILOTAGE &gt; DASHBOARD</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23"
+      style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP I-4.7</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58"
+      style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">Audit backlog : les 4 signaux DSI</text>
+<text x="72" y="72"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">Visualise la solidit&#233; sans lire 200 stories.</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<rect x="238.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<rect x="423.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<rect x="608.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<text x="72" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">DC / MG</text>
+<text x="252" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">4 indicateurs et seuils pour auditer la maturit&#233; backlog de plusieurs &#233;quipes</text>
+<text x="437" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L'UTILISER</text>
+<text x="437" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Audit de progression 18 mois, comit&#233; de pilotage, revue de transformation</text>
+<text x="622" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Un signal pr&#233;coce entre une &#233;quipe qui progresse et une &#233;quipe qui fait semblant</text>
+
+<!-- BLOC 1 pleine largeur : tableau indicateurs -->
+<text x="72" y="172" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">INDICATEURS CL&#201;S</text>
+<path d="M72,178l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+
+<rect x="72" y="190" width="650" height="24" style="fill:#0f2240;"/>
+<text x="84" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">INDICATEUR</text>
+<text x="320" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">SEUIL BAS</text>
+<text x="430" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">CIBLE</text>
+<text x="530" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">SEUIL HAUT</text>
+<text x="650" y="206" style="font-family:'Helvetica';font-size:8px;font-weight:bold;fill:#fff;">STATUT</text>
+
+<g font-family="'EB Garamond','Georgia',serif" font-size="9.5px" fill="#0f2240">
+<rect x="72" y="214" width="650" height="34" style="fill:#fafaf7;"/>
+<text x="84" y="236">INVEST respect&#233; (stories pr&#234;tes)</text>
+<text x="320" y="236">&lt; 80%</text>
+<text x="430" y="236">6/6</text>
+<text x="530" y="236">&gt;= 80%</text>
+<circle cx="660" cy="231" r="5" style="fill:#2a7a2a;"/>
+
+<rect x="72" y="248" width="650" height="34" style="fill:#fff;"/>
+<text x="84" y="270">DoD : crit&#232;res d&#233;finis ET respect&#233;s</text>
+<text x="320" y="270">&lt; 8 crit.</text>
+<text x="430" y="270">8+ crit.</text>
+<text x="530" y="270">Niveau 2/3</text>
+<circle cx="660" cy="265" r="5" style="fill:#febd10;"/>
+
+<rect x="72" y="282" width="650" height="34" style="fill:#fafaf7;"/>
+<text x="84" y="304">Sprints raffin&#233;s disponibles en permanence</text>
+<text x="320" y="304">0-1 sprint</text>
+<text x="430" y="304">2 sprints</text>
+<text x="530" y="304">2+ sprints</text>
+<circle cx="660" cy="299" r="5" style="fill:#2a7a2a;"/>
+
+<rect x="72" y="316" width="650" height="34" style="fill:#fff;"/>
+<text x="84" y="338">Taille backlog (x v&#233;locit&#233;)</text>
+<text x="320" y="338">&lt; 2x</text>
+<text x="430" y="338">2 &#224; 4x</text>
+<text x="530" y="338">&gt; 4x</text>
+<circle cx="660" cy="333" r="5" style="fill:#cc3333;"/>
+</g>
+
+<text x="72" y="368" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">L&#233;gende :</text>
+<circle cx="130" cy="365" r="5" style="fill:#2a7a2a;"/>
+<text x="142" y="368" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">Bon</text>
+<circle cx="180" cy="365" r="5" style="fill:#febd10;"/>
+<text x="192" y="368" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">&#192; surveiller</text>
+<circle cx="262" cy="365" r="5" style="fill:#cc3333;"/>
+<text x="274" y="368" style="font-family:'Helvetica';font-size:8px;fill:#0f2240;">Critique</text>
+
+<!-- BLOC 2+3 : 2 colonnes -->
+<text x="72" y="420" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">LE SIGNAL LE PLUS PARLANT</text>
+<path d="M72,426l300,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<rect x="72" y="438" width="300" height="120" style="fill:#fafaf7;"/>
+<text x="84" y="460" style="font-family:'Georgia',serif;font-size:13px;font-weight:bold;fill:#cc3333;">DoD all&#233;g&#233;e sans</text>
+<text x="84" y="478" style="font-family:'Georgia',serif;font-size:13px;font-weight:bold;fill:#cc3333;">d&#233;cision explicite</text>
+<text x="84" y="500" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">= dette non trac&#233;e</text>
+<text x="84" y="516" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">= v&#233;locit&#233; qui chute dans 3 &#224; 5 sprints.</text>
+<text x="84" y="538" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">Souvent pr&#233;c&#233;d&#233; d'une remont&#233;e de v&#233;locit&#233;</text>
+<text x="84" y="552" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.7;">pr&#233;sent&#233;e en comit&#233; comme un succ&#232;s.</text>
+
+<text x="424" y="420" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">COMPARER PLUSIEURS &#201;QUIPES</text>
+<path d="M424,426l298,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<rect x="424" y="438" width="298" height="120" style="fill:#fafaf7;"/>
+<text x="436" y="460" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Applique la m&#234;me grille &#224; chaque &#233;quipe et</text>
+<text x="436" y="474" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">compare les &#233;carts, pas les valeurs absolues.</text>
+<text x="436" y="496" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">5/6 et 6/6 sur INVEST ne sont pas comparables</text>
+<text x="436" y="510" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">sans regarder l'anciennet&#233; Scrum.</text>
+<text x="436" y="532" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Utilise les 3 niveaux de maturit&#233; DoD (d&#233;butant /</text>
+<text x="436" y="546" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">confirm&#233; / mature) comme r&#233;f&#233;rentiel commun.</text>
+
+<!-- BLOC 4 : synthese -->
+<rect x="54" y="592" width="740" height="100" style="fill:#fafaf7;"/>
+<text x="72" y="616" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">SYNTH&#200;SE : CE QUE CES KPIs COUVRENT ET CE QU'ILS NE COUVRENT PAS</text>
+<path d="M72,622l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="644" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Ces KPIs r&#233;pondent &#224; la premi&#232;re moiti&#233; du probl&#232;me : savoir si ce qui sort du sprint est solide.</text>
+<text x="72" y="660" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Ils ne r&#233;pondent pas &#224; la seconde moiti&#233;, celle que 52% des organisations ratent selon le State</text>
+<text x="72" y="676" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">of Agile 2025 : relier ce qui sort du sprint aux r&#233;sultats business (Digital.ai).</text>
+
+<!-- BLOC 5 : decisions -->
+<text x="72" y="730" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">D&#201;CISIONS</text>
+<path d="M72,736l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<rect x="72" y="6" width="0" height="0"/>
+<g font-family="'EB Garamond','Georgia',serif" font-size="9.5px" fill="#0f2240">
+<rect x="72" y="56" width="0" height="0"/>
+<text x="78" y="756">&#9633; Demander &#224; chaque SM une lecture INVEST/DoD avant le prochain comit&#233;</text>
+<text x="78" y="776">&#9633; V&#233;rifier si une remont&#233;e r&#233;cente de v&#233;locit&#233; correspond &#224; un all&#233;gement DoD non trac&#233;</text>
+<text x="78" y="796">&#9633; Positionner chaque &#233;quipe sur la grille de maturit&#233; DoD avant de comparer les v&#233;locit&#233;s</text>
+</g>
+
+<!-- FOOTER -->
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1088"
+      style="font-family:'Helvetica';font-size:9px;fill:#febd10;">07</text>
+<text x="72" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+<text x="677" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

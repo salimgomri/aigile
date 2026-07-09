@@ -1,0 +1,132 @@
+<svg viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="Helvetica, Arial, sans-serif"><defs><style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style></defs>
+<!-- FOND + BANDE -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO (recree vectoriel, position equivalente a l'asset cat1.svg) -->
+<g transform="translate(8,40)">
+  <ellipse cx="19" cy="34" rx="17" ry="38" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.55;" transform="rotate(8 19 34)"/>
+  <ellipse cx="19" cy="34" rx="12" ry="30" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.4;" transform="rotate(8 19 34)"/>
+  <ellipse cx="19" cy="34" rx="7" ry="22" style="fill:none;stroke:#0f2240;stroke-width:1.1px;opacity:0.3;" transform="rotate(8 19 34)"/>
+  <circle cx="19" cy="6" r="3.2" style="fill:#0f2240;"/>
+  <path d="M19,9 L19,28 M19,16 L11,24 M19,16 L27,24 M19,28 L13,40 M19,28 L25,40"
+        style="stroke:#0f2240;stroke-width:1.6px;stroke-linecap:round;fill:none;"/>
+</g>
+
+<!-- TEXTE VERTICAL -->
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:'Georgia',serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbb;">MEMO / R&#201;F&#201;RENCE &gt; BACKLOG</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23"
+      style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP I-4.1</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58"
+      style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">Backlog solide en 3 coups d'oeil</text>
+<text x="72" y="72"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">INVEST, valeur, taille : les jauges rapides pour SM, PO, manager et DSI.</text>
+
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<rect x="238.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<rect x="423.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<rect x="608.7" y="86" width="0.6" height="50" style="fill:#0f2240;opacity:0.18;"/>
+<text x="72" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">SM / PO / DEV / MG / DC</text>
+<text x="252" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">3 grilles de lecture rapide : qualit&#233; des stories, taille saine, valeur vs implementation</text>
+<text x="437" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L'UTILISER</text>
+<text x="437" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Avant Sprint Planning, en audit backlog, ou en comit&#233; de pilotage</text>
+<text x="622" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">V&#233;rifier la sant&#233; d'un backlog sans le lire en entier</text>
+
+<!-- LIGNE 1 : 2 colonnes -->
+<text x="72" y="172" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">INVEST : LA JAUGE EN 30 SECONDES</text>
+<path d="M72,178l300,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="198" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">I N V E S T : Independent, Negotiable, Valuable,</text>
+<text x="72" y="213" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Estimable, Small, Testable.</text>
+<text x="72" y="234" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Si une story rate plus de 2 crit&#232;res, elle n'est</text>
+<text x="72" y="249" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">pas pr&#234;te pour le Sprint Planning.</text>
+<rect x="72" y="266" width="300" height="46" style="fill:#fafaf7;"/>
+<text x="84" y="284" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#0f2240;">Jauge manager / DSI</text>
+<text x="84" y="300" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.8;">Moins de 80% des stories &#224; 6/6 sur INVEST</text>
+<text x="84" y="313" style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.8;">= backlog fragile. V&#233;rifiable sans tout lire.</text>
+
+<text x="424" y="172" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">TAILLE DU BACKLOG : LE BON REP&#200;RE</text>
+<path d="M424,178l298,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<circle cx="430" cy="200" r="2.5" style="fill:#febd10;"/>
+<text x="440" y="204" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Rep&#232;re terrain : 2 &#224; 4x la v&#233;locit&#233; de l'&#233;quipe</text>
+<text x="440" y="219" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">en points. Plancher, pas plafond.</text>
+<circle cx="430" cy="240" r="2.5" style="fill:#febd10;"/>
+<text x="440" y="244" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">300 points pour une v&#233;locit&#233; de 40 n'est pas</text>
+<text x="440" y="259" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">le probl&#232;me. Le probl&#232;me, c'est le manque</text>
+<text x="440" y="274" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">de d&#233;cision sur ce qui n'est plus pertinent.</text>
+<circle cx="430" cy="294" r="2.5" style="fill:#febd10;"/>
+<text x="440" y="298" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Question &#224; poser au PO : qu'est-ce qui, dans</text>
+<text x="440" y="313" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">ce backlog, n'est plus pertinent et pourquoi</text>
+<text x="440" y="328" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">&#231;a reste ?</text>
+
+<!-- LIGNE 2 pleine largeur -->
+<text x="72" y="380" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">VALEUR VS IMPL&#201;MENTATION : LE TEST EN 1 PHRASE</text>
+<path d="M72,386l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="406" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Une story technique peut &#234;tre l&#233;gitime, &#224; condition qu'elle exprime sa valeur :</text>
+<rect x="72" y="420" width="650" height="76" style="fill:#fafaf7;"/>
+<text x="84" y="440" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#cc3333;">&#10007; Pas INVEST</text>
+<text x="84" y="456" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">&#171; Migrer la base de donn&#233;es vers PostgreSQL &#187;</text>
+<text x="84" y="476" style="font-family:'Helvetica';font-size:8.5px;font-weight:bold;fill:#2a7a2a;">&#10003; INVEST compliant</text>
+<text x="84" y="492" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">&#171; Permettre &#224; l'&#233;quipe de d&#233;ployer des releases sans fen&#234;tre de maintenance</text>
+<text x="84" y="508" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">gr&#226;ce &#224; la migration PostgreSQL &#187;</text>
+
+<!-- LIGNE 3 pleine largeur -->
+<text x="72" y="552" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">LE TEST DU CLIENT DE 12 ANS (CRIT&#200;RES D'ACCEPTATION)</text>
+<path d="M72,558l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="578" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Avant de valider les crit&#232;res d'une story, une seule question : est-ce que quelqu'un sans bagage</text>
+<text x="72" y="593" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">technique peut lire ce ALORS et comprendre exactement ce que le produit doit faire ?</text>
+<circle cx="78" cy="615" r="2.5" style="fill:#cc3333;"/>
+<text x="88" y="619" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">&#171; Alors la performance est correcte &#187; : ne veut rien dire.</text>
+<circle cx="78" cy="635" r="2.5" style="fill:#2a7a2a;"/>
+<text x="88" y="639" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">&#171; Alors la page se charge en moins de 2 secondes &#187; : veut dire quelque chose.</text>
+<text x="72" y="660" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;opacity:0.7;">Si tu ne peux pas &#233;crire un test depuis le crit&#232;re, il n'est pas pr&#234;t.</text>
+
+<!-- LIGNE 4 pleine largeur fond creme -->
+<rect x="54" y="700" width="740" height="80" style="fill:#fafaf7;"/>
+<text x="72" y="724" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;">CE QUE &#199;A CHANGE DANS LE SPRINT</text>
+<path d="M72,730l650,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="750" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Le PO porte les crit&#232;res d'acceptation, le SM facilite sans &#233;crire les stories &#224; sa place. Le PO</text>
+<text x="72" y="765" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">arrive en Refinement avec un brouillon utilisable, pas un texte finalis&#233;. Si le SM ou le DEV se</text>
+<text x="72" y="778" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">retrouvent &#224; r&#233;diger les crit&#232;res, c'est un signal que le PO arrive sans pr&#233;paration.</text>
+
+<!-- FOOTER -->
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1088"
+      style="font-family:'Helvetica';font-size:9px;fill:#febd10;">01</text>
+<text x="72" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">SOURCE : Le Syst&#232;me S.A.L.I.M.</text>
+<text x="677" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

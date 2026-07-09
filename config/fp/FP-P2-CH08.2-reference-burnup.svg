@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 794 1123" width="794" height="1123">
+<defs>
+  <style>@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');</style>
+</defs>
+<!-- FOND + BANDE -->
+<rect x="0" y="0" width="794" height="1123" style="fill:#fff;"/>
+<rect x="0" y="0" width="54" height="1123" style="fill:#febd10;"/>
+
+<!-- LOGO TEXTE (cat1.svg absent ; remplacer par logo SVG en post-prod Affinity) -->
+<text x="27" y="130"
+      style="font-family:'Georgia',serif;font-size:10px;font-weight:bold;
+             fill:#0f2240;writing-mode:tb;"
+      transform="rotate(180,27,130)">S.A.L.I.M.</text>
+
+<!-- TEXTE VERTICAL -->
+<g transform="matrix(-0,-1,1,-0,-893.165,946.835)">
+  <text x="-36.025px" y="920px"
+        style="font-family:'Georgia',serif;font-size:11px;fill:#0f2240;">
+    L<tspan x="-29.056px -21.54px -18.557px -12.055px -4.958px 1.544px 8.679px 16.196px
+             26.725px 34.242px 37.225px 43.726px 47.021px 54.731px 58.026px 64.995px
+             68.29px 72.906px 76.201px 86.73px"
+            y="920px 920px 920px 920px 920px 920px 920px 920px 920px 920px
+               920px 920px 920px 920px 920px 920px 920px 920px 920px 920px">
+      E SYST&#200;ME S.A.L.I.M.
+    </tspan>
+  </text>
+</g>
+<!-- HEADER BLANC -->
+<rect x="54" y="0" width="740" height="72" style="fill:#fff;"/>
+<text x="72" y="28"
+      style="font-family:'Helvetica';font-size:8.5px;fill:#bbbbbb;">R&#201;F&#201;RENCE OUTIL</text>
+<path d="M780,19c0,6.071 -4.929,11 -11,11l-72,0c-6.071,0 -11,-4.929 -11,-11
+         c0,-6.071 4.929,-11 11,-11l72,0c6.071,0 11,4.929 11,11Z" style="fill:#febd10;"/>
+<text x="708" y="23"
+      style="font-family:'Helvetica';font-size:9.5px;fill:#0f2240;">FP II-8.2</text>
+<path d="M72,36l694,0" style="fill:none;stroke:#febd10;stroke-width:1px;"/>
+<text x="72" y="58"
+      style="font-family:'Georgia',serif;font-size:26px;fill:#0f2240;">Le Burn-up et le c&#244;ne de confiance</text>
+<text x="72" y="72"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:11px;font-style:italic;fill:#febd10;">L'outil le plus puissant et le moins utilis&#233; du toolkit Scrum.</text>
+<!-- BLOC 4 CHAMPS GOLD -->
+<rect x="54" y="78" width="740" height="66" style="fill:#febd10;"/>
+<line x1="238.7" y1="86" x2="238.7" y2="136" style="stroke:#fff;stroke-width:0.6px;opacity:0.5;"/>
+<line x1="423.7" y1="86" x2="423.7" y2="136" style="stroke:#fff;stroke-width:0.6px;opacity:0.5;"/>
+<line x1="608.7" y1="86" x2="608.7" y2="136" style="stroke:#fff;stroke-width:0.6px;opacity:0.5;"/>
+
+<text x="72" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">POUR QUI</text>
+<text x="72" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">SM / PO / DEV / MG</text>
+
+<text x="252" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUOI</text>
+<text x="252" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Lire un burn-up pour r&#233;pondre honn&#234;tement sur scope et date</text>
+
+<text x="437" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">QUAND L'UTILISER</text>
+<text x="437" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">D&#232;s S3-S4, et &#224; chaque fois qu'une date de livraison est discut&#233;e</text>
+
+<text x="622" y="97"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#0f2240;letter-spacing:1.5px;">VALEUR APPORT&#201;E</text>
+<text x="622" y="113"
+      style="font-family:'EB Garamond','Georgia',serif;font-size:9px;font-style:italic;fill:#0f2240;opacity:0.65;">Remplace l'impression par une fourchette tra&#231;able</text>
+
+<!-- BLOC 1 : BURNDOWN VS BURNUP -->
+<text x="72" y="170"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">POURQUOI LE BURN-UP PLUT&#212;T QUE LE BURNDOWN</text>
+<line x1="72" y1="178" x2="722" y2="178" style="stroke:#febd10;stroke-width:1px;"/>
+
+<text x="72" y="198" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Le burndown montre ce qu'il reste &#224; faire, mais pas si le p&#233;rim&#232;tre a chang&#233;.</text>
+<text x="72" y="216" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Un burndown stable avec un scope instable est plus dangereux qu'une mauvaise</text>
+<text x="72" y="234" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">nouvelle explicite : il emp&#234;che la conversation d'avoir lieu (Mike Cohn,</text>
+<text x="72" y="252" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Succeeding with Agile).</text>
+
+<rect x="72" y="270" width="650" height="2" style="fill:#febd10;"/>
+
+<text x="72" y="294" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Le burn-up trace deux courbes : le scope total (monte si on ajoute des stories)</text>
+<text x="72" y="312" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">et les points valid&#233;s sprint apr&#232;s sprint. Si elles convergent : on est on track.</text>
+<text x="72" y="330" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Si le scope monte plus vite : c'est du scope creep, visible et factuel.</text>
+
+<!-- BLOC 2 : LE CONE DE CONFIANCE -->
+<text x="72" y="370"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">LE C&#244;NE DE CONFIANCE</text>
+<line x1="72" y1="378" x2="722" y2="378" style="stroke:#febd10;stroke-width:1px;"/>
+
+<text x="72" y="398" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">&#192; partir d'aujourd'hui, trois droites projettent l'avenir selon trois sc&#233;narios</text>
+<text x="72" y="416" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">de v&#233;locit&#233; observ&#233;e :</text>
+
+<rect x="92" y="432" width="14" height="14" style="fill:#0f2240;"/>
+<text x="116" y="443" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"><tspan style="font-weight:bold;">Max</tspan> : la meilleure v&#233;locit&#233; observ&#233;e jusqu'ici.</text>
+
+<rect x="92" y="456" width="14" height="14" style="fill:#c9973a;"/>
+<text x="116" y="467" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"><tspan style="font-weight:bold;">Average</tspan> : la moyenne des derniers sprints.</text>
+
+<rect x="92" y="480" width="14" height="14" style="fill:#bbbbbb;"/>
+<text x="116" y="491" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;"><tspan style="font-weight:bold;">Min</tspan> : la v&#233;locit&#233; la plus basse observ&#233;e.</text>
+
+<text x="72" y="514" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">Au Sprint 1, le c&#244;ne est large. Plus on avance, plus il se r&#233;tr&#233;cit. La date se</text>
+<text x="72" y="532" style="font-family:'EB Garamond','Georgia',serif;font-size:10px;fill:#0f2240;">pr&#233;cise sprint apr&#232;s sprint, sans r&#233;union suppl&#233;mentaire.</text>
+
+<!-- BLOC 3 : DEUX LECTURES (2 colonnes) -->
+<text x="72" y="572"
+      style="font-family:'Helvetica';font-size:11px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">LES DEUX LECTURES DU BURN-UP</text>
+<line x1="72" y1="580" x2="722" y2="580" style="stroke:#febd10;stroke-width:1px;"/>
+
+<rect x="72" y="594" width="318" height="220" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+<rect x="404" y="594" width="318" height="220" style="fill:#fafaf7;stroke:#e0e0e0;stroke-width:0.5px;"/>
+
+<text x="88" y="616" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">DATE FIX&#201;E : QUE LIVRE-T-ON ?</text>
+<line x1="88" y1="624" x2="370" y2="624" style="stroke:#febd10;stroke-width:1px;"/>
+<text x="88" y="644" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Place une ligne verticale &#224; la date</text>
+<text x="88" y="660" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">de release. Projette les 3 intersections</text>
+<text x="88" y="676" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">sur l'axe Y. Trois zones :</text>
+
+<text x="88" y="700" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#2a7a2a;"><tspan style="font-weight:bold;">ALL OF</tspan> : sous le seuil Min. Certitude.</text>
+<text x="88" y="722" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#c9973a;"><tspan style="font-weight:bold;">SOME OF</tspan> : entre les deux seuils.</text>
+<text x="88" y="738" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Le PO priorise maintenant.</text>
+<text x="88" y="760" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#cc3333;"><tspan style="font-weight:bold;">NONE OF</tspan> : au-dessus du seuil Max.</text>
+<text x="88" y="776" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">M&#234;me le meilleur sc&#233;nario ne suffit pas.</text>
+<text x="88" y="798" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">D&#233;cision au management.</text>
+
+<text x="420" y="616" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">SCOPE FIX&#201; : QUAND LIVRE-T-ON ?</text>
+<line x1="420" y1="624" x2="706" y2="624" style="stroke:#febd10;stroke-width:1px;"/>
+<text x="420" y="644" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Place une ligne horizontale au niveau</text>
+<text x="420" y="660" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">du scope &#224; livrer (MVP, release,</text>
+<text x="420" y="676" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">engagement). Projette sur l'axe X :</text>
+
+<text x="420" y="700" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Intersection Max &#8594; date au plus t&#244;t.</text>
+<text x="420" y="722" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Intersection Min &#8594; date au plus tard.</text>
+
+<rect x="420" y="744" width="270" height="44" style="fill:#fff;stroke:#febd10;stroke-width:1px;"/>
+<text x="432" y="762" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">"Entre S8 et S9, selon la v&#233;locit&#233;</text>
+<text x="432" y="778" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;font-style:italic;fill:#0f2240;">des prochains sprints."</text>
+
+<!-- BLOC 4 : CONDITION -->
+<rect x="72" y="834" width="650" height="2" style="fill:#febd10;"/>
+<text x="72" y="862" style="font-family:'Helvetica';font-size:9px;font-weight:bold;fill:#0f2240;letter-spacing:1px;">CONDITION : ESTIMER LE BACKLOG AU BON MOMENT</text>
+<text x="72" y="884" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">Pas avant S1 : la v&#233;locit&#233; n'est pas encore stable. Pour une &#233;quipe sans</text>
+<text x="72" y="902" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">historique, attends S3-S4. Une &#233;quipe qui se conna&#238;t d&#233;j&#224; peut estimer</text>
+<text x="72" y="920" style="font-family:'EB Garamond','Georgia',serif;font-size:9.5px;fill:#0f2240;">d&#232;s le Sprint 1 avec de bons r&#233;sultats.</text>
+
+<rect x="72" y="950" width="650" height="60" style="fill:#0f2240;"/>
+<text x="397" y="975" text-anchor="middle" style="font-family:'Georgia',serif;font-size:12px;font-style:italic;fill:#febd10;">"Avec le burn-up, tu peux tout savoir.</text>
+<text x="397" y="996" text-anchor="middle" style="font-family:'Georgia',serif;font-size:12px;font-style:italic;fill:#fff;">Scope. Date. Certitude."</text>
+
+<!-- FOOTER -->
+<path d="M66,1068l686,0" style="fill:none;stroke:#febd10;stroke-width:0.8px;"/>
+<path d="M426,1084c0,5.519 -4.481,10 -10,10l-38,0c-5.519,0 -10,-4.481 -10,-10
+         c0,-5.519 4.481,-10 10,-10l38,0c5.519,0 10,4.481 10,10Z" style="fill:#0f2240;"/>
+<text x="388" y="1088"
+      style="font-family:'Helvetica';font-size:9px;fill:#febd10;">02</text>
+<text x="72" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">SOURCE : Le Syst&#232;me S.A.L.I.M. : Ch.8</text>
+<text x="677" y="1089"
+      style="font-family:'Helvetica';font-size:7.5px;fill:#bbbbbb;">Le Syst&#232;me S.A.L.I.M.</text>
+</svg>

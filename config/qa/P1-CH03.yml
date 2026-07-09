@@ -1,0 +1,314 @@
+# Le Systeme S.A.L.I.M. : Q&A Chapitre 3
+# chapter-extractor v6.1
+
+meta:
+  partie: 1
+  nom_partie: "Scrum du terrain"
+  chapitre: 3
+  titre: "Cérémonies : rituels vivants vs réunions inutiles"
+  date_extraction: "2026-06-14"
+  page_debut: 78
+  page_fin: 93
+  statut_global: en_cours
+
+questions:
+
+  - id: "P1-CH03-SM-01"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: null
+    dimensions: [qui, quoi, pourquoi, quand, valeur]
+    themes_salim: ["S", "I", "M"]
+    question: "Mon Daily est devenu un rapport de statut. Comment le recadrer ?"
+    reponse: "Le Daily de 15 minutes max doit être centré sur le Sprint Goal, pas les tâches individuelles. Le chapitre propose deux questions orientées objectif : qu'est-ce que j'ai fait pour atteindre l'objectif du sprint, est-ce que j'ai des points de blocage. Signal de succès : tout le monde parle au Sprint Goal."
+    douleur_terrain: "Le Daily tour-de-table est le pattern le plus répandu et le plus contre-productif."
+    source_expert: null
+    page: 82
+    extrait: "Dans ma pratique, deux questions suffisent : 1. Qu'est-ce que j'ai fait pour atteindre l'objectif du sprint ? 2. Est-ce que j'ai des points de blocage ?"
+    fiche_liee: "FP-I-3.1-daily-reporting-alignement"
+    fiche_destinee_a: [SM, DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-SM-02"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    themes_salim: ["S", "I", "M"]
+    question: "La Rétro se termine toujours sans action concrète. Qu'est-ce qui produit ce pattern ?"
+    reponse: "Une rétrospective efficace produit une seule action réelle, assignée à une personne nommée, datée, vérifiable à la prochaine rétro. La rétro dysfonctionnelle chronique a presque toujours une cause en amont : sécurité psychologique basse, ou perte de confiance dans le suivi des actions. Le geste concret pour reconstruire la confiance : ouvrir chaque rétro en relisant publiquement l'action du sprint précédent."
+    douleur_terrain: "L'équipe génère des post-its, puis la même chose se reproduit au sprint suivant."
+    source_expert: "Esther Derby et Diana Larsen, structure en 5 phases : Set the Stage, Gather Data, Generate Insights, Decide What to Do, Close."
+    page: 87
+    extrait: "Une action tenue vaut dix actions oubliées."
+    fiche_liee: "FP-I-3.2-diagnostic-retro-rituel-theatre"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-SM-03"
+    cible: PRATICIEN_AGILE
+    role: SM
+    expert: AI_SCRUM
+    dimensions: [quoi, pourquoi, quand]
+    themes_salim: ["A"]
+    question: "Comment utiliser l'IA pour préparer les cérémonies sans les artificialiser ?"
+    reponse: "TROU : Le chapitre ne traite ce sujet à aucun moment, même en renvoi. La section 1 se termine sur la transition vers le Daily sans mention de l'IA, et la section 8 renvoie au chapitre 4 sans renvoi vers la Partie 3."
+    douleur_terrain: "Le SM utilise ChatGPT pour préparer les Rétros mais obtient des formats génériques qui ne correspondent pas à son contexte."
+    source_expert: null
+    page: null
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [SM]
+    statut_reponse: trou
+    action_recommandee: "Insérer un paragraphe Astuce IA en fin de section 1 (p.81), avant la section 2 : voir texte proposé dans P1-CH03-analyse.md section 3"
+    schemas_lies: []
+
+  - id: "P1-CH03-DEV-01"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [qui, quoi, pourquoi, valeur]
+    themes_salim: ["S", "I"]
+    question: "Le Daily est censé m'aider à livrer le Sprint Goal. Dans mon équipe c'est un rapport au manager. Comment le dire ?"
+    reponse: "Le Daily appartient à l'équipe, pas au management. Le Scrum Guide 2020 a supprimé les trois questions individuelles précisément parce qu'elles orientent vers l'individu plutôt que vers l'objectif collectif. Reformuler le Daily autour du Sprint Goal renforce l'appartenance à l'équipe : chacun parle de sa contribution, pas de ses tâches personnelles."
+    douleur_terrain: "Le dev dit ce que le manager veut entendre, pas ce qui bloque vraiment."
+    source_expert: "Scrum Guide 2020 : suppression des trois questions individuelles"
+    page: 82
+    extrait: "Quand chaque membre parle de sa contribution à l'objectif commun : pas de ses réunions, pas de ses tâches personnelles : les gens se sentent réellement impliqués dans quelque chose de collectif."
+    fiche_liee: "FP-I-3.1-daily-reporting-alignement"
+    fiche_destinee_a: [SM, DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-DEV-02"
+    cible: PRATICIEN_AGILE
+    role: DEV
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    themes_salim: ["S", "L"]
+    question: "Mon Sprint Planning prend 4 heures et la moitié du temps on clarifie des stories pas prêtes. Comment réduire ?"
+    reponse: "La première maladie du Sprint Planning est un backlog non raffiné : l'équipe découvre des stories sous-spécifiées en séance, on débat, on clarifie, on replanifie. Ce travail aurait dû avoir lieu avant, lors du Backlog Refinement. La règle terrain : le backlog doit avoir en permanence au moins deux sprints de stories raffinées et ordonnées."
+    douleur_terrain: "Le dev arrive au Sprint Planning sans stories claires. Il sort épuisé avant même d'avoir codé."
+    source_expert: null
+    page: 84
+    extrait: "L'équipe arrive au planning et découvre des stories sous-spécifiées. On débat. On clarifie. On replanifie. Ce travail aurait dû avoir lieu avant."
+    fiche_liee: null
+    fiche_destinee_a: [SM, DEV]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-PO-01"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    themes_salim: ["S", "L", "M"]
+    question: "Je dois conduire la Sprint Review avec des managers qui ne comprennent pas Scrum. Comment la rendre utile ?"
+    reponse: "Ne pas démarrer par une démonstration. Le PO, pas le SM, ouvre la session par une question : voilà ce qu'on voulait valider ce sprint, qu'est-ce que tu en penses avant qu'on montre quoi que ce soit. C'est important que ce soit le PO qui pose cette question car c'est lui qui a formulé l'hypothèse du sprint et qui assume la responsabilité de la valeur. Si c'est le SM, ça reste de la facilitation."
+    douleur_terrain: "Le PO anime une Review devant des managers qui regardent leur téléphone. Aucune décision n'en sort."
+    source_expert: null
+    page: 85
+    extrait: "Voilà ce qu'on voulait valider ce sprint : qu'est-ce que tu en penses avant qu'on montre quoi que ce soit ?"
+    fiche_liee: "FP-I-3.3-ouvrir-review-par-question"
+    fiche_destinee_a: [PO]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-PO-02"
+    cible: PRATICIEN_AGILE
+    role: PO
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: ["S", "I"]
+    question: "Le Sprint Goal n'est jamais vraiment formulé dans mon équipe, on coupe direct en tâches. Qui doit le porter et comment ?"
+    reponse: "Un Sprint Planning efficace a deux parties clairement séparées : d'abord le quoi et le pourquoi, formuler le Sprint Goal et sélectionner les items qui le servent, ensuite le comment, décomposer le travail en tâches. Le Sprint Goal n'est pas formulé par le PO seul : il émerge de la conversation entre le PO et les Developers lors de la Partie 1 du Planning. Si tu mélanges les deux parties, tu finis avec un Sprint Goal faible et un plan surchargé."
+    douleur_terrain: "À la fin du planning, l'équipe sait exactement quoi faire mais personne ne saurait dire pourquoi ce sprint a de la valeur."
+    source_expert: null
+    page: 84
+    extrait: "Le Sprint Goal n'est pas formulé par le PO seul. Il émerge de la conversation entre le PO et les Developers lors de la Partie 1 du Planning."
+    fiche_liee: "FP-I-3.6-sprint-goal-partie1"
+    fiche_destinee_a: [PO, SM]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-CA-01"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: ESTHER_DERBY
+    dimensions: [qui, quoi, comment, pourquoi, quand, valeur]
+    themes_salim: ["S", "I", "M"]
+    question: "Comment diagnostiquer si les cérémonies d'une équipe sont des rituels vivants ou du théâtre agile ?"
+    reponse: "Les signaux de cérémonies saines sont mesurables : Daily 15 minutes max avec au moins une décision de sortie, Sprint Goal formulé avant le découpage en tâches, Sprint Review avec minimum 5 parties prenantes actives ayant posé au moins une question ou pris une décision, Rétrospective avec 1 action concrète assignée datée suivie. L'alerte la plus forte : mêmes actions d'une rétro à l'autre, signe de confiance brisée ou d'obstacle organisationnel non adressé."
+    douleur_terrain: "Le Coach arrive dans une équipe qui fait du Scrum depuis 2 ans. Les cérémonies existent mais aucune amélioration n'est visible. C'est du Scrum zombi."
+    source_expert: "Esther Derby et Diana Larsen, structure en 5 phases de la rétrospective"
+    page: 90
+    extrait: "Alerte : mêmes actions d'une rétro à l'autre = confiance brisée OU obstacle organisationnel non adressé."
+    fiche_liee: "FP-I-3.2-diagnostic-retro-rituel-theatre"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH03-01"]
+
+  - id: "P1-CH03-CA-02"
+    cible: PRATICIEN_AGILE
+    role: CA
+    expert: null
+    dimensions: [qui, quoi, comment, quand, valeur]
+    themes_salim: ["S", "I"]
+    question: "Une équipe enchaîne les sprints en retard à cause des mêmes obstacles récurrents. Quelle technique utiliser et à quel moment ?"
+    reponse: "Le prémortem, animé par le Scrum Master en fin de Sprint Review. Une seule question : on est dans deux semaines, le sprint vient de se terminer, c'est raté, qu'est-ce qui s'est passé. Trois minutes en silence, chacun écrit, on récolte et on lit à voix haute. Pour chaque risque nommé : soit on modifie le périmètre ou on clarifie la dépendance en Sprint Planning, soit on acte une vigilance explicite. Durée réelle 20 à 30 minutes."
+    douleur_terrain: "L'équipe gère les mêmes obstacles en urgence, sprint après sprint, sans jamais les anticiper."
+    source_expert: null
+    page: 86
+    extrait: "J'ai utilisé ça avec une équipe de 9 personnes qui enchaînait les sprints en retard. Après trois prémortem, les escalades imprévues vers le manager ont pratiquement disparu."
+    fiche_liee: "FP-I-3.4-premortem"
+    fiche_destinee_a: [SM, CA]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-RTE-01"
+    cible: PRATICIEN_AGILE
+    role: RTE
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand]
+    themes_salim: ["S"]
+    question: "Le chapitre parle de cérémonies au niveau d'une seule équipe. Comment ça se transpose quand je coordonne plusieurs équipes Scrum ?"
+    reponse: "TROU : Le chapitre est explicitement positionné sur le Scrum d'une équipe unique (Partie 1, Scrum du terrain). Aucune mention de coordination inter-équipes, de PI Planning ou d'ART. Le sujet est hors périmètre de ce chapitre et relève de la Partie 4 sur la mise à l'échelle."
+    douleur_terrain: "Le RTE essaie d'appliquer les principes de cérémonies vivantes (Daily, Review) au niveau ART sans cadre adapté."
+    source_expert: null
+    page: null
+    extrait: null
+    fiche_liee: null
+    fiche_destinee_a: [RTE]
+    statut_reponse: trou
+    action_recommandee: "Pas d'action sur ce chapitre : confirmer que la Partie 4 (SAFe, scaling) traite explicitement la transposition des rituels de cérémonie au niveau ART. Si absent en Partie 4, créer le trou là-bas."
+    schemas_lies: []
+
+  - id: "P1-CH03-MG-01"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [qui, quoi, comment, pourquoi, valeur]
+    themes_salim: ["S", "M"]
+    question: "À quelles cérémonies dois-je assister en tant que manager pour apporter de la valeur sans perturber l'équipe ?"
+    reponse: "La Sprint Review est la seule cérémonie où la présence du management apporte de la valeur : minimum 5 parties prenantes actives, pas spectatrices, posant des questions ou prenant des décisions. Assister aux autres cérémonies (Daily, Planning, Refinement, Rétro) perturbe l'auto-organisation, même sans un mot dit."
+    douleur_terrain: "Le manager qui assiste au Daily pour voir comment ça avance fait exactement ce qu'il ne faut pas faire. Mais personne ne lui dit."
+    source_expert: null
+    page: 85
+    extrait: "Min. 5 parties prenantes actives, pas spectatrices."
+    fiche_liee: "FP-I-3.5-management-positionnement"
+    fiche_destinee_a: [MG, DC]
+    statut_reponse: confirmee
+    action_recommandee: "Ajouter un paragraphe explicite Pour un manager après p.85 : voir texte proposé dans P1-CH03-analyse.md section 2b"
+    schemas_lies: []
+
+  - id: "P1-CH03-MG-02"
+    cible: MANAGER
+    role: MG
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    themes_salim: ["I", "M"]
+    question: "Une rétro produit toujours les mêmes 2-3 actions sans effet visible. C'est un problème de format ou autre chose ?"
+    reponse: "Changer le format ne résout rien si la cause est en amont : soit les gens ne se sentent pas en sécurité pour dire les vraies choses, soit ils ont perdu confiance dans le suivi des actions. Dans les deux cas, c'est la confiance qu'il faut reconstruire, sur plusieurs sprints, avec des preuves concrètes. Le signal d'alerte mesurable : mêmes actions d'une rétro à l'autre."
+    douleur_terrain: "Le manager change le format de la rétro chaque trimestre en espérant que ça débloque quelque chose. Rien ne change."
+    source_expert: null
+    page: 88
+    extrait: "Dans les deux cas, changer le format ne résout rien. C'est la confiance qu'il faut reconstruire : et ça prend plusieurs sprints, des preuves concrètes que quelque chose change vraiment."
+    fiche_liee: "FP-I-3.2-diagnostic-retro-rituel-theatre"
+    fiche_destinee_a: [SM, CA, MG]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: []
+
+  - id: "P1-CH03-DC-01"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [quoi, comment, pourquoi, quand, valeur]
+    themes_salim: ["M"]
+    question: "Mon équipe passe 30% de son temps en réunions Scrum. Est-ce normal ?"
+    reponse: "Non. Les cérémonies Scrum bien calibrées représentent environ 12h par sprint, soit 15% du temps disponible sur un sprint de deux semaines. Avec le Backlog Refinement, environ 17h, soit 17 à 18% à 20-22% selon le calendrier. C'est le coût de l'empirisme. Si ce pourcentage choque le management, c'est une conversation à avoir, pas une cérémonie à supprimer."
+    douleur_terrain: "Les DSI voient leurs équipes en réunion permanente et commencent à questionner le modèle agile lui-même."
+    source_expert: null
+    page: 89
+    extrait: "Cérémonies Scrum : environ 12h par sprint soit 15% du temps disponible. Avec Refinement : environ 17h soit 20 à 22% du temps. C'est le coût de l'empirisme."
+    fiche_liee: "FP-I-3.5-management-positionnement"
+    fiche_destinee_a: [MG, DC]
+    statut_reponse: confirmee
+    action_recommandee: null
+    schemas_lies: ["SVG-P1-CH03-01"]
+
+  - id: "P1-CH03-DC-02"
+    cible: DECIDEUR
+    role: DC
+    expert: null
+    dimensions: [quoi, pourquoi, quand, valeur]
+    themes_salim: ["M"]
+    question: "Comment savoir si une cérémonie qui existe dans le calendrier produit vraiment de la valeur, plutôt que d'occuper du temps ?"
+    reponse: "TROU : Le chapitre raconte l'exemple d'une Sprint Review de 2012 qui était un théâtre malgré sa présence dans le calendrier, mais ne traduit jamais ce constat en coût pour le décideur qui finance la transformation. Le critère le plus proche fourni dans le chapitre est la règle générale : une cérémonie sans décision de sortie n'est pas une cérémonie, c'est une réunion."
+    douleur_terrain: "Le DSI finance une transformation agile, voit les cérémonies dans le calendrier de toutes les équipes, mais ne peut pas distinguer celles qui fonctionnent de celles qui sont du théâtre."
+    source_expert: null
+    page: null
+    extrait: "Alerte : une cérémonie sans décision de sortie n'est pas une cérémonie, c'est une réunion."
+    fiche_liee: null
+    fiche_destinee_a: [DC]
+    statut_reponse: trou
+    action_recommandee: "Insérer le paragraphe Pour un DSI après p.80 : voir texte proposé dans P1-CH03-analyse.md section 2c"
+    schemas_lies: []
+
+trous:
+  - id: "T01"
+    role: SM
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment utiliser l'IA pour préparer les cérémonies sans les artificialiser ?"
+    action: "Insérer un paragraphe Astuce IA en fin de section 1 (p.81), avant la section 2. Texte proposé dans P1-CH03-analyse.md section 3."
+
+  - id: "T02"
+    role: RTE
+    cible: PRATICIEN_AGILE
+    question_manquante: "Comment les cérémonies d'équipe se transposent au niveau multi-équipes (PI Planning, ART) ?"
+    action: "Pas d'action sur ce chapitre, hors périmètre Partie 1. Vérifier que la Partie 4 traite explicitement cette transposition."
+
+  - id: "T03"
+    role: DC
+    cible: DECIDEUR
+    question_manquante: "Comment distinguer une cérémonie qui produit de la valeur d'une cérémonie qui occupe du temps, depuis la posture du décideur ?"
+    action: "Insérer le paragraphe Pour un DSI après p.80. Texte proposé dans P1-CH03-analyse.md section 2c."
+
+stats:
+  questions_totales: 14
+  par_role:
+    SM: 3
+    PO: 2
+    DEV: 2
+    CA: 2
+    RTE: 1
+    MG: 2
+    DC: 2
+  par_statut:
+    provisoire: 0
+    confirmee: 11
+    trou: 3
+  couverture_dimensions:
+    qui: 7
+    quoi: 13
+    comment: 9
+    pourquoi: 11
+    quand: 8
+    valeur: 10
+  couverture_themes_salim:
+    S: 10
+    A: 1
+    L: 2
+    I: 7
+    M: 8
+  schemas_lies: 2

@@ -113,11 +113,12 @@ export function SystemSalimLanding() {
           onClick={() => trackEvent('landing_manifesto_click', { source: 'landing_home' })}
         >
           <div className="ld-manifesto__inner">
-            <div className="ld-manifesto__icon" aria-hidden>
-              <span>A</span>
+            <div className="ld-manifesto__brand">
+              <AigileLogo size="md" className="ld-manifesto__logo" />
+              <span className="ld-manifesto__label">{t.manifestoLabel}</span>
             </div>
             <div className="ld-manifesto__text">
-              <strong>{t.manifestoTitle}</strong>
+              <span className="ld-manifesto__kicker">{t.manifestoKicker}</span>
               <p>{t.manifestoQuote}</p>
             </div>
             <span className="ld-link ld-link--dark">
