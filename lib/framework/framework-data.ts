@@ -1,7 +1,8 @@
 /** AIgile Framework content — Cadre AIgile v1.4 (FR + EN). */
 
-/** PDF du guide de référence — placer le fichier dans public/downloads/ */
-export const FRAMEWORK_GUIDE_PDF = '/downloads/aigile-framework-guide.pdf'
+/** PDF du guide de référence — fichiers dans public/downloads/ */
+export const FRAMEWORK_GUIDE_PDF_FR = '/downloads/aigile-framework-guide.pdf'
+export const FRAMEWORK_GUIDE_PDF_EN = '/downloads/aigile-framework-reference-guide-EN.pdf'
 
 export const SUMMARY_ICONS = ['triangle-alert', 'compass', 'scale'] as const
 
@@ -57,7 +58,8 @@ export const STRINGS = {
     uiDoR: 'DoR',
     uiDoD: 'DoD',
     uiClose: 'Fermer',
-    downloadGuide: 'Télécharger le guide AIgile Framework',
+    downloadGuideFr: 'Télécharger le guide (FR)',
+    downloadGuideEn: 'Download reference guide (EN)',
     footer: 'Extrait du livre The S.A.L.I.M. System · aigile.lu',
   },
   en: {
@@ -82,7 +84,8 @@ export const STRINGS = {
     uiDoR: 'DoR',
     uiDoD: 'DoD',
     uiClose: 'Close',
-    downloadGuide: 'Download the AIgile Framework guide',
+    downloadGuideFr: 'Download guide (FR)',
+    downloadGuideEn: 'Download reference guide (EN)',
     footer: 'From the book The S.A.L.I.M. System · aigile.lu',
   },
 } as const

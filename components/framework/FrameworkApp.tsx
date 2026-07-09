@@ -7,7 +7,8 @@ import { trackEvent } from '@/lib/gtag'
 import { FrameworkNavbar } from './FrameworkNavbar'
 import {
   CORE_MESSAGE,
-  FRAMEWORK_GUIDE_PDF,
+  FRAMEWORK_GUIDE_PDF_EN,
+  FRAMEWORK_GUIDE_PDF_FR,
   FRAMEWORK_META,
   PHASE_ICONS,
   PHASES,
@@ -51,13 +52,26 @@ export function FrameworkApp() {
         <p className="fw-hero__lead">{meta.manifesto}</p>
         <div className="fw-hero__actions">
           <a
-            href={FRAMEWORK_GUIDE_PDF}
+            href={FRAMEWORK_GUIDE_PDF_FR}
             download
             className="fw-btn fw-btn--gold"
-            onClick={() => trackEvent('framework_guide_download', { source: 'framework_page' })}
+            onClick={() =>
+              trackEvent('framework_guide_download', { source: 'framework_page', lang: 'fr' })
+            }
           >
             <Download size={17} strokeWidth={2.2} aria-hidden />
-            {t.downloadGuide}
+            {t.downloadGuideFr}
+          </a>
+          <a
+            href={FRAMEWORK_GUIDE_PDF_EN}
+            download
+            className="fw-btn fw-btn--gold"
+            onClick={() =>
+              trackEvent('framework_guide_download', { source: 'framework_page', lang: 'en' })
+            }
+          >
+            <Download size={17} strokeWidth={2.2} aria-hidden />
+            {t.downloadGuideEn}
           </a>
         </div>
       </section>
