@@ -109,7 +109,9 @@ export function SiteChrome({ onHomeSectionNav, subNav, buySource = 'site_nav' }:
 
   return (
     <>
-      <header className={`ld-nav ${scrolled ? 'ld-nav--scrolled' : ''}`}>
+      <header
+        className={`ld-chrome${scrolled ? ' ld-chrome--scrolled' : ''}${subNav ? ' ld-chrome--sub' : ''}`}
+      >
         <div className="ld-nav__inner">
           <Link href="/" className="ld-logo" aria-label="AIgile — Accueil">
             <AigileLogo size="nav" priority />
@@ -215,32 +217,36 @@ export function SiteChrome({ onHomeSectionNav, subNav, buySource = 'site_nav' }:
             onClose={() => setOpen(false)}
           />
         ) : null}
+
+        {subNav ? (
+          <nav
+            className={`ld-subnav${subNavScrolled ? ' ld-subnav--scrolled' : ''}`}
+            aria-label={contextLabel ?? 'Page'}
+          >
+            <div className="ld-subnav__inner">
+              {contextLabel ? (
+                <span className="ld-subnav__context" aria-hidden>
+                  {contextLabel}
+                </span>
+              ) : null}
+              <div className="ld-subnav__track">
+                {subItems.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={`ld-subnav__link${item.isActive ? ' is-active' : ''}`}
+                    onClick={() => handleSubSection(item.sectionId)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </nav>
+        ) : null}
       </header>
 
-      <div className="ld-nav-spacer" aria-hidden />
-
-      {subNav ? (
-        <nav
-          className={`ld-subnav${subNavScrolled ? ' ld-subnav--scrolled' : ''}`}
-          aria-label={contextLabel ?? 'Page'}
-        >
-          <div className="ld-subnav__inner">
-            {contextLabel ? <span className="ld-subnav__context">{contextLabel}</span> : null}
-            <div className="ld-subnav__track">
-              {subItems.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className={`ld-subnav__link${item.isActive ? ' is-active' : ''}`}
-                  onClick={() => handleSubSection(item.sectionId)}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </nav>
-      ) : null}
+      <div className={`ld-chrome-spacer${subNav ? ' ld-chrome-spacer--sub' : ''}`} aria-hidden />
     </>
   )
 }
