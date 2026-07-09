@@ -4,6 +4,10 @@
 export const FRAMEWORK_GUIDE_PDF_FR = '/downloads/aigile-framework-guide.pdf'
 export const FRAMEWORK_GUIDE_PDF_EN = '/downloads/aigile-framework-reference-guide-EN.pdf'
 
+/** Affiche framework (PNG) */
+export const FRAMEWORK_POSTER_IMAGE = '/images/aigile-framework.png'
+export const FRAMEWORK_POSTER_DOWNLOAD_NAME = 'aigile-framework.png'
+
 export const SUMMARY_ICONS = ['triangle-alert', 'compass', 'scale'] as const
 
 export const STATE_ICONS: Record<string, string> = {
@@ -60,6 +64,7 @@ export const STRINGS = {
     uiClose: 'Fermer',
     downloadGuideFr: 'Télécharger le guide (FR)',
     downloadGuideEn: 'Download reference guide (EN)',
+    downloadPoster: "Télécharger l'affiche",
     uiEyebrowArticles: 'Série LinkedIn',
     uiArticlesTitle: 'Articles du cadre AIgile',
     uiArticlesIntro:
@@ -93,6 +98,7 @@ export const STRINGS = {
     uiClose: 'Close',
     downloadGuideFr: 'Download guide (FR)',
     downloadGuideEn: 'Download reference guide (EN)',
+    downloadPoster: 'Download poster',
     uiEyebrowArticles: 'LinkedIn series',
     uiArticlesTitle: 'AIgile framework articles',
     uiArticlesIntro:

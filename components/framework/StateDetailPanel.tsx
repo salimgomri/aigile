@@ -95,7 +95,7 @@ export function StateDetailPanel({
                 fontWeight: 'var(--weight-semibold)',
                 letterSpacing: 'var(--tracking-wider)',
                 textTransform: 'uppercase',
-                color: 'var(--accent)',
+                color: 'var(--book-orange)',
               }}
             >
               {t.uiWhoDecides} : {state.decider}

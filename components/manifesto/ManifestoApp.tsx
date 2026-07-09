@@ -25,6 +25,7 @@ import {
 } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
 import { getAboutBioHtml } from '@/lib/salim-experience'
+import { AigileWordmark } from '@/components/brand/AigileWordmark'
 import { type TranslationKey } from '@/lib/translations'
 import { useInView } from '@/hooks/use-in-view'
 import { ManifestoNavbar } from './ManifestoNavbar'
@@ -65,8 +66,7 @@ export function ManifestoApp() {
             <div className="mf-cover-card" aria-hidden>
               <p className="mf-cover-card__eyebrow">{language === 'fr' ? 'Document fondateur' : 'Founding document'}</p>
               <p className="mf-cover-card__title">
-                <span className="mf-cover-card__mark">A</span>
-                Igile
+                <AigileWordmark className="mf-cover-card__wordmark" height={40} />
               </p>
               <p className="mf-cover-card__kind">{language === 'fr' ? 'Manifeste' : 'Manifesto'}</p>
               <ul className="mf-cover-card__values">
@@ -83,10 +83,7 @@ export function ManifestoApp() {
           <Reveal className="mf-hero__copy" delay={80}>
             <p className="ld-kicker">{language === 'fr' ? 'Manifeste' : 'Manifesto'}</p>
             <h1 className="mf-hero__title">
-              <span className="mf-hero__line">
-                <span className="mf-hero__mark">A</span>
-                Igile
-              </span>
+              <AigileWordmark className="mf-hero__wordmark" height={72} />
               <span className="mf-hero__word">{language === 'fr' ? 'Manifeste' : 'Manifesto'}</span>
             </h1>
             <p className="mf-hero__author">{t('hero-author')}</p>

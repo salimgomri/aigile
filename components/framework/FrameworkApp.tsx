@@ -1,7 +1,9 @@
 'use client'
 
 import { Fragment, useState } from 'react'
+import Image from 'next/image'
 import { Download } from 'lucide-react'
+import { AigileWordmark } from '@/components/brand/AigileWordmark'
 import { useLanguage } from '@/components/language-provider'
 import { trackEvent } from '@/lib/gtag'
 import { FrameworkNavbar } from './FrameworkNavbar'
@@ -10,6 +12,8 @@ import {
   FRAMEWORK_GUIDE_PDF_EN,
   FRAMEWORK_GUIDE_PDF_FR,
   FRAMEWORK_META,
+  FRAMEWORK_POSTER_DOWNLOAD_NAME,
+  FRAMEWORK_POSTER_IMAGE,
   PHASE_ICONS,
   PHASES,
   ROLE_ICONS,
@@ -51,37 +55,62 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
       <FrameworkNavbar />
 
       <section className="fw-hero fw-animate">
-        <span className="fw-eyebrow">{t.uiEyebrowFramework}</span>
-        <p className="fw-hero__meta">{meta.subtitle}</p>
-        <h1>
-          <span className="fw-hero__gold">The AIgile</span>
-          <br />
-          Framework
-        </h1>
-        <p className="fw-hero__lead">{meta.manifesto}</p>
-        <div className="fw-hero__actions">
-          <a
-            href={FRAMEWORK_GUIDE_PDF_FR}
-            download
-            className="fw-btn fw-btn--gold"
-            onClick={() =>
-              trackEvent('framework_guide_download', { source: 'framework_page', lang: 'fr' })
-            }
-          >
-            <Download size={17} strokeWidth={2.2} aria-hidden />
-            {t.downloadGuideFr}
-          </a>
-          <a
-            href={FRAMEWORK_GUIDE_PDF_EN}
-            download
-            className="fw-btn fw-btn--gold"
-            onClick={() =>
-              trackEvent('framework_guide_download', { source: 'framework_page', lang: 'en' })
-            }
-          >
-            <Download size={17} strokeWidth={2.2} aria-hidden />
-            {t.downloadGuideEn}
-          </a>
+        <div className="fw-hero__inner">
+          <div className="fw-hero__visual">
+            <Image
+              src={FRAMEWORK_POSTER_IMAGE}
+              alt={lang === 'fr' ? 'Affiche AIgile Framework' : 'AIgile Framework poster'}
+              width={1080}
+              height={1350}
+              priority
+              className="fw-hero__poster"
+            />
+            <a
+              href={FRAMEWORK_POSTER_IMAGE}
+              download={FRAMEWORK_POSTER_DOWNLOAD_NAME}
+              className="fw-btn fw-btn--outline fw-hero__poster-dl"
+              onClick={() =>
+                trackEvent('framework_poster_download', { source: 'framework_page', lang })
+              }
+            >
+              <Download size={17} strokeWidth={2.2} aria-hidden />
+              {t.downloadPoster}
+            </a>
+          </div>
+
+          <div className="fw-hero__copy">
+            <span className="fw-eyebrow">{t.uiEyebrowFramework}</span>
+            <p className="fw-hero__meta">{meta.subtitle}</p>
+            <h1 className="fw-hero__title">
+              <AigileWordmark className="fw-hero__wordmark" height={72} />
+              <span className="fw-hero__framework">Framework</span>
+            </h1>
+            <p className="fw-hero__lead">{meta.manifesto}</p>
+            <div className="fw-hero__actions">
+              <a
+                href={FRAMEWORK_GUIDE_PDF_FR}
+                download
+                className="fw-btn fw-btn--gold"
+                onClick={() =>
+                  trackEvent('framework_guide_download', { source: 'framework_page', lang: 'fr' })
+                }
+              >
+                <Download size={17} strokeWidth={2.2} aria-hidden />
+                {t.downloadGuideFr}
+              </a>
+              <a
+                href={FRAMEWORK_GUIDE_PDF_EN}
+                download
+                className="fw-btn fw-btn--gold"
+                onClick={() =>
+                  trackEvent('framework_guide_download', { source: 'framework_page', lang: 'en' })
+                }
+              >
+                <Download size={17} strokeWidth={2.2} aria-hidden />
+                {t.downloadGuideEn}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

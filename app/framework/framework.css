@@ -106,7 +106,7 @@
   font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--ink-soft);
 }
 
 .fw-eyebrow::before {
@@ -117,10 +117,42 @@
 }
 
 .fw-hero {
-  padding: var(--space-9) clamp(16px, 4vw, var(--space-8)) var(--space-8);
-  max-width: 980px;
+  padding: 24px clamp(16px, 4vw, var(--space-8)) var(--space-8);
+  max-width: 1280px;
   margin: 0 auto;
-  text-align: center;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.fw-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.fw-hero__visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  order: -1;
+}
+
+.fw-hero__poster {
+  width: min(100%, 340px);
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 28px 48px rgba(28, 27, 25, 0.14));
+}
+
+.fw-hero__poster-dl {
+  width: min(100%, 340px);
+}
+
+.fw-hero__copy {
+  text-align: left;
+  max-width: 560px;
 }
 
 .fw-hero h1 {
@@ -129,6 +161,29 @@
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   margin: var(--space-5) 0 0;
+}
+
+.fw-hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: var(--space-5) 0 0;
+}
+
+.fw-hero__wordmark {
+  display: block;
+  height: clamp(48px, 9vw, 72px);
+  width: auto;
+}
+
+.fw-hero__framework {
+  font-family: var(--font-serif-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: var(--tracking-tight);
 }
 
 .fw-hero__gold {
@@ -140,14 +195,14 @@
   font-style: italic;
   font-size: var(--text-body-lg);
   color: var(--text-muted);
-  max-width: 640px;
-  margin: var(--space-5) auto 0;
+  max-width: 46ch;
+  margin: var(--space-5) 0 0;
   line-height: var(--leading-relaxed);
 }
 
 .fw-hero__actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-top: var(--space-6);
@@ -168,7 +223,9 @@
   cursor: pointer;
   transition:
     transform var(--duration-fast) var(--ease-out-premium),
-    box-shadow var(--duration-fast) ease;
+    box-shadow var(--duration-fast) ease,
+    background var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
 }
 
 .fw-btn--gold {
@@ -180,6 +237,20 @@
 .fw-btn--gold:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 32px -14px rgba(28, 27, 25, 0.4);
+}
+
+.fw-btn--outline {
+  background: var(--surface-card);
+  color: var(--ink);
+  border: 1px solid var(--hairline-strong);
+  box-shadow: var(--shadow-card);
+}
+
+.fw-btn--outline:hover {
+  transform: translateY(-2px);
+  border-color: rgba(28, 27, 25, 0.28);
+  background: #fff;
+  box-shadow: var(--shadow-card-hover);
 }
 
 .fw-section {
@@ -263,9 +334,14 @@
 .fw-core-message {
   margin-top: var(--space-8);
   padding: var(--space-6);
-  border: 1px solid var(--aigile-gold);
+  border: 1px solid rgba(28, 27, 25, 0.14);
   border-radius: var(--radius-lg);
-  background: var(--surface-page);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-card);
+}
+
+.fw-core-message .fw-eyebrow {
+  color: var(--ink);
 }
 
 .fw-core-message p {
@@ -273,6 +349,8 @@
   font-style: italic;
   font-size: var(--text-h2);
   margin: var(--space-3) 0 0;
+  color: var(--ink);
+  line-height: var(--leading-relaxed);
 }
 
 .fw-articles {
@@ -460,6 +538,38 @@
 
   .fw-phases__grid {
     grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .fw-hero__inner {
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: clamp(24px, 4vw, 56px);
+    min-height: min(78vh, 720px);
+    align-items: center;
+  }
+
+  .fw-hero__visual {
+    order: 0;
+    align-items: flex-start;
+  }
+
+  .fw-hero__poster {
+    width: auto;
+    max-width: min(42vw, 460px);
+    height: min(72vh, 640px);
+    object-fit: contain;
+    object-position: left bottom;
+  }
+
+  .fw-hero__poster-dl {
+    width: auto;
+    min-width: min(100%, 280px);
+  }
+
+  .fw-hero__copy {
+    max-width: none;
+    padding: 16px 0;
   }
 }
 

@@ -48,7 +48,7 @@ export function SummaryCard({ eyebrow, title, children, index, icon }: SummaryCa
             fontWeight: 'var(--weight-semibold)',
             letterSpacing: 'var(--tracking-wider)',
             textTransform: 'uppercase',
-            color: 'var(--accent)',
+            color: 'var(--book-orange)',
           }}
         >
           {eyebrow}

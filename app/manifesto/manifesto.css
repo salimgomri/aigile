@@ -59,11 +59,13 @@
 
 .mf-cover-card__title {
   margin: 0;
-  font-family: var(--ld-serif);
-  font-size: 42px;
   line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--ld-ink);
+}
+
+.mf-cover-card__wordmark {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 
 .mf-cover-card__mark {
@@ -132,7 +134,13 @@
 .mf-hero__title {
   margin: 0 0 14px;
   display: grid;
-  gap: 4px;
+  gap: 10px;
+}
+
+.mf-hero__wordmark {
+  display: block;
+  height: clamp(52px, 9vw, 72px);
+  width: auto;
 }
 
 .mf-hero__line {
