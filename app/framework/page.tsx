@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Instrument_Serif, Inter } from 'next/font/google'
 import { FrameworkApp } from '@/components/framework/FrameworkApp'
+import { getFrameworkArticlesByLang } from '@/lib/framework/framework-articles'
 import '../landing.css'
 import './framework.css'
 
@@ -31,9 +32,11 @@ export const metadata: Metadata = {
 }
 
 export default function FrameworkPage() {
+  const articles = getFrameworkArticlesByLang()
+
   return (
     <main className={`${inter.variable} ${instrument.variable}`}>
-      <FrameworkApp />
+      <FrameworkApp articles={articles} />
     </main>
   )
 }

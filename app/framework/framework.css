@@ -275,6 +275,166 @@
   margin: var(--space-3) 0 0;
 }
 
+.fw-articles {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, var(--space-8)) var(--space-9);
+}
+
+.fw-articles h2 {
+  font-family: var(--font-serif-display);
+  font-size: var(--text-h1);
+  margin: var(--space-3) 0 var(--space-2);
+  letter-spacing: var(--tracking-tight);
+}
+
+.fw-articles__intro {
+  font-size: var(--text-body-size);
+  color: var(--text-muted);
+  max-width: 58ch;
+  margin: 0 0 var(--space-7);
+  line-height: var(--leading-relaxed);
+}
+
+.fw-articles__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+.fw-article-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 100%;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.fw-article-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aigile-gold), transparent 72%);
+  opacity: 0;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.fw-article-card--live {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform var(--duration-base) var(--ease-out-premium),
+    box-shadow var(--duration-base) var(--ease-out-premium),
+    border-color var(--duration-fast) linear;
+}
+
+.fw-article-card--live:hover {
+  transform: translateY(-4px);
+  border-color: rgba(254, 219, 16, 0.55);
+  box-shadow: var(--shadow-gold-glow);
+}
+
+.fw-article-card--live:hover::before {
+  opacity: 1;
+}
+
+.fw-article-card--live:hover .fw-article-card__cta {
+  color: var(--ink);
+  gap: 10px;
+}
+
+.fw-article-card--soon {
+  background:
+    linear-gradient(180deg, rgba(243, 237, 231, 0.65), var(--surface-card));
+  border-style: dashed;
+  border-color: var(--hairline-strong);
+  opacity: 0.92;
+}
+
+.fw-article-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.fw-article-card__index {
+  font-family: var(--font-serif-display);
+  font-size: var(--text-small);
+  color: var(--text-faint);
+}
+
+.fw-article-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.fw-article-card__badge--live {
+  background: rgba(254, 219, 16, 0.22);
+  color: var(--accent-ink);
+}
+
+.fw-article-card__badge--soon {
+  background: rgba(28, 27, 25, 0.06);
+  color: var(--text-faint);
+}
+
+.fw-article-card h3 {
+  margin: 0;
+  font-family: var(--font-serif-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-tight);
+}
+
+.fw-article-card p {
+  margin: 0;
+  font-size: var(--text-body-size);
+  line-height: var(--leading-relaxed);
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.fw-article-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+  font-size: var(--text-small);
+  font-weight: var(--weight-semibold);
+  color: var(--text-faint);
+  transition:
+    color var(--duration-fast) ease,
+    gap var(--duration-fast) ease;
+}
+
+.fw-article-card__hint {
+  margin-top: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--hairline-strong);
+  font-size: var(--text-small);
+  font-style: italic;
+  color: var(--text-faint);
+}
+
 .fw-footer {
   padding: var(--space-7) clamp(16px, 4vw, var(--space-8));
   text-align: center;
@@ -291,6 +451,11 @@
 @media (min-width: 768px) {
   .fw-summary-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .fw-articles__grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
   }
 
   .fw-phases__grid {

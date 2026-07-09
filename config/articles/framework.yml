@@ -1,0 +1,28 @@
+article_1:
+  fr:
+    title: "Scrum et IA au quotidien : ma réponse, le cadre AIgile"
+    desc: "Tout le monde utilise l'IA, personne ne sait l'intégrer dans sa façon de travailler. L'article fondateur de la série pose le geste central du cadre AIgile : monter d'un cran, du daily à la Review, sans rien remplacer de ce que tu fais déjà."
+    link: "https://www.linkedin.com/posts/salimgomri_aigile-systemesalim-scrum-ugcPost-7480715645853224960-2NXv/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAACwOrkBsRCYnFLPVowZiRm0ZZuqjdD7FQg"
+  en:
+    title: "Scrum and AI, day to day: my answer, the AIgile framework"
+    desc: "Everyone uses AI, nobody knows how to fit it into the way they work. The founding article of the series lays out the core move of the AIgile framework: raising the granularity one level, from the daily to the Review, without replacing anything you already do."
+    link: "https://www.linkedin.com/posts/salimgomri_aigile-systemesalim-scrum-ugcPost-7480715645853224960-2NXv/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAACwOrkBsRCYnFLPVowZiRm0ZZuqjdD7FQg"
+article_2:
+  fr:
+    title: "Scrum Master et IA : le supprimer est la plus grosse erreur possible"
+    desc: "On dit que le Scrum Master ne sert plus à rien puisque l'IA organise et synthétise. C'est la plus grosse erreur possible. Rôle par rôle, ce que deviennent le Scrum Master, le développeur et le garant de feature : zéro poste créé, zéro rôle supprimé, zéro titre inventé."
+    link:
+  en:
+    title: "Scrum Master and AI: cutting the role is the biggest mistake possible"
+    desc: "People say the Scrum Master is useless now that AI organizes and synthesizes. It is the biggest mistake possible. Role by role, what happens to the Scrum Master, the developer and the feature steward: zero positions created, zero roles removed, zero titles invented."
+    link:
+
+article_3:
+  fr:
+    title: "Sprint et IA : raccourcir tes cycles va juste cramer ton équipe"
+    desc: "L'IA réalise en une nuit ce qui prenait trois jours, alors la tentation est de raccourcir les sprints. Non. Vécu XP à l'appui : le rythme soutenable est une valeur de l'agilité, et la taille d'équipe ne se décide pas par dogme mais dans ton contexte."
+    link:
+  en:
+    title: "Sprints and AI: shortening your cycles will just burn out your team"
+    desc: "AI delivers overnight what used to take three days, so the temptation is to shorten the sprints. No. XP experience to back it up: sustainable pace is a core agile value, and team size is not decided by dogma but in your own context."
+    link:

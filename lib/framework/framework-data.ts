@@ -60,6 +60,13 @@ export const STRINGS = {
     uiClose: 'Fermer',
     downloadGuideFr: 'Télécharger le guide (FR)',
     downloadGuideEn: 'Download reference guide (EN)',
+    uiEyebrowArticles: 'Série LinkedIn',
+    uiArticlesTitle: 'Articles du cadre AIgile',
+    uiArticlesIntro:
+      'Trois publications pour comprendre le geste central du cadre, le rôle du Scrum Master et le rythme des sprints à l’ère de l’IA.',
+    articleReadOnLinkedIn: 'Lire sur LinkedIn',
+    articleComingSoon: 'Bientôt',
+    articleComingSoonHint: 'Lien non disponible pour le moment — cet article sera publié prochainement.',
     footer: 'Extrait du livre The S.A.L.I.M. System · aigile.lu',
   },
   en: {
@@ -86,6 +93,13 @@ export const STRINGS = {
     uiClose: 'Close',
     downloadGuideFr: 'Download guide (FR)',
     downloadGuideEn: 'Download reference guide (EN)',
+    uiEyebrowArticles: 'LinkedIn series',
+    uiArticlesTitle: 'AIgile framework articles',
+    uiArticlesIntro:
+      'Three posts on the framework’s core move, the Scrum Master’s role, and sustainable sprint pace in the age of AI.',
+    articleReadOnLinkedIn: 'Read on LinkedIn',
+    articleComingSoon: 'Coming soon',
+    articleComingSoonHint: 'Link not available yet — this article will be published soon.',
     footer: 'From the book The S.A.L.I.M. System · aigile.lu',
   },
 } as const

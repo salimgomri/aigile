@@ -20,12 +20,21 @@ import {
   SUMMARY_ICONS,
   WORKFLOW_STATES,
 } from '@/lib/framework/framework-data'
+import type { FrameworkArticle } from '@/lib/framework/framework-articles'
 import { PhaseCard, RoleCard } from './PhaseRoleCards'
+import { FrameworkArticlesSection } from './FrameworkArticlesSection'
 import { StateDetailPanel } from './StateDetailPanel'
 import { SummaryCard } from './SummaryCard'
 import { WorkflowConnector, WorkflowNode } from './WorkflowNode'
 
-export function FrameworkApp() {
+type FrameworkAppProps = {
+  articles: {
+    fr: FrameworkArticle[]
+    en: FrameworkArticle[]
+  }
+}
+
+export function FrameworkApp({ articles }: FrameworkAppProps) {
   const { language } = useLanguage()
   const lang = language === 'fr' ? 'fr' : 'en'
   const t = STRINGS[lang]
@@ -85,6 +94,8 @@ export function FrameworkApp() {
           ))}
         </div>
       </section>
+
+      <FrameworkArticlesSection articles={articles[lang]} lang={lang} t={t} />
 
       <section id="fw-cycle" className="fw-cycle">
         <span className="fw-eyebrow">{t.uiEyebrowCycle}</span>
