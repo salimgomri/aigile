@@ -1,6 +1,6 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import { type ReactNode, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -29,6 +29,7 @@ import { AigileLogo } from '@/components/brand/AigileLogo'
 import { SiteChrome } from '@/components/layout/SiteChrome'
 import { MANIFESTO_SUB_NAV } from '@/lib/navigation/site-nav'
 import { logDownload } from '@/lib/downloads/client'
+import { trackEvent } from '@/lib/gtag'
 import { type TranslationKey } from '@/lib/translations'
 import { useInView } from '@/hooks/use-in-view'
 
@@ -57,6 +58,14 @@ function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; 
 
 export function ManifestoApp() {
   const { t, language } = useLanguage()
+
+  useEffect(() => {
+    trackEvent('manifesto_page_view', {
+      source: 'manifesto_page',
+      lang: language === 'fr' ? 'fr' : 'en',
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- une seule vue par montage de page
+  }, [])
 
   return (
     <div className="ld-page mf-page ld-page--subnav">
@@ -105,7 +114,10 @@ export function ManifestoApp() {
                 href="/aigileManifesto.pdf"
                 download
                 className="ld-btn ld-btn--outline"
-                onClick={() => logDownload('manifesto_pdf', { source: 'manifesto_page', metadata: { placement: 'hero' } })}
+                onClick={() => {
+                  logDownload('manifesto_pdf', { source: 'manifesto_page', metadata: { placement: 'hero' } })
+                  trackEvent('manifesto_pdf_download', { source: 'manifesto_page', placement: 'hero' })
+                }}
               >
                 <FileText size={17} aria-hidden />
                 {t('cta-download')}
@@ -182,7 +194,10 @@ export function ManifestoApp() {
                   href="/aigileManifesto.pdf"
                   download
                   className="ld-btn ld-btn--outline mf-cta__btn mf-cta__btn--light"
-                  onClick={() => logDownload('manifesto_pdf', { source: 'manifesto_page', metadata: { placement: 'cta' } })}
+                  onClick={() => {
+                    logDownload('manifesto_pdf', { source: 'manifesto_page', metadata: { placement: 'cta' } })
+                    trackEvent('manifesto_pdf_download', { source: 'manifesto_page', placement: 'cta' })
+                  }}
                 >
                   <FileText size={17} aria-hidden />
                   {t('cta-download')}

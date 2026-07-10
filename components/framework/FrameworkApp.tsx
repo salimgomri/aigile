@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Download } from 'lucide-react'
 import { AigileLogo } from '@/components/brand/AigileLogo'
@@ -46,6 +46,11 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
   const t = STRINGS[lang]
   const meta = FRAMEWORK_META[lang]
   const [activeId, setActiveId] = useState<string | null>(null)
+
+  useEffect(() => {
+    trackEvent('framework_page_view', { source: 'framework_page', lang })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- une seule vue par montage de page
+  }, [])
 
   const states = WORKFLOW_STATES[lang]
   const active = activeId ? states.find((s) => s.id === activeId) : null
