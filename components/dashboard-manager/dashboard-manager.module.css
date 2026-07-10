@@ -1,34 +1,144 @@
 /* Dashboard Manager — preview écran + base impression (complété par dashboard-manager-print.css) */
 
 .root {
+  --dm-gold: #fedb10;
+  --dm-gold-deep: #e8961e;
+  --dm-ink: #0a0a0a;
+  --dm-muted: #5a5a56;
+  --dm-paper: #f3ede7;
+  --dm-border: #dedede;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
   padding: 0 1rem 3rem;
 }
 
+/* —— Barre d’actions (écran) —— */
 .controls {
   width: 100%;
-  max-width: 297mm;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.25rem;
+}
+
+.controlsInner {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  padding: 1rem 1.1rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px -30px rgba(0, 0, 0, 0.8);
+}
+
+.controlsActions {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.controlsHint {
+  margin: 0.85rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btnPrimary,
+.btnGold,
+.btnGhost {
+  display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background: var(--dm-gold);
+  color: var(--dm-ink);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: var(--dm-gold-deep);
+  transform: translateY(-1px);
+}
+
+.btnGold {
+  background: linear-gradient(135deg, #febd10, #e8961e);
+  color: #000;
+}
+
+.btnGold:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.btnGhost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btnGhost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btnPrimary:disabled,
+.btnGold:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnMeta {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  opacity: 0.65;
+}
+
+/* —— Viewport scrollable (responsive) —— */
+.sheetViewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(254, 219, 16, 0.45) transparent;
+}
+
+.sheetViewport::-webkit-scrollbar {
+  height: 7px;
+}
+
+.sheetViewport::-webkit-scrollbar-thumb {
+  background: rgba(254, 219, 16, 0.4);
+  border-radius: 4px;
 }
 
 .sheet {
   width: 297mm;
   min-height: 210mm;
+  min-width: 297mm;
   background: #fff;
   margin: 0 auto;
   padding: 8mm 10mm 7mm;
   display: flex;
   flex-direction: column;
   gap: 3.5mm;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
-  color: #0d0d0d;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 24px 60px -20px rgba(0, 0, 0, 0.65);
+  color: var(--dm-ink);
   font-family: var(--font-dm-sans, 'IBM Plex Sans'), system-ui, sans-serif;
   font-size: 10pt;
   line-height: 1.35;
@@ -39,9 +149,10 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  border-bottom: 2px solid #0d0d0d;
+  border-bottom: 2px solid var(--dm-ink);
   padding-bottom: 3mm;
   flex-shrink: 0;
+  gap: 4mm;
 }
 
 .brand {
@@ -49,12 +160,12 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #888;
+  color: var(--dm-muted);
   margin-bottom: 1px;
 }
 
 .brandGold {
-  color: #c8a84b;
+  color: var(--dm-gold-deep);
 }
 
 .title {
@@ -68,6 +179,8 @@
   display: flex;
   align-items: flex-end;
   gap: 4mm;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .metaField {
@@ -82,7 +195,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #888;
+  color: var(--dm-muted);
 }
 
 .metaVal {
@@ -98,7 +211,7 @@
   gap: 3mm;
   margin-left: 3mm;
   padding-left: 3mm;
-  border-left: 1px solid #dedede;
+  border-left: 1px solid var(--dm-border);
 }
 
 .legItem {
@@ -106,7 +219,7 @@
   align-items: center;
   gap: 1.5px;
   font-size: 7pt;
-  color: #888;
+  color: var(--dm-muted);
 }
 
 .legDot {
@@ -131,7 +244,7 @@
 }
 
 .cadran {
-  border: 1.5px solid #dedede;
+  border: 1.5px solid var(--dm-border);
   border-radius: 3px;
   padding: 3mm;
   display: flex;
@@ -161,8 +274,8 @@
 }
 
 .ragBtn {
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -221,7 +334,7 @@
 .cadranSeuils {
   margin-top: auto;
   padding-top: 1.5mm;
-  border-top: 1px solid #dedede;
+  border-top: 1px solid var(--dm-border);
   font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
   font-size: 6.5pt;
   line-height: 1.4;
@@ -246,6 +359,8 @@
   border: none;
   padding: 0;
   line-height: 1;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .trendBtn:hover {
@@ -257,7 +372,7 @@
   display: flex;
   overflow: hidden;
   border-radius: 3px;
-  border: 1.5px solid #dedede;
+  border: 1.5px solid var(--dm-border);
   flex-shrink: 0;
 }
 
@@ -273,7 +388,7 @@
 .ngAuto {
   flex: 0 0 auto;
   min-width: 56mm;
-  border-right: 1.5px solid #dedede;
+  border-right: 1.5px solid var(--dm-border);
 }
 
 .ngManual {
@@ -314,19 +429,21 @@
 
 .ngRagBtns {
   display: flex;
+  flex-wrap: wrap;
   gap: 2.5mm;
   margin-top: 1.5mm;
 }
 
 .ngRagBtn {
-  padding: 2px 8px;
-  border-radius: 2px;
+  padding: 3px 10px;
+  border-radius: 4px;
   font-size: 7.5pt;
   font-weight: 700;
   cursor: pointer;
   border: 1.5px solid transparent;
   color: #fff;
   opacity: 0.35;
+  min-height: 28px;
 }
 
 .ngRagBtnOn {
@@ -369,13 +486,13 @@
 }
 
 .bloc {
-  border: 1.5px solid #dedede;
+  border: 1.5px solid var(--dm-border);
   border-radius: 3px;
   padding: 3mm 4mm;
   display: flex;
   flex-direction: column;
   gap: 2mm;
-  background: #f2f2f2;
+  background: var(--dm-paper);
 }
 
 .blocTitle {
@@ -388,11 +505,13 @@
 .sparkInputs {
   display: flex;
   gap: 2mm;
+  flex-wrap: wrap;
 }
 
 .sparkField {
   display: flex;
   flex: 1;
+  min-width: 2.5rem;
   flex-direction: column;
   align-items: center;
   gap: 1px;
@@ -401,7 +520,7 @@
 .sparkLbl {
   font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
   font-size: 6.5pt;
-  color: #888;
+  color: var(--dm-muted);
 }
 
 .sparkInp {
@@ -410,16 +529,17 @@
   font-size: 8pt;
   font-weight: 600;
   text-align: center;
-  border: 1px solid #dedede;
+  border: 1px solid var(--dm-border);
   border-radius: 2px;
-  padding: 2px;
+  padding: 4px 2px;
   background: #fff;
   outline: none;
+  min-height: 32px;
 }
 
 .sparkInpCur {
-  border-color: #0d0d0d;
-  background: #0d0d0d;
+  border-color: var(--dm-ink);
+  background: var(--dm-ink);
   color: #fff;
 }
 
@@ -456,28 +576,28 @@
 }
 
 .sparkBarCur {
-  background: #0d0d0d;
+  background: var(--dm-ink);
 }
 
 .sparkLblBot {
   font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
   font-size: 6.5pt;
-  color: #888;
+  color: var(--dm-muted);
   text-align: center;
 }
 
 .velociteFooter {
   font-size: 7.5pt;
-  color: #888;
+  color: var(--dm-muted);
 }
 
 .velociteFooter strong {
   font-family: var(--font-dm-mono, 'IBM Plex Mono'), ui-monospace, monospace;
-  color: #0d0d0d;
+  color: var(--dm-ink);
 }
 
 .blocOkr {
-  background: #0d0d0d;
+  background: var(--dm-ink);
   border: none;
 }
 
@@ -513,7 +633,7 @@
 .narrative {
   display: flex;
   gap: 3.5mm;
-  border: 1.5px solid #dedede;
+  border: 1.5px solid var(--dm-border);
   border-radius: 3px;
   background: #f4f4f4;
   padding: 3mm 4mm;
@@ -525,7 +645,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #888;
+  color: var(--dm-muted);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   flex-shrink: 0;
@@ -549,11 +669,13 @@
   padding-top: 2mm;
   flex-shrink: 0;
   font-size: 7pt;
-  color: #888;
+  color: var(--dm-muted);
+  gap: 4mm;
+  flex-wrap: wrap;
 }
 
 .footerGold {
-  color: #c8a84b;
+  color: var(--dm-gold-deep);
   font-weight: 600;
 }
 
@@ -572,8 +694,8 @@
 }
 
 .editable:focus {
-  border-bottom-color: #c8a84b;
-  background: rgba(200, 168, 75, 0.06);
+  border-bottom-color: var(--dm-gold-deep);
+  background: rgba(254, 219, 16, 0.08);
 }
 
 .editableEmpty:empty::before {
@@ -586,7 +708,7 @@
   font-size: 7pt;
   font-style: italic;
   line-height: 1.35;
-  border: 1px solid #dedede;
+  border: 1px solid var(--dm-border);
   border-radius: 2px;
   padding: 2px 3px;
   min-height: 18px;
@@ -618,19 +740,31 @@
   /* masqué en impression via dashboard-manager-print.css */
 }
 
-/* Preview écran : zoom confortable sur petits viewports */
-@media screen and (max-width: 1100px) {
-  .sheet {
-    transform: scale(0.88);
-    transform-origin: top center;
-    margin-bottom: -24mm;
+/* Écran large : centrer sans scroll si la feuille tient */
+@media screen and (min-width: 1100px) {
+  .sheetViewport {
+    display: flex;
+    justify-content: center;
+    overflow-x: visible;
   }
 }
 
-@media screen and (max-width: 900px) {
-  .sheet {
-    transform: scale(0.72);
-    transform-origin: top center;
-    margin-bottom: -56mm;
+@media screen and (max-width: 640px) {
+  .root {
+    padding: 0 0.75rem 2rem;
+  }
+
+  .controlsInner {
+    padding: 0.85rem;
+  }
+
+  .controlsActions {
+    flex-direction: column;
+  }
+
+  .btnPrimary,
+  .btnGold,
+  .btnGhost {
+    width: 100%;
   }
 }

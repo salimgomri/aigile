@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { FileDown, RotateCcw, Sparkles } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
+import { trackEvent } from '@/lib/gtag'
 import UpgradeModal from '@/components/credits/UpgradeModal'
 import { useCredits } from '@/lib/credits/CreditContext'
 import { CREDIT_ACTIONS } from '@/lib/credits/actions'
@@ -199,8 +200,9 @@ export default function DashboardManagerEditor() {
 
   if (!hydrated) {
     return (
-      <div className="flex min-h-[40vh] items-center justify-center text-white/70">
-        {fr ? 'Chargement…' : 'Loading…'}
+      <div className="mx-auto flex min-h-[40vh] w-full max-w-6xl flex-col items-center justify-center gap-4 px-4">
+        <div className="h-10 w-10 animate-pulse rounded-full border-2 border-aigile-gold/30 border-t-aigile-gold" />
+        <p className="text-sm text-white/60">{fr ? 'Chargement du studio…' : 'Loading studio…'}</p>
       </div>
     )
   }
@@ -208,45 +210,46 @@ export default function DashboardManagerEditor() {
   return (
     <div className={styles.root} data-dashboard-manager-print>
       <div className={`${styles.controls} dm-screenOnly`} data-no-print>
-        <button
-          type="button"
-          onClick={handlePdf}
-          disabled={pdfLoading}
-          className="inline-flex items-center gap-2 rounded-sm bg-[#c8a84b] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0d0d0d] hover:bg-[#b8943e] disabled:opacity-50"
-        >
-          <FileDown className="h-4 w-4" />
-          {fr ? 'Exporter PDF' : 'Export PDF'}
-          <span className="opacity-70">· 1 cr.</span>
-        </button>
+        <div className={styles.controlsInner}>
+          <div className={styles.controlsActions}>
+            <button
+              type="button"
+              onClick={handlePdf}
+              disabled={pdfLoading}
+              className={styles.btnPrimary}
+            >
+              <FileDown className="h-4 w-4 shrink-0" />
+              <span>{fr ? 'Exporter PDF' : 'Export PDF'}</span>
+              <span className={styles.btnMeta}>1 cr.</span>
+            </button>
 
-        <button
-          type="button"
-          onClick={handleNarrative}
-          disabled={narrativeLoading || !canAffordNarrative}
-          className="inline-flex items-center gap-2 rounded-sm bg-[#FEBD10] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-black hover:bg-[#E8961E] disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          <Sparkles className="h-4 w-4" />
-          {fr ? 'Narrative IA (P25)' : 'AI narrative (P25)'}
-          <span className="opacity-80">· {narrativeCost} cr.</span>
-        </button>
+            <button
+              type="button"
+              onClick={handleNarrative}
+              disabled={narrativeLoading || !canAffordNarrative}
+              className={styles.btnGold}
+            >
+              <Sparkles className="h-4 w-4 shrink-0" />
+              <span>{fr ? 'Narrative IA' : 'AI narrative'}</span>
+              <span className={styles.btnMeta}>{narrativeCost} cr.</span>
+            </button>
 
-        <button
-          type="button"
-          onClick={handleReset}
-          className="inline-flex items-center gap-2 rounded-sm bg-[#0d0d0d] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#333]"
-        >
-          <RotateCcw className="h-4 w-4" />
-          {fr ? 'Réinitialiser' : 'Reset'}
-        </button>
+            <button type="button" onClick={handleReset} className={styles.btnGhost}>
+              <RotateCcw className="h-4 w-4 shrink-0" />
+              <span>{fr ? 'Réinitialiser' : 'Reset'}</span>
+            </button>
+          </div>
 
-        <p className="w-full text-xs leading-relaxed text-white/55 sm:w-auto">
-          {fr
-            ? 'PDF : Paysage · A4 · Marges « Aucune » · Cocher « Graphiques d’arrière-plan »'
-            : 'PDF: Landscape · A4 · Margins None · Enable Background graphics'}
-        </p>
+          <p className={styles.controlsHint}>
+            {fr
+              ? 'PDF : Paysage · A4 · Marges « Aucune » · Cocher « Graphiques d’arrière-plan ». Sur mobile, faites défiler horizontalement la feuille.'
+              : 'PDF: Landscape · A4 · Margins None · Enable Background graphics. On mobile, scroll the sheet horizontally.'}
+          </p>
+        </div>
       </div>
 
-      <div className={`${styles.sheet} dm-sheet`}>
+      <div className={styles.sheetViewport}>
+        <div className={`${styles.sheet} dm-sheet`}>
         <header className={styles.header}>
           <div>
             <div className={styles.brand}>
@@ -624,6 +627,7 @@ export default function DashboardManagerEditor() {
             {fr ? 'Mis à jour par le SM' : 'Updated by SM'}
           </div>
         </footer>
+        </div>
       </div>
 
       {showUpgrade && <UpgradeModal open onClose={() => setShowUpgrade(false)} />}
