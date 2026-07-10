@@ -19,6 +19,11 @@ import {
   type ScoringSessionRow,
   type WestrumResultInsightRow,
 } from '@/lib/admin/aggregate-tool-insights'
+import {
+  aggregateDownloadInsights,
+  type DownloadEventRow,
+  type ToolPdfExportRow,
+} from '@/lib/admin/aggregate-download-stats'
 
 const PAGE = 1000
 
@@ -106,6 +111,47 @@ async function fetchWestrumResultRows(): Promise<WestrumResultInsightRow[]> {
   return out
 }
 
+async function fetchDownloadEventRows(): Promise<DownloadEventRow[]> {
+  const out: DownloadEventRow[] = []
+  let from = 0
+  for (;;) {
+    const { data, error } = await supabaseAdmin
+      .from('v_download_events_with_user')
+      .select('asset, user_id, visitor_id, source, created_at, user_email, user_name')
+      .order('created_at', { ascending: true })
+      .range(from, from + PAGE - 1)
+
+    if (error) throw error
+    if (!data?.length) break
+    out.push(...(data as DownloadEventRow[]))
+    if (data.length < PAGE) break
+    from += PAGE
+    if (from > 200_000) break
+  }
+  return out
+}
+
+async function fetchToolPdfExportRows(): Promise<ToolPdfExportRow[]> {
+  const out: ToolPdfExportRow[] = []
+  let from = 0
+  for (;;) {
+    const { data, error } = await supabaseAdmin
+      .from('credit_transactions')
+      .select('action, user_id, created_at')
+      .like('action', '%_pdf')
+      .order('created_at', { ascending: true })
+      .range(from, from + PAGE - 1)
+
+    if (error) throw error
+    if (!data?.length) break
+    out.push(...(data as ToolPdfExportRow[]))
+    if (data.length < PAGE) break
+    from += PAGE
+    if (from > 200_000) break
+  }
+  return out
+}
+
 async function fetchOkrCheckinInsightRows(): Promise<OkrCheckinInsightRow[]> {
   const out: OkrCheckinInsightRow[] = []
   let from = 0
@@ -162,12 +208,14 @@ export async function GET() {
       .filter((u) => !shouldExcludeEmailFromToolStats(u.user_email))
       .slice(0, 15)
 
-    const [retroCreditRows, scoringSessionRows, westrumResultRows, okrCheckinRows] =
+    const [retroCreditRows, scoringSessionRows, westrumResultRows, okrCheckinRows, downloadRows, toolPdfRows] =
       await Promise.all([
       fetchRetroCreditRows(),
       fetchScoringSessionRows(),
       fetchWestrumResultRows(),
       fetchOkrCheckinInsightRows(),
+      fetchDownloadEventRows(),
+      fetchToolPdfExportRows(),
     ])
 
     const retroInsights = aggregateRetroInsights(
@@ -183,6 +231,13 @@ export async function GET() {
       okrCheckinRows.filter((r) => !excludedUserIds.has(r.user_id))
     )
 
+    const downloadInsights = aggregateDownloadInsights(
+      downloadRows.filter(
+        (r) => !r.user_id || !excludedUserIds.has(r.user_id)
+      ),
+      toolPdfRows.filter((r) => !excludedUserIds.has(r.user_id))
+    )
+
     const toolStatsExclusionNote =
       `Usage outils, activité récente et insights Rétro/Scoring : exclus comptes ADMIN_EMAILS et ${STATS_ALWAYS_EXCLUDED_EMAIL}.`
 
@@ -194,6 +249,7 @@ export async function GET() {
       scoringInsights,
       westrumInsights,
       okrCheckinInsights,
+      downloadInsights,
       purchasesNote:
         'Totaux calculés sur les commandes payées/livrées, hors codes promo test internes (TEST100).',
       toolStatsExclusionNote,

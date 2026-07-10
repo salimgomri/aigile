@@ -2,6 +2,7 @@
 
 import { useLanguage } from '../language-provider'
 import Link from 'next/link'
+import { logDownload } from '@/lib/downloads/client'
 
 export default function CTA() {
   const { t } = useLanguage()
@@ -15,6 +16,7 @@ export default function CTA() {
           <a
             href="/aigileManifesto.pdf"
             className="px-8 py-4 bg-white text-black rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
+            onClick={() => logDownload('manifesto_pdf', { source: 'home_cta' })}
           >
             {t('cta-download')}
           </a>

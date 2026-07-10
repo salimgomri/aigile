@@ -7,7 +7,9 @@ import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import { COUNTRIES } from '@/lib/countries'
 import { AdminToolInsights } from '@/components/admin/AdminToolInsights'
+import { AdminDownloadInsights } from '@/components/admin/AdminDownloadInsights'
 import type { RetroInsights, ScoringInsights, WestrumInsights, OkrCheckinInsights } from '@/lib/admin/aggregate-tool-insights'
+import type { DownloadInsights } from '@/lib/admin/aggregate-download-stats'
 
 function formatPrice(centimes: number): string {
   return (centimes / 100).toFixed(2).replace('.', ',') + ' €'
@@ -120,6 +122,7 @@ type MacroStats = {
   scoringInsights: ScoringInsights
   westrumInsights: WestrumInsights
   okrCheckinInsights: OkrCheckinInsights
+  downloadInsights?: DownloadInsights
   toolStatsExclusionNote?: string
 }
 
@@ -286,6 +289,10 @@ export default function AdminOrdersPage() {
             </div>
           </div>
         </div>
+      )}
+
+      {macroStats?.downloadInsights && (
+        <AdminDownloadInsights insights={macroStats.downloadInsights} />
       )}
 
       {macroStats?.retroInsights && macroStats?.scoringInsights && macroStats?.westrumInsights && macroStats?.okrCheckinInsights && (

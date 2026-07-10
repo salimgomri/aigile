@@ -11,6 +11,7 @@ import { useLanguage } from '../language-provider'
 import { translations } from '@/lib/translations'
 import { FileText, Download, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
+import { logDownload } from '@/lib/downloads/client'
 
 export default function ManifestoSection() {
   const { language } = useLanguage()
@@ -60,6 +61,7 @@ export default function ManifestoSection() {
                 href="/aigileManifesto.pdf"
                 download
                 className="px-6 py-3 bg-card/50 backdrop-blur-sm text-foreground font-semibold rounded-full border-2 border-border hover:border-aigile-gold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                onClick={() => logDownload('manifesto_pdf', { source: 'landing_manifesto_section' })}
               >
                 <Download className="w-5 h-5" />
                 <span>{t['manifesto-cta-download']}</span>

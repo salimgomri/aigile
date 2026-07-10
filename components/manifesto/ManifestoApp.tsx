@@ -28,6 +28,7 @@ import { getAboutBioHtml } from '@/lib/salim-experience'
 import { AigileLogo } from '@/components/brand/AigileLogo'
 import { SiteChrome } from '@/components/layout/SiteChrome'
 import { MANIFESTO_SUB_NAV } from '@/lib/navigation/site-nav'
+import { logDownload } from '@/lib/downloads/client'
 import { type TranslationKey } from '@/lib/translations'
 import { useInView } from '@/hooks/use-in-view'
 
@@ -100,7 +101,12 @@ export function ManifestoApp() {
               <a href="#values" className="ld-btn ld-btn--gold">
                 {language === 'fr' ? 'Lire les valeurs' : 'Read the values'}
               </a>
-              <a href="/aigileManifesto.pdf" download className="ld-btn ld-btn--outline">
+              <a
+                href="/aigileManifesto.pdf"
+                download
+                className="ld-btn ld-btn--outline"
+                onClick={() => logDownload('manifesto_pdf', { source: 'manifesto_page', metadata: { placement: 'hero' } })}
+              >
                 <FileText size={17} aria-hidden />
                 {t('cta-download')}
               </a>
@@ -172,7 +178,12 @@ export function ManifestoApp() {
               <h2 className="mf-cta__title">{t('cta-title')}</h2>
               <p className="mf-cta__subtitle" dangerouslySetInnerHTML={{ __html: t('cta-subtitle') }} />
               <div className="mf-cta__actions">
-                <a href="/aigileManifesto.pdf" download className="ld-btn ld-btn--outline mf-cta__btn mf-cta__btn--light">
+                <a
+                  href="/aigileManifesto.pdf"
+                  download
+                  className="ld-btn ld-btn--outline mf-cta__btn mf-cta__btn--light"
+                  onClick={() => logDownload('manifesto_pdf', { source: 'manifesto_page', metadata: { placement: 'cta' } })}
+                >
                   <FileText size={17} aria-hidden />
                   {t('cta-download')}
                 </a>

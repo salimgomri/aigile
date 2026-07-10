@@ -6,6 +6,7 @@ import { Download } from 'lucide-react'
 import { AigileLogo } from '@/components/brand/AigileLogo'
 import { useLanguage } from '@/components/language-provider'
 import { trackEvent } from '@/lib/gtag'
+import { logDownload } from '@/lib/downloads/client'
 import { SiteChrome } from '@/components/layout/SiteChrome'
 import { FRAMEWORK_SUB_NAV } from '@/lib/navigation/site-nav'
 import {
@@ -77,9 +78,10 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
               href={FRAMEWORK_POSTER_IMAGE}
               download={FRAMEWORK_POSTER_DOWNLOAD_NAME}
               className="fw-btn fw-btn--outline fw-hero__poster-dl"
-              onClick={() =>
+              onClick={() => {
                 trackEvent('framework_poster_download', { source: 'framework_page', lang })
-              }
+                logDownload('framework_poster', { source: 'framework_page', metadata: { lang } })
+              }}
             >
               <Download size={17} strokeWidth={2.2} aria-hidden />
               {t.downloadPoster}
@@ -99,9 +101,10 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
                 href={FRAMEWORK_GUIDE_PDF_FR}
                 download
                 className="fw-btn fw-btn--gold"
-                onClick={() =>
+                onClick={() => {
                   trackEvent('framework_guide_download', { source: 'framework_page', lang: 'fr' })
-                }
+                  logDownload('framework_guide_fr', { source: 'framework_page', metadata: { lang: 'fr' } })
+                }}
               >
                 <Download size={17} strokeWidth={2.2} aria-hidden />
                 {t.downloadGuideFr}
@@ -110,9 +113,10 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
                 href={FRAMEWORK_GUIDE_PDF_EN}
                 download
                 className="fw-btn fw-btn--gold"
-                onClick={() =>
+                onClick={() => {
                   trackEvent('framework_guide_download', { source: 'framework_page', lang: 'en' })
-                }
+                  logDownload('framework_guide_en', { source: 'framework_page', metadata: { lang: 'en' } })
+                }}
               >
                 <Download size={17} strokeWidth={2.2} aria-hidden />
                 {t.downloadGuideEn}
