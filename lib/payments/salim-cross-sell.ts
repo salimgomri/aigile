@@ -35,7 +35,7 @@ export function getSalimCrossSellCopy(sourceProductId: string): {
 
   return {
     headline: 'Complète avec le livre',
-    subline: '415 pages pour comprendre le système en profondeur — complément idéal aux fiches.',
+    subline: '477 pages pour comprendre le système en profondeur — complément idéal aux fiches.',
     cta: 'Commander le livre',
     coverPath: '/images/book-cover.jpg',
   }

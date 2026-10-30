@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
 import { Instrument_Serif, Inter } from 'next/font/google'
-import { SystemSalimLanding } from '@/components/landing-v2/SystemSalimLanding'
-import { AdminLandingTools } from '@/components/landing/admin-landing-tools'
-import { getSessionIsAdmin } from '@/lib/landing-admin'
-import { getLandingCommerceSummary } from '@/lib/admin/landing-commerce-summary'
+import { HomeLegacyPage } from '@/components/landing-v2/HomeLegacyPage'
+import { HomeV2 } from '@/components/home-v2/HomeV2'
+import { getHomeVariant } from '@/lib/site-facts'
 import { salimYearsExpertiseSalimFr } from '@/lib/salim-experience'
 import './landing.css'
 
@@ -21,10 +20,11 @@ const instrument = Instrument_Serif({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
+export const dynamic = 'force-dynamic'
+
+const legacyMetadata: Metadata = {
   title: 'Le Système S.A.L.I.M. | Scrum Augmenté Livré en Incremental et Mesuré',
-  description:
-    `Scrum Augmenté Livré en Incremental et Mesuré (S.A.L.I.M.). ${salimYearsExpertiseSalimFr()} · Guide terrain · aigile.lu`,
+  description: `Scrum Augmenté Livré en Incremental et Mesuré (S.A.L.I.M.). ${salimYearsExpertiseSalimFr()} · Guide terrain · aigile.lu`,
   keywords: ['S.A.L.I.M.', 'agile leadership', 'Scrum', 'book', 'framework', 'retro AI', 'Luxembourg'],
   openGraph: {
     title: 'The S.A.L.I.M. System | AIGILE.LU',
@@ -36,18 +36,36 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://aigile.lu/' },
 }
 
-export default async function Home() {
-  const isAdmin = await getSessionIsAdmin()
-  const commerceSummary = isAdmin ? await getLandingCommerceSummary() : null
+const v2Metadata: Metadata = {
+  title: 'Coach agile augmenté par l’IA – formations intra et diagnostic | AIgile',
+  description:
+    'Coach agile augmenté par l’IA depuis 2003 – formations intra et accompagnement. Diagnostic flash 30 min.',
+  openGraph: {
+    title: 'Coach agile augmenté par l’IA | AIgile',
+    description: 'Formations intra et diagnostic flash — l’IA propose, l’humain décide.',
+    type: 'website',
+    url: 'https://aigile.lu',
+  },
+  alternates: { canonical: 'https://aigile.lu/' },
+}
 
-  return (
-    <main className={`${inter.variable} ${instrument.variable}`}>
-      <SystemSalimLanding />
-      {commerceSummary ? (
-        <div className="ld-admin-wrap">
-          <AdminLandingTools commerce={commerceSummary} />
-        </div>
-      ) : null}
-    </main>
-  )
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = getHomeVariant() === 'v2' ? v2Metadata : legacyMetadata
+  return {
+    ...meta,
+    other: {
+      'aigile:home-variant': getHomeVariant(),
+    },
+  }
+}
+
+export default async function Home() {
+  if (getHomeVariant() === 'v2') {
+    return (
+      <main className={`${inter.variable} ${instrument.variable}`}>
+        <HomeV2 />
+      </main>
+    )
+  }
+  return <HomeLegacyPage />
 }

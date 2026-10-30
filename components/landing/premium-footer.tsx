@@ -18,6 +18,7 @@ import { Linkedin, Twitter, MessageSquare, Coffee, BookOpen, Calendar } from 'lu
 import FeedbackButtonWithModal from '@/components/feedback/FeedbackButtonWithModal'
 import BuyCoffeeSheet from '@/components/checkout/BuyCoffeeSheet'
 import CheckoutSheet from '@/components/checkout/CheckoutSheet'
+import { LegalFooterLinks } from '@/components/legal/LegalFooterLinks'
 
 const CALENDLY_URL = 'https://calendly.com/salimdulux/30min'
 
@@ -31,13 +32,14 @@ export default function PremiumFooter() {
       { href: '/retro', label: t['tools-retro-title'], available: true },
       { href: '#', label: `${t['tools-nikoni']} (${language === 'fr' ? 'bientôt' : 'soon'})`, available: false },
       { href: '#', label: `${t['tools-dora']} (${language === 'fr' ? 'bientôt' : 'soon'})`, available: false },
-      { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey', available: true },
       { href: '/start-scrum', label: t['tools-start-journey'], available: true },
       { href: '#tools', label: t['nav-tools'], available: true },
     ],
     resources: [
       { href: '/manifesto', label: t['nav-manifesto'] },
-      { href: '/prompts', label: 'Prompts' },
+      { href: '/kit', label: 'Kit gratuit' },
+      { href: '/formations', label: language === 'fr' ? 'Formations' : 'Training' },
+      { href: '/diagnostic', label: 'Diagnostic' },
       { href: '#book', label: t['nav-book'] },
       { href: '#cards', label: t['nav-cards'] },
     ],
@@ -195,9 +197,12 @@ export default function PremiumFooter() {
         <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
-            <p className="text-sm text-gray-600">
-              © 2026 Salim Gomri. AIgile. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
-            </p>
+            <div>
+              <p className="text-sm text-gray-600">
+                © 2026 Salim Gomri. AIgile. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
+              </p>
+              <LegalFooterLinks className="mt-3" />
+            </div>
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">

@@ -28,7 +28,7 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">1. Responsable du traitement</h2>
               <p>
                 Le responsable du traitement des données est Salim Gomri, éditeur du service AIgile (aigile.lu). 
-                Contact : salim.gomri@gmail.com
+                Contact : <mark className="todo-mark">[À COMPLÉTER]</mark> (e-mail professionnel — plus de Gmail affiché ici).
               </p>
             </section>
 
@@ -89,12 +89,21 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">9. Contact</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">9. Nouvelles finalités</h2>
+              <p>
+                En plus des finalités ci-dessus : envoi du kit gratuit et de la séquence d&apos;e-mails
+                associée ; traitement des formulaires diagnostic et formation ; cookies de mesure
+                d&apos;audience (Google Analytics) uniquement après consentement. Durées de conservation :{' '}
+                <mark className="todo-mark">[À COMPLÉTER]</mark>. Outil d&apos;e-mailing :{' '}
+                <mark className="todo-mark">[À CHOISIR : Brevo / Kit / Mailchimp / none]</mark>.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">10. Contact</h2>
               <p>
                 Pour toute question sur vos données personnelles :{' '}
-                <a href="mailto:edition.malis@gmail.com" className="text-aigile-gold hover:underline">
-                  salim.gomri@gmail.com
-                </a>
+                <mark className="todo-mark">[À COMPLÉTER : e-mail de contact professionnel]</mark>
               </p>
             </section>
           </div>

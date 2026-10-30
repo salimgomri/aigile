@@ -80,6 +80,14 @@
   animation: shimmer 2s infinite;
 }
 
+.todo-mark {
+  background: #fff4c2;
+  color: #6b4e00;
+  border-radius: 4px;
+  padding: 0 4px;
+  font-weight: 600;
+}
+
 @keyframes scale-in {
   0% { transform: scale(0); opacity: 0; }
   50% { transform: scale(1.1); }

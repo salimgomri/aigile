@@ -54,12 +54,7 @@ export default function PremiumNavbar() {
       label: t['tools-westrum'],
       match: (p: string) => p.startsWith('/dashboard/westrum'),
     },
-    {
-      href: '/salim-qa',
-      label: t['tools-salim-qa'],
-      match: (p: string) => p.startsWith('/salim-qa'),
-    },
-    { href: '/start-scrum', label: t['tools-start-journey'], match: (p: string) => p.startsWith('/start-scrum') || p.startsWith('/parcours') },
+    { href: '/start-scrum', label: t['tools-start-journey'], match: (p: string) => p.startsWith('/start-scrum') },
   ]
 
   const navLinks = useMemo(() => {
@@ -67,13 +62,10 @@ export default function PremiumNavbar() {
       return [
         { href: '/', label: t['nav-home'] },
         { href: '/manifesto', label: t['nav-manifesto'] },
-        { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
-        { href: '/prompts', label: 'Prompts' },
-        { href: '/#pricing', label: t['nav-pricing'] },
-        { href: '#entreprises', label: language === 'fr' ? 'Entreprises' : 'Business' },
-        { href: '#tools', label: t['nav-tools'] },
-        { href: '#book', label: t['nav-book'] },
-        { href: '#cards', label: t['nav-cards'] },
+        { href: '/formations', label: language === 'fr' ? 'Formations' : 'Training' },
+        { href: '/diagnostic', label: language === 'fr' ? 'Diagnostic' : 'Diagnostic' },
+        { href: '/kit', label: 'Kit' },
+        { href: '/#tools', label: t['nav-tools'] },
       ]
     }
     const home = { href: '/', label: t['nav-home'], isActive: false as boolean }

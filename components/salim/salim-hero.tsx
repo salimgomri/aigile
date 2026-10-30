@@ -43,7 +43,7 @@ export function SalimHero({ bundle }: { bundle: Product | null }) {
           </div>
           <div>
             <span className="hero-stat-number">
-              <CounterStat target={415} active={active} />
+              <CounterStat target={477} active={active} />
             </span>
             <span className="hero-stat-label">pages</span>
           </div>

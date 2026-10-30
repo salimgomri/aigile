@@ -56,9 +56,9 @@ export function LandingBuyButton({
 
   if (!product) {
     return (
-      <button type="button" disabled className={disabledClassName}>
+      <a href="/salim" className={className}>
         {defaultLabel}
-      </button>
+      </a>
     )
   }
 
