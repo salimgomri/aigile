@@ -22,6 +22,7 @@ import { AigileLogo } from '@/components/brand/AigileLogo'
 import { LandingBuyButton } from './LandingBuyButton'
 import { LandingNavbar } from './LandingNavbar'
 import { LandingToolsSuite } from './LandingToolsSuite'
+import { LegalFooterLinks } from '@/components/legal/LegalFooterLinks'
 
 function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
   const { ref, inView } = useInView(0.1)
@@ -133,6 +134,7 @@ export function SystemSalimLanding() {
           <AigileLogo size="md" />
         </div>
         <p>{t.footerRights}</p>
+        <LegalFooterLinks className="mt-4" />
       </footer>
 
       <div className="ld-sticky">
