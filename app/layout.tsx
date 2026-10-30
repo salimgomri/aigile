@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { AppProviders } from '@/components/app-providers'
 import { salimJobTitleFr } from '@/lib/salim-experience'
-
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-WMG8QLND8X'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
@@ -52,18 +49,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', ${JSON.stringify(GA_ID)});
-          `}
-        </Script>
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

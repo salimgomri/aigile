@@ -16,9 +16,10 @@ import CheckoutSheet from '@/components/checkout/CheckoutSheet'
 import type { Product } from '@/lib/payments/catalog'
 import { AnimateIn } from './animate-in'
 import { SalimContactLinks } from './salim-contact-links'
+import { AMAZON_PRICES_CHECKED_AT, AMAZON_URL, amazonUrlIsReady } from '@/lib/site-facts'
 
 const COMPARE_ROWS = [
-  { label: 'Cadre complet (415 pages)', book: true, fiches: false, bundle: true },
+  { label: 'Cadre complet (477 pages)', book: true, fiches: false, bundle: true },
   { label: 'Fiches terrain sprint', book: false, fiches: true, bundle: true },
   { label: 'Scoring Deliverable inclus', book: false, fiches: false, bundle: true },
   { label: 'Applicable dès lundi', book: true, fiches: true, bundle: true },
@@ -39,6 +40,22 @@ function Reassurance() {
   return (
     <p className="product-reassurance">
       Paiement sécurisé · Des questions ? <SalimContactLinks />
+    </p>
+  )
+}
+
+function AmazonRef() {
+  return (
+    <p className="product-price-note">
+      {amazonUrlIsReady() ? (
+        <a href={AMAZON_URL} target="_blank" rel="noopener noreferrer" className="underline">
+          Voir sur Amazon
+        </a>
+      ) : (
+        <mark className="todo-mark">[LIEN AMAZON]</mark>
+      )}
+      {' · '}
+      Prix constaté sur Amazon le <mark className="todo-mark">{AMAZON_PRICES_CHECKED_AT}</mark>
     </p>
   )
 }
@@ -126,6 +143,7 @@ export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
           </p>
           <p className="product-price-main">{formatBookPrice(BUNDLE_SALE_CENTIMES)}</p>
           <p className="product-price-note">Ton prix direct · économie de 28 € vs Amazon</p>
+          <AmazonRef />
           <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
           <OfferList
             items={[
@@ -172,6 +190,7 @@ export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
           <p className="product-price-original">Amazon : {formatBookPrice(BOOK_COMPARE_AT_CENTIMES)}</p>
           <p className="product-price-main">{formatBookPrice(BOOK_SALE_CENTIMES)}</p>
           <p className="product-price-note">Prix direct aigile.lu · −10 € vs Amazon</p>
+          <AmazonRef />
           <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
           <OfferList
             items={[
@@ -219,6 +238,7 @@ export function SalimOffers({ book, fiches, bundle }: SalimOffersProps) {
           <p className="product-price-original">Amazon : {formatBookPrice(FICHES_COMPARE_AT_CENTIMES)}</p>
           <p className="product-price-main">{formatBookPrice(FICHES_SALE_CENTIMES)}</p>
           <p className="product-price-note">Prix direct aigile.lu · −10 € vs Amazon</p>
+          <AmazonRef />
           <p className="stock-tension">Expédition sous 48h · Stock limité pour l&apos;envoi postal</p>
           <OfferList
             items={[

@@ -7,6 +7,8 @@ import { CreditProvider } from '@/lib/credits/CreditContext'
 import { BookProductProvider } from '@/lib/book-product-context'
 import FloatingBottomBar from '@/components/floating-bottom-bar'
 import { GaRouteTracker } from '@/components/analytics/GaRouteTracker'
+import { CookieBanner } from '@/components/consent/CookieBanner'
+import { GoogleAnalytics } from '@/components/consent/GoogleAnalytics'
 
 /**
  * Regroupe les providers client pour garder app/layout.tsx minimal
@@ -21,7 +23,9 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
             <Suspense fallback={null}>
               <GaRouteTracker />
             </Suspense>
+            <GoogleAnalytics />
             {children}
+            <CookieBanner />
             <FloatingBottomBar />
           </BookProductProvider>
         </CreditProvider>
