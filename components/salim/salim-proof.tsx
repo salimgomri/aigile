@@ -39,13 +39,6 @@ const METRICS: (CounterMetric | FadeMetric)[] = [
     context: 'utilisables dans ChatGPT, Claude ou Cursor',
   },
   {
-    kind: 'fade',
-    display: 'environ 30/100',
-    label: 'score moyen d’un livrable (bêta Scoring Deliverable)',
-    context: 'le livre explique comment doubler ce score',
-    longValue: true,
-  },
-  {
     kind: 'counter',
     value: 6,
     label: 'cadrans RAG du dashboard manager',

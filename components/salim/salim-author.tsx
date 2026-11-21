@@ -42,8 +42,7 @@ export function SalimAuthor() {
           <p className="author-eyebrow">L&apos;auteur</p>
           <h2 className="author-name">Salim Gomri</h2>
           <p className="author-credentials">
-            Fondateur d&apos;AIgile · Lead Agile Coach depuis 2004 · Premier praticien agile au Luxembourg
-            en 2006
+            Fondateur d&apos;AIgile · Lead Agile Coach depuis 2004
           </p>
           <p className="author-story">
             En 2009, une release « réussie » côté vélocité a coûté six semaines de rework et la confiance d&apos;un

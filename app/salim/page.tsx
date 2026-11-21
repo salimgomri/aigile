@@ -7,11 +7,9 @@ import { SalimOffers } from '@/components/salim/salim-offers'
 import { SalimPageAnalytics } from '@/components/salim/salim-page-analytics'
 import { SalimPersonas } from '@/components/salim/salim-personas'
 import { SalimProof } from '@/components/salim/salim-proof'
-import { SalimSocialProof } from '@/components/salim/salim-social-proof'
 import { SalimStickyMobileCta } from '@/components/salim/salim-sticky-mobile-cta'
-import { SalimContactLinks } from '@/components/salim/salim-contact-links'
-import { getCurrentBookProduct, getProduct } from '@/lib/payments/catalog'
 import { salimYearsTerrainFr } from '@/lib/salim-experience'
+import { SALIM_PRICE_LABEL } from '@/lib/salim/fiche'
 import './salim.css'
 
 export const metadata: Metadata = {
@@ -25,14 +23,10 @@ export const metadata: Metadata = {
 }
 
 export default function SalimLandingPage() {
-  const bookProduct = getCurrentBookProduct()
-  const fichesProduct = getProduct('fiches_salim')
-  const bundleProduct = getProduct('bundle_salim')
-
   return (
     <main className="salim-page min-h-screen bg-white text-aigile-navy pb-20 md:pb-0">
       <SalimPageAnalytics />
-      <SalimHero bundle={bundleProduct} />
+      <SalimHero />
 
       <AnimateIn as="section" className="pain-section">
         <p>Tu livres. Le client n&apos;est pas satisfait. Et personne dans la salle ne sait vraiment pourquoi.</p>
@@ -54,34 +48,18 @@ export default function SalimLandingPage() {
 
       <SalimAuthor />
 
-      <SalimSocialProof />
-
       <SalimBusinessOutcomes />
 
-      <SalimOffers book={bookProduct} fiches={fichesProduct} bundle={bundleProduct} />
+      <SalimOffers />
 
       <section className="delivery-section">
         <div className="delivery-inner">
           <h2>Livraison</h2>
-          <div className="delivery-grid">
-            <div>
-              <h3>Envoi postal</h3>
-              <p>
-                Livraison à domicile. Frais de port calculés au checkout selon ta zone géographique.
-              </p>
-            </div>
-            <div>
-              <h3>Retrait gratuit</h3>
-              <p>
-                Tu passes récupérer ton livre directement. Gratuit. Contacte-moi après commande pour convenir du
-                lieu et du moment. <SalimContactLinks className="text-aigile-blue" />
-              </p>
-            </div>
-          </div>
+          <p>Le prix affiché, {SALIM_PRICE_LABEL}, est le total livré : le livre et le port.</p>
         </div>
       </section>
 
-      <SalimStickyMobileCta bundle={bundleProduct} />
+      <SalimStickyMobileCta />
     </main>
   )
 }

@@ -1,16 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { CountdownBanner } from '@/components/countdown-banner'
+import Link from 'next/link'
 import { useInView } from '@/hooks/use-in-view'
-import { BUNDLE_SALE_CENTIMES, formatBookPrice } from '@/lib/book-config'
-import { trackEvent } from '@/lib/gtag'
-import CheckoutSheet from '@/components/checkout/CheckoutSheet'
-import type { Product } from '@/lib/payments/catalog'
 import { getSalimYearsExperience } from '@/lib/salim-experience'
+import { SALIM_EXCERPT_PATH, SALIM_PRICE_LABEL, SALIM_PURCHASE_PATH } from '@/lib/salim/fiche'
 import { CounterStat } from './counter-stat'
 
-export function SalimHero({ bundle }: { bundle: Product | null }) {
+export function SalimHero() {
   const yearsExperience = getSalimYearsExperience()
   const { ref, inView } = useInView(0.05)
   const [countersActive, setCountersActive] = useState(false)
@@ -50,39 +47,14 @@ export function SalimHero({ bundle }: { bundle: Product | null }) {
         </div>
 
         <div className="hero-cta">
-          <CheckoutSheet
-            product={bundle}
-            checkoutSource="salim_landing"
-            trigger={
-              <button
-                type="button"
-                onClick={() =>
-                  trackEvent('bundle_order_click', {
-                    product: 'bundle-salim',
-                    value: 110,
-                    currency: 'EUR',
-                    source: 'salim_hero',
-                  })
-                }
-                className="hero-cta-primary"
-              >
-                Commander la Collection · {formatBookPrice(BUNDLE_SALE_CENTIMES)}
-              </button>
-            }
-          />
-          <a
-            href="#salim-offres"
-            className="hero-cta-secondary"
-            onClick={() => trackEvent('hero_compare_formats', { source: 'salim_hero' })}
-          >
-            Comparer les 3 formats →
-          </a>
+          <Link href={SALIM_PURCHASE_PATH} className="hero-cta-primary">
+            Acheter le livre · {SALIM_PRICE_LABEL}
+          </Link>
+          <Link href={SALIM_EXCERPT_PATH} className="hero-cta-secondary">
+            Lire l’extrait
+          </Link>
         </div>
-        <p className="hero-cta-reassurance">
-          Livre + cahier + Scoring Deliverable · Expédié sous 48h · Paiement sécurisé
-        </p>
-
-        <CountdownBanner />
+        <p className="hero-cta-reassurance">Un livre. Prix total livré, port compris. Paiement sécurisé.</p>
       </div>
     </section>
   )

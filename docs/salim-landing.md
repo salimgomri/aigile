@@ -1,6 +1,8 @@
 # Landing `/salim` — produits & Stripe
 
-Page de vente LinkedIn : `https://aigile.lu/salim`
+Page de vente : `https://aigile.lu/salim`
+
+La fiche affiche une seule édition (le livre) et un seul prix : le total livré, 74,00 € (69,00 € + 5,00 € de port). Le détail est dans `docs/vente-systeme-salim/`. Le checkout Stripe du livre n’est pas modifié : le panier ajoute toujours le port du catalogue.
 
 ## Price IDs Stripe : **pas obligatoires**
 
@@ -24,9 +26,9 @@ Les montants encaissés viennent du **catalogue** (`amount` en centimes). L’af
 
 | Offre | Prix affiché | Centimes checkout | Fichier catalogue | Fichier affichage |
 |-------|--------------|-------------------|-------------------|-------------------|
-| Livre | 69 € (barré 79 €) | `6900` | `lib/payments/catalog.ts` → `book_sale` | `app/salim/page.tsx` + `lib/book-config.ts` (`BOOK_COMPARE_AT_CENTIMES`) + `components/landing/book-section.tsx` |
-| Fiches | 49 € (barré 59 €) | `4900` | `lib/payments/catalog.ts` → `fiches_salim` | `app/salim/page.tsx` |
-| Bundle | 110 € (barré 138 €) | `11000` | `lib/payments/catalog.ts` → `bundle_salim` | `app/salim/page.tsx` |
+| Livre | 69 € encaissés, affichés dans le total livré 74 € | `6900` | `lib/payments/catalog.ts` → `book_sale` | `lib/salim/fiche.ts` + `app/salim/page.tsx` |
+| Fiches | 49 € au catalogue, non affichés sur `/salim` | `4900` | `lib/payments/catalog.ts` → `fiches_salim` | hors fiche |
+| Bundle | 110 € au catalogue, non affichés sur `/salim` | `11000` | `lib/payments/catalog.ts` → `bundle_salim` | hors fiche |
 | Livraison | +5 € au checkout | `500` (`shippingFee`) | même entrées catalogue | bloc Livraison (texte informatif) |
 
 **Règle :** si tu changes un prix, mets à jour **catalogue + page** (et les boutons). Optionnel : créer/mettre à jour le Price Stripe + variable env.
