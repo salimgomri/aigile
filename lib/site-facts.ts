@@ -38,21 +38,33 @@ export const FORMATION_A_INTER = {
   minToRun: 'La session a lieu même pour une seule personne.',
 } as const
 
-/** Prix unitaire (€) selon le nombre de places achetées d’un coup. */
+/**
+ * Tarif dégressif par paliers (plus simple à vendre qu’un −50 € par place).
+ * 1 = 800 € · 2 = 700 € · 3–4 = 650 € · 5–7 = 550 € · 8–12 = 500 € / pers.
+ */
 export const FORMATION_A_INTER_UNIT_EUROS: Record<number, number> = {
   1: 800,
-  2: 750,
-  3: 700,
+  2: 700,
+  3: 650,
   4: 650,
-  5: 600,
+  5: 550,
   6: 550,
-  7: 500,
-  8: 450,
-  9: 450,
-  10: 450,
-  11: 450,
-  12: 450,
+  7: 550,
+  8: 500,
+  9: 500,
+  10: 500,
+  11: 500,
+  12: 500,
 }
+
+/** Lignes affichées sur /formations/inscription. */
+export const FORMATION_A_INTER_TIERS = [
+  { seats: '1', unit: 800, total: '800 €' },
+  { seats: '2', unit: 700, total: '1 400 €' },
+  { seats: '3 à 4', unit: 650, total: '1 950 € à 2 600 €' },
+  { seats: '5 à 7', unit: 550, total: '2 750 € à 3 850 €' },
+  { seats: '8 à 12', unit: 500, total: '4 000 € à 6 000 €' },
+] as const
 
 export function clampFormationAInterPlaces(places: number): number {
   return Math.min(FORMATION_A_INTER.seatsMax, Math.max(1, Math.floor(Number(places)) || 1))

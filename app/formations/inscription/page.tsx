@@ -6,7 +6,7 @@ import { Price } from '@/components/ui/Price'
 import { FormationCheckout } from '@/components/formations/FormationCheckout'
 import {
   FORMATION_A_INTER,
-  FORMATION_A_INTER_UNIT_EUROS,
+  FORMATION_A_INTER_TIERS,
   VAT_MENTION,
   areFormationsPublished,
 } from '@/lib/site-facts'
@@ -78,15 +78,11 @@ export default async function FormationInscriptionPage({
                     </tr>
                   </thead>
                   <tbody>
-                    {([1, 2, 3, 4, 5, 6, 7, 8] as const).map((n) => (
-                      <tr key={n} className="border-t border-black/10">
-                        <td className="px-4 py-2">{n === 8 ? '8 à 12' : n}</td>
-                        <td className="px-4 py-2">{FORMATION_A_INTER_UNIT_EUROS[n]} €</td>
-                        <td className="px-4 py-2">
-                          {n === 8
-                            ? `${8 * FORMATION_A_INTER_UNIT_EUROS[8]} € à ${12 * FORMATION_A_INTER_UNIT_EUROS[12]} €`
-                            : `${n * FORMATION_A_INTER_UNIT_EUROS[n]} €`}
-                        </td>
+                    {FORMATION_A_INTER_TIERS.map((tier) => (
+                      <tr key={tier.seats} className="border-t border-black/10">
+                        <td className="px-4 py-2">{tier.seats}</td>
+                        <td className="px-4 py-2">{tier.unit} €</td>
+                        <td className="px-4 py-2">{tier.total}</td>
                       </tr>
                     ))}
                   </tbody>

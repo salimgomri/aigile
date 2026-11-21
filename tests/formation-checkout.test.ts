@@ -61,12 +61,16 @@ describe('formation checkout (price_data, like the book)', () => {
 })
 
 describe('formation degressive prices', () => {
-  it('starts at 800 € for one person and decreases by 50 € per extra seat until 8', () => {
+  it('uses volume tiers from 800 € down to 500 €', () => {
     expect(formationAInterUnitCentimes(1)).toBe(80000)
-    expect(formationAInterUnitCentimes(2)).toBe(75000)
-    expect(formationAInterUnitCentimes(7)).toBe(50000)
-    expect(formationAInterUnitCentimes(8)).toBe(45000)
-    expect(formationAInterTotalEuros(2)).toBe(1500)
+    expect(formationAInterUnitCentimes(2)).toBe(70000)
+    expect(formationAInterTotalEuros(2)).toBe(1400)
+    expect(formationAInterUnitCentimes(3)).toBe(65000)
+    expect(formationAInterUnitCentimes(4)).toBe(65000)
+    expect(formationAInterUnitCentimes(5)).toBe(55000)
+    expect(formationAInterUnitCentimes(7)).toBe(55000)
+    expect(formationAInterUnitCentimes(8)).toBe(50000)
+    expect(formationAInterUnitCentimes(12)).toBe(50000)
     expect(clampFormationAInterPlaces(0)).toBe(1)
     expect(clampFormationAInterPlaces(99)).toBe(12)
   })
