@@ -61,16 +61,16 @@ describe('formation checkout (price_data, like the book)', () => {
 })
 
 describe('formation degressive prices', () => {
-  it('uses volume tiers from 800 € down to 500 €', () => {
+  it('applies −10 / −15 / −20 / −25 % off 800 €', () => {
     expect(formationAInterUnitCentimes(1)).toBe(80000)
-    expect(formationAInterUnitCentimes(2)).toBe(70000)
-    expect(formationAInterTotalEuros(2)).toBe(1400)
-    expect(formationAInterUnitCentimes(3)).toBe(65000)
-    expect(formationAInterUnitCentimes(4)).toBe(65000)
-    expect(formationAInterUnitCentimes(5)).toBe(55000)
-    expect(formationAInterUnitCentimes(7)).toBe(55000)
-    expect(formationAInterUnitCentimes(8)).toBe(50000)
-    expect(formationAInterUnitCentimes(12)).toBe(50000)
+    expect(formationAInterUnitCentimes(2)).toBe(72000)
+    expect(formationAInterTotalEuros(2)).toBe(1440)
+    expect(formationAInterUnitCentimes(3)).toBe(68000)
+    expect(formationAInterUnitCentimes(4)).toBe(68000)
+    expect(formationAInterUnitCentimes(5)).toBe(64000)
+    expect(formationAInterUnitCentimes(7)).toBe(64000)
+    expect(formationAInterUnitCentimes(8)).toBe(60000)
+    expect(formationAInterUnitCentimes(12)).toBe(60000)
     expect(clampFormationAInterPlaces(0)).toBe(1)
     expect(clampFormationAInterPlaces(99)).toBe(12)
   })

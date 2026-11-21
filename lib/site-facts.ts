@@ -39,31 +39,31 @@ export const FORMATION_A_INTER = {
 } as const
 
 /**
- * Tarif dégressif par paliers (plus simple à vendre qu’un −50 € par place).
- * 1 = 800 € · 2 = 700 € · 3–4 = 650 € · 5–7 = 550 € · 8–12 = 500 € / pers.
+ * Tarif dégressif : 800 €, puis −10 % / −15 % / −20 % / −25 %.
+ * 1 = 800 · 2 = 720 · 3–4 = 680 · 5–7 = 640 · 8–12 = 600 € / pers.
  */
 export const FORMATION_A_INTER_UNIT_EUROS: Record<number, number> = {
   1: 800,
-  2: 700,
-  3: 650,
-  4: 650,
-  5: 550,
-  6: 550,
-  7: 550,
-  8: 500,
-  9: 500,
-  10: 500,
-  11: 500,
-  12: 500,
+  2: 720,
+  3: 680,
+  4: 680,
+  5: 640,
+  6: 640,
+  7: 640,
+  8: 600,
+  9: 600,
+  10: 600,
+  11: 600,
+  12: 600,
 }
 
 /** Lignes affichées sur /formations/inscription. */
 export const FORMATION_A_INTER_TIERS = [
-  { seats: '1', unit: 800, total: '800 €' },
-  { seats: '2', unit: 700, total: '1 400 €' },
-  { seats: '3 à 4', unit: 650, total: '1 950 € à 2 600 €' },
-  { seats: '5 à 7', unit: 550, total: '2 750 € à 3 850 €' },
-  { seats: '8 à 12', unit: 500, total: '4 000 € à 6 000 €' },
+  { seats: '1', unit: 800, total: '800 €', discount: '—' },
+  { seats: '2', unit: 720, total: '1 440 €', discount: '−10 %' },
+  { seats: '3 à 4', unit: 680, total: '2 040 € à 2 720 €', discount: '−15 %' },
+  { seats: '5 à 7', unit: 640, total: '3 200 € à 4 480 €', discount: '−20 %' },
+  { seats: '8 à 12', unit: 600, total: '4 800 € à 7 200 €', discount: '−25 %' },
 ] as const
 
 export function clampFormationAInterPlaces(places: number): number {

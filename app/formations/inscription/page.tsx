@@ -74,6 +74,7 @@ export default async function FormationInscriptionPage({
                     <tr className="text-left bg-aigile-navy text-white">
                       <th className="px-4 py-2 font-semibold">Places</th>
                       <th className="px-4 py-2 font-semibold">Prix / personne</th>
+                      <th className="px-4 py-2 font-semibold">Remise</th>
                       <th className="px-4 py-2 font-semibold">Total</th>
                     </tr>
                   </thead>
@@ -82,6 +83,7 @@ export default async function FormationInscriptionPage({
                       <tr key={tier.seats} className="border-t border-black/10">
                         <td className="px-4 py-2">{tier.seats}</td>
                         <td className="px-4 py-2">{tier.unit} €</td>
+                        <td className="px-4 py-2">{tier.discount}</td>
                         <td className="px-4 py-2">{tier.total}</td>
                       </tr>
                     ))}

@@ -116,7 +116,7 @@ Règle : ne jamais descendre sous le **taux journalier réel de Salim × nombre 
 
 | Formule | Prix | Note |
 |---|---|---|
-| **Place inter à distance** | **800 €** (1 pers.), puis paliers : 700 / 650 / 550 / **500 €** (8–12) | Prix public. **Ce n'est pas le tarif entreprise.** |
+| **Place inter à distance** | **800 €** (1 pers.), puis −10 / −15 / −20 / −25 % (720 / 680 / 640 / **600 €**) | Prix public. **Ce n'est pas le tarif entreprise.** |
 | **Tarif « fondateur »** (optionnel) | [MONTANT À FIXER PAR SALIM] | **Uniquement si Salim le valide.** Places limitées, annoncées comme tarif de lancement et non comme le tarif normal. Contrepartie : avis noté + témoignage écrit (accord d'usage signé) [À CONFIRMER : obligatoire ou demandé]. |
 
 Le prix comprend : la journée, le livre, les accès aux outils et les supports listés au §7.
@@ -124,7 +124,7 @@ Le prix comprend : la journée, le livre, les accès aux outils et les supports 
 ## 10. Modalités
 
 - **Inscription** : en ligne via [/formations/inscription](/formations/inscription), jusqu'à [À CONFIRMER : J-3] ou jusqu'à ce que le groupe soit complet.
-- **Places (inter)** : dès 1 personne, jusqu'à 12. La session a lieu même pour un seul inscrit. Tarif dégressif par paliers : 800 € (1), 700 € (2), 650 € (3–4), 550 € (5–7), 500 € (8–12).
+- **Places (inter)** : dès 1 personne, jusqu'à 12. La session a lieu même pour un seul inscrit. Tarif dégressif : 800 € (1), −10 % à 720 € (2), −15 % à 680 € (3–4), −20 % à 640 € (5–7), −25 % à 600 € (8–12).
 - **Convocation** : e-mail avec [LIEU/LIEN], programme et consignes techniques, [À CONFIRMER : 48 h] avant.
 - **Annulation par le participant** : plus de 7 jours avant : remboursement ou report ; moins de 7 jours : report sur une session suivante (voir [CGV](/cgv#formations-prestations)).
 - **Droit de rétractation** (achat par un particulier à distance) : 14 jours à compter de l'inscription, en écrivant à salim@aigile.lu. Si la session a lieu avant la fin de ce délai, une demande expresse d'exécution (case non précochée) est requise.
