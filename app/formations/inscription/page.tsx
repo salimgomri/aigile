@@ -4,7 +4,12 @@ import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
 import { Price } from '@/components/ui/Price'
 import { FormationCheckout } from '@/components/formations/FormationCheckout'
-import { FORMATION_A_INTER, VAT_MENTION, areFormationsPublished } from '@/lib/site-facts'
+import {
+  FORMATION_A_INTER,
+  FORMATION_A_INTER_UNIT_EUROS,
+  VAT_MENTION,
+  areFormationsPublished,
+} from '@/lib/site-facts'
 
 export const metadata: Metadata = {
   title: 'Inscription — Agile + IA : démarrer | AIgile',
@@ -60,23 +65,53 @@ export default async function FormationInscriptionPage({
                 </li>
                 <li className="flex justify-between gap-4">
                   <span className="text-gray-500">Groupe</span>
-                  <strong>
-                    {FORMATION_A_INTER.seatsMin} à {FORMATION_A_INTER.seatsMax} personnes
-                  </strong>
+                  <strong>Dès 1 personne, jusqu&apos;à {FORMATION_A_INTER.seatsMax}</strong>
                 </li>
               </ul>
-              <div className="rounded-2xl bg-white border-2 border-aigile-gold p-8 text-center mb-8">
-                <p className="text-sm uppercase tracking-wide text-gray-500">Prix public — 1 place</p>
-                <p className="text-4xl font-extrabold my-2">
-                  <Price amount={FORMATION_A_INTER.priceEuros} audience="b2c" />
+              <div className="mb-8 overflow-x-auto rounded-2xl border border-black/10 bg-white">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left bg-aigile-navy text-white">
+                      <th className="px-4 py-2 font-semibold">Places</th>
+                      <th className="px-4 py-2 font-semibold">Prix / personne</th>
+                      <th className="px-4 py-2 font-semibold">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {([1, 2, 3, 4, 5, 6, 7, 8] as const).map((n) => (
+                      <tr key={n} className="border-t border-black/10">
+                        <td className="px-4 py-2">{n === 8 ? '8 à 12' : n}</td>
+                        <td className="px-4 py-2">{FORMATION_A_INTER_UNIT_EUROS[n]} €</td>
+                        <td className="px-4 py-2">
+                          {n === 8
+                            ? `${8 * FORMATION_A_INTER_UNIT_EUROS[8]} € à ${12 * FORMATION_A_INTER_UNIT_EUROS[12]} €`
+                            : `${n * FORMATION_A_INTER_UNIT_EUROS[n]} €`}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="px-4 py-3 text-xs text-gray-600">
+                  {VAT_MENTION}. À partir de 8 personnes d&apos;une même entreprise, le{' '}
+                  <Link href="/formations" className="underline">
+                    forfait intra (à partir de 2 000 € HT)
+                  </Link>{' '}
+                  est en général plus avantageux.
                 </p>
-                <p className="text-xs">{VAT_MENTION}</p>
+              </div>
+              <div className="rounded-2xl bg-white border-2 border-aigile-gold p-8 text-center mb-8">
+                <p className="text-sm uppercase tracking-wide text-gray-500">
+                  À partir de <Price amount={FORMATION_A_INTER.priceEuros} audience="b2c" hideVat />{' '}
+                  pour 1 personne
+                </p>
+                <p className="text-xs mb-2">{VAT_MENTION}</p>
                 <FormationCheckout />
               </div>
             </>
           )}
           <p className="text-sm text-gray-700">
-            {FORMATION_A_INTER.minToRun} Paiement par carte via Stripe Checkout. Case de demande
+            {FORMATION_A_INTER.minToRun} Tarif dégressif si vous prenez plusieurs places.
+            Paiement par carte via Stripe Checkout. Case de demande
             expresse d&apos;exécution avant la fin du délai de rétractation : obligatoire, non
             précochée.
           </p>

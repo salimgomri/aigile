@@ -229,7 +229,7 @@ export const CATALOG: Record<string, Product> = {
     type: 'formation_seat',
     title: 'Place inter — Agile + IA : démarrer',
     description:
-      '1 place (1 personne) · 1 journée (7 h) à distance · groupe 8 à 12 · TVA non applicable, art. 293 B du CGI',
+      '1 place = 1 personne · dès 1 inscrit · 1 journée (7 h) à distance · tarif dégressif · TVA non applicable, art. 293 B du CGI',
     amount: FORMATION_A_INTER.priceCentimes,
     currency: 'eur',
     isRecurring: false,

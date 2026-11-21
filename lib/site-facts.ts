@@ -24,19 +24,49 @@ export const TAGLINE_LIVRE_COACHING = "Le livre expose le système. Le coaching 
 export const DIAGNOSTIC_URL = '/diagnostic'
 export const DIAGNOSTIC_DURATION = '30 min'
 
-/** Session inter « Agile + IA : démarrer » — 800 € = 1 place (1 personne). */
+/** Session inter « Agile + IA : démarrer ». 1 personne suffit. Tarif dégressif. */
 export const FORMATION_A_INTER = {
   title: 'Agile + IA : démarrer',
   duration: '1 journée (7 h de formation)',
   schedule: '8 h 45 – 17 h 30, heure de Paris',
   format: 'À distance, en direct',
-  seatsMin: 8,
+  seatsMin: 1,
   seatsMax: 12,
-  perSeat: '1 place = 1 personne',
+  perSeat: '1 place = 1 personne (la session a lieu dès 1 inscrit)',
   priceEuros: 800,
   priceCentimes: 80000,
-  minToRun: 'La session peut être reportée sous 8 inscrits (remboursement intégral ou report, au choix).',
+  minToRun: 'La session a lieu même pour une seule personne.',
 } as const
+
+/** Prix unitaire (€) selon le nombre de places achetées d’un coup. */
+export const FORMATION_A_INTER_UNIT_EUROS: Record<number, number> = {
+  1: 800,
+  2: 750,
+  3: 700,
+  4: 650,
+  5: 600,
+  6: 550,
+  7: 500,
+  8: 450,
+  9: 450,
+  10: 450,
+  11: 450,
+  12: 450,
+}
+
+export function clampFormationAInterPlaces(places: number): number {
+  return Math.min(FORMATION_A_INTER.seatsMax, Math.max(1, Math.floor(Number(places)) || 1))
+}
+
+export function formationAInterUnitCentimes(places: number): number {
+  const n = clampFormationAInterPlaces(places)
+  return (FORMATION_A_INTER_UNIT_EUROS[n] ?? FORMATION_A_INTER.priceEuros) * 100
+}
+
+export function formationAInterTotalEuros(places: number): number {
+  const n = clampFormationAInterPlaces(places)
+  return n * (FORMATION_A_INTER_UNIT_EUROS[n] ?? FORMATION_A_INTER.priceEuros)
+}
 
 export const VAT_MENTION = 'TVA non applicable, art. 293 B du CGI'
 /** Visible sur /mentions-legales et /cgv — à confirmer avec le comptable. */

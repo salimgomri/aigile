@@ -124,7 +124,7 @@ Le prix comprend : la journée, le livre, les accès aux outils et les supports 
 ## 10. Modalités
 
 - **Inscription** : en ligne via [/formations/inscription](/formations/inscription), jusqu'à [À CONFIRMER : J-3] ou jusqu'à ce que le groupe soit complet.
-- **Places (inter)** : 8 à 12 personnes. **Minimum de 8 inscrits** [À CONFIRMER] : en dessous, la session peut être reportée et vous êtes remboursé intégralement ou inscrit à la date suivante, au choix.
+- **Places (inter)** : dès 1 personne, jusqu'à 12. La session a lieu même pour un seul inscrit. Tarif dégressif (800 € la place, puis 50 € de moins par place supplémentaire jusqu'à 450 € / pers. à partir de 8).
 - **Convocation** : e-mail avec [LIEU/LIEN], programme et consignes techniques, [À CONFIRMER : 48 h] avant.
 - **Annulation par le participant** : plus de 7 jours avant : remboursement ou report ; moins de 7 jours : report sur une session suivante (voir [CGV](/cgv#formations-prestations)).
 - **Droit de rétractation** (achat par un particulier à distance) : 14 jours à compter de l'inscription, en écrivant à salim@aigile.lu. Si la session a lieu avant la fin de ce délai, une demande expresse d'exécution (case non précochée) est requise.

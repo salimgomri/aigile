@@ -3,7 +3,13 @@ import type Stripe from 'stripe'
 import { getProduct, usesInlinePriceData } from '@/lib/payments/catalog'
 import { parseCheckoutSessionForOrder } from '@/lib/orders/parse-checkout-session'
 import { productFromSession } from '@/lib/downloads/session-guards'
-import { AMAZON_URL_DEFAULT, FORMATION_A_INTER } from '@/lib/site-facts'
+import {
+  AMAZON_URL_DEFAULT,
+  FORMATION_A_INTER,
+  clampFormationAInterPlaces,
+  formationAInterTotalEuros,
+  formationAInterUnitCentimes,
+} from '@/lib/site-facts'
 
 describe('formation checkout (price_data, like the book)', () => {
   it('exposes the inter seat without a Stripe Price ID', () => {
@@ -15,7 +21,7 @@ describe('formation checkout (price_data, like the book)', () => {
     expect(usesInlinePriceData(product!)).toBe(true)
     expect(product!.description).toContain('1 place')
     expect(product!.description).toContain('7 h')
-    expect(FORMATION_A_INTER.seatsMin).toBe(8)
+    expect(FORMATION_A_INTER.seatsMin).toBe(1)
     expect(FORMATION_A_INTER.seatsMax).toBe(12)
     expect(FORMATION_A_INTER.duration).toContain('7 h')
   })
@@ -51,6 +57,18 @@ describe('formation checkout (price_data, like the book)', () => {
     const product = productFromSession(session)
     expect(product?.slug).toBe('formation-a-place')
     expect(product?.fichierCle).toBeNull()
+  })
+})
+
+describe('formation degressive prices', () => {
+  it('starts at 800 € for one person and decreases by 50 € per extra seat until 8', () => {
+    expect(formationAInterUnitCentimes(1)).toBe(80000)
+    expect(formationAInterUnitCentimes(2)).toBe(75000)
+    expect(formationAInterUnitCentimes(7)).toBe(50000)
+    expect(formationAInterUnitCentimes(8)).toBe(45000)
+    expect(formationAInterTotalEuros(2)).toBe(1500)
+    expect(clampFormationAInterPlaces(0)).toBe(1)
+    expect(clampFormationAInterPlaces(99)).toBe(12)
   })
 })
 

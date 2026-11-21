@@ -1,15 +1,32 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { getCheckoutErrorMessage } from '@/lib/checkout/errors'
-import { VAT_MENTION } from '@/lib/site-facts'
+import {
+  FORMATION_A_INTER,
+  VAT_MENTION,
+  clampFormationAInterPlaces,
+  formationAInterTotalEuros,
+  formationAInterUnitCentimes,
+} from '@/lib/site-facts'
+import { Price } from '@/components/ui/Price'
 
 export function FormationCheckout() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [places, setPlaces] = useState(1)
   const [acceptCgv, setAcceptCgv] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+
+  const qty = clampFormationAInterPlaces(places)
+  const unit = formationAInterUnitCentimes(qty) / 100
+  const total = formationAInterTotalEuros(qty)
+
+  const placeOptions = useMemo(
+    () => Array.from({ length: FORMATION_A_INTER.seatsMax }, (_, i) => i + 1),
+    [],
+  )
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -27,6 +44,7 @@ export function FormationCheckout() {
           productId: 'formation-a-place',
           buyerEmail: email,
           buyerName: name,
+          quantity: qty,
           checkoutSource: 'formation_inscription',
         }),
       })
@@ -49,6 +67,31 @@ export function FormationCheckout() {
 
   return (
     <form onSubmit={onSubmit} className="mt-6 text-left space-y-4">
+      <div>
+        <label htmlFor="formation-places" className="block text-sm font-medium mb-1">
+          Nombre de places
+        </label>
+        <select
+          id="formation-places"
+          value={qty}
+          onChange={(e) => setPlaces(Number(e.target.value))}
+          className="w-full rounded-xl border border-black/15 bg-white px-3 py-2.5"
+        >
+          {placeOptions.map((n) => (
+            <option key={n} value={n}>
+              {n} {n === 1 ? 'place' : 'places'} — {FORMATION_A_INTER_UNIT_LABEL(n)}
+            </option>
+          ))}
+        </select>
+      </div>
+      <p className="text-center">
+        <span className="block text-sm text-gray-500">
+          {unit} € / place × {qty}
+        </span>
+        <span className="text-3xl font-extrabold">
+          <Price amount={total} audience="b2c" hideVat />
+        </span>
+      </p>
       <div>
         <label htmlFor="formation-name" className="block text-sm font-medium mb-1">
           Nom
@@ -98,7 +141,7 @@ export function FormationCheckout() {
         disabled={loading}
         className="w-full min-h-[48px] rounded-full bg-aigile-gold px-6 py-3 font-semibold text-aigile-navy disabled:opacity-60"
       >
-        {loading ? 'Redirection…' : 'S’inscrire et payer'}
+        {loading ? 'Redirection…' : `S’inscrire et payer — ${total} €`}
       </button>
       {error ? (
         <p className="rounded-xl bg-red-50 px-3 py-2 text-sm text-red-800" role="alert">
@@ -107,4 +150,10 @@ export function FormationCheckout() {
       ) : null}
     </form>
   )
+}
+
+function FORMATION_A_INTER_UNIT_LABEL(n: number): string {
+  const unit = formationAInterUnitCentimes(n) / 100
+  const total = formationAInterTotalEuros(n)
+  return `${unit} € / pers. · ${total} €`
 }

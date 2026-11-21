@@ -40,11 +40,11 @@ Salim GOMRI, entrepreneur individuel (EI), micro-entrepreneur, nom commercial GO
 
 ## Partie B — Particuliers (session inter à distance, place individuelle)
 
-**B1. Inscription et paiement.** Inscription en ligne et paiement par carte via Stripe Checkout ([page d'inscription](/formations/inscription)). Prix par place indiqué sur la page, **TVA non applicable, art. 293 B du CGI** (800 € (TVA non applicable)). Facture/reçu par e-mail.
+**B1. Inscription et paiement.** Inscription en ligne et paiement par carte via Stripe Checkout ([page d'inscription](/formations/inscription)). Prix par place selon tarif dégressif affiché sur la page (800 € pour 1 place, puis dégressif jusqu'à 12 places), **TVA non applicable, art. 293 B du CGI**. Facture/reçu par e-mail.
 
 **B2. Droit de rétractation.** Le consommateur dispose de 14 jours à compter de l'inscription pour se rétracter (C. consom., art. L.221-18), en écrivant à salim@aigile.lu. Un formulaire type est envoyé sur simple demande à cette adresse. Si la session a lieu avant la fin de ce délai, le participant doit en faire la **demande expresse** (case à cocher, non précochée) ; s'il se rétracte après le début de la session, il paie la part correspondant au service fourni (art. L.221-25) ; après exécution complète, il n'y a plus de droit de rétractation (art. L.221-28, 1°).
 
-**B3. Minimum de participants.** Si moins de 8 inscrits à J-7, la session peut être reportée ; le participant choisit entre la nouvelle date et le remboursement intégral.
+**B3. Effectif.** La session a lieu dès 1 inscrit, jusqu'à 12 personnes. Aucun report pour effectif insuffisant.
 
 **B4. Annulation par le participant (hors rétractation).** Plus de 7 jours avant la session : remboursement ou report, au choix. Moins de 7 jours : report sur une session suivante, sans remboursement.
 

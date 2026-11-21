@@ -3,6 +3,7 @@ import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { getProduct, getCurrentBookProduct, usesInlinePriceData } from '@/lib/payments/catalog'
+import { clampFormationAInterPlaces, formationAInterUnitCentimes } from '@/lib/site-facts'
 import {
   buildBookPhysicalLineItem,
   buildCombinedProductTitle,
@@ -176,7 +177,9 @@ export async function POST(request: Request) {
     const quantity =
       resolvedProduct.type === 'book_physical'
         ? Math.max(1, Math.min(99, Math.floor(qty) || 1))
-        : 1
+        : resolvedProduct.type === 'formation_seat'
+          ? clampFormationAInterPlaces(qty)
+          : 1
     const coffeeAmount =
       resolvedId === 'buy_coffee'
         ? Math.max(100, Math.min(99900, Math.round(customAmount ?? 0)))
@@ -270,6 +273,19 @@ export async function POST(request: Request) {
       if (addonProduct && addonProductId) {
         lineItems.push(buildBookPhysicalLineItem(addonProduct, addonProductId, baseUrl, 1))
       }
+    } else if (resolvedProduct.type === 'formation_seat') {
+      const unitAmount = formationAInterUnitCentimes(quantity)
+      lineItems.push({
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: resolvedProduct.title,
+            description: `${unitAmount / 100} € / place · ${quantity} place${quantity > 1 ? 's' : ''} · tarif dégressif`,
+          },
+          unit_amount: unitAmount,
+        },
+        quantity,
+      })
     } else if (usesInlinePriceData(resolvedProduct)) {
       lineItems.push({
         price_data: {
