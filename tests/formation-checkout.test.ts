@@ -61,16 +61,16 @@ describe('formation checkout (price_data, like the book)', () => {
 })
 
 describe('formation degressive prices', () => {
-  it('applies −10 / −15 / −20 / −25 % off 800 €', () => {
+  it('uses the published unit prices 800 / 770 / 750 / 720 / 700 €', () => {
     expect(formationAInterUnitCentimes(1)).toBe(80000)
-    expect(formationAInterUnitCentimes(2)).toBe(72000)
-    expect(formationAInterTotalEuros(2)).toBe(1440)
-    expect(formationAInterUnitCentimes(3)).toBe(68000)
-    expect(formationAInterUnitCentimes(4)).toBe(68000)
-    expect(formationAInterUnitCentimes(5)).toBe(64000)
-    expect(formationAInterUnitCentimes(7)).toBe(64000)
-    expect(formationAInterUnitCentimes(8)).toBe(60000)
-    expect(formationAInterUnitCentimes(12)).toBe(60000)
+    expect(formationAInterUnitCentimes(2)).toBe(77000)
+    expect(formationAInterTotalEuros(2)).toBe(1540)
+    expect(formationAInterUnitCentimes(3)).toBe(75000)
+    expect(formationAInterUnitCentimes(4)).toBe(75000)
+    expect(formationAInterUnitCentimes(5)).toBe(72000)
+    expect(formationAInterUnitCentimes(7)).toBe(72000)
+    expect(formationAInterUnitCentimes(8)).toBe(70000)
+    expect(formationAInterUnitCentimes(12)).toBe(70000)
     expect(clampFormationAInterPlaces(0)).toBe(1)
     expect(clampFormationAInterPlaces(99)).toBe(12)
   })
