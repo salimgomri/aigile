@@ -70,7 +70,7 @@ export const DIGITAL_PRODUCTS: DigitalProduct[] = [
   {
     slug: 'formation-a-place',
     nom: 'Place inter — formation Agile + IA : démarrer',
-    prix: 29000,
+    prix: 80000,
     audience: 'b2c',
     paymentLinkUrlEnv: 'STRIPE_LINK_FORMATION_A_URL',
     paymentLinkIdEnv: 'STRIPE_LINK_FORMATION_A_ID',

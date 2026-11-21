@@ -9,7 +9,8 @@ describe('formation checkout (price_data, like the book)', () => {
   it('exposes the inter seat without a Stripe Price ID', () => {
     const product = getProduct('formation-a-place')
     expect(product).not.toBeNull()
-    expect(product!.amount).toBe(29000)
+    expect(product!.amount).toBe(80000)
+    expect(FORMATION_A_INTER.priceEuros).toBe(800)
     expect(product!.type).toBe('formation_seat')
     expect(usesInlinePriceData(product!)).toBe(true)
     expect(product!.description).toContain('1 place')
@@ -29,7 +30,7 @@ describe('formation checkout (price_data, like the book)', () => {
         buyer_name: 'Alex',
         quantity: '1',
       },
-      amount_total: 29000,
+      amount_total: 80000,
       currency: 'eur',
       total_details: {},
       payment_intent: 'pi_f',

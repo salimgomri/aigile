@@ -68,7 +68,7 @@ export default async function FormationInscriptionPage({
               <div className="rounded-2xl bg-white border-2 border-aigile-gold p-8 text-center mb-8">
                 <p className="text-sm uppercase tracking-wide text-gray-500">Prix public — 1 place</p>
                 <p className="text-4xl font-extrabold my-2">
-                  <Price amount="290 €" audience="b2c" />
+                  <Price amount={FORMATION_A_INTER.priceEuros} audience="b2c" />
                 </p>
                 <p className="text-xs">{VAT_MENTION}</p>
                 <FormationCheckout />

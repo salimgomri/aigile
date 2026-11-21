@@ -3,7 +3,7 @@
 
 > **Deux offres, deux logiques de prix. Ne pas les confondre.**
 > 1. **Offre entreprise (intra)** : 1 jour pour un groupe d'environ 8 personnes, **à partir de 2 000 € HT**, forfait groupe, sur devis. C'est l'offre principale.
-> 2. **Offre inter / particuliers, à distance** : prix public **par place**, à tester (hypothèse 290 €). **Ce n'est pas le tarif entreprise.** Un éventuel tarif « fondateur » limité n'existe que si Salim le valide et est toujours présenté comme tel.
+> 2. **Offre inter / particuliers, à distance** : prix public **par place 800 €**. **Ce n'est pas le tarif entreprise.** Un éventuel tarif « fondateur » limité n'existe que si Salim le valide et est toujours présenté comme tel.
 
 > **En une phrase** : une journée pour comprendre comment travaille une équipe agile aujourd'hui, et comment y utiliser l'IA sans lui laisser la décision. Vous repartez avec une méthode, des modèles et trois outils que vous pouvez utiliser dès le lendemain.
 
@@ -22,7 +22,7 @@ Phrase-pivot de la marque, gardée ici : **« Le livre expose le système. La fo
 | **Formateur** | Salim G., coach agile, auteur du *Système S.A.L.I.M.* — [À CONFIRMER : 23 ans de terrain, chiffre unifié avec le site] |
 | **Langue** | Français |
 | **Prix entreprise (intra)** | **À partir de 2 000 € HT pour 8 personnes** (forfait groupe, **sur devis**). *Hypothèse à valider ; jamais sous le taux journalier réel de Salim.* |
-| **Prix inter / particuliers** | **Prix public par place à tester : 290 €** [À CONFIRMER : TTC/HT]. *Hypothèse. Ce n'est pas le tarif entreprise.* |
+| **Prix inter / particuliers** | **800 € par place** (TVA non applicable). *Ce n'est pas le tarif entreprise.* |
 | **Tarif « fondateur » (optionnel)** | **Uniquement si Salim le valide** : quelques places limitées [À CONFIRMER : 3 à 5 sur 12] à [MONTANT À FIXER PAR SALIM], explicitement présentées comme un tarif de lancement, contre avis noté + témoignage. **Le « 90 € » est abandonné.** |
 | **Inscription (inter)** / **Devis (intra)** | [/formations/inscription](/formations/inscription) / [/diagnostic](/diagnostic) |
 
@@ -116,7 +116,7 @@ Règle : ne jamais descendre sous le **taux journalier réel de Salim × nombre 
 
 | Formule | Prix | Note |
 |---|---|---|
-| **Place inter à distance** | **Prix public à tester : 290 €** [À CONFIRMER : TTC/HT] | Hypothèse, à ajuster sur les ventes réelles et la question 9 du questionnaire. **Ce n'est pas le tarif entreprise.** |
+| **Place inter à distance** | **800 €** (TVA non applicable) | Prix public par place. **Ce n'est pas le tarif entreprise.** |
 | **Tarif « fondateur »** (optionnel) | [MONTANT À FIXER PAR SALIM] | **Uniquement si Salim le valide.** Places limitées, annoncées comme tarif de lancement et non comme le tarif normal. Contrepartie : avis noté + témoignage écrit (accord d'usage signé) [À CONFIRMER : obligatoire ou demandé]. |
 
 Le prix comprend : la journée, le livre, les accès aux outils et les supports listés au §7.
@@ -143,7 +143,7 @@ Oui. La journée part de zéro et tout le travail se fait sur un cas fictif comm
 Non. On utilise un assistant IA conversationnel comme un débutant le ferait, et on apprend surtout à **vérifier** ce qu'il produit.
 
 **Quel est le prix ?**
-Pour un particulier ou une inscription individuelle : [PRIX PUBLIC, hypothèse 290 €] la place. Pour une entreprise qui forme une équipe d'environ 8 personnes : à partir de 2 000 € HT la journée, sur devis. [OPTIONNEL, seulement si Salim valide : les premières places « fondateur » sont proposées à [MONTANT] contre un avis noté et un court témoignage ; ce n'est pas le tarif normal.]
+Pour un particulier ou une inscription individuelle : **800 €** la place. Pour une entreprise qui forme une équipe d'environ 8 personnes : à partir de 2 000 € HT la journée, sur devis. [OPTIONNEL, seulement si Salim valide : les premières places « fondateur » sont proposées à [MONTANT] contre un avis noté et un court témoignage ; ce n'est pas le tarif normal.]
 
 **Est-ce que je dois obligatoirement écrire un témoignage ?**
 [À CONFIRMER : contrepartie obligatoire ou simplement demandée]. Dans tous les cas, rien n'est publié sans votre accord écrit, et vous pouvez demander l'anonymat.

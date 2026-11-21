@@ -3,6 +3,8 @@
  * Le moteur lit la config et adapte formulaire, champs requis et flux post-paiement.
  */
 
+import { FORMATION_A_INTER } from '@/lib/site-facts'
+
 export type ProductType =
   | 'book_physical'
   | 'credits_pack'
@@ -228,7 +230,7 @@ export const CATALOG: Record<string, Product> = {
     title: 'Place inter — Agile + IA : démarrer',
     description:
       '1 place (1 personne) · 1 journée (7 h) à distance · groupe 8 à 12 · TVA non applicable, art. 293 B du CGI',
-    amount: 29000,
+    amount: FORMATION_A_INTER.priceCentimes,
     currency: 'eur',
     isRecurring: false,
     requiresShipping: false,
