@@ -16,7 +16,7 @@ export function useCounter(
   active: boolean,
   duration = 1200
 ): number {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(target)
 
   useEffect(() => {
     if (!active) return

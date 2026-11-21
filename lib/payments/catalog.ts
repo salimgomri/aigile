@@ -3,6 +3,8 @@
  * Le moteur lit la config et adapte formulaire, champs requis et flux post-paiement.
  */
 
+import { FORMATION_A_INTER } from '@/lib/site-facts'
+
 export type ProductType =
   | 'book_physical'
   | 'credits_pack'
@@ -10,6 +12,8 @@ export type ProductType =
   | 'subscription_annual'
   | 'day_pass'
   | 'buy_coffee'
+  | 'digital_pdf'
+  | 'formation_seat'
 
 export type FulfillmentType = 'automatic' | 'manual_kdp' | 'stripe_subscription'
 
@@ -158,6 +162,83 @@ export const CATALOG: Record<string, Product> = {
     fulfillmentType: 'automatic',
   },
 
+  // ─── PRODUITS NUMÉRIQUES / FORMATION (price_data, comme le livre) ──
+  cahier: {
+    id: 'cahier',
+    stripePriceId: '',
+    type: 'digital_pdf',
+    title: 'Cahier pratique (PDF)',
+    description: 'TVA non applicable, art. 293 B du CGI',
+    amount: 1900,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: false,
+    shippingFee: 0,
+    freeShippingInPerson: false,
+    fulfillmentType: 'automatic',
+  },
+
+  'livre-pdf': {
+    id: 'livre-pdf',
+    stripePriceId: '',
+    type: 'digital_pdf',
+    title: 'Le Système S.A.L.I.M. (PDF)',
+    description: 'TVA non applicable, art. 293 B du CGI',
+    amount: 3900,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: false,
+    shippingFee: 0,
+    freeShippingInPerson: false,
+    fulfillmentType: 'automatic',
+  },
+
+  pack: {
+    id: 'pack',
+    stripePriceId: '',
+    type: 'digital_pdf',
+    title: 'Pack Système (PDF)',
+    description: 'TVA non applicable, art. 293 B du CGI',
+    amount: 7900,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: false,
+    shippingFee: 0,
+    freeShippingInPerson: false,
+    fulfillmentType: 'automatic',
+  },
+
+  'licence-equipe': {
+    id: 'licence-equipe',
+    stripePriceId: '',
+    type: 'digital_pdf',
+    title: 'Licence équipe',
+    description: 'Jusqu’à 10 personnes · TVA non applicable, art. 293 B du CGI',
+    amount: 24900,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: false,
+    shippingFee: 0,
+    freeShippingInPerson: false,
+    fulfillmentType: 'automatic',
+  },
+
+  'formation-a-place': {
+    id: 'formation-a-place',
+    stripePriceId: '',
+    type: 'formation_seat',
+    title: 'Place inter — Agile + IA : démarrer',
+    description:
+      '1 place = 1 personne · dès 1 inscrit · 1 journée (7 h) à distance · tarif dégressif · TVA non applicable, art. 293 B du CGI',
+    amount: FORMATION_A_INTER.priceCentimes,
+    currency: 'eur',
+    isRecurring: false,
+    requiresShipping: false,
+    shippingFee: 0,
+    freeShippingInPerson: false,
+    fulfillmentType: 'automatic',
+  },
+
   // ─── PACK CRÉDITS ────────────────────────────────────────
   credits_10: {
     id: 'credits_10',
@@ -192,14 +273,23 @@ function getStripePriceId(productId: string): string {
   return ''
 }
 
+export function usesInlinePriceData(product: Product): boolean {
+  return (
+    product.type === 'book_physical' ||
+    product.type === 'buy_coffee' ||
+    product.type === 'digital_pdf' ||
+    product.type === 'formation_seat'
+  )
+}
+
 export function getProduct(productId: string): Product | null {
   const p = CATALOG[productId]
   if (!p) return null
   // buy_coffee n'a pas de stripePriceId — on utilise price_data
   if (productId === 'buy_coffee') return { ...p }
   const priceId = getStripePriceId(productId)
-  // Livre physique : le checkout utilise price_data + amount du catalog — Price Stripe optionnel (sync affichage / encaissement).
-  if (p.type === 'book_physical') {
+  // Livre / PDF / formation : price_data à la session — Price Stripe optionnel.
+  if (usesInlinePriceData(p)) {
     return { ...p, stripePriceId: priceId || '' }
   }
   if (!priceId) return null

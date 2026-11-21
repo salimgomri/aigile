@@ -26,6 +26,7 @@ import {
 import { useLanguage } from '@/components/language-provider'
 import { getAboutBioHtml } from '@/lib/salim-experience'
 import { AigileLogo } from '@/components/brand/AigileLogo'
+import { LegalFooterLinks } from '@/components/legal/LegalFooterLinks'
 import { SiteChrome } from '@/components/layout/SiteChrome'
 import { MANIFESTO_SUB_NAV } from '@/lib/navigation/site-nav'
 import { logDownload } from '@/lib/downloads/client'
@@ -280,6 +281,7 @@ export function ManifestoApp() {
           <AigileLogo size="md" />
         </div>
         <p>{t('footer-copyright')}</p>
+        <LegalFooterLinks className="mt-4" />
       </footer>
     </div>
   )

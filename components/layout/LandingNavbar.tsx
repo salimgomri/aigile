@@ -17,9 +17,10 @@ export default function LandingNavbar() {
 
   const navLinks = [
     { href: '/', label: language === 'fr' ? 'Accueil' : 'Home' },
-    { href: '/parcours', label: language === 'fr' ? 'Parcours' : 'Journey' },
-    { href: '/prompts', label: 'Prompts' },
-    { href: '/#book', label: language === 'fr' ? 'Le livre' : 'The Book' },
+    { href: '/formations', label: language === 'fr' ? 'Formations' : 'Training' },
+    { href: '/diagnostic', label: 'Diagnostic' },
+    { href: '/kit', label: 'Kit' },
+    { href: '/salim', label: language === 'fr' ? 'Le livre' : 'The Book' },
   ]
 
   return (

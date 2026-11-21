@@ -43,7 +43,7 @@ export default function ToolsPage() {
               <span className="hidden md:block w-px h-6 bg-aigile-gold/30" aria-hidden />
               <span className="flex items-center gap-2 text-foreground/90">
                 <Star className="w-5 h-5 text-aigile-gold fill-aigile-gold/50" />
-                4.9/5 | {language === 'fr' ? '1000+ agilists FR/Lux' : '1000+ agilists worldwide'}
+                {language === 'fr' ? '1 000+ personnes accompagnées' : '1,000+ people coached'}
               </span>
               <span className="hidden md:block w-px h-6 bg-aigile-gold/30" aria-hidden />
               <span className="flex items-center gap-2 text-muted-foreground text-sm">

@@ -65,7 +65,9 @@ export function parseCheckoutSessionForOrder(
       : product?.title ?? (productId === 'buy_coffee' ? 'Buy a coffee' : 'Commande'))
 
   const amountTotal = session.amount_total ?? 0
-  const amountShipping = session.total_details?.amount_shipping ?? (inPersonPickup ? 0 : 500)
+  const amountShipping =
+    session.total_details?.amount_shipping ??
+    (product?.requiresShipping && !inPersonPickup ? 500 : 0)
   const amountDiscount = session.total_details?.amount_discount ?? 0
   const amountSubtotal = amountTotal - amountShipping + amountDiscount
   const buyerEmail = session.customer_email ?? session.customer_details?.email ?? ''

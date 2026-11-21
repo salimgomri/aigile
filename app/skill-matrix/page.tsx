@@ -14,6 +14,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Skill Matrix | AIgile',
   description: 'Cartographie des compétences agile et technique',
+  robots: { index: false, follow: false },
 }
 
 export default async function SkillMatrixPage() {

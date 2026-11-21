@@ -54,6 +54,18 @@ export default async function AdminLayout({
               <Sparkles className="h-4 w-4" aria-hidden />
               Intelligence
             </Link>
+            <Link href="/admin/leads" className="text-sm font-medium text-aigile-gold hover:text-book-orange">
+              Demandes
+            </Link>
+            <Link href="/admin/sales" className="text-sm font-medium text-aigile-gold hover:text-book-orange">
+              Ventes
+            </Link>
+            <Link href="/admin/kit" className="text-sm font-medium text-aigile-gold hover:text-book-orange">
+              Kit
+            </Link>
+            <Link href="/admin/stripe-links" className="text-sm font-medium text-aigile-gold hover:text-book-orange">
+              Liens Stripe
+            </Link>
             <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
               ← Dashboard
             </Link>

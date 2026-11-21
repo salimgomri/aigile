@@ -19,7 +19,7 @@ function getPersonas(yearsExperience: number) {
     {
       icon: Zap,
       title: 'Tu veux intégrer l’IA dans ton sprint',
-      text: '566 références IA sur 415 pages. 93 prompts utilisables immédiatement. 4 chapitres dédiés IA × Scrum.',
+      text: '566 références IA sur 477 pages. 93 prompts utilisables immédiatement. 4 chapitres dédiés IA × Scrum.',
     },
     {
       icon: Award,

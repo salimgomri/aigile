@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coaching produit &amp; delivery augmenté par l'IA | Le Système S.A.L.I.M. | AIgile</title>
+<meta name="description" content="J'aide les DSI et les directions produit à cadrer ce que l'IA produit, mesurer ce qui est réellement livré et débloquer les transformations agiles qui patinent. Diagnostic gratuit de 30 minutes.">
+<meta name="robots" content="noindex, nofollow"><!-- MAQUETTE : retirer cette ligne à la mise en ligne -->
+<link rel="canonical" href="https://aigile.lu/">
+<meta property="og:title" content="Votre livraison a l'air verte. Est-elle vraiment solide ? | AIgile">
+<meta property="og:description" content="Coaching produit & delivery augmenté par l'IA. Diagnostic gratuit de 30 minutes. Auteur du Système S.A.L.I.M.">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:type" content="website">
+<!--
+  MAQUETTE AIgile.lu — 27/10/2026 — NON DÉPLOYÉE
+  - Tout texte entre [À COMPLÉTER] / [À CONFIRMER] doit être rempli ou supprimé avant publication.
+  - Les prix sont des HYPOTHÈSES à valider (voir offre.md).
+  - Les liens "#STRIPE_..." sont à remplacer par les vrais Payment Links Stripe (voir brief-cursor.md).
+  - Les formulaires n'envoient rien (action="#") : à brancher (voir brief-cursor.md).
+-->
+<style>
+:root{
+  --ink:#14213d; --ink-2:#3d4a66; --muted:#6b7488; --line:#e6e8ee;
+  --bg:#ffffff; --bg-soft:#f7f6f1; --bg-dark:#14213d;
+  --gold:#f2c230; --gold-dark:#c99a06; --ok:#2e7d5b;
+  --radius:14px; --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ink)}
+h1,h2,h3{line-height:1.2;margin:0 0 .6em;font-weight:750;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4.6vw,3.3rem)}
+h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+h3{font-size:1.15rem}
+p{margin:0 0 1em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+section{padding:80px 0}
+.soft{background:var(--bg-soft)}
+.dark{background:var(--bg-dark);color:#fff}
+.dark a{color:#fff}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
+.dark .eyebrow{color:var(--gold)}
+.lead{font-size:1.15rem;color:var(--ink-2);max-width:720px}
+.dark .lead{color:#d6dbe6}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.todo{background:#fff4c2;color:#6b4e00;border-radius:4px;padding:0 4px;font-size:.92em;font-weight:600}
+.dark .todo{background:#5a4a12;color:#ffe48a}
+.draft{background:#fff4c2;color:#6b4e00;text-align:center;font-size:.85rem;padding:6px 12px}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:1rem;transition:transform .15s,box-shadow .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(242,194,48,.35)}
+.btn-primary:hover{background:#f5cd4d}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.dark .btn-ghost{border-color:#fff;color:#fff}
+.btn-small{padding:10px 18px;font-size:.92rem}
+.btn-block{width:100%}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 18px}
+
+/* Navigation */
+header.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{font-weight:800;font-size:1.3rem;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
+.logo span{background:var(--gold);padding:0 6px;border-radius:6px;margin-right:1px}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink-2)}
+.nav ul a:hover{color:var(--ink)}
+
+/* Héro */
+.hero{padding:70px 0 60px;background:linear-gradient(180deg,#fffdf4 0%,#fff 100%)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+.trust{font-size:.93rem;color:var(--muted)}
+.trust b{color:var(--ink)}
+.pivot{font-style:italic;color:var(--ink-2);margin-top:6px}
+.book{aspect-ratio:3/4;max-width:300px;margin:0 auto;border-radius:6px 14px 14px 6px;background:linear-gradient(135deg,#f6cf3c,#e8b40f);box-shadow:18px 22px 40px rgba(20,33,61,.22),inset 10px 0 0 rgba(0,0,0,.08);padding:30px 26px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink)}
+.book small{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.book strong{font-size:1.9rem;line-height:1.05;display:block}
+.book em{font-style:normal;font-size:.82rem;display:block;margin-top:10px}
+.book .author{font-weight:800;letter-spacing:.08em;font-size:.85rem}
+
+/* Preuves */
+.proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;background:#fff}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
+.proof-grid b{display:block;font-size:1.6rem}
+.proof-grid span{font-size:.88rem;color:var(--muted)}
+
+/* Cartes */
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.soft .card{border-color:#ebe8dc}
+.card h3{margin-bottom:.4em}
+.card p{color:var(--ink-2);font-size:.97rem;margin:0}
+.num{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--gold);font-weight:800;align-items:center;justify-content:center;margin-bottom:12px}
+.transition{margin-top:30px;font-weight:600}
+
+/* Méthode */
+.letters{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:34px 0}
+.letter{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:20px}
+.letter b{display:block;font-size:2.2rem;color:var(--gold);line-height:1}
+.letter h3{margin:.4em 0 .3em;color:#fff}
+.letter p{font-size:.92rem;color:#d6dbe6;margin:0}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rule{border-left:3px solid var(--gold);padding:6px 0 6px 14px;color:#e6eaf2}
+
+/* Offres */
+.offer{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.offer.featured{border:2px solid var(--gold);box-shadow:0 10px 30px rgba(20,33,61,.08);position:relative}
+.badge{position:absolute;top:-12px;left:22px;background:var(--gold);font-size:.75rem;font-weight:800;padding:3px 10px;border-radius:999px;letter-spacing:.04em}
+.offer .for{font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.offer ul{padding-left:18px;margin:0 0 18px;color:var(--ink-2);font-size:.95rem}
+.offer ul li{margin-bottom:6px}
+.price{font-size:1.45rem;font-weight:800;margin:auto 0 14px}
+.price small{font-size:.85rem;font-weight:600;color:var(--muted)}
+.note{font-size:.85rem;color:var(--muted);margin-top:18px}
+
+/* Livre */
+.book-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:48px;align-items:start}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;margin:18px 0 26px;padding:0;list-style:none}
+.facts li{padding-left:24px;position:relative;color:var(--ink-2)}
+.facts li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+.formats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.format{border:1px solid var(--line);border-radius:12px;padding:18px;background:#fff;display:flex;flex-direction:column}
+.format b{font-size:1.02rem}
+.format span{font-size:.9rem;color:var(--ink-2);margin:4px 0 12px}
+.format .p{font-weight:800;font-size:1.2rem;margin-top:auto;margin-bottom:10px}
+
+/* Témoignages */
+blockquote{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;font-size:1rem;color:var(--ink-2)}
+blockquote footer{margin-top:14px;font-size:.88rem;color:var(--ink);font-weight:700}
+blockquote footer span{display:block;font-weight:500;color:var(--muted)}
+
+/* Bio */
+.bio{display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:center}
+.avatar{width:200px;height:200px;border-radius:50%;background:#e9e6da;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;text-align:center;padding:20px}
+
+/* Formulaires */
+form{display:grid;gap:14px}
+.form-card{background:#fff;color:var(--ink);border-radius:18px;padding:30px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-size:.88rem;font-weight:650;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1px solid #cfd4de;border-radius:10px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:3px solid rgba(242,194,48,.5);border-color:var(--gold-dark)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;font-weight:500;color:var(--ink-2)}
+.check input{width:auto;margin-top:4px}
+.inline-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.inline-form input{flex:1 1 220px}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.cta-list{list-style:none;padding:0;margin:20px 0 0}
+.cta-list li{padding:8px 0 8px 30px;position:relative;color:#e6eaf2}
+.cta-list li::before{content:"→";position:absolute;left:0;color:var(--gold);font-weight:800}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--gold-dark)}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;color:var(--ink-2)}
+
+/* Pied de page */
+footer.site{background:#0e1830;color:#b8c0d2;font-size:.9rem;padding:46px 0 90px}
+footer.site a{color:#e3e8f2;text-decoration:none}
+footer.site .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer.site h4{color:#fff;margin:0 0 10px;font-size:.95rem}
+footer.site ul{list-style:none;padding:0;margin:0}
+footer.site li{margin-bottom:6px}
+
+/* Bouton mobile collant */
+.sticky-cta{display:none}
+
+/* Responsive */
+@media (max-width:980px){
+  .g5{grid-template-columns:repeat(2,1fr)}
+  .letters{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  section{padding:60px 0}
+  .nav ul{display:none}
+  .hero-grid,.book-grid,.cta-grid,.bio{grid-template-columns:1fr}
+  .hero-visual{order:-1}
+  .book{max-width:190px;padding:22px 18px}.book strong{font-size:1.35rem}
+  .proof-grid{grid-template-columns:1fr 1fr}
+  .g2,.g3,.rules,.formats,.row,.facts{grid-template-columns:1fr}
+  .avatar{width:140px;height:140px;margin:0 auto}
+  footer.site .cols{grid-template-columns:1fr}
+  .sticky-cta{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:30}
+  .sticky-cta .btn{width:100%;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .g5,.letters{grid-template-columns:1fr}
+  .btns .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="draft">Maquette non publiée — les éléments surlignés <span class="todo">[À COMPLÉTER]</span> sont à vérifier avant mise en ligne. Prix = hypothèses.</div>
+
+<!-- [0] NAVIGATION -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="AIgile, accueil"><span>AI</span>gile</a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#offres">Offres</a></li>
+        <li><a href="#livre">Le livre</a></li>
+        <li><a href="#ressources">Ressources gratuites</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-small" href="#diagnostic">Réserver un diagnostic</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- [1] HÉRO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Coaching produit &amp; delivery augmenté par l'IA · Luxembourg · France · à distance</span>
+      <h1>Votre livraison a l'air verte. Est-elle vraiment solide&nbsp;?</h1>
+      <p class="lead">J'aide les DSI et les directions produit à cadrer ce que l'IA produit, à mesurer ce qui est réellement livré et à débloquer les transformations agiles qui patinent, sans casser ce qui marche.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#diagnostic">Réserver un diagnostic gratuit (30&nbsp;min)</a>
+        <a class="btn btn-ghost" href="#ressources">Recevoir le kit «&nbsp;5 signaux&nbsp;» →</a>
+      </div>
+      <p class="trust"><b>23 ans de terrain agile</b> <span class="todo">[À CONFIRMER]</span> · <b>Secteur bancaire au Luxembourg</b> · Auteur du <b><i>Système S.A.L.I.M.</i></b> (19 chapitres)</p>
+      <p class="pivot">Le livre expose le système. Le coaching l'installe.</p>
+    </div>
+    <div class="hero-visual">
+      <!-- Remplacer par l'image réelle : /images/system-salim-hero-detoure-opt.jpg (alt="Couverture du livre Le Système S.A.L.I.M.") -->
+      <div class="book" role="img" aria-label="Couverture du livre Le Système S.A.L.I.M.">
+        <div><small>Le livre de référence</small><strong>Le Système S.A.L.I.M.</strong><em>Scrum Augmenté, Livré en Incrémental et Mesuré</em></div>
+        <div class="author">SALIM GOMRI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- [2] PREUVES -->
+<div class="proof">
+  <div class="wrap proof-grid">
+    <div><b>23 ans</b><span>de terrain <span class="todo">[À CONFIRMER]</span></span></div>
+    <div><b>300+</b><span>rétrospectives animées <span class="todo">[À CONFIRMER]</span></span></div>
+    <div><b><span class="todo">[À COMPLÉTER]</span></b><span>personnes accompagnées (une seule valeur)</span></div>
+    <div><b>19</b><span>chapitres · 93 prompts IA · 73 erreurs terrain</span></div>
+  </div>
+</div>
+
+<!-- [3] PROBLÈME -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Le problème</span>
+    <h2>L'IA produit plus vite. Votre équipe relit après coup.</h2>
+    <p class="lead">Les démos s'enchaînent, la vélocité est stable, les tableaux de bord sont verts. Et pourtant le client hésite, le comité s'impatiente et personne ne sait vraiment expliquer l'écart. Ce n'est pas un problème de méthode&nbsp;: c'est un problème de lecture.</p>
+    <div class="grid g5" style="margin-top:34px">
+      <div class="card"><span class="num">1</span><h3>L'adoption ne décolle pas</h3><p>Le nouveau fonctionnement existe sur le papier. Les équipes reviennent à leurs anciens réflexes.</p></div>
+      <div class="card"><span class="num">2</span><h3>Les délais glissent</h3><p>Dépendances jamais levées à temps. Les prévisions sont devenues décoratives.</p></div>
+      <div class="card"><span class="num">3</span><h3>Vous livrez sans impact métier</h3><p>Backlog plein, démos régulières, aucun indicateur métier qui bouge vraiment.</p></div>
+      <div class="card"><span class="num">4</span><h3>Le sponsor a disparu</h3><p>Décisions reportées, moins de points de pilotage. Le board s'impatiente.</p></div>
+      <div class="card"><span class="num">5</span><h3>Plus personne n'y croit</h3><p>Rituels vides, irritants non traités. La transformation est devenue un bruit de fond.</p></div>
+    </div>
+    <p class="transition">Si deux signaux vous parlent, parlons-en. <a href="#diagnostic">Réserver un diagnostic →</a></p>
+  </div>
+</section>
+
+<!-- [4] MÉTHODE -->
+<section class="dark" id="methode">
+  <div class="wrap">
+    <span class="eyebrow">La réponse</span>
+    <h2>Un système, pas un énième framework</h2>
+    <p class="lead">Le Système S.A.L.I.M. ne remplace ni Scrum ni votre organisation produit. Il structure ce qu'il faut regarder, dans quel ordre, et ce que l'IA a le droit de faire.</p>
+    <div class="letters">
+      <div class="letter"><b>S</b><h3>Scrum</h3><p>On garde le cadre que vos équipes connaissent.</p></div>
+      <div class="letter"><b>A</b><h3>Augmenté</h3><p>L'IA produit à l'intérieur d'un cadre posé par des humains&nbsp;: périmètre, données, exclusions.</p></div>
+      <div class="letter"><b>L</b><h3>Livré</h3><p>On regarde ce qui arrive chez l'utilisateur, pas ce qui est «&nbsp;done&nbsp;» dans l'outil.</p></div>
+      <div class="letter"><b>I</b><h3>Incrémental</h3><p>Des pas courts, révocables, visibles en comité.</p></div>
+      <div class="letter"><b>M</b><h3>Mesuré</h3><p>La maturité de livraison suivie sprint après sprint&nbsp;: scoring, quality gates, culture.</p></div>
+    </div>
+    <h3 style="color:#fff;margin-bottom:14px">Les 3 règles du cadre AIgile</h3>
+    <div class="rules">
+      <div class="rule">Le cadre contraint, il ne prescrit pas.</div>
+      <div class="rule">L'IA déclare, l'humain décide.</div>
+      <div class="rule">Toute transition faite par l'IA laisse une trace et reste révocable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- [5] COMMENT ON TRAVAILLE -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Comment on travaille</span>
+    <h2>Commencer petit, mesurer, puis décider</h2>
+    <div class="grid g3" style="margin-top:28px">
+      <div class="card"><span class="num">1</span><h3>Diagnostic (30 min, gratuit)</h3><p>Une photo nette des 5 signaux et 2 à 3 priorités. Compte rendu d'une page sous 24&nbsp;h ouvrées.</p></div>
+      <div class="card"><span class="num">2</span><h3>Un premier pas court</h3><p>Diagnostic approfondi, Sprint Day ou Sprint court de 4 à 6 semaines. Résultat visible pour le board.</p></div>
+      <div class="card"><span class="num">3</span><h3>Installation et autonomie</h3><p>Vos équipes reprennent la main avec le livre, le cahier et les outils. Si vous pouvez continuer seuls, je vous le dis.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- [6] OFFRES ENTREPRISES -->
+<!-- Prix = hypothèses à valider (offre.md §1 et §4). Politique : gratuit / "à partir de" / sur devis. -->
+<section class="soft" id="offres">
+  <div class="wrap">
+    <span class="eyebrow">Offres entreprises</span>
+    <h2>Des formats courts pour démarrer, un accompagnement pour durer</h2>
+    <div class="grid g3" style="margin-top:30px">
+      <div class="offer featured">
+        <span class="badge">Pour commencer</span>
+        <h3>Diagnostic flash</h3>
+        <div class="for">Décideur avec un enjeu actif</div>
+        <ul><li>30 min en visio</li><li>Lecture des 5 signaux</li><li>Compte rendu d'une page sous 24&nbsp;h</li><li>Une prochaine étape claire, ou aucune</li></ul>
+        <div class="price">Gratuit</div>
+        <a class="btn btn-primary btn-block" href="#diagnostic">Réserver</a>
+      </div>
+      <div class="offer">
+        <h3>Diagnostic Livraison &amp; IA</h3>
+        <div class="for">DSI, Head of Product, directeur de programme · variante Produit &amp; IA</div>
+        <ul><li>2 jours&nbsp;: entretiens et observation d'une cérémonie</li><li>Scoring de livraison et Westrum Culture Survey</li><li>Plan à 90 jours présentable en comité</li><li>Montant déductible si un Sprint court suit</li></ul>
+        <div class="price"><small>à partir de</small> 1&nbsp;900&nbsp;€&nbsp;<small>HT</small></div>
+        <a class="btn btn-ghost btn-block" href="#diagnostic">En parler</a>
+      </div>
+      <div class="offer">
+        <h3>Sprint Day</h3>
+        <div class="for">Une équipe, jusqu'à 12 personnes</div>
+        <ul><li>1 journée sur un vrai sprint (sur site ou 2 demi-journées à distance)</li><li>DoR/DoD avec l'IA, scoring, rétrospective</li><li>Cahier pratique offert à chaque participant</li></ul>
+        <div class="price"><small>à partir de</small> 1&nbsp;500&nbsp;€&nbsp;<small>HT</small></div>
+        <a class="btn btn-ghost btn-block" href="#diagnostic">En parler</a>
+      </div>
+      <div class="offer">
+        <h3>Sprint court ou transformation</h3>
+        <div class="for">Programme, plusieurs équipes</div>
+        <ul><li>Sprint court&nbsp;: 4 à 6 semaines pour stabiliser le flux</li><li>Transformation&nbsp;: 16 à 20 semaines sur les 5 signaux</li></ul>
+        <div class="price">Sur devis <small>après diagnostic</small></div>
+        <a class="btn btn-ghost btn-block" href="#diagnostic">Demander un diagnostic</a>
+      </div>
+      <div class="offer">
+        <h3>Coaching individuel</h3>
+        <div class="for">Scrum Master, PO/PM, manager</div>
+        <ul><li>3 séances de 60 min sur 6 semaines</li><li>Pack Système S.A.L.I.M. inclus</li></ul>
+        <div class="price">590&nbsp;€&nbsp;<small>HT</small></div>
+        <a class="btn btn-ghost btn-block" href="#diagnostic">Réserver un échange</a>
+      </div>
+      <div class="offer">
+        <h3>Licence équipe</h3>
+        <div class="for">Manager qui veut équiper son équipe</div>
+        <ul><li>Pack Système pour 10 personnes, usage interne</li><li>Facture au nom de l'entreprise</li><li>25 personnes&nbsp;: 490&nbsp;€&nbsp;HT · au-delà&nbsp;: sur devis</li></ul>
+        <div class="price">249&nbsp;€&nbsp;<small>HT</small></div>
+        <a class="btn btn-ghost btn-block" href="#STRIPE_LICENCE_EQUIPE">Acheter la licence</a>
+      </div>
+    </div>
+    <p class="note">Prix indicatifs. <span class="todo">[À COMPLÉTER : mention TVA selon régime]</span> Prestations payables par virement sur facture.</p>
+  </div>
+</section>
+
+<!-- [7] LE LIVRE -->
+<section id="livre">
+  <div class="wrap book-grid">
+    <div>
+      <div class="book" role="img" aria-label="Couverture du livre Le Système S.A.L.I.M.">
+        <div><small>Le livre de référence</small><strong>Le Système S.A.L.I.M.</strong><em>Scrum Augmenté, Livré en Incrémental et Mesuré</em></div>
+        <div class="author">SALIM GOMRI</div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">L'œuvre de référence</span>
+      <h2>Le Système S.A.L.I.M.&nbsp;: 23 ans de terrain en 19 chapitres</h2>
+      <p class="lead">Ce livre n'est pas un livre sur Scrum. C'est le livre que j'aurais voulu lire en 2003, lors de ma première rétrospective. Il documente ce que les tableaux de bord ne montrent pas, et le transforme en système reproductible.</p>
+      <ul class="facts">
+        <li>5 parties, 19 chapitres</li>
+        <li>10 plans d'action «&nbsp;dès lundi&nbsp;»</li>
+        <li>73 erreurs terrain, diagnostic et correction</li>
+        <li>93 prompts IA documentés</li>
+        <li>350+ questions-réponses terrain</li>
+        <li><span class="todo">[À COMPLÉTER : nombre de pages, 415 ou 477]</span></li>
+      </ul>
+      <div class="formats">
+        <div class="format"><b>Cahier pratique (PDF)</b><span>Les fiches de sprint, utilisables seules.</span><div class="p">19&nbsp;€</div><a class="btn btn-primary btn-small" href="#STRIPE_CAHIER">Télécharger le Cahier</a></div>
+        <div class="format"><b>Pack Système (PDF)</b><span>Livre + cahier + prompts + modèles DoR/DoD/rétro.</span><div class="p">79&nbsp;€</div><a class="btn btn-primary btn-small" href="#STRIPE_PACK">Obtenir le Pack</a></div>
+        <div class="format"><b>Livre (PDF)</b><span>Accès immédiat. <span class="todo">[À CONFIRMER : droits numériques]</span></span><div class="p">39&nbsp;€</div><a class="btn btn-ghost btn-small" href="#STRIPE_LIVRE_PDF">Acheter le PDF</a></div>
+        <div class="format"><b>Livre papier dédicacé</b><span>Envoi postal ou remise en main propre.</span><div class="p">69&nbsp;€ <small style="font-weight:500;font-size:.8rem">+ port</small></div><a class="btn btn-ghost btn-small" href="#STRIPE_LIVRE_PAPIER">Commander le livre</a></div>
+      </div>
+      <p class="note">Paiement sécurisé par Stripe. Fichiers numériques disponibles immédiatement après le paiement. <span class="todo">[À COMPLÉTER : mention TVA]</span></p>
+      <p class="transition">Vous voulez l'installer dans vos équipes plutôt que le lire seul&nbsp;? <a href="#diagnostic">Réserver un diagnostic →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- [8] RESSOURCES GRATUITES -->
+<section class="soft" id="ressources">
+  <div class="wrap">
+    <span class="eyebrow">Ressources gratuites</span>
+    <h2>Commencez gratuitement, dès votre prochain sprint</h2>
+    <div class="grid g2" style="margin-top:28px">
+      <div class="card" style="border:2px solid var(--gold)">
+        <h3>Kit «&nbsp;5 signaux&nbsp;» (PDF)</h3>
+        <p>Un auto-diagnostic de 10 minutes pour savoir quel signal bloque votre équipe, et un extrait du livre pour chacun.</p>
+        <!-- À brancher : outil e-mail (Brevo/Kit/Systeme.io) ou route API (brief-cursor.md) -->
+        <form class="inline-form" action="#" method="post" aria-label="Recevoir le kit 5 signaux">
+          <input type="text" name="prenom" placeholder="Prénom" autocomplete="given-name" required aria-label="Prénom">
+          <input type="email" name="email" placeholder="E-mail professionnel" autocomplete="email" required aria-label="E-mail professionnel">
+          <label class="check" style="flex-basis:100%"><input type="checkbox" name="consent" required> J'accepte de recevoir le kit et quelques e-mails sur le Système S.A.L.I.M. Désinscription en un clic.</label>
+          <button class="btn btn-primary" type="submit">Recevoir le kit</button>
+        </form>
+      </div>
+      <div class="grid" style="gap:14px">
+        <a class="card" href="https://aigile.lu/retro" style="text-decoration:none"><h3>Outil Rétro IA →</h3><p>8 questions, une rétrospective sur mesure pour votre équipe.</p></a>
+        <a class="card" href="https://aigile.lu/dashboard/westrum" style="text-decoration:none"><h3>Westrum Culture Survey →</h3><p>6 questions pour situer la culture de votre organisation.</p></a>
+        <a class="card" href="https://aigile.lu/manifesto" style="text-decoration:none"><h3>Manifeste AIgile →</h3><p>4 valeurs, 10 principes, affiche téléchargeable.</p></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- [9] TÉMOIGNAGES -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Ils en parlent</span>
+    <h2>Ce qu'en disent ceux qui ont travaillé avec moi</h2>
+    <p class="note" style="margin-top:0"><span class="todo">[À CONFIRMER : accord écrit des 3 personnes pour un usage commercial, fonction et entreprise]</span></p>
+    <div class="grid g3" style="margin-top:22px">
+      <blockquote>«&nbsp;Il ne s'est pas contenté de nous enseigner des frameworks. Il nous a fait comprendre les changements de culture et de mindset nécessaires à chaque niveau de l'organisation.&nbsp;»<footer>Nicolas Schell<span><span class="todo">[À CONFIRMER : Head of Digital Transformation, BIL]</span> · 9 ans de collaboration</span></footer></blockquote>
+      <blockquote>«&nbsp;Il a su créer un environnement de travail plus fluide, plus humain et plus collaboratif, que ce soit pour débloquer des situations concrètes ou renforcer la dynamique d'équipe.&nbsp;»<footer>Nouna Sehili<span><span class="todo">[À COMPLÉTER : fonction]</span> · collaboration multi-projets</span></footer></blockquote>
+      <blockquote>«&nbsp;Salim est un servant leader qui fera tout pour aider l'équipe. Et il n'hésitera pas à la mettre face à ses responsabilités lors d'une rétro qui conclut un très mauvais sprint.&nbsp;»<footer>David Mansy<span><span class="todo">[À COMPLÉTER : fonction]</span> · transformation digitale, secteur bancaire</span></footer></blockquote>
+    </div>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card"><h3>Étude de cas 1</h3><p><span class="todo">[À COMPLÉTER : contexte, ce qui a été fait, résultat mesuré, accord du client]</span></p></div>
+      <div class="card"><h3>Étude de cas 2</h3><p><span class="todo">[À COMPLÉTER : contexte, ce qui a été fait, résultat mesuré, accord du client]</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- [10] QUI SUIS-JE -->
+<section class="soft">
+  <div class="wrap bio">
+    <div class="avatar"><!-- Remplacer par une photo professionnelle (alt="Salim Gomri") -->Photo de Salim Gomri</div>
+    <div>
+      <span class="eyebrow">Qui suis-je</span>
+      <h2>Salim Gomri, coach agile et produit, auteur du Système S.A.L.I.M.</h2>
+      <p>Premier praticien agile au Luxembourg en 2006 <span class="todo">[À CONFIRMER]</span>, j'accompagne depuis <span class="todo">[À CONFIRMER : 23]</span> ans des équipes, des managers et des directions, notamment dans le secteur bancaire au Luxembourg. Créateur du Manifeste AIgile et du cadre AIgile.</p>
+      <p>Mentor Product Manager chez OpenClassrooms depuis 2020 <span class="todo">[À CONFIRMER : toujours actif, nombre d'apprenants diplômés]</span>. Certifications SAFe&nbsp;6 et PSM&nbsp;I <span class="todo">[À CONFIRMER]</span>.</p>
+      <p><b>Ce que je ne fais pas&nbsp;:</b> des slides sans terrain, des transformations «&nbsp;clé en main&nbsp;» qui ignorent votre contexte, laisser l'IA décider à votre place.</p>
+      <a class="btn btn-ghost btn-small" href="https://www.linkedin.com/in/salimgomri/" rel="noopener">Me suivre sur LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- [11] RÉSEAU D'EXPERTS -->
+<section>
+  <div class="wrap center">
+    <span class="eyebrow">Réseau d'experts AIgile</span>
+    <h2>Pas disponible ou pas le bon profil&nbsp;? Je vous mets en relation.</h2>
+    <p class="lead">Quand je ne peux pas prendre une mission, je vous recommande un coach, un expert produit ou un expert IA que j'ai vu travailler. Vous contractez directement avec lui. <span class="todo">[À COMPLÉTER : mention de transparence sur la commission d'apport]</span></p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-primary" href="#diagnostic">J'ai un besoin</a>
+      <a class="btn btn-ghost" href="#EXPERTS_FORM">Je suis expert, rejoindre le réseau</a>
+    </div>
+  </div>
+</section>
+
+<!-- [12] FORMULAIRE DIAGNOSTIC (CTA PRINCIPAL) -->
+<section class="dark" id="diagnostic">
+  <div class="wrap cta-grid">
+    <div>
+      <span class="eyebrow">Diagnostic gratuit · 30 minutes</span>
+      <h2>Réservez votre diagnostic</h2>
+      <p class="lead">Quelques informations, puis vous choisissez votre créneau. Sans engagement.</p>
+      <ul class="cta-list">
+        <li>Une photo nette de vos 5 signaux</li>
+        <li>2 à 3 priorités actionnables dès lundi</li>
+        <li>Un compte rendu d'une page sous 24&nbsp;h ouvrées</li>
+        <li>Une prochaine étape claire, ou la conclusion que vous pouvez avancer seuls</li>
+      </ul>
+    </div>
+    <div class="form-card">
+      <!-- À brancher : enregistrement du lead (e-mail à Salim + CRM/Sheet) puis redirection vers Calendly avec name/email préremplis (brief-cursor.md) -->
+      <form action="#" method="post" aria-label="Demande de diagnostic">
+        <div class="row">
+          <div><label for="d-nom">Nom *</label><input id="d-nom" name="nom" autocomplete="name" required></div>
+          <div><label for="d-email">E-mail professionnel *</label><input id="d-email" type="email" name="email" autocomplete="email" required></div>
+        </div>
+        <div class="row">
+          <div><label for="d-ent">Entreprise *</label><input id="d-ent" name="entreprise" autocomplete="organization" required></div>
+          <div><label for="d-role">Rôle *</label>
+            <select id="d-role" name="role" required><option value="">Choisir</option><option>DSI / CTO</option><option>Direction produit</option><option>Manager / directeur de programme</option><option>Scrum Master / PO / PM</option><option>Autre</option></select></div>
+        </div>
+        <div class="row">
+          <div><label for="d-taille">Taille</label>
+            <select id="d-taille" name="taille"><option value="">Choisir</option><option>1 équipe</option><option>2 à 5 équipes</option><option>Programme 6 équipes et plus</option></select></div>
+          <div><label for="d-horizon">Horizon</label>
+            <select id="d-horizon" name="horizon"><option value="">Choisir</option><option>Ce mois-ci</option><option>Ce trimestre</option><option>Plus tard</option></select></div>
+        </div>
+        <div><label for="d-enjeu">Enjeu principal *</label>
+          <select id="d-enjeu" name="enjeu" required><option value="">Choisir</option><option>L'adoption ne décolle pas</option><option>Les délais glissent</option><option>Pas d'impact métier</option><option>Intégrer l'IA dans les équipes</option><option>Le sponsor a disparu</option><option>Produit : priorisation, discovery, indicateurs</option><option>Je cherche un expert (réseau)</option></select></div>
+        <div><label for="d-msg">Message (facultatif)</label><textarea id="d-msg" name="message" rows="3"></textarea></div>
+        <label class="check"><input type="checkbox" name="consent" required> J'accepte que mes données soient utilisées pour me recontacter au sujet de ma demande (voir la <a href="#PRIVACY" style="color:inherit">politique de confidentialité</a>).</label>
+        <button class="btn btn-primary btn-block" type="submit">Continuer vers le calendrier</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- [13] FAQ -->
+<section>
+  <div class="wrap" style="max-width:820px">
+    <span class="eyebrow">Questions fréquentes</span>
+    <h2>Avant de réserver</h2>
+    <details><summary>Ça va me coûter combien&nbsp;?</summary><p>Le diagnostic de 30 minutes est gratuit. Ensuite, vous recevez une fourchette claire, ou la conclusion que vous pouvez avancer seuls. Les formats courts démarrent à 1&nbsp;500&nbsp;€&nbsp;HT.</p></details>
+    <details><summary>Vous allez me vendre quelque chose&nbsp;?</summary><p>Si vous pouvez y arriver seuls avec les recommandations, je vous le dis. Je préfère perdre une mission que vendre de l'inutile.</p></details>
+    <details><summary>Faut-il avoir lu le livre&nbsp;?</summary><p>Non. Le livre aide à comprendre le système&nbsp;; l'accompagnement l'installe dans votre contexte.</p></details>
+    <details><summary>Où intervenez-vous&nbsp;?</summary><p>Au Luxembourg et dans le Grand Est sur site, partout en francophonie à distance. <span class="todo">[À CONFIRMER : missions en anglais]</span></p></details>
+    <details><summary>Vous êtes contre l'IA&nbsp;?</summary><p>Non. L'IA produit, l'humain décide. Le système sert à cadrer ce qu'elle fait et à mesurer ce qu'elle livre.</p></details>
+    <details><summary>Uniquement Scrum&nbsp;?</summary><p>Non&nbsp;: produit, delivery, SAFe et équipes hybrides. S.A.L.I.M. part de Scrum mais s'applique à toute équipe qui livre par incréments.</p></details>
+    <details><summary>Peut-on payer sur facture&nbsp;?</summary><p>Oui pour les prestations et les licences équipe. Les produits numériques se paient par carte via Stripe.</p></details>
+    <details><summary>Puis-je partager le PDF avec mon équipe&nbsp;?</summary><p>La licence standard est personnelle. Pour une équipe, choisissez la licence équipe.</p></details>
+    <details><summary>Et le remboursement des produits numériques&nbsp;?</summary><p>En demandant l'accès immédiat au contenu, vous renoncez à votre droit de rétractation (voir les CGV). En cas de fichier défectueux ou de problème de téléchargement, écrivez-nous et nous réglons le problème.</p></details>
+  </div>
+</section>
+
+</main>
+
+<!-- [14] PIED DE PAGE -->
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <a class="logo" href="#top" style="color:#fff"><span style="color:var(--ink)">AI</span>gile</a>
+      <p style="margin-top:12px">Coaching produit &amp; delivery augmenté par l'IA. Le livre expose le système. Le coaching l'installe.</p>
+      <p>Salim Gomri · <span class="todo">[À COMPLÉTER : statut, SIRET ou n° luxembourgeois, adresse]</span><br><span class="todo">[À COMPLÉTER : contact@aigile.lu]</span><br><span class="todo">[À COMPLÉTER : mention TVA, ex. « TVA non applicable, art. 293 B du CGI »]</span></p>
+    </div>
+    <div>
+      <h4>Explorer</h4>
+      <ul><li><a href="#offres">Offres entreprises</a></li><li><a href="#livre">Le livre</a></li><li><a href="#ressources">Ressources gratuites</a></li><li><a href="https://aigile.lu/framework">Cadre AIgile</a></li><li><a href="https://www.linkedin.com/in/salimgomri/" rel="noopener">LinkedIn</a></li></ul>
+    </div>
+    <div>
+      <h4>Informations</h4>
+      <ul><li><a href="#MENTIONS_LEGALES">Mentions légales</a></li><li><a href="#CGV">CGV</a></li><li><a href="#PRIVACY">Politique de confidentialité</a></li><li><a href="#COOKIES">Gestion des cookies</a></li></ul>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:28px;font-size:.8rem;color:#8590a8">© 2026 Salim Gomri · AIgile</div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-primary" href="#diagnostic">Réserver un diagnostic gratuit</a></div>
+
+</body>
+</html>

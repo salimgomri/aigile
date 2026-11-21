@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   title: 'S.A.L.I.M. Q&A Lab | AIgile',
   description:
     'Bibliothèque de questions du Système S.A.L.I.M. — recherche, filtres, réponses extraites ou complètes.',
+  robots: { index: false, follow: false },
 }
 
 export default async function SalimQaPage() {

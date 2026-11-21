@@ -3,6 +3,8 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { ensureUserCredits } from '@/lib/payments/ensure-credits'
 import { sendPaymentFailedEmail } from '@/lib/email'
 import { handleCheckoutCompleted } from '@/lib/orders/checkout-handler'
+import { fulfillDigitalProductIfNeeded } from '@/lib/orders/digital-fulfillment'
+import { productFromSession } from '@/lib/downloads/session-guards'
 import Stripe from 'stripe'
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null
 
@@ -113,8 +115,18 @@ export async function POST(request: Request) {
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object as Stripe.Checkout.Session
       console.log('[WEBHOOK] checkout.session.completed → handleCheckoutCompleted', { sessionId: session.id })
-      await handleCheckoutCompleted(session)
-      console.log('[WEBHOOK] handleCheckoutCompleted OK', { sessionId: session.id })
+      try {
+        await handleCheckoutCompleted(session)
+        console.log('[WEBHOOK] handleCheckoutCompleted OK', { sessionId: session.id })
+      } catch (err) {
+        const digital = productFromSession(session)
+        if (!digital) throw err
+        console.warn('[WEBHOOK] catalogue existant ignoré (produit PDF)', digital.slug, err)
+      }
+      await fulfillDigitalProductIfNeeded(session)
+    }
+    if (event.type === 'checkout.session.async_payment_succeeded') {
+      await fulfillDigitalProductIfNeeded(event.data.object as Stripe.Checkout.Session)
     }
     if (event.type === 'customer.subscription.created') {
       await handleSubscriptionCreated(event.data.object as Stripe.Subscription)

@@ -1,8 +1,10 @@
-/** Année de début de carrière terrain de Salim Gomri — source unique pour tout le site. */
-export const SALIM_CAREER_START_YEAR = 2003
+import { START_YEAR, yearsOfExperience } from '@/lib/site-facts'
+
+/** Année de début de carrière terrain de Salim Gomri — alias de lib/site-facts. */
+export const SALIM_CAREER_START_YEAR = START_YEAR
 
 export function getSalimYearsExperience(referenceDate = new Date()): number {
-  return referenceDate.getFullYear() - SALIM_CAREER_START_YEAR
+  return yearsOfExperience(referenceDate)
 }
 
 export function salimYearsTerrainFr(years = getSalimYearsExperience()): string {

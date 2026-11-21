@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livraison en retard : les 5 signaux à repérer avant votre prochain comité | Kit gratuit AIgile</title>
+<meta name="description" content="Kit gratuit AIgile : 5 signaux qui annoncent un retard de livraison, auto-diagnostic noté, 5 prompts IA prêts à l'emploi et checklist DoR/DoD.">
+<meta name="robots" content="noindex">
+<!-- Kit AIgile v1 — 30/10/2026 — NON DIFFUSÉ. Imprimer en PDF : A4, marges « par défaut », graphiques d'arrière-plan activés. -->
+<style>
+:root{--ink:#14213d;--ink-2:#3d4a66;--muted:#6b7488;--line:#e6e8ee;--soft:#f7f6f1;--gold:#f2c230;--gold-dark:#c99a06;--gold-soft:#fff6d6}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#e9ebf0;line-height:1.5;font-size:10.5pt}
+@page{size:A4;margin:15mm 16mm 16mm}
+@page cover{margin:0}
+@page{@bottom-left{content:"AIgile.lu · Kit « 5 signaux »";font:8pt system-ui,sans-serif;color:#6b7488}@bottom-right{content:counter(page);font:8pt system-ui,sans-serif;color:#6b7488}}
+@page cover{@bottom-left{content:none}@bottom-right{content:none}}
+.sheet{background:#fff;max-width:210mm;margin:0 auto 10mm;padding:15mm 16mm;box-shadow:0 4px 20px rgba(20,33,61,.12)}
+@media print{body{background:#fff}.sheet{box-shadow:none;margin:0;padding:0;max-width:none}.break{break-before:page}.noprint{display:none}}
+h1,h2,h3{line-height:1.2;margin:0 0 .5em;font-weight:780;letter-spacing:-.01em}
+h2{font-size:19pt;border-bottom:3px solid var(--gold);padding-bottom:5px;margin-top:0}
+h3{font-size:12pt;margin-top:1em}
+p{margin:0 0 .7em}
+.eyebrow{font-size:8pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dark)}
+.logo{font-weight:850;font-size:16pt;letter-spacing:-.02em}
+.logo span{background:var(--gold);color:var(--ink);padding:0 5px;border-radius:5px;margin-right:1px}
+/* Couverture */
+.cover{page:cover;background:var(--ink);color:#fff;min-height:297mm;padding:22mm 20mm;display:flex;flex-direction:column;justify-content:space-between;max-width:210mm;margin:0 auto 10mm}
+@media print{.cover{margin:0;height:297mm;max-width:none}}
+.cover .logo{color:#fff}
+.cover h1{font-size:30pt;margin:10mm 0 6mm;line-height:1.08}
+.cover h1 em{font-style:normal;color:var(--gold)}
+.cover .sub{font-size:14pt;color:#d6dbe6;max-width:150mm}
+.cover .chips{display:flex;flex-wrap:wrap;gap:3mm;margin-top:10mm}
+.cover .chip{border:1.5px solid var(--gold);color:var(--gold);border-radius:999px;padding:2mm 4.5mm;font-weight:700;font-size:9.5pt}
+.cover .rule{border-left:4px solid var(--gold);padding:3mm 5mm;font-size:13pt;font-weight:700;margin-top:12mm}
+.cover .who{font-size:9.5pt;color:#c4cbda}
+.cover .who b{color:#fff}
+/* Blocs */
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:3.5mm 5mm;margin:4mm 0}
+.warn{background:#fdf0ec;border-left-color:#c2410c}
+.pill{display:inline-block;background:var(--ink);color:var(--gold);font-weight:800;border-radius:999px;padding:.5mm 3mm;font-size:8.5pt;margin-right:2mm}
+ol.what{padding-left:5mm}ol.what li{margin-bottom:1.5mm}
+.signal{border:1px solid var(--line);border-radius:10px;padding:4mm 5mm;margin:0 0 4mm;break-inside:avoid}
+.signal h3{margin:0 0 2mm;display:flex;gap:3mm;align-items:center;font-size:12.5pt}
+.signal .n{flex:0 0 9mm;height:9mm;border-radius:50%;background:var(--gold);display:inline-flex;align-items:center;justify-content:center;font-weight:850}
+.signal dl{margin:0;display:grid;grid-template-columns:34mm 1fr;gap:1.2mm 4mm}
+.signal dt{font-weight:750;font-size:9pt;color:var(--ink-2);text-transform:uppercase;letter-spacing:.04em;padding-top:.5mm}
+.signal dd{margin:0}
+.signal dd.ai{color:var(--ink)}
+.signal dd.ai b{background:var(--gold-soft);padding:0 1.5mm;border-radius:3px}
+/* Tableau diagnostic */
+table{width:100%;border-collapse:collapse;font-size:9.6pt}
+th,td{border-bottom:1px solid var(--line);padding:1.8mm 2mm;vertical-align:top;text-align:left}
+th{background:var(--ink);color:#fff;font-size:8.5pt;text-transform:uppercase;letter-spacing:.05em}
+td.box,th.box{width:10mm;text-align:center}
+td.box span{display:inline-block;width:4.2mm;height:4.2mm;border:1.5px solid var(--ink);border-radius:1mm}
+tr.grp td{background:var(--soft);font-weight:800;padding-top:2.4mm;break-after:avoid}
+tr{break-inside:avoid}
+td.id{width:9mm;color:var(--muted);font-weight:700}
+.scores td{font-size:10.5pt}.scores td.line{width:28mm;border-bottom:1.5px solid var(--ink)}
+.scores tr.tot td{font-weight:850;background:var(--gold-soft)}
+.bands{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-top:3mm}
+.band{border-radius:8px;padding:3mm 4mm;break-inside:avoid}
+.band b{display:block;font-size:12pt}
+.b1{background:#e8f4ee}.b2{background:var(--gold-soft)}.b3{background:#fdeae4}
+/* Prompts */
+.prompt{border:1px solid var(--line);border-radius:10px;margin:0 0 4mm;break-inside:avoid;overflow:hidden}
+.prompt h3{margin:0;background:var(--ink);color:#fff;padding:2.5mm 4mm;font-size:10.5pt}
+.prompt h3 small{color:var(--gold);font-weight:700;margin-left:2mm}
+.prompt pre{margin:0;padding:3mm 4mm;white-space:pre-wrap;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:8.6pt;line-height:1.45;background:#fbfbfd}
+.prompt pre i{font-style:normal;background:var(--gold-soft);color:#6b4e00;padding:0 1mm;border-radius:2px}
+ul.check{list-style:none;padding:0;margin:0}
+ul.check li{position:relative;padding-left:7mm;margin-bottom:1.6mm}
+ul.check li:before{content:"";position:absolute;left:0;top:.6mm;width:4mm;height:4mm;border:1.5px solid var(--ink);border-radius:1mm}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.col{border:1px solid var(--line);border-radius:10px;padding:4mm 5mm;break-inside:avoid}
+.col h3{margin-top:0}
+/* Prochaine étape */
+.cta{background:var(--ink);color:#fff;border-radius:12px;padding:6mm 7mm;margin:3mm 0 5mm;break-inside:avoid}
+.cta h3{color:var(--gold);margin-top:0;font-size:14pt}
+.cta a{color:var(--gold);font-weight:800}
+.btn{display:inline-block;background:var(--gold);color:var(--ink)!important;font-weight:800;text-decoration:none;border-radius:999px;padding:2.5mm 6mm;margin-top:2mm}
+.offer{border:1px solid var(--line);border-radius:10px;padding:4mm 5mm;margin-bottom:3mm;break-inside:avoid}
+.offer .price{font-weight:850}
+a{color:var(--ink)}
+.todo{background:#fff4c2;color:#6b4e00;border-radius:3px;padding:0 1.2mm;font-weight:650}
+.legal{font-size:8pt;color:var(--muted);border-top:1px solid var(--line);padding-top:3mm;margin-top:6mm}
+.pivot{font-style:italic;color:var(--ink-2)}
+.noprint{max-width:210mm;margin:6mm auto;background:#fff4c2;color:#6b4e00;font-size:9pt;padding:3mm 5mm;border-radius:6px}
+@media screen and (max-width:760px){body{font-size:11pt}.sheet,.cover{padding:8mm 6mm}.cols,.bands{grid-template-columns:1fr}.signal dl{grid-template-columns:1fr}.cover h1{font-size:24pt}}
+</style>
+</head>
+<body>
+
+<div class="noprint">Version de travail du 30/10/2026, non diffusée. Pour le PDF : Fichier → Imprimer → Enregistrer en PDF, A4, « Graphiques d'arrière-plan » activé. Zones surlignées = à compléter avant diffusion.</div>
+
+<!-- COUVERTURE -->
+<section class="cover">
+  <div>
+    <div class="logo"><span>AI</span>gile.lu</div>
+    <p class="eyebrow" style="margin-top:16mm;color:var(--gold)">Kit gratuit · Managers · Scrum Masters · Product Owners</p>
+    <h1>Livraison en retard&nbsp;: les <em>5 signaux</em> à repérer avant votre prochain comité</h1>
+    <p class="sub">… et comment l'IA aide à les corriger, sans lui laisser la décision.</p>
+    <div class="chips">
+      <span class="chip">Auto-diagnostic en 10 min</span>
+      <span class="chip">5 prompts IA prêts à l'emploi</span>
+      <span class="chip">Checklist DoR / DoD</span>
+    </div>
+    <div class="rule">L'IA propose, l'humain décide.</div>
+  </div>
+  <div class="who">
+    <b>Salim Gomri</b> · coach agile augmenté par l'IA · sur le terrain depuis 2003 (<span class="xp-years" data-since="2003">23</span>&nbsp;ans d'expérience)<br>
+    Auteur du <b><i>Système S.A.L.I.M.</i></b> (477 pages) · Pensé pour les équipes de la banque et de l'assurance
+  </div>
+</section>
+
+<div class="sheet">
+
+<!-- POURQUOI -->
+<section>
+  <p class="eyebrow">Avant de commencer</p>
+  <h2>Le sprint est vert. La date de mise en production recule quand même.</h2>
+  <p>La démo s'est bien passée, la vélocité est stable, le tableau de bord est rassurant. Et pourtant, au comité, la date de livraison glisse encore.</p>
+  <p>Dans les équipes que j'accompagne depuis 2003, un retard de livraison est rarement une surprise&nbsp;: il s'annonce par des signaux faibles, visibles plusieurs sprints à l'avance. Le problème n'est pas de les voir, c'est qu'on ne les regarde pas au bon endroit. Les tableaux de bord montrent ce qui est «&nbsp;fait&nbsp;» dans l'outil, pas ce qui est réellement livré.</p>
+  <h3>Ce que contient ce kit</h3>
+  <ol class="what">
+    <li><b>Les 5 signaux</b> qui annoncent un retard de livraison, avec une action «&nbsp;dès lundi&nbsp;» pour chacun.</li>
+    <li><b>Un auto-diagnostic noté</b> (10 minutes, seul ou en équipe) pour savoir quel signal traiter en premier.</li>
+    <li><b>5 prompts IA prêts à l'emploi</b>, un par signal, pour préparer le travail plus vite.</li>
+    <li><b>Une checklist DoR / DoD</b> qui intègre ce que l'IA produit.</li>
+    <li><b>Une prochaine étape</b> si vous voulez aller plus loin.</li>
+  </ol>
+  <div class="callout"><b>La règle qui traverse tout le kit&nbsp;: l'IA propose, l'humain décide.</b> L'IA vous fait gagner du temps sur la préparation et l'analyse. La décision, l'arbitrage et l'engagement restent à votre équipe.</div>
+  <div class="callout warn"><b>Avant d'utiliser un assistant IA</b>, respectez les règles de votre entreprise (outils autorisés, classification des données). En banque et en assurance, ne collez <b>jamais</b> de données clients, de données personnelles, de code ou de documents confidentiels dans un outil non validé par votre sécurité. Anonymisez, résumez, ou travaillez sur un exemple fictif.</div>
+</section>
+
+<!-- 5 SIGNAUX -->
+<section class="break">
+  <p class="eyebrow">Partie 1</p>
+  <h2>Les 5 signaux d'une livraison qui dérape</h2>
+
+  <div class="signal"><h3><span class="n">1</span>Le «&nbsp;presque fini&nbsp;» s'accumule</h3><dl>
+    <dt>Ce que vous voyez</dt><dd>Beaucoup d'éléments «&nbsp;en cours&nbsp;», des stories à «&nbsp;90&nbsp;%&nbsp;» qui débordent d'un sprint sur l'autre, des démos qui montrent des morceaux plutôt qu'un résultat utilisable.</dd>
+    <dt>Pourquoi c'est un signal</dt><dd>Quand l'équipe démarre plus qu'elle ne termine, le travail attend. Chaque élément en attente rallonge le délai de tous les autres.</dd>
+    <dt>Dès lundi</dt><dd>Comptez les éléments en cours par personne. Fixez une limite simple et regardez la colonne «&nbsp;bloqué&nbsp;» en premier au daily.</dd>
+    <dt>Où l'IA aide</dt><dd class="ai">Regrouper les éléments qui débordent pour trouver la cause commune. <b>→ Prompt 1</b></dd></dl></div>
+
+  <div class="signal"><h3><span class="n">2</span>Les stories entrent en sprint sans être prêtes</h3><dl>
+    <dt>Ce que vous voyez</dt><dd>Critères d'acceptation vagues ou absents, questions découvertes au milieu du sprint, stories redécoupées en urgence, «&nbsp;on verra avec le métier&nbsp;».</dd>
+    <dt>Pourquoi c'est un signal</dt><dd>Une story floue n'est pas un engagement, c'est une hypothèse. Le temps passé à clarifier pendant le sprint est du temps de livraison en moins.</dd>
+    <dt>Dès lundi</dt><dd>Adoptez une Definition of Ready courte (checklist, partie 4) et refusez poliment en planning ce qui ne la respecte pas.</dd>
+    <dt>Où l'IA aide</dt><dd class="ai">Relire une story, signaler les ambiguïtés, proposer des critères d'acceptation testables. <b>→ Prompt 2</b></dd></dl></div>
+
+  <div class="signal"><h3><span class="n">3</span>Les validations et dépendances bloquent en fin de chaîne</h3><dl>
+    <dt>Ce que vous voyez</dt><dd>Sécurité, conformité, métier, architecture ou une autre équipe interviennent tard. Un environnement n'est pas prêt. Le livrable attend une signature.</dd>
+    <dt>Pourquoi c'est un signal</dt><dd>Dans les organisations régulées, une partie du délai se joue hors de l'équipe. Si les validations sont découvertes à la fin, le retard est déjà là.</dd>
+    <dt>Dès lundi</dt><dd>Pour les 3 prochaines livraisons, listez validations et dépendances avec un nom et une date. Rendez-les visibles sur le board.</dd>
+    <dt>Où l'IA aide</dt><dd class="ai">Établir, à partir d'une description anonymisée, la liste des validations à vérifier, sous forme de questions. <b>→ Prompt 3</b></dd></dl></div>
+
+  <div class="signal"><h3><span class="n">4</span>«&nbsp;Fini&nbsp;» ne veut pas dire livré</h3><dl>
+    <dt>Ce que vous voyez</dt><dd>Des éléments «&nbsp;done&nbsp;» qui reviennent en correction, des anomalies après la démo, des tests ou de la documentation faits «&nbsp;plus tard&nbsp;». Et du code, des tests ou des textes produits par l'IA relus après coup.</dd>
+    <dt>Pourquoi c'est un signal</dt><dd>Chaque retour en correction est un retard différé. Si la DoD ne dit pas ce qui doit être vérifié, y compris ce que l'IA a produit, le «&nbsp;fini&nbsp;» est une impression, pas un fait.</dd>
+    <dt>Dès lundi</dt><dd>Relisez votre DoD en équipe. Ajoutez une ligne explicite sur la vérification humaine de tout contenu produit par l'IA.</dd>
+    <dt>Où l'IA aide</dt><dd class="ai">Comparer un livrable à votre DoD et lister ce qui manque, avec les preuves attendues. <b>→ Prompt 4</b></dd></dl></div>
+
+  <div class="signal"><h3><span class="n">5</span>Les prévisions sont devenues décoratives</h3><dl>
+    <dt>Ce que vous voyez</dt><dd>L'écart entre engagé et livré se répète, les dates annoncées au comité sont revues à chaque fois. La rétrospective ne change plus rien.</dd>
+    <dt>Pourquoi c'est un signal</dt><dd>Une prévision jamais confrontée à ce qui s'est réellement passé ne sert qu'à rassurer, jusqu'au jour où elle ne rassure plus.</dd>
+    <dt>Dès lundi</dt><dd>Notez, sprint après sprint, l'engagé et le réellement livré. Trois sprints suffisent pour voir une tendance. En rétro, une seule action, suivie.</dd>
+    <dt>Où l'IA aide</dt><dd class="ai">Préparer une rétrospective centrée sur l'écart engagé / livré. <b>→ Prompt 5</b></dd></dl></div>
+</section>
+
+<!-- AUTO-DIAGNOSTIC -->
+<section class="break">
+  <p class="eyebrow">Partie 2</p>
+  <h2>Auto-diagnostic (10 minutes)</h2>
+  <p>Notez votre équipe sur les <b>3 derniers sprints</b> (ou le dernier mois si vous travaillez en flux). <span class="pill">0</span>rarement ou jamais <span class="pill">1</span>parfois <span class="pill">2</span>souvent</p>
+  <p class="pivot">Astuce&nbsp;: remplissez-le seul, puis demandez à 2 ou 3 membres de l'équipe de le remplir de leur côté. Les écarts de perception sont souvent aussi instructifs que les notes.</p>
+  <table>
+    <thead><tr><th>#</th><th>Affirmation</th><th class="box">0</th><th class="box">1</th><th class="box">2</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="5">Signal 1 — Le «&nbsp;presque fini&nbsp;» s'accumule</td></tr>
+      <tr><td class="id">1.1</td><td>Des éléments passent d'un sprint au suivant sans être terminés.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">1.2</td><td>Chaque personne a plusieurs éléments «&nbsp;en cours&nbsp;» en même temps.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">1.3</td><td>Des éléments restent bloqués plusieurs jours sans que personne ne les remonte.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr class="grp"><td colspan="5">Signal 2 — Stories pas prêtes</td></tr>
+      <tr><td class="id">2.1</td><td>Des stories entrent en sprint sans critères d'acceptation clairs et testables.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">2.2</td><td>Des questions métier sont découvertes en cours de sprint.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">2.3</td><td>Des stories doivent être redécoupées ou réestimées pendant le sprint.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr class="grp"><td colspan="5">Signal 3 — Validations et dépendances tardives</td></tr>
+      <tr><td class="id">3.1</td><td>Une validation (sécurité, conformité, métier, architecture) est découverte en fin de chaîne.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">3.2</td><td>L'équipe attend une autre équipe, un fournisseur ou un environnement.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">3.3</td><td>Les dépendances ne sont pas visibles sur le board avec un responsable et une date.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr class="grp"><td colspan="5">Signal 4 — «&nbsp;Fini&nbsp;» n'est pas livré</td></tr>
+      <tr><td class="id">4.1</td><td>Des éléments «&nbsp;done&nbsp;» reviennent en correction ou génèrent des anomalies après la démo.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">4.2</td><td>Tests, revue ou documentation sont reportés «&nbsp;à plus tard&nbsp;».</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">4.3</td><td>Ce que l'IA produit (code, tests, textes) est relu après coup, ou sans critère explicite.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr class="grp"><td colspan="5">Signal 5 — Prévisions décoratives</td></tr>
+      <tr><td class="id">5.1</td><td>L'écart entre ce qui est engagé et ce qui est livré se répète d'un sprint à l'autre.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">5.2</td><td>Les dates annoncées à la direction ou au comité sont revues à la dernière minute.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+      <tr><td class="id">5.3</td><td>Les rétrospectives ne produisent pas d'action suivie jusqu'au bout.</td><td class="box"><span></span></td><td class="box"><span></span></td><td class="box"><span></span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="break">
+  <p class="eyebrow">Partie 2 (suite)</p>
+  <h2>Vos scores et comment les lire</h2>
+  <table class="scores">
+    <thead><tr><th>Signal</th><th>Score</th></tr></thead>
+    <tbody>
+      <tr><td>1 — Le «&nbsp;presque fini&nbsp;» s'accumule</td><td class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 6</td></tr>
+      <tr><td>2 — Stories pas prêtes</td><td class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 6</td></tr>
+      <tr><td>3 — Validations et dépendances tardives</td><td class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 6</td></tr>
+      <tr><td>4 — «&nbsp;Fini&nbsp;» n'est pas livré</td><td class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 6</td></tr>
+      <tr><td>5 — Prévisions décoratives</td><td class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 6</td></tr>
+      <tr class="tot"><td>Total</td><td class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 30</td></tr>
+    </tbody>
+  </table>
+  <h3>Par signal</h3>
+  <p>Un signal à <b>4 ou plus sur 6</b> est votre priorité. S'il y en a plusieurs, commencez par le plus en amont&nbsp;: <b>2</b> (stories pas prêtes), puis <b>3</b> (dépendances), puis <b>1</b>, <b>4</b> et <b>5</b>. Corriger l'amont fait souvent baisser les autres.</p>
+  <h3>Score total</h3>
+  <div class="bands">
+    <div class="band b1"><b>0 à 8</b>Sous contrôle. Gardez la discipline et refaites ce diagnostic chaque trimestre.</div>
+    <div class="band b2"><b>9 à 17</b>À surveiller. Un seul signal, l'action «&nbsp;dès lundi&nbsp;» et le prompt associé pendant 2 sprints, puis remesurez.</div>
+    <div class="band b3"><b>18 à 30</b>Dérapage installé. Le retard est probablement structurel&nbsp;: traitez-le avec les décideurs concernés, pas seulement dans l'équipe.</div>
+  </div>
+  <p class="pivot" style="margin-top:3mm;font-size:9pt">Repères de lecture proposés par AIgile, pas une norme statistique.</p>
+  <div class="callout"><b>Mon signal prioritaire&nbsp;:</b> n°&nbsp;____ &nbsp;&nbsp; <b>Mon action dès lundi&nbsp;:</b> ______________________________________________<br><br><b>Qui la porte&nbsp;:</b> ____________________ &nbsp;&nbsp; <b>On remesure le&nbsp;:</b> ____ / ____ / ________</div>
+</section>
+
+<!-- PROMPTS -->
+<section class="break">
+  <p class="eyebrow">Partie 3</p>
+  <h2>5 prompts IA prêts à l'emploi</h2>
+  <p>Copiez le prompt, remplacez les zones <i style="font-style:normal;background:var(--gold-soft);padding:0 1mm">[entre crochets]</i> par des informations <b>anonymisées</b>, puis relisez la réponse avec cette grille&nbsp;:</p>
+  <div class="callout"><ul class="check">
+    <li>La réponse s'appuie-t-elle uniquement sur ce que j'ai fourni, ou invente-t-elle des faits&nbsp;?</li>
+    <li>Les hypothèses de l'IA sont-elles signalées comme des hypothèses&nbsp;?</li>
+    <li>Est-ce applicable dans notre contexte (règles, outils, contraintes réglementaires)&nbsp;?</li>
+    <li>Qui, dans l'équipe, valide et porte la décision&nbsp;?</li>
+  </ul></div>
+
+  <div class="prompt"><h3>Prompt 1 — Trouver la cause commune du «&nbsp;presque fini&nbsp;»<small>Signal 1</small></h3>
+<pre>Tu es un coach agile expérimenté. Voici la liste anonymisée des éléments qui n'ont pas été terminés sur les <i>[3]</i> derniers sprints, avec leur statut et la raison connue du blocage :
+<i>[liste : titre court – statut – depuis combien de jours – raison du blocage si connue]</i>
+
+1. Regroupe ces éléments par cause probable (dépendance externe, taille trop grande, attente de validation, manque d'information, autre).
+2. Pour chaque groupe, indique les éléments concernés et l'impact probable sur le délai.
+3. Propose 3 actions concrètes et réalisables dès le prochain sprint, de la plus simple à la plus structurante.
+4. Liste séparément tes hypothèses et les informations qui te manquent pour conclure.
+Ne prends aucune décision à la place de l'équipe : présente des options.</pre></div>
+
+  <div class="prompt"><h3>Prompt 2 — Rendre une story prête<small>Signal 2</small></h3>
+<pre>Tu es un Product Owner rigoureux. Voici une user story anonymisée et ce que l'on sait du besoin :
+<i>[story : En tant que … je veux … afin de …]</i>
+<i>[contexte : règles métier connues, contraintes, ce qui est hors périmètre]</i>
+
+1. Signale toutes les ambiguïtés et les termes qui peuvent être compris de deux façons.
+2. Propose des critères d'acceptation testables au format Étant donné / Quand / Alors.
+3. Liste les questions à poser au métier avant le prochain planning.
+4. Si la story te paraît trop grosse pour un sprint, propose 2 ou 3 façons de la découper en éléments livrables séparément.
+Distingue clairement ce qui vient de mon texte et ce que tu supposes.</pre></div>
+
+  <div class="prompt"><h3>Prompt 3 — Rendre visibles les validations et dépendances<small>Signal 3</small></h3>
+<pre>Tu aides une équipe de delivery dans une organisation régulée (banque ou assurance). Voici la description anonymisée d'une livraison prévue :
+<i>[ce qui change pour l'utilisateur, systèmes concernés en termes génériques, date visée]</i>
+
+1. Établis une liste des validations et dépendances à vérifier (sécurité, conformité, métier, architecture, exploitation, autres équipes, environnements, fournisseurs), sous forme de questions à poser.
+2. Pour chacune, indique à quel moment il serait raisonnable de la lancer pour ne pas bloquer la fin de chaîne.
+3. Présente le résultat en tableau : dépendance / question à poser / qui contacter (rôle) / date limite proposée.
+Ne présente pas ces éléments comme des obligations réglementaires : ce sont des points à vérifier avec les personnes responsables dans mon entreprise.</pre></div>
+
+  <div class="prompt"><h3>Prompt 4 — Vérifier un livrable contre la Definition of Done<small>Signal 4</small></h3>
+<pre>Voici notre Definition of Done :
+<i>[coller votre DoD]</i>
+Voici la description anonymisée d'un élément que l'équipe considère comme terminé, avec les preuves disponibles (tests passés, revue faite, documentation, validation métier) :
+<i>[description + preuves]</i>
+
+1. Pour chaque ligne de la DoD, indique : respectée / non respectée / impossible à dire, et la preuve attendue.
+2. Signale en particulier ce qui a été produit par l'IA et qui n'a pas de trace de vérification humaine.
+3. Termine par la liste des actions à faire avant de déclarer l'élément livré.
+Tu n'as pas le droit de déclarer l'élément livré : c'est la décision de l'équipe.</pre></div>
+
+  <div class="prompt"><h3>Prompt 5 — Préparer une rétrospective sur l'écart engagé / livré<small>Signal 5</small></h3>
+<pre>Tu es facilitateur de rétrospective. Voici, pour les <i>[3]</i> derniers sprints, ce que l'équipe avait engagé et ce qui a été réellement livré (accepté par le métier ou mis en production) :
+<i>[sprint – engagé – livré – faits marquants]</i>
+
+1. Décris l'écart de façon factuelle, sans jugement sur les personnes.
+2. Propose 3 à 5 hypothèses de causes, formulées comme des questions à discuter en équipe.
+3. Propose un déroulé de rétrospective de 45 minutes pour explorer ces hypothèses.
+4. Aide l'équipe à formuler UNE seule action, avec un responsable, une date et un moyen de vérifier si elle a fonctionné.</pre></div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="break">
+  <p class="eyebrow">Partie 4</p>
+  <h2>Checklist DoR / DoD, version «&nbsp;IA incluse&nbsp;»</h2>
+  <p>À adapter avec votre équipe&nbsp;: une checklist qui n'a pas été discutée ensemble n'est pas appliquée.</p>
+  <div class="cols">
+    <div class="col"><h3>Definition of Ready<br><small style="font-weight:600;color:var(--ink-2)">Une story peut entrer en sprint si…</small></h3><ul class="check">
+      <li>Le besoin est formulé du point de vue de l'utilisateur, avec le «&nbsp;pourquoi&nbsp;».</li>
+      <li>Les critères d'acceptation sont écrits, testables et compris par toute l'équipe.</li>
+      <li>La story est assez petite pour être terminée dans le sprint.</li>
+      <li>Les dépendances (autres équipes, environnements, fournisseurs) sont identifiées, avec un responsable et une date.</li>
+      <li>Les validations nécessaires (sécurité, conformité, métier) sont identifiées et planifiées.</li>
+      <li>Les données de test nécessaires sont disponibles ou anonymisées.</li>
+      <li><b>Si l'IA est utilisée</b>&nbsp;: l'outil est autorisé, on sait quelles données lui fournir, et qui vérifiera ce qu'elle produit.</li>
+      <li>Le Product Owner est disponible pour répondre aux questions pendant le sprint.</li>
+    </ul></div>
+    <div class="col"><h3>Definition of Done<br><small style="font-weight:600;color:var(--ink-2)">Un élément est livré si…</small></h3><ul class="check">
+      <li>Tous les critères d'acceptation sont vérifiés.</li>
+      <li>Le code a été relu par au moins une autre personne.</li>
+      <li>Les tests prévus passent (unitaires, intégration, non-régression selon votre contexte).</li>
+      <li><b>Tout contenu produit par l'IA</b> (code, tests, documentation, textes) a été vérifié par un humain identifié, avec une trace.</li>
+      <li>Aucune donnée confidentielle n'a été transmise à un outil non autorisé.</li>
+      <li>Les validations requises (sécurité, conformité, métier) sont obtenues et tracées.</li>
+      <li>La documentation utile à l'exploitation et aux utilisateurs est à jour.</li>
+      <li>L'élément est déployable (ou déployé) sur l'environnement cible prévu.</li>
+      <li>Le Product Owner ou le métier l'a accepté.</li>
+    </ul></div>
+  </div>
+  <div class="callout" style="margin-top:5mm"><b>Les 3 règles du cadre AIgile</b>&nbsp;: 1. Le cadre contraint, il ne prescrit pas. 2. L'IA déclare, l'humain décide. 3. Toute transition faite par l'IA laisse une trace et reste révocable.</div>
+</section>
+
+<!-- PROCHAINE ÉTAPE -->
+<section class="break">
+  <p class="eyebrow">Partie 5</p>
+  <h2>Prochaine étape</h2>
+  <div class="cta">
+    <h3>Un ou plusieurs signaux à 4 ou plus&nbsp;? Parlons-en 30 minutes.</h3>
+    <p><b>Diagnostic flash — 30 minutes, gratuit, en visio.</b> Vous m'expliquez votre contexte, nous passons en revue vos résultats, et vous repartez avec une photo nette de la situation et 2 à 3 priorités. Compte rendu d'une page sous 24&nbsp;h ouvrées. Si vous pouvez avancer seuls, je vous le dis.</p>
+    <a class="btn" href="https://aigile.lu/diagnostic?utm_source=kit&amp;utm_medium=pdf&amp;utm_campaign=kit-5-signaux">Réserver un diagnostic → aigile.lu/diagnostic</a>
+  </div>
+  <h3>Former votre équipe (intra-entreprise)</h3>
+  <div class="offer"><b>«&nbsp;Agile + IA&nbsp;: démarrer&nbsp;»</b> — 1 jour pour une équipe qui débute ou qui intègre l'IA dans son travail.<br><span class="price">À partir de 2&nbsp;000&nbsp;€&nbsp;HT pour 8 personnes</span>, sur devis.</div>
+  <div class="offer"><b>«&nbsp;Livraison fiable avec l'IA&nbsp;: DoR/DoD, rétro, scoring&nbsp;»</b> — 2 jours avec votre équipe, sur votre backlog réel. <span class="price">Sur devis.</span></div>
+  <p>→ Découvrir les formations&nbsp;: <span class="todo">[LIEN PAGE FORMATIONS — À COMPLÉTER]</span></p>
+  <h3>Aller plus loin seul</h3>
+  <p><b><i>Le Système S.A.L.I.M.</i></b> — le livre&nbsp;: 477 pages, 19 chapitres, 93 prompts documentés → <a href="https://aigile.lu/salim">aigile.lu/salim</a><br>
+  <b>Outils gratuits</b>&nbsp;: Rétro IA → <a href="https://aigile.lu/retro">aigile.lu/retro</a> · Westrum Culture Survey → <a href="https://aigile.lu/dashboard/westrum">aigile.lu/dashboard/westrum</a></p>
+
+  <h3>Qui suis-je</h3>
+  <p><b>Salim Gomri</b> — coach agile «&nbsp;augmenté par l'IA&nbsp;», fondateur d'AIgile.lu et auteur du <i>Système S.A.L.I.M.</i> (477 pages). Sur le terrain agile depuis 2003, soit <b><span class="xp-years" data-since="2003">23</span>&nbsp;ans d'expérience</b>, j'accompagne des équipes, des managers et des directions&nbsp;: 16 équipes en banque, plus de 1&nbsp;000 personnes accompagnées. Mentor Product Manager chez OpenClassrooms.</p>
+  <p class="pivot">Le livre expose le système. Le coaching l'installe.</p>
+
+  <div class="legal">© <span class="cur-year">2026</span> Salim GOMRI EI (nom commercial GO-COACH) · AIgile.lu · SIREN 891&nbsp;268&nbsp;245 · 50 Grand'Rue, 57280 Maizières-lès-Metz, France · Contact&nbsp;: <span class="todo">[À COMPLÉTER : e-mail de contact]</span> · Prix des formations&nbsp;: TVA non applicable, art. 293&nbsp;B du CGI <span class="todo">[À CONFIRMER si le seuil de franchise est dépassé]</span>.<br>
+  Kit fourni gratuitement à titre informatif&nbsp;; il ne remplace pas un avis adapté à votre situation. Vous pouvez le partager tel quel, sans modification et en citant la source.</div>
+</section>
+</div>
+
+<script>
+/* Années d'expérience calculées automatiquement depuis 2003 (le PDF garde la valeur de l'année de génération). */
+(function(){var y=new Date().getFullYear();document.querySelectorAll('.xp-years').forEach(function(e){e.textContent=y-parseInt(e.dataset.since,10)});document.querySelectorAll('.cur-year').forEach(function(e){e.textContent=y});})();
+</script>
+</body>
+</html>

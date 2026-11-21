@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
-import { getProduct, getCurrentBookProduct } from '@/lib/payments/catalog'
+import { getProduct, getCurrentBookProduct, usesInlinePriceData } from '@/lib/payments/catalog'
+import { clampFormationAInterPlaces, formationAInterUnitCentimes } from '@/lib/site-facts'
 import {
   buildBookPhysicalLineItem,
   buildCombinedProductTitle,
@@ -155,26 +156,37 @@ export async function POST(request: Request) {
     const isSalimSource = checkoutSource === 'salim_landing'
     const successUrl = isSalimSource
       ? `${baseUrl}/salim/merci?session_id={CHECKOUT_SESSION_ID}`
-      : `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
+      : resolvedProduct.type === 'digital_pdf'
+        ? `${baseUrl}/telechargement?session_id={CHECKOUT_SESSION_ID}`
+        : resolvedProduct.type === 'formation_seat'
+          ? `${baseUrl}/formations/inscription?session_id={CHECKOUT_SESSION_ID}`
+          : `${baseUrl}/merci?session_id={CHECKOUT_SESSION_ID}`
     const cancelUrl = isSalimSource
       ? `${baseUrl}/salim`
       : resolvedProduct.type === 'book_physical'
         ? `${baseUrl}/#book`
         : resolvedProduct.type === 'buy_coffee'
           ? `${baseUrl}/#contact`
-          : `${baseUrl}/retro?checkout=cancelled`
+          : resolvedProduct.type === 'formation_seat'
+            ? `${baseUrl}/formations/inscription`
+            : resolvedProduct.type === 'digital_pdf'
+              ? `${baseUrl}/telechargement`
+              : `${baseUrl}/retro?checkout=cancelled`
     console.log('[CHECKOUT] create-session', { productId: resolvedProduct.id, baseUrl, successUrl })
 
     const quantity =
       resolvedProduct.type === 'book_physical'
         ? Math.max(1, Math.min(99, Math.floor(qty) || 1))
-        : 1
+        : resolvedProduct.type === 'formation_seat'
+          ? clampFormationAInterPlaces(qty)
+          : 1
     const coffeeAmount =
       resolvedId === 'buy_coffee'
         ? Math.max(100, Math.min(99900, Math.round(customAmount ?? 0)))
         : 0
     const metadata: Record<string, string> = {
       product_id: resolvedProduct.id,
+      product_slug: resolvedProduct.id,
       product_type: resolvedProduct.type,
       buyer_name: userName,
       user_id: session?.user?.id ?? '',
@@ -261,6 +273,31 @@ export async function POST(request: Request) {
       if (addonProduct && addonProductId) {
         lineItems.push(buildBookPhysicalLineItem(addonProduct, addonProductId, baseUrl, 1))
       }
+    } else if (resolvedProduct.type === 'formation_seat') {
+      const unitAmount = formationAInterUnitCentimes(quantity)
+      lineItems.push({
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: resolvedProduct.title,
+            description: `${unitAmount / 100} € / place · ${quantity} place${quantity > 1 ? 's' : ''} · tarif dégressif`,
+          },
+          unit_amount: unitAmount,
+        },
+        quantity,
+      })
+    } else if (usesInlinePriceData(resolvedProduct)) {
+      lineItems.push({
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: resolvedProduct.title,
+            description: resolvedProduct.description,
+          },
+          unit_amount: resolvedProduct.amount,
+        },
+        quantity: 1,
+      })
     } else {
       lineItems.push({ price: resolvedProduct.stripePriceId, quantity })
     }

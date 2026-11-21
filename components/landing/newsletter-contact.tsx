@@ -145,8 +145,8 @@ export default function NewsletterContactSection() {
                 </div>
                 <p className="text-sm text-muted-foreground">
                   {language === 'fr' 
-                    ? 'Plus de 1 000 agilistes reçoivent nos insights' 
-                    : '1,000+ agilists receive our insights'}
+                    ? '1 000+ personnes accompagnées' 
+                    : '1,000+ people coached'}
                 </p>
               </div>
             </div>

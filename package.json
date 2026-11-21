@@ -17,6 +17,8 @@
     "simulate:book-order": "npx tsx scripts/simulate-book-order.ts",
     "test": "vitest run",
     "test:watch": "vitest",
+    "check:todo": "npx tsx scripts/check-todo.ts",
+    "check:todo:strict": "npx tsx scripts/check-todo.ts --fail-indexable",
     "intel:setup": "npx tsx scripts/intel-setup.ts"
   },
   "dependencies": {

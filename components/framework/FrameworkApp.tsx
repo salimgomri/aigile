@@ -8,6 +8,7 @@ import { useLanguage } from '@/components/language-provider'
 import { trackEvent } from '@/lib/gtag'
 import { logDownload } from '@/lib/downloads/client'
 import { SiteChrome } from '@/components/layout/SiteChrome'
+import { LegalFooterLinks } from '@/components/legal/LegalFooterLinks'
 import { FRAMEWORK_SUB_NAV } from '@/lib/navigation/site-nav'
 import {
   CORE_MESSAGE,
@@ -223,6 +224,7 @@ export function FrameworkApp({ articles }: FrameworkAppProps) {
 
       <footer className="fw-footer">
         <p>{t.footer}</p>
+        <LegalFooterLinks className="mt-4" />
       </footer>
 
       {active && (
