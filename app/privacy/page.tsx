@@ -1,6 +1,13 @@
 import Link from 'next/link'
 import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
+import {
+  CONSENT_MAX_AGE_MONTHS,
+  KIT_RETENTION,
+  LEGAL_UPDATED_AT,
+  NEWSLETTER_TOOL_LABEL,
+  getContactEmail,
+} from '@/lib/site-facts'
 
 export const metadata = {
   title: 'Politique de confidentialité - AIgile',
@@ -8,6 +15,7 @@ export const metadata = {
 }
 
 export default function PrivacyPage() {
+  const email = getContactEmail()
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       <PremiumNavbar />
@@ -20,7 +28,7 @@ export default function PrivacyPage() {
             Politique de confidentialité
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mb-12">
-            Dernière mise à jour : Mars 2026
+            Dernière mise à jour : {LEGAL_UPDATED_AT}
           </p>
 
           <div className="prose prose-gray dark:prose-invert max-w-none space-y-8 text-gray-800 dark:text-gray-200">
@@ -28,7 +36,7 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">1. Responsable du traitement</h2>
               <p>
                 Le responsable du traitement des données est Salim Gomri, éditeur du service AIgile (aigile.lu). 
-                Contact : <mark className="todo-mark">[À COMPLÉTER]</mark> (e-mail professionnel — plus de Gmail affiché ici).
+                Contact : <a href={`mailto:${email}`} className="text-aigile-gold hover:underline">{email}</a>.
               </p>
             </section>
 
@@ -75,7 +83,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">7. Sous-traitants</h2>
               <p>
-                Nous utilisons des prestataires pour l&apos;hébergement (Supabase), l&apos;authentification (Better Auth), 
+                Nous utilisons des prestataires pour l&apos;hébergement (Hetzner, Supabase), l&apos;authentification (Better Auth),
                 l&apos;envoi d&apos;emails (Resend), et les paiements (Stripe). Ces prestataires sont conformes au RGPD.
               </p>
             </section>
@@ -93,9 +101,10 @@ export default function PrivacyPage() {
               <p>
                 En plus des finalités ci-dessus : envoi du kit gratuit et de la séquence d&apos;e-mails
                 associée ; traitement des formulaires diagnostic et formation ; cookies de mesure
-                d&apos;audience (Google Analytics) uniquement après consentement. Durées de conservation :{' '}
-                <mark className="todo-mark">[À COMPLÉTER]</mark>. Outil d&apos;e-mailing :{' '}
-                <mark className="todo-mark">[À CHOISIR : Brevo / Kit / Mailchimp / none]</mark>.
+                d&apos;audience (Google Analytics) uniquement après consentement. Durées de
+                conservation : kit et e-mails de suivi, jusqu&apos;à désinscription puis{' '}
+                {KIT_RETENTION} au maximum ; consentement cookies, {CONSENT_MAX_AGE_MONTHS} mois.
+                Outil d&apos;e-mailing : {NEWSLETTER_TOOL_LABEL}.
               </p>
             </section>
 
@@ -103,7 +112,7 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">10. Contact</h2>
               <p>
                 Pour toute question sur vos données personnelles :{' '}
-                <mark className="todo-mark">[À COMPLÉTER : e-mail de contact professionnel]</mark>
+                <a href={`mailto:${email}`} className="text-aigile-gold hover:underline">{email}</a>.
               </p>
             </section>
           </div>

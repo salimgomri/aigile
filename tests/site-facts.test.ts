@@ -1,5 +1,12 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import { yearsOfExperience, START_YEAR } from '@/lib/site-facts'
+import {
+  yearsOfExperience,
+  START_YEAR,
+  DEFAULT_CONTACT_EMAIL,
+  AMAZON_PRICES_CHECKED_AT,
+  TESTIMONIALS,
+  LEGAL,
+} from '@/lib/site-facts'
 
 describe('yearsOfExperience', () => {
   afterEach(() => {
@@ -15,5 +22,26 @@ describe('yearsOfExperience', () => {
 
   it('returns 24 in 2027', () => {
     expect(yearsOfExperience(new Date('2027-01-15'))).toBe(24)
+  })
+})
+
+describe('site facts filled from Salim choices', () => {
+  it('uses the public professional email', () => {
+    expect(DEFAULT_CONTACT_EMAIL).toBe('salim@aigile.lu')
+  })
+
+  it('records Amazon prices check date without inventing a URL', () => {
+    expect(AMAZON_PRICES_CHECKED_AT).toBe('27/10/2026')
+  })
+
+  it('keeps live-site testimonial roles', () => {
+    expect(TESTIMONIALS[0].role).toBe('9 ans de collaboration · secteur bancaire')
+    expect(TESTIMONIALS[1].role).toBe('collaboration multi-projets')
+    expect(TESTIMONIALS[2].role).toBe('transformation digitale · secteur bancaire')
+  })
+
+  it('lists Hetzner as hoster', () => {
+    expect(LEGAL.hosterName).toBe('Hetzner Online GmbH')
+    expect(LEGAL.hosterPhone).toBe('+49 (0)9831 505-0')
   })
 })

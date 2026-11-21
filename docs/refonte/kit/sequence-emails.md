@@ -2,8 +2,8 @@
 *À programmer dans l'outil d'e-mailing [À CHOISIR par Salim : Brevo / Kit / autre]. Rien n'est envoyé. Vouvoiement. Un seul appel à l'action principal par e-mail. Aucun chiffre ni témoignage inventé : les zones [À COMPLÉTER] / [À CONFIRMER] sont à remplir par Salim.*
 
 **Paramètres communs**
-- Expéditeur : Salim Gomri — AIgile · [À COMPLÉTER : adresse d'envoi, ex. salim@aigile.lu]
-- Répondre à : [À COMPLÉTER : même adresse]
+- Expéditeur : Salim Gomri — AIgile · salim@aigile.lu
+- Répondre à : salim@aigile.lu
 - Variables : `{{prenom}}` (si absent : « Bonjour, »), `{{annees}}` = année en cours − 2003 (calcul automatique ; sinon écrire « depuis 2003 »).
 - Pied de page de chaque e-mail :
   > Vous recevez cet e-mail parce que vous avez demandé le kit « 5 signaux » sur aigile.lu. [Se désinscrire en un clic] · [Politique de confidentialité](https://aigile.lu/privacy)
@@ -120,7 +120,7 @@ Pour une équipe qui livre déjà et veut fiabiliser sa livraison : DoR/DoD adop
 
 *TVA non applicable, art. 293 B du CGI [À CONFIRMER si le seuil de franchise est dépassé].*
 
-**→ [Découvrir les formations]([À COMPLÉTER : LIEN PAGE FORMATIONS])**
+**→ [Découvrir les formations](/formations)**
 Ou, si vous préférez en parler d'abord : [réserver un diagnostic de 30 minutes](https://aigile.lu/diagnostic?utm_source=email&utm_medium=sequence&utm_campaign=bienvenue-kit&utm_content=j10).
 
 Et si vous préférez avancer seul : *Le Système S.A.L.I.M.* (477 pages, 19 chapitres, 93 prompts documentés) détaille tout le système. → [Découvrir le livre](https://aigile.lu/salim)

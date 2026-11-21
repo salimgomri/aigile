@@ -70,8 +70,7 @@ export function CookieBanner() {
         <p id="cookie-banner-desc" className="mt-2 text-sm text-gray-700 leading-relaxed">
           Nous utilisons Google Analytics uniquement si vous acceptez, pour comprendre les pages
           visitées. Aucun cookie publicitaire. Votre choix est mémorisé {CONSENT_MAX_AGE_MONTHS}{' '}
-          mois{' '}
-          <mark className="todo-mark">[À CONFIRMER : 6]</mark>. Détails :{' '}
+          mois. Détails :{' '}
           <Link href="/privacy" className="underline text-aigile-navy">
             Politique de confidentialité
           </Link>

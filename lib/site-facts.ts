@@ -28,6 +28,14 @@ export const VAT_MENTION = 'TVA non applicable, art. 293 B du CGI'
 /** Visible sur /mentions-legales et /cgv — à confirmer avec le comptable. */
 export const VAT_FRANCHISE_TODO = '[À CONFIRMER si le seuil de franchise est dépassé]'
 
+export const LEGAL_UPDATED_AT = '21 novembre 2026'
+
+/** Adhésion médiateur encore à finaliser — reste visible tant qu’elle n’est pas faite. */
+export const MEDIATOR_TODO =
+  '[À COMPLÉTER : médiateur de la consommation — adhésion à finaliser]'
+
+export const DEFAULT_CONTACT_EMAIL = 'salim@aigile.lu'
+
 export const LEGAL = {
   legalName: 'Salim GOMRI EI',
   commercialName: 'GO-COACH',
@@ -44,38 +52,31 @@ export const LEGAL = {
   exercise: 'exercice libéral non réglementé',
   address: "50 Grand'Rue, 57280 Maizières-lès-Metz, France",
   publicationDirector: 'Salim GOMRI',
-  /** Hébergeur détecté dans le dépôt : VPS Hetzner (Helsinki). À confirmer. */
-  hosterDetected: 'Hetzner Online GmbH (VPS « systeme-salim », Helsinki) — [À COMPLÉTER : confirmation, adresse et téléphone]',
+  hosterName: 'Hetzner Online GmbH',
+  hosterAddress: 'Industriestr. 25, 91710 Gunzenhausen, Allemagne',
+  hosterPhone: '+49 (0)9831 505-0',
+  hosterDetected:
+    'Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Allemagne — tél. +49 (0)9831 505-0',
 } as const
-
-const PLACEHOLDER_EMAIL = '[À COMPLÉTER]'
-
-function envOrPlaceholder(name: string): string {
-  const v = process.env[name]?.trim()
-  return v || PLACEHOLDER_EMAIL
-}
 
 /** E-mail affiché (pages légales et contact public). Jamais de Gmail en dur. */
 export function getContactEmail(): string {
-  return envOrPlaceholder('CONTACT_EMAIL')
+  return process.env.CONTACT_EMAIL?.trim() || DEFAULT_CONTACT_EMAIL
 }
 
 export function getSupportEmail(): string {
-  const v = process.env.SUPPORT_EMAIL?.trim()
-  if (v) return v
-  const contact = process.env.CONTACT_EMAIL?.trim()
-  return contact || PLACEHOLDER_EMAIL
+  return process.env.SUPPORT_EMAIL?.trim() || getContactEmail()
 }
 
 export function isContactEmailReady(): boolean {
   const e = getContactEmail()
-  return e.includes('@') && !e.includes('[À COMPLÉTER]')
+  return e.includes('@') && !e.includes('À COMPLÉTER')
 }
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/salimgomri/'
 
 /**
- * Fiche Amazon du livre — [LIEN AMAZON] tant que Salim n’a pas fourni l’URL.
+ * Fiche Amazon du livre — pas d’URL tant qu’elle n’est pas fournie (aucune fiche publique vérifiée).
  * Prix constatés d’après l’audit du 27/10/2026 (79 € / 59 € / 138 €). Ne pas modifier sans accord.
  */
 export const AMAZON_URL =
@@ -85,7 +86,7 @@ export const AMAZON_PRICES = {
   fiches: 59,
   bundle: 138,
 } as const
-export const AMAZON_PRICES_CHECKED_AT = '[À COMPLÉTER : date de vérification]'
+export const AMAZON_PRICES_CHECKED_AT = '27/10/2026'
 
 export function amazonUrlIsReady(): boolean {
   return AMAZON_URL.startsWith('http')
@@ -94,8 +95,9 @@ export function amazonUrlIsReady(): boolean {
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-WMG8QLND8X'
 
 export const CONSENT_STORAGE_KEY = 'aigile_consent'
-/** [À CONFIRMER : 6] mois */
 export const CONSENT_MAX_AGE_MONTHS = 6
+export const KIT_RETENTION = '3 ans après le dernier contact'
+export const NEWSLETTER_TOOL_LABEL = 'Resend (e-mail transactionnel, sans outil d’e-mailing tiers)'
 
 export type HomeVariant = 'legacy' | 'v2'
 
@@ -117,26 +119,26 @@ export const SITE_URL = process.env.SITE_URL?.trim() || process.env.NEXT_PUBLIC_
 
 /**
  * Témoignages autorisés par Salim (textes de la page de vente / site).
- * Fonctions : uniquement celles déjà publiées dans le dépôt — aucune n’y figurait → ne pas inventer.
+ * Fonctions : libellés déjà publiés sur aigile.lu (audit 27/10/2026).
  */
 export const TESTIMONIALS = [
   {
     quote:
       "Il ne s'est pas contenté de nous enseigner des frameworks. Il nous a fait comprendre les changements de culture et de mindset nécessaires à chaque niveau de l'organisation.",
     name: 'Nicolas Schell',
-    role: '9 ans de collaboration',
+    role: '9 ans de collaboration · secteur bancaire',
   },
   {
     quote:
       "Il a su créer un environnement de travail plus fluide, plus humain et plus collaboratif, que ce soit pour débloquer des situations concrètes ou renforcer la dynamique d'équipe.",
     name: 'Nouna Sehili',
-    role: '[À COMPLÉTER : fonction]',
+    role: 'collaboration multi-projets',
   },
   {
     quote:
       "Salim est un servant leader qui fera tout pour aider l'équipe. Et il n'hésitera pas à la mettre face à ses responsabilités lors d'une rétro qui conclut un très mauvais sprint.",
     name: 'David Mansy',
-    role: '[À COMPLÉTER : fonction] · transformation digitale, secteur bancaire',
+    role: 'transformation digitale · secteur bancaire',
   },
 ] as const
 

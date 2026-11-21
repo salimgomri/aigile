@@ -20,7 +20,7 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   title: 'Coach agile augmenté par l’IA – formations intra et diagnostic | AIgile',
   description:
-    'Coach agile augmenté par l’IA depuis 2003 – formations intra et accompagnement. [À CONFIRMER par Salim]',
+    'Coach agile augmenté par l’IA depuis 2003 – formations intra et accompagnement. Diagnostic flash 30 min.',
   robots: { index: false, follow: false },
 }
 

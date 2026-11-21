@@ -341,7 +341,7 @@ export function HomeV2() {
           Diagnostic 30 min
         </CtaLink>
       </div>
-      <ExitIntentKit />
+      <ExitIntentKit contactEmail={contact} />
     </div>
   )
 }

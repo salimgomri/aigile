@@ -5,7 +5,7 @@ import { KitForm } from '@/components/kit/KitForm'
 
 const SESSION_KEY = 'aigile_kit_exit_seen'
 
-export function ExitIntentKit() {
+export function ExitIntentKit({ contactEmail }: { contactEmail?: string }) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export function ExitIntentKit() {
           </button>
         </div>
         <div className="mt-3">
-          <KitForm compact source="home-v2-exit" />
+          <KitForm compact source="home-v2-exit" contactEmail={contactEmail} />
         </div>
       </div>
     </div>

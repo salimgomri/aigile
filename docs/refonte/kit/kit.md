@@ -223,7 +223,7 @@ Vous m'expliquez votre contexte, nous passons en revue vos résultats, et vous r
 ### Former votre équipe (intra-entreprise)
 - **« Agile + IA : démarrer »** — 1 jour pour une équipe qui débute ou qui intègre l'IA. **À partir de 2 000 € HT pour 8 personnes**, sur devis.
 - **« Livraison fiable avec l'IA : DoR/DoD, rétro, scoring »** — 2 jours avec votre équipe, sur votre backlog réel. Sur devis.
-→ **Découvrir les formations : [LIEN PAGE FORMATIONS — À COMPLÉTER]**
+→ **Découvrir les formations : [/formations](/formations)**
 
 ### Aller plus loin seul
 - ***Le Système S.A.L.I.M.*** — le livre : 477 pages, 19 chapitres, 93 prompts documentés. → https://aigile.lu/salim
@@ -240,5 +240,5 @@ Sur le terrain agile depuis 2003, soit **23 ans** d'expérience *(calcul automat
 
 ---
 
-*© [année en cours] Salim GOMRI EI (GO-COACH) · AIgile.lu · SIREN 891 268 245 · 50 Grand'Rue, 57280 Maizières-lès-Metz, France · Contact : [À COMPLÉTER : e-mail de contact]. Prix des formations : TVA non applicable, art. 293 B du CGI [À CONFIRMER si le seuil de franchise est dépassé].*
+*© [année en cours] Salim GOMRI EI (GO-COACH) · AIgile.lu · SIREN 891 268 245 · 50 Grand'Rue, 57280 Maizières-lès-Metz, France · Contact : salim@aigile.lu. Prix des formations : TVA non applicable, art. 293 B du CGI [À CONFIRMER si le seuil de franchise est dépassé].*
 *Ce kit est fourni gratuitement à titre informatif. Il ne remplace pas un avis adapté à votre situation. Vous pouvez le partager tel quel, sans modification et en citant la source.*

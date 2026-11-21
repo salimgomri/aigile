@@ -6,7 +6,15 @@ import { getContactEmail } from '@/lib/site-facts'
 
 function injectContact(md: string): string {
   const email = getContactEmail()
-  return md.replace(/\[À COMPLÉTER : e-mail de contact professionnel\]/g, email.includes('@') ? email : '[À COMPLÉTER : e-mail de contact professionnel]')
+  if (!email.includes('@')) return md
+  return md
+    .replace(/\[À COMPLÉTER : e-mail de contact professionnel\]/g, email)
+    .replace(/\[À COMPLÉTER : e-mail de contact\]/g, email)
+    .replace(/\[À COMPLÉTER : adresse e-mail professionnelle\]/g, email)
+    .replace(/\[À COMPLÉTER : contact@aigile\.lu ou adresse définitive\]/g, email)
+    .replace(/E-mail : \[À COMPLÉTER\]\.?/g, `E-mail : ${email}.`)
+    .replace(/écrire à \[À COMPLÉTER : e-mail\]/g, `écrire à ${email}`)
+    .replace(/en écrivant à \[À COMPLÉTER : e-mail\]/g, `en écrivant à ${email}`)
 }
 
 export function readRefonteMarkdown(relativePath: string): string {

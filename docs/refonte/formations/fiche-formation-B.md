@@ -18,7 +18,7 @@
 | **Groupe** | **Environ 8 personnes** (base du forfait) ; 6 à 12 personnes d'une même équipe ou d'équipes qui livrent ensemble, au-delà de 8 sur devis [À CONFIRMER] |
 | **Formateur** | Salim G., coach agile, auteur du *Système S.A.L.I.M.* — [À CONFIRMER : 23 ans de terrain, références citables avec accord] |
 | **Prix** | **Intra, forfait groupe, sur devis, pour environ 8 personnes** : **1 jour à partir de 2 000 € HT** ; **2 jours à partir de 3 800 € HT** ; **3 jours (option) à partir de 5 600 € HT**. *Hypothèses à confirmer avec le taux journalier de Salim.* Jamais de prix par place cassé. |
-| **Demande de devis** | [À COMPLÉTER : lien vers le formulaire / diagnostic 30 min] |
+| **Demande de devis** | [Diagnostic 30 min](/diagnostic) |
 
 ---
 
@@ -140,14 +140,14 @@ Tarification **intra, au forfait groupe** (base : environ 8 personnes), **sur de
 
 ## 10. Modalités
 
-- **Demande** : échange de 30 min [À COMPLÉTER : lien diagnostic] → devis sous [À CONFIRMER : 48 h] → bon de commande / signature.
+- **Demande** : [échange de 30 min](/diagnostic) → devis sous 48 h → bon de commande / signature.
 - **Délai de mise en place** : [À CONFIRMER : 2 à 4 semaines selon l'agenda].
-- **Paiement** : [À COMPLÉTER : acompte, échéance, virement].
-- **Annulation / report** : [À COMPLÉTER : conditions et délais].
+- **Paiement** : acompte 30 % à la commande, solde à 30 jours, par virement.
+- **Annulation / report** : plus de 30 jours : sans frais ; 30 à 15 jours : 50 % ; moins de 15 jours : 100 %. Report possible une fois dans les 6 mois (voir [CGV](/cgv#formations-prestations)).
 - **Lieu** : vos locaux (salle avec écran, Wi-Fi, tableau) ou à distance (visioconférence de votre choix).
 - **Accessibilité** : besoin d'adaptation à signaler lors du cadrage.
-- **CGV** : [À COMPLÉTER : lien vers les CGV].
-- **Contact** : [À COMPLÉTER : adresse e-mail professionnelle].
+- **CGV** : [Conditions générales de vente](/cgv).
+- **Contact** : salim@aigile.lu.
 
 ## 11. FAQ
 

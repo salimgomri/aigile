@@ -22,9 +22,8 @@ export default function MentionsLegalesPage() {
             Identité : {LEGAL.legalName} · SIREN {LEGAL.siren} · SIRET {LEGAL.siret} · {VAT_MENTION}{' '}
             <mark className="todo-mark">{VAT_FRANCHISE_TODO}</mark>
           </p>
-          <p className="mt-4 text-sm">
-            Hébergeur détecté dans le dépôt (à confirmer) :{' '}
-            <mark className="todo-mark">{LEGAL.hosterDetected}</mark>
+          <p className="mt-4 text-sm text-gray-600">
+            Hébergeur : {LEGAL.hosterName}, {LEGAL.hosterAddress} — tél. {LEGAL.hosterPhone}
           </p>
         </div>
       </article>

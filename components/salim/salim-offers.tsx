@@ -55,7 +55,7 @@ function AmazonRef() {
         <mark className="todo-mark">[LIEN AMAZON]</mark>
       )}
       {' · '}
-      Prix constaté sur Amazon le <mark className="todo-mark">{AMAZON_PRICES_CHECKED_AT}</mark>
+      Prix constaté sur Amazon le {AMAZON_PRICES_CHECKED_AT}
     </p>
   )
 }

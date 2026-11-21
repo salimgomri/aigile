@@ -126,13 +126,13 @@ Le prix comprend : la journée, le livre, les accès aux outils et les supports 
 - **Inscription** : en ligne via [LIEN STRIPE], jusqu'à [À CONFIRMER : J-3] ou jusqu'à ce que le groupe soit complet.
 - **Places (inter)** : 8 à 12 personnes. **Minimum de 8 inscrits** [À CONFIRMER] : en dessous, la session peut être reportée et vous êtes remboursé intégralement ou inscrit à la date suivante, au choix.
 - **Convocation** : e-mail avec [LIEU/LIEN], programme et consignes techniques, [À CONFIRMER : 48 h] avant.
-- **Annulation par le participant** : [À COMPLÉTER : conditions, délais, remboursement].
-- **Droit de rétractation** (achat par un particulier à distance) : [À COMPLÉTER : mention légale et formulaire de renonciation si la session a lieu avant la fin du délai — à faire valider].
-- **CGV** : [À COMPLÉTER : lien vers les CGV].
+- **Annulation par le participant** : plus de 7 jours avant : remboursement ou report ; moins de 7 jours : report sur une session suivante (voir [CGV](/cgv#formations-prestations)).
+- **Droit de rétractation** (achat par un particulier à distance) : 14 jours à compter de l'inscription, en écrivant à salim@aigile.lu. Si la session a lieu avant la fin de ce délai, une demande expresse d'exécution (case non précochée) est requise.
+- **CGV** : [Conditions générales de vente](/cgv).
 - **Facture** : envoyée automatiquement après paiement, au nom de la personne ou de l'entreprise [À CONFIRMER].
-- **Accessibilité** : si vous avez un besoin d'adaptation (handicap, horaires, matériel), écrivez à [À COMPLÉTER : adresse e-mail professionnelle] avant l'inscription.
-- **Contact** : [À COMPLÉTER : contact@aigile.lu ou adresse définitive].
-- **Données personnelles** : vos réponses aux questionnaires servent à améliorer la formation ; votre témoignage n'est publié qu'avec votre **accord écrit** [À COMPLÉTER : lien politique de confidentialité].
+- **Accessibilité** : si vous avez un besoin d'adaptation (handicap, horaires, matériel), écrivez à salim@aigile.lu avant l'inscription.
+- **Contact** : salim@aigile.lu.
+- **Données personnelles** : vos réponses aux questionnaires servent à améliorer la formation ; votre témoignage n'est publié qu'avec votre **accord écrit**. Voir la [politique de confidentialité](/privacy).
 
 ## 11. FAQ
 

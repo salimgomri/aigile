@@ -10,7 +10,7 @@ type KitFormProps = {
   contactEmail?: string
 }
 
-export function KitForm({ compact = false, source, contactEmail = '[À COMPLÉTER]' }: KitFormProps) {
+export function KitForm({ compact = false, source, contactEmail = 'salim@aigile.lu' }: KitFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'error'>('idle')
   const [message, setMessage] = useState('')
   const contact = contactEmail
@@ -93,8 +93,7 @@ export function KitForm({ compact = false, source, contactEmail = '[À COMPLÉTE
           <input type="checkbox" name="consent_news" className="mt-1 h-4 w-4" />
           <span>
             J&apos;accepte aussi de recevoir ensuite, environ une fois par mois, des nouvelles
-            d&apos;AIgile (articles, outils, formations).{' '}
-            <mark className="todo-mark">[À CONFIRMER : fréquence]</mark>
+            d&apos;AIgile (articles, outils, formations).
           </span>
         </label>
       ) : null}
@@ -118,11 +117,9 @@ export function KitForm({ compact = false, source, contactEmail = '[À COMPLÉTE
           <>
             Vos données (prénom, e-mail) sont traitées par Salim GOMRI EI (GO-COACH), éditeur
             d&apos;AIgile.lu, pour vous envoyer le kit et les e-mails demandés, sur la base de votre
-            consentement. Elles sont transmises à notre outil d&apos;envoi d&apos;e-mails{' '}
-            <mark className="todo-mark">[À CHOISIR : Brevo / Kit / autre]</mark> et conservées
-            jusqu&apos;à votre désinscription, puis{' '}
-            <mark className="todo-mark">[À COMPLÉTER : durée, ex. 3 ans après le dernier contact]</mark>{' '}
-            au maximum. Vous pouvez retirer votre consentement à tout moment et exercer vos droits
+            consentement. Elles sont transmises via Resend (e-mail transactionnel) et conservées
+            jusqu&apos;à votre désinscription, puis 3 ans après le dernier contact au maximum.
+            Vous pouvez retirer votre consentement à tout moment et exercer vos droits
             en écrivant à{' '}
             {contact.includes('@') ? (
               <a href={`mailto:${contact}`} className="underline">

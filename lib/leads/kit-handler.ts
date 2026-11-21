@@ -80,7 +80,7 @@ async function pushToNewsletterProvider(params: {
   const apiKey = process.env.NEWSLETTER_API_KEY
   const listId = process.env.KIT_LIST_ID
   if (!apiKey || !listId) {
-    console.warn('[kit] NEWSLETTER_API_KEY ou KIT_LIST_ID manquant — [À CHOISIR par Salim]')
+    console.warn('[kit] NEWSLETTER_API_KEY ou KIT_LIST_ID manquant — fournisseur non configuré')
     return
   }
   // Les appels API réels se font uniquement si Salim a choisi un outil et fourni les clés.

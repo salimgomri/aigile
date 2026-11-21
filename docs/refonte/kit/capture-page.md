@@ -37,11 +37,11 @@ Et comment l'IA aide à les corriger, sans lui laisser la décision. Un kit PDF 
 - **Champ anti-spam caché** (honeypot) — `website`, invisible pour les humains.
 - **Bouton** : Recevoir le kit gratuit
 - **Sous le bouton (mention d'information RGPD)** :
-  > Vos données (prénom, e-mail) sont traitées par Salim GOMRI EI (GO-COACH), éditeur d'AIgile.lu, pour vous envoyer le kit et les e-mails demandés, sur la base de votre consentement. Elles sont transmises à notre outil d'envoi d'e-mails [À CHOISIR : Brevo / Kit / autre] et conservées jusqu'à votre désinscription, puis [À COMPLÉTER : durée, ex. 3 ans après le dernier contact] au maximum. Vous pouvez retirer votre consentement à tout moment et exercer vos droits (accès, rectification, effacement, opposition) en écrivant à [À COMPLÉTER : e-mail de contact]. Vous pouvez aussi saisir la CNIL. En savoir plus : [Politique de confidentialité](/privacy).
+  > Vos données (prénom, e-mail) sont traitées par Salim GOMRI EI (GO-COACH), éditeur d'AIgile.lu, pour vous envoyer le kit et les e-mails demandés, sur la base de votre consentement. Elles sont transmises via Resend et conservées jusqu'à votre désinscription, puis 3 ans après le dernier contact au maximum. Vous pouvez retirer votre consentement à tout moment et exercer vos droits (accès, rectification, effacement, opposition) en écrivant à salim@aigile.lu. Vous pouvez aussi saisir la CNIL. En savoir plus : [Politique de confidentialité](/privacy).
 
 ## Messages après envoi
 - **Succès (sans redirection)** : « Merci ! Vérifiez votre boîte mail : le kit arrive dans quelques minutes. Pensez à regarder dans les indésirables. » [Si double opt-in : « Cliquez sur le lien de confirmation que nous venons de vous envoyer pour recevoir le kit. »]
-- **Erreur** : « L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous à [À COMPLÉTER : e-mail de contact]. »
+- **Erreur** : « L'envoi n'a pas fonctionné. Réessayez dans un instant ou écrivez-nous à salim@aigile.lu. »
 - **E-mail invalide** : « Merci d'indiquer une adresse e-mail valide. »
 - **Case non cochée** : « Cochez la case pour recevoir le kit par e-mail. »
 
