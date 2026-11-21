@@ -1,14 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { formatBookPrice, BUNDLE_SALE_CENTIMES } from '@/lib/book-config'
-import { trackEvent } from '@/lib/gtag'
-import CheckoutSheet from '@/components/checkout/CheckoutSheet'
-import type { Product } from '@/lib/payments/catalog'
+import Link from 'next/link'
+import { SALIM_PRICE_LABEL, SALIM_PURCHASE_PATH } from '@/lib/salim/fiche'
 
 const OFFERS_SECTION_ID = 'salim-offres'
 
-export function SalimStickyMobileCta({ bundle }: { bundle: Product | null }) {
+export function SalimStickyMobileCta() {
   const [scrollReady, setScrollReady] = useState(false)
   const [timeReady, setTimeReady] = useState(false)
   const [offersInView, setOffersInView] = useState(false)
@@ -45,26 +43,8 @@ export function SalimStickyMobileCta({ bundle }: { bundle: Product | null }) {
 
   return (
     <div className={`sticky-mobile-cta md:hidden ${visible ? 'visible' : ''}`}>
-      <span className="text-sm font-medium">Collection S.A.L.I.M.</span>
-      <CheckoutSheet
-        product={bundle}
-        checkoutSource="salim_landing"
-        trigger={
-          <button
-            type="button"
-            onClick={() =>
-              trackEvent('bundle_order_click', {
-                product: 'bundle-salim',
-                value: 110,
-                currency: 'EUR',
-                source: 'salim_landing_sticky',
-              })
-            }
-          >
-            Commander · {formatBookPrice(BUNDLE_SALE_CENTIMES)}
-          </button>
-        }
-      />
+      <span className="text-sm font-medium">Le livre · {SALIM_PRICE_LABEL}</span>
+      <Link href={SALIM_PURCHASE_PATH}>Acheter</Link>
     </div>
   )
 }
