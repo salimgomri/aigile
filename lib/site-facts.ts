@@ -76,11 +76,14 @@ export function isContactEmailReady(): boolean {
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/salimgomri/'
 
 /**
- * Fiche Amazon du livre — pas d’URL tant qu’elle n’est pas fournie (aucune fiche publique vérifiée).
- * Prix constatés d’après l’audit du 27/10/2026 (79 € / 59 € / 138 €). Ne pas modifier sans accord.
+ * Fiche Amazon du livre (ASIN B0GZ756F7C).
+ * Prix EUR 79 / 59 / 138 d’après l’audit du 27/10/2026 — non recalculés.
+ * Constat amazon.com du 21/11/2026 : paperback 66,27 USD (écart signalé, non appliqué).
  */
+export const AMAZON_ASIN = 'B0GZ756F7C'
+export const AMAZON_URL_DEFAULT = `https://www.amazon.com/dp/${AMAZON_ASIN}`
 export const AMAZON_URL =
-  process.env.NEXT_PUBLIC_AMAZON_URL?.trim() || process.env.AMAZON_URL?.trim() || '[LIEN AMAZON]'
+  process.env.NEXT_PUBLIC_AMAZON_URL?.trim() || process.env.AMAZON_URL?.trim() || AMAZON_URL_DEFAULT
 export const AMAZON_PRICES = {
   book: 79,
   fiches: 59,

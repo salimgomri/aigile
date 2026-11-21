@@ -24,7 +24,7 @@ Phrase-pivot de la marque, gardée ici : **« Le livre expose le système. La fo
 | **Prix entreprise (intra)** | **À partir de 2 000 € HT pour 8 personnes** (forfait groupe, **sur devis**). *Hypothèse à valider ; jamais sous le taux journalier réel de Salim.* |
 | **Prix inter / particuliers** | **Prix public par place à tester : 290 €** [À CONFIRMER : TTC/HT]. *Hypothèse. Ce n'est pas le tarif entreprise.* |
 | **Tarif « fondateur » (optionnel)** | **Uniquement si Salim le valide** : quelques places limitées [À CONFIRMER : 3 à 5 sur 12] à [MONTANT À FIXER PAR SALIM], explicitement présentées comme un tarif de lancement, contre avis noté + témoignage. **Le « 90 € » est abandonné.** |
-| **Inscription (inter)** / **Devis (intra)** | [LIEN STRIPE] / [LIEN DIAGNOSTIC 30 min → devis] |
+| **Inscription (inter)** / **Devis (intra)** | [/formations/inscription](/formations/inscription) / [/diagnostic](/diagnostic) |
 
 ---
 
@@ -123,7 +123,7 @@ Le prix comprend : la journée, le livre, les accès aux outils et les supports 
 
 ## 10. Modalités
 
-- **Inscription** : en ligne via [LIEN STRIPE], jusqu'à [À CONFIRMER : J-3] ou jusqu'à ce que le groupe soit complet.
+- **Inscription** : en ligne via [/formations/inscription](/formations/inscription), jusqu'à [À CONFIRMER : J-3] ou jusqu'à ce que le groupe soit complet.
 - **Places (inter)** : 8 à 12 personnes. **Minimum de 8 inscrits** [À CONFIRMER] : en dessous, la session peut être reportée et vous êtes remboursé intégralement ou inscrit à la date suivante, au choix.
 - **Convocation** : e-mail avec [LIEU/LIEN], programme et consignes techniques, [À CONFIRMER : 48 h] avant.
 - **Annulation par le participant** : plus de 7 jours avant : remboursement ou report ; moins de 7 jours : report sur une session suivante (voir [CGV](/cgv#formations-prestations)).

@@ -4,6 +4,8 @@ import {
   START_YEAR,
   DEFAULT_CONTACT_EMAIL,
   AMAZON_PRICES_CHECKED_AT,
+  AMAZON_URL_DEFAULT,
+  amazonUrlIsReady,
   TESTIMONIALS,
   LEGAL,
 } from '@/lib/site-facts'
@@ -30,8 +32,10 @@ describe('site facts filled from Salim choices', () => {
     expect(DEFAULT_CONTACT_EMAIL).toBe('salim@aigile.lu')
   })
 
-  it('records Amazon prices check date without inventing a URL', () => {
+  it('records Amazon prices check date and the public product URL', () => {
     expect(AMAZON_PRICES_CHECKED_AT).toBe('27/10/2026')
+    expect(AMAZON_URL_DEFAULT).toBe('https://www.amazon.com/dp/B0GZ756F7C')
+    expect(amazonUrlIsReady()).toBe(true)
   })
 
   it('keeps live-site testimonial roles', () => {

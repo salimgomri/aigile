@@ -3,7 +3,7 @@ import Link from 'next/link'
 import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
 import { Price } from '@/components/ui/Price'
-import { DIGITAL_PRODUCTS, getPaymentLinkUrl } from '@/lib/products'
+import { FormationCheckout } from '@/components/formations/FormationCheckout'
 import { VAT_MENTION, areFormationsPublished } from '@/lib/site-facts'
 
 export const metadata: Metadata = {
@@ -11,9 +11,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-export default function FormationInscriptionPage() {
-  const product = DIGITAL_PRODUCTS.find((p) => p.slug === 'formation-a-place')!
-  const stripeUrl = getPaymentLinkUrl(product)
+export default async function FormationInscriptionPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ session_id?: string }>
+}) {
+  const { session_id: sessionId } = await searchParams
 
   return (
     <main className="min-h-screen bg-[#f3ede7] text-aigile-navy">
@@ -24,45 +27,34 @@ export default function FormationInscriptionPage() {
             <p className="mb-6 text-sm rounded-lg bg-amber-100 px-3 py-2">Page en relecture (noindex).</p>
           ) : null}
           <h1 className="text-4xl font-bold mb-4">Agile + IA : démarrer — session inter</h1>
-          <p className="text-gray-700 mb-6">
-            Une journée à distance pour comprendre l&apos;agilité et utiliser l&apos;IA sans lui
-            laisser la décision. Salim GOMRI EI (GO-COACH).
-          </p>
-          <div className="rounded-2xl bg-white border-2 border-aigile-gold p-8 text-center mb-8">
-            <p className="text-sm uppercase tracking-wide text-gray-500">Prix public par place</p>
-            <p className="text-4xl font-extrabold my-2">
-              <Price amount="290 €" audience="b2c" />
-            </p>
-            <p className="text-xs">
-              <mark className="todo-mark">[hypothèse à valider]</mark> · {VAT_MENTION}
-            </p>
-            {stripeUrl ? (
-              <a
-                href={stripeUrl}
-                className="inline-flex mt-6 min-h-[48px] items-center rounded-full bg-aigile-gold px-6 py-3 font-semibold"
-              >
-                S&apos;inscrire et payer
-              </a>
-            ) : (
-              <Link
-                href="/kit"
-                className="inline-flex mt-6 min-h-[48px] items-center rounded-full bg-aigile-gold px-6 py-3 font-semibold"
-              >
-                Être prévenu de la prochaine session
-              </Link>
-            )}
-            <p className="mt-3 text-xs text-gray-600">
-              Lien Stripe :{' '}
-              {stripeUrl ? (
-                'configuré'
-              ) : (
-                <mark className="todo-mark">[LIEN STRIPE]</mark>
-              )}
-            </p>
-          </div>
+          {sessionId ? (
+            <div className="rounded-2xl bg-white border-2 border-aigile-gold p-8 text-center mb-8">
+              <p className="text-2xl font-bold mb-2">Inscription confirmée</p>
+              <p className="text-gray-700">
+                Le paiement Stripe est enregistré. Votre reçu arrive par e-mail. Conservez cet
+                identifiant de session : <code className="text-xs break-all">{sessionId}</code>
+              </p>
+            </div>
+          ) : (
+            <>
+              <p className="text-gray-700 mb-6">
+                Une journée à distance pour comprendre l&apos;agilité et utiliser l&apos;IA sans lui
+                laisser la décision. Salim GOMRI EI (GO-COACH).
+              </p>
+              <div className="rounded-2xl bg-white border-2 border-aigile-gold p-8 text-center mb-8">
+                <p className="text-sm uppercase tracking-wide text-gray-500">Prix public par place</p>
+                <p className="text-4xl font-extrabold my-2">
+                  <Price amount="290 €" audience="b2c" />
+                </p>
+                <p className="text-xs">{VAT_MENTION}</p>
+                <FormationCheckout />
+              </div>
+            </>
+          )}
           <p className="text-sm text-gray-700">
-            Case de demande expresse d&apos;exécution avant la fin du délai de rétractation à prévoir
-            côté Stripe (voir CGV partie B).
+            Paiement par carte via Stripe Checkout (même flux que le livre). Case de demande
+            expresse d&apos;exécution avant la fin du délai de rétractation : obligatoire, non
+            précochée.
           </p>
           <p className="mt-6 text-sm">
             Entreprise, équipe d&apos;environ 8 personnes :{' '}
