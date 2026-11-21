@@ -3,7 +3,7 @@ import type Stripe from 'stripe'
 import { getProduct, usesInlinePriceData } from '@/lib/payments/catalog'
 import { parseCheckoutSessionForOrder } from '@/lib/orders/parse-checkout-session'
 import { productFromSession } from '@/lib/downloads/session-guards'
-import { AMAZON_URL_DEFAULT } from '@/lib/site-facts'
+import { AMAZON_URL_DEFAULT, FORMATION_A_INTER } from '@/lib/site-facts'
 
 describe('formation checkout (price_data, like the book)', () => {
   it('exposes the inter seat without a Stripe Price ID', () => {
@@ -12,6 +12,11 @@ describe('formation checkout (price_data, like the book)', () => {
     expect(product!.amount).toBe(29000)
     expect(product!.type).toBe('formation_seat')
     expect(usesInlinePriceData(product!)).toBe(true)
+    expect(product!.description).toContain('1 place')
+    expect(product!.description).toContain('7 h')
+    expect(FORMATION_A_INTER.seatsMin).toBe(8)
+    expect(FORMATION_A_INTER.seatsMax).toBe(12)
+    expect(FORMATION_A_INTER.duration).toContain('7 h')
   })
 
   it('does not invent shipping fees on a formation order', () => {

@@ -226,7 +226,8 @@ export const CATALOG: Record<string, Product> = {
     stripePriceId: '',
     type: 'formation_seat',
     title: 'Place inter — Agile + IA : démarrer',
-    description: 'Une journée à distance · TVA non applicable, art. 293 B du CGI',
+    description:
+      '1 place (1 personne) · 1 journée (7 h) à distance · groupe 8 à 12 · TVA non applicable, art. 293 B du CGI',
     amount: 29000,
     currency: 'eur',
     isRecurring: false,

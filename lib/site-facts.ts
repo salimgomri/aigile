@@ -24,6 +24,18 @@ export const TAGLINE_LIVRE_COACHING = "Le livre expose le système. Le coaching 
 export const DIAGNOSTIC_URL = '/diagnostic'
 export const DIAGNOSTIC_DURATION = '30 min'
 
+/** Session inter « Agile + IA : démarrer » — 290 € = 1 place (1 personne). */
+export const FORMATION_A_INTER = {
+  title: 'Agile + IA : démarrer',
+  duration: '1 journée (7 h de formation)',
+  schedule: '8 h 45 – 17 h 30, heure de Paris',
+  format: 'À distance, en direct',
+  seatsMin: 8,
+  seatsMax: 12,
+  perSeat: '1 place = 1 personne',
+  minToRun: 'La session peut être reportée sous 8 inscrits (remboursement intégral ou report, au choix).',
+} as const
+
 export const VAT_MENTION = 'TVA non applicable, art. 293 B du CGI'
 /** Visible sur /mentions-legales et /cgv — à confirmer avec le comptable. */
 export const VAT_FRANCHISE_TODO = '[À CONFIRMER si le seuil de franchise est dépassé]'

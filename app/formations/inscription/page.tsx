@@ -4,7 +4,7 @@ import PremiumNavbar from '@/components/premium-navbar'
 import PremiumFooter from '@/components/landing/premium-footer'
 import { Price } from '@/components/ui/Price'
 import { FormationCheckout } from '@/components/formations/FormationCheckout'
-import { VAT_MENTION, areFormationsPublished } from '@/lib/site-facts'
+import { FORMATION_A_INTER, VAT_MENTION, areFormationsPublished } from '@/lib/site-facts'
 
 export const metadata: Metadata = {
   title: 'Inscription — Agile + IA : démarrer | AIgile',
@@ -41,8 +41,32 @@ export default async function FormationInscriptionPage({
                 Une journée à distance pour comprendre l&apos;agilité et utiliser l&apos;IA sans lui
                 laisser la décision. Salim GOMRI EI (GO-COACH).
               </p>
+              <ul className="mb-8 rounded-2xl border border-black/10 bg-white px-5 py-4 text-sm space-y-2">
+                <li className="flex justify-between gap-4">
+                  <span className="text-gray-500">Pour qui</span>
+                  <strong>{FORMATION_A_INTER.perSeat}</strong>
+                </li>
+                <li className="flex justify-between gap-4">
+                  <span className="text-gray-500">Durée</span>
+                  <strong>{FORMATION_A_INTER.duration}</strong>
+                </li>
+                <li className="flex justify-between gap-4">
+                  <span className="text-gray-500">Horaires</span>
+                  <strong>{FORMATION_A_INTER.schedule}</strong>
+                </li>
+                <li className="flex justify-between gap-4">
+                  <span className="text-gray-500">Format</span>
+                  <strong>{FORMATION_A_INTER.format}</strong>
+                </li>
+                <li className="flex justify-between gap-4">
+                  <span className="text-gray-500">Groupe</span>
+                  <strong>
+                    {FORMATION_A_INTER.seatsMin} à {FORMATION_A_INTER.seatsMax} personnes
+                  </strong>
+                </li>
+              </ul>
               <div className="rounded-2xl bg-white border-2 border-aigile-gold p-8 text-center mb-8">
-                <p className="text-sm uppercase tracking-wide text-gray-500">Prix public par place</p>
+                <p className="text-sm uppercase tracking-wide text-gray-500">Prix public — 1 place</p>
                 <p className="text-4xl font-extrabold my-2">
                   <Price amount="290 €" audience="b2c" />
                 </p>
@@ -52,7 +76,7 @@ export default async function FormationInscriptionPage({
             </>
           )}
           <p className="text-sm text-gray-700">
-            Paiement par carte via Stripe Checkout (même flux que le livre). Case de demande
+            {FORMATION_A_INTER.minToRun} Paiement par carte via Stripe Checkout. Case de demande
             expresse d&apos;exécution avant la fin du délai de rétractation : obligatoire, non
             précochée.
           </p>
